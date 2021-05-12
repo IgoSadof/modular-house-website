@@ -18,14 +18,7 @@ code {
  
 }
 /* Accordions */
-.WithStyles\(ForwardRef\(AccordionSummary\)\)-root-156 {
-  border-bottom: 1px solid !important;
-}
-.WithStyles\(ForwardRef\(AccordionSummary\)\)-root-156 {
-  margin-bottom: 0px !important;
-}
-
-.WithStyles\(ForwardRef\(AccordionSummary\)\)-root-93{
-  border-bottom: 1px solid !important;
-  margin-bottom: 0px !important;
+.WithStyles\(ForwardRef\(AccordionSummary\)\)-root-113 {
+  margin-bottom: 0px !important;;
+  border-bottom: 1px solid !important;;
 }

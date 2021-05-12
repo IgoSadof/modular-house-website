@@ -11,15 +11,17 @@ const useStyles = makeStyles((theme) => ({
     color:"#4F4F4F",
     borderColor:"#4F4F4F",
 
+
   },
 }));
 
-export default function ArrowButton({ icon }) {
+export default function ArrowButton({ icon,click }) {
     const classes = useStyles();
   //   const [selected, setSelected] = React.useState(false);
 
   return (
     <ToggleButton
+      onClick = {click}
       className={classes.button}
       value="check"
       //   selected={selected}

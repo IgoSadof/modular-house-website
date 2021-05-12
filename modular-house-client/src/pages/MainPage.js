@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius:"0",
     height: "36px",
     marginLeft: "auto",
+    border:"1px solid"
   },
 }));
 

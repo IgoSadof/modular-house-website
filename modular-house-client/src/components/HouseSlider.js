@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   conteiner:{
     border:"1px solid",
     marginRight:"20px",
-    width:"640px",
+    // width:"640px",
   },
   imgBox:{
     width:"100%",

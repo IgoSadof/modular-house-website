@@ -46,4 +46,4 @@ const detail = [
     готовых заводских элементов высокого качества.`,
   },
 ];
-export default detail
+export default detail;

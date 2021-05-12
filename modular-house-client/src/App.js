@@ -1,22 +1,24 @@
-
 import Menu from "./components/Menu";
 import React from "react";
 
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import Footer from "./components/Footer";
 
 import MainPage from "./pages/MainPage";
 const useStyles = makeStyles((theme) => ({
   root: {
-    position:"relative",
+    position: "relative",
     display: "flex",
     flexWrap: "wrap",
     alignItems: "center",
     width: "100%",
     height: "100%",
-    overflowX:"hidden",
+    overflow: "hidden",
   },
+  main:{
+    width:"100%",
+  }
 }));
 function App() {
   const classes = useStyles();
@@ -24,14 +26,18 @@ function App() {
     <Router>
       <div className="App">
         <div className={classes.root}>
-          <Switch>
-            <Route exact path="/">
-              <MainPage/>
-            </Route>
-            <Route exact path="/who-we-are">
-              {/* <WhoWeAre /> */}
-            </Route>
-          </Switch>
+          <div className={classes.main}>
+            <Switch>
+              <Route exact path="/">
+                <MainPage />
+              </Route>
+              <Route exact path="/who-we-are">
+                {/* <WhoWeAre /> */}
+              </Route>
+            </Switch>
+            <Footer/>
+          </div>
+
           <Menu />
         </div>
       </div>
@@ -40,4 +46,3 @@ function App() {
 }
 
 export default App;
-
