@@ -27,8 +27,8 @@ const Accordion = withStyles({
 const AccordionSummary = withStyles({
   root: {
     backgroundColor: "#E5E5E5",
-    // borderBottom: "1px solid #333333",
-    marginBottom: -1,
+    borderBottom: "1px solid #333333",
+    marginBottom: 0,
     minHeight: 56,
     "&$expanded": {
       minHeight: 56,

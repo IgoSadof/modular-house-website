@@ -257,7 +257,7 @@ const MainPageContent = () => {
         </Box>
         <Box className={classes.mediaBlock}>
           <Box className={classes.reviewVideoBox}>
-            <img src={reviews[review].video}></img>
+            <img src={reviews[review].video}alt="img"></img>
           </Box>
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
@@ -265,10 +265,10 @@ const MainPageContent = () => {
             </Box>
             <Box className={classes.imagesBoxes}>
               <Box className={classes.image1}>
-                <img src={reviews[review].img1}></img>
+                <img src={reviews[review].img1}alt="img"></img>
               </Box>
               <Box className={classes.image2}>
-                <img src={reviews[review].img2}></img>
+                <img src={reviews[review].img2}alt="img"></img>
               </Box>
             </Box>
           </Box>
@@ -291,7 +291,7 @@ const MainPageContent = () => {
 
       <Box className={`${classes.Block} ${classes.Expodom}`}>
         <span className={classes.line}></span>
-        <p className={classes.text}>Color</p>
+        {/* <p className={classes.text}>Color</p> */}
         <Box>
           <Typography className={classes.text}>ЭКСПОДОМ</Typography>
 
@@ -312,7 +312,7 @@ const MainPageContent = () => {
           </Box>
         </Box>
         <Box className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}>
-          <img className={classes.expodom_img} src={expodom_img}></img>
+          <img className={classes.expodom_img} src={expodom_img} alt="img"></img>
         </Box>
       </Box>
 
@@ -322,7 +322,7 @@ const MainPageContent = () => {
           <Box className={classes.BlockColumn}>
             <Typography className={classes.text}>КОНТАКТЫ</Typography>
             <Box className={classes.logoBox}>
-              <img className={classes.logo} src={logo} alt="logo"></img>
+              <img className={classes.logo} src={logo} alt="logo"alt="img"></img>
               <Typography variant="subtitle1">MODULAR HOUSE</Typography>
             </Box>
           </Box>
@@ -333,7 +333,7 @@ const MainPageContent = () => {
                   className={classes.contactsFoto}
                   src={andrey}
                   alt="Foto"
-                ></img>
+                alt="img"></img>
                 <Typography variant="subtitle1">Андрей</Typography>
                 <Typography variant="subtitle1">Главный</Typography>
                 <Typography variant="subtitle1">+375 29 3650669 </Typography>
@@ -343,7 +343,7 @@ const MainPageContent = () => {
                   className={classes.contactsFoto}
                   src={alexey}
                   alt="Foto"
-                ></img>
+                alt="img"></img>
                 <Typography variant="subtitle1">Алексей</Typography>
                 <Typography variant="subtitle1">Главный</Typography>
                 <Typography variant="subtitle1">+375 44 5180676</Typography>

@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     width: "100%",
     marginTop: "125px",
+    marginBottom: "100px",
+
   },
   list:{
-    // display:"flex",
-    // gap:"40px",
     listStyle:"none",
     padding:"0",
     margin:"0",
@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   conteiner:{
     border:"1px solid",
     marginRight:"20px",
-    // width:"640px",
   },
   imgBox:{
     width:"100%",
@@ -63,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
 const HouseSlider = () => {
   const classes = useStyles();
   const settings = {
-    // dots: true,
     infinite: true,
     arrows: false,
     speed: 500,
