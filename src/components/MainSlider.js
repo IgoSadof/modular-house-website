@@ -179,6 +179,7 @@ const Slider = ({ scrol }) => {
   const classes = useStyles(param);
   const [resources, setResources] = useState(null);
   const [resourcestv, setResourcestv] = useState(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [fields, setFields] = useState({
     headers: null,
     subtitles: null,
@@ -208,12 +209,19 @@ const Slider = ({ scrol }) => {
     setLineLength(() => (numb === 1 ? 265 : 265 + 80 * (numb - 1)));
     setActiveNumb(numb - 1);
   };
+  const handleClickConnect = () => {
+    setIsFormOpen(state=>!state)
+  } 
+  const handleCloseForm = (e) => {
+    console.log(e.target)
+    // setIsFormOpen(state=>!state)
+  } 
 
   return (
-    <div className={classes.root}>
-      <SendForm />
+    <div className={classes.root} onClick={handleCloseForm}>
+      <SendForm isFormOpen={isFormOpen} click={handleClickConnect}/>
       <Box className={classes.content}>
-        <Button className={classes.button} variant="outlined">
+        <Button className={classes.button} variant="outlined" onClick={handleClickConnect}>
           СВЯЗАТЬСЯ
         </Button>
         <Box className={classes.midleBlock}>

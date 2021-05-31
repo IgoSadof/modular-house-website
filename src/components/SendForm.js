@@ -23,29 +23,29 @@ const useStyles = makeStyles((theme) => ({
       "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
     zIndex: "2",
     padding: "60px 240px 100px 100px",
-    boxShadow: "-5px -5px 250px 0px #FFFFFF05 inset",
+    boxShadow: "box-shadow: -5px -5px 250px 0px rgba(255, 255, 255, 0,02) inset",
     backdropFilter: "blur(42px)",
     transition: " 0.5s",
-    transform: prop => prop.isOpen? "translateX(0)": "translateX(600px)",
+    transform: prop => prop.isFormOpen? "translateX(0)": "translateX(600px)",
   },
   button: {
     marginLeft: "auto",
   },
 }));
 
-const SendForm = () => {
+const SendForm = ({isFormOpen, click}) => {
   const [review, setReview] = useState(0);
-  const [isOpen, setIsOpen] = useState(true);
-  const prop = {isOpen}
+  // const [isOpen, setIsOpen] = useState(isFormOpen);
+  const prop = {isFormOpen}
   const classes = useStyles(prop);
-  const handleClick = () => {
-    setIsOpen(state=>!state)
-    console.log('click')
-  }
+  // const handleClick = () => {
+  //   setIsOpen(state=>!state)
+  //   console.log('click')
+  // }
 
   return (
-    <div className={classes.root}>
-      <Box className={classes.button} onClick={handleClick} >
+    <div className={classes.root} name="form" id="form">
+      <Box className={classes.button} onClick={click} >
         <SquareButton icon={<ClearIcon/>} />
       </Box>
 
