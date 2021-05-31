@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -17,7 +17,7 @@ import TextField from "@material-ui/core/TextField";
 import reviews from "../constant/reviews";
 import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
-
+import expodom from "../assets/images/expodom_img.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -285,8 +285,11 @@ const MainPageContent = () => {
           <Accordions arr={answers} />
         </Box>
       </Box>
+      <Box className={classes.Block}>
+        <span className={classes.line}></span>
+        <FormBlock subtitle img={expodom} header={"ЭКСПОДОМ"} title={"Пожить в модульном доме на Браславских озерах"} />
+      </Box>
 
-      <FormBlock subtitle />
       <Contacrs />
     </div>
   );

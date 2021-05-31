@@ -17,7 +17,6 @@ import SendForm from "./SendForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // position: "relative",
     height: "100vh",
   },
   content: {
@@ -26,15 +25,11 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "space-between",
     width: "100%",
     height: "100vh",
     backgroundColor: "#E5E5E5",
   },
   button: {
-    // position:"absolute",
-    // bottom:"100px",
-    // right:"280px",
     borderRadius: "0",
     height: "36px",
     marginLeft: "auto",
@@ -42,13 +37,8 @@ const useStyles = makeStyles((theme) => ({
   },
   mainVideoBox: {
     position: "relative",
-    // position:"fixed",
-    // top:"50%",
-    // right:"280px",
     width: "480px",
     height: "100%",
-
-    // transform: "translate(0%, -50%)",
   },
   fullImg: {
     position: "absolute",
@@ -61,11 +51,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "47%",
     left: "3%",
-    // transform: "translate(-50%) scale(1.15)",
     transform: (param) =>
       `translate(0%,${-50 - param.scrol * 10}% ) scale(1.15)`,
     opacity: (param) => 0.1 * param.scrol,
-    // opacity:1,
   },
   rightpartImg: {
     position: "absolute",
@@ -76,10 +64,8 @@ const useStyles = makeStyles((theme) => ({
         -50 - param.scrol * 10
       }% ) scale(1.15)`,
     opacity: (param) => 0.1 * param.scrol,
-    // opacity:1,
   },
   langBox: {
-    // position:"absolute",
     top: "90px",
     right: "280px",
     display: "flex",
@@ -94,7 +80,6 @@ const useStyles = makeStyles((theme) => ({
     gap: "50px",
     width: "100%",
     height: "90%",
-    // border:"1px solid",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -155,16 +140,13 @@ const useStyles = makeStyles((theme) => ({
     bottom: "125px",
     left: "215px",
     display: "flex",
-    // width:"272px",
     height: "20px",
-    // border:"1px solid black",
   },
   number: {
     cursor: "pointer",
     fontSize: "20px",
     width: "80px",
     height: "20px",
-    // border:"1px solid black",
   },
   activeNumber: {
     color: "#828282",
@@ -214,7 +196,6 @@ const Slider = ({ scrol }) => {
   } 
   const handleCloseForm = (e) => {
     console.log(e.target)
-    // setIsFormOpen(state=>!state)
   } 
 
   return (
