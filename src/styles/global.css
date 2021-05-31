@@ -1,0 +1,25 @@
+  body {
+    margin: 0;
+  }
+  .conteiner{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .components {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: #E5E5E5;
+    padding: 0px 10% 100px 150px;
+    overflow: hidden;
+  }
+  .content{
+    width: 100%;
+  }

@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import { Link } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    menu: {
         boxSizing:"border-box",
         position:"fixed",
         top:"0",
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
         padding:"40px 0px 90px",
         transition:"0.5s",
         opacity:"1",
+        backdropFilter: "blur(42px)",
         "&:hover":{
             transition:"0.5s",
             backgroundColor:"#F0F0F0",
@@ -85,7 +86,7 @@ const Menu = () =>{
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div className={classes.menu}>
             <img  className={classes.logo} src={logo} alt="logo"></img>
             <Typography className={classes.text} variant="h6" component="h6">
                 Меню

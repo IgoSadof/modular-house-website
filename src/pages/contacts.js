@@ -1,3 +1,4 @@
+import "../styles/global.css";
 import React, { useEffect, useRef, useState } from "react";
 import { makeStyles,ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../components/Footer";
@@ -6,28 +7,6 @@ import modularHouseTheme from "../config/modularHouseTheme";
 import Contacrs from "../components/Contacts"
 
 const useStyles = makeStyles((theme) => ({
-  root2: {
-    boxSizing: "border-box",
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    height: "auto",
-    backgroundColor: "#E5E5E5",
-    padding: "0px 10% 100px 160px",
-    overflow: "hidden",
-  },
-  root: {
-    position: "relative",
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
-  },
-  main: {
-    width: "100%",
-  },
   button: {
     borderRadius: "0",
     height: "36px",
@@ -49,9 +28,9 @@ const MainPage = () => {
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
-      <div className={classes.root}>
-        <div className={classes.main}>
-          <div className={classes.root2} onWheel={(e) => handleScroll(e)}>
+      <div className="conteiner">
+        <div className="content">
+          <div className="components" onWheel={(e) => handleScroll(e)}>
             <Contacrs/>
           </div>
           <Footer />

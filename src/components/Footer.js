@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     width: "100%",
-    height: "20px",
     backgroundColor: "#4F4F4F",
     alignItems:"center",
   },
