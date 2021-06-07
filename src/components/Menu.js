@@ -21,15 +21,13 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         width: "160px",
         height: "100vh",
-        backgroundColor:"#E5E5E5",
         borderRight:"1px solid #4F4F4F",
         padding:"40px 0px 90px",
         transition:"0.5s",
         opacity:"1",
-        backdropFilter: "blur(42px)",
         "&:hover":{
             transition:"0.5s",
-            backgroundColor:"#F0F0F0",
+            // backgroundColor:"#F0F0F0",
             "& $text": {
                 transition:"0.5s",
                 opacity:"0"
@@ -39,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
                 opacity:"1"
             },
         },
+        backdropFilter: 'blur(42px)',
+    //     background:
+    //   "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
     },
     logo:{
         alignItems:"center",
