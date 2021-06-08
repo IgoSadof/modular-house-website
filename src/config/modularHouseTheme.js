@@ -10,6 +10,9 @@ const modularHouseTheme = createMuiTheme({
     secondary: {
       main: green[500],
     },
+     black: {
+      main: 'black',
+    },
   },
   typography: {
     fontFamily: [

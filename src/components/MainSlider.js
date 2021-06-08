@@ -30,15 +30,26 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#E5E5E5",
   },
   button: {
+    position: "relative",
+    zIndex: "2",
     borderRadius: "0",
     height: "36px",
     marginLeft: "auto",
     border: "1px solid",
   },
   mainVideoBox: {
-    position: "relative",
-    width: "480px",
+    // border:"1px solid",
+    position: "absolute",
+    right: "-160px",
+    // width: "480px",
+    height: "100vh",
+    zIndex: "1",
+  },
+  fon: {
+    position: "absolute",
+    background: "radial-gradient(transparent 30%, #E5E5E5 70%)",
     height: "100%",
+    width: "100%",
   },
   fullImg: {
     position: "absolute",
@@ -66,8 +77,8 @@ const useStyles = makeStyles((theme) => ({
     opacity: (param) => 0.1 * param.scrol,
   },
   langBox: {
-    top: "90px",
-    right: "280px",
+    position: "relative",
+    zIndex: "2",
     display: "flex",
     gap: "6px",
     cursor: "pointer",
@@ -93,6 +104,7 @@ const useStyles = makeStyles((theme) => ({
     gap: "40px",
     width: "350px",
     flexDirection: "column",
+    marginRight: "auto",
   },
   header: {
     fontSize: "48px",
@@ -153,7 +165,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slider = ({ scrol }) => {
+const Slider = ({ scrol,isFirstEntry }) => {
   const [lineLength, setLineLength] = useState(265);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(true);
@@ -179,6 +191,22 @@ const Slider = ({ scrol }) => {
   }, []);
 
   useEffect(() => {
+    // console.log(scrol);
+    if(isFirstEntry){
+      scrol < 10
+      ? handleNumberClick(null, 1)
+      : scrol >= 10 && scrol < 20
+      ? handleNumberClick(null, 2)
+      : scrol >= 20 && scrol < 30
+      ? handleNumberClick(null, 3)
+      : scrol >= 30 && scrol < 40
+      ? handleNumberClick(null, 4)
+      : (scrol = 40);
+    }
+    
+  }, [scrol]);
+
+  useEffect(() => {
     if (resources && resourcestv) {
       setFields({
         headers: findDataFromCategory(resources, resourcestv, 2),
@@ -186,23 +214,30 @@ const Slider = ({ scrol }) => {
       });
     }
   }, [resources, resourcestv]);
-  const handleNumberClick = (e) => {
-    const numb = +e.target.textContent[1];
+  const handleNumberClick = (e, numb = 0) => {
+    
+    if (numb === 0) {
+      numb = +e.target.textContent[1];
+    }
     setLineLength(() => (numb === 1 ? 265 : 265 + 80 * (numb - 1)));
     setActiveNumb(numb - 1);
   };
   const handleClickConnect = () => {
-    setIsFormOpen(state=>!state)
-  } 
+    setIsFormOpen((state) => !state);
+  };
   const handleCloseForm = (e) => {
-    console.log(e.target)
-  } 
+    console.log(e.target);
+  };
 
   return (
     <div className={classes.root} onClick={handleCloseForm}>
-      <SendForm isFormOpen={isFormOpen} click={handleClickConnect}/>
+      <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
       <Box className={classes.content}>
-        <Button className={classes.button} variant="outlined" onClick={handleClickConnect}>
+        <Button
+          className={classes.button}
+          variant="outlined"
+          onClick={handleClickConnect}
+        >
           СВЯЗАТЬСЯ
         </Button>
         <Box className={classes.midleBlock}>
@@ -228,9 +263,10 @@ const Slider = ({ scrol }) => {
             </Typography>
           </Box>
           <Box className={classes.mainVideoBox}>
+            <div className={classes.fon}></div>
             <ReactPlayer
               height="100%"
-              width="100%"
+              width="auto"
               url={slides[activeNumb].video}
               playing={playVideo}
               muted={true}

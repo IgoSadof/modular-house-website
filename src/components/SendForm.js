@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
     top: "0",
-    right: "0",
+    right: prop => prop.isFormOpen? "0": "-100%",
     display: "flex",
     flexDirection: "column",
     gap: "50px",
@@ -21,12 +21,11 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     // background:
     //   "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
-    zIndex: "2",
+    zIndex: "3",
     padding: "60px 240px 100px 100px",
     boxShadow: "-5px 0px 100px rgba(0, 0, 0, 0.2) ",
     backdropFilter: "blur(42px)",
-    transition: " 0.5s",
-    transform: prop => prop.isFormOpen? "translateX(0)": "translateX(600px)",
+    transition: "0.7s",
   },
   button: {
     marginLeft: "auto",

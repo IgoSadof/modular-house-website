@@ -9,20 +9,45 @@ import what_we_do_img1 from "../assets/images/w-we-do-img1.png";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import { Translate } from "@material-ui/icons";
+import SendForm from "../components/SendForm";
+import MySlider from "../components/Slider"
 
 const useStyles = makeStyles((theme) => ({
-  mainBlock: {
+  Block: {
+    position:"relative",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
+    backgroundColor: "#e5e5e5",
+    overflow: "hidden",
+    height:"100vh"
+  },
+
+  button: {
+    position: "absolute",
+    top: "5%",
+    right: "10%",
+    background:
+      "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
+    width: "125px",
+    height: "36px",
   },
   mainImg: {
     width: "100%",
+    height: "720px",
+    objectFit: "cover",
+  },
+  secondImg:{
+    width: "100%",
+    height: "820px",
+    objectFit: "cover",
+
   },
   mainDescBox: {
     width: "100%",
     display: "flex",
-    gap: "40px",
+    gap: "20px",
     justifyContent: "space-between",
     padding: "50px 300px",
   },
@@ -52,52 +77,106 @@ const useStyles = makeStyles((theme) => ({
   modelBlock: {
     display: "flex",
     gap: "100px",
-    padding:"100px 200px"
+    padding: "100px 200px",
+    backgroundColor: "#e5e5e5",
   },
-  modelDesc:{
-    width:"300px",
-    display:"flex",
-    flexDirection:"column",
-    // gap:"70px",
+  modelDesc: {
+    position: "relative",
+    width: "450px",
+    display: "flex",
+    gap: "40px",
   },
-  modelDescItem:{
-    display:"flex",
+  modelDescFirstColumn: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    gap: "70px",
+    justifyContent: "space-between",
   },
-  model:{
-    border: '1px solid',
-    width: '100%',
-  }
+  modelDescSecondColumn: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    gap: "70px",
+    justifyContent: "space-between",
+  },
+  modelDescItemTitle: {
+    // width: "100px",
+    // paddingRight:"40px",
+  },
+  modelNumber: {
+    fontSize: "48px",
+    fontWeight: "600",
+  },
+  modelSubtitle: {
+    // borderLeft:"1px solid",
+    fontSize: "12px",
+  },
+  model: {
+    border: "1px solid",
+    width: "100%",
+  },
+  modelDescLine: {
+    left: "28%",
+    width: "1px",
+    height: "100%",
+    backgroundColor: "black",
+    "&::before": {
+      // transformOrigin: "100% 50%",
+      transform: "translate(-50%, 165px)",
+      // position: "absolute",
+      content: `'+'`,
+      width: "40px",
+      height: "40px",
+      border: "1px solid",
+      borderRadius: "50%",
+      fontSize: "30px",
+      backgroundColor: "#e5e5e5",
+      cursor: "pointer",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  },
+  // modelDescCircle:{
+  //   position:"absolute",
+  //   width:"50px",
+  //   left:"21%",
+  //   height:"50px",
+  //   border:"1px solid",
+  //   borderRadius:"50%",
+  //   backgroundColor:""
+  // }
 }));
 
 const MainPage = () => {
-  const classes = useStyles();
-  const [scrol, setScrol] = useState(0);
-  const handleScroll = (e) => {
-    if (e.nativeEvent.wheelDelta > 0) {
-      scrol <= 0 ? setScrol(0) : setScrol((state) => state - 1);
-    } else {
-      setScrol((state) => state + 1);
-    }
-  };
+  const [lineLength, setLineLength] = useState(265);
+  const param = { lineLength };
+  const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
+  };
+
+  const handleCircleClick = (e) => {
+    // setLineLength((state) => (state ===);
   };
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <div className="conteiner">
         <div className="content">
-          <Button
-            className={classes.button}
-            variant="outlined"
-            onClick={handleClickConnect}
-          >
-            СВЯЗАТЬСЯ
-          </Button>
           {/* <div className="components" onWheel={(e) => handleScroll(e)}> */}
           {/* <FormBlock/> */}
-          <Box className={classes.mainBlock}>
+          <Box className={` ${classes.Block} ${classes.mainBlock}`}>
+            <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
+            <Button
+              className={classes.button}
+              variant="outlined"
+              onClick={handleClickConnect}
+            >
+              СВЯЗАТЬСЯ
+            </Button>
             <Box className={classes.mainImg}>
               <img className={classes.mainImg} src={what_we_do_img1}></img>
             </Box>
@@ -138,27 +217,19 @@ const MainPage = () => {
               </Box>
             </Box>
           </Box>
+
           <Box className={classes.modelBlock}>
             <Box className={classes.modelDesc}>
-              <Box className={classes.modelDescItem}>
+              <Box className={classes.modelDescFirstColumn}>
                 <Box className={classes.modelDescItemTitle}>
                   <Typography className={classes.modelNumber}>01</Typography>
                   <Typography className={classes.modelHeader}>
-                    Базовый
+                    Базавый
                   </Typography>
                   <Typography className={classes.modelSquare}>
                     170 м2
                   </Typography>
                 </Box>
-                <Box>
-                  <Typography className={classes.modelSubtitle}>
-                    Развитие дома происходит по горизонтали в двух направлениях.
-                    К базовому модулю могут быть пристроены навес для автомобиля
-                    в одном направлении.
-                  </Typography>
-                </Box>
-              </Box>
-              <Box className={classes.modelDescItem}>
                 <Box className={classes.modelDescItemTitle}>
                   <Typography className={classes.modelNumber}>02</Typography>
                   <Typography className={classes.modelHeader}>Жилой</Typography>
@@ -166,15 +237,6 @@ const MainPage = () => {
                     170 м2
                   </Typography>
                 </Box>
-                <Box>
-                  <Typography className={classes.modelSubtitle}>
-                    Развитие дома происходит по горизонтали в двух направлениях.
-                    К базовому модулю могут быть пристроены навес для автомобиля
-                    в одном направлении.
-                  </Typography>
-                </Box>
-              </Box>
-              <Box className={classes.modelDescItem}>
                 <Box className={classes.modelDescItemTitle}>
                   <Typography className={classes.modelNumber}>03</Typography>
                   <Typography className={classes.modelHeader}>Гараж</Typography>
@@ -182,18 +244,40 @@ const MainPage = () => {
                     170 м2
                   </Typography>
                 </Box>
-                <Box>
-                  <Typography className={classes.modelSubtitle}>
-                    Развитие дома происходит по горизонтали в двух направлениях.
-                    К базовому модулю могут быть пристроены навес для автомобиля
-                    в одном направлении.
-                  </Typography>
-                </Box>
+              </Box>
+
+              {/* <span className={classes.modelDescLine}></span> */}
+              <MySlider/>
+
+              <Box className={classes.modelDescSecondColumn}>
+                <Typography className={classes.modelSubtitle}>
+                  Развитие дома происходит по горизонтали в двух направлениях. К
+                  базовому модулю могут быть пристроены навес для автомобиля в
+                  одном направлении.
+                </Typography>
+                <Typography
+                  className={`${classes.modelSubtitle} ${classes.modelSubtitleMiddle}`}
+                >
+                  Развитие дома происходит по горизонтали в двух направлениях. К
+                  базовому модулю могут быть пристроены навес для автомобиля в
+                  одном направлении.
+                </Typography>
+                <Typography className={classes.modelSubtitle}>
+                  Развитие дома происходит по горизонтали в двух направлениях. К
+                  базовому модулю могут быть пристроены навес для автомобиля в
+                  одном направлении.
+                </Typography>
               </Box>
             </Box>
             <Box className={classes.model}></Box>
           </Box>
-          {/* </div> */}
+
+          <Box className={`${classes.Block} ${classes.blockGalary}`}>
+            <Box className={classes.secondImg}>
+              <img className={classes.mainImg} src={what_we_do_img1}></img>
+            </Box>
+          </Box>
+
           <Footer />
         </div>
         <Menu />
