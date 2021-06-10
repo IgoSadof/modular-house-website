@@ -1,7 +1,6 @@
 import React from "react";
-import CheckIcon from "@material-ui/icons/Check";
-import ToggleButton from "@material-ui/lab/ToggleButton";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -10,17 +9,21 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "0",
     color: "#4F4F4F",
     borderColor: "#4F4F4F",
+    boxShadow:'none'
+    
   },
 }));
 
-export default function SquareButton({ icon, click }) {
+export default function SquareButton({ icon, click, variant }) {
   const classes = useStyles();
   //   const [selected, setSelected] = React.useState(false);
 
   return (
-    <ToggleButton
+    <Button
       onClick={click}
       className={classes.button}
+      variant={variant}
+      color="inherit"
       value="check"
       //   selected={selected}
       //   onChange={() => {
@@ -28,6 +31,6 @@ export default function SquareButton({ icon, click }) {
       //   }}
     >
       {icon}
-    </ToggleButton>
+    </Button>
   );
 }

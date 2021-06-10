@@ -6,6 +6,8 @@ const modularHouseTheme = createMuiTheme({
   palette: {
     primary: {
       main: purple[500],
+      fon:"#E5E5E5",
+      
     },
     secondary: {
       main: green[500],

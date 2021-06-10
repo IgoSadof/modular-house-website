@@ -11,17 +11,36 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Translate } from "@material-ui/icons";
 import SendForm from "../components/SendForm";
-import MySlider from "../components/Slider"
+import MySlider from "../components/Slider";
+
+import SquareButton from "../components/SquareButton";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+
+import whatWeDoImg2 from "../assets/images/what-we-do-img2.png";
+import plan from "../assets/images/plan.png";
+
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
-  Block: {
-    position:"relative",
+  BlockFullscreen: {
+    position: "relative",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#e5e5e5",
     overflow: "hidden",
-    height:"100vh"
+    height: "100vh",
+  },
+  Block: {
+    display: "flex",
+    gap: "100px",
+    padding: "100px 200px",
+    backgroundColor: "#e5e5e5",
   },
 
   button: {
@@ -34,15 +53,16 @@ const useStyles = makeStyles((theme) => ({
     height: "36px",
   },
   mainImg: {
+    position: "relative",
     width: "100%",
     height: "720px",
     objectFit: "cover",
   },
-  secondImg:{
+  secondImg: {
+    position: "relative",
     width: "100%",
-    height: "820px",
+    height: "720px",
     objectFit: "cover",
-
   },
   mainDescBox: {
     width: "100%",
@@ -147,6 +167,120 @@ const useStyles = makeStyles((theme) => ({
   //   borderRadius:"50%",
   //   backgroundColor:""
   // }
+  buttons: {
+    position: "absolute",
+    display: "flex",
+    gap: "20px",
+    left: "10%",
+    bottom: "15%",
+  },
+  blockGalary: {
+    height: "auto",
+  },
+  panel: {
+    position: "absolute",
+    right: "0",
+    bottom: "0",
+    width: "620px",
+    // height: "75px",
+    backgroundColor: "#e5e5e5",
+  },
+  line: {
+    display: "inline-block",
+    width: "75px",
+    height: "1px",
+    backgroundColor: "black",
+    marginTop: "10px",
+  },
+
+  BlockRooms: {
+    height: "auto",
+    paddingLeft: "160px",
+    gap: "20px",
+    justifyContent: "space-between",
+  },
+  roomsList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+  },
+  text: {
+    textTransform: "uppercase",
+  },
+  roomDesc: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "100px",
+  },
+  roomDescArticle: {
+    marginTop: "260px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "40px",
+    width: "285px",
+  },
+  roomDescTitle: {
+    fontSize: "30px",
+  },
+  roomDescList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    cursor: "pointer",
+  },
+  roomImg: {
+    marginLeft: "auto",
+  },
+  BlockCalculation: {
+    paddingLeft: "160px",
+  },
+  calculationPlan: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    // gap:"160px",
+  },
+  calculation: {
+    display: "flex",
+    gap: "40px",
+    flexDirection: "column",
+    marginLeft: "auto",
+    width: "350px",
+    // height: "500px",
+    // border: "1px solid",
+  },
+  calculationItem: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+  },
+  calculationHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  calculationHeaderText: {
+    fontSize: "24px !important",
+  },
+  calculationBody: {
+    paddingLeft: "20px",
+    paddingRight: "30px",
+    borderLeft: "1px solid",
+  },
+  calculationBodyItem: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  calculationResult: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "100px",
+    alignItems: "center",
+  },
+  calculationSum: {
+    fontSize: "30px",
+  },
 }));
 
 const MainPage = () => {
@@ -154,12 +288,31 @@ const MainPage = () => {
   const param = { lineLength };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [value, setValue] = React.useState(2);
+  const [modulePrice, setModulePrice] = useState(0);
+
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
-
   const handleCircleClick = (e) => {
     // setLineLength((state) => (state ===);
+  };
+
+  const handleClickLeft = () => {};
+  const handleClickRight = () => {};
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const handleChangeCheckbox = (event) => {
+    if (event.target.checked) {
+      console.log(`add ${event.target.value}`);
+      setModulePrice((state) => state + +event.target.value);
+    }
+    else{
+      setModulePrice((state) => state - +event.target.value);
+
+    }
   };
 
   return (
@@ -168,7 +321,7 @@ const MainPage = () => {
         <div className="content">
           {/* <div className="components" onWheel={(e) => handleScroll(e)}> */}
           {/* <FormBlock/> */}
-          <Box className={` ${classes.Block} ${classes.mainBlock}`}>
+          <Box className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}>
             <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
             <Button
               className={classes.button}
@@ -247,7 +400,7 @@ const MainPage = () => {
               </Box>
 
               {/* <span className={classes.modelDescLine}></span> */}
-              <MySlider/>
+              <MySlider />
 
               <Box className={classes.modelDescSecondColumn}>
                 <Typography className={classes.modelSubtitle}>
@@ -272,12 +425,254 @@ const MainPage = () => {
             <Box className={classes.model}></Box>
           </Box>
 
-          <Box className={`${classes.Block} ${classes.blockGalary}`}>
+          <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
             <Box className={classes.secondImg}>
               <img className={classes.mainImg} src={what_we_do_img1}></img>
+              <Box className={classes.buttons}>
+                {/* <Button color="secondary">hello</Button> */}
+                <SquareButton
+                  variant={"contained"}
+                  click={handleClickLeft}
+                  icon={<ArrowBackIosIcon />}
+                />
+                <SquareButton
+                  variant={"contained"}
+                  click={handleClickRight}
+                  icon={<ArrowForwardIosIcon />}
+                />
+              </Box>
+              <Box className={classes.panel}>
+                <Tabs
+                  value={value}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  onChange={handleChange}
+                  aria-label="disabled tabs example"
+                >
+                  <Tab label="ВСЕ" />
+                  <Tab label="ФАСАД" />
+                  <Tab label="КУХНЯ" />
+                  <Tab label="ТУАЛЕТ" />
+                </Tabs>
+              </Box>
             </Box>
           </Box>
 
+          <Box className={`${classes.Block} ${classes.BlockRooms}`}>
+            <span className={classes.line}></span>
+            <Box className={classes.roomsList}>
+              <Typography className={classes.text}>Гостинная</Typography>
+              <Typography className={classes.text}>Кухня</Typography>
+              <Typography className={classes.text}>Сан узел</Typography>
+              <Typography className={classes.text}>Кладовка</Typography>
+              <Typography className={classes.text}>Фасад</Typography>
+            </Box>
+            <Box className={classes.roomDesc}>
+              <Box className={classes.roomDescArticle}>
+                <Typography className={classes.roomDescTitle}>
+                  ГОСТИННАЯ
+                </Typography>
+                <Typography className={classes.roomDescSubtitle}>
+                  Стоимость дома «под ключ», с панорамным остеклением, отделкой
+                  лиственницей, фальцевой кровлей и разводкой коммуникаций
+                  внутри дома составляет 660$ за метр. В полной конфигурации,
+                  дом площадью 50 м. кв. обходится в 33 к$. Домокомплект
+                  привозится на участок и собирается на специально
+                  подготовленном фундаменте в течении двух недель. Отсутствие
+                  затяжного строительства существенно экономит деньги заказчика.
+                </Typography>
+              </Box>
+
+              <Box className={classes.roomDescList}>
+                <Typography className={classes.roomDescItem}>Ванная</Typography>
+                <Typography className={classes.roomDescItem}>
+                  Общая комната
+                </Typography>
+                <Typography className={classes.roomDescItem}>
+                  Сан узел
+                </Typography>
+                <Typography className={classes.roomDescItem}>
+                  Детская{" "}
+                </Typography>
+                <Typography className={classes.roomDescItem}>
+                  Коридор
+                </Typography>
+              </Box>
+            </Box>
+            <img className={classes.roomImg} src={whatWeDoImg2} alt="img"></img>
+          </Box>
+
+          <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
+            <span className={classes.line}></span>
+            <Box className={classes.calculationPlan}>
+              <Typography className={classes.text}>Расчет</Typography>
+              <img
+                className={classes.calculationPlanImg}
+                src={plan}
+                alt="img"
+              ></img>
+            </Box>
+            <Box className={classes.calculation}>
+              <Box className={classes.calculationItem}>
+                <Box className={classes.calculationHeader}>
+                  <FormControlLabel
+                    onChange={handleChangeCheckbox}
+                    className={classes.calculationHeaderText}
+                    value={25000}
+                    control={<Checkbox color="primary" />}
+                    label="БАЗОВЫЙ МОДУЛЬ"
+                    labelPlacement="end"
+                  />
+                  <Typography className={classes.calculationHeaderText}>
+                    25 000
+                  </Typography>
+                </Box>
+                <Box className={classes.calculationBody}>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Ванная
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Общая комната
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Детская
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Коридор
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+
+              <Box className={classes.calculationItem}>
+                <Box className={classes.calculationHeader}>
+                  <FormControlLabel
+                    onChange={handleChangeCheckbox}
+                    className={classes.calculationHeaderText}
+                    value={25000}
+                    control={<Checkbox color="primary" />}
+                    label="БАЗОВЫЙ МОДУЛЬ"
+                    labelPlacement="end"
+                  />
+                  <Typography className={classes.calculationHeaderText}>
+                    25 000
+                  </Typography>
+                </Box>
+                <Box className={classes.calculationBody}>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Ванная
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Общая комната
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Детская
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Коридор
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+
+              <Box className={classes.calculationItem}>
+                <Box className={classes.calculationHeader}>
+                  <FormControlLabel
+                    className={classes.calculationHeaderText}
+                    value={25000}
+                    onChange={handleChangeCheckbox}
+                    control={<Checkbox color="primary" />}
+                    label="БАЗОВЫЙ МОДУЛЬ"
+                    labelPlacement="end"
+                  />
+                  <Typography className={classes.calculationHeaderText}>
+                    25 000
+                  </Typography>
+                </Box>
+                <Box className={classes.calculationBody}>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Ванная
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Общая комната
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Детская
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                  <Box className={classes.calculationBodyItem}>
+                    <Typography className={classes.calculationBodyText}>
+                      Коридор
+                    </Typography>
+                    <Typography className={classes.calculationBodyText}>
+                      107 м2
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+
+              <Box className={classes.calculationResult}>
+                <Typography className={classes.calculationHeaderText}>
+                  Цена
+                </Typography>
+                <Typography className={classes.calculationSum}>
+                  $ {modulePrice}
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
           <Footer />
         </div>
         <Menu />

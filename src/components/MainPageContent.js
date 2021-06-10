@@ -209,7 +209,6 @@ const MainPageContent = () => {
 
   const handleClickLeft = () => {
     setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
-    
     setReviewVideo((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
     myRef.current.slickNext()
   };
@@ -262,10 +261,11 @@ const MainPageContent = () => {
           </Box>
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
-            <SquareButton click={handleClickLeft} icon={<ArrowBackIosIcon />} />
+            <SquareButton variant={'outlined'} click={handleClickLeft} icon={<ArrowBackIosIcon />} />
             <SquareButton
               click={handleClickRight}
               icon={<ArrowForwardIosIcon />}
+              variant={'outlined'}
             />
           </Box>
         </Box>
@@ -308,6 +308,9 @@ const MainPageContent = () => {
           <Accordions arr={answers} />
         </Box>
       </Box>
+
+      {/* "ЭКСПОДОМ" */}
+
       <Box className={classes.Block}>
         <span className={classes.line}></span>
         <FormBlock
