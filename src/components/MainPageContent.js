@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -18,6 +18,8 @@ import reviews from "../constant/reviews";
 import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
 import expodom from "../assets/images/expodom_img.png";
+import ReviewsSlider from "../components/ReviewsSlider";
+import Fade from "@material-ui/core/Fade";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,8 +98,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     marginLeft: "auto",
     // border: "1px solid",
-    width: "560px",
-    gap: "20px",
+    // width: "560px",
+    // gap: "20px",
   },
   mediaBlock_unborder: {
     border: "none",
@@ -167,7 +169,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
   },
   reviewVideoBox: {
-    // border: "1px solid",
+    width: "270px",
+    height: "500px",
+    transition: "0.5s",
+  },
+  reviewVideo: {
     width: "270px",
     height: "100%",
   },
@@ -179,10 +185,8 @@ const useStyles = makeStyles((theme) => ({
     // border: "1px solid",
   },
   imagesBoxes: {
-    display: "flex",
-    gap: "20px",
+    width: "360px",
     height: "170px",
-    justifyContent: "space-between",
   },
   reviewData: {
     display: "flex",
@@ -201,15 +205,24 @@ const useStyles = makeStyles((theme) => ({
 const MainPageContent = () => {
   const classes = useStyles();
   const [review, setReview] = useState(0);
+  const [reviewVideo, setReviewVideo] = useState(reviews.length-1);
 
   const handleClickLeft = () => {
     setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
-    console.log("clickLeft");
+    
+    setReviewVideo((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
+    myRef.current.slickNext()
   };
   const handleClickRight = () => {
     setReview((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
-    console.log("clickLeft");
+    setReviewVideo((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
+    myRef.current.slickPrev();
   };
+  const handleReviewCange = () => {
+    
+  };
+
+  const myRef = useRef(null);
 
   return (
     <div className={classes.root}>
@@ -220,6 +233,8 @@ const MainPageContent = () => {
         </Box>
       </Box>
 
+      {/* ПОДРОБНЕЕ */}
+
       <Box className={classes.Block}>
         <span className={classes.line}></span>
         <Typography className={classes.text}>ПОДРОБНЕЕ</Typography>
@@ -227,6 +242,8 @@ const MainPageContent = () => {
           <Accordions arr={detail} />
         </Box>
       </Box>
+
+        {/* ОТЗЫВЫ */}
 
       <Box className={classes.Block}>
         <span className={classes.line}></span>
@@ -252,25 +269,31 @@ const MainPageContent = () => {
             />
           </Box>
         </Box>
-        <Box className={classes.mediaBlock}>
-          <Box className={classes.reviewVideoBox}>
-            <img src={reviews[review].video} alt="img"></img>
-          </Box>
+        <Box className={classes.mediaBlock} onChange={handleReviewCange}>
+          <Fade 
+          in={true} 
+          timeout={500}
+          style={{ transitionDelay: '500ms'}}>
+            <Box className={classes.reviewVideoBox} >
+              <img
+                className={classes.reviewVideo}
+                src={reviews[reviewVideo].video}
+                alt="img"
+              ></img>
+            </Box>
+          </Fade>
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
               {`${reviews[review].monts}/${reviews[review].day} `}
             </Box>
             <Box className={classes.imagesBoxes}>
-              <Box className={classes.image1}>
-                <img src={reviews[review].img1} alt="img"></img>
-              </Box>
-              <Box className={classes.image2}>
-                <img src={reviews[review].img2} alt="img"></img>
-              </Box>
+              <ReviewsSlider myRef={myRef} />
             </Box>
           </Box>
         </Box>
       </Box>
+
+      {/* ОТВЕТЫ */}
 
       <Box className={classes.Block}>
         <span className={classes.line}></span>
@@ -287,7 +310,12 @@ const MainPageContent = () => {
       </Box>
       <Box className={classes.Block}>
         <span className={classes.line}></span>
-        <FormBlock subtitle img={expodom} header={"ЭКСПОДОМ"} title={"Пожить в модульном доме на Браславских озерах"} />
+        <FormBlock
+          subtitle
+          img={expodom}
+          header={"ЭКСПОДОМ"}
+          title={"Пожить в модульном доме на Браславских озерах"}
+        />
       </Box>
 
       <Contacrs />

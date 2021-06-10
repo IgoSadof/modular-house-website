@@ -245,7 +245,7 @@ const Slider = ({ scrol,isFirstEntry }) => {
 
           <Box className={classes.article}>
             <Typography className={classes.header} variant="h1" component="h1">
-              {fields.headers ? fields.headers[activeNumb].value : "Title"}
+              {fields.headers ? fields.headers[activeNumb].value : slides[activeNumb].title}
             </Typography>
             <Box>
               {slides[activeNumb].image ? (
@@ -259,7 +259,7 @@ const Slider = ({ scrol,isFirstEntry }) => {
             <Typography className={classes.text} variant="h6" component="h6">
               {fields.subtitles
                 ? fields.subtitles[activeNumb].value
-                : "Subtitle"}
+                : slides[activeNumb].subtitle}
             </Typography>
           </Box>
           <Box className={classes.mainVideoBox}>
