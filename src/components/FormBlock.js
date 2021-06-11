@@ -1,9 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Form from "./Form"
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     height: "750px",
-    justifyContent:"space-between",
+    justifyContent: param => param.formPosition? param.formPosition:"space-between",
     gap:"140px"
   },
 
@@ -70,9 +68,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FormBlock = ({header,title, subtitle, text, email, img}) => {
-  const classes = useStyles();
-  const [review, setReview] = useState(0);
+const FormBlock = ({header,title, subtitle, text, email, img, formPosition}) => {
+  const param = { formPosition };
+  const classes = useStyles(param);
+  // const [review, setReview] = useState(0);
 
   return (
     <div className={classes.root}>

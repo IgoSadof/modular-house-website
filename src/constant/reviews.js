@@ -1,9 +1,8 @@
-import video from "../assets/images/reviews/video.png";
 import img1 from "../assets/images/reviews/img1.png";
 import img2 from "../assets/images/reviews/img2.png";
 import img3 from "../assets/images/reviews/img3.png";
 
-const lang = `RU`;
+// const lang = `RU`;
 const reviews = [
   {
     name: `Коля`,

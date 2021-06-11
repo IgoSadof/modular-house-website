@@ -1,5 +1,5 @@
 import "../styles/global.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
@@ -241,7 +241,7 @@ const MainPage = () => {
                 </Box>
               </Box>
               <Box className={classes.imgBox}>
-                <img className={classes.img} src={alexey}></img>
+                <img className={classes.img} src={alexey} alt="img"></img>
               </Box>
             </Box>
 
@@ -267,7 +267,7 @@ const MainPage = () => {
                 </Box>
               </Box>
               <Box className={classes.imgBox}>
-                <img className={classes.img} src={andrey}></img>
+                <img className={classes.img} src={andrey} alt="img"></img>
               </Box>
             </Box>
             <Box className={classes.Block}>

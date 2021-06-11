@@ -1,13 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import expodom_img from "../assets/images/expodom_img.png";
 import TextField from "@material-ui/core/TextField";
 
 import InputAdornment from "@material-ui/core/InputAdornment";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   Block: {
@@ -33,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     // marginTop: "140px",
   },
   title: {
-    width: "100%",
     textTransform: "uppercase",
     width: "245px",
   },
@@ -89,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Form = ({ title, email, text, subtitle }) => {
   const classes = useStyles();
-  const [review, setReview] = useState(0);
+  // const [review, setReview] = useState(0);
 
   return (
       <Box className={classes.formBox}>

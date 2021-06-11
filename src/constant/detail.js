@@ -1,4 +1,4 @@
-const lang = "RU";
+// const lang = "RU";
 const detail = [
   {
     title: `ЭНЕРГОЭФЕКТИВНОСТЬ`,

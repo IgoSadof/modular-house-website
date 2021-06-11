@@ -2,13 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import TextField from "@material-ui/core/TextField";
 import logo from "../assets/images/logo.svg";
 import andrey from "../assets/images/andrey.png";
 import alexey from "../assets/images/alexey.png";
-import reviews from "../constant/reviews";
 import Form from "./Form"
 
 const useStyles = makeStyles((theme) => ({

@@ -1,10 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import expodom_img from "../assets/images/expodom_img.png";
-import TextField from "@material-ui/core/TextField";
 import Form from "./Form";
 import SquareButton from "./SquareButton";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -33,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SendForm = ({isFormOpen, click}) => {
-  const [review, setReview] = useState(0);
+  // const [review, setReview] = useState(0);
   // const [isOpen, setIsOpen] = useState(isFormOpen);
   const prop = {isFormOpen}
   const classes = useStyles(prop);
@@ -45,7 +41,7 @@ const SendForm = ({isFormOpen, click}) => {
   return (
     <div className={classes.root} name="form" id="form">
       <Box className={classes.button} onClick={click} >
-        <SquareButton icon={<ClearIcon/>} />
+        <SquareButton variant="outlined" icon={<ClearIcon/>} />
       </Box>
 
       <Form title={"Напешите нам"} email text />

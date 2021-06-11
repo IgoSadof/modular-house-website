@@ -1,4 +1,4 @@
-const lang = "RU";
+// const lang = "RU";
 const answers = [
   {
     title: `На солько холодно зимой в ваших домах?`,

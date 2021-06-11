@@ -1,9 +1,8 @@
-import React,{useRef} from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
 import reviews from "../constant/reviews";
-import Typography from "@material-ui/core/Typography";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

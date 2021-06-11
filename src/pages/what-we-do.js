@@ -9,22 +9,22 @@ import what_we_do_img1 from "../assets/images/w-we-do-img1.png";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { Translate } from "@material-ui/icons";
 import SendForm from "../components/SendForm";
 import MySlider from "../components/Slider";
 
 import SquareButton from "../components/SquareButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
-import whatWeDoImg2 from "../assets/images/what-we-do-img2.png";
+import whatWeDoImg2 from "../assets/images/w-we-do-img2.png";
+import whatWeDoImg3 from "../assets/images/w-we-do-img3.png";
 import plan from "../assets/images/plan.png";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import CalculateTable from "../components/CalculateTable";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -51,6 +51,8 @@ const useStyles = makeStyles((theme) => ({
       "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
     width: "125px",
     height: "36px",
+    zIndex:"2",
+
   },
   mainImg: {
     position: "relative",
@@ -281,11 +283,15 @@ const useStyles = makeStyles((theme) => ({
   calculationSum: {
     fontSize: "30px",
   },
+  BlockForm: {
+    paddingLeft: "350px",
+    justifyContent:"center",
+  },
 }));
 
-const MainPage = () => {
-  const [lineLength, setLineLength] = useState(265);
-  const param = { lineLength };
+const WhatWeDo = () => {
+  // const [lineLength, setLineLength] = useState(265);
+  const param = {};
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [value, setValue] = React.useState(2);
@@ -294,9 +300,9 @@ const MainPage = () => {
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
-  const handleCircleClick = (e) => {
-    // setLineLength((state) => (state ===);
-  };
+  // const handleCircleClick = (e) => {
+  //   setLineLength((state) => (state ===);
+  // };
 
   const handleClickLeft = () => {};
   const handleClickRight = () => {};
@@ -308,10 +314,8 @@ const MainPage = () => {
     if (event.target.checked) {
       console.log(`add ${event.target.value}`);
       setModulePrice((state) => state + +event.target.value);
-    }
-    else{
+    } else {
       setModulePrice((state) => state - +event.target.value);
-
     }
   };
 
@@ -331,7 +335,7 @@ const MainPage = () => {
               СВЯЗАТЬСЯ
             </Button>
             <Box className={classes.mainImg}>
-              <img className={classes.mainImg} src={what_we_do_img1}></img>
+              <img className={classes.mainImg} src={what_we_do_img1} alt="img"></img>
             </Box>
             <Box className={classes.mainDescBox}>
               <Box className={classes.mainBlockTitleBox}>
@@ -427,7 +431,7 @@ const MainPage = () => {
 
           <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
             <Box className={classes.secondImg}>
-              <img className={classes.mainImg} src={what_we_do_img1}></img>
+              <img className={classes.mainImg} src={what_we_do_img1} alt="img"></img>
               <Box className={classes.buttons}>
                 {/* <Button color="secondary">hello</Button> */}
                 <SquareButton
@@ -570,7 +574,7 @@ const MainPage = () => {
                     className={classes.calculationHeaderText}
                     value={25000}
                     control={<Checkbox color="primary" />}
-                    label="БАЗОВЫЙ МОДУЛЬ"
+                    label="ЖИЛОЙ МОДУЛЬ"
                     labelPlacement="end"
                   />
                   <Typography className={classes.calculationHeaderText}>
@@ -620,7 +624,7 @@ const MainPage = () => {
                     value={25000}
                     onChange={handleChangeCheckbox}
                     control={<Checkbox color="primary" />}
-                    label="БАЗОВЫЙ МОДУЛЬ"
+                    label="ГАРАЖ"
                     labelPlacement="end"
                   />
                   <Typography className={classes.calculationHeaderText}>
@@ -673,6 +677,25 @@ const MainPage = () => {
               </Box>
             </Box>
           </Box>
+
+          <Box className={`${classes.Block} ${classes.BlockTable}`}>
+            <CalculateTable />
+          </Box>
+
+          <Box className={`${classes.Block} ${classes.BlockForm}`}>
+            <FormBlock
+              title={`
+                      Можете отправить свой выбор нам, и мы начнем готовиться к встрече.
+              `}
+              subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
+              email
+              img={whatWeDoImg3}
+              formPosition="center"
+              text
+            />
+
+          </Box>
+
           <Footer />
         </div>
         <Menu />
@@ -680,4 +703,4 @@ const MainPage = () => {
     </ThemeProvider>
   );
 };
-export default MainPage;
+export default WhatWeDo;
