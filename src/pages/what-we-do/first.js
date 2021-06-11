@@ -1,30 +1,29 @@
-import "../styles/global.css";
+import "../../styles/global.css";
 import React, { useState } from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Footer from "../components/Footer";
-import Menu from "../components/Menu";
-import modularHouseTheme from "../config/modularHouseTheme";
-import FormBlock from "../components/FormBlock";
-import what_we_do_img1 from "../assets/images/w-we-do-img1.png";
+import Footer from "../../components/Footer";
+import Menu from "../../components/Menu";
+import modularHouseTheme from "../../config/modularHouseTheme";
+import FormBlock from "../../components/FormBlock";
+import what_we_do_img1 from "../../assets/images/w-we-do-img1.png";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import SendForm from "../components/SendForm";
-import MySlider from "../components/Slider";
+import SendForm from "../../components/SendForm";
+import MySlider from "../../components/Slider";
 
-import SquareButton from "../components/SquareButton";
+import SquareButton from "../../components/SquareButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 
-import whatWeDoImg2 from "../assets/images/w-we-do-img2.png";
-import whatWeDoImg3 from "../assets/images/w-we-do-img3.png";
-import plan from "../assets/images/plan.png";
+import whatWeDoImg2 from "../../assets/images/w-we-do-img2.png";
+import whatWeDoImg3 from "../../assets/images/w-we-do-img3.png";
+import plan from "../../assets/images/plan.png";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import CalculateTable from "../components/CalculateTable";
+import CalculateTable from "../../components/CalculateTable";
+import Panel from "../../components/Panel";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -38,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Block: {
     display: "flex",
-    gap: "100px",
+    gap: "20px",
     padding: "100px 200px",
     backgroundColor: "#e5e5e5",
   },
@@ -51,8 +50,7 @@ const useStyles = makeStyles((theme) => ({
       "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
     width: "125px",
     height: "36px",
-    zIndex:"2",
-
+    zIndex: "2",
   },
   mainImg: {
     position: "relative",
@@ -174,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "20px",
     left: "10%",
-    bottom: "15%",
+    bottom: "4%",
   },
   blockGalary: {
     height: "auto",
@@ -285,11 +283,11 @@ const useStyles = makeStyles((theme) => ({
   },
   BlockForm: {
     paddingLeft: "350px",
-    justifyContent:"center",
+    justifyContent: "center",
   },
 }));
 
-const WhatWeDo = () => {
+const First = () => {
   // const [lineLength, setLineLength] = useState(265);
   const param = {};
   const classes = useStyles(param);
@@ -335,7 +333,11 @@ const WhatWeDo = () => {
               СВЯЗАТЬСЯ
             </Button>
             <Box className={classes.mainImg}>
-              <img className={classes.mainImg} src={what_we_do_img1} alt="img"></img>
+              <img
+                className={classes.mainImg}
+                src={what_we_do_img1}
+                alt="img"
+              ></img>
             </Box>
             <Box className={classes.mainDescBox}>
               <Box className={classes.mainBlockTitleBox}>
@@ -431,7 +433,11 @@ const WhatWeDo = () => {
 
           <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
             <Box className={classes.secondImg}>
-              <img className={classes.mainImg} src={what_we_do_img1} alt="img"></img>
+              <img
+                className={classes.mainImg}
+                src={what_we_do_img1}
+                alt="img"
+              ></img>
               <Box className={classes.buttons}>
                 {/* <Button color="secondary">hello</Button> */}
                 <SquareButton
@@ -445,20 +451,7 @@ const WhatWeDo = () => {
                   icon={<ArrowForwardIosIcon />}
                 />
               </Box>
-              <Box className={classes.panel}>
-                <Tabs
-                  value={value}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  onChange={handleChange}
-                  aria-label="disabled tabs example"
-                >
-                  <Tab label="ВСЕ" />
-                  <Tab label="ФАСАД" />
-                  <Tab label="КУХНЯ" />
-                  <Tab label="ТУАЛЕТ" />
-                </Tabs>
-              </Box>
+              <Panel />
             </Box>
           </Box>
 
@@ -528,7 +521,7 @@ const WhatWeDo = () => {
                     labelPlacement="end"
                   />
                   <Typography className={classes.calculationHeaderText}>
-                    25 000
+                    $25 000
                   </Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
@@ -578,7 +571,7 @@ const WhatWeDo = () => {
                     labelPlacement="end"
                   />
                   <Typography className={classes.calculationHeaderText}>
-                    25 000
+                    $25 000
                   </Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
@@ -628,7 +621,7 @@ const WhatWeDo = () => {
                     labelPlacement="end"
                   />
                   <Typography className={classes.calculationHeaderText}>
-                    25 000
+                    $25 000
                   </Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
@@ -672,7 +665,7 @@ const WhatWeDo = () => {
                   Цена
                 </Typography>
                 <Typography className={classes.calculationSum}>
-                  $ {modulePrice}
+                  ${modulePrice}
                 </Typography>
               </Box>
             </Box>
@@ -691,9 +684,7 @@ const WhatWeDo = () => {
               email
               img={whatWeDoImg3}
               formPosition="center"
-              text
             />
-
           </Box>
 
           <Footer />
@@ -703,4 +694,4 @@ const WhatWeDo = () => {
     </ThemeProvider>
   );
 };
-export default WhatWeDo;
+export default First;

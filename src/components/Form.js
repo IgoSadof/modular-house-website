@@ -141,6 +141,9 @@ const Form = ({ title, email, text, subtitle }) => {
               <TextField className={classes.messageField} id="standard-basic" />
             </Box>
           ) : null}
+          {/* {!button === false? (<Button className={classes.button} variant="outlined">
+            Отправить
+          </Button>):null } */}
 
           <Button className={classes.button} variant="outlined">
             Отправить

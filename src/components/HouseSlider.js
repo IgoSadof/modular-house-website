@@ -73,7 +73,7 @@ const HouseSlider = () => {
     return (
       <Slide
         key={index}
-        img={item.img}
+        img={item.img.main}
         name={item.name}
         price={item.price}
         totalArea={item.totalArea}

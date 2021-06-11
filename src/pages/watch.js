@@ -1,43 +1,114 @@
 import "../styles/global.css";
 import React, { useState } from "react";
-import {ThemeProvider } from "@material-ui/core/styles";
-// import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import SendForm from "../components/SendForm";
+import fasad from "../assets/images/fasad.png";
+import Panel from "../components/Panel";
+import Form from "../components/Form";
 
-// const useStyles = makeStyles((theme) => ({
-//   button: {
-//     borderRadius: "0",
-//     height: "36px",
-//     marginLeft: "auto",
-//     border: "1px solid",
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  page: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "100vh",
+  },
+  BlockFullscreen: {
+    position: "relative",
+    boxSizing: "border-box",
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#e5e5e5",
+    overflow: "hidden",
+  },
+  button: {
+    position: "absolute",
+    top: "5%",
+    right: "10%",
+    width: "125px",
+    height: "36px",
+    zIndex: "2",
+  },
+  imageSlider: {
+    height: "50vh",
+    position: "relative",
+  },
+  excursion: {
+    display: "flex",
+    justifyContent: "space-between",
+    height: "50vh",
+    padding: "60px 160px 60px 260px ",
+    // borderTop: "1px solid",
+  },
+  excursionSend:{
+    display: "flex",
+    flexDirection:"column",
+    justifyContent: "space-between",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+  calendar: {
+    width: "280px",
+    height: "240px",
+    border: "1px solid",
+  },
+}));
 
-const MainPage = () => {
-  // const classes = useStyles();
-  const [scrol, setScrol] = useState(0);
-  const handleScroll = (e) => {
-    if (e.nativeEvent.wheelDelta > 0) {
-      scrol <= 0 ? setScrol(0) : setScrol((state) => state - 1);
-    } else {
-      setScrol((state) => state + 1);
-    }
+const WhatWeDo = () => {
+  const param = {};
+  const classes = useStyles(param);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const handleClickConnect = () => {
+    setIsFormOpen((state) => !state);
   };
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <div className="conteiner">
         <div className="content">
-          <div className="components" onWheel={(e) => handleScroll(e)}>
-           
+          <div className={classes.page}>
+            <Box className={classes.BlockFullscreen}>
+              <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
+              <Button
+                className={classes.button}
+                variant="outlined"
+                onClick={handleClickConnect}
+              >
+                СВЯЗАТЬСЯ
+              </Button>
+              <Box className={classes.imageSlider}>
+                <img className={classes.image} src={fasad} alt="img"></img>
+                <Panel />
+              </Box>
+              <Box className={classes.excursion}>
+                <Box className={classes.excursionSend}>
+                  <Typography>На экскурсию</Typography>
+                  <Button className={classes.buttonMore} variant="outlined">
+                    Отправить
+                  </Button>
+                </Box>
+                <Box>
+                  <Form title="Оставьте заявку и наш менеджер свяжеться с вами" />
+                </Box>
+                <Box className={classes.calendar}></Box>
+              </Box>
+            </Box>
+            <Footer />
           </div>
-          <Footer />
         </div>
         <Menu />
       </div>
     </ThemeProvider>
   );
 };
-export default MainPage;
+export default WhatWeDo;
