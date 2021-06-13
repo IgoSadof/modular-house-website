@@ -11,6 +11,7 @@ import SendForm from "../components/SendForm";
 import fasad from "../assets/images/fasad.png";
 import Panel from "../components/Panel";
 import Form from "../components/Form";
+import MyCalendar from "../components/MyCalendar";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   calendar: {
     width: "280px",
     height: "240px",
-    border: "1px solid",
+    // border: "1px solid",
   },
 }));
 
@@ -102,7 +103,9 @@ const WhatWeDo = () => {
                   </Box>
                 </Box>
 
-                <Box className={classes.calendar}></Box>
+                <Box className={classes.calendar}>
+                  <MyCalendar/>
+                </Box>
               </Box>
             </Box>
             <Footer />

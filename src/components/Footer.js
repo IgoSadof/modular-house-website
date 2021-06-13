@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <div className={classes.root}>
       <Typography className={classes.text}>© ZROBYM architects. All rights reserved.</Typography>
-      <Typography ml="100px" className={classes.text}>2015, Minsk, Belarus</Typography>
+      <Typography ml="100px" className={classes.text}>2021, Minsk, Belarus</Typography>
     </div>
   );
 };
