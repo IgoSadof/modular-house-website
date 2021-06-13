@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     width:"100%",
     padding:"100px 10% 100px 250px",
-    backgroundColor:'#e5e5e5',
+    backgroundColor:'#D1D1D1',
     height: '100%',
   },
 }));

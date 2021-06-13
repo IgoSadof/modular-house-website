@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     paddingLeft: "160px",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#D1D1D1",
     overflow: "hidden",
-    height: '100%',
+    height: "100%",
   },
   button: {
     position: "absolute",
@@ -90,11 +90,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "80%",
     padding: "0 60px",
-    gap: "40px",
+    justifyContent: "space-between",
+    // gap: "40px",
   },
   houseDescImgBox: {
     width: "100%",
-    height: "350px",
+    // height: "350px",
   },
   houseDescImg: {
     width: "100%",
@@ -113,7 +114,12 @@ const useStyles = makeStyles((theme) => ({
   houseDescIconBox: {
     width: "40px",
     height: "40px",
-    border: "1px solid",
+    // border: "1px solid",
+  },
+  mainPlan:{
+    width:'100%',
+    height:'100%',
+
   },
   houseDescText: {
     fontSize: "14px",
@@ -152,11 +158,14 @@ const WhatWeDo = () => {
   const handleItemclick = (index) => {
     setHouse((state) => index);
   };
-  
 
   const housesList = houses.map((item, index) => {
     return (
-      <li className={classes.houseListItem} key={item.id} onClick={()=>handleItemclick(index)}>
+      <li
+        className={classes.houseListItem}
+        key={item.id}
+        onClick={() => handleItemclick(index)}
+      >
         <Typography className={classes.houseListNumber}>{`0${
           index + 1
         }`}</Typography>
@@ -201,7 +210,13 @@ const WhatWeDo = () => {
                     <Typography className={classes.houseDescTitle}>
                       {houses[house].name}
                     </Typography>
-                    <Box className={classes.houseDescIconBox}></Box>
+                    <Box className={classes.houseDescIconBox}>
+                      <img
+                        className={classes.mainPlan}
+                        src={houses[house].img.plan}
+                        alt="img"
+                      ></img>
+                    </Box>
                   </Box>
 
                   <Typography className={classes.houseDescText}>

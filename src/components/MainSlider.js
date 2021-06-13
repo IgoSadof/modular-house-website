@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     width: "100%",
     height: "100vh",
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#D1D1D1",
   },
   button: {
     position: "relative",
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fon: {
     position: "absolute",
-    background: "radial-gradient(transparent 30%, #E5E5E5 70%)",
+    background: "radial-gradient(transparent 30%, #D1D1D1 70%)",
     height: "100%",
     width: "100%",
   },

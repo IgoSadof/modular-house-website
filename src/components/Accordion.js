@@ -26,7 +26,7 @@ const Accordion = withStyles({
 
 const AccordionSummary = withStyles({
   root: {
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#D1D1D1",
     borderBottom: "1px solid #333333",
     marginBottom: 0,
     minHeight: 56,
@@ -44,7 +44,7 @@ const AccordionSummary = withStyles({
 
 const AccordionDetails = withStyles((theme) => ({
   root: {
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#D1D1D1",
     padding: theme.spacing(2),
   },
 }))(MuiAccordionDetails);

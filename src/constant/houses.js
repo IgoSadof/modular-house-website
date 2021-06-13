@@ -7,6 +7,9 @@ import list3 from "../assets/images/houses/3/list-img.png";
 import desc1 from "../assets/images/houses/1/desc-img.png";
 import desc2 from "../assets/images/houses/2/desc-img.png";
 import desc3 from "../assets/images/houses/3/desc-img.png";
+import plan1 from "../assets/images/houses/1/plan-img.png";
+import plan2 from "../assets/images/houses/2/plan-img.png";
+import plan3 from "../assets/images/houses/3/plan-img.png";
 
 const lang = "RU";
 export const houses = [
@@ -23,11 +26,11 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
-    img: { main: main1, list: list1, desc: desc1 },
+    img: { main: main1, list: list1, desc: desc1,plan:plan1 },
   },
   {
     id:2,
-    img: { main: main2, list: list2, desc: desc2 },
+    img: { main: main2, list: list2, desc: desc2,plan:plan2},
     name: "ROUND HOUSE",
     desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 124 800`,
@@ -42,7 +45,7 @@ export const houses = [
   },
   {
     id:3,
-    img: { main: main3, list: list3, desc: desc3 },
+    img: { main: main3, list: list3, desc: desc3,plan:plan3 },
     name: "MODERN HOUSE",
     desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 164 000`,
@@ -68,11 +71,11 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
-    img: { main: main1, list: list1, desc: desc1 },
+    img: { main: main1, list: list1, desc: desc1,plan:plan1 },
   },
   {
     id:5,
-    img: { main: main2, list: list2, desc: desc2 },
+    img: { main: main2, list: list2, desc: desc2,plan:plan2 },
     name: "ROUND HOUSE",
     desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 124 800`,

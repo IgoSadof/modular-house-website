@@ -12,7 +12,7 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color:#e5e5e5;
+  background-color:#D1D1D1;
 }
 .components {
   box-sizing: border-box;
@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   width: 100%;
   height: auto;
-  background-color: #e5e5e5;
+  background-color: #D1D1D1;
   padding: 0px 10% 100px 160px;
   overflow: hidden;
 }
@@ -35,7 +35,7 @@ body {
   border:1px solid;
   border-radius:50%;
   font-size: 30px;
-  background-color:#e5e5e5;
+  background-color:#D1D1D1;
   cursor:pointer;
   display:flex;
   justify-content: center;

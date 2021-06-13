@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#D1D1D1",
     overflow: "hidden",
   },
   button: {

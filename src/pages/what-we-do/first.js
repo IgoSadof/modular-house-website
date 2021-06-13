@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100vh",
   },
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "20px",
     padding: "100px 200px",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#D1D1D1",
   },
 
   button: {
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "100px",
     padding: "100px 200px",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#D1D1D1",
   },
   modelDesc: {
     position: "relative",
@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
       border: "1px solid",
       borderRadius: "50%",
       fontSize: "30px",
-      backgroundColor: "#e5e5e5",
+      backgroundColor: "#D1D1D1",
       cursor: "pointer",
       display: "flex",
       justifyContent: "center",
@@ -183,7 +183,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: "0",
     width: "620px",
     // height: "75px",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#D1D1D1",
   },
   line: {
     display: "inline-block",
@@ -238,6 +238,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    width:'50%',
     // gap:"160px",
   },
   calculation: {
