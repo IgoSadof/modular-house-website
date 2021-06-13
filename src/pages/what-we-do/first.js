@@ -321,8 +321,6 @@ const First = () => {
     <ThemeProvider theme={modularHouseTheme}>
       <div className="conteiner">
         <div className="content">
-          {/* <div className="components" onWheel={(e) => handleScroll(e)}> */}
-          {/* <FormBlock/> */}
           <Box className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}>
             <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
             <Button

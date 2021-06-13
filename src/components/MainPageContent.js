@@ -228,7 +228,7 @@ const MainPageContent = () => {
           <HouseSlider />
         </Box>
       </Box>
-
+      
       {/* ПОДРОБНЕЕ */}
 
       <Box className={classes.Block}>
@@ -318,7 +318,12 @@ const MainPageContent = () => {
         />
       </Box>
 
-      <Contacrs />
+      <Box className={classes.Block}>
+        <span className={classes.line}></span>
+        <Contacrs header="Контакты"/>
+      </Box>
+
+      
     </div>
   );
 };

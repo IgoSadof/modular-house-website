@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid",
   },
   componets: {
-    position: (param) => (param.isFirstEntry ? "fixed !important" : "absolute"),
+    position: (param) => (param.isFirstEntry ? "fixed !important" : "relative"),
+    overflow:'hiden',
   },
 }));
 

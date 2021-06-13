@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10px",
   },
   formBox: {
-    position: "relative",
+    // position: "relative",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -42,13 +42,17 @@ const useStyles = makeStyles((theme) => ({
   },
 
   formFields: {
-    marginTop: "100px",
+    marginTop: "60px",
     display: "flex",
     flexDirection: "column",
     width: "100%",
   },
 
   button: {
+    position: param => param.button? 'absolute':'relative',
+    bottom: param => param.button? '0':null,
+    left: param => param.button? '0':null,
+
     width: "120px",
     borderRadius: "0",
     height: "36px",
@@ -80,13 +84,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "11px",
   },
   messageField: {
-    marginTop: "80px",
+    marginTop: "50px",
   },
 }));
 
-const Form = ({ title, email, text, subtitle }) => {
-  const classes = useStyles();
-  // const [review, setReview] = useState(0);
+const Form = ({ title, email, text, subtitle,buttonAbs}) => {
+  const [button, setButton] = useState(buttonAbs);
+  const param = {button};
+  const classes = useStyles(param);
 
   return (
       <Box className={classes.formBox}>

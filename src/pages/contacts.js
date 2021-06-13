@@ -1,40 +1,41 @@
 import "../styles/global.css";
-import React, {useState } from "react";
+import React from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
-// import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
-import Contacrs from "../components/Contacts"
+import Contacrs from "../components/Contacts";
+import Box from "@material-ui/core/Box";
 
-// const useStyles = makeStyles((theme) => ({
-//   button: {
-//     borderRadius: "0",
-//     height: "36px",
-//     marginLeft: "auto",
-//     border: "1px solid",
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  page: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "100vh",
+  },
+  Block: {
+    width:"100%",
+    padding:"100px 10% 100px 250px",
+    backgroundColor:'#e5e5e5',
+    height: '100%',
+  },
+}));
 
 const ContactsPage = () => {
-  // const classes = useStyles();
-  const [scrol, setScrol] = useState(0);
-  const handleScroll = (e) => {
-    if (e.nativeEvent.wheelDelta > 0) {
-      scrol <= 0 ? setScrol(0) : setScrol((state) => state - 1);
-    } else {
-      setScrol((state) => state + 1);
-    }
-  };
+  const classes = useStyles();
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <div className="conteiner">
         <div className="content">
-          <div className="components" onWheel={(e) => handleScroll(e)}>
-            <Contacrs/>
+          <div className={classes.page}>
+            <Box className={classes.Block}>
+              <Contacrs />
+            </Box>
+            <Footer />
           </div>
-          <Footer />
         </div>
         <Menu />
       </div>

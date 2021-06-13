@@ -44,12 +44,16 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     height: "50vh",
     padding: "60px 160px 60px 260px ",
-    // borderTop: "1px solid",
   },
-  excursionSend:{
+  excursionSend: {
+    position:'relative',
+    width:'60%',
     display: "flex",
-    flexDirection:"column",
-    justifyContent: "space-between",
+    gap:"30%"
+  },
+  formBox:{
+    marginLeft:"auto"
+
   },
   image: {
     width: "100%",
@@ -93,13 +97,11 @@ const WhatWeDo = () => {
               <Box className={classes.excursion}>
                 <Box className={classes.excursionSend}>
                   <Typography>На экскурсию</Typography>
-                  <Button className={classes.buttonMore} variant="outlined">
-                    Отправить
-                  </Button>
+                  <Box className={classes.formBox}>
+                    <Form title="Оставьте заявку и наш менеджер свяжеться с вами" buttonAbs={true}/>
+                  </Box>
                 </Box>
-                <Box>
-                  <Form title="Оставьте заявку и наш менеджер свяжеться с вами" />
-                </Box>
+
                 <Box className={classes.calendar}></Box>
               </Box>
             </Box>

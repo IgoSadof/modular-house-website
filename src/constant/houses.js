@@ -55,4 +55,34 @@ export const houses = [
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
   },
+  {
+    id:4,
+    name: "SQUARE HOUSE",
+    desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    price: `$ 115 764`,
+    totalArea: "170 M2",
+    effectiveArea: "170 M2",
+    baseModuleArea: "97 M2",
+    totalAreaText: lang === "RU" ? "Общая площадь дома:" : "Total Area:",
+    effectiveAreaText:
+      lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
+    baseModuleAreaText:
+      lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
+    img: { main: main1, list: list1, desc: desc1 },
+  },
+  {
+    id:5,
+    img: { main: main2, list: list2, desc: desc2 },
+    name: "ROUND HOUSE",
+    desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    price: `$ 124 800`,
+    totalArea: "200 M2",
+    effectiveArea: "140 M2",
+    baseModuleArea: "97 M2",
+    totalAreaText: lang === "RU" ? "Общая площадь дома:" : "Total Area:",
+    effectiveAreaText:
+      lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
+    baseModuleAreaText:
+      lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
+  },
 ];
