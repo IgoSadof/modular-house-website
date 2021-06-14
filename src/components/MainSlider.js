@@ -166,22 +166,22 @@ const Slider = ({ scrol, isFirstEntry }) => {
   const [playVideo, setPlayVideo] = useState(true);
   const param = { scrol, lineLength };
   const classes = useStyles(param);
-  const [resources, setResources] = useState(null);
-  const [resourcestv, setResourcestv] = useState(null);
+  // const [resources, setResources] = useState(null);
+  // const [resourcestv, setResourcestv] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [fields, setFields] = useState({
     headers: null,
     subtitles: null,
   });
 
-  useEffect(() => {
-    axios.get("/rest/resources").then((response) => {
-      setResources(response.data.results);
-    });
-    axios.get("/rest/resourcestv").then((response) => {
-      setResourcestv(response.data.results);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/rest/resources").then((response) => {
+  //     setResources(response.data.results);
+  //   });
+  //   axios.get("/rest/resourcestv").then((response) => {
+  //     setResourcestv(response.data.results);
+  //   });
+  // }, []);
 
   useEffect(() => {
     // console.log(scrol);
