@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const MainPage = () => {
   const [scrol, setScrol] = useState(0);
-  const firsEntry = localStorage.getItem("isFirstEntry") ? false : true;
+  const firsEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
   const [isFirstEntry, setIsFirstEntry] = useState(firsEntry);
   const param = { scrol, isFirstEntry };
   const classes = useStyles(param);
