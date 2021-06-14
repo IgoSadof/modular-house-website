@@ -6,7 +6,7 @@ import Menu from "../../components/Menu";
 import modularHouseTheme from "../../config/modularHouseTheme";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import SendForm from "../../components/SendForm";
 import { houses } from "../../constant/houses";
 import { Link } from "gatsby";

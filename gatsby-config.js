@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "My Gatsby Site",
+    title: "Modular House",
   },
-  plugins: [],
+  plugins: [`gatsby-plugin-material-ui`],
 };

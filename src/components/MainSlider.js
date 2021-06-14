@@ -176,11 +176,9 @@ const Slider = ({ scrol, isFirstEntry }) => {
 
   useEffect(() => {
     axios.get("/rest/resources").then((response) => {
-      console.log(response.data.results);
       setResources(response.data.results);
     });
     axios.get("/rest/resourcestv").then((response) => {
-      console.log(response.data.results);
       setResourcestv(response.data.results);
     });
   }, []);

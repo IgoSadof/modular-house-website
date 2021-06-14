@@ -1,4 +1,5 @@
 import "../components/global.css";
+import styled from "styled-components"
 import React, { useState } from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import MainSlider from "../components/MainSlider";
