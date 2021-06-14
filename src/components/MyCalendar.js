@@ -1,4 +1,4 @@
-import "../styles/global.css";
+import "./global.css";
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 

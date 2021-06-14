@@ -1,4 +1,4 @@
-import "../styles/global.css";
+import "../components/global.css";
 import React from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";

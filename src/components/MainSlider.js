@@ -188,26 +188,26 @@ const Slider = ({ scrol, isFirstEntry }) => {
   useEffect(() => {
     // console.log(scrol);
     if (isFirstEntry) {
-      scrol < 10
+      scrol < 5
         ? handleNumberClick(null, 1)
-        : scrol >= 10 && scrol < 20
+        : scrol >= 5 && scrol < 10
         ? handleNumberClick(null, 2)
-        : scrol >= 20 && scrol < 30
+        : scrol >= 10 && scrol < 15
         ? handleNumberClick(null, 3)
-        : scrol >= 30 && scrol < 40
+        : scrol >= 15 && scrol < 20
         ? handleNumberClick(null, 4)
-        : (scrol = 40);
+        : (scrol = 20);
     }
   }, [scrol]);
 
-  useEffect(() => {
-    if (resources && resourcestv) {
-      setFields({
-        headers: findDataFromCategory(resources, resourcestv, 2),
-        subtitles: findDataFromCategory(resources, resourcestv, 3),
-      });
-    }
-  }, [resources, resourcestv]);
+  // useEffect(() => {
+  //   if (resources && resourcestv) {
+  //     setFields({
+  //       headers: findDataFromCategory(resources, resourcestv, 2),
+  //       subtitles: findDataFromCategory(resources, resourcestv, 3),
+  //     });
+  //   }
+  // }, [resources, resourcestv]);
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
       numb = +e.target.textContent[1];

@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
     gap: "50px",
     // width: "600px",
     height: "100vh",
-    // background:
-    //   "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
+    background:
+      "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
     zIndex: "3",
     padding: "60px 240px 100px 100px",
     boxShadow: "-5px 0px 100px rgba(0, 0, 0, 0.2) ",
     // backdropFilter: "blur(42px)",
-    background: "radial-gradient(100% 100% at 0% 0%, #E2E2E2, rgba(232, 232, 232, 0.12) 100%)",
+    // background: "radial-gradient(100% 100% at 0% 0%, #E2E2E2, rgba(232, 232, 232, 0.12) 100%)",
     backdropFilter: "blur(10px)",
     transition: "0.7s",
   },
