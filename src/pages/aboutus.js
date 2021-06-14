@@ -6,12 +6,12 @@ import Menu from "../components/Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
 import FormBlock from "../components/FormBlock";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import SendForm from "../components/SendForm";
 import alexey from "../assets/images/aboutus_alexey.png";
 import andrey from "../assets/images/aboutus_andrey.png";
 import office from "../assets/images/office.png";
+import RegularButton from "../components/buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,13 +26,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100vh",
     backgroundColor: "#D1D1D1",
-    
   },
   button: {
-    borderRadius: "0",
-    height: "36px",
     marginLeft: "auto",
-    border: "1px solid",
   },
   mainVideoBox: {
     position: "relative",
@@ -86,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
     width: "360px",
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "space-between",
   },
   creatorTextBox: {
     fontSize: "12px",
@@ -145,13 +140,11 @@ const MainPage = () => {
             <div className={classes.root} onClick={handleCloseForm}>
               <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
               <Box className={classes.content}>
-                <Button
-                  className={classes.button}
-                  variant="outlined"
-                  onClick={handleClickConnect}
-                >
-                  СВЯЗАТЬСЯ
-                </Button>
+                <Box className={classes.button}>
+                  <RegularButton variant="outlined" click={handleClickConnect}>
+                    СВЯЗАТЬСЯ
+                  </RegularButton>
+                </Box>
                 <Box className={classes.Block}>
                   <span className={classes.line}></span>
                   <Typography className={classes.blockTitle}>
@@ -287,7 +280,7 @@ const MainPage = () => {
                 header={`В офисе студии ZROBYM architects, 
                     за кружкой хорошего кофе всегда можно получить необходимую информацию, выбрать 
                     готовый проект или заказать разработку модульного дома индивидуально.`}
-                    email
+                email
               />
             </Box>
           </div>

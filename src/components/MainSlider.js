@@ -11,6 +11,7 @@ import numbers from "../constant/numbers";
 import axios from "axios";
 import findDataFromCategory from "../utils/findDataFromCategory";
 import SendForm from "./SendForm";
+import RegularButton from "./buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     position: "relative",
     zIndex: "2",
-    borderRadius: "0",
-    height: "36px",
     marginLeft: "auto",
-    border: "1px solid",
   },
   mainVideoBox: {
     // border:"1px solid",
@@ -162,7 +160,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slider = ({ scrol,isFirstEntry }) => {
+const Slider = ({ scrol, isFirstEntry }) => {
   const [lineLength, setLineLength] = useState(265);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(true);
@@ -189,18 +187,17 @@ const Slider = ({ scrol,isFirstEntry }) => {
 
   useEffect(() => {
     // console.log(scrol);
-    if(isFirstEntry){
+    if (isFirstEntry) {
       scrol < 10
-      ? handleNumberClick(null, 1)
-      : scrol >= 10 && scrol < 20
-      ? handleNumberClick(null, 2)
-      : scrol >= 20 && scrol < 30
-      ? handleNumberClick(null, 3)
-      : scrol >= 30 && scrol < 40
-      ? handleNumberClick(null, 4)
-      : (scrol = 40);
+        ? handleNumberClick(null, 1)
+        : scrol >= 10 && scrol < 20
+        ? handleNumberClick(null, 2)
+        : scrol >= 20 && scrol < 30
+        ? handleNumberClick(null, 3)
+        : scrol >= 30 && scrol < 40
+        ? handleNumberClick(null, 4)
+        : (scrol = 40);
     }
-    
   }, [scrol]);
 
   useEffect(() => {
@@ -212,7 +209,6 @@ const Slider = ({ scrol,isFirstEntry }) => {
     }
   }, [resources, resourcestv]);
   const handleNumberClick = (e, numb = 0) => {
-    
     if (numb === 0) {
       numb = +e.target.textContent[1];
     }
@@ -223,26 +219,26 @@ const Slider = ({ scrol,isFirstEntry }) => {
     setIsFormOpen((state) => !state);
   };
   const handleCloseForm = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
   };
 
   return (
     <div className={classes.root} onClick={handleCloseForm}>
       <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
       <Box className={classes.content}>
-        <Button
-          className={classes.button}
-          variant="outlined"
-          onClick={handleClickConnect}
-        >
-          СВЯЗАТЬСЯ
-        </Button>
+        <Box className={classes.button}>
+          <RegularButton variant="outlined" click={handleClickConnect}>
+            СВЯЗАТЬСЯ
+          </RegularButton>
+        </Box>
         <Box className={classes.midleBlock}>
           <span className={classes.midleLine}></span>
 
           <Box className={classes.article}>
             <Typography className={classes.header} variant="h1" component="h1">
-              {fields.headers ? fields.headers[activeNumb].value : slides[activeNumb].title}
+              {fields.headers
+                ? fields.headers[activeNumb].value
+                : slides[activeNumb].title}
             </Typography>
             <Box>
               {slides[activeNumb].image ? (

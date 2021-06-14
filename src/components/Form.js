@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -6,6 +6,12 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import SquareButton from "./buttons/SquareButton";
+import RegularButton from "./buttons/RegularButton";
+import ClearIcon from "@material-ui/icons/Clear";
 
 const useStyles = makeStyles((theme) => ({
   Block: {
@@ -49,15 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-    position: param => param.button? 'absolute':'relative',
-    bottom: param => param.button? '0':null,
-    left: param => param.button? '0':null,
-
-    width: "120px",
-    borderRadius: "0",
-    height: "36px",
+    position: (param) => (param.button ? "absolute" : "relative"),
+    bottom: (param) => (param.button ? "0" : null),
+    left: (param) => (param.button ? "0" : null),
     marginTop: "100px",
-    border: "1px solid",
   },
   expodom_img: {
     width: "100%",
@@ -86,75 +87,139 @@ const useStyles = makeStyles((theme) => ({
   messageField: {
     marginTop: "50px",
   },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    background: "radial-gradient(#E2E2E2, rgba(232, 232, 232, 0.3))",
+    backdropFilter: "blur(10px)",
+    boxShadow: theme.shadows[5],
+    padding: "100px 120px",
+    width: "600px",
+    height: "500px",
+  },
+  buttonBox: {
+    display: "inline-block",
+    marginLeft: "auto",
+  },
+  buttonBoxLeft:{
+    display: "inline-block",
+    marginRight: "auto",
+  },
 }));
 
-const Form = ({ title, email, text, subtitle,buttonAbs}) => {
+const Form = ({ title, email, text, subtitle, buttonAbs }) => {
   const [button, setButton] = useState(buttonAbs);
-  const param = {button};
+  const [open, setOpen] = React.useState(false);
+  const param = { button };
   const classes = useStyles(param);
+  // const handleClick = () => {
+
+  // }
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
-      <Box className={classes.formBox}>
-        <Box className={classes.formHeader}>
-          {title?(<Typography className={classes.title}>
-            {title}
-          </Typography>):null}
-          {subtitle ? (
-            <Typography className={classes.subtitle}>
-              Оставьте заявку и наш менеджер свяжеться с вами
-            </Typography>
+    <Box className={classes.formBox}>
+      <Box className={classes.formHeader}>
+        {title ? (
+          <Typography className={classes.title}>{title}</Typography>
+        ) : null}
+        {subtitle ? (
+          <Typography className={classes.subtitle}>
+            Оставьте заявку и наш менеджер свяжеться с вами
+          </Typography>
+        ) : null}
+      </Box>
+
+      <form className={classes.root} noValidate autoComplete="off">
+        <Box className={classes.formFields}>
+          <TextField
+            //   required
+            id="standard-basic"
+            label="Имя"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">*</InputAdornment>,
+            }}
+          />
+          <TextField
+            InputProps={{
+              endAdornment: <InputAdornment position="end">*</InputAdornment>,
+            }}
+            id="standard-basic"
+            label="Телефон"
+          />
+          {email ? (
+            <TextField
+              id="standard-basic"
+              label="Email"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">*</InputAdornment>,
+              }}
+            />
           ) : null}
         </Box>
-
-        <form className={classes.root} noValidate autoComplete="off">
-          <Box className={classes.formFields}>
-            <TextField
-              //   required
-              id="standard-basic"
-              label="Имя"
-              InputProps={{
-                endAdornment: <InputAdornment position="end">*</InputAdornment>,
-              }}
-            />
-            <TextField
-              InputProps={{
-                endAdornment: <InputAdornment position="end">*</InputAdornment>,
-              }}
-              id="standard-basic"
-              label="Телефон"
-            />
-            {email ? (
-              <TextField
-                id="standard-basic"
-                label="Email"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">*</InputAdornment>
-                  ),
-                }}
-              />
-            ) : null}
-          </Box>
-          {text ? (
-            <Box className={classes.messageBox}>
-              <Box className={classes.messageLabelBox}>
-                <Typography className={classes.messageLabel}>
-                  Оставьте заявку и наш менеджер свяжеться с вами
-                </Typography>
-                <div>*</div>
-              </Box>
-              <TextField className={classes.messageField} id="standard-basic" />
+        {text ? (
+          <Box className={classes.messageBox}>
+            <Box className={classes.messageLabelBox}>
+              <Typography className={classes.messageLabel}>
+                Оставьте заявку и наш менеджер свяжеться с вами
+              </Typography>
+              <div>*</div>
             </Box>
-          ) : null}
-          {/* {!button === false? (<Button className={classes.button} variant="outlined">
-            Отправить
-          </Button>):null } */}
+            <TextField className={classes.messageField} id="standard-basic" />
+          </Box>
+        ) : null}
 
-          <Button className={classes.button} variant="outlined">
+        <Box className={classes.button}>
+          <RegularButton variant="outlined" click={handleOpen}>
             Отправить
-          </Button>
-        </form>
-      </Box>
+          </RegularButton>
+        </Box>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <Box className={classes.buttonBox}>
+                <SquareButton
+                  variant="outlined"
+                  click={handleClose}
+                  icon={<ClearIcon />}
+                />
+              </Box>
+              <Typography>
+                СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ
+              </Typography>
+              <Typography>Никто ни за что ответственность не несет</Typography>
+              <Box className={classes.buttonBoxLeft}>
+                <RegularButton variant="outlined" click={handleClose}>
+                  ОК
+                </RegularButton>
+              </Box>
+            </div>
+          </Fade>
+        </Modal>
+      </form>
+    </Box>
   );
 };
 export default Form;

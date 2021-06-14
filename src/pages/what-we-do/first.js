@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 import SendForm from "../../components/SendForm";
 import MySlider from "../../components/Slider";
 
-import SquareButton from "../../components/SquareButton";
+import SquareButton from "../../components/buttons/SquareButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
@@ -171,7 +171,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     display: "flex",
     gap: "20px",
-    left: "10%",
+    left: "14%",
     bottom: "4%",
   },
   blockGalary: {

@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import HouseSlider from "./HouseSlider";
 import Accordions from "./Accordion";
-import SquareButton from "./SquareButton";
+import SquareButton from "./buttons/SquareButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import detail from "../constant/detail";

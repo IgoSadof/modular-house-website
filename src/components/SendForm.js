@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Form from "./Form";
-import SquareButton from "./SquareButton";
+import SquareButton from "./buttons/SquareButton";
 import ClearIcon from "@material-ui/icons/Clear";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     backdropFilter: "blur(42px)",
     transition: "0.7s",
   },
-  button: {
+  buttonBox: {
     marginLeft: "auto",
   },
 }));
@@ -40,10 +40,9 @@ const SendForm = ({isFormOpen, click}) => {
 
   return (
     <div className={classes.root} name="form" id="form">
-      <Box className={classes.button} onClick={click} >
-        <SquareButton variant="outlined" icon={<ClearIcon/>} />
+      <Box className={classes.buttonBox}  >
+        <SquareButton variant="outlined" click={click} icon={<ClearIcon/>} />
       </Box>
-
       <Form title={"Напешите нам"} email text />
     </div>
   );

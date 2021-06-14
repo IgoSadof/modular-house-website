@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import SendForm from "../../components/SendForm";
 import { houses } from "../../constant/houses";
 import { Link } from "gatsby";
+import RegularButton from "../../components/buttons/RegularButton";
 
 const style = {
   flex: {
@@ -38,8 +39,6 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "5%",
     right: "10%",
-    width: "125px",
-    height: "36px",
     zIndex: "2",
   },
   houseListBlock: {
@@ -116,10 +115,9 @@ const useStyles = makeStyles((theme) => ({
     height: "40px",
     // border: "1px solid",
   },
-  mainPlan:{
-    width:'100%',
-    height:'100%',
-
+  mainPlan: {
+    width: "100%",
+    height: "100%",
   },
   houseDescText: {
     fontSize: "14px",
@@ -186,13 +184,11 @@ const WhatWeDo = () => {
           <div className={classes.page}>
             <Box className={classes.Block}>
               <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
-              <Button
-                className={classes.button}
-                variant="outlined"
-                onClick={handleClickConnect}
-              >
-                СВЯЗАТЬСЯ
-              </Button>
+              <Box className={classes.button}>
+                <RegularButton variant="outlined" click={handleClickConnect}>
+                  СВЯЗАТЬСЯ
+                </RegularButton>
+              </Box>
               <Box className={classes.houseListBlock}>
                 <ul className={classes.houseList}>{housesList}</ul>
               </Box>
@@ -272,9 +268,9 @@ const WhatWeDo = () => {
                       </Typography>
                     </Box>
                     <Link className={classes.Link} to={"first"}>
-                      <Button className={classes.buttonMore} variant="outlined">
+                      <RegularButton variant="outlined">
                         Подробнее
-                      </Button>
+                      </RegularButton>
                     </Link>
                   </Box>
                 </Box>

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { houses } from "../constant/houses";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
+import RegularButton from "./buttons/RegularButton";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
@@ -52,7 +52,6 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     borderBottom: "1px solid",
   },
-  button: {},
   textPrice: {
     display: "flex",
     alignItems: "center",
@@ -67,19 +66,19 @@ const CalculateTable = ({ houseN }) => {
   const [price, setPrice] = useState(0);
   const Checkboxes = {};
   houses[houseN].options.forEach((item, index) => {
-    Checkboxes[`${item.name}1`] = [false,item.variants[0].price];
-    Checkboxes[`${item.name}2`] = [false,item.variants[1].price];
+    Checkboxes[`${item.name}1`] = [false, item.variants[0].price];
+    Checkboxes[`${item.name}2`] = [false, item.variants[1].price];
   });
-  console.log(checkboxesCheck)
+  console.log(checkboxesCheck);
   const first = useRef("1");
   const second = useRef("2");
   const [checkboxesCheck, setCheckboxesCheck] = useState(Checkboxes);
-  console.log(checkboxesCheck)
+  console.log(checkboxesCheck);
   const classes = useStyles();
   const handleChangeCheckbox = (event) => {
     setCheckboxesCheck({
       ...checkboxesCheck,
-      [event.target.name]: [event.target.checked,event.target.value],
+      [event.target.name]: [event.target.checked, event.target.value],
     });
     console.log(checkboxesCheck);
     if (event.target.checked) {
@@ -101,8 +100,8 @@ const CalculateTable = ({ houseN }) => {
               <td className={classes.tableCell} align="left">
                 <FormControlLabel
                   ref={first}
-                  name={item.name+'1'}
-                  disabled={checkboxesCheck[item.name+'2'][0] ? true : false}
+                  name={item.name + "1"}
+                  disabled={checkboxesCheck[item.name + "2"][0] ? true : false}
                   onChange={handleChangeCheckbox}
                   className={classes.calculationHeaderText}
                   value={+item.variants[0].price}
@@ -114,8 +113,8 @@ const CalculateTable = ({ houseN }) => {
               <td className={classes.tableCell} align="left">
                 <FormControlLabel
                   ref={second}
-                  name={item.name+'2'}
-                  disabled={checkboxesCheck[item.name+'1'][0] ? true : false}
+                  name={item.name + "2"}
+                  disabled={checkboxesCheck[item.name + "1"][0] ? true : false}
                   onChange={handleChangeCheckbox}
                   className={classes.calculationHeaderText}
                   value={+item.variants[1].price}
@@ -128,7 +127,12 @@ const CalculateTable = ({ houseN }) => {
                 className={`${classes.tableCell} ${classes.tableCellLast}`}
                 align="right"
               >
-                +${checkboxesCheck[item.name+'1'][0]?checkboxesCheck[item.name+'1'][1]:checkboxesCheck[item.name+'2'][0]?checkboxesCheck[item.name+'2'][1]:0}
+                +$
+                {checkboxesCheck[item.name + "1"][0]
+                  ? checkboxesCheck[item.name + "1"][1]
+                  : checkboxesCheck[item.name + "2"][0]
+                  ? checkboxesCheck[item.name + "2"][1]
+                  : 0}
               </td>
             </tr>
           ))}
@@ -136,9 +140,7 @@ const CalculateTable = ({ houseN }) => {
       </table>
 
       <Box className={classes.tableResult}>
-        <Button className={classes.button} variant="outlined">
-          Скачать схему
-        </Button>
+        <RegularButton variant="outlined">Скачать схему</RegularButton>
         <Typography className={classes.textPrice}>цена</Typography>
         <Typography className={classes.textPriceValue}>$ {price}</Typography>
       </Box>
