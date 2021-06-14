@@ -62,25 +62,21 @@ const useStyles = makeStyles({
 });
 
 const CalculateTable = ({ houseN }) => {
-  console.log("start");
   const [price, setPrice] = useState(0);
   const Checkboxes = {};
   houses[houseN].options.forEach((item, index) => {
     Checkboxes[`${item.name}1`] = [false, item.variants[0].price];
     Checkboxes[`${item.name}2`] = [false, item.variants[1].price];
   });
-  console.log(checkboxesCheck);
   const first = useRef("1");
   const second = useRef("2");
   const [checkboxesCheck, setCheckboxesCheck] = useState(Checkboxes);
-  console.log(checkboxesCheck);
   const classes = useStyles();
   const handleChangeCheckbox = (event) => {
     setCheckboxesCheck({
       ...checkboxesCheck,
       [event.target.name]: [event.target.checked, event.target.value],
     });
-    console.log(checkboxesCheck);
     if (event.target.checked) {
       setPrice((state) => state + +event.target.value);
     } else {

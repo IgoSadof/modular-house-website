@@ -12,6 +12,7 @@ import fasad from "../assets/images/fasad.png";
 import Panel from "../components/Panel";
 import Form from "../components/Form";
 import MyCalendar from "../components/MyCalendar";
+import RegularButton from "../components/buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -47,14 +48,13 @@ const useStyles = makeStyles((theme) => ({
     padding: "60px 160px 60px 260px ",
   },
   excursionSend: {
-    position:'relative',
-    width:'60%',
+    position: "relative",
+    width: "60%",
     display: "flex",
-    gap:"30%"
+    gap: "30%",
   },
-  formBox:{
-    marginLeft:"auto"
-
+  formBox: {
+    marginLeft: "auto",
   },
   image: {
     width: "100%",
@@ -84,13 +84,11 @@ const WhatWeDo = () => {
           <div className={classes.page}>
             <Box className={classes.BlockFullscreen}>
               <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
-              <Button
-                className={classes.button}
-                variant="outlined"
-                onClick={handleClickConnect}
-              >
-                СВЯЗАТЬСЯ
-              </Button>
+              <Box className={classes.button}>
+                <RegularButton variant="outlined" color="#D1D1D1" click={handleClickConnect}>
+                  СВЯЗАТЬСЯ
+                </RegularButton>
+              </Box>
               <Box className={classes.imageSlider}>
                 <img className={classes.image} src={fasad} alt="img"></img>
                 <Panel />
@@ -99,12 +97,15 @@ const WhatWeDo = () => {
                 <Box className={classes.excursionSend}>
                   <Typography>На экскурсию</Typography>
                   <Box className={classes.formBox}>
-                    <Form title="Оставьте заявку и наш менеджер свяжеться с вами" buttonAbs={true}/>
+                    <Form
+                      title="Оставьте заявку и наш менеджер свяжеться с вами"
+                      buttonAbs={true}
+                    />
                   </Box>
                 </Box>
 
                 <Box className={classes.calendar}>
-                  <MyCalendar/>
+                  <MyCalendar />
                 </Box>
               </Box>
             </Box>

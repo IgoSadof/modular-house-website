@@ -5,24 +5,21 @@ import { Children } from "react";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    // width: 'min-content',
-    // height: "56px",
-    // minWidth:'10px',
     borderRadius: "0",
-    color: "#4F4F4F",
-    borderColor: "#4F4F4F",
-    // marginLeft:'auto',
+    color: param=> param.color? param.color: "#4F4F4F",
+    borderColor: param=> param.color? param.color: "#4F4F4F",
     boxShadow:'none',
     '&:hover':{
-      background:'#4F4F4F',
-      color:'#F2F2F2',
+      background: param=> param.color? param.color: "#4F4F4F",
+      color: param=> param.color? '#4F4F4F':'#F2F2F2',
     }
     
   },
 }));
 
-export default function RegularButton({ children,click, variant }) {
-  const classes = useStyles();
+export default function RegularButton({ children,click, variant,color }) {
+  const param = {color};
+  const classes = useStyles(param);
   //   const [selected, setSelected] = React.useState(false);
 
   return (
