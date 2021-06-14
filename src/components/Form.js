@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    background: "radial-gradient(#E2E2E2, rgba(232, 232, 232, 0.3))",
+    background: "radial-gradient(100% 100% at 0% 0%, #E2E2E2, rgba(232, 232, 232, 0.12) 100%)",
     backdropFilter: "blur(10px)",
     boxShadow: theme.shadows[5],
     padding: "100px 120px",
