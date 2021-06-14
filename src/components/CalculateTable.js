@@ -67,8 +67,8 @@ const CalculateTable = ({ houseN }) => {
   const [price, setPrice] = useState(0);
   const Checkboxes = {};
   houses[houseN].options.forEach((item, index) => {
-    Checkboxes[`${item.name}1`] = false;
-    Checkboxes[`${item.name}2`] = false;
+    Checkboxes[`${item.name}1`] = [false,item.variants[0].price];
+    Checkboxes[`${item.name}2`] = [false,item.variants[1].price];
   });
   console.log(checkboxesCheck)
   const first = useRef("1");
@@ -79,7 +79,7 @@ const CalculateTable = ({ houseN }) => {
   const handleChangeCheckbox = (event) => {
     setCheckboxesCheck({
       ...checkboxesCheck,
-      [event.target.name]: event.target.checked,
+      [event.target.name]: [event.target.checked,event.target.value],
     });
     console.log(checkboxesCheck);
     if (event.target.checked) {
@@ -102,7 +102,7 @@ const CalculateTable = ({ houseN }) => {
                 <FormControlLabel
                   ref={first}
                   name={item.name+'1'}
-                  disabled={checkboxesCheck[item.name+'2'] ? true : false}
+                  disabled={checkboxesCheck[item.name+'2'][0] ? true : false}
                   onChange={handleChangeCheckbox}
                   className={classes.calculationHeaderText}
                   value={+item.variants[0].price}
@@ -115,7 +115,7 @@ const CalculateTable = ({ houseN }) => {
                 <FormControlLabel
                   ref={second}
                   name={item.name+'2'}
-                  disabled={checkboxesCheck[item.name+'1'] ? true : false}
+                  disabled={checkboxesCheck[item.name+'1'][0] ? true : false}
                   onChange={handleChangeCheckbox}
                   className={classes.calculationHeaderText}
                   value={+item.variants[1].price}
@@ -128,7 +128,7 @@ const CalculateTable = ({ houseN }) => {
                 className={`${classes.tableCell} ${classes.tableCellLast}`}
                 align="right"
               >
-                $ {item.variants[0].price}
+                +${checkboxesCheck[item.name+'1'][0]?checkboxesCheck[item.name+'1'][1]:checkboxesCheck[item.name+'2'][0]?checkboxesCheck[item.name+'2'][1]:0}
               </td>
             </tr>
           ))}
