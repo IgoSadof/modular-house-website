@@ -17,6 +17,7 @@ import FormBlock from "../components/FormBlock";
 import expodom from "../assets/images/expodom_img.png";
 import ReviewsSlider from "../components/ReviewsSlider";
 import Fade from "@material-ui/core/Fade";
+import RegularButton from "./buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -110,8 +111,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
   },
   buttonGroup: {
-    borderRadius: "0px",
-    border: "1px solid",
+    display: "flex",
   },
   button: {
     width: "120px",
@@ -202,20 +202,22 @@ const useStyles = makeStyles((theme) => ({
 const MainPageContent = () => {
   const classes = useStyles();
   const [review, setReview] = useState(0);
-  const [reviewVideo, setReviewVideo] = useState(reviews.length-1);
+  const [answeGroup, setAnsweGroup] = useState(0);
+  const [reviewVideo, setReviewVideo] = useState(reviews.length - 1);
 
   const handleClickLeft = () => {
     setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
     setReviewVideo((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
-    myRef.current.slickNext()
+    myRef.current.slickNext();
   };
   const handleClickRight = () => {
     setReview((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
     setReviewVideo((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
     myRef.current.slickPrev();
   };
-  const handleReviewCange = () => {
-    
+  const handleReviewCange = (e) => {
+    // console.log(e.target.textContent)
+    e.target.textContent === "5-8" ? setAnsweGroup(1) : setAnsweGroup(0);
   };
 
   const myRef = useRef(null);
@@ -228,7 +230,7 @@ const MainPageContent = () => {
           <HouseSlider />
         </Box>
       </Box>
-      
+
       {/* ПОДРОБНЕЕ */}
 
       <Box className={classes.Block}>
@@ -239,7 +241,7 @@ const MainPageContent = () => {
         </Box>
       </Box>
 
-        {/* ОТЗЫВЫ */}
+      {/* ОТЗЫВЫ */}
 
       <Box className={classes.Block}>
         <span className={classes.line}></span>
@@ -258,20 +260,21 @@ const MainPageContent = () => {
           </Box>
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
-            <SquareButton variant={'outlined'} click={handleClickLeft} icon={<ArrowBackIosIcon />} />
+            <SquareButton
+              variant={"outlined"}
+              click={handleClickLeft}
+              icon={<ArrowBackIosIcon />}
+            />
             <SquareButton
               click={handleClickRight}
               icon={<ArrowForwardIosIcon />}
-              variant={'outlined'}
+              variant={"outlined"}
             />
           </Box>
         </Box>
         <Box className={classes.mediaBlock} onChange={handleReviewCange}>
-          <Fade 
-          in={true} 
-          timeout={500}
-          style={{ transitionDelay: '500ms'}}>
-            <Box className={classes.reviewVideoBox} >
+          <Fade in={true} timeout={500} style={{ transitionDelay: "500ms" }}>
+            <Box className={classes.reviewVideoBox}>
               <img
                 className={classes.reviewVideo}
                 src={reviews[reviewVideo].video}
@@ -296,13 +299,21 @@ const MainPageContent = () => {
         <span className={classes.line}></span>
         <Box className={classes.BlockColumn}>
           <Typography className={classes.text}>ОТВЕТЫ</Typography>
-          <ButtonGroup aria-label="outlined primary button group">
-            <Button className={classes.buttonGroup}>1-4</Button>
-            <Button className={classes.buttonGroup}>5-8</Button>
-          </ButtonGroup>
+          <Box className={classes.ButtonGroup}>
+            <RegularButton variant="outlined" click={handleReviewCange}>
+              1-4
+            </RegularButton>
+            <RegularButton
+              leftNone
+              variant="outlined"
+              click={handleReviewCange}
+            >
+              5-8
+            </RegularButton>
+          </Box>
         </Box>
         <Box className={classes.accordion}>
-          <Accordions arr={answers} />
+          <Accordions arr={answers[answeGroup]} />
         </Box>
       </Box>
 
@@ -320,10 +331,8 @@ const MainPageContent = () => {
 
       <Box className={classes.Block}>
         <span className={classes.line}></span>
-        <Contacrs header="Контакты"/>
+        <Contacrs header="Контакты" />
       </Box>
-
-      
     </div>
   );
 };
