@@ -286,6 +286,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "350px",
     justifyContent: "center",
   },
+  BlockTable:{
+    paddingBottom:'0px',
+    paddingTop:'0px',
+  }
 }));
 
 const First = () => {
@@ -671,7 +675,7 @@ const First = () => {
           </Box>
 
           <Box className={`${classes.Block} ${classes.BlockTable}`}>
-            <CalculateTable />
+            <CalculateTable houseN={'1'}/>
           </Box>
 
           <Box className={`${classes.Block} ${classes.BlockForm}`}>

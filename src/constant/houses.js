@@ -14,9 +14,10 @@ import plan3 from "../assets/images/houses/3/plan-img.png";
 const lang = "RU";
 export const houses = [
   {
-    id:1,
+    id: 1,
     name: "SQUARE HOUSE",
-    desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    desc:
+      "Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 115 764`,
     totalArea: "170 M2",
     effectiveArea: "170 M2",
@@ -26,13 +27,20 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
-    img: { main: main1, list: list1, desc: desc1,plan:plan1 },
+    img: { main: main1, list: list1, desc: desc1, plan: plan1 },
+    options: [
+      { name: "фундамент", variants: [{name:"ленточный",price:'4000'}, {name:"свайный",price:'5100'}] },
+      { name: "стены", variants: [{name:"газоселикат",price:'4000'}, {name:"кирпич",price:'4000'}] },
+      { name: "кровля", variants: [{name:"двускатная",price:'4000'}, {name:"четырехскатная",price:'4000'}] },
+      { name: "внутренняя отделка", variants: [{name:"чистовая",price:'4000'}, {name:"черновая",price:'4000'}] },
+    ],
   },
   {
-    id:2,
-    img: { main: main2, list: list2, desc: desc2,plan:plan2},
+    id: 2,
+    img: { main: main2, list: list2, desc: desc2, plan: plan2 },
     name: "ROUND HOUSE",
-    desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    desc:
+      "Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 124 800`,
     totalArea: "200 M2",
     effectiveArea: "140 M2",
@@ -42,12 +50,19 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
+    options: [
+      { name: "фундамент", variants: [{name:"ленточный",price:'4000'}, {name:"свайный",price:'5100'}] },
+      { name: "стены", variants: [{name:"газоселикат",price:'10000'}, {name:"кирпич",price:'12000'}] },
+      { name: "кровля", variants: [{name:"двускатная",price:'3000'}, {name:"четырехскатная",price:'4500'}] },
+      { name: "внутренняя отделка", variants: [{name:"чистовая",price:'9000'}, {name:"черновая",price:'7000'}] },
+    ],
   },
   {
-    id:3,
-    img: { main: main3, list: list3, desc: desc3,plan:plan3 },
+    id: 3,
+    img: { main: main3, list: list3, desc: desc3, plan: plan3 },
     name: "MODERN HOUSE",
-    desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    desc:
+      "Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 164 000`,
     totalArea: "80 M2",
     effectiveArea: "70 M2",
@@ -57,11 +72,18 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
+      options: [
+        { name: "фундамент", variants: [{name:"ленточный",price:'4000'}, {name:"свайный",price:'5100'}] },
+        { name: "стены", variants: [{name:"газоселикат",price:'4000'}, {name:"кирпич",price:'4000'}] },
+        { name: "кровля", variants: [{name:"двускатная",price:'4000'}, {name:"четырехскатная",price:'4000'}] },
+        { name: "внутренняя отделка", variants: [{name:"чистовая",price:'4000'}, {name:"черновая",price:'4000'}] },
+      ],
   },
   {
-    id:4,
+    id: 4,
     name: "SQUARE HOUSE",
-    desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    desc:
+      "Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 115 764`,
     totalArea: "170 M2",
     effectiveArea: "170 M2",
@@ -71,13 +93,20 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
-    img: { main: main1, list: list1, desc: desc1,plan:plan1 },
+    img: { main: main1, list: list1, desc: desc1, plan: plan1 },
+    options: [
+      { name: "фундамент", variants: [{name:"ленточный",price:'4000'}, {name:"свайный",price:'5100'}] },
+      { name: "стены", variants: [{name:"газоселикат",price:'4000'}, {name:"кирпич",price:'4000'}] },
+      { name: "кровля", variants: [{name:"двускатная",price:'4000'}, {name:"четырехскатная",price:'4000'}] },
+      { name: "внутренняя отделка", variants: [{name:"чистовая",price:'4000'}, {name:"черновая",price:'4000'}] },
+    ],
   },
   {
-    id:5,
-    img: { main: main2, list: list2, desc: desc2,plan:plan2 },
+    id: 5,
+    img: { main: main2, list: list2, desc: desc2, plan: plan2 },
     name: "ROUND HOUSE",
-    desc:"Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    desc:
+      "Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
     price: `$ 124 800`,
     totalArea: "200 M2",
     effectiveArea: "140 M2",
@@ -87,5 +116,11 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
+    options: [
+      { name: "фундамент", variants: [{name:"ленточный",price:'4000'}, {name:"свайный",price:'5100'}] },
+      { name: "стены", variants: [{name:"газоселикат",price:'4000'}, {name:"кирпич",price:'4000'}] },
+      { name: "кровля", variants: [{name:"двускатная",price:'4000'}, {name:"четырехскатная",price:'4000'}] },
+      { name: "внутренняя отделка", variants: [{name:"чистовая",price:'4000'}, {name:"черновая",price:'4000'}] },
+    ],
   },
 ];
