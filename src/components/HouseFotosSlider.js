@@ -6,10 +6,12 @@ import Slider from "react-slick";
 
 const useStyles = makeStyles((theme) => ({
   list: {
+    position:'relative',
+    margin:'0',
     width: "100%",
     height: "100%",
     listStyle: "none",
-    padding: "10px",
+    padding: "0px",
   },
   slickList:{
     height:'90vh !important'

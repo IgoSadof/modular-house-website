@@ -13,6 +13,8 @@ import Panel from "../components/Panel";
 import Form from "../components/Form";
 import MyCalendar from "../components/MyCalendar";
 import RegularButton from "../components/buttons/RegularButton";
+import { houses } from "../constant/houses";
+import HouseFotosSlider from "../components/HouseFotosSlider";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -66,16 +68,35 @@ const useStyles = makeStyles((theme) => ({
     height: "240px",
     // border: "1px solid",
   },
+  mainImg:{
+    position: "relative",
+    width: "100%",
+    height: "50vh",
+    objectFit: "cover",
+  }
 }));
 
 const WhatWeDo = () => {
+  const [category, setCategory] = React.useState("все");
   const param = {};
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  const handleChangePanel = (value) => {
+    setCategory(value);
+  };
+
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
+  const categoryRef = React.createRef();
+  const listItem = houses[0].img.fotosCategory[category].map((item, index) => {
+    return (
+      <li key={index}>
+        <img className={classes.mainImg} src={item} alt="img"></img>
+      </li>
+    );
+  });
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
@@ -85,13 +106,17 @@ const WhatWeDo = () => {
             <Box className={classes.BlockFullscreen}>
               <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
               <Box className={classes.button}>
-                <RegularButton variant="outlined" color="#D1D1D1" click={handleClickConnect}>
+                <RegularButton
+                  variant="outlined"
+                  color="#D1D1D1"
+                  click={handleClickConnect}
+                >
                   СВЯЗАТЬСЯ
                 </RegularButton>
               </Box>
               <Box className={classes.imageSlider}>
-                <img className={classes.image} src={fasad} alt="img"></img>
-                <Panel />
+                <HouseFotosSlider listItem={listItem} />
+                <Panel ref={categoryRef} change={handleChangePanel} />
               </Box>
               <Box className={classes.excursion}>
                 <Box className={classes.excursionSend}>
