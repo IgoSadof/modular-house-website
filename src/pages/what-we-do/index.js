@@ -11,6 +11,7 @@ import SendForm from "../../components/SendForm";
 import { houses } from "../../constant/houses";
 import { Link } from "gatsby";
 import RegularButton from "../../components/buttons/RegularButton";
+import ModalsSlider from '../../components/ModalsSlider'
 
 const style = {
   flex: {
@@ -47,35 +48,37 @@ const useStyles = makeStyles((theme) => ({
   },
   houseList: {
     width: "100%",
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     listStyle: "none",
     padding: "0",
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
-    gap: "40px",
+    // gap: "40px",
   },
   houseListItem: {
-    height: "150px",
+    height: "18vh",
     position: "relative",
     cursor: "pointer",
-    display: "flex",
+    display: "flex !important",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    // marginTop:'20px',
   },
   houseListNumber: {
     position: "absolute",
     zIndex: "0",
     top: "-20%",
-    fontSize: "72px",
+    fontSize: "64px",
     margin: "auto",
     color: "white",
   },
   houseListImg: {
     position: "relative",
     zIndex: "2",
-    width: "100%",
+    width: "90%",
   },
   houseDesc: {
     display: "flex",
@@ -157,7 +160,7 @@ const WhatWeDo = () => {
     setHouse((state) => index);
   };
 
-  const housesList = houses.map((item, index) => {
+  const listItem = houses.map((item, index) => {
     return (
       <li
         className={classes.houseListItem}
@@ -190,7 +193,8 @@ const WhatWeDo = () => {
                 </RegularButton>
               </Box>
               <Box className={classes.houseListBlock}>
-                <ul className={classes.houseList}>{housesList}</ul>
+                {/* <ul className={classes.houseList}>{housesList}</ul> */}
+                <ModalsSlider listItem={listItem}/>
               </Box>
               <Box className={classes.houseDesc}>
                 <Box className={classes.houseDescContent}>

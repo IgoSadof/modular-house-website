@@ -123,4 +123,26 @@ export const houses = [
       { name: "внутренняя отделка", variants: [{name:"чистовая",price:'4000'}, {name:"черновая",price:'4000'}] },
     ],
   },
+  {
+    id: 6,
+    name: "SQUARE HOUSE",
+    desc:
+      "Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
+    price: `$ 115 764`,
+    totalArea: "170 M2",
+    effectiveArea: "170 M2",
+    baseModuleArea: "97 M2",
+    totalAreaText: lang === "RU" ? "Общая площадь дома:" : "Total Area:",
+    effectiveAreaText:
+      lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
+    baseModuleAreaText:
+      lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
+    img: { main: main1, list: list1, desc: desc1, plan: plan1 },
+    options: [
+      { name: "фундамент", variants: [{name:"ленточный",price:'4000'}, {name:"свайный",price:'5100'}] },
+      { name: "стены", variants: [{name:"газоселикат",price:'4000'}, {name:"кирпич",price:'4000'}] },
+      { name: "кровля", variants: [{name:"двускатная",price:'4000'}, {name:"четырехскатная",price:'4000'}] },
+      { name: "внутренняя отделка", variants: [{name:"чистовая",price:'4000'}, {name:"черновая",price:'4000'}] },
+    ],
+  },
 ];
