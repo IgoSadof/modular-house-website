@@ -1,5 +1,5 @@
 import "../../components/global.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../../components/Footer";
 import Menu from "../../components/Menu";
@@ -24,6 +24,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import CalculateTable from "../../components/CalculateTable";
 import Panel from "../../components/Panel";
+import HouseFotosSlider from "../../components/HouseFotosSlider";
+import { houses } from "../../constant/houses";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -238,7 +240,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    width:'50%',
+    width: "50%",
     // gap:"160px",
   },
   calculation: {
@@ -286,10 +288,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "350px",
     justifyContent: "center",
   },
-  BlockTable:{
-    paddingBottom:'0px',
-    paddingTop:'0px',
-  }
+  BlockTable: {
+    paddingBottom: "0px",
+    paddingTop: "0px",
+  },
 }));
 
 const First = () => {
@@ -298,7 +300,11 @@ const First = () => {
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [value, setValue] = React.useState(2);
+  const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
+
+  const myRef = useRef(null);
+  const categoryRef = React.createRef();
 
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
@@ -307,11 +313,16 @@ const First = () => {
   //   setLineLength((state) => (state ===);
   // };
 
-  const handleClickLeft = () => {};
-  const handleClickRight = () => {};
+  const handleClickLeft = () => {
+    myRef.current.slickPrev();
+  };
+  const handleClickRight = () => {
+    myRef.current.slickNext();
+  };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChangePanel = (value) => {
+    //   setValue(newValue);
+    setCategory(value);
   };
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
@@ -321,6 +332,14 @@ const First = () => {
       setModulePrice((state) => state - +event.target.value);
     }
   };
+
+  const listItem = houses[0].img.fotosCategory[category].map((item, index) => {
+    return (
+      <li key={index}>
+        <img className={classes.mainImg} src={item} alt="img"></img>
+      </li>
+    );
+  });
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
@@ -436,11 +455,7 @@ const First = () => {
 
           <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
             <Box className={classes.secondImg}>
-              <img
-                className={classes.mainImg}
-                src={what_we_do_img1}
-                alt="img"
-              ></img>
+              <HouseFotosSlider myRef={myRef} listItem={listItem} />
               <Box className={classes.buttons}>
                 {/* <Button color="secondary">hello</Button> */}
                 <SquareButton
@@ -454,7 +469,7 @@ const First = () => {
                   icon={<ArrowForwardIosIcon />}
                 />
               </Box>
-              <Panel />
+              <Panel ref={categoryRef} change={handleChangePanel} />
             </Box>
           </Box>
 
@@ -675,7 +690,7 @@ const First = () => {
           </Box>
 
           <Box className={`${classes.Block} ${classes.BlockTable}`}>
-            <CalculateTable houseN={'1'}/>
+            <CalculateTable houseN={"1"} />
           </Box>
 
           <Box className={`${classes.Block} ${classes.BlockForm}`}>

@@ -11,6 +11,11 @@ import plan1 from "../assets/images/houses/1/plan-img.png";
 import plan2 from "../assets/images/houses/2/plan-img.png";
 import plan3 from "../assets/images/houses/3/plan-img.png";
 
+import fasad from "../assets/images/fasad.png";
+import all from "../assets/images/w-we-do-img1.png";
+
+
+
 const lang = "RU";
 export const houses = [
   {
@@ -27,7 +32,7 @@ export const houses = [
       lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
     baseModuleAreaText:
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
-    img: { main: main1, list: list1, desc: desc1, plan: plan1 },
+    img: { main: main1, list: list1, desc: desc1, plan: plan1,fotosCategory:{'все':[fasad,fasad],'фасад':[all,all],'кухня':[fasad,all,fasad,all],'туалет':[fasad,all,fasad,all], } },
     options: [
       { name: "фундамент", variants: [{name:"ленточный",price:'4000'}, {name:"свайный",price:'5100'}] },
       { name: "стены", variants: [{name:"газоселикат",price:'4000'}, {name:"кирпич",price:'4000'}] },

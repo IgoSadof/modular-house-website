@@ -3,6 +3,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
+import { houses } from "../constant/houses";
 
 const useStyles = makeStyles((theme) => ({
   panel: {
@@ -14,28 +15,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Panel = () => {
+const Panel = React.forwardRef((props, ref) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(2);
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValue(state=>newValue);
+    props.change(Object.keys(houses[0].img.fotosCategory)[newValue])
   };
+  const listItem = Object.keys(houses[0].img.fotosCategory).map((item,index) => {
+    return <Tab key={index} label={item} />;
+  });
   return (
     <Box className={classes.panel}>
       <Tabs
+        ref={ref}
         value={value}
         indicatorColor="primary"
         textColor="primary"
         onChange={handleChange}
         aria-label="disabled tabs example"
       >
-        <Tab label="ВСЕ" />
-        <Tab label="ФАСАД" />
-        <Tab label="КУХНЯ" />
-        <Tab label="ТУАЛЕТ" />
+        {listItem}
       </Tabs>
     </Box>
   );
-};
+});
 
 export default Panel;
