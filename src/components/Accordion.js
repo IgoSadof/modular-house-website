@@ -8,7 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 
 const Accordion = withStyles({
   root: {
-    width: "740px",
+    width: "640px",
     // borderBottom: "1px solid #333333",
     boxShadow: "none",
     "&:not(:last-child)": {

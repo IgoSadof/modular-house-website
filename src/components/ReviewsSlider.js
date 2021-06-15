@@ -49,6 +49,7 @@ const ReviewsSlider = ({myRef}) => {
     slidesToShow: 2,
     slidesToScroll: 1,
     swipeToSlide: false,
+    swipe:false,
   };
   // const myref = useRef(null);
 

@@ -18,6 +18,7 @@ import expodom from "../assets/images/expodom_img.png";
 import ReviewsSlider from "../components/ReviewsSlider";
 import Fade from "@material-ui/core/Fade";
 import RegularButton from "./buttons/RegularButton";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid",
   },
   accordion: {
+    display: "flex",
+    gap: "40px",
     marginLeft: "auto",
   },
 
@@ -200,6 +203,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainPageContent = () => {
+  const matches = { 1920: useMediaQuery("(min-width:1920px)") };
+  console.log(matches[1920]);
   const classes = useStyles();
   const [review, setReview] = useState(0);
   const [answeGroup, setAnsweGroup] = useState(0);
@@ -300,20 +305,26 @@ const MainPageContent = () => {
         <Box className={classes.BlockColumn}>
           <Typography className={classes.text}>ОТВЕТЫ</Typography>
           <Box className={classes.ButtonGroup}>
-            <RegularButton variant="outlined" click={handleReviewCange}>
-              1-4
-            </RegularButton>
-            <RegularButton
-              leftNone
-              variant="outlined"
-              click={handleReviewCange}
-            >
-              5-8
-            </RegularButton>
+            {!matches[1920] ? (
+              <RegularButton variant="outlined" click={handleReviewCange}>
+                1-4
+              </RegularButton>
+            ) : null}
+            {!matches[1920] ? (
+              <RegularButton
+                leftNone
+                variant="outlined"
+                click={handleReviewCange}
+              >
+                5-8
+              </RegularButton>
+            ) : null}
           </Box>
         </Box>
         <Box className={classes.accordion}>
-          <Accordions arr={answers[answeGroup]} />
+          {!matches[1920] ? <Accordions arr={answers[answeGroup]} /> : null}
+          {matches[1920] ? <Accordions arr={answers[0]} /> : null}
+          {matches[1920] ? <Accordions arr={answers[1]} /> : null}
         </Box>
       </Box>
 
