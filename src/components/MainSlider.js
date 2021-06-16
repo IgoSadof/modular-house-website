@@ -101,13 +101,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginRight: "auto",
   },
-  header: {
-    fontSize: "48px",
-    fontWeight: "600",
-    color: "white",
-  },
+  header: {},
   text: {
-    fontSize: "12px",
     width: "250px",
   },
 
@@ -151,7 +146,6 @@ const useStyles = makeStyles((theme) => ({
   },
   number: {
     cursor: "pointer",
-    fontSize: "20px",
     width: "80px",
     height: "20px",
   },
@@ -247,7 +241,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
                 ></img>
               ) : null}
             </Box>
-            <Typography className={classes.text} variant="h6" component="h6">
+            <Typography className={classes.text} variant="body1" component="h6">
               {fields.subtitles
                 ? fields.subtitles[activeNumb].value
                 : slides[activeNumb].subtitle}
@@ -268,26 +262,27 @@ const Slider = ({ scrol, isFirstEntry }) => {
           </Box>
         </Box>
         <Box className={classes.langBox}>
-          <Typography className={classes.lang} variant="h6" component="h6">
+          <Typography className={classes.lang} variant="button" component="h6">
             RU
           </Typography>
-          <Typography className={classes.lang} variant="h6" component="h6">
+          <Typography className={classes.lang} variant="button" component="h6">
             EN
           </Typography>
         </Box>
         <div className={classes.numbers}>
           {numbers.map((item, index) => (
-            <span
-              key={index}
+            <Typography
               className={
                 index <= activeNumb
                   ? `${classes.number} ${classes.activeNumber}`
                   : classes.number
               }
-              onClick={handleNumberClick}
+              variant="h6"
             >
-              {item}
-            </span>
+              <span key={index} onClick={handleNumberClick}>
+                {item}
+              </span>
+            </Typography>
           ))}
         </div>
         <span className={classes.bottomLine}></span>

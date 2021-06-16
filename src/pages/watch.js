@@ -120,7 +120,7 @@ const WhatWeDo = () => {
               </Box>
               <Box className={classes.excursion}>
                 <Box className={classes.excursionSend}>
-                  <Typography>На экскурсию</Typography>
+                  <Typography variant="subtitle1">На экскурсию</Typography>
                   <Box className={classes.formBox}>
                     <Form
                       title="Оставьте заявку и наш менеджер свяжеться с вами"

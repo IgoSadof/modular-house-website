@@ -77,7 +77,7 @@ const FormBlock = ({header,title, subtitle, text, email, img, formPosition}) => 
     <div className={classes.root}>
       <Box className={`${classes.Block} ${classes.Expodom}`}>
         <Box className={classes.formBox} >
-          {header?(<Typography className={classes.text}>{header}</Typography>):null }
+          {header?(<Typography variant="h4" className={classes.text}>{header}</Typography>):null }
           <Form title={title} subtitle={subtitle?subtitle:null} email={email?email:null} text={text?text:null}/>
         </Box>
         <Box className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}>

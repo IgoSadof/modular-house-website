@@ -85,12 +85,10 @@ const useStyles = makeStyles((theme) => ({
     gap: "40px",
   },
   title: {
-    // fontSize: "12px",
     marginTop: "140px",
     width: "165px",
   },
   message: {
-    fontSize: "12px",
     // marginTop: "120px",
     width: "260px",
   },
@@ -204,7 +202,7 @@ const useStyles = makeStyles((theme) => ({
 
 const MainPageContent = () => {
   const matches = { 1920: useMediaQuery("(min-width:1920px)") };
-  console.log(matches[1920]);
+  // console.log(matches[1920]);
   const classes = useStyles();
   const [review, setReview] = useState(0);
   const [answeGroup, setAnsweGroup] = useState(0);
@@ -240,18 +238,19 @@ const MainPageContent = () => {
 
       <Box className={classes.Block}>
         <span className={classes.line}></span>
-        <Typography className={classes.text}>ПОДРОБНЕЕ</Typography>
+        <Typography variant="h4" className={classes.text}>
+          ПОДРОБНЕЕ
+        </Typography>
         <Box className={classes.accordion}>
           <Accordions arr={detail} />
         </Box>
       </Box>
-
       {/* ОТЗЫВЫ */}
 
       <Box className={classes.Block}>
         <span className={classes.line}></span>
         <Box className={classes.BlockColumn}>
-          <Typography variant="h1">ОТЗЫВЫ</Typography>
+          <Typography variant="h4">ОТЗЫВЫ</Typography>
           <Box className={classes.commentBox}>
             <Typography
               className={classes.name}
@@ -259,7 +258,7 @@ const MainPageContent = () => {
             <Typography
               className={classes.place}
             >{`${reviews[review].place}, ${reviews[review].year}`}</Typography>
-            <Typography className={classes.message}>
+            <Typography variant="body1" className={classes.message}>
               {reviews[review].text}
             </Typography>
           </Box>
@@ -289,7 +288,9 @@ const MainPageContent = () => {
           </Fade>
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
-              {`${reviews[review].monts}/${reviews[review].day} `}
+              <Typography variant="h4" >
+                {`${reviews[review].monts}/${reviews[review].day} `}
+              </Typography>
             </Box>
             <Box className={classes.imagesBoxes}>
               <ReviewsSlider myRef={myRef} />
@@ -303,7 +304,9 @@ const MainPageContent = () => {
       <Box className={classes.Block}>
         <span className={classes.line}></span>
         <Box className={classes.BlockColumn}>
-          <Typography className={classes.text}>ОТВЕТЫ</Typography>
+          <Typography variant="h4" className={classes.text}>
+            ОТВЕТЫ
+          </Typography>
           <Box className={classes.ButtonGroup}>
             {!matches[1920] ? (
               <RegularButton variant="outlined" click={handleReviewCange}>

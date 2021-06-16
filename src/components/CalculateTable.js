@@ -91,18 +91,17 @@ const CalculateTable = ({ houseN }) => {
           {houses[houseN].options.map((item, index) => (
             <tr className={classes.tableRow} key={index}>
               <td className={`${classes.tableCell} ${classes.tableCellFirst}`}>
-                {item.name}
+                <Typography variant="h6">{item.name}</Typography>
               </td>
               <td className={classes.tableCell} align="left">
                 <FormControlLabel
                   ref={first}
                   name={item.name + "1"}
                   disabled={checkboxesCheck[item.name + "2"][0] ? true : false}
-                  onChange={handleChangeCheckbox}
-                  className={classes.calculationHeaderText}
+                  onChange={handleChangeCheckbox}             
                   value={+item.variants[0].price}
                   control={<Checkbox color="primary" />}
-                  label={item.variants[0].name}
+                  label={<Typography variant="body1">{item.variants[0].name}</Typography>}
                   labelPlacement="end"
                 />
               </td>
@@ -112,10 +111,9 @@ const CalculateTable = ({ houseN }) => {
                   name={item.name + "2"}
                   disabled={checkboxesCheck[item.name + "1"][0] ? true : false}
                   onChange={handleChangeCheckbox}
-                  className={classes.calculationHeaderText}
                   value={+item.variants[1].price}
                   control={<Checkbox color="primary" />}
-                  label={item.variants[1].name}
+                  label={<Typography variant="body1">{item.variants[1].name}</Typography>}
                   labelPlacement="end"
                 />
               </td>
@@ -136,9 +134,9 @@ const CalculateTable = ({ houseN }) => {
       </table>
 
       <Box className={classes.tableResult}>
-        <RegularButton variant="outlined">Скачать схему</RegularButton>
-        <Typography className={classes.textPrice}>цена</Typography>
-        <Typography className={classes.textPriceValue}>$ {price}</Typography>
+        {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
+        <Typography variant='h6' className={classes.textPrice}>Иотого</Typography>
+        <Typography variant='caption' className={classes.textPriceValue}>$ {price}</Typography>
       </Box>
     </div>
   );

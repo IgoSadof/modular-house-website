@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   houseImg: {
-    width: "50%",
+    width: "47%",
   },
   mainImg: {
     width: "100%",
@@ -175,7 +175,7 @@ const WhatWeDo = () => {
           src={item.img.list}
           alt="img"
         ></img>
-        <Typography className={classes.houseListName}>{item.name}</Typography>
+        <Typography variant ='subtitle1' className={classes.houseListName}>{item.name}</Typography>
       </li>
     );
   });
@@ -207,7 +207,7 @@ const WhatWeDo = () => {
                   </Box>
 
                   <Box className={classes.houseDescTitleBox}>
-                    <Typography className={classes.houseDescTitle}>
+                    <Typography variant='h1' color='textSecondary' className={classes.houseDescTitle}>
                       {houses[house].name}
                     </Typography>
                     <Box className={classes.houseDescIconBox}>
@@ -219,25 +219,25 @@ const WhatWeDo = () => {
                     </Box>
                   </Box>
 
-                  <Typography className={classes.houseDescText}>
+                  <Typography variant='body1' className={classes.houseDescText}>
                     {houses[house].desc}
                   </Typography>
 
                   <Box className={classes.houseDescSpecBox}>
                     <Box className={classes.houseDescSpec}>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography className={classes.houseDescSpecName}>
+                        <Typography variant='body1' className={classes.houseDescSpecName}>
                           {houses[house].totalAreaText}
                         </Typography>
-                        <Typography className={classes.houseSpecValue}>
+                        <Typography variant='h6' className={classes.houseSpecValue}>
                           {houses[house].totalArea}
                         </Typography>
                       </Box>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography className={classes.houseDescSpecName}>
+                        <Typography variant='body1' className={classes.houseDescSpecName}>
                           {houses[house].effectiveAreaText}
                         </Typography>
-                        <Typography className={classes.houseSpecValue}>
+                        <Typography variant='h6' className={classes.houseSpecValue}>
                           {houses[house].effectiveArea}
                         </Typography>
                       </Box>
@@ -245,18 +245,18 @@ const WhatWeDo = () => {
 
                     <Box className={classes.houseDescSpec}>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography className={classes.houseDescSpecName}>
+                        <Typography variant='body1' className={classes.houseDescSpecName}>
                           Этажность:
                         </Typography>
-                        <Typography className={classes.houseSpecValue}>
+                        <Typography variant='h6' className={classes.houseSpecValue}>
                           {houses[house].totalArea}
                         </Typography>
                       </Box>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography className={classes.houseDescSpecName}>
+                        <Typography variant='body1' className={classes.houseDescSpecName}>
                           Cтадии роста:
                         </Typography>
-                        <Typography className={classes.houseSpecValue}>
+                        <Typography variant='h6' className={classes.houseSpecValue}>
                           {houses[house].effectiveArea}
                         </Typography>
                       </Box>
@@ -264,10 +264,10 @@ const WhatWeDo = () => {
                   </Box>
                   <Box className={classes.houseDescMore}>
                     <Box className={classes.houseDescPrice}>
-                      <Typography className={classes.houseSpecValue}>
+                      <Typography variant='body1' className={classes.houseSpecValue}>
                         Стоимость всех модулей:
                       </Typography>
-                      <Typography className={classes.houseSpecPrice}>
+                      <Typography variant='h5' className={classes.houseSpecPrice}>
                         {houses[house].price}
                       </Typography>
                     </Box>

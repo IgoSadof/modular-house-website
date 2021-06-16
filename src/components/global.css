@@ -51,6 +51,7 @@ body {
   height:40px;
   background-color: transparent;
   border: 1px solid;
+  border-radius: 'none';
   cursor:pointer;
   border-collapse: collapse;
 }

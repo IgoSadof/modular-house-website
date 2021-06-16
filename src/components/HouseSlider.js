@@ -112,32 +112,32 @@ const Slide = ({
         </Box>
         <Box className={classes.description}>
           <Box className={classes.title}>
-            <Typography className={classes.name}>{name}</Typography>
-            <Typography className={classes.price}>{price}</Typography>
+            <Typography variant='h1' color='textSecondary' className={classes.name}>{name}</Typography>
+            <Typography variant='h5'  className={classes.price}>{price}</Typography>
           </Box>
           <Box className={classes.subtitle}>
             <Box className={classes.properties}>
               <Box className={classes.property}>
-                <Typography className={classes.propertyName}>
+                <Typography variant='body1' className={classes.propertyName}>
                   {totalAreaText}
                 </Typography>
-                <Typography className={classes.propertyValue}>
+                <Typography variant='h6' className={classes.propertyValue}>
                   {totalArea}
                 </Typography>
               </Box>
               <Box className={classes.property}>
-                <Typography className={classes.propertyName}>
+                <Typography variant='body1'className={classes.propertyName}>
                   {effectiveAreaText}
                 </Typography>
-                <Typography className={classes.propertyValue}>
+                <Typography variant='h6' className={classes.propertyValue}>
                   {effectiveArea}
                 </Typography>
               </Box>
               <Box className={classes.property}>
-                <Typography className={classes.propertyName}>
+                <Typography variant='body1' className={classes.propertyName}>
                   {baseModuleAreaText}
                 </Typography>
-                <Typography className={classes.propertyValue}>
+                <Typography variant='h6' className={classes.propertyValue}>
                   {baseModuleArea}
                 </Typography>
               </Box>

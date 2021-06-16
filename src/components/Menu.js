@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    color: "black",
+    // color: "black",
   },
   navList: {
     transition: "0.5s",
@@ -91,39 +91,55 @@ const Menu = () => {
   return (
     <div className={classes.menu}>
       <img className={classes.logo} src={logo} alt="logo"></img>
-      <Typography className={classes.text} variant="h6" component="h6">
+      <Typography variant="button" className={classes.text}>
         Меню
       </Typography>
       <ul className={classes.navList}>
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/"}>
-            ГЛАВНАЯ
+            <Typography variant="button">
+              ГЛАВНАЯ
+            </Typography>
           </Link>
         </li>
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/aboutus"}>
-            КТО МЫ{" "}
+            <Typography variant="button">
+              КТО МЫ{" "}
+            </Typography>
           </Link>
         </li>
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/what-we-do"}>
-            ЧТО МЫ
+            <Typography variant="button">
+              ЧТО МЫ
+            </Typography>
             <br />
-            ДЕЛАЕМ
+            <Typography variant="button">
+              ДЕЛАЕМ
+            </Typography>
           </Link>
         </li>
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/watch"}>
-            ГДЕ
+            <Typography variant="button">
+              ГДЕ
+            </Typography>
             <br />
-            УВИДЕТЬ
+            <Typography variant="button">
+              УВИДЕТЬ
+            </Typography>
           </Link>
         </li>
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/contacts"}>
-            КАК
+            <Typography variant="button">
+              КАК
+            </Typography>
             <br />
-            СВЯЗВТЬСЯ
+            <Typography variant="button">
+              СВЯЗВТЬСЯ
+            </Typography>
           </Link>
         </li>
       </ul>

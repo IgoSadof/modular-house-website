@@ -54,33 +54,36 @@ const useStyles = makeStyles((theme) => ({
     height: "36px",
     zIndex: "2",
   },
+  mainImgBox: {
+    height: "72vh",
+  },
   mainImg: {
     position: "relative",
     width: "100%",
-    height: "720px",
+    height: "100%",
     objectFit: "cover",
   },
-  secondImg: {
+  mainImgItem: {
+    height: "100%",
+  },
+  secondImgBox: {
     position: "relative",
     width: "100%",
-    height: "720px",
-    objectFit: "cover",
+    height: "90vh",
+    // objectFit: "cover",
   },
   mainDescBox: {
     width: "100%",
     display: "flex",
     gap: "20px",
     justifyContent: "space-between",
-    padding: "50px 300px",
+    padding: "50px 280px",
   },
   mainBlockSubtitleBox: {
     display: "flex",
     gap: "100px",
   },
   mainBlockTitle: {
-    fontSize: "48px",
-    fontWeight: "600",
-    lineHeight: "50px",
     textAlign: "left",
     width: "300px",
   },
@@ -130,13 +133,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "48px",
     fontWeight: "600",
   },
-  modelSubtitle: {
-    // borderLeft:"1px solid",
-    fontSize: "12px",
-  },
   model: {
     border: "1px solid",
-    width: "100%",
+    width: "50%",
   },
   modelDescLine: {
     left: "28%",
@@ -206,9 +205,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     gap: "20px",
   },
-  text: {
-    textTransform: "uppercase",
-  },
   roomDesc: {
     display: "flex",
     flexDirection: "column",
@@ -264,7 +260,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   calculationHeaderText: {
-    fontSize: "24px !important",
+    // fontSize: "24px !important",
   },
   calculationBody: {
     paddingLeft: "20px",
@@ -280,9 +276,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     gap: "100px",
     alignItems: "center",
-  },
-  calculationSum: {
-    fontSize: "30px",
   },
   BlockForm: {
     paddingLeft: "350px",
@@ -335,7 +328,7 @@ const First = () => {
 
   const listItem = houses[0].img.fotosCategory[category].map((item, index) => {
     return (
-      <li key={index}>
+      <li className={classes.mainImgItem} key={index}>
         <img className={classes.mainImg} src={item} alt="img"></img>
       </li>
     );
@@ -354,7 +347,7 @@ const First = () => {
             >
               СВЯЗАТЬСЯ
             </Button>
-            <Box className={classes.mainImg}>
+            <Box className={classes.mainImgBox}>
               <img
                 className={classes.mainImg}
                 src={what_we_do_img1}
@@ -363,35 +356,57 @@ const First = () => {
             </Box>
             <Box className={classes.mainDescBox}>
               <Box className={classes.mainBlockTitleBox}>
-                <Typography className={classes.mainBlockTitle}>
+                <Typography
+                  variant="h1"
+                  color="textSecondary"
+                  className={classes.mainBlockTitle}
+                >
                   SQUARE HOUSE
                 </Typography>
               </Box>
               <Box className={classes.mainBlockSubtitleBox}>
                 {/* <Box className={classes.mainBlockList}> */}
                 <ul className={classes.mainBlockList}>
-                  <li className={classes.mainBlockItem}>01 Модуль</li>
-                  <li className={classes.mainBlockItem}>02 Модуль</li>
-                  <li className={classes.mainBlockItem}>03 Модуль</li>
+                  <li className={classes.mainBlockItem}>
+                    <Typography variant="body1">01 Модуль</Typography>
+                  </li>
+                  <li className={classes.mainBlockItem}>
+                    <Typography variant="body1">02 Модуль</Typography>
+                  </li>
+                  <li className={classes.mainBlockItem}>
+                    <Typography variant="body1">03 Модуль</Typography>
+                  </li>
                 </ul>
                 {/* </Box> */}
                 {/* <Box className={classes.mainBlockList}> */}
                 <ul className={classes.mainBlockList}>
-                  <li className={classes.mainBlockItem}>Базовый модуль</li>
-                  <li className={classes.mainBlockItem}>Жилой модуль</li>
-                  <li className={classes.mainBlockItem}>Гараж</li>
+                  <li className={classes.mainBlockItem}>
+                    <Typography variant="body1">Базовый модуль</Typography>
+                  </li>
+                  <li className={classes.mainBlockItem}>
+                    <Typography variant="body1">Жилой модуль</Typography>
+                  </li>
+                  <li className={classes.mainBlockItem}>
+                    <Typography variant="body1">Гараж</Typography>
+                  </li>
                 </ul>
                 {/* </Box> */}
                 {/* <Box className={classes.mainBlockList}> */}
                 <ul className={classes.mainBlockList}>
                   <li className={classes.mainBlockItem}>
-                    <strong>$25 000 / 45 дней</strong>
+                    <Typography variant="subtitle1">
+                      $25 000 / 45 дней
+                    </Typography>
                   </li>
                   <li className={classes.mainBlockItem}>
-                    <strong>$68 000 / 20 дней</strong>
+                    <Typography variant="subtitle1">
+                      $68 000 / 20 дней
+                    </Typography>
                   </li>
                   <li className={classes.mainBlockItem}>
-                    <strong>$45 000 / 20 дней</strong>
+                    <Typography variant="subtitle1">
+                      $45 000 / 20 дней
+                    </Typography>
                   </li>
                 </ul>
                 {/* </Box> */}
@@ -403,27 +418,33 @@ const First = () => {
             <Box className={classes.modelDesc}>
               <Box className={classes.modelDescFirstColumn}>
                 <Box className={classes.modelDescItemTitle}>
-                  <Typography className={classes.modelNumber}>01</Typography>
-                  <Typography className={classes.modelHeader}>
-                    Базавый
+                  <Typography
+                    variant="h1"
+                    color="textSecondary"
+                    className={classes.modelNumber}
+                  >
+                    01
                   </Typography>
-                  <Typography className={classes.modelSquare}>
-                    170 м2
-                  </Typography>
+                  <Typography variant="h6">Базавый</Typography>
+                  <Typography variant="h6">170 м2</Typography>
                 </Box>
                 <Box className={classes.modelDescItemTitle}>
-                  <Typography className={classes.modelNumber}>02</Typography>
-                  <Typography className={classes.modelHeader}>Жилой</Typography>
-                  <Typography className={classes.modelSquare}>
-                    170 м2
+                  <Typography
+                    variant="h1"
+                    color="textSecondary"
+                    className={classes.modelNumber}
+                  >
+                    02
                   </Typography>
+                  <Typography variant="h6">Жилой</Typography>
+                  <Typography variant="h6">170 м2</Typography>
                 </Box>
                 <Box className={classes.modelDescItemTitle}>
-                  <Typography className={classes.modelNumber}>03</Typography>
-                  <Typography className={classes.modelHeader}>Гараж</Typography>
-                  <Typography className={classes.modelSquare}>
-                    170 м2
+                  <Typography variant="h1" color="textSecondary">
+                    03
                   </Typography>
+                  <Typography variant="h6">Гараж</Typography>
+                  <Typography variant="h6">170 м2</Typography>
                 </Box>
               </Box>
 
@@ -431,19 +452,20 @@ const First = () => {
               <MySlider />
 
               <Box className={classes.modelDescSecondColumn}>
-                <Typography className={classes.modelSubtitle}>
+                <Typography variant="body1">
                   Развитие дома происходит по горизонтали в двух направлениях. К
                   базовому модулю могут быть пристроены навес для автомобиля в
                   одном направлении.
                 </Typography>
                 <Typography
+                  variant="body1"
                   className={`${classes.modelSubtitle} ${classes.modelSubtitleMiddle}`}
                 >
                   Развитие дома происходит по горизонтали в двух направлениях. К
                   базовому модулю могут быть пристроены навес для автомобиля в
                   одном направлении.
                 </Typography>
-                <Typography className={classes.modelSubtitle}>
+                <Typography variant="body1">
                   Развитие дома происходит по горизонтали в двух направлениях. К
                   базовому модулю могут быть пристроены навес для автомобиля в
                   одном направлении.
@@ -454,7 +476,7 @@ const First = () => {
           </Box>
 
           <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
-            <Box className={classes.secondImg}>
+            <Box className={classes.secondImgBox}>
               <HouseFotosSlider myRef={myRef} listItem={listItem} />
               <Box className={classes.buttons}>
                 {/* <Button color="secondary">hello</Button> */}
@@ -476,18 +498,28 @@ const First = () => {
           <Box className={`${classes.Block} ${classes.BlockRooms}`}>
             <span className={classes.line}></span>
             <Box className={classes.roomsList}>
-              <Typography className={classes.text}>Гостинная</Typography>
-              <Typography className={classes.text}>Кухня</Typography>
-              <Typography className={classes.text}>Сан узел</Typography>
-              <Typography className={classes.text}>Кладовка</Typography>
-              <Typography className={classes.text}>Фасад</Typography>
+              <Typography variant="h6">
+                Гостинная
+              </Typography>
+              <Typography variant="h6">
+                Кухня
+              </Typography>
+              <Typography variant="h6">
+                Сан узел
+              </Typography>
+              <Typography variant="h6">
+                Кладовка
+              </Typography>
+              <Typography variant="h6">
+                Фасад
+              </Typography>
             </Box>
             <Box className={classes.roomDesc}>
               <Box className={classes.roomDescArticle}>
-                <Typography className={classes.roomDescTitle}>
+                <Typography variant="caption" className={classes.roomDescTitle}>
                   ГОСТИННАЯ
                 </Typography>
-                <Typography className={classes.roomDescSubtitle}>
+                <Typography variant="body1" className={classes.roomDescSubtitle}>
                   Стоимость дома «под ключ», с панорамным остеклением, отделкой
                   лиственницей, фальцевой кровлей и разводкой коммуникаций
                   внутри дома составляет 660$ за метр. В полной конфигурации,
@@ -499,17 +531,17 @@ const First = () => {
               </Box>
 
               <Box className={classes.roomDescList}>
-                <Typography className={classes.roomDescItem}>Ванная</Typography>
-                <Typography className={classes.roomDescItem}>
+                <Typography variant="body1" className={classes.roomDescItem}>Ванная</Typography>
+                <Typography variant="body1" className={classes.roomDescItem}>
                   Общая комната
                 </Typography>
-                <Typography className={classes.roomDescItem}>
+                <Typography variant="body1" className={classes.roomDescItem}>
                   Сан узел
                 </Typography>
-                <Typography className={classes.roomDescItem}>
+                <Typography variant="body1" className={classes.roomDescItem}>
                   Детская{" "}
                 </Typography>
-                <Typography className={classes.roomDescItem}>
+                <Typography variant="body1" className={classes.roomDescItem}>
                   Коридор
                 </Typography>
               </Box>
@@ -520,7 +552,7 @@ const First = () => {
           <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
             <span className={classes.line}></span>
             <Box className={classes.calculationPlan}>
-              <Typography className={classes.text}>Расчет</Typography>
+              <Typography variant="h6">Экспликация</Typography>
               <img
                 className={classes.calculationPlanImg}
                 src={plan}
@@ -528,50 +560,50 @@ const First = () => {
               ></img>
             </Box>
             <Box className={classes.calculation}>
+
               <Box className={classes.calculationItem}>
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    className={classes.calculationHeaderText}
                     value={25000}
                     control={<Checkbox color="primary" />}
-                    label="БАЗОВЫЙ МОДУЛЬ"
+                    label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
                     labelPlacement="end"
                   />
-                  <Typography className={classes.calculationHeaderText}>
+                  <Typography variant="h3" >
                     $25 000
                   </Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography  variant="body1" className={classes.calculationBodyText}>
                       Ванная
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Общая комната
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Детская
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Коридор
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
@@ -582,46 +614,46 @@ const First = () => {
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    className={classes.calculationHeaderText}
+                    
                     value={25000}
                     control={<Checkbox color="primary" />}
-                    label="ЖИЛОЙ МОДУЛЬ"
+                    label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
                     labelPlacement="end"
                   />
-                  <Typography className={classes.calculationHeaderText}>
+                  <Typography variant="h3" >
                     $25 000
                   </Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography  variant="body1" className={classes.calculationBodyText}>
                       Ванная
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Общая комната
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Детская
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Коридор
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
@@ -631,47 +663,47 @@ const First = () => {
               <Box className={classes.calculationItem}>
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
-                    className={classes.calculationHeaderText}
-                    value={25000}
                     onChange={handleChangeCheckbox}
+                    
+                    value={25000}
                     control={<Checkbox color="primary" />}
-                    label="ГАРАЖ"
+                    label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
                     labelPlacement="end"
                   />
-                  <Typography className={classes.calculationHeaderText}>
+                  <Typography variant="h3" >
                     $25 000
                   </Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography  variant="body1" className={classes.calculationBodyText}>
                       Ванная
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Общая комната
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Детская
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       Коридор
                     </Typography>
-                    <Typography className={classes.calculationBodyText}>
+                    <Typography variant="body1" className={classes.calculationBodyText}>
                       107 м2
                     </Typography>
                   </Box>
@@ -679,10 +711,10 @@ const First = () => {
               </Box>
 
               <Box className={classes.calculationResult}>
-                <Typography className={classes.calculationHeaderText}>
+                <Typography variant="h6">
                   Цена
                 </Typography>
-                <Typography className={classes.calculationSum}>
+                <Typography variant="caption">
                   ${modulePrice}
                 </Typography>
               </Box>

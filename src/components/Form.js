@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    width: "285px",
+    width: "300px",
   },
   formHeader: {
     // marginTop: "140px",
@@ -41,10 +41,9 @@ const useStyles = makeStyles((theme) => ({
     width: "245px",
   },
   subtitle: {
-    fontSize: "12px",
     marginTop: "60px",
     width: "120px",
-    color: "#4F4F4F",
+    // color: "#4F4F4F",
   },
 
   formFields: {
@@ -81,9 +80,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     color: "#4F4F4F",
   },
-  messageLabel: {
-    fontSize: "11px",
-  },
   messageField: {
     marginTop: "50px",
   },
@@ -96,7 +92,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    background: "radial-gradient(100% 100% at 0% 0%, #E2E2E2, rgba(232, 232, 232, 0.12) 100%)",
+    background:
+      "radial-gradient(100% 100% at 0% 0%, #E2E2E2, rgba(232, 232, 232, 0.12) 100%)",
     background: "radial-gradient(#E2E2E2,rgba(232, 232, 232, 0.12))",
     backdropFilter: "blur(10px)",
     boxShadow: theme.shadows[5],
@@ -108,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
     marginLeft: "auto",
   },
-  buttonBoxLeft:{
+  buttonBoxLeft: {
     display: "inline-block",
     marginRight: "auto",
   },
@@ -133,10 +130,10 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
     <Box className={classes.formBox}>
       <Box className={classes.formHeader}>
         {title ? (
-          <Typography className={classes.title}>{title}</Typography>
+          <Typography variant="subtitle1" className={classes.title}>{title}</Typography>
         ) : null}
         {subtitle ? (
-          <Typography className={classes.subtitle}>
+          <Typography variant="body1" className={classes.subtitle}>
             Оставьте заявку и наш менеджер свяжеться с вами
           </Typography>
         ) : null}
@@ -147,7 +144,7 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
           <TextField
             //   required
             id="standard-basic"
-            label="Имя"
+            label={<Typography variant="body2">Имя</Typography>}
             InputProps={{
               endAdornment: <InputAdornment position="end">*</InputAdornment>,
             }}
@@ -157,12 +154,12 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
               endAdornment: <InputAdornment position="end">*</InputAdornment>,
             }}
             id="standard-basic"
-            label="Телефон"
+            label={<Typography variant="body2">Телефон</Typography>}
           />
           {email ? (
             <TextField
               id="standard-basic"
-              label="Email"
+              label={<Typography variant="body2">Email</Typography>}
               InputProps={{
                 endAdornment: <InputAdornment position="end">*</InputAdornment>,
               }}
@@ -172,7 +169,7 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
         {text ? (
           <Box className={classes.messageBox}>
             <Box className={classes.messageLabelBox}>
-              <Typography className={classes.messageLabel}>
+              <Typography variant="body1">
                 Оставьте заявку и наш менеджер свяжеться с вами
               </Typography>
               <div>*</div>
@@ -210,7 +207,7 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
               <Typography>
                 СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ
               </Typography>
-              <Typography>Никто ни за что ответственность не несет</Typography>
+              <Typography variant="body1">Никто ни за что ответственность не несет</Typography>
               <Box className={classes.buttonBoxLeft}>
                 <RegularButton variant="outlined" click={handleClose}>
                   ОК

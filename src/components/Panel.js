@@ -4,6 +4,7 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { houses } from "../constant/houses";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   panel: {
@@ -23,8 +24,8 @@ const Panel = React.forwardRef((props, ref) => {
     props.change(Object.keys(houses[0].img.fotosCategory)[newValue])
   };
   const listItem = Object.keys(houses[0].img.fotosCategory).map((item,index) => {
-    return <Tab key={index} label={item} />;
-  });
+    return <Tab key={index} label={ <Typography variant='h6' color='textPrimary'> {item} </Typography>}></Tab>
+    });
   return (
     <Box className={classes.panel}>
       <Tabs

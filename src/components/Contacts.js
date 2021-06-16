@@ -79,7 +79,7 @@ const Contacts = ({ header }) => {
       <Box className={classes.BlockMain}>
         {header ? (
           <Box className={classes.BlockColumn}>
-            <Typography className={classes.textHeader}>{header}</Typography>
+            <Typography variant="h4" className={classes.textHeader}>{header}</Typography>
             <Box className={classes.logoBox}>
               <img
                 className={classes.logo}
@@ -102,9 +102,9 @@ const Contacts = ({ header }) => {
                   alt="Foto"
                   alt="img"
                 ></img>
-                <Typography variant="subtitle1">Андрей</Typography>
-                <Typography variant="subtitle1">Главный</Typography>
-                <Typography variant="subtitle1">+375 29 3650669 </Typography>
+                <Typography variant="body1">Андрей</Typography>
+                <Typography variant="body1">Главный</Typography>
+                <Typography variant="body1">+375 29 3650669 </Typography>
               </Box>
               <Box className={classes.personalBox}>
                 <img
@@ -113,9 +113,9 @@ const Contacts = ({ header }) => {
                   alt="Foto"
                   alt="img"
                 ></img>
-                <Typography variant="subtitle1">Алексей</Typography>
-                <Typography variant="subtitle1">Главный</Typography>
-                <Typography variant="subtitle1">+375 44 5180676</Typography>
+                <Typography variant="body1">Алексей</Typography>
+                <Typography variant="body1">Главный</Typography>
+                <Typography variant="body1">+375 44 5180676</Typography>
               </Box>
             </Box>
             <Box className={classes.infoBox}>
@@ -132,8 +132,8 @@ const Contacts = ({ header }) => {
               ) : null}
 
               <Box className={classes.infoBoxText}>
-                <Typography variant="subtitle1">info@zrobym.by</Typography>
-                <Typography variant="subtitle1">
+                <Typography variant="body1">info@zrobym.by</Typography>
+                <Typography variant="body1">
                   ул. Богдановича 11, 3 этаж
                 </Typography>
               </Box>

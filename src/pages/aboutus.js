@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "85px",
     letterSpacing: "0.03em",
     marginLeft: "auto",
+    color:'#4F4F4F',
   },
   blockTitle: {
     textTransform: "uppercase",
@@ -147,7 +148,7 @@ const MainPage = () => {
                 </Box>
                 <Box className={classes.Block}>
                   <span className={classes.line}></span>
-                  <Typography className={classes.blockTitle}>
+                  <Typography variant='subtitle1' className={classes.blockTitle}>
                     Автор концепции MH - Андрусь Bezdar
                   </Typography>
                   <Typography className={classes.header}>
@@ -159,23 +160,23 @@ const MainPage = () => {
             </div>
             <Box className={classes.Block}>
               <span className={classes.line}></span>
-              <Typography className={classes.blockTitle}>
+              <Typography variant='body1' className={classes.blockTitle}>
                 Разработка технологии MH - Андрусь Bezdar, Кораблёв Алексей,
                 Амбражейчик Кирилл, Короленко Николай.
               </Typography>
               <Box className={classes.textBox}>
-                <Typography className={classes.text}>
+                <Typography variant='body1' className={classes.text}>
                   Мы видим миссию нашей команды в изменении окружающего мира за
                   счет качественной концептуальной архитектуры. В каждом нашем
                   проекте заложен уникальный смысл и авторская идея.
                 </Typography>
-                <Typography className={classes.text}>
+                <Typography variant='body1' className={classes.text}>
                   Технология модульного строительства MODULAR HOUSE родилась в
                   умах архитекторов студии ZROBYM architects и при
                   сотрудничестве с производителями каркасных домов выросла в
                   modular house
                 </Typography>
-                <Typography className={classes.text}>
+                <Typography variant='body1' className={classes.text}>
                   Технология создана на основе многолетнего изучения опыта
                   энергоэффективного строительства в климатических условиях
                   Беларуси и опробована на практике.
@@ -185,11 +186,11 @@ const MainPage = () => {
 
             <Box className={classes.Block}>
               <span className={classes.line}></span>
-              <Typography className={classes.blockTitle}>
+              <Typography variant='subtitle1' className={classes.blockTitle}>
                 Модульная система:
               </Typography>
               <Box className={classes.textBox}>
-                <Typography className={classes.text}>
+                <Typography variant='body1' className={classes.text}>
                   Модульная система, являющаяся основой наших проектов,
                   позволяет людям с небольшим бюджетом начать с маленького
                   домика и расширить его в будущем. Мы унифицировали все
@@ -198,7 +199,7 @@ const MainPage = () => {
                   реконструировать жилое пространство. Дом растёт вместе с
                   ростом семьи во времени.
                 </Typography>
-                <Typography className={classes.text}>
+                <Typography variant='body1' className={classes.text}>
                   Технология МН основана на принципах рацональности и
                   оптимальности. Это проявляется в соблюдении баланса между
                   понятиями экологичности материалов, энергоэффективности
@@ -213,23 +214,23 @@ const MainPage = () => {
             <Box className={classes.Block}>
               <span className={classes.line}></span>
               <Box className={classes.creatorsBox}>
-                <Typography className={classes.blockTitle}>
+                <Typography variant='subtitle1' className={classes.blockTitle}>
                   Создатели
                 </Typography>
                 <Box className={classes.creatorTextBox}>
-                  <Typography className={classes.creatorTitle}>
+                  <Typography variant='subtitle2' className={classes.creatorTitle}>
                     Алексей Кораблев
                   </Typography>
-                  <Typography className={classes.creatorSubtitle}>
+                  <Typography variant='body1' className={classes.creatorSubtitle}>
                     вед. архитектор
                   </Typography>
-                  <Typography className={classes.creatorMainText}>
+                  <Typography variant='body1' className={classes.creatorMainText}>
                     Окончил Белорусский национальный технический университет в
                     2014 году по специальности «Архитектура». Занимается
                     деятельностью в области архитектуры и дизайна с 2010 года. С
                     2011 года учредитель и ведущий архитектор ZROBYM architects.
                   </Typography>
-                  <Typography className={classes.creatorFooterText}>
+                  <Typography variant='body1' className={classes.creatorFooterText}>
                     Участник международных конкурсов "Архстояние'2011"...
                   </Typography>
                 </Box>
@@ -246,16 +247,16 @@ const MainPage = () => {
                   <Typography className={classes.creatorTitle}>
                     Алексей Кораблев
                   </Typography>
-                  <Typography className={classes.creatorSubtitle}>
+                  <Typography variant='subtitle2' className={classes.creatorSubtitle}>
                     вед. архитектор
                   </Typography>
-                  <Typography className={classes.creatorMainText}>
+                  <Typography variant='body1' className={classes.creatorMainText}>
                     Окончил Белорусский национальный технический университет в
                     2014 году по специальности «Архитектура». Занимается
                     деятельностью в области архитектуры и дизайна с 2010 года. С
                     2011 года учредитель и ведущий архитектор ZROBYM architects.
                   </Typography>
-                  <Typography className={classes.creatorFooterText}>
+                  <Typography variant='body1' className={classes.creatorFooterText}>
                     Участник международных конкурсов "Архстояние'2011"...
                   </Typography>
                 </Box>
@@ -266,7 +267,7 @@ const MainPage = () => {
             </Box>
             <Box className={classes.Block}>
               <span className={classes.line}></span>
-              <Typography className={classes.blockTitle}>
+              <Typography variant='subtitle1' className={classes.blockTitle}>
                 Наш друг, В. Татаров.
               </Typography>
               <Typography className={`${classes.header} ${classes.header2}`}>
