@@ -166,11 +166,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     transition: "0.5s",
   },
-  minus:{
-    position:'relative',
-    top:'-8%',
+  minus: {
+    position: "relative",
+    top: "-8%",
   },
-  modelDescLineMinusCircle:{
+  modelDescLineMinusCircle: {
     transform: (param) => `translate(-50%, ${param.pilldistance}px)`,
     width: "30px",
     height: "30px",
@@ -183,7 +183,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     transition: "0.5s",
-
   },
   modelDescLinePlus: {
     transform: (param) => `translate(-50%, ${param.pilldistance - 1}px)`,
@@ -203,6 +202,9 @@ const useStyles = makeStyles((theme) => ({
   plus: {
     position: "relative",
     bottom: "12%",
+  },
+  disable:{
+    color:'#BDBDBD',
   },
   buttons: {
     position: "absolute",
@@ -336,14 +338,12 @@ const First = () => {
     setIsFormOpen((state) => !state);
   };
   const handlePlusClick = (e) => {
-    if(pilldistance+180<=470)
-    setPilldistance((state) => state + 180);
+    if (pilldistance + 180 <= 470) setPilldistance((state) => state + 180);
   };
   const handleMinusClick = (e) => {
-    if(pilldistance-180>=110){
+    if (pilldistance - 180 >= 110) {
       setPilldistance((state) => state - 180);
     }
-    
   };
 
   const handleClickLeft = () => {
@@ -470,21 +470,45 @@ const First = () => {
                 </Box>
                 <Box className={classes.modelDescItemTitle}>
                   <Typography
+                    className={pilldistance < 290 ? classes.disable : null}
                     variant="h1"
                     color="textSecondary"
-                    className={classes.modelNumber}
                   >
                     02
                   </Typography>
-                  <Typography variant="h6">Жилой</Typography>
-                  <Typography variant="h6">170 м2</Typography>
+                  <Typography
+                    className={pilldistance < 290 ? classes.disable : null}
+                    variant="h6"
+                  >
+                    Жилой
+                  </Typography>
+                  <Typography
+                    className={pilldistance < 290 ? classes.disable : null}
+                    variant="h6"
+                  >
+                    170 м2
+                  </Typography>
                 </Box>
                 <Box className={classes.modelDescItemTitle}>
-                  <Typography variant="h1" color="textSecondary">
+                  <Typography
+                    className={pilldistance < 470 ? classes.disable : null}
+                    variant="h1"
+                    color="textSecondary"
+                  >
                     03
                   </Typography>
-                  <Typography variant="h6">Гараж</Typography>
-                  <Typography variant="h6">170 м2</Typography>
+                  <Typography
+                    className={pilldistance < 470 ? classes.disable : null}
+                    variant="h6"
+                  >
+                    Гараж
+                  </Typography>
+                  <Typography
+                    className={pilldistance < 470 ? classes.disable : null}
+                    variant="h6"
+                  >
+                    170 м2
+                  </Typography>
                 </Box>
               </Box>
 
@@ -523,16 +547,18 @@ const First = () => {
                 </Typography>
                 <Typography
                   // variant={pilldistance<290?"body2":"body1"}
-                  // variant={"body1"}
-                  disable
-                  className={`${classes.modelSubtitle} ${classes.modelSubtitleMiddle}`}
+                  variant={"body1"}
+                  className={pilldistance < 290 ? classes.disable : null}
                 >
                   Развитие дома происходит по горизонтали в двух направлениях. К
                   базовому модулю могут быть пристроены навес для автомобиля в
                   одном направлении.
                 </Typography>
                 {/* <Typography variant={pilldistance<470?"body2":"body1"}> */}
-                <Typography variant={"body1"}>
+                <Typography
+                  variant={"body1"}
+                  className={pilldistance < 470 ? classes.disable : null}
+                >
                   Развитие дома происходит по горизонтали в двух направлениях. К
                   базовому модулю могут быть пристроены навес для автомобиля в
                   одном направлении.
