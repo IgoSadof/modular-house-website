@@ -36,20 +36,20 @@ const modularHouseTheme = createMuiTheme({
     h1: {
       fontSize: 48,
       color: "white",
-      // lineHeight: 50,
+      lineHeight: 1.15,
       fontWeight: 600,
       fontStyle: "normal",
     },
     h3: {
       fontSize: 24,
-      // lineHeight: 50,
+      lineHeight: 1.15,
       fontWeight: 400,
       fontStyle: "normal",
       color: "#4F4F4F",
     },
     h4: {
       fontSize: 18,
-      // lineHeight: 20,
+      lineHeight: 1.15,
       fontWeight: 500,
       fontStyle: "normal",
       textTransform: "uppercase",
@@ -58,7 +58,7 @@ const modularHouseTheme = createMuiTheme({
     },
     h5: {
       fontSize: 18,
-      // lineHeight: 18,
+      lineHeight: 1.15,
       fontWeight: 500,
       fontStyle: "normal",
       textTransform: "uppercase",
@@ -66,7 +66,7 @@ const modularHouseTheme = createMuiTheme({
     },
     h6: {
       fontSize: 14,
-      // lineHeight: 18,
+      lineHeight: 1.15,
       fontWeight: 500,
       fontStyle: "normal",
       textTransform: "uppercase",
@@ -75,7 +75,7 @@ const modularHouseTheme = createMuiTheme({
     },
     body1: {
       fontSize: 12,
-      // lineHeight: 14,
+      lineHeight: 1.15,
       fontWeight: 400,
       fontStyle: "normal",
       color: "#4F4F4F",
@@ -83,15 +83,15 @@ const modularHouseTheme = createMuiTheme({
     },
     body2: {
       fontSize: 12,
-      // lineHeight: 14,
+      lineHeight: 1.15,
       fontWeight: 400,
       fontStyle: "normal",
-      color: "#7C7C7C",
+      color: "#BDBDBD",
       fontFamily: ["Ubuntu", "sans-serif"].join(","),
     },
     subtitle1: {
       fontSize: 14,
-      // lineHeight: 18,
+      lineHeight: 1.15,
       fontWeight: 600,
       fontStyle: "normal",
       textTransform: "uppercase",
@@ -101,7 +101,7 @@ const modularHouseTheme = createMuiTheme({
     },
     subtitle2: {
       fontSize: 14,
-      // lineHeight: 18,
+      lineHeight: 1.15,
       fontWeight: 600,
       fontStyle: "normal",
       textTransform: "uppercase",
@@ -109,7 +109,7 @@ const modularHouseTheme = createMuiTheme({
     },
     button: {
       fontSize: 14,
-      // lineHeight: 14,
+      lineHeight: 1.15,
       fontWeight: 500,
       fontStyle: "normal",
       textTransform: "uppercase",
@@ -118,11 +118,14 @@ const modularHouseTheme = createMuiTheme({
     },
     caption:{
       fontSize: 30,
-      // lineHeight: 14,
+      lineHeight: 1.15,
       fontWeight: 600,
       fontStyle: "normal",
       textTransform: "uppercase",
       color: "#333333",
+    },
+    srOnly:{
+
 
     }
   },

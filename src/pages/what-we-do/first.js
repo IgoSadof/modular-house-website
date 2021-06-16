@@ -138,36 +138,72 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
   },
   modelDescLine: {
-    left: "28%",
+    position: "relative",
     width: "1px",
     height: "100%",
-    backgroundColor: "black",
-    "&::before": {
-      // transformOrigin: "100% 50%",
-      transform: "translate(-50%, 165px)",
-      // position: "absolute",
-      content: `'+'`,
-      width: "40px",
-      height: "40px",
-      border: "1px solid",
-      borderRadius: "50%",
-      fontSize: "30px",
-      backgroundColor: "#D1D1D1",
-      cursor: "pointer",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    },
+    backgroundColor: "#BDBDBD",
   },
-  // modelDescCircle:{
-  //   position:"absolute",
-  //   width:"50px",
-  //   left:"21%",
-  //   height:"50px",
-  //   border:"1px solid",
-  //   borderRadius:"50%",
-  //   backgroundColor:""
-  // }
+  modelDescLineActive: {
+    position: "absolute",
+    zIndex: "2",
+    left: "50%",
+    width: "1px",
+    height: (param) => param.pilldistance,
+    backgroundColor: "black",
+    transition: "0.5s",
+  },
+  modelDescLineMinus: {
+    transform: (param) => `translate(-50%, ${param.pilldistance}px)`,
+    width: "30px",
+    height: "30px",
+    border: "1px solid",
+    borderRadius: "50% 50% 0 0",
+    fontSize: "30px",
+    backgroundColor: "#D1D1D1",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    transition: "0.5s",
+  },
+  minus:{
+    position:'relative',
+    top:'-8%',
+  },
+  modelDescLineMinusCircle:{
+    transform: (param) => `translate(-50%, ${param.pilldistance}px)`,
+    width: "30px",
+    height: "30px",
+    border: "1px solid",
+    borderRadius: "50%",
+    fontSize: "30px",
+    backgroundColor: "#D1D1D1",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    transition: "0.5s",
+
+  },
+  modelDescLinePlus: {
+    transform: (param) => `translate(-50%, ${param.pilldistance - 1}px)`,
+    width: "30px",
+    height: "30px",
+    border: "1px solid",
+    borderRadius: "0 0 50% 50%",
+    fontSize: "30px",
+    backgroundColor: "#D1D1D1",
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    transition: "0.5s",
+  },
+  plus: {
+    position: "relative",
+    bottom: "12%",
+  },
   buttons: {
     position: "absolute",
     display: "flex",
@@ -259,9 +295,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  calculationHeaderText: {
-    // fontSize: "24px !important",
-  },
   calculationBody: {
     paddingLeft: "20px",
     paddingRight: "30px",
@@ -288,8 +321,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const First = () => {
-  // const [lineLength, setLineLength] = useState(265);
-  const param = {};
+  const [pilldistance, setPilldistance] = useState(110);
+  const param = { pilldistance };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [value, setValue] = React.useState(2);
@@ -302,9 +335,16 @@ const First = () => {
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
-  // const handleCircleClick = (e) => {
-  //   setLineLength((state) => (state ===);
-  // };
+  const handlePlusClick = (e) => {
+    if(pilldistance+180<=470)
+    setPilldistance((state) => state + 180);
+  };
+  const handleMinusClick = (e) => {
+    if(pilldistance-180>=110){
+      setPilldistance((state) => state - 180);
+    }
+    
+  };
 
   const handleClickLeft = () => {
     myRef.current.slickPrev();
@@ -448,8 +488,32 @@ const First = () => {
                 </Box>
               </Box>
 
-              {/* <span className={classes.modelDescLine}></span> */}
-              <MySlider />
+              <div className={classes.modelDescLine}>
+                <div className={classes.modelDescLineActive}></div>
+                {pilldistance < 470 ? (
+                  <>
+                    <div
+                      onClick={handleMinusClick}
+                      className={classes.modelDescLineMinus}
+                    >
+                      <div className={classes.minus}>-</div>
+                    </div>
+                    <div
+                      onClick={handlePlusClick}
+                      className={classes.modelDescLinePlus}
+                    >
+                      <div className={classes.plus}>+</div>
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    onClick={handleMinusClick}
+                    className={classes.modelDescLineMinusCircle}
+                  >
+                    <div className={classes.minus}>-</div>
+                  </div>
+                )}
+              </div>
 
               <Box className={classes.modelDescSecondColumn}>
                 <Typography variant="body1">
@@ -458,14 +522,17 @@ const First = () => {
                   одном направлении.
                 </Typography>
                 <Typography
-                  variant="body1"
+                  // variant={pilldistance<290?"body2":"body1"}
+                  // variant={"body1"}
+                  disable
                   className={`${classes.modelSubtitle} ${classes.modelSubtitleMiddle}`}
                 >
                   Развитие дома происходит по горизонтали в двух направлениях. К
                   базовому модулю могут быть пристроены навес для автомобиля в
                   одном направлении.
                 </Typography>
-                <Typography variant="body1">
+                {/* <Typography variant={pilldistance<470?"body2":"body1"}> */}
+                <Typography variant={"body1"}>
                   Развитие дома происходит по горизонтали в двух направлениях. К
                   базовому модулю могут быть пристроены навес для автомобиля в
                   одном направлении.
@@ -498,28 +565,21 @@ const First = () => {
           <Box className={`${classes.Block} ${classes.BlockRooms}`}>
             <span className={classes.line}></span>
             <Box className={classes.roomsList}>
-              <Typography variant="h6">
-                Гостинная
-              </Typography>
-              <Typography variant="h6">
-                Кухня
-              </Typography>
-              <Typography variant="h6">
-                Сан узел
-              </Typography>
-              <Typography variant="h6">
-                Кладовка
-              </Typography>
-              <Typography variant="h6">
-                Фасад
-              </Typography>
+              <Typography variant="h6">Гостинная</Typography>
+              <Typography variant="h6">Кухня</Typography>
+              <Typography variant="h6">Сан узел</Typography>
+              <Typography variant="h6">Кладовка</Typography>
+              <Typography variant="h6">Фасад</Typography>
             </Box>
             <Box className={classes.roomDesc}>
               <Box className={classes.roomDescArticle}>
                 <Typography variant="caption" className={classes.roomDescTitle}>
                   ГОСТИННАЯ
                 </Typography>
-                <Typography variant="body1" className={classes.roomDescSubtitle}>
+                <Typography
+                  variant="body1"
+                  className={classes.roomDescSubtitle}
+                >
                   Стоимость дома «под ключ», с панорамным остеклением, отделкой
                   лиственницей, фальцевой кровлей и разводкой коммуникаций
                   внутри дома составляет 660$ за метр. В полной конфигурации,
@@ -531,7 +591,9 @@ const First = () => {
               </Box>
 
               <Box className={classes.roomDescList}>
-                <Typography variant="body1" className={classes.roomDescItem}>Ванная</Typography>
+                <Typography variant="body1" className={classes.roomDescItem}>
+                  Ванная
+                </Typography>
                 <Typography variant="body1" className={classes.roomDescItem}>
                   Общая комната
                 </Typography>
@@ -560,7 +622,6 @@ const First = () => {
               ></img>
             </Box>
             <Box className={classes.calculation}>
-
               <Box className={classes.calculationItem}>
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
@@ -570,40 +631,62 @@ const First = () => {
                     label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
                     labelPlacement="end"
                   />
-                  <Typography variant="h3" >
-                    $25 000
-                  </Typography>
+                  <Typography variant="h3">$25 000</Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography  variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Ванная
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Общая комната
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Детская
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Коридор
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
@@ -614,46 +697,67 @@ const First = () => {
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    
                     value={25000}
                     control={<Checkbox color="primary" />}
                     label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
                     labelPlacement="end"
                   />
-                  <Typography variant="h3" >
-                    $25 000
-                  </Typography>
+                  <Typography variant="h3">$25 000</Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography  variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Ванная
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Общая комната
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Детская
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Коридор
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
@@ -664,46 +768,67 @@ const First = () => {
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    
                     value={25000}
                     control={<Checkbox color="primary" />}
                     label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
                     labelPlacement="end"
                   />
-                  <Typography variant="h3" >
-                    $25 000
-                  </Typography>
+                  <Typography variant="h3">$25 000</Typography>
                 </Box>
                 <Box className={classes.calculationBody}>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography  variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Ванная
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Общая комната
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Детская
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
                   <Box className={classes.calculationBodyItem}>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       Коридор
                     </Typography>
-                    <Typography variant="body1" className={classes.calculationBodyText}>
+                    <Typography
+                      variant="body1"
+                      className={classes.calculationBodyText}
+                    >
                       107 м2
                     </Typography>
                   </Box>
@@ -711,12 +836,8 @@ const First = () => {
               </Box>
 
               <Box className={classes.calculationResult}>
-                <Typography variant="h6">
-                  Цена
-                </Typography>
-                <Typography variant="caption">
-                  ${modulePrice}
-                </Typography>
+                <Typography variant="h6">Цена</Typography>
+                <Typography variant="caption">${modulePrice}</Typography>
               </Box>
             </Box>
           </Box>
