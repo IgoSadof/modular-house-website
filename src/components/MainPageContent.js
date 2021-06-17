@@ -288,7 +288,7 @@ const MainPageContent = () => {
           </Fade>
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
-              <Typography variant="h4" >
+              <Typography variant="h4">
                 {`${reviews[review].monts}/${reviews[review].day} `}
               </Typography>
             </Box>
@@ -308,7 +308,7 @@ const MainPageContent = () => {
             ОТВЕТЫ
           </Typography>
           <Box className={classes.ButtonGroup}>
-            {!matches[1920] ? (
+            {/* {!matches[1920] ? (
               <RegularButton variant="outlined" click={handleReviewCange}>
                 1-4
               </RegularButton>
@@ -321,13 +321,26 @@ const MainPageContent = () => {
               >
                 5-8
               </RegularButton>
-            ) : null}
+            ) : null} */}
+
+            <RegularButton variant="outlined" click={handleReviewCange}>
+              1-4
+            </RegularButton>
+
+            <RegularButton
+              leftNone
+              variant="outlined"
+              click={handleReviewCange}
+            >
+              5-8
+            </RegularButton>
           </Box>
         </Box>
         <Box className={classes.accordion}>
-          {!matches[1920] ? <Accordions arr={answers[answeGroup]} /> : null}
-          {matches[1920] ? <Accordions arr={answers[0]} /> : null}
-          {matches[1920] ? <Accordions arr={answers[1]} /> : null}
+          <Accordions arr={answers[answeGroup]} />
+          {/* {!matches[1920] ? <Accordions arr={answers[answeGroup]} /> : null} */}
+          {/* {matches[1920] ? <Accordions arr={answers[0]} /> : null}
+          {matches[1920] ? <Accordions arr={answers[1]} /> : null} */}
         </Box>
       </Box>
 

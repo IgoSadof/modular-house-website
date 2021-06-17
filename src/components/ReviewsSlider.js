@@ -78,10 +78,10 @@ const ReviewsSlider = ({myRef}) => {
   );
 };
 
-const Slide = ({ img }) => {
+const Slide = ({ img,key }) => {
   const classes = useStyles();
   return (
-    <li className={classes.conteiner}>
+    <li className={classes.conteiner} key={key}>
       <Box className={classes.imgBox}>
         <img className={classes.img} src={img} alt="img" />
       </Box>

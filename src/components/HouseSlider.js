@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   property: {
     display: "flex",
     justifyContent: "space-between",
-    width:"265px"
+    width:"70%"
   },
 }));
 const HouseSlider = () => {
@@ -94,6 +94,7 @@ const HouseSlider = () => {
 };
 
 const Slide = ({
+  key,
   img,
   name,
   price,
@@ -106,7 +107,7 @@ const Slide = ({
 }) => {
   const classes = useStyles();
   return (
-    <li className={classes.conteiner}>
+    <li className={classes.conteiner} key={key}>
         <Box className={classes.imgBox}>
           <img className={classes.img} src={img} alt="img" />
         </Box>

@@ -8,8 +8,8 @@ import slides from "../constant/slides";
 // import gif from "../asssets/images/gif.gif";
 import Button from "@material-ui/core/Button";
 import numbers from "../constant/numbers";
-import axios from "axios";
-import findDataFromCategory from "../utils/findDataFromCategory";
+// import axios from "axios";
+// import findDataFromCategory from "../utils/findDataFromCategory";
 import SendForm from "./SendForm";
 import RegularButton from "./buttons/RegularButton";
 
@@ -272,6 +272,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
         <div className={classes.numbers}>
           {numbers.map((item, index) => (
             <Typography
+              key={index}
               className={
                 index <= activeNumb
                   ? `${classes.number} ${classes.activeNumber}`
