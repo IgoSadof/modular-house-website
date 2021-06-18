@@ -12,6 +12,7 @@ import numbers from "../constant/numbers";
 // import findDataFromCategory from "../utils/findDataFromCategory";
 import SendForm from "./SendForm";
 import RegularButton from "./buttons/RegularButton";
+import video from "../assets/video/video.webm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     right: "-160px",
     // width: "480px",
     height: "100vh",
-    zIndex: "1",
+    zIndex: "0",
   },
   fon: {
     position: "absolute",
@@ -96,8 +97,10 @@ const useStyles = makeStyles((theme) => ({
   },
   article: {
     display: "flex",
+    position: "relative",
+    zIndex: 1,
     gap: "40px",
-    width: "350px",
+    width: "30%",
     flexDirection: "column",
     marginRight: "auto",
   },
@@ -156,6 +159,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scrol, isFirstEntry }) => {
   const [lineLength, setLineLength] = useState(265);
+  const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(true);
   const param = { scrol, lineLength };
@@ -167,6 +171,12 @@ const Slider = ({ scrol, isFirstEntry }) => {
     headers: null,
     subtitles: null,
   });
+  const vidSegments = {
+    0: 2,
+    1: 9.5,
+    2: 20.5,
+    3: 24,
+  };
 
   // useEffect(() => {
   //   axios.get("/rest/resources").then((response) => {
@@ -180,15 +190,15 @@ const Slider = ({ scrol, isFirstEntry }) => {
   useEffect(() => {
     // console.log(scrol);
     if (isFirstEntry) {
-      scrol < 5
+      scrol < 1
         ? handleNumberClick(null, 1)
-        : scrol >= 5 && scrol < 10
+        : scrol >= 1 && scrol < 2
         ? handleNumberClick(null, 2)
-        : scrol >= 10 && scrol < 15
+        : scrol >= 2 && scrol < 3
         ? handleNumberClick(null, 3)
-        : scrol >= 15 && scrol < 20
+        : scrol >= 3 && scrol < 4
         ? handleNumberClick(null, 4)
-        : (scrol = 20);
+        : (scrol = 4);
     }
   }, [scrol]);
 
@@ -201,12 +211,24 @@ const Slider = ({ scrol, isFirstEntry }) => {
   //   }
   // }, [resources, resourcestv]);
   const handleNumberClick = (e, numb = 0) => {
+    // if(currentSegment<=activeNumb){
+    //   setCurrentSegment(activeNumb)
+    // }
+    
     if (numb === 0) {
       numb = +e.target.textContent[1];
     }
-    setLineLength(() => (numb === 1 ? 265 : 265 + 80 * (numb - 1)));
+    
+    if (numb > currentSegment+1) {
+      setPlayVideo(true);
+      setLineLength(() => (numb === 1 ? 265 : 265 + 80 * (numb - 1)));
+      setActiveNumb(numb - 1);
+      setCurrentSegment(numb - 1);
+    }
+    console.log(numb,currentSegment+1)
     setActiveNumb(numb - 1);
   };
+
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
@@ -252,9 +274,17 @@ const Slider = ({ scrol, isFirstEntry }) => {
             <ReactPlayer
               height="100%"
               width="auto"
-              url={slides[activeNumb].video}
+              // url={slides[activeNumb].video}
+              url={video}
               playing={playVideo}
               muted={true}
+              onProgress={({ playedSeconds, loadedSeconds }) => {
+                // console.log(playedSeconds, loadedSeconds);
+                if (playedSeconds > vidSegments[currentSegment]) {
+                  setPlayVideo(false);
+                }
+                // setActiveNumb(activeNumb+1)
+              }}
               onReady={() => {
                 setPlayVideo(true);
               }}
@@ -274,7 +304,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
             <Typography
               key={index}
               className={
-                index <= activeNumb
+                index <= currentSegment
                   ? `${classes.number} ${classes.activeNumber}`
                   : classes.number
               }

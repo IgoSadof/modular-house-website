@@ -45,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
   header: {
     fontSize: "72px",
     fontWeight: "600",
-    width: "540px",
-    lineHeight: "85px",
+    width: "53%",
+    lineHeight: "1.15",
     letterSpacing: "0.03em",
     marginLeft: "auto",
     color:'#4F4F4F',

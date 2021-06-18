@@ -12,6 +12,7 @@ import Fade from "@material-ui/core/Fade";
 import SquareButton from "./buttons/SquareButton";
 import RegularButton from "./buttons/RegularButton";
 import ClearIcon from "@material-ui/icons/Clear";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 const useStyles = makeStyles((theme) => ({
   Block: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     // position: "relative",
+    height:'100%',
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -81,7 +83,17 @@ const useStyles = makeStyles((theme) => ({
     color: "#4F4F4F",
   },
   messageField: {
-    marginTop: "50px",
+    // marginTop: "50px",
+    backgroundColor: "#D1D1D1",
+    border:'none',
+    borderBottom:'1px solid #4F4F4F',
+    marginTop: "10px",
+    fontSize: '18px',
+    '&:focus':{
+      outline: 'none',
+    }
+    // fontFamily:'Ubuntu',
+
   },
   modal: {
     display: "flex",
@@ -130,7 +142,9 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
     <Box className={classes.formBox}>
       <Box className={classes.formHeader}>
         {title ? (
-          <Typography variant="subtitle1" className={classes.title}>{title}</Typography>
+          <Typography variant="subtitle1" className={classes.title}>
+            {title}
+          </Typography>
         ) : null}
         {subtitle ? (
           <Typography variant="body1" className={classes.subtitle}>
@@ -174,7 +188,14 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
               </Typography>
               <div>*</div>
             </Box>
-            <TextField className={classes.messageField} id="standard-basic" />
+            {/* <TextField className={classes.messageField} id="standard-basic" /> */}
+            <TextareaAutosize
+              rowsMin={3}
+              className={classes.messageField}
+
+              // aria-label="empty textarea"
+              // placeholder="Empty"
+            />
           </Box>
         ) : null}
 
@@ -207,7 +228,9 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
               <Typography>
                 СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ
               </Typography>
-              <Typography variant="body1">Никто ни за что ответственность не несет</Typography>
+              <Typography variant="body1">
+                Никто ни за что ответственность не несет
+              </Typography>
               <Box className={classes.buttonBoxLeft}>
                 <RegularButton variant="outlined" click={handleClose}>
                   ОК

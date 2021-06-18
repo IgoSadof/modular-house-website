@@ -34,7 +34,7 @@ const MainPage = () => {
   const param = { scrol, isFirstEntry };
   const classes = useStyles(param);
   const handleScroll = (e) => {
-    if (scrol >= 30) {
+    if (scrol >= 4) {
       localStorage.setItem("isFirstEntry", false);
       setIsFirstEntry(false);
     }
@@ -42,7 +42,7 @@ const MainPage = () => {
     if (e.nativeEvent.wheelDelta > 0) {
       scrol <= 0 ? setScrol(0) : setScrol((state) => state - 1);
     } else if (e.nativeEvent.wheelDelta < 0) {
-      scrol > 40 ? setScrol(40) : setScrol((state) => state + 1);
+      scrol > 4 ? setScrol(4) : setScrol((state) => state + 1);
     } else {
       setScrol((state) => state + 1);
     }
