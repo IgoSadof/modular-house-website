@@ -10,7 +10,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import SendForm from "../../components/SendForm";
-import MySlider from "../../components/Slider";
 
 import SquareButton from "../../components/buttons/SquareButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -26,6 +25,8 @@ import CalculateTable from "../../components/CalculateTable";
 import Panel from "../../components/Panel";
 import HouseFotosSlider from "../../components/HouseFotosSlider";
 import { houses } from "../../constant/houses";
+import Accordions from "../../components/Accordion";
+import { ImageAspectRatioRounded } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -61,6 +62,11 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     height: "100%",
+    objectFit: "cover",
+  },
+  mainImgSlider: {
+    width: "100%",
+    height: "100vh",
     objectFit: "cover",
   },
   mainImgItem: {
@@ -110,6 +116,10 @@ const useStyles = makeStyles((theme) => ({
     width: "450px",
     display: "flex",
     gap: "40px",
+  },
+  accordionBox: {
+    marginTop: "auto",
+    marginBottom: "auto",
   },
   modelDescFirstColumn: {
     display: "flex",
@@ -203,8 +213,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     bottom: "12%",
   },
-  disable:{
-    color:'#BDBDBD',
+  disable: {
+    color: "#BDBDBD",
   },
   buttons: {
     position: "absolute",
@@ -243,29 +253,16 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     gap: "20px",
   },
-  roomDesc: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "100px",
-  },
-  roomDescArticle: {
-    marginTop: "260px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "40px",
-    width: "285px",
-  },
-  roomDescTitle: {
-    fontSize: "30px",
-  },
-  roomDescList: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    cursor: "pointer",
+  roomsImgBox:{
+    width: "40%",
+    height: "100%",
+    marginLeft: "20px",
+
   },
   roomImg: {
-    marginLeft: "auto",
+    objectFit: "cover",
+    width: "100%",
+    height: "100%",
   },
   BlockCalculation: {
     paddingLeft: "160px",
@@ -330,6 +327,12 @@ const First = () => {
   const [value, setValue] = React.useState(2);
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
+  const [roomsImg,setRoomsImg]=useState(whatWeDoImg2)
+  const handleRoomsImgChange =(img)=>{
+    setRoomsImg(img)
+    console.log(img)
+
+  }
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -369,7 +372,7 @@ const First = () => {
   const listItem = houses[0].img.fotosCategory[category].map((item, index) => {
     return (
       <li className={classes.mainImgItem} key={index}>
-        <img className={classes.mainImg} src={item} alt="img"></img>
+        <img className={classes.mainImgSlider} src={item} alt="img"></img>
       </li>
     );
   });
@@ -591,56 +594,24 @@ const First = () => {
           <Box className={`${classes.Block} ${classes.BlockRooms}`}>
             <span className={classes.line}></span>
             <Box className={classes.roomsList}>
-              <Typography variant="h6">Гостинная</Typography>
-              <Typography variant="h6">Кухня</Typography>
-              <Typography variant="h6">Сан узел</Typography>
-              <Typography variant="h6">Кладовка</Typography>
-              <Typography variant="h6">Фасад</Typography>
-            </Box>
-            <Box className={classes.roomDesc}>
-              <Box className={classes.roomDescArticle}>
-                <Typography variant="caption" className={classes.roomDescTitle}>
-                  ГОСТИННАЯ
-                </Typography>
-                <Typography
-                  variant="body1"
-                  className={classes.roomDescSubtitle}
-                >
-                  Стоимость дома «под ключ», с панорамным остеклением, отделкой
-                  лиственницей, фальцевой кровлей и разводкой коммуникаций
-                  внутри дома составляет 660$ за метр. В полной конфигурации,
-                  дом площадью 50 м. кв. обходится в 33 к$. Домокомплект
-                  привозится на участок и собирается на специально
-                  подготовленном фундаменте в течении двух недель. Отсутствие
-                  затяжного строительства существенно экономит деньги заказчика.
-                </Typography>
-              </Box>
-
-              <Box className={classes.roomDescList}>
-                <Typography variant="body1" className={classes.roomDescItem}>
-                  Ванная
-                </Typography>
-                <Typography variant="body1" className={classes.roomDescItem}>
-                  Общая комната
-                </Typography>
-                <Typography variant="body1" className={classes.roomDescItem}>
-                  Сан узел
-                </Typography>
-                <Typography variant="body1" className={classes.roomDescItem}>
-                  Детская{" "}
-                </Typography>
-                <Typography variant="body1" className={classes.roomDescItem}>
-                  Коридор
-                </Typography>
+              <Typography variant="h6">Экспликация</Typography>
+              <Box className={classes.accordionBox}>
+                <Accordions arr={houses[0].rooms} roomsImg={handleRoomsImgChange} />
               </Box>
             </Box>
-            <img className={classes.roomImg} src={whatWeDoImg2} alt="img"></img>
+            <Box className={classes.roomsImgBox}>
+              <img
+                className={classes.roomImg}
+                src={roomsImg}
+                alt="img"
+              ></img>
+            </Box>
           </Box>
 
           <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
             <span className={classes.line}></span>
             <Box className={classes.calculationPlan}>
-              <Typography variant="h6">Экспликация</Typography>
+              <Typography variant="h6">Смета</Typography>
               <img
                 className={classes.calculationPlanImg}
                 src={plan}

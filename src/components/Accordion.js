@@ -49,7 +49,7 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function Accordions({ arr }) {
+export default function Accordions({ arr,roomsImg }) {
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -59,8 +59,8 @@ export default function Accordions({ arr }) {
     <div>
       {arr.map((item, index) => {
         return (
-            
           <Accordion
+            onClick={roomsImg?()=>roomsImg(item.img):null}
             key={index}
             square
             expanded={expanded === `panel${index + 1}`}
