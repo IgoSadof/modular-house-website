@@ -1,12 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { houses } from "../constant/houses";
 import Box from "@material-ui/core/Box";
-import RegularButton from "./buttons/RegularButton";
+// import RegularButton from "./buttons/RegularButton";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-
+import Radio from "@material-ui/core/Radio";
 const useStyles = makeStyles({
   table: {
     width: "100%",
@@ -62,27 +61,33 @@ const useStyles = makeStyles({
 });
 
 const CalculateTable = ({ houseN }) => {
-  const [price, setPrice] = useState(0);
-  const Checkboxes = {};
-  houses[houseN].options.forEach((item, index) => {
-    Checkboxes[`${item.name}1`] = [false, item.variants[0].price];
-    Checkboxes[`${item.name}2`] = [false, item.variants[1].price];
+  const options = {};
+  houses[houseN].options.forEach((item) => {
+    options[item.name] = item.variants[0].price;
   });
-  const first = useRef("1");
-  const second = useRef("2");
-  const [checkboxesCheck, setCheckboxesCheck] = useState(Checkboxes);
+  
+  const [currentOption, setCheckboxesCheck] = useState(options);
+  const [price, setPrice] = useState(
+    Object.values(currentOption).reduce(
+      (accumulator, currentValue) => +accumulator + +currentValue
+    )
+  );
   const classes = useStyles();
   const handleChangeCheckbox = (event) => {
     setCheckboxesCheck({
-      ...checkboxesCheck,
-      [event.target.name]: [event.target.checked, event.target.value],
+      ...currentOption,
+      [event.target.name]: event.target.value,
     });
-    if (event.target.checked) {
-      setPrice((state) => state + +event.target.value);
-    } else {
-      setPrice((state) => state - +event.target.value);
-    }
+    
   };
+
+  useEffect(()=>{
+    let sum = Object.values(currentOption).reduce(
+      (accumulator, currentValue) => +accumulator + +currentValue
+    );
+    setPrice(sum);
+    
+  },[currentOption])
 
   return (
     <div className={classes.conteiner}>
@@ -93,27 +98,43 @@ const CalculateTable = ({ houseN }) => {
               <td className={`${classes.tableCell} ${classes.tableCellFirst}`}>
                 <Typography variant="h6">{item.name}</Typography>
               </td>
+
               <td className={classes.tableCell} align="left">
                 <FormControlLabel
-                  ref={first}
-                  name={item.name + "1"}
-                  disabled={checkboxesCheck[item.name + "2"][0] ? true : false}
-                  onChange={handleChangeCheckbox}             
+                  name={item.name}
+                  checked={
+                    currentOption[item.name] === item.variants[0].price
+                      ? true
+                      : false
+                  }
+                  onChange={handleChangeCheckbox}
                   value={+item.variants[0].price}
-                  control={<Checkbox color="primary" />}
-                  label={<Typography variant="body1">{item.variants[0].name}</Typography>}
+                  control={<Radio />}
+                  label={
+                    <Typography variant="body1">
+                      {item.variants[0].name}
+                    </Typography>
+                  }
                   labelPlacement="end"
                 />
               </td>
+
               <td className={classes.tableCell} align="left">
                 <FormControlLabel
-                  ref={second}
-                  name={item.name + "2"}
-                  disabled={checkboxesCheck[item.name + "1"][0] ? true : false}
+                  name={item.name}
+                  checked={
+                    currentOption[item.name] === item.variants[1].price
+                      ? true
+                      : false
+                  }
                   onChange={handleChangeCheckbox}
                   value={+item.variants[1].price}
-                  control={<Checkbox color="primary" />}
-                  label={<Typography variant="body1">{item.variants[1].name}</Typography>}
+                  control={<Radio />}
+                  label={
+                    <Typography variant="body1">
+                      {item.variants[1].name}
+                    </Typography>
+                  }
                   labelPlacement="end"
                 />
               </td>
@@ -121,12 +142,7 @@ const CalculateTable = ({ houseN }) => {
                 className={`${classes.tableCell} ${classes.tableCellLast}`}
                 align="right"
               >
-                +$
-                {checkboxesCheck[item.name + "1"][0]
-                  ? checkboxesCheck[item.name + "1"][1]
-                  : checkboxesCheck[item.name + "2"][0]
-                  ? checkboxesCheck[item.name + "2"][1]
-                  : 0}
+                +${currentOption[item.name]}
               </td>
             </tr>
           ))}
@@ -135,8 +151,12 @@ const CalculateTable = ({ houseN }) => {
 
       <Box className={classes.tableResult}>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
-        <Typography variant='h6' className={classes.textPrice}>Иотого</Typography>
-        <Typography variant='caption' className={classes.textPriceValue}>$ {price}</Typography>
+        <Typography variant="h6" className={classes.textPrice}>
+          Иотого
+        </Typography>
+        <Typography variant="caption" className={classes.textPriceValue}>
+          $ {price}
+        </Typography>
       </Box>
     </div>
   );

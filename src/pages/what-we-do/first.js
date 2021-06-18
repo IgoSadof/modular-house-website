@@ -282,7 +282,7 @@ const useStyles = makeStyles((theme) => ({
     gap: "40px",
     flexDirection: "column",
     marginLeft: "auto",
-    width: "350px",
+    width: "30%",
     // height: "500px",
     // border: "1px solid",
   },

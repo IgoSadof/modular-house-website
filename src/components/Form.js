@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     // position: "relative",
-    height:'100%',
+    height: param=>param.buttonAbs?'100%':'auto',
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
   messageField: {
     // marginTop: "50px",
-    backgroundColor: "#D1D1D1",
+    backgroundColor: "transparent",
     border:'none',
     borderBottom:'1px solid #4F4F4F',
     marginTop: "10px",
@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
 const Form = ({ title, email, text, subtitle, buttonAbs }) => {
   const [button, setButton] = useState(buttonAbs);
   const [open, setOpen] = React.useState(false);
-  const param = { button };
+  const param = { button,buttonAbs };
   const classes = useStyles(param);
   // const handleClick = () => {
 
