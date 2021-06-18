@@ -65,7 +65,7 @@ const CalculateTable = ({ houseN }) => {
   houses[houseN].options.forEach((item) => {
     options[item.name] = item.variants[0].price;
   });
-  
+
   const [currentOption, setCheckboxesCheck] = useState(options);
   const [price, setPrice] = useState(
     Object.values(currentOption).reduce(
@@ -78,16 +78,14 @@ const CalculateTable = ({ houseN }) => {
       ...currentOption,
       [event.target.name]: event.target.value,
     });
-    
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     let sum = Object.values(currentOption).reduce(
       (accumulator, currentValue) => +accumulator + +currentValue
     );
     setPrice(sum);
-    
-  },[currentOption])
+  }, [currentOption]);
 
   return (
     <div className={classes.conteiner}>
@@ -109,7 +107,7 @@ const CalculateTable = ({ houseN }) => {
                   }
                   onChange={handleChangeCheckbox}
                   value={+item.variants[0].price}
-                  control={<Radio />}
+                  control={<Radio color="primary"/>}
                   label={
                     <Typography variant="body1">
                       {item.variants[0].name}
@@ -121,6 +119,7 @@ const CalculateTable = ({ houseN }) => {
 
               <td className={classes.tableCell} align="left">
                 <FormControlLabel
+
                   name={item.name}
                   checked={
                     currentOption[item.name] === item.variants[1].price
@@ -129,7 +128,7 @@ const CalculateTable = ({ houseN }) => {
                   }
                   onChange={handleChangeCheckbox}
                   value={+item.variants[1].price}
-                  control={<Radio />}
+                  control={<Radio color="primary"/>}
                   label={
                     <Typography variant="body1">
                       {item.variants[1].name}
