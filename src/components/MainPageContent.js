@@ -16,7 +16,7 @@ import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
 import expodom from "../assets/images/expodom_img.png";
 import ReviewsSlider from "../components/ReviewsSlider";
-import Fade from "@material-ui/core/Fade";
+import Fade from "../components/animations/Fade";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -197,17 +197,32 @@ const MainPageContent = () => {
   const [review, setReview] = useState(0);
   const [answeGroup, setAnsweGroup] = useState(0);
   const [reviewVideo, setReviewVideo] = useState(reviews.length - 1);
+  const [opacity, setOpasity] = useState(true);
 
   const handleClickLeft = () => {
-    setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
-    setReviewVideo((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
-    myRef.current.slickNext();
+    setOpasity(false);
+    setTimeout(() => {
+      setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
+      setReviewVideo((state) =>
+        state + 1 > reviews.length - 1 ? 0 : state + 1
+      );
+      myRef.current.slickNext();
+      setOpasity(true);
+    }, 500);
   };
+
   const handleClickRight = () => {
-    setReview((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
-    setReviewVideo((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
-    myRef.current.slickPrev();
+    setOpasity(false);
+    setTimeout(() => {
+      setReview((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
+      setReviewVideo((state) =>
+        state - 1 < 0 ? reviews.length - 1 : state - 1
+      );
+      myRef.current.slickPrev();
+      setOpasity(true);
+    }, 500);
   };
+
   const handleReviewCange = (e) => {
     // console.log(e.target.textContent)
     e.target.textContent === "5-8" ? setAnsweGroup(1) : setAnsweGroup(0);
@@ -254,20 +269,12 @@ const MainPageContent = () => {
           </Box>
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
-            <SquareButton
-              variant={"outlined"}
-              click={handleClickLeft}
-              less
-            />
-            <SquareButton
-              click={handleClickRight}
-              great
-              variant={"outlined"}
-            />
+            <SquareButton variant={"outlined"} click={handleClickLeft} less />
+            <SquareButton click={handleClickRight} great variant={"outlined"} />
           </Box>
         </Box>
         <Box className={classes.mediaBlock} onChange={handleReviewCange}>
-          <Fade in={true} timeout={500} style={{ transitionDelay: "500ms" }}>
+          <Fade inProp={opacity}>
             <Box className={classes.reviewVideoBox}>
               <img
                 className={classes.reviewVideo}
@@ -298,21 +305,6 @@ const MainPageContent = () => {
             ОТВЕТЫ
           </Typography>
           <Box className={classes.ButtonGroup}>
-            {/* {!matches[1920] ? (
-              <RegularButton variant="outlined" click={handleReviewCange}>
-                1-4
-              </RegularButton>
-            ) : null}
-            {!matches[1920] ? (
-              <RegularButton
-                leftNone
-                variant="outlined"
-                click={handleReviewCange}
-              >
-                5-8
-              </RegularButton>
-            ) : null} */}
-
             <RegularButton variant="outlined" click={handleReviewCange}>
               1-4
             </RegularButton>

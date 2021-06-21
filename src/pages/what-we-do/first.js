@@ -24,7 +24,8 @@ import Panel from "../../components/Panel";
 import HouseFotosSlider from "../../components/HouseFotosSlider";
 import { houses } from "../../constant/houses";
 import Accordions from "../../components/Accordion";
-import { ImageAspectRatioRounded } from "@material-ui/icons";
+
+
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
