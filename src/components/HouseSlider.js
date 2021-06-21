@@ -56,10 +56,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     fontSize: "48px",
   },
+  
   name: {
     fontSize: "48px",
   },
   properties: {
+    marginTop:'40px',
     display: "flex",
     flexDirection: "column",
 
@@ -72,8 +74,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const HouseSlider = () => {
-  // const [img,setImg] = useState('')
-  // const param = {img}
   const classes = useStyles();
   const settings = {
     infinite: true,

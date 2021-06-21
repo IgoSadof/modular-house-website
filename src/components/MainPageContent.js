@@ -73,14 +73,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   commentBox: {
-    // marginTop: "115px",
     width: "260px",
     display: "flex",
     flexDirection: "column",
     gap: "20px",
   },
   buttons: {
-    // marginTop: "125px",
     display: "flex",
     gap: "40px",
   },
@@ -89,20 +87,14 @@ const useStyles = makeStyles((theme) => ({
     width: "165px",
   },
   message: {
-    // marginTop: "120px",
     width: "260px",
   },
   mediaBlock: {
-    // width: "100%",
     display: "flex",
     marginLeft: "auto",
-    // border: "1px solid",
-    // width: "560px",
-    // gap: "20px",
   },
   mediaBlock_unborder: {
     border: "none",
-    // border:"1px solid"
   },
   formBox: {
     width: "260px",
@@ -142,7 +134,6 @@ const useStyles = makeStyles((theme) => ({
   contactsBoxes: {
     display: "flex",
     gap: "40px",
-    // flexDirection: "column",
   },
   infoBox: {
     display: "flex",
@@ -180,7 +171,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    // border: "1px solid",
   },
   imagesBoxes: {
     width: "360px",
@@ -267,11 +257,11 @@ const MainPageContent = () => {
             <SquareButton
               variant={"outlined"}
               click={handleClickLeft}
-              icon={<ArrowBackIosIcon />}
+              less
             />
             <SquareButton
               click={handleClickRight}
-              icon={<ArrowForwardIosIcon />}
+              great
               variant={"outlined"}
             />
           </Box>

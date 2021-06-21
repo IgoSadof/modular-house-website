@@ -12,8 +12,6 @@ import Button from "@material-ui/core/Button";
 import SendForm from "../../components/SendForm";
 
 import SquareButton from "../../components/buttons/SquareButton";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 import whatWeDoImg2 from "../../assets/images/w-we-do-img2.png";
 import whatWeDoImg3 from "../../assets/images/w-we-do-img3.png";
@@ -579,12 +577,12 @@ const First = () => {
                 <SquareButton
                   variant={"contained"}
                   click={handleClickLeft}
-                  icon={<ArrowBackIosIcon />}
+                  less
                 />
                 <SquareButton
                   variant={"contained"}
                   click={handleClickRight}
-                  icon={<ArrowForwardIosIcon />}
+                  great
                 />
               </Box>
               <Panel ref={categoryRef} change={handleChangePanel} />
