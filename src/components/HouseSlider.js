@@ -1,11 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
 import { houses } from "../constant/houses";
 import Typography from "@material-ui/core/Typography";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,52 +15,65 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginTop: "125px",
     marginBottom: "100px",
-
   },
-  list:{
-    listStyle:"none",
-    padding:"0",
-    margin:"0",
+  list: {
+    listStyle: "none",
+    padding: "0",
+    margin: "0",
   },
-  conteiner:{
-    border:"1px solid",
-    marginRight:"20px",
+  conteiner: {
+    border: "1px solid",
+    marginRight: "20px",
+    cursor: "pointer",
   },
-  imgBox:{
-    width:"100%",
-    height:"400px",
+  imgBox: {
+    width: "100%",
+    height: "400px",
+    overflow:'hidden',
+    "&:hover $img":{
+      transform: "scale(1.1)",
+    },
+    "&:focus $img":{
+      transform: "scale(1.1)",
+    },
   },
-  img:{
-    width:"100%",
-    height:"100%",
-    objectFit: "cover",
+  img: {
+    width: "100%",
+    height: "100%",
+    // objectFit: "cover",
+    transition: "1s",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    transition: "all .5s",
   },
-  description:{
-    padding:"35px",
+  description: {
+    padding: "35px",
   },
-  title:{
+  title: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems:"center",
-    width:"100%",
-    fontSize:"48px",
+    alignItems: "center",
+    width: "100%",
+    fontSize: "48px",
   },
-  name:{
-    fontSize:"48px",
+  name: {
+    fontSize: "48px",
   },
   properties: {
     display: "flex",
-    flexDirection:"column",
-    
-    width:"100%",
+    flexDirection: "column",
+
+    width: "100%",
   },
   property: {
     display: "flex",
     justifyContent: "space-between",
-    width:"70%"
+    width: "70%",
   },
 }));
 const HouseSlider = () => {
+  // const [img,setImg] = useState('')
+  // const param = {img}
   const classes = useStyles();
   const settings = {
     infinite: true,
@@ -105,46 +118,56 @@ const Slide = ({
   effectiveAreaText,
   baseModuleAreaText,
 }) => {
+
   const classes = useStyles();
   return (
     <li className={classes.conteiner} key={key}>
-        <Box className={classes.imgBox}>
-          <img className={classes.img} src={img} alt="img" />
+      <Box className={classes.imgBox}>
+        <Box className={classes.img} style={{backgroundImage: `url(${img})`}}>
         </Box>
-        <Box className={classes.description}>
-          <Box className={classes.title}>
-            <Typography variant='h1' color='textSecondary' className={classes.name}>{name}</Typography>
-            <Typography variant='h5'  className={classes.price}>{price}</Typography>
-          </Box>
-          <Box className={classes.subtitle}>
-            <Box className={classes.properties}>
-              <Box className={classes.property}>
-                <Typography variant='body1' className={classes.propertyName}>
-                  {totalAreaText}
-                </Typography>
-                <Typography variant='h6' className={classes.propertyValue}>
-                  {totalArea}
-                </Typography>
-              </Box>
-              <Box className={classes.property}>
-                <Typography variant='body1'className={classes.propertyName}>
-                  {effectiveAreaText}
-                </Typography>
-                <Typography variant='h6' className={classes.propertyValue}>
-                  {effectiveArea}
-                </Typography>
-              </Box>
-              <Box className={classes.property}>
-                <Typography variant='body1' className={classes.propertyName}>
-                  {baseModuleAreaText}
-                </Typography>
-                <Typography variant='h6' className={classes.propertyValue}>
-                  {baseModuleArea}
-                </Typography>
-              </Box>
+      </Box>
+      <Box className={classes.description}>
+        <Box className={classes.title}>
+          <Typography
+            variant="h1"
+            color="textSecondary"
+            className={classes.name}
+          >
+            {name}
+          </Typography>
+          <Typography variant="h5" className={classes.price}>
+            {price}
+          </Typography>
+        </Box>
+        <Box className={classes.subtitle}>
+          <Box className={classes.properties}>
+            <Box className={classes.property}>
+              <Typography variant="body1" className={classes.propertyName}>
+                {totalAreaText}
+              </Typography>
+              <Typography variant="h6" className={classes.propertyValue}>
+                {totalArea}
+              </Typography>
+            </Box>
+            <Box className={classes.property}>
+              <Typography variant="body1" className={classes.propertyName}>
+                {effectiveAreaText}
+              </Typography>
+              <Typography variant="h6" className={classes.propertyValue}>
+                {effectiveArea}
+              </Typography>
+            </Box>
+            <Box className={classes.property}>
+              <Typography variant="body1" className={classes.propertyName}>
+                {baseModuleAreaText}
+              </Typography>
+              <Typography variant="h6" className={classes.propertyValue}>
+                {baseModuleArea}
+              </Typography>
             </Box>
           </Box>
         </Box>
+      </Box>
     </li>
   );
 };
