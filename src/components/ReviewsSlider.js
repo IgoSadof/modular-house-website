@@ -45,7 +45,7 @@ const ReviewsSlider = ({myRef}) => {
   const settings = {
     infinite: true,
     arrows: false,
-    speed: 500,
+    speed: 300,
     slidesToShow: 2,
     slidesToScroll: 1,
     swipeToSlide: false,

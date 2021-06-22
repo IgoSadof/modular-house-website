@@ -5,6 +5,7 @@ import img3 from "../assets/images/reviews/img3.png";
 // const lang = `RU`;
 const reviews = [
   {
+    id:1,
     name: `Коля`,
     place: `Жлобин`,
     year: `2020`,
@@ -17,6 +18,7 @@ const reviews = [
     img: img1,
   },
   {
+    id:2,
     name: `Вася`,
     place: `Минск`,
     year: `2020`,
@@ -30,6 +32,7 @@ const reviews = [
     img: img2,
   },
   {
+    id:3,
     name: `Анатолий`,
     place: `Гродно`,
     year: `2021`,

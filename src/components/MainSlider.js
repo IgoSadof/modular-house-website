@@ -1,3 +1,4 @@
+import "./global.css";
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -6,13 +7,14 @@ import Box from "@material-ui/core/Box";
 import ReactPlayer from "react-player";
 import slides from "../constant/slides";
 // import gif from "../asssets/images/gif.gif";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import numbers from "../constant/numbers";
 // import axios from "axios";
 // import findDataFromCategory from "../utils/findDataFromCategory";
 import SendForm from "./SendForm";
 import RegularButton from "./buttons/RegularButton";
 import video from "../assets/video/video.webm";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,18 +97,27 @@ const useStyles = makeStyles((theme) => ({
     height: "1px",
     backgroundColor: "black",
   },
-  article: {
-    display: "flex",
+  articleBox: {
     position: "relative",
     zIndex: 1,
-    gap: "40px",
-    width: "30%",
-    flexDirection: "column",
+    width: "35%",
+    height: '40vh',
     marginRight: "auto",
+    marginLeft: "100px",
+  },
+  article: {
+    display: "flex",
+    position: "absolute",
+    top:'0',
+    left:'0',
+    right:'0',
+    zIndex: 1,
+    gap: "40px",
+    flexDirection: "column",
   },
   header: {},
   text: {
-    width: "250px",
+    width: "70%",
   },
 
   bottomLine: {
@@ -164,6 +175,8 @@ const Slider = ({ scrol, isFirstEntry }) => {
   const [playVideo, setPlayVideo] = useState(true);
   const param = { scrol, lineLength };
   const classes = useStyles(param);
+  const [opacity, setOpasity] = useState(true);
+
   // const [resources, setResources] = useState(null);
   // const [resourcestv, setResourcestv] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -214,18 +227,18 @@ const Slider = ({ scrol, isFirstEntry }) => {
     // if(currentSegment<=activeNumb){
     //   setCurrentSegment(activeNumb)
     // }
-    
+
     if (numb === 0) {
       numb = +e.target.textContent[1];
     }
-    
-    if (numb > currentSegment+1) {
+
+    if (numb > currentSegment + 1) {
       setPlayVideo(true);
       setLineLength(() => (numb === 1 ? 265 : 265 + 80 * (numb - 1)));
-      setActiveNumb(numb - 1);
+
+      // setActiveNumb(numb - 1);
       setCurrentSegment(numb - 1);
     }
-    console.log(numb,currentSegment+1)
     setActiveNumb(numb - 1);
   };
 
@@ -246,44 +259,61 @@ const Slider = ({ scrol, isFirstEntry }) => {
           </RegularButton>
         </Box>
         <Box className={classes.midleBlock}>
-          <span className={classes.midleLine}></span>
+         
+          <TransitionGroup className={classes.articleBox}>
+            <CSSTransition
+              key={slides[activeNumb].id}
+              in={opacity}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+            >
+              <Box className={classes.article}>
+                <Typography
+                  className={classes.header}
+                  variant="h1"
+                  component="h1"
+                >
+                  {fields.headers
+                    ? fields.headers[activeNumb].value
+                    : slides[activeNumb].title}
+                </Typography>
+                <Box>
+                  {slides[activeNumb].image ? (
+                    <img
+                      className={classes.logo}
+                      src={slides[activeNumb].image}
+                      alt="icon"
+                    ></img>
+                  ) : null}
+                </Box>
+                <Typography
+                  className={classes.text}
+                  variant="body1"
+                  component="h6"
+                >
+                  {fields.subtitles
+                    ? fields.subtitles[activeNumb].value
+                    : slides[activeNumb].subtitle}
+                </Typography>
 
-          <Box className={classes.article}>
-            <Typography className={classes.header} variant="h1" component="h1">
-              {fields.headers
-                ? fields.headers[activeNumb].value
-                : slides[activeNumb].title}
-            </Typography>
-            <Box>
-              {slides[activeNumb].image ? (
-                <img
-                  className={classes.logo}
-                  src={slides[activeNumb].image}
-                  alt="icon"
-                ></img>
-              ) : null}
-            </Box>
-            <Typography className={classes.text} variant="body1" component="h6">
-              {fields.subtitles
-                ? fields.subtitles[activeNumb].value
-                : slides[activeNumb].subtitle}
-            </Typography>
-          </Box>
+              </Box>
+            </CSSTransition>
+          </TransitionGroup>
+
+
           <Box className={classes.mainVideoBox}>
             <div className={classes.fon}></div>
             <ReactPlayer
               height="100%"
               width="auto"
-              // url={slides[activeNumb].video}
               url={video}
               playing={playVideo}
               muted={true}
               onProgress={({ playedSeconds, loadedSeconds }) => {
-                // console.log(playedSeconds, loadedSeconds);
                 if (playedSeconds > vidSegments[currentSegment]) {
                   setPlayVideo(false);
                 }
-                // setActiveNumb(activeNumb+1)
               }}
               onReady={() => {
                 setPlayVideo(true);

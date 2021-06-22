@@ -1,3 +1,4 @@
+import "./global.css";
 import React, { useState, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -6,11 +7,8 @@ import Button from "@material-ui/core/Button";
 import HouseSlider from "./HouseSlider";
 import Accordions from "./Accordion";
 import SquareButton from "./buttons/SquareButton";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import detail from "../constant/detail";
 import answers from "../constant/answers";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import reviews from "../constant/reviews";
 import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
@@ -19,6 +17,8 @@ import ReviewsSlider from "../components/ReviewsSlider";
 import Fade from "../components/animations/Fade";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   BlockColumn: {
+    width:'30%',
     display: "flex",
     gap: "20px",
     justifyContent: "space-between",
@@ -72,8 +73,16 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
   },
 
+  commentBoxWrap: {
+    position: "relative",
+    width: "100%",
+    height:'30%',
+    gap: "20px",
+  },
   commentBox: {
-    width: "260px",
+    position: "absolute",
+    top:'0',
+    left:'0',
     display: "flex",
     flexDirection: "column",
     gap: "20px",
@@ -87,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
     width: "165px",
   },
   message: {
-    width: "260px",
+    // width: "260px",
   },
   mediaBlock: {
     display: "flex",
@@ -158,16 +167,21 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
   },
   reviewVideoBox: {
-    width: "270px",
+    position: "relative",
+    width: "275px",
     height: "500px",
-    transition: "0.5s",
   },
   reviewVideo: {
-    width: "270px",
+    position: "absolute",
+    top: "0",
+    left: "0",
+    right: "0",
+    width: "100%",
     height: "100%",
+    objectFit: "cover",
   },
   secondBlock: {
-    width: "100%",
+    width: "57%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -200,27 +214,15 @@ const MainPageContent = () => {
   const [opacity, setOpasity] = useState(true);
 
   const handleClickLeft = () => {
-    setOpasity(false);
-    setTimeout(() => {
-      setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
-      setReviewVideo((state) =>
-        state + 1 > reviews.length - 1 ? 0 : state + 1
-      );
-      myRef.current.slickNext();
-      setOpasity(true);
-    }, 500);
+    setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
+    setReviewVideo((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
+    myRef.current.slickNext();
   };
 
   const handleClickRight = () => {
-    setOpasity(false);
-    setTimeout(() => {
-      setReview((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
-      setReviewVideo((state) =>
-        state - 1 < 0 ? reviews.length - 1 : state - 1
-      );
-      myRef.current.slickPrev();
-      setOpasity(true);
-    }, 500);
+    setReview((state) => (state + 1 > reviews.length - 1 ? 0 : state + 1));
+    setReviewVideo((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
+    myRef.current.slickPrev();
   };
 
   const handleReviewCange = (e) => {
@@ -250,23 +252,36 @@ const MainPageContent = () => {
           <Accordions arr={detail} />
         </Box>
       </Box>
+
       {/* ОТЗЫВЫ */}
 
       <Box className={classes.Block}>
         <span className={classes.line}></span>
         <Box className={classes.BlockColumn}>
           <Typography variant="h4">ОТЗЫВЫ</Typography>
-          <Box className={classes.commentBox}>
-            <Typography
-              className={classes.name}
-            >{`${reviews[review].name} ${reviews[review].place}`}</Typography>
-            <Typography
-              className={classes.place}
-            >{`${reviews[review].place}, ${reviews[review].year}`}</Typography>
-            <Typography variant="body1" className={classes.message}>
-              {reviews[review].text}
-            </Typography>
-          </Box>
+
+          <TransitionGroup className={classes.commentBoxWrap}>
+            <CSSTransition
+              key={reviews[reviewVideo].id}
+              in={opacity}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+            >
+              <Box className={classes.commentBox}>
+                <Typography
+                  className={classes.name}
+                >{`${reviews[review].name} ${reviews[review].place}`}</Typography>
+                <Typography
+                  className={classes.place}
+                >{`${reviews[review].place}, ${reviews[review].year}`}</Typography>
+                <Typography variant="body1" className={classes.message}>
+                  {reviews[review].text}
+                </Typography>
+              </Box>
+            </CSSTransition>
+          </TransitionGroup>
+
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
             <SquareButton variant={"outlined"} click={handleClickLeft} less />
@@ -274,15 +289,26 @@ const MainPageContent = () => {
           </Box>
         </Box>
         <Box className={classes.mediaBlock} onChange={handleReviewCange}>
-          <Fade inProp={opacity}>
-            <Box className={classes.reviewVideoBox}>
+          {/* <TransitionGroup className="card-container"> */}
+
+          <TransitionGroup className={classes.reviewVideoBox}>
+            <CSSTransition
+              key={reviews[reviewVideo].id}
+              in={opacity}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+            >
               <img
                 className={classes.reviewVideo}
                 src={reviews[reviewVideo].video}
                 alt="img"
               ></img>
-            </Box>
-          </Fade>
+            </CSSTransition>
+          </TransitionGroup>
+
+          {/* </TransitionGroup> */}
+
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
               <Typography variant="h4">
