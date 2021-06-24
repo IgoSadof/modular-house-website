@@ -5,7 +5,6 @@ import Footer from "../../components/Footer";
 import Menu from "../../components/Menu";
 import modularHouseTheme from "../../config/modularHouseTheme";
 import FormBlock from "../../components/FormBlock";
-import what_we_do_img1 from "../../assets/images/w-we-do-img1.png";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -24,8 +23,7 @@ import Panel from "../../components/Panel";
 import HouseFotosSlider from "../../components/HouseFotosSlider";
 import { houses } from "../../constant/houses";
 import Accordions from "../../components/Accordion";
-
-
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -113,6 +111,7 @@ const useStyles = makeStyles((theme) => ({
   modelDesc: {
     position: "relative",
     width: "450px",
+    height: "50vh",
     display: "flex",
     gap: "40px",
   },
@@ -124,17 +123,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    gap: "70px",
+    // gap: "70px",
     justifyContent: "space-between",
   },
   modelDescSecondColumn: {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    gap: "70px",
+    // gap: "70px",
     justifyContent: "space-between",
   },
   modelDescItemTitle: {
+    listStyle: "none",
     // width: "100px",
     // paddingRight:"40px",
   },
@@ -152,17 +152,22 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     backgroundColor: "#BDBDBD",
   },
+  modelDescLineButton: {
+    position: "absolute",
+    top: (param) => `${param.pilldistance}%`,
+    transition: "0.5s",
+    transform: `translate(-50%, 0%)`,
+  },
   modelDescLineActive: {
     position: "absolute",
     zIndex: "2",
     left: "50%",
     width: "1px",
-    height: (param) => param.pilldistance,
+    height: (param) => `${param.pilldistance}%`,
     backgroundColor: "black",
     transition: "0.5s",
   },
   modelDescLineMinus: {
-    transform: (param) => `translate(-50%, ${param.pilldistance}px)`,
     width: "30px",
     height: "30px",
     border: "1px solid",
@@ -180,7 +185,6 @@ const useStyles = makeStyles((theme) => ({
     top: "-8%",
   },
   modelDescLineMinusCircle: {
-    transform: (param) => `translate(-50%, ${param.pilldistance}px)`,
     width: "30px",
     height: "30px",
     border: "1px solid",
@@ -194,7 +198,6 @@ const useStyles = makeStyles((theme) => ({
     transition: "0.5s",
   },
   modelDescLinePlus: {
-    transform: (param) => `translate(-50%, ${param.pilldistance - 1}px)`,
     width: "30px",
     height: "30px",
     border: "1px solid",
@@ -230,7 +233,6 @@ const useStyles = makeStyles((theme) => ({
     right: "0",
     bottom: "0",
     width: "620px",
-    // height: "75px",
     backgroundColor: "#D1D1D1",
   },
   line: {
@@ -248,17 +250,21 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   roomsList: {
+    width: "50%",
     display: "flex",
     flexDirection: "column",
     gap: "20px",
   },
-  roomsImgBox:{
+  roomsImgBox: {
+    position: "relative",
     width: "40%",
-    height: "100%",
+    height: "90vh",
     marginLeft: "20px",
-
   },
   roomImg: {
+    position: "absolute",
+    top: "0",
+    left: "0",
     objectFit: "cover",
     width: "100%",
     height: "100%",
@@ -271,7 +277,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     width: "50%",
-    // gap:"160px",
   },
   calculation: {
     display: "flex",
@@ -279,8 +284,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginLeft: "auto",
     width: "30%",
-    // height: "500px",
-    // border: "1px solid",
   },
   calculationItem: {
     width: "100%",
@@ -319,19 +322,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const First = () => {
-  const [pilldistance, setPilldistance] = useState(110);
+  const [houseNumber, setHouseNumber] = useState(0);
+  const [pilldistance, setPilldistance] = useState(20);
+  const [pillClick, setPillClick] = useState(0);
   const param = { pilldistance };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [value, setValue] = React.useState(2);
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
-  const [roomsImg,setRoomsImg]=useState(whatWeDoImg2)
-  const handleRoomsImgChange =(img)=>{
-    setRoomsImg(img)
-    console.log(img)
-
-  }
+  const [roomsImg, setRoomsImg] = useState(whatWeDoImg2);
+  const [roomsImgIndex, setRoomsImgIndex] = useState(0);
+  const [opacity, setOpasity] = useState(true);
+  const handleRoomsImgChange = (img, index) => {
+    setRoomsImg(img);
+    setRoomsImgIndex(index);
+  };
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -340,11 +345,15 @@ const First = () => {
     setIsFormOpen((state) => !state);
   };
   const handlePlusClick = (e) => {
-    if (pilldistance + 180 <= 470) setPilldistance((state) => state + 180);
+    if (pilldistance + 40 <= 120) {
+      setPilldistance((state) => state + 40);
+      setPillClick((state) => state + 1);
+    }
   };
   const handleMinusClick = (e) => {
-    if (pilldistance - 180 >= 110) {
-      setPilldistance((state) => state - 180);
+    if (pilldistance - 40 >= 10) {
+      setPilldistance((state) => state - 40);
+      setPillClick((state) => state - 1);
     }
   };
 
@@ -368,13 +377,15 @@ const First = () => {
     }
   };
 
-  const listItem = houses[0].img.fotosCategory[category].map((item, index) => {
-    return (
-      <li className={classes.mainImgItem} key={index}>
-        <img className={classes.mainImgSlider} src={item} alt="img"></img>
-      </li>
-    );
-  });
+  const listItem = houses[houseNumber].img.fotosCategory[category].map(
+    (item, index) => {
+      return (
+        <li className={classes.mainImgItem} key={index}>
+          <img className={classes.mainImgSlider} src={item} alt="img"></img>
+        </li>
+      );
+    }
+  );
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
@@ -392,7 +403,7 @@ const First = () => {
             <Box className={classes.mainImgBox}>
               <img
                 className={classes.mainImg}
-                src={what_we_do_img1}
+                src={houses[houseNumber].img.main}
                 alt="img"
               ></img>
             </Box>
@@ -403,55 +414,41 @@ const First = () => {
                   color="textSecondary"
                   className={classes.mainBlockTitle}
                 >
-                  SQUARE HOUSE
+                  {houses[houseNumber].name}
                 </Typography>
               </Box>
               <Box className={classes.mainBlockSubtitleBox}>
-                {/* <Box className={classes.mainBlockList}> */}
                 <ul className={classes.mainBlockList}>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="body1">01 Модуль</Typography>
-                  </li>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="body1">02 Модуль</Typography>
-                  </li>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="body1">03 Модуль</Typography>
-                  </li>
+                  {houses[houseNumber].modules.map((item, index) => {
+                    return (
+                      <li className={classes.mainBlockItem} key={index}>
+                        <Typography variant="body1">
+                          0{index + 1} Модуль
+                        </Typography>
+                      </li>
+                    );
+                  })}
                 </ul>
-                {/* </Box> */}
-                {/* <Box className={classes.mainBlockList}> */}
                 <ul className={classes.mainBlockList}>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="body1">Базовый модуль</Typography>
-                  </li>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="body1">Жилой модуль</Typography>
-                  </li>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="body1">Гараж</Typography>
-                  </li>
+                  {houses[houseNumber].modules.map((item, index) => {
+                    return (
+                      <li className={classes.mainBlockItem} key={index}>
+                        <Typography variant="body1">{item.name}</Typography>
+                      </li>
+                    );
+                  })}
                 </ul>
-                {/* </Box> */}
-                {/* <Box className={classes.mainBlockList}> */}
                 <ul className={classes.mainBlockList}>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="subtitle1">
-                      $25 000 / 45 дней
-                    </Typography>
-                  </li>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="subtitle1">
-                      $68 000 / 20 дней
-                    </Typography>
-                  </li>
-                  <li className={classes.mainBlockItem}>
-                    <Typography variant="subtitle1">
-                      $45 000 / 20 дней
-                    </Typography>
-                  </li>
+                  {houses[houseNumber].modules.map((item, index) => {
+                    return (
+                      <li className={classes.mainBlockItem} key={index}>
+                        <Typography variant="subtitle1">
+                          ${item.price} / {item.term} дней
+                        </Typography>
+                      </li>
+                    );
+                  })}
                 </ul>
-                {/* </Box> */}
               </Box>
             </Box>
           </Box>
@@ -459,65 +456,41 @@ const First = () => {
           <Box className={classes.modelBlock}>
             <Box className={classes.modelDesc}>
               <Box className={classes.modelDescFirstColumn}>
-                <Box className={classes.modelDescItemTitle}>
-                  <Typography
-                    variant="h1"
-                    color="textSecondary"
-                    className={classes.modelNumber}
-                  >
-                    01
-                  </Typography>
-                  <Typography variant="h6">Базавый</Typography>
-                  <Typography variant="h6">170 м2</Typography>
-                </Box>
-                <Box className={classes.modelDescItemTitle}>
-                  <Typography
-                    className={pilldistance < 290 ? classes.disable : null}
-                    variant="h1"
-                    color="textSecondary"
-                  >
-                    02
-                  </Typography>
-                  <Typography
-                    className={pilldistance < 290 ? classes.disable : null}
-                    variant="h6"
-                  >
-                    Жилой
-                  </Typography>
-                  <Typography
-                    className={pilldistance < 290 ? classes.disable : null}
-                    variant="h6"
-                  >
-                    170 м2
-                  </Typography>
-                </Box>
-                <Box className={classes.modelDescItemTitle}>
-                  <Typography
-                    className={pilldistance < 470 ? classes.disable : null}
-                    variant="h1"
-                    color="textSecondary"
-                  >
-                    03
-                  </Typography>
-                  <Typography
-                    className={pilldistance < 470 ? classes.disable : null}
-                    variant="h6"
-                  >
-                    Гараж
-                  </Typography>
-                  <Typography
-                    className={pilldistance < 470 ? classes.disable : null}
-                    variant="h6"
-                  >
-                    170 м2
-                  </Typography>
-                </Box>
+                {houses[houseNumber].modules.map((item, index) => {
+                  return (
+                    <li className={classes.modelDescItemTitle} key={index}>
+                      <Typography
+                        variant="h1"
+                        color="textSecondary"
+                        className={
+                          pillClick >= index
+                            ? classes.modelNumber
+                            : classes.disable
+                        }
+                      >
+                        0{index + 1}
+                      </Typography>
+                      <Typography
+                        className={pillClick >= index ? null : classes.disable}
+                        variant="h6"
+                      >
+                        {item.name}
+                      </Typography>
+                      <Typography
+                        className={pillClick >= index ? null : classes.disable}
+                        variant="h6"
+                      >
+                        {item.area} м2
+                      </Typography>
+                    </li>
+                  );
+                })}
               </Box>
 
               <div className={classes.modelDescLine}>
                 <div className={classes.modelDescLineActive}></div>
-                {pilldistance < 470 ? (
-                  <>
+                {pilldistance < 100 ? (
+                  <div className={classes.modelDescLineButton}>
                     <div
                       onClick={handleMinusClick}
                       className={classes.modelDescLineMinus}
@@ -530,41 +503,36 @@ const First = () => {
                     >
                       <div className={classes.plus}>+</div>
                     </div>
-                  </>
+                  </div>
                 ) : (
-                  <div
-                    onClick={handleMinusClick}
-                    className={classes.modelDescLineMinusCircle}
-                  >
-                    <div className={classes.minus}>-</div>
+                  <div className={classes.modelDescLineButton}>
+                    <div
+                      onClick={handleMinusClick}
+                      className={classes.modelDescLineMinusCircle}
+                    >
+                      <div className={classes.minus}>-</div>
+                    </div>
                   </div>
                 )}
               </div>
 
               <Box className={classes.modelDescSecondColumn}>
-                <Typography variant="body1">
-                  Развитие дома происходит по горизонтали в двух направлениях. К
-                  базовому модулю могут быть пристроены навес для автомобиля в
-                  одном направлении.
-                </Typography>
-                <Typography
-                  // variant={pilldistance<290?"body2":"body1"}
-                  variant={"body1"}
-                  className={pilldistance < 290 ? classes.disable : null}
-                >
-                  Развитие дома происходит по горизонтали в двух направлениях. К
-                  базовому модулю могут быть пристроены навес для автомобиля в
-                  одном направлении.
-                </Typography>
-                {/* <Typography variant={pilldistance<470?"body2":"body1"}> */}
-                <Typography
-                  variant={"body1"}
-                  className={pilldistance < 470 ? classes.disable : null}
-                >
-                  Развитие дома происходит по горизонтали в двух направлениях. К
-                  базовому модулю могут быть пристроены навес для автомобиля в
-                  одном направлении.
-                </Typography>
+                {houses[houseNumber].modules.map((item, index) => {
+                  return (
+                    <li className={classes.modelDescItemTitle} key={index}>
+                      <Typography
+                        className={
+                          pillClick >= index
+                            ? null
+                            : classes.disable
+                        }
+                        variant="body1"
+                      >
+                        {item.desc}
+                      </Typography>
+                    </li>
+                  );
+                })}
               </Box>
             </Box>
             <Box className={classes.model}></Box>
@@ -595,16 +563,23 @@ const First = () => {
             <Box className={classes.roomsList}>
               <Typography variant="h6">Экспликация</Typography>
               <Box className={classes.accordionBox}>
-                <Accordions arr={houses[0].rooms} roomsImg={handleRoomsImgChange} />
+                <Accordions
+                  arr={houses[houseNumber].modules[houseNumber].rooms}
+                  roomsImg={handleRoomsImgChange}
+                />
               </Box>
             </Box>
-            <Box className={classes.roomsImgBox}>
-              <img
-                className={classes.roomImg}
-                src={roomsImg}
-                alt="img"
-              ></img>
-            </Box>
+            <TransitionGroup className={classes.roomsImgBox}>
+              <CSSTransition
+                key={roomsImgIndex}
+                in={opacity}
+                appear={true}
+                timeout={500}
+                classNames="fade"
+              >
+                <img className={classes.roomImg} src={roomsImg} alt="img"></img>
+              </CSSTransition>
+            </TransitionGroup>
           </Box>
 
           <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
@@ -618,218 +593,48 @@ const First = () => {
               ></img>
             </Box>
             <Box className={classes.calculation}>
-              <Box className={classes.calculationItem}>
-                <Box className={classes.calculationHeader}>
-                  <FormControlLabel
-                    onChange={handleChangeCheckbox}
-                    value={25000}
-                    control={<Checkbox color="primary" />}
-                    label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
-                    labelPlacement="end"
-                  />
-                  <Typography variant="h3">$25 000</Typography>
-                </Box>
-                <Box className={classes.calculationBody}>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Ванная
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Общая комната
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Детская
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Коридор
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
+              {houses[houseNumber].modules.map((item, index) => {
+                return (
+                  <li className={classes.calculationItem} key={index}>
+                    <Box className={classes.calculationHeader}>
+                      <FormControlLabel
+                        onChange={handleChangeCheckbox}
+                        value={+item.price.replace(" ", "")}
+                        control={<Checkbox color="primary" />}
+                        label={
+                          <Typography variant="h6">{item.name}</Typography>
+                        }
+                        labelPlacement="end"
+                      />
+                      <Typography variant="h3">${item.price}</Typography>
+                    </Box>
 
-              <Box className={classes.calculationItem}>
-                <Box className={classes.calculationHeader}>
-                  <FormControlLabel
-                    onChange={handleChangeCheckbox}
-                    value={25000}
-                    control={<Checkbox color="primary" />}
-                    label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
-                    labelPlacement="end"
-                  />
-                  <Typography variant="h3">$25 000</Typography>
-                </Box>
-                <Box className={classes.calculationBody}>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Ванная
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Общая комната
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Детская
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Коридор
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box className={classes.calculationItem}>
-                <Box className={classes.calculationHeader}>
-                  <FormControlLabel
-                    onChange={handleChangeCheckbox}
-                    value={25000}
-                    control={<Checkbox color="primary" />}
-                    label={<Typography variant="h6">БАЗОВЫЙ МОДУЛЬ</Typography>}
-                    labelPlacement="end"
-                  />
-                  <Typography variant="h3">$25 000</Typography>
-                </Box>
-                <Box className={classes.calculationBody}>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Ванная
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Общая комната
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Детская
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                  <Box className={classes.calculationBodyItem}>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      Коридор
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className={classes.calculationBodyText}
-                    >
-                      107 м2
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
+                    <Box className={classes.calculationBody}>
+                      {item.rooms.map((item, index) => {
+                        return (
+                          <li
+                            className={classes.calculationBodyItem}
+                            key={index}
+                          >
+                            <Typography
+                              variant="body1"
+                              className={classes.calculationBodyText}
+                            >
+                              {item.title}
+                            </Typography>
+                            <Typography
+                              variant="body1"
+                              className={classes.calculationBodyText}
+                            >
+                              {item.area ? `${item.area} м2` : null}
+                            </Typography>
+                          </li>
+                        );
+                      })}
+                    </Box>
+                  </li>
+                );
+              })}
 
               <Box className={classes.calculationResult}>
                 <Typography variant="h6">Цена</Typography>
@@ -849,7 +654,7 @@ const First = () => {
               `}
               subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
               email
-              img={whatWeDoImg3}
+              img={houses[houseNumber].img.main}
               formPosition="center"
             />
           </Box>

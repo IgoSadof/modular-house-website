@@ -8,7 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 
 const Accordion = withStyles({
   root: {
-    width: "45vw",
+    width: "100%",
     // borderBottom: "1px solid #333333",
     boxShadow: "none",
     "&:not(:last-child)": {
@@ -60,7 +60,7 @@ export default function Accordions({ arr,roomsImg }) {
       {arr.map((item, index) => {
         return (
           <Accordion
-            onClick={roomsImg?()=>roomsImg(item.img):null}
+            onClick={roomsImg?()=>roomsImg(item.img,index):null}
             key={index}
             square
             expanded={expanded === `panel${index + 1}`}

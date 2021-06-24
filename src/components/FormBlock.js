@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
   expodom_img: {
     width: "100%",
+    objectFit: 'cover',
   },
   Expodom: {
     "& .makeStyles-message-392": {

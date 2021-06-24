@@ -16,6 +16,7 @@ import expodom from "../assets/images/expodom_img.png";
 import ReviewsSlider from "../components/ReviewsSlider";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 // import Fade from './animations/Fade'
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -68,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid",
   },
   accordion: {
+    width:'60%',
     display: "flex",
     gap: "40px",
     marginLeft: "auto",
