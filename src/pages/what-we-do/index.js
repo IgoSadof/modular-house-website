@@ -1,5 +1,5 @@
 import "../../components/global.css";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../../components/Footer";
 import Menu from "../../components/Menu";
@@ -11,7 +11,10 @@ import SendForm from "../../components/SendForm";
 import { houses } from "../../constant/houses";
 import { Link } from "gatsby";
 import RegularButton from "../../components/buttons/RegularButton";
-import ModalsSlider from '../../components/ModalsSlider'
+import ModalsSlider from "../../components/ModalsSlider";
+import Fade from "../../components/animations/Fade"
+
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const style = {
   flex: {
@@ -58,27 +61,35 @@ const useStyles = makeStyles((theme) => ({
     // gap: "40px",
   },
   houseListItem: {
-    height: "18vh",
+    height: "19vh",
     position: "relative",
     cursor: "pointer",
     display: "flex !important",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    // border: "1px solid",
     // marginTop:'20px',
   },
   houseListNumber: {
     position: "absolute",
     zIndex: "0",
-    top: "-20%",
+    top: "-7%",
     fontSize: "64px",
     margin: "auto",
     color: "white",
   },
   houseListImg: {
-    position: "relative",
+    position: "absolute",
+    left: "10%",
+    top: "20%",
     zIndex: "2",
-    width: "90%",
+    width: "80%",
+  },
+  houseListName: {
+    position: "absolute",
+    left: "10%",
+    bottom: "15%",
   },
   houseDesc: {
     display: "flex",
@@ -96,10 +107,15 @@ const useStyles = makeStyles((theme) => ({
     // gap: "40px",
   },
   houseDescImgBox: {
+    position: "relative",
     width: "100%",
+    height: "28vh",
     // height: "350px",
   },
   houseDescImg: {
+    position: "absolute",
+    left: "0",
+    top: "0",
     width: "100%",
     objectFit: "cover",
   },
@@ -149,6 +165,8 @@ const useStyles = makeStyles((theme) => ({
 
 const WhatWeDo = () => {
   const [house, setHouse] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(1);
+  const [animation, setAnimation] = useState(true);
   const param = {};
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -158,7 +176,11 @@ const WhatWeDo = () => {
   };
   const handleItemclick = (index) => {
     setHouse((state) => index);
+    console.log(animation);
+    setAnimation(state=>!state)
+    console.log(element.current.getBoundingClientRect());
   };
+  const element = useRef(null)
 
   const listItem = houses.map((item, index) => {
     return (
@@ -170,12 +192,26 @@ const WhatWeDo = () => {
         <Typography className={classes.houseListNumber}>{`0${
           index + 1
         }`}</Typography>
-        <img
-          className={classes.houseListImg}
-          src={item.img.list}
-          alt="img"
-        ></img>
-        <Typography variant ='subtitle1' className={classes.houseListName}>{item.name}</Typography>
+        {!(activeSlide === index) ? (
+          <>
+            <CSSTransition
+              key={item.id}
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="houseMove"
+            >
+              <img
+                className={classes.houseListImg}
+                src={item.img.list}
+                alt="img"
+              ></img>
+            </CSSTransition>
+            <Typography variant="subtitle1" className={classes.houseListName}>
+              {item.name}
+            </Typography>
+          </>
+        ) : null}
       </li>
     );
   });
@@ -194,20 +230,34 @@ const WhatWeDo = () => {
               </Box>
               <Box className={classes.houseListBlock}>
                 {/* <ul className={classes.houseList}>{housesList}</ul> */}
-                <ModalsSlider listItem={listItem}/>
+                <ModalsSlider listItem={listItem} />
               </Box>
               <Box className={classes.houseDesc}>
                 <Box className={classes.houseDescContent}>
                   <Box className={classes.houseDescImgBox}>
-                    <img
-                      className={classes.houseDescImg}
-                      src={houses[house].img.desc}
-                      alt="img"
-                    ></img>
+                    <CSSTransition
+                      in={animation}
+                      appear={true}
+                      timeout={1000}
+                      classNames="slide"
+                    >
+                    {/* <Fade inProp={animation}> */}
+                      <img
+                        ref={element}
+                        className={classes.houseDescImg}
+                        src={houses[house].img.desc}
+                        alt="img"
+                      ></img>
+                      {/* </Fade> */}
+                    </CSSTransition>
                   </Box>
 
                   <Box className={classes.houseDescTitleBox}>
-                    <Typography variant='h1' color='textSecondary' className={classes.houseDescTitle}>
+                    <Typography
+                      variant="h1"
+                      color="textSecondary"
+                      className={classes.houseDescTitle}
+                    >
                       {houses[house].name}
                     </Typography>
                     <Box className={classes.houseDescIconBox}>
@@ -219,25 +269,37 @@ const WhatWeDo = () => {
                     </Box>
                   </Box>
 
-                  <Typography variant='body1' className={classes.houseDescText}>
+                  <Typography variant="body1" className={classes.houseDescText}>
                     {houses[house].desc}
                   </Typography>
 
                   <Box className={classes.houseDescSpecBox}>
                     <Box className={classes.houseDescSpec}>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography variant='body1' className={classes.houseDescSpecName}>
+                        <Typography
+                          variant="body1"
+                          className={classes.houseDescSpecName}
+                        >
                           {houses[house].totalAreaText}
                         </Typography>
-                        <Typography variant='h6' className={classes.houseSpecValue}>
+                        <Typography
+                          variant="h6"
+                          className={classes.houseSpecValue}
+                        >
                           {houses[house].totalArea}
                         </Typography>
                       </Box>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography variant='body1' className={classes.houseDescSpecName}>
+                        <Typography
+                          variant="body1"
+                          className={classes.houseDescSpecName}
+                        >
                           {houses[house].effectiveAreaText}
                         </Typography>
-                        <Typography variant='h6' className={classes.houseSpecValue}>
+                        <Typography
+                          variant="h6"
+                          className={classes.houseSpecValue}
+                        >
                           {houses[house].effectiveArea}
                         </Typography>
                       </Box>
@@ -245,18 +307,30 @@ const WhatWeDo = () => {
 
                     <Box className={classes.houseDescSpec}>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography variant='body1' className={classes.houseDescSpecName}>
+                        <Typography
+                          variant="body1"
+                          className={classes.houseDescSpecName}
+                        >
                           Этажность:
                         </Typography>
-                        <Typography variant='h6' className={classes.houseSpecValue}>
+                        <Typography
+                          variant="h6"
+                          className={classes.houseSpecValue}
+                        >
                           {houses[house].totalArea}
                         </Typography>
                       </Box>
                       <Box className={classes.houseDescSpecOne}>
-                        <Typography variant='body1' className={classes.houseDescSpecName}>
+                        <Typography
+                          variant="body1"
+                          className={classes.houseDescSpecName}
+                        >
                           Cтадии роста:
                         </Typography>
-                        <Typography variant='h6' className={classes.houseSpecValue}>
+                        <Typography
+                          variant="h6"
+                          className={classes.houseSpecValue}
+                        >
                           {houses[house].effectiveArea}
                         </Typography>
                       </Box>
@@ -264,10 +338,16 @@ const WhatWeDo = () => {
                   </Box>
                   <Box className={classes.houseDescMore}>
                     <Box className={classes.houseDescPrice}>
-                      <Typography variant='body1' className={classes.houseSpecValue}>
+                      <Typography
+                        variant="body1"
+                        className={classes.houseSpecValue}
+                      >
                         Стоимость всех модулей:
                       </Typography>
-                      <Typography variant='h5' className={classes.houseSpecPrice}>
+                      <Typography
+                        variant="h5"
+                        className={classes.houseSpecPrice}
+                      >
                         {houses[house].price}
                       </Typography>
                     </Box>

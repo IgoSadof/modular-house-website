@@ -14,9 +14,9 @@ import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
 import expodom from "../assets/images/expodom_img.png";
 import ReviewsSlider from "../components/ReviewsSlider";
-import Fade from "../components/animations/Fade";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+// import Fade from './animations/Fade'
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
