@@ -351,7 +351,7 @@ const WhatWeDo = () => {
                         {houses[house].price}
                       </Typography>
                     </Box>
-                    <Link className={classes.Link} to={"first"}>
+                    <Link className={classes.Link} to={houses[house].link}>
                       <RegularButton variant="outlined">
                         Подробнее
                       </RegularButton>

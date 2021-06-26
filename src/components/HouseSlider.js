@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
@@ -6,6 +6,7 @@ import { houses } from "../constant/houses";
 import Typography from "@material-ui/core/Typography";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: "100%",
     height: "400px",
-    overflow:'hidden',
-    "&:hover $img":{
+    overflow: "hidden",
+    "&:hover $img": {
       transform: "scale(1.1)",
     },
-    "&:focus $img":{
+    "&:focus $img": {
       transform: "scale(1.1)",
     },
   },
@@ -56,12 +57,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     fontSize: "48px",
   },
-  
+
   name: {
     fontSize: "48px",
   },
   properties: {
-    marginTop:'40px',
+    marginTop: "40px",
     display: "flex",
     flexDirection: "column",
 
@@ -72,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     width: "70%",
   },
+  link: {},
 }));
 const HouseSlider = () => {
   const classes = useStyles();
@@ -86,6 +88,7 @@ const HouseSlider = () => {
     return (
       <Slide
         key={index}
+        link={item.link}
         img={item.img.main}
         name={item.name}
         price={item.price}
@@ -108,6 +111,7 @@ const HouseSlider = () => {
 
 const Slide = ({
   key,
+  link,
   img,
   name,
   price,
@@ -118,14 +122,18 @@ const Slide = ({
   effectiveAreaText,
   baseModuleAreaText,
 }) => {
-
   const classes = useStyles();
   return (
     <li className={classes.conteiner} key={key}>
-      <Box className={classes.imgBox}>
-        <Box className={classes.img} style={{backgroundImage: `url(${img})`}}>
+      <Link className={classes.link} to={`what-we-do/${link}`}>
+        <Box className={classes.imgBox}>
+          <Box
+            className={classes.img}
+            style={{ backgroundImage: `url(${img})` }}
+          ></Box>
         </Box>
-      </Box>
+      </Link>
+
       <Box className={classes.description}>
         <Box className={classes.title}>
           <Typography

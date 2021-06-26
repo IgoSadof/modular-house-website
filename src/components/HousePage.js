@@ -1,28 +1,27 @@
-import "../../components/global.css";
+import "../components/global.css";
 import React, { useState, useRef } from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Footer from "../../components/Footer";
-import Menu from "../../components/Menu";
-import modularHouseTheme from "../../config/modularHouseTheme";
-import FormBlock from "../../components/FormBlock";
+import Footer from "../components/Footer";
+import Menu from "../components/Menu";
+import modularHouseTheme from "../config/modularHouseTheme";
+import FormBlock from "../components/FormBlock";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import SendForm from "../../components/SendForm";
+import SendForm from "../components/SendForm";
 
-import SquareButton from "../../components/buttons/SquareButton";
+import SquareButton from "../components/buttons/SquareButton";
 
-import whatWeDoImg2 from "../../assets/images/w-we-do-img2.png";
-import whatWeDoImg3 from "../../assets/images/w-we-do-img3.png";
-import plan from "../../assets/images/plan.png";
+// import whatWeDoImg2 from "../assets/images/w-we-do-img2.png";
+import plan from "../assets/images/plan.png";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import CalculateTable from "../../components/CalculateTable";
-import Panel from "../../components/Panel";
-import HouseFotosSlider from "../../components/HouseFotosSlider";
-import { houses } from "../../constant/houses";
-import Accordions from "../../components/Accordion";
+import CalculateTable from "../components/CalculateTable";
+import Panel from "../components/Panel";
+import HouseFotosSlider from "../components/HouseFotosSlider";
+import { houses } from "../constant/houses";
+import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const useStyles = makeStyles((theme) => ({
@@ -73,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     height: "90vh",
-    // objectFit: "cover",
   },
   mainDescBox: {
     width: "100%",
@@ -321,8 +319,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const First = () => {
-  const [houseNumber, setHouseNumber] = useState(0);
+const HousePage = ({house}) => {
+  const [houseNumber, setHouseNumber] = useState(house);
   const [pilldistance, setPilldistance] = useState(20);
   const [pillClick, setPillClick] = useState(0);
   const param = { pilldistance };
@@ -330,7 +328,7 @@ const First = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
-  const [roomsImg, setRoomsImg] = useState(whatWeDoImg2);
+  const [roomsImg, setRoomsImg] = useState(houses[houseNumber].modules[0].rooms[0].img);
   const [roomsImgIndex, setRoomsImgIndex] = useState(0);
   const [opacity, setOpasity] = useState(true);
   const handleRoomsImgChange = (img, index) => {
@@ -564,7 +562,7 @@ const First = () => {
               <Typography variant="h6">Экспликация</Typography>
               <Box className={classes.accordionBox}>
                 <Accordions
-                  arr={houses[houseNumber].modules[houseNumber].rooms}
+                  arr={houses[houseNumber].modules[0].rooms}
                   roomsImg={handleRoomsImgChange}
                 />
               </Box>
@@ -666,4 +664,4 @@ const First = () => {
     </ThemeProvider>
   );
 };
-export default First;
+export default HousePage;
