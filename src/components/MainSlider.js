@@ -101,16 +101,16 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     zIndex: 1,
     width: "35%",
-    height: '40vh',
+    height: "40vh",
     marginRight: "auto",
     marginLeft: "100px",
   },
   article: {
     display: "flex",
     position: "absolute",
-    top:'0',
-    left:'0',
-    right:'0',
+    top: "0",
+    left: "0",
+    right: "0",
     zIndex: 1,
     gap: "40px",
     flexDirection: "column",
@@ -232,13 +232,19 @@ const Slider = ({ scrol, isFirstEntry }) => {
       numb = +e.target.textContent[1];
     }
 
-    if (numb > currentSegment + 1) {
-      setPlayVideo(true);
-      setLineLength(() => (numb === 1 ? 265 : 265 + 80 * (numb - 1)));
+    // if (numb > currentSegment + 1) {
+      console.log(numb,activeNumb,currentSegment)
+      if (numb-1 > currentSegment ) {
+        setPlayVideo(true);
+        setCurrentSegment(numb - 1);
+      }
+       
+    // setPlayVideo(true);
+    setLineLength(() => (numb === 1 ? 265 : 265 + 80 * (numb - 1)));
 
-      // setActiveNumb(numb - 1);
-      setCurrentSegment(numb - 1);
-    }
+    // setActiveNumb(numb - 1);
+   
+    // }
     setActiveNumb(numb - 1);
   };
 
@@ -259,7 +265,6 @@ const Slider = ({ scrol, isFirstEntry }) => {
           </RegularButton>
         </Box>
         <Box className={classes.midleBlock}>
-         
           <TransitionGroup className={classes.articleBox}>
             <CSSTransition
               key={slides[activeNumb].id}
@@ -296,11 +301,9 @@ const Slider = ({ scrol, isFirstEntry }) => {
                     ? fields.subtitles[activeNumb].value
                     : slides[activeNumb].subtitle}
                 </Typography>
-
               </Box>
             </CSSTransition>
           </TransitionGroup>
-
 
           <Box className={classes.mainVideoBox}>
             <div className={classes.fon}></div>
@@ -311,6 +314,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
               playing={playVideo}
               muted={true}
               onProgress={({ playedSeconds, loadedSeconds }) => {
+                console.log(playedSeconds > vidSegments[currentSegment],vidSegments[currentSegment])
                 if (playedSeconds > vidSegments[currentSegment]) {
                   setPlayVideo(false);
                 }
@@ -321,20 +325,20 @@ const Slider = ({ scrol, isFirstEntry }) => {
             />
           </Box>
         </Box>
-        <Box className={classes.langBox}>
+        {/* <Box className={classes.langBox}>
           <Typography className={classes.lang} variant="button" component="h6">
             RU
           </Typography>
           <Typography className={classes.lang} variant="button" component="h6">
             EN
           </Typography>
-        </Box>
+        </Box> */}
         <div className={classes.numbers}>
           {numbers.map((item, index) => (
             <Typography
               key={index}
               className={
-                index <= currentSegment
+                index <= activeNumb
                   ? `${classes.number} ${classes.activeNumber}`
                   : classes.number
               }
