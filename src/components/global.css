@@ -24,9 +24,15 @@ body {
   width: 100%;
   height: auto;
   background-color: #d1d1d1;
-  padding: 0px 10% 100px 160px;
+  padding: 0px 11% 100px 11%;
   overflow: hidden;
 }
+@media (max-width:1200px){
+  .components {
+    padding: 0
+  }
+}
+
 .content {
   width: 100%;
 }

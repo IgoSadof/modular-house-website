@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import MainSlider from "../components/MainSlider";
 import MainPageContent from "../components/MainPageContent";
-// import Button from "@material-ui/core/Button";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
@@ -18,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   componets: {
     position: (param) => (param.isFirstEntry ? "fixed !important" : "relative"),
-    overflow: "hiden",
   },
 }));
 

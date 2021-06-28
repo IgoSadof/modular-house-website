@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     "&:focus $img": {
       transform: "scale(1.1)",
     },
+    [theme.breakpoints.down("md")]: {
+      height: "250px",
+    },
   },
   img: {
     width: "100%",
@@ -49,16 +52,15 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     padding: "35px",
+    [theme.breakpoints.down("md")]: {
+      padding: "15px",
+    },
   },
   title: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    fontSize: "48px",
-  },
-
-  name: {
     fontSize: "48px",
   },
   properties: {
@@ -72,17 +74,25 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     width: "70%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
-  link: {},
+  price: {
+    minWidth:'130px',
+  },
 }));
-const HouseSlider = () => {
-  const classes = useStyles();
+const HouseSlider = ({mobile}) => {
+  console.log(mobile)
+  const param = {mobile};
+  // console.log(param)
+  const classes = useStyles(param);
   const settings = {
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToShow: mobile?1:2,
+    slidesToScroll: 1,
   };
   const listItems = houses.map((item, index) => {
     return (

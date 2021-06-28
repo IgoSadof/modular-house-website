@@ -30,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "20px",
     marginTop: "145px",
+
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      width:'100%',
+      padding:'0 20px'
+    },
   },
   BlockContent: {
     display: "flex",
@@ -37,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   BlockColumn: {
-    width:'30%',
+    width: "30%",
     display: "flex",
     gap: "20px",
     justifyContent: "space-between",
@@ -48,6 +54,12 @@ const useStyles = makeStyles((theme) => ({
     // flexDirection: "column",
     gap: "20px",
     overflow: "hidden",
+
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      width:'100%',
+      padding:'0 20px'
+    },
   },
   line: {
     display: "inline-block",
@@ -66,22 +78,25 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid",
   },
   accordion: {
-    width:'60%',
+    width: "60%",
     display: "flex",
     gap: "40px",
     marginLeft: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
 
   commentBoxWrap: {
     position: "relative",
     width: "100%",
-    height:'30%',
+    height: "30%",
     gap: "20px",
   },
   commentBox: {
     position: "absolute",
-    top:'0',
-    left:'0',
+    top: "0",
+    left: "0",
     display: "flex",
     flexDirection: "column",
     gap: "20px",
@@ -204,7 +219,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainPageContent = () => {
-  const matches = { 1920: useMediaQuery("(min-width:1920px)") };
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+  };
   // console.log(matches[1920]);
   const classes = useStyles();
   const [review, setReview] = useState(0);
@@ -236,7 +254,7 @@ const MainPageContent = () => {
       <Box className={classes.sliderBlock}>
         <span className={`${classes.line} ${classes.firstLine}`}></span>
         <Box className={classes.sliderBox}>
-          <HouseSlider />
+          <HouseSlider mobile={matches[1200]} />
         </Box>
       </Box>
 

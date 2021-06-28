@@ -4,6 +4,7 @@ import green from "@material-ui/core/colors/green";
 
 const myFontsSize = {
   width1900: 1.5,
+  widthMobile: 0.75,
   h1: 48,
   h3: 24,
   h4: 18,
@@ -34,6 +35,15 @@ const modularHouseTheme = createMuiTheme({
       main: "#4F4F4F",
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   typography: {
     fontFamily: [
       "Montserrat",
@@ -57,6 +67,9 @@ const modularHouseTheme = createMuiTheme({
       fontStyle: "normal",
       "@media (min-width:1900px)": {
         fontSize: myFontsSize.h1 * myFontsSize.width1900,
+      },
+      "@media (max-width:1200px)": {
+        fontSize: myFontsSize.h1 * myFontsSize.widthMobile,
       },
     },
     h3: {

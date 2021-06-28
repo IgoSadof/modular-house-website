@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    width: "300px",
+    minWidth:'300px',
+    width: "22vw"
   },
   formHeader: {
     // marginTop: "140px",
@@ -123,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ title, email, text, subtitle, buttonAbs }) => {
+const Form = ({ title, email, text, subtitle, buttonAbs}) => {
   const [button, setButton] = useState(buttonAbs);
   const [open, setOpen] = React.useState(false);
   const param = { button,buttonAbs };

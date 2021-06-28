@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "160px",
+    width: "11%",
     height: "100vh",
     borderRight: "1px solid #4F4F4F",
     padding: "40px 0px 90px",
@@ -40,8 +40,10 @@ const useStyles = makeStyles((theme) => ({
     background:
       "radial-gradient(rgba(232, 232, 232, 0.12) 100%, rgba(232, 232, 232, 0.12) 100%)",
     backdropFilter: "blur(10px)",
-    //     background:
-    //   "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
+
+    [theme.breakpoints.down('md')]: {
+      display:'none',
+    },
   },
   logo: {
     alignItems: "center",

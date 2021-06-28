@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     display: "flex",
     gap: "20px",
+    [theme.breakpoints.down("md")]: {
+      flexDirection:'column',
+    },
   },
   line: {
     display: "inline-block",
@@ -31,8 +34,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     marginLeft: "auto",
     // border: "1px solid",
-    width: "560px",
+    width: "55%",
     gap: "20px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      order:1
+    },
   },
   mediaBlock_unborder: {
     border: "none",
@@ -44,7 +51,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     height: "750px",
     justifyContent: param => param.formPosition? param.formPosition:"space-between",
-    gap:"140px"
+    gap:"140px",
+    minWidth:'300px',
+    width: "22vw",
+    
   },
 
   button: {
