@@ -13,12 +13,19 @@ import SquareButton from "./buttons/SquareButton";
 import RegularButton from "./buttons/RegularButton";
 import ClearIcon from "@material-ui/icons/Clear";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: "flex",
     gap: "20px",
     marginTop: "145px",
+  },
+  titleBox: {
+    marginLeft: "auto",
+    display: "flex",
+    gap: "20px",
+    flexDirection: "row-reverse",
   },
   line: {
     display: "inline-block",
@@ -29,12 +36,12 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     // position: "relative",
-    height: param=>param.buttonAbs?'100%':'auto',
+    height: (param) => (param.buttonAbs ? "100%" : "auto"),
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    minWidth:'300px',
-    width: "22vw"
+    minWidth: "300px",
+    width: "22vw",
   },
   formHeader: {
     // marginTop: "140px",
@@ -61,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     bottom: (param) => (param.button ? "0" : null),
     left: (param) => (param.button ? "0" : null),
     marginTop: "100px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "40px",
+    },
   },
   expodom_img: {
     width: "100%",
@@ -86,15 +96,14 @@ const useStyles = makeStyles((theme) => ({
   messageField: {
     // marginTop: "50px",
     backgroundColor: "transparent",
-    border:'none',
-    borderBottom:'1px solid #4F4F4F',
+    border: "none",
+    borderBottom: "1px solid #4F4F4F",
     marginTop: "10px",
-    fontSize: '18px',
-    '&:focus':{
-      outline: 'none',
-    }
+    fontSize: "18px",
+    "&:focus": {
+      outline: "none",
+    },
     // fontFamily:'Ubuntu',
-
   },
   modal: {
     display: "flex",
@@ -124,10 +133,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ title, email, text, subtitle, buttonAbs}) => {
+const Form = ({ title, email, text, subtitle, buttonAbs }) => {
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+  };
   const [button, setButton] = useState(buttonAbs);
   const [open, setOpen] = React.useState(false);
-  const param = { button,buttonAbs };
+  const param = { button, buttonAbs };
   const classes = useStyles(param);
   // const handleClick = () => {
 
@@ -143,9 +156,18 @@ const Form = ({ title, email, text, subtitle, buttonAbs}) => {
     <Box className={classes.formBox}>
       <Box className={classes.formHeader}>
         {title ? (
-          <Typography variant="subtitle1" className={classes.title}>
-            {title}
-          </Typography>
+          !matches[1200] ? (
+            <Typography variant="h5" className={classes.title}>
+              {title}
+            </Typography>
+          ) : (
+            <Box className={classes.titleBox}>
+              <span className={classes.line}></span>
+              <Typography variant="h4" className={classes.text}>
+                {title}
+              </Typography>
+            </Box>
+          )
         ) : null}
         {subtitle ? (
           <Typography variant="body1" className={classes.subtitle}>

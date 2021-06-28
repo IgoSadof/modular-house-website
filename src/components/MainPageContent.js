@@ -32,10 +32,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "145px",
 
     [theme.breakpoints.down("md")]: {
+      marginTop: "100px",
       flexDirection: "column",
-      width:'100%',
-      padding:'0 20px'
+      width: "100%",
+      padding: "0 20px",
+      gap: "30px",
     },
+  },
+  titleBox: {
+    marginLeft: "auto",
+    display: "flex",
+    gap: "20px",
+    flexDirection: "row-reverse",
   },
   BlockContent: {
     display: "flex",
@@ -48,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     justifyContent: "space-between",
     flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+      order: "3",
+      width: "100%",
+    },
   },
   sliderBlock: {
     display: "flex",
@@ -57,8 +69,8 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
-      width:'100%',
-      padding:'0 20px'
+      width: "100%",
+      padding: "0 20px",
     },
   },
   line: {
@@ -92,6 +104,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "30%",
     gap: "20px",
+    [theme.breakpoints.down("md")]: {
+      height: "150px",
+    },
   },
   commentBox: {
     position: "absolute",
@@ -104,6 +119,9 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: "flex",
     gap: "40px",
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center",
+    },
   },
   title: {
     marginTop: "140px",
@@ -115,6 +133,12 @@ const useStyles = makeStyles((theme) => ({
   mediaBlock: {
     display: "flex",
     marginLeft: "auto",
+    height: "70vh",
+    [theme.breakpoints.down("md")]: {
+      order: "2",
+      marginRight: "auto",
+      height: "48vh",
+    },
   },
   mediaBlock_unborder: {
     border: "none",
@@ -128,6 +152,9 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonGroup: {
     display: "flex",
+    [theme.breakpoints.down("md")]: {
+      margin: "auto",
+    },
   },
   button: {
     width: "120px",
@@ -183,7 +210,11 @@ const useStyles = makeStyles((theme) => ({
   reviewVideoBox: {
     position: "relative",
     width: "275px",
-    height: "500px",
+    height: "100%",
+
+    [theme.breakpoints.down("md")]: {
+      width: "50%",
+    },
   },
   reviewVideo: {
     position: "absolute",
@@ -252,7 +283,13 @@ const MainPageContent = () => {
   return (
     <div className={classes.root}>
       <Box className={classes.sliderBlock}>
-        <span className={`${classes.line} ${classes.firstLine}`}></span>
+         <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+            </Typography>
+          ) : null}
+        </Box>
         <Box className={classes.sliderBox}>
           <HouseSlider mobile={matches[1200]} />
         </Box>
@@ -261,10 +298,20 @@ const MainPageContent = () => {
       {/* ПОДРОБНЕЕ */}
 
       <Box className={classes.Block}>
-        <span className={classes.line}></span>
-        <Typography variant="h4" className={classes.text}>
-          ПОДРОБНЕЕ
-        </Typography>
+        <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+              ПОДРОБНЕЕ
+            </Typography>
+          ) : null}
+        </Box>
+
+        {!matches[1200] ? (
+          <Typography variant="h4" className={classes.text}>
+            ПОДРОБНЕЕ
+          </Typography>
+        ) : null}
         <Box className={classes.accordion}>
           <Accordions arr={detail} />
         </Box>
@@ -273,9 +320,20 @@ const MainPageContent = () => {
       {/* ОТЗЫВЫ */}
 
       <Box className={classes.Block}>
-        <span className={classes.line}></span>
+        <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+              ОТЗЫВЫ
+            </Typography>
+          ) : null}
+        </Box>
         <Box className={classes.BlockColumn}>
-          <Typography variant="h4">ОТЗЫВЫ</Typography>
+          {!matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+              ОТЗЫВЫ
+            </Typography>
+          ) : null}
 
           <TransitionGroup className={classes.commentBoxWrap}>
             <CSSTransition
@@ -342,11 +400,20 @@ const MainPageContent = () => {
       {/* ОТВЕТЫ */}
 
       <Box className={classes.Block}>
-        <span className={classes.line}></span>
+        <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+              ОТВЕТЫ
+            </Typography>
+          ) : null}
+        </Box>
         <Box className={classes.BlockColumn}>
-          <Typography variant="h4" className={classes.text}>
-            ОТВЕТЫ
-          </Typography>
+          {!matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+              ОТВЕТЫ
+            </Typography>
+          ) : null}
           <Box className={classes.ButtonGroup}>
             <RegularButton variant="outlined" click={handleReviewCange}>
               1-4
@@ -372,18 +439,33 @@ const MainPageContent = () => {
       {/* "ЭКСПОДОМ" */}
 
       <Box className={classes.Block}>
-        <span className={classes.line}></span>
+        <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+              ЭКСПОДОМ
+            </Typography>
+          ) : null}
+        </Box>
         <FormBlock
           subtitle
           img={expodom}
-          header={"ЭКСПОДОМ"}
+          header={!matches[1200] ? "ЭКСПОДОМ" : null}
           title={"Пожить в модульном доме на Браславских озерах"}
         />
       </Box>
 
       <Box className={classes.Block}>
-        <span className={classes.line}></span>
-        <Contacrs header="Контакты" />
+      <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h4" className={classes.text}>
+              КОНТАКТЫ
+            </Typography>
+          ) : null}
+        </Box>
+        {/* <Contacrs header={!matches[1200]?"Контакты":null} /> */}
+        <Contacrs />
       </Box>
     </div>
   );

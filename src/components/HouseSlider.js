@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const HouseSlider = ({mobile}) => {
-  console.log(mobile)
+  // console.log(mobile)
   const param = {mobile};
   // console.log(param)
   const classes = useStyles(param);

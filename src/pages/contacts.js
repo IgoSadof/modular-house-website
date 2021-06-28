@@ -14,13 +14,21 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     height: "100vh",
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+    },
   },
+
   Block: {
     width:"100%",
     padding:"100px 10% 100px 250px",
     backgroundColor:'#D1D1D1',
     height: '100%',
+    [theme.breakpoints.down("md")]: {
+      padding:"10%",
+    },
   },
+ 
 }));
 
 const ContactsPage = () => {

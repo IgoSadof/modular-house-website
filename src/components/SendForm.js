@@ -9,7 +9,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
     top: "0",
-    left: prop => prop.isFormOpen? "0": "100%",
+    left: prop => prop.isFormOpen? "61%": "100%",
+    // right: prop => prop.isFormOpen? "0": null,
     display: "flex",
     flexDirection: "column",
     gap: "50px",

@@ -27,9 +27,9 @@ body {
   padding: 0px 11% 100px 11%;
   overflow: hidden;
 }
-@media (max-width:1200px){
+@media (max-width: 1200px) {
   .components {
-    padding: 0
+    padding: 0;
   }
 }
 
@@ -84,7 +84,12 @@ abbr {
 }
 
 .slick-list {
-  height: 90vh !important;
+  height: 90vh;
+}
+@media (max-width: 1200px) {
+  .slick-list {
+    height: auto;
+  }
 }
 
 /* appear - on page load */
@@ -139,18 +144,16 @@ abbr {
 }
 .slide-exit.slide-exit-active {
   opacity: 1;
-  transform: scale(0.4) translate(-800px,-200px);
+  transform: scale(0.4) translate(-800px, -200px);
   transition: opacity 2500ms linear, transform 2500ms ease-out;
 }
 .slide-exit-done {
   opacity: 1;
-  transform: scale(0.4) translate(-800px,-200px);
+  transform: scale(0.4) translate(-800px, -200px);
   transition: opacity 3000ms linear, transform 2500ms ease-out;
 }
 
-
 /* houseMove */
-
 
 /* appear - on page load */
 .houseMove-appear {

@@ -6,6 +6,7 @@ import logo from "../assets/images/logo.svg";
 import andrey from "../assets/images/andrey.png";
 import alexey from "../assets/images/alexey.png";
 import Form from "./Form";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     width: "100%",
     height: "100%",
+
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      gap:'80px',
+      marginBottom:'40px',
+    },
   },
   BlockColumn: {
     display: "flex",
@@ -57,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
   contactsBoxes: {
     display: "flex",
     gap: "40px",
+    [theme.breakpoints.down("md")]: {
+      gap: "0",
+      justifyContent: "space-around",
+    },
   },
   infoBox: {
     display: "flex",
@@ -72,6 +83,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Contacts = ({ header }) => {
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+  };
   const classes = useStyles();
 
   return (
@@ -79,7 +94,9 @@ const Contacts = ({ header }) => {
       <Box className={classes.BlockMain}>
         {header ? (
           <Box className={classes.BlockColumn}>
-            <Typography variant="h4" className={classes.textHeader}>{header}</Typography>
+            <Typography variant="h4" className={classes.textHeader}>
+              {header}
+            </Typography>
             <Box className={classes.logoBox}>
               <img
                 className={classes.logo}
@@ -118,6 +135,31 @@ const Contacts = ({ header }) => {
                 <Typography variant="body1">+375 44 5180676</Typography>
               </Box>
             </Box>
+            {!matches[1200] ? (
+              <Box className={classes.infoBox}>
+                {!header ? (
+                  <Box className={classes.logoBox}>
+                    <img
+                      className={classes.logo}
+                      src={logo}
+                      alt="logo"
+                      alt="img"
+                    ></img>
+                    <Typography variant="subtitle1">MODULAR HOUSE</Typography>
+                  </Box>
+                ) : null}
+
+                <Box className={classes.infoBoxText}>
+                  <Typography variant="body1">info@zrobym.by</Typography>
+                  <Typography variant="body1">
+                    ул. Богдановича 11, 3 этаж
+                  </Typography>
+                </Box>
+              </Box>
+            ) : null}
+          </Box>
+          <Form title={"НАПИШИТЕ НАМ"} email text />
+          {matches[1200] ? (
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>
@@ -138,8 +180,7 @@ const Contacts = ({ header }) => {
                 </Typography>
               </Box>
             </Box>
-          </Box>
-          <Form title={"НАПИШИТЕ НАМ"} email text />
+          ) : null}
         </Box>
       </Box>
     </div>

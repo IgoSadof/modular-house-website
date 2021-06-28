@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      order:1
+      order:'1,'
     },
   },
   mediaBlock_unborder: {
@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme) => ({
     gap:"140px",
     minWidth:'300px',
     width: "22vw",
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+      order:'2',
+    },
+
     
   },
 

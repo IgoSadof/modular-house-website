@@ -229,7 +229,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scrol, isFirstEntry }) => {
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
-  console.log(matches["1200"]);
+  // console.log(matches["1200"]);
 
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
