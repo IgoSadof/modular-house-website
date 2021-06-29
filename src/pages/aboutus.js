@@ -80,8 +80,10 @@ const useStyles = makeStyles((theme) => ({
  
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
+      alignItems:'center',
       padding: "0 10%",
       marginTop: "40px",
+      gap: "30px",
       "&:last-child":{
         marginBottom: "40px",
       },

@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     [theme.breakpoints.down("md")]: {
       flexDirection:'column',
+      alignItems:'center',
     },
   },
   line: {

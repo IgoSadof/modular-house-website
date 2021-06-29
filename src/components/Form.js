@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10px",
+    },
   },
 
   button: {
@@ -134,6 +137,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = ({ title, email, text, subtitle, buttonAbs }) => {
+  console.log(buttonAbs, !!buttonAbs);
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -142,6 +146,13 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
   const [open, setOpen] = React.useState(false);
   const param = { button, buttonAbs };
   const classes = useStyles(param);
+  const checkAbsbutton = () => {
+    setButton(matches[1200] ? false : buttonAbs)
+  };
+  useEffect(() => {
+    checkAbsbutton();
+  }, [matches]);
+
   // const handleClick = () => {
 
   // }
