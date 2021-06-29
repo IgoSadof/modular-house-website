@@ -9,8 +9,9 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import SendForm from "../components/SendForm";
-
 import SquareButton from "../components/buttons/SquareButton";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import model from "../assets/images/model.png"
 
 // import whatWeDoImg2 from "../assets/images/w-we-do-img2.png";
 import plan from "../assets/images/plan.png";
@@ -37,8 +38,13 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     display: "flex",
     gap: "20px",
-    padding: "100px 200px",
+    padding: "100px 10%",
     backgroundColor: "#D1D1D1",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      padding: "10%",
+      justifyContent: "center",
+    },
   },
 
   button: {
@@ -64,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100vh",
     objectFit: "cover",
+    [theme.breakpoints.down("md")]: {
+      height: "70vh",
+    },
   },
   mainImgItem: {
     height: "100%",
@@ -72,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     height: "90vh",
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+    },
   },
   mainDescBox: {
     width: "100%",
@@ -79,10 +91,21 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     justifyContent: "space-between",
     padding: "50px 280px",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      padding: "10%",
+      gap: "50px",
+      justifyContent: "center",
+    },
   },
   mainBlockSubtitleBox: {
     display: "flex",
     gap: "100px",
+    [theme.breakpoints.down("md")]: {
+      gap: "0",
+      justifyContent: "space-between",
+
+    },
   },
   mainBlockTitle: {
     textAlign: "left",
@@ -105,6 +128,12 @@ const useStyles = makeStyles((theme) => ({
     gap: "100px",
     padding: "100px 200px",
     backgroundColor: "#D1D1D1",
+    [theme.breakpoints.down("md")]: {
+      gap: "40px",
+      flexDirection: "column",
+      padding: "10%",
+      justifyContent: "center",
+    },
   },
   modelDesc: {
     position: "relative",
@@ -112,6 +141,10 @@ const useStyles = makeStyles((theme) => ({
     height: "50vh",
     display: "flex",
     gap: "40px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height: "65vh",
+    },
   },
   accordionBox: {
     marginTop: "auto",
@@ -141,8 +174,14 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
   },
   model: {
-    border: "1px solid",
     width: "50%",
+    backgroundPosition: "center",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height:'40vh',
+    },
   },
   modelDescLine: {
     position: "relative",
@@ -222,6 +261,12 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     left: "14%",
     bottom: "4%",
+    [theme.breakpoints.down("md")]: {
+      width:'100%',
+      justifyContent: 'space-around',
+      left: "0%",
+      bottom: "6%",
+    },
   },
   blockGalary: {
     height: "auto",
@@ -243,21 +288,35 @@ const useStyles = makeStyles((theme) => ({
 
   BlockRooms: {
     height: "auto",
-    paddingLeft: "160px",
+    paddingLeft: "10%",
     gap: "20px",
     justifyContent: "space-between",
+    [theme.breakpoints.down("md")]: {
+      padding: "10%",
+      justifyContent: "center",
+    },
   },
   roomsList: {
     width: "50%",
     display: "flex",
     flexDirection: "column",
     gap: "20px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      order: "2",
+    },
   },
   roomsImgBox: {
     position: "relative",
     width: "40%",
     height: "90vh",
     marginLeft: "20px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      marginLeft: "0",
+      order: "1",
+      height: "100vw",
+    },
   },
   roomImg: {
     position: "absolute",
@@ -268,13 +327,20 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   BlockCalculation: {
-    paddingLeft: "160px",
+    paddingLeft: "10%",
+    [theme.breakpoints.down("md")]: {
+      padding: "10%",
+      justifyContent: "center",
+    },
   },
   calculationPlan: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   calculation: {
     display: "flex",
@@ -282,6 +348,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginLeft: "auto",
     width: "30%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0",
+      width: "100%",
+    },
   },
   calculationItem: {
     width: "100%",
@@ -312,14 +382,25 @@ const useStyles = makeStyles((theme) => ({
   BlockForm: {
     paddingLeft: "350px",
     justifyContent: "center",
+    [theme.breakpoints.down("md")]: {
+      padding: "10%",
+    },
   },
   BlockTable: {
     paddingBottom: "0px",
     paddingTop: "0px",
+    [theme.breakpoints.down("md")]: {
+      padding: "0",
+      width:'100%',
+    },
   },
 }));
 
-const HousePage = ({house}) => {
+const HousePage = ({ house }) => {
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+  };
   const [houseNumber, setHouseNumber] = useState(house);
   const [pilldistance, setPilldistance] = useState(20);
   const [pillClick, setPillClick] = useState(0);
@@ -328,7 +409,9 @@ const HousePage = ({house}) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
-  const [roomsImg, setRoomsImg] = useState(houses[houseNumber].modules[0].rooms[0].img);
+  const [roomsImg, setRoomsImg] = useState(
+    houses[houseNumber].modules[0].rooms[0].img
+  );
   const [roomsImgIndex, setRoomsImgIndex] = useState(0);
   const [opacity, setOpasity] = useState(true);
   const handleRoomsImgChange = (img, index) => {
@@ -416,7 +499,7 @@ const HousePage = ({house}) => {
                 </Typography>
               </Box>
               <Box className={classes.mainBlockSubtitleBox}>
-                <ul className={classes.mainBlockList}>
+                {/* <ul className={classes.mainBlockList}>
                   {houses[houseNumber].modules.map((item, index) => {
                     return (
                       <li className={classes.mainBlockItem} key={index}>
@@ -426,12 +509,14 @@ const HousePage = ({house}) => {
                       </li>
                     );
                   })}
-                </ul>
+                </ul> */}
                 <ul className={classes.mainBlockList}>
                   {houses[houseNumber].modules.map((item, index) => {
                     return (
                       <li className={classes.mainBlockItem} key={index}>
-                        <Typography variant="body1">{item.name}</Typography>
+                        <Typography variant="body1">
+                          0{index + 1} {item.name}
+                        </Typography>
                       </li>
                     );
                   })}
@@ -519,11 +604,7 @@ const HousePage = ({house}) => {
                   return (
                     <li className={classes.modelDescItemTitle} key={index}>
                       <Typography
-                        className={
-                          pillClick >= index
-                            ? null
-                            : classes.disable
-                        }
+                        className={pillClick >= index ? null : classes.disable}
                         variant="body1"
                       >
                         {item.desc}
@@ -533,7 +614,7 @@ const HousePage = ({house}) => {
                 })}
               </Box>
             </Box>
-            <Box className={classes.model}></Box>
+            <Box style={{ backgroundImage: `url(${model})` }} className={classes.model}></Box>
           </Box>
 
           <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
@@ -552,7 +633,9 @@ const HousePage = ({house}) => {
                   great
                 />
               </Box>
-              <Panel ref={categoryRef} change={handleChangePanel} />
+              {matches[1200] ? null : (
+                <Panel ref={categoryRef} change={handleChangePanel} />
+              )}
             </Box>
           </Box>
 
