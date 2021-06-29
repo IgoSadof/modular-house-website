@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
       padding: "15px",
     },
   },
+  name:{
+    width:'60%'
+  },
   title: {
     display: "flex",
     justifyContent: "space-between",

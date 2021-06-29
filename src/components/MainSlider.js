@@ -382,10 +382,6 @@ const Slider = ({ scrol, isFirstEntry }) => {
                 playing={playVideo}
                 muted={true}
                 onProgress={({ playedSeconds, loadedSeconds }) => {
-                  console.log(
-                    playedSeconds > vidSegments[currentSegment],
-                    vidSegments[currentSegment]
-                  );
                   if (playedSeconds > vidSegments[currentSegment]) {
                     setPlayVideo(false);
                   }

@@ -464,8 +464,7 @@ const MainPageContent = () => {
             </Typography>
           ) : null}
         </Box>
-        {/* <Contacrs header={!matches[1200]?"Контакты":null} /> */}
-        <Contacrs />
+        <Contacrs header={!matches[1200]?"Контакты":null} />
       </Box>
     </div>
   );

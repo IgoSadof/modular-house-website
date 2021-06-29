@@ -12,11 +12,9 @@ import alexey from "../assets/images/aboutus_alexey.png";
 import andrey from "../assets/images/aboutus_andrey.png";
 import office from "../assets/images/office.png";
 import RegularButton from "../components/buttons/RegularButton";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: "100vh",
-  },
   content: {
     padding: "60px 0px 100px",
     boxSizing: "border-box",
@@ -26,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100vh",
     backgroundColor: "#D1D1D1",
+    [theme.breakpoints.down("md")]: {
+      height: "auto",
+      padding: "40px  20px",
+    },
   },
   button: {
     marginLeft: "auto",
@@ -49,12 +51,19 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.15",
     letterSpacing: "0.03em",
     marginLeft: "auto",
-    color:'#4F4F4F',
+    color: "#4F4F4F",
+    [theme.breakpoints.down("md")]: {
+      width: "65%",
+      fontSize: "24px",
+    },
   },
   blockTitle: {
     textTransform: "uppercase",
     fontSize: "14px",
     width: "200px",
+    [theme.breakpoints.down("md")]: {
+      width: "fit-content",
+    },
   },
 
   line: {
@@ -68,6 +77,21 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "20px",
     marginTop: "100px",
+ 
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      padding: "0 10%",
+      marginTop: "40px",
+      "&:last-child":{
+        marginBottom: "40px",
+      },
+    },
+  },
+  titleBox: {
+    marginLeft: "auto",
+    display: "flex",
+    gap: "20px",
+    flexDirection: "row-reverse",
   },
   textBox: {
     width: "360px",
@@ -75,19 +99,25 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     gap: "60px",
     marginLeft: "auto",
-  },
-  text: {
-    fontSize: "12px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   creatorsBox: {
     width: "360px",
     display: "flex",
     flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   creatorTextBox: {
     fontSize: "12px",
     width: "350px",
     marginTop: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   creatorTitle: {
     fontSize: "14px",
@@ -117,13 +147,23 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   header2: {
     width: "680px",
+    [theme.breakpoints.down("md")]: {
+      width: "65%",
+    },
   },
 }));
 
 const MainPage = () => {
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+  };
   const classes = useStyles();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const handleClickConnect = () => {
@@ -147,10 +187,28 @@ const MainPage = () => {
                   </RegularButton>
                 </Box>
                 <Box className={classes.Block}>
-                  <span className={classes.line}></span>
-                  <Typography variant='subtitle1' className={classes.blockTitle}>
-                    Автор концепции MH - Андрусь Bezdar
-                  </Typography>
+                  {matches[1200] ? (
+                    <Box className={classes.titleBox}>
+                      <span className={classes.line}></span>
+                      <Typography
+                        variant="subtitle1"
+                        className={classes.blockTitle}
+                      >
+                        Автор концепции MH - Андрусь Bezdar
+                      </Typography>
+                    </Box>
+                  ) : (
+                    <>
+                      <span className={classes.line}></span>
+                      <Typography
+                        variant="subtitle1"
+                        className={classes.blockTitle}
+                      >
+                        Автор концепции MH - Андрусь Bezdar
+                      </Typography>
+                    </>
+                  )}
+
                   <Typography className={classes.header}>
                     Мы команда архитекторов, стремящаяся сделать жильё доступным
                     и качественным!
@@ -159,24 +217,40 @@ const MainPage = () => {
               </Box>
             </div>
             <Box className={classes.Block}>
-              <span className={classes.line}></span>
-              <Typography variant='body1' className={classes.blockTitle}>
-                Разработка технологии MH - Андрусь Bezdar, Кораблёв Алексей,
-                Амбражейчик Кирилл, Короленко Николай.
-              </Typography>
+              {matches[1200] ? (
+                <Box className={classes.titleBox}>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    Разработка технологии MH - Андрусь Bezdar, Кораблёв Алексей,
+                    Амбражейчик Кирилл, Короленко Николай.
+                  </Typography>
+                </Box>
+              ) : (
+                <>
+                  <span className={classes.line}></span>
+                  <Typography variant="body1" className={classes.blockTitle}>
+                    Разработка технологии MH - Андрусь Bezdar, Кораблёв Алексей,
+                    Амбражейчик Кирилл, Короленко Николай.
+                  </Typography>
+                </>
+              )}
+
               <Box className={classes.textBox}>
-                <Typography variant='body1' className={classes.text}>
+                <Typography variant="body1" className={classes.text}>
                   Мы видим миссию нашей команды в изменении окружающего мира за
                   счет качественной концептуальной архитектуры. В каждом нашем
                   проекте заложен уникальный смысл и авторская идея.
                 </Typography>
-                <Typography variant='body1' className={classes.text}>
+                <Typography variant="body1" className={classes.text}>
                   Технология модульного строительства MODULAR HOUSE родилась в
                   умах архитекторов студии ZROBYM architects и при
                   сотрудничестве с производителями каркасных домов выросла в
                   modular house
                 </Typography>
-                <Typography variant='body1' className={classes.text}>
+                <Typography variant="body1" className={classes.text}>
                   Технология создана на основе многолетнего изучения опыта
                   энергоэффективного строительства в климатических условиях
                   Беларуси и опробована на практике.
@@ -185,12 +259,29 @@ const MainPage = () => {
             </Box>
 
             <Box className={classes.Block}>
-              <span className={classes.line}></span>
-              <Typography variant='subtitle1' className={classes.blockTitle}>
-                Модульная система:
-              </Typography>
+              {matches[1200] ? (
+                <Box className={classes.titleBox}>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    Модульная система
+                  </Typography>
+                </Box>
+              ) : (
+                <>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    Модульная система:
+                  </Typography>
+                </>
+              )}
               <Box className={classes.textBox}>
-                <Typography variant='body1' className={classes.text}>
+                <Typography variant="body1" className={classes.text}>
                   Модульная система, являющаяся основой наших проектов,
                   позволяет людям с небольшим бюджетом начать с маленького
                   домика и расширить его в будущем. Мы унифицировали все
@@ -199,7 +290,7 @@ const MainPage = () => {
                   реконструировать жилое пространство. Дом растёт вместе с
                   ростом семьи во времени.
                 </Typography>
-                <Typography variant='body1' className={classes.text}>
+                <Typography variant="body1" className={classes.text}>
                   Технология МН основана на принципах рацональности и
                   оптимальности. Это проявляется в соблюдении баланса между
                   понятиями экологичности материалов, энергоэффективности
@@ -212,25 +303,54 @@ const MainPage = () => {
             </Box>
 
             <Box className={classes.Block}>
-              <span className={classes.line}></span>
+              {matches[1200] ? (
+                <Box className={classes.titleBox}>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    Создатели
+                  </Typography>
+                </Box>
+              ) : (
+                <>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    Создатели
+                  </Typography>
+                </>
+              )}
               <Box className={classes.creatorsBox}>
-                <Typography variant='subtitle1' className={classes.blockTitle}>
-                  Создатели
-                </Typography>
                 <Box className={classes.creatorTextBox}>
-                  <Typography variant='subtitle2' className={classes.creatorTitle}>
+                  <Typography
+                    variant="subtitle2"
+                    className={classes.creatorTitle}
+                  >
                     Алексей Кораблев
                   </Typography>
-                  <Typography variant='body1' className={classes.creatorSubtitle}>
+                  <Typography
+                    variant="body1"
+                    className={classes.creatorSubtitle}
+                  >
                     вед. архитектор
                   </Typography>
-                  <Typography variant='body1' className={classes.creatorMainText}>
+                  <Typography
+                    variant="body1"
+                    className={classes.creatorMainText}
+                  >
                     Окончил Белорусский национальный технический университет в
                     2014 году по специальности «Архитектура». Занимается
                     деятельностью в области архитектуры и дизайна с 2010 года. С
                     2011 года учредитель и ведущий архитектор ZROBYM architects.
                   </Typography>
-                  <Typography variant='body1' className={classes.creatorFooterText}>
+                  <Typography
+                    variant="body1"
+                    className={classes.creatorFooterText}
+                  >
                     Участник международных конкурсов "Архстояние'2011"...
                   </Typography>
                 </Box>
@@ -247,16 +367,25 @@ const MainPage = () => {
                   <Typography className={classes.creatorTitle}>
                     Алексей Кораблев
                   </Typography>
-                  <Typography variant='subtitle2' className={classes.creatorSubtitle}>
+                  <Typography
+                    variant="subtitle2"
+                    className={classes.creatorSubtitle}
+                  >
                     вед. архитектор
                   </Typography>
-                  <Typography variant='body1' className={classes.creatorMainText}>
+                  <Typography
+                    variant="body1"
+                    className={classes.creatorMainText}
+                  >
                     Окончил Белорусский национальный технический университет в
                     2014 году по специальности «Архитектура». Занимается
                     деятельностью в области архитектуры и дизайна с 2010 года. С
                     2011 года учредитель и ведущий архитектор ZROBYM architects.
                   </Typography>
-                  <Typography variant='body1' className={classes.creatorFooterText}>
+                  <Typography
+                    variant="body1"
+                    className={classes.creatorFooterText}
+                  >
                     Участник международных конкурсов "Архстояние'2011"...
                   </Typography>
                 </Box>
@@ -266,21 +395,57 @@ const MainPage = () => {
               </Box>
             </Box>
             <Box className={classes.Block}>
-              <span className={classes.line}></span>
-              <Typography variant='subtitle1' className={classes.blockTitle}>
-                Наш друг, В. Татаров.
-              </Typography>
+              {matches[1200] ? (
+                <Box className={classes.titleBox}>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    Наш друг, В. Татаров.
+                  </Typography>
+                </Box>
+              ) : (
+                <>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    Наш друг, В. Татаров.
+                  </Typography>
+                </>
+              )}
               <Typography className={`${classes.header} ${classes.header2}`}>
                 Модульные дома - экологичность, технологичность, оптимальность.
               </Typography>
             </Box>
             <Box className={classes.Block}>
-              <span className={classes.line}></span>
+              {matches[1200] ? (
+                <Box className={classes.titleBox}>
+                  <span className={classes.line}></span>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.blockTitle}
+                  >
+                    В офисе студии ZROBYM architects, за кружкой хорошего кофе
+                    всегда можно получить необходимую информацию, выбрать
+                    готовый проект или заказать разработку модульного дома
+                    индивидуально.
+                  </Typography>
+                </Box>
+              ) : (
+                <span className={classes.line}></span>
+              )}
               <FormBlock
                 img={office}
-                header={`В офисе студии ZROBYM architects, 
+                header={
+                  matches[1200]
+                    ? null
+                    : `В офисе студии ZROBYM architects, 
                     за кружкой хорошего кофе всегда можно получить необходимую информацию, выбрать 
-                    готовый проект или заказать разработку модульного дома индивидуально.`}
+                    готовый проект или заказать разработку модульного дома индивидуально.`
+                }
                 email
               />
             </Box>
