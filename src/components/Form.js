@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     minWidth: "300px",
     width: "22vw",
+    [theme.breakpoints.down("md")]: {
+      alignSelf: "center",
+    },
   },
   formHeader: {
     // marginTop: "140px",
@@ -73,6 +76,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "100px",
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
+      display: "flex",
+      justifyContent: "space-between",
     },
   },
   expodom_img: {
@@ -136,7 +141,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ title, email, text, subtitle, buttonAbs }) => {
+const Form = ({ title, email, text, subtitle, buttonAbs, closeForm }) => {
   console.log(buttonAbs, !!buttonAbs);
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -147,7 +152,7 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
   const param = { button, buttonAbs };
   const classes = useStyles(param);
   const checkAbsbutton = () => {
-    setButton(matches[1200] ? false : buttonAbs)
+    setButton(matches[1200] ? false : buttonAbs);
   };
   useEffect(() => {
     checkAbsbutton();
@@ -237,6 +242,11 @@ const Form = ({ title, email, text, subtitle, buttonAbs }) => {
           <RegularButton variant="outlined" click={handleOpen}>
             Отправить
           </RegularButton>
+          {matches[1200] ? (
+            <RegularButton variant="outlined" click={closeForm}>
+              Назад
+            </RegularButton>
+          ) : null}
         </Box>
         <Modal
           aria-labelledby="transition-modal-title"

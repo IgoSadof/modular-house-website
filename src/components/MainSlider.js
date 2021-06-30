@@ -16,6 +16,8 @@ import RegularButton from "./buttons/RegularButton";
 import video from "../assets/video/video.webm";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Burger from "../components/Burger";
+import BurgerMenu from "../components/BurgerMenu";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -229,8 +231,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scrol, isFirstEntry }) => {
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
-  // console.log(matches["1200"]);
-
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
@@ -243,6 +243,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
   // const [resources, setResources] = useState(null);
   // const [resourcestv, setResourcestv] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [fields, setFields] = useState({
     headers: null,
     subtitles: null,
@@ -287,42 +288,52 @@ const Slider = ({ scrol, isFirstEntry }) => {
   //   }
   // }, [resources, resourcestv]);
   const handleNumberClick = (e, numb = 0) => {
-    // if(currentSegment<=activeNumb){
-    //   setCurrentSegment(activeNumb)
-    // }
-
     if (numb === 0) {
       numb = +e.target.textContent[1];
     }
 
-    // if (numb > currentSegment + 1) {
     console.log(numb, activeNumb, currentSegment);
     if (numb - 1 > currentSegment) {
       setPlayVideo(true);
       setCurrentSegment(numb - 1);
     }
 
-    // setPlayVideo(true);
     setLineLength(() =>
       numb === 1 ? baseLength : baseLength + 20 * (numb - 1)
     );
-
-    // setActiveNumb(numb - 1);
-
-    // }
     setActiveNumb(numb - 1);
   };
 
   const handleClickConnect = () => {
+    console.log("openForm");
     setIsFormOpen((state) => !state);
   };
-  const handleCloseForm = (e) => {
-    // console.log(e.target);
+  const handleOpenBurgerMenu = () => {
+    setIsBurgerMenuOpen((state) => !state);
+    console.log("openBurger");
   };
+  const handleCloseForm = (e) => {};
 
   return (
     <div className={classes.root} onClick={handleCloseForm}>
-      <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
+      {matches[1200] ? (
+        <Burger color="black" click={handleOpenBurgerMenu} />
+      ) : null}
+      {/* <Burger color='black'/> */}
+      <BurgerMenu
+        isBurgerMenuOpen={isBurgerMenuOpen}
+        click={handleOpenBurgerMenu}
+        clickToOpenForm={handleClickConnect}
+      />
+      <SendForm
+        isFormOpen={isFormOpen}
+        click={handleClickConnect}
+        burger={
+          matches[1200] ? (
+            <Burger isOpen={true} click={()=>(handleOpenBurgerMenu(),handleClickConnect())} />
+          ) : null
+        }
+      />
       <Box className={classes.content}>
         <Box className={classes.button}>
           {matches["1200"] ? null : (

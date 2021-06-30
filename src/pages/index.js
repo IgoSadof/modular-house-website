@@ -7,6 +7,7 @@ import MainPageContent from "../components/MainPageContent";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
+import Burger from "../components/Burger"
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -50,6 +51,8 @@ const MainPage = () => {
     <ThemeProvider theme={modularHouseTheme}>
       <div className="conteiner">
         <div className="content">
+        {/* <Burger color='black'/> */}
+          
           <div
             className={`components ${classes.componets}`}
             onWheel={(e) => handleScroll(e)}

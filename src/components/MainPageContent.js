@@ -256,6 +256,7 @@ const MainPageContent = () => {
   };
   // console.log(matches[1920]);
   const classes = useStyles();
+  
   const [review, setReview] = useState(0);
   const [answeGroup, setAnsweGroup] = useState(0);
   const [reviewVideo, setReviewVideo] = useState(reviews.length - 1);
@@ -281,7 +282,10 @@ const MainPageContent = () => {
   const myRef = useRef(null);
 
   return (
+    
     <div className={classes.root}>
+      
+      
       <Box className={classes.sliderBlock}>
          <Box className={classes.titleBox}>
           <span className={classes.line}></span>
