@@ -97,7 +97,10 @@ const useStyles = makeStyles((theme) => ({
   menuFooter: {
     width: "100%",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "space-between",
+    },
   },
 }));
 

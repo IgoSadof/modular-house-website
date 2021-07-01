@@ -1,4 +1,4 @@
-import React,{useRef}from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
@@ -6,29 +6,41 @@ import Slider from "react-slick";
 
 const useStyles = makeStyles((theme) => ({
   list: {
+    position:'relative',
+    margin:'0',
     width: "100%",
     height: "100%",
     listStyle: "none",
-    padding: "10px",
+    padding: "0px",
+  },
+  item:{
+    width:'20px',
+    height:'20px',
+    border:'1px solid'
   },
   slickList:{
     height:'90vh !important'
   }
 }));
-const ModalsSlider = ({listItem}) => {
+const HouseModelSlider = ({listItem,myRef}) => {
   const classes = useStyles();
   const settings = {
+    customPaging: function(i) {
+      return (
+        <a>
+          {/* <img src={`${baseUrl}/abstract0${i + 1}.jpg`} /> */}
+          <div className={classes.item}>i</div>
+        </a>
+      );
+    },
     infinite: true,
     arrows: false,
     speed: 2000,
-    slidesToShow: 5,
+    slidesToShow: 1,
     slidesToScroll: 1,
-    vertical: true,
-    verticalSwiping: true,
     swipeToSlide: true,
-    focusOnSelect: true,
+    adaptiveHeight: true
   };
-  const myRef = useRef(null);
 
   const next = () => {
     myRef.current.slickNext();
@@ -43,9 +55,9 @@ const ModalsSlider = ({listItem}) => {
   
   return (
     <ul className={classes.list}>
-      <Slider ref={myRef} onClick={(e) => handleScroll(e)}{...settings}>{listItem}</Slider>
+      <Slider ref={myRef} {...settings}>{listItem}</Slider>
     </ul>
   );
 };
 
-export default ModalsSlider;
+export default HouseModelSlider;

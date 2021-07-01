@@ -142,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = ({ title, email, text, subtitle, buttonAbs, closeForm }) => {
-  console.log(buttonAbs, !!buttonAbs);
+
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),

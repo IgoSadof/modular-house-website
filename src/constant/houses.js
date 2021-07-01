@@ -1,9 +1,9 @@
 import main1 from "../assets/images/houses/1/main-img.png";
 import main2 from "../assets/images/houses/2/main-img.png";
 import main3 from "../assets/images/houses/3/main-img.png";
-import list1 from "../assets/images/houses/1/list-img.png";
-import list2 from "../assets/images/houses/2/list-img.png";
-import list3 from "../assets/images/houses/3/list-img.png";
+import model1 from "../assets/images/houses/1/model.png";
+import model2 from "../assets/images/houses/2/model.png";
+import model3 from "../assets/images/houses/3/model.png";
 import desc1 from "../assets/images/houses/1/desc-img.png";
 import desc2 from "../assets/images/houses/2/desc-img.png";
 import desc3 from "../assets/images/houses/3/desc-img.png";
@@ -36,8 +36,8 @@ export const houses = [
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
     img: {
       main: main1,
-      list: list1,
-      desc: desc1,
+      list: model1,
+      desc: model1,
       plan: plan1,
       fotosCategory: {
         все: [fasad, fasad],
@@ -210,8 +210,8 @@ export const houses = [
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
     img: {
       main: main2,
-      list: list2,
-      desc: desc2,
+      list: model2,
+      desc: model2,
       plan: plan2,
       fotosCategory: {
         все: [fasad, fasad],
@@ -384,8 +384,8 @@ export const houses = [
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
     img: {
       main: main3,
-      list: list3,
-      desc: desc3,
+      list: model1,
+      desc: model1,
       plan: plan3,
       fotosCategory: {
         все: [fasad, fasad],
@@ -558,8 +558,8 @@ export const houses = [
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
     img: {
       main: main1,
-      list: list1,
-      desc: desc1,
+      list: model2,
+      desc: model2,
       plan: plan1,
       fotosCategory: {
         все: [fasad, fasad],
@@ -732,8 +732,8 @@ export const houses = [
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
     img: {
       main: main2,
-      list: list2,
-      desc: desc2,
+      list: model1,
+      desc: model1,
       plan: plan2,
       fotosCategory: {
         все: [fasad, fasad],
@@ -906,8 +906,8 @@ export const houses = [
       lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
     img: {
       main: main1,
-      list: list1,
-      desc: desc1,
+      list: model2,
+      desc: model2,
       plan: plan1,
       fotosCategory: {
         все: [fasad, fasad],

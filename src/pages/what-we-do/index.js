@@ -13,6 +13,7 @@ import { Link } from "gatsby";
 import RegularButton from "../../components/buttons/RegularButton";
 import ModalsSlider from "../../components/ModalsSlider";
 import Fade from "../../components/animations/Fade"
+import HouseModelSlider from "../../components/HouseModelSlider";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     position: "relative",
     display: "flex",
-    paddingLeft: "160px",
+    paddingLeft: "11%",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100%",
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "2",
   },
   houseListBlock: {
-    width: "160px",
+    width: "11vw",
     borderRight: "1px solid",
   },
   houseList: {
@@ -78,6 +79,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "64px",
     margin: "auto",
     color: "white",
+    transition:'2s'
+  },
+  houseListActiveNumber:{
+    top: "35%",
+    transition:'2s'
+
   },
   houseListImg: {
     position: "absolute",
@@ -93,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDesc: {
     display: "flex",
-    width: "40%",
+    width: "42%",
     height: "100%",
   },
   houseDescContent: {
@@ -159,13 +166,13 @@ const useStyles = makeStyles((theme) => ({
   mainImg: {
     width: "100%",
     objectFit: "cover",
-    height: "100%",
+    height: "100vh",
   },
 }));
 
 const WhatWeDo = () => {
   const [house, setHouse] = useState(0);
-  const [activeSlide, setActiveSlide] = useState(1);
+  const [activeSlide, setActiveSlide] = useState(0);
   const [animation, setAnimation] = useState(true);
   const param = {};
   const classes = useStyles(param);
@@ -178,9 +185,12 @@ const WhatWeDo = () => {
     setHouse((state) => index);
     console.log(animation);
     setAnimation(state=>!state)
-    console.log(element.current.getBoundingClientRect());
+    // console.log(element.current.getBoundingClientRect());
+    myRef.current.slickGoTo(index)
+    setActiveSlide(index)
   };
   const element = useRef(null)
+  const myRef = useRef(null);
 
   const listItem = houses.map((item, index) => {
     return (
@@ -189,7 +199,7 @@ const WhatWeDo = () => {
         key={item.id}
         onClick={() => handleItemclick(index)}
       >
-        <Typography className={classes.houseListNumber}>{`0${
+        <Typography className={(activeSlide === index)? `${classes.houseListNumber} ${classes.houseListActiveNumber}`: classes.houseListNumber}>{`0${
           index + 1
         }`}</Typography>
         {!(activeSlide === index) ? (
@@ -216,6 +226,20 @@ const WhatWeDo = () => {
     );
   });
 
+  const listMainImages = houses.map(
+    (item, index) => {
+      return (
+        <li className={classes.mainImg} key={index}>
+           <img
+                  className={classes.mainImg}
+                  src={item.img.main}
+                  alt="img"
+                ></img>
+        </li>
+      );
+    }
+  );
+
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <div className="conteiner">
@@ -234,12 +258,13 @@ const WhatWeDo = () => {
               </Box>
               <Box className={classes.houseDesc}>
                 <Box className={classes.houseDescContent}>
-                  <Box className={classes.houseDescImgBox}>
+                  <TransitionGroup className={classes.houseDescImgBox}>
                     <CSSTransition
                       in={animation}
+                      key={activeSlide}
                       appear={true}
-                      timeout={1000}
-                      classNames="slide"
+                      timeout={2000}
+                      classNames="fadeHouse"
                     >
                     {/* <Fade inProp={animation}> */}
                       <img
@@ -250,7 +275,7 @@ const WhatWeDo = () => {
                       ></img>
                       {/* </Fade> */}
                     </CSSTransition>
-                  </Box>
+                  </TransitionGroup>
 
                   <Box className={classes.houseDescTitleBox}>
                     <Typography
@@ -361,11 +386,7 @@ const WhatWeDo = () => {
               </Box>
 
               <Box className={classes.houseImg}>
-                <img
-                  className={classes.mainImg}
-                  src={houses[house].img.main}
-                  alt="img"
-                ></img>
+              <HouseModelSlider myRef={myRef} listItem={listMainImages} />
               </Box>
             </Box>
             <Footer />

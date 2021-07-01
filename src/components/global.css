@@ -187,3 +187,37 @@ abbr {
 .houseMove-exit-done {
   opacity: 0;
 }
+
+
+
+.fadeHouse-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.fadeHouse-appear.fadeHouse-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+/* enter */
+.fadeHouse-enter {
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+}
+.fadeHouse-enter.fadeHouse-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+/* exit */
+.fadeHouse-exit {
+  opacity: 1;
+}
+.fadeHouse-exit.fadeHouse-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms linear;
+}
+.fadeHouse-exit-done {
+  opacity: 0;
+}
