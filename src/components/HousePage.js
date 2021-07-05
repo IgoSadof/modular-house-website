@@ -52,9 +52,9 @@ const useStyles = makeStyles((theme) => ({
     top: "5%",
     right: "10%",
     background:
-      "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
-    width: "125px",
-    height: "36px",
+      // "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
+      "radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)",
+      
     zIndex: "2",
   },
   mainImgBox: {
@@ -126,12 +126,12 @@ const useStyles = makeStyles((theme) => ({
   modelBlock: {
     display: "flex",
     gap: "100px",
-    padding: "100px 200px",
+    padding: "100px 10% 100px 12vw",
     backgroundColor: "#D1D1D1",
     [theme.breakpoints.down("md")]: {
       gap: "40px",
-      flexDirection: "column",
-      padding: "10%",
+      flexDirection: "colmainImgumn",
+      padding: "11%",
       justifyContent: "center",
     },
   },
@@ -169,10 +169,10 @@ const useStyles = makeStyles((theme) => ({
     // width: "100px",
     // paddingRight:"40px",
   },
-  modelNumber: {
-    fontSize: "48px",
-    fontWeight: "600",
-  },
+  // modelNumber: {
+  //   fontSize: "48px",
+  //   fontWeight: "600",
+  // },
   model: {
     width: "50%",
     backgroundPosition: "center",

@@ -38,7 +38,8 @@ const HouseModelSlider = ({listItem,myRef}) => {
     speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    swipeToSlide: true,
+    swipeToSlide: false,
+    swipe:false,
     adaptiveHeight: true
   };
 

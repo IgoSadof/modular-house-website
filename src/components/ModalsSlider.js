@@ -1,4 +1,4 @@
-import React,{useRef}from "react";
+import React, { useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
@@ -11,11 +11,11 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: "10px",
   },
-  slickList:{
-    height:'90vh !important'
-  }
+  slickList: {
+    height: "90vh !important",
+  },
 }));
-const ModalsSlider = ({listItem}) => {
+const ModalsSlider = ({ listItem}) => {
   const classes = useStyles();
   const settings = {
     infinite: true,
@@ -32,18 +32,20 @@ const ModalsSlider = ({listItem}) => {
 
   const next = () => {
     myRef.current.slickNext();
-  }
+  };
   const previous = () => {
     myRef.current.slickPrev();
-  }
-  const handleScroll = (e) => {
-    console.log('wheel')
-    next()
   };
-  
+  const handleScroll = (e) => {
+    console.log("wheel");
+    next();
+  };
+
   return (
     <ul className={classes.list}>
-      <Slider ref={myRef} onClick={(e) => handleScroll(e)}{...settings}>{listItem}</Slider>
+      <Slider onClick={(e) => handleScroll(e)} {...settings}>
+        {listItem}
+      </Slider>
     </ul>
   );
 };

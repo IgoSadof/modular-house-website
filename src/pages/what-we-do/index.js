@@ -14,6 +14,7 @@ import RegularButton from "../../components/buttons/RegularButton";
 import ModalsSlider from "../../components/ModalsSlider";
 import Fade from "../../components/animations/Fade"
 import HouseModelSlider from "../../components/HouseModelSlider";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -76,13 +77,13 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     zIndex: "0",
     top: "-7%",
-    fontSize: "64px",
+    fontSize: param=>param.matches[1920]?"92px":"64px",
     margin: "auto",
     color: "white",
     transition:'2s'
   },
   houseListActiveNumber:{
-    top: "35%",
+    top: "20%",
     transition:'2s'
 
   },
@@ -96,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
   houseListName: {
     position: "absolute",
     left: "10%",
-    bottom: "15%",
+    top: "70%",
   },
   houseDesc: {
     display: "flex",
@@ -124,7 +125,8 @@ const useStyles = makeStyles((theme) => ({
     left: "0",
     top: "0",
     width: "100%",
-    objectFit: "cover",
+    height:"100%",
+    objectFit: "contain",
   },
   houseDescTitleBox: {
     display: "flex",
@@ -171,10 +173,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const WhatWeDo = () => {
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+  };
   const [house, setHouse] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [animation, setAnimation] = useState(true);
-  const param = {};
+  const param = {matches};
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -183,14 +189,16 @@ const WhatWeDo = () => {
   };
   const handleItemclick = (index) => {
     setHouse((state) => index);
-    console.log(animation);
+    // console.log(animation);
     setAnimation(state=>!state)
     // console.log(element.current.getBoundingClientRect());
     myRef.current.slickGoTo(index)
+    // modelsRef.current.slickGoTo(index)
     setActiveSlide(index)
   };
   const element = useRef(null)
   const myRef = useRef(null);
+  // const modelsRef = useRef(null);
 
   const listItem = houses.map((item, index) => {
     return (

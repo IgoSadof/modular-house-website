@@ -109,7 +109,7 @@ const WhatWeDo = () => {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  console.log(matches);
+  // console.log(matches);
   const [category, setCategory] = React.useState("все");
   const param = {};
   const classes = useStyles(param);
