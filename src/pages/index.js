@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
 import Burger from "../components/Burger"
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -17,20 +18,24 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid",
   },
   componets: {
-    position: (param) => (param.isFirstEntry ? "fixed !important" : "relative"),
+    position: (param) => (param.isFirstEntry ? !param.matches[1200]? "fixed !important" : "relative":"relative"),
   },
 }));
 
 const MainPage = () => {
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+  };
   const [scrol, setScrol] = useState(0);
-  let firsEntry = true;
+  let firstEntry = true;
   if (typeof window !== "undefined") {
-    firsEntry = window.localStorage.getItem("isFirstEntry")
+    firstEntry = window.localStorage.getItem("isFirstEntry")
       ? false
       : true;
   }
-  const [isFirstEntry, setIsFirstEntry] = useState(firsEntry);
-  const param = { scrol, isFirstEntry };
+  const [isFirstEntry, setIsFirstEntry] = useState(firstEntry);
+  const param = { scrol, isFirstEntry,matches };
   const classes = useStyles(param);
   const handleScroll = (e) => {
     if (scrol >= 4) {
