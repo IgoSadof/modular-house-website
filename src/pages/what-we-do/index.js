@@ -12,7 +12,7 @@ import { houses } from "../../constant/houses";
 import { Link } from "gatsby";
 import RegularButton from "../../components/buttons/RegularButton";
 import ModalsSlider from "../../components/ModalsSlider";
-import Fade from "../../components/animations/Fade"
+import Fade from "../../components/animations/Fade";
 import HouseModelSlider from "../../components/HouseModelSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -77,15 +77,14 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     zIndex: "0",
     top: "-7%",
-    fontSize: param=>param.matches[1920]?"92px":"64px",
+    fontSize: (param) => (param.matches[1920] ? "92px" : "64px"),
     margin: "auto",
     color: "white",
-    transition:'2s'
+    transition: "1s",
   },
-  houseListActiveNumber:{
+  houseListActiveNumber: {
     top: "20%",
-    transition:'2s'
-
+    transition: "1s",
   },
   houseListImg: {
     position: "absolute",
@@ -125,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
     left: "0",
     top: "0",
     width: "100%",
-    height:"100%",
+    height: "100%",
     objectFit: "contain",
   },
   houseDescTitleBox: {
@@ -180,7 +179,7 @@ const WhatWeDo = () => {
   const [house, setHouse] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [animation, setAnimation] = useState(true);
-  const param = {matches};
+  const param = { matches };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -190,13 +189,13 @@ const WhatWeDo = () => {
   const handleItemclick = (index) => {
     setHouse((state) => index);
     // console.log(animation);
-    setAnimation(state=>!state)
+    setAnimation((state) => !state);
     // console.log(element.current.getBoundingClientRect());
-    myRef.current.slickGoTo(index)
+    myRef.current.slickGoTo(index);
     // modelsRef.current.slickGoTo(index)
-    setActiveSlide(index)
+    setActiveSlide(index);
   };
-  const element = useRef(null)
+  const element = useRef(null);
   const myRef = useRef(null);
   // const modelsRef = useRef(null);
 
@@ -207,9 +206,13 @@ const WhatWeDo = () => {
         key={item.id}
         onClick={() => handleItemclick(index)}
       >
-        <Typography className={(activeSlide === index)? `${classes.houseListNumber} ${classes.houseListActiveNumber}`: classes.houseListNumber}>{`0${
-          index + 1
-        }`}</Typography>
+        <Typography
+          className={
+            activeSlide === index
+              ? `${classes.houseListNumber} ${classes.houseListActiveNumber}`
+              : classes.houseListNumber
+          }
+        >{`0${index + 1}`}</Typography>
         {!(activeSlide === index) ? (
           <>
             <CSSTransition
@@ -234,19 +237,30 @@ const WhatWeDo = () => {
     );
   });
 
-  const listMainImages = houses.map(
-    (item, index) => {
-      return (
-        <li className={classes.mainImg} key={index}>
-           <img
-                  className={classes.mainImg}
-                  src={item.img.main}
-                  alt="img"
-                ></img>
-        </li>
-      );
+  const listMainImages = houses.map((item, index) => {
+    return (
+      <li className={classes.mainImg} key={index}>
+        <img className={classes.mainImg} src={item.img.main} alt="img"></img>
+      </li>
+    );
+  });
+  const houseSliderRef = useRef(null);
+
+  const handleScrol = (e) => {
+    if (e.nativeEvent.wheelDelta > 0) {
+      console.log("scrolUp");
+      houseSliderRef.current.slickNext();
+    } else {
+      console.log("scrolDown");
+      houseSliderRef.current.slickPrev();
     }
-  );
+  };
+  const handleMouseOver = (e) => {
+    document.body.style.overflow = "hidden";
+  };
+  const handleMouseOut = (e) => {
+    document.body.style.overflow = "inherit";
+  };
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
@@ -260,9 +274,9 @@ const WhatWeDo = () => {
                   СВЯЗАТЬСЯ
                 </RegularButton>
               </Box>
-              <Box className={classes.houseListBlock}>
+              <Box className={classes.houseListBlock} onWheel={handleScrol} onMouseOver ={handleMouseOver} onMouseOut={handleMouseOut}>
                 {/* <ul className={classes.houseList}>{housesList}</ul> */}
-                <ModalsSlider listItem={listItem} />
+                <ModalsSlider houseRef={houseSliderRef} listItem={listItem} />
               </Box>
               <Box className={classes.houseDesc}>
                 <Box className={classes.houseDescContent}>
@@ -274,7 +288,7 @@ const WhatWeDo = () => {
                       timeout={2000}
                       classNames="fadeHouse"
                     >
-                    {/* <Fade inProp={animation}> */}
+                      {/* <Fade inProp={animation}> */}
                       <img
                         ref={element}
                         className={classes.houseDescImg}
@@ -394,7 +408,7 @@ const WhatWeDo = () => {
               </Box>
 
               <Box className={classes.houseImg}>
-              <HouseModelSlider myRef={myRef} listItem={listMainImages} />
+                <HouseModelSlider myRef={myRef} listItem={listMainImages} />
               </Box>
             </Box>
             <Footer />

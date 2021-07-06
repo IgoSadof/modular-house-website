@@ -9,9 +9,12 @@ const useStyles = makeStyles((theme) => ({
     position:'relative',
     margin:'0',
     width: "100%",
-    height: "100%",
+    height: "50vh",
     listStyle: "none",
     padding: "0px",
+    [theme.breakpoints.down("md")]: {
+      height: "100%",
+    },
   },
   slickList:{
     height:'90vh !important'

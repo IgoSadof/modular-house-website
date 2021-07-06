@@ -15,18 +15,18 @@ const useStyles = makeStyles((theme) => ({
     height: "90vh !important",
   },
 }));
-const ModalsSlider = ({ listItem}) => {
+const ModalsSlider = ({ listItem, houseRef}) => {
   const classes = useStyles();
   const settings = {
     infinite: true,
     arrows: false,
-    speed: 2000,
+    speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
     swipeToSlide: true,
-    focusOnSelect: true,
+    // focusOnSelect: true,
   };
   const myRef = useRef(null);
 
@@ -43,7 +43,7 @@ const ModalsSlider = ({ listItem}) => {
 
   return (
     <ul className={classes.list}>
-      <Slider onClick={(e) => handleScroll(e)} {...settings}>
+      <Slider ref={houseRef} onClick={(e) => handleScroll(e)} {...settings}>
         {listItem}
       </Slider>
     </ul>

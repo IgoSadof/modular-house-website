@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "40px",
     [theme.breakpoints.down("md")]: {
-      gap: "0",
+      gap: "20px",
       justifyContent: "space-around",
     },
   },

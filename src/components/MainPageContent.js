@@ -17,6 +17,7 @@ import ReviewsSlider from "../components/ReviewsSlider";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { TableBody } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     width: "100%",
     marginTop: "125px",
+    overflow: "hidden",
   },
   Block: {
     display: "flex",
@@ -256,7 +258,7 @@ const MainPageContent = () => {
   };
   // console.log(matches[1920]);
   const classes = useStyles();
-  
+
   const [review, setReview] = useState(0);
   const [answeGroup, setAnsweGroup] = useState(0);
   const [reviewVideo, setReviewVideo] = useState(reviews.length - 1);
@@ -278,24 +280,36 @@ const MainPageContent = () => {
     // console.log(e.target.textContent)
     e.target.textContent === "5-8" ? setAnsweGroup(1) : setAnsweGroup(0);
   };
-
   const myRef = useRef(null);
+  const houseSliderRef = useRef(null);
+
+  const handleScrol = (e) => {
+    if (e.nativeEvent.wheelDelta > 0) {
+      console.log("scrolUp");
+      houseSliderRef.current.slickNext();
+    } else {
+      console.log("scrolDown");
+      houseSliderRef.current.slickPrev();
+    }
+  };
+  const handleMouseOver = (e) => {
+    document.body.style.overflow='hidden';
+  }
+  const handleMouseOut = (e) => {
+    document.body.style.overflow='inherit';
+  }
 
   return (
-    
     <div className={classes.root}>
-      
-      
       <Box className={classes.sliderBlock}>
-         <Box className={classes.titleBox}>
+        <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
-            </Typography>
+            <Typography variant="h4" className={classes.text}></Typography>
           ) : null}
         </Box>
-        <Box className={classes.sliderBox}>
-          <HouseSlider mobile={matches[1200]} />
+        <Box className={classes.sliderBox} onWheel={handleScrol} onMouseOver ={handleMouseOver} onMouseOut={handleMouseOut}>
+          <HouseSlider houseRef={houseSliderRef} mobile={matches[1200]} />
         </Box>
       </Box>
 
@@ -460,7 +474,7 @@ const MainPageContent = () => {
       </Box>
 
       <Box className={classes.Block}>
-      <Box className={classes.titleBox}>
+        <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
             <Typography variant="h4" className={classes.text}>
@@ -468,7 +482,7 @@ const MainPageContent = () => {
             </Typography>
           ) : null}
         </Box>
-        <Contacrs header={!matches[1200]?"Контакты":null} />
+        <Contacrs header={!matches[1200] ? "Контакты" : null} />
       </Box>
     </div>
   );

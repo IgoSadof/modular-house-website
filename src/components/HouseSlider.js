@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth:'130px',
   },
 }));
-const HouseSlider = ({mobile}) => {
+const HouseSlider = ({mobile,houseRef}) => {
   // console.log(mobile)
   const param = {mobile};
   // console.log(param)
@@ -117,7 +117,7 @@ const HouseSlider = ({mobile}) => {
 
   return (
     <ul className={classes.list}>
-      <Slider {...settings}>{listItems}</Slider>
+      <Slider ref={houseRef} {...settings}>{listItems}</Slider>
     </ul>
   );
 };
