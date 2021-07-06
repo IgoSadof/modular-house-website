@@ -15,16 +15,15 @@ const useStyles = makeStyles((theme) => ({
     height: "90vh !important",
   },
 }));
-const ModalsSlider = ({ listItem, houseRef}) => {
+const ModalsSlider = ({ listItem, houseRef,mobile}) => {
   const classes = useStyles();
   const settings = {
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: mobile? 3:5,
     slidesToScroll: 1,
-    vertical: true,
-    verticalSwiping: true,
+    vertical: mobile? false : true,
     swipeToSlide: true,
     // focusOnSelect: true,
   };

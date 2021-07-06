@@ -285,10 +285,8 @@ const MainPageContent = () => {
 
   const handleScrol = (e) => {
     if (e.nativeEvent.wheelDelta > 0) {
-      console.log("scrolUp");
       houseSliderRef.current.slickNext();
     } else {
-      console.log("scrolDown");
       houseSliderRef.current.slickPrev();
     }
   };

@@ -17,6 +17,8 @@ import HouseModelSlider from "../../components/HouseModelSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Burger from "../../components/Burger";
+import BurgerMenu from "../../components/BurgerMenu";
 
 const style = {
   flex: {
@@ -32,7 +34,13 @@ const style = {
   },
 };
 const useStyles = makeStyles((theme) => ({
-  page: { ...style.flexColumn, height: "100vh" },
+  page: {
+    ...style.flexColumn,
+    height: "100vh",
+    [theme.breakpoints.down("md")]: {
+      height: "100%",
+    },
+  },
   Block: {
     position: "relative",
     display: "flex",
@@ -40,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column-reverse",
+      padding: "0%",
+    },
   },
   button: {
     position: "absolute",
@@ -50,6 +62,11 @@ const useStyles = makeStyles((theme) => ({
   houseListBlock: {
     width: "11vw",
     borderRight: "1px solid",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      borderRight: "none",
+      padding: "10%",
+    },
   },
   houseList: {
     width: "100%",
@@ -102,6 +119,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "42%",
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      padding: "10%",
+    },
   },
   houseDescContent: {
     display: "flex",
@@ -111,12 +132,20 @@ const useStyles = makeStyles((theme) => ({
     height: "80%",
     padding: "0 60px",
     justifyContent: "space-between",
+    [theme.breakpoints.down("md")]: {
+      padding: "0",
+      order: "2",
+    },
+
     // gap: "40px",
   },
   houseDescImgBox: {
     position: "relative",
     width: "100%",
     height: "28vh",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
     // height: "350px",
   },
   houseDescImg: {
@@ -163,11 +192,18 @@ const useStyles = makeStyles((theme) => ({
 
   houseImg: {
     width: "47%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   mainImg: {
     width: "100%",
     objectFit: "cover",
     height: "100vh",
+    [theme.breakpoints.down("md")]: {
+      padding: "0",
+      height: "50vh",
+    },
   },
 }));
 
@@ -182,6 +218,11 @@ const WhatWeDo = () => {
   const param = { matches };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const handleOpenBurgerMenu = () => {
+    setIsBurgerMenuOpen((state) => !state);
+    console.log("openBurger");
+  };
 
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
@@ -248,10 +289,8 @@ const WhatWeDo = () => {
 
   const handleScrol = (e) => {
     if (e.nativeEvent.wheelDelta > 0) {
-      console.log("scrolUp");
       houseSliderRef.current.slickNext();
     } else {
-      console.log("scrolDown");
       houseSliderRef.current.slickPrev();
     }
   };
@@ -268,15 +307,52 @@ const WhatWeDo = () => {
         <div className="content">
           <div className={classes.page}>
             <Box className={classes.Block}>
-              <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
+              {matches[1200] ? (
+                <Burger
+                  color="white"
+                  position="absolute"
+                  click={handleOpenBurgerMenu}
+                />
+              ) : null}
+              <BurgerMenu
+                isBurgerMenuOpen={isBurgerMenuOpen}
+                click={handleOpenBurgerMenu}
+                clickToOpenForm={handleClickConnect}
+              />
+              <SendForm
+                isFormOpen={isFormOpen}
+                click={handleClickConnect}
+                burger={
+                  matches[1200] ? (
+                    <Burger
+                      isOpen={true}
+                      click={() => (
+                        handleOpenBurgerMenu(), handleClickConnect()
+                      )}
+                    />
+                  ) : null
+                }
+              />
               <Box className={classes.button}>
-                <RegularButton variant="outlined" click={handleClickConnect}>
-                  СВЯЗАТЬСЯ
-                </RegularButton>
+                {matches["1200"] ? null : (
+                  <RegularButton variant="outlined" click={handleClickConnect}>
+                    СВЯЗАТЬСЯ
+                  </RegularButton>
+                )}
               </Box>
-              <Box className={classes.houseListBlock} onWheel={handleScrol} onMouseOver ={handleMouseOver} onMouseOut={handleMouseOut}>
+              <Box
+                className={classes.houseListBlock}
+                onWheel={handleScrol}
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
+              >
                 {/* <ul className={classes.houseList}>{housesList}</ul> */}
-                <ModalsSlider houseRef={houseSliderRef} listItem={listItem} />
+
+                <ModalsSlider
+                  houseRef={houseSliderRef}
+                  listItem={listItem}
+                  mobile={matches[1200] ? true : null}
+                />
               </Box>
               <Box className={classes.houseDesc}>
                 <Box className={classes.houseDescContent}>
