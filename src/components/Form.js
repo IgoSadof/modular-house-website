@@ -141,7 +141,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ title, email, text, subtitle, buttonAbs, closeForm }) => {
+const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) => {
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -242,7 +242,7 @@ const Form = ({ title, email, text, subtitle, buttonAbs, closeForm }) => {
           <RegularButton variant="outlined" click={handleOpen}>
             Отправить
           </RegularButton>
-          {matches[1200] ? (
+          {inBurger ? (
             <RegularButton variant="outlined" click={closeForm}>
               Назад
             </RegularButton>

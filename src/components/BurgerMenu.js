@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       left: (param) => (param.isBurgerMenuOpen ? "0%" : "100%"),
       padding: "10%",
+      paddingTop:'0',
       width: "100%",
     },
   },

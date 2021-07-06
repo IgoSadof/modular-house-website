@@ -291,8 +291,6 @@ const Slider = ({ scrol, isFirstEntry }) => {
     if (numb === 0) {
       numb = +e.target.textContent[1];
     }
-
-    console.log(numb, activeNumb, currentSegment);
     if (numb - 1 > currentSegment) {
       setPlayVideo(true);
       setCurrentSegment(numb - 1);

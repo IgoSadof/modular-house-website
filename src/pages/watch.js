@@ -14,6 +14,8 @@ import RegularButton from "../components/buttons/RegularButton";
 import { houses } from "../constant/houses";
 import HouseFotosSlider from "../components/HouseFotosSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Burger from "../components/Burger";
+import BurgerMenu from "../components/BurgerMenu";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "2",
   },
   imageSlider: {
-    height: "50vh",
+    // height: "50vh",
     position: "relative",
   },
   excursion: {
@@ -114,6 +116,11 @@ const WhatWeDo = () => {
   const param = {};
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const handleOpenBurgerMenu = () => {
+    setIsBurgerMenuOpen((state) => !state);
+    console.log("openBurger");
+  };
 
   const handleChangePanel = (value) => {
     setCategory(value);
@@ -137,15 +144,34 @@ const WhatWeDo = () => {
         <div className="content">
           <div className={classes.page}>
             <Box className={classes.BlockFullscreen}>
-              <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
+              {matches[1200] ? (
+                <Burger color="white" position="absolute" click={handleOpenBurgerMenu} />
+              ) : null}
+              <BurgerMenu
+                isBurgerMenuOpen={isBurgerMenuOpen}
+                click={handleOpenBurgerMenu}
+                clickToOpenForm={handleClickConnect}
+              />
+              <SendForm
+                isFormOpen={isFormOpen}
+                click={handleClickConnect}
+                burger={
+                  matches[1200] ? (
+                    <Burger
+                      isOpen={true}
+                      click={() => (
+                        handleOpenBurgerMenu(), handleClickConnect()
+                      )}
+                    />
+                  ) : null
+                }
+              />
               <Box className={classes.button}>
-                <RegularButton
-                  variant="outlined"
-                  color="#D1D1D1"
-                  click={handleClickConnect}
-                >
-                  СВЯЗАТЬСЯ
-                </RegularButton>
+                {matches["1200"] ? null : (
+                  <RegularButton variant="outlined" click={handleClickConnect}>
+                    СВЯЗАТЬСЯ
+                  </RegularButton>
+                )}
               </Box>
               <Box className={classes.imageSlider}>
                 <HouseFotosSlider listItem={listItem} />

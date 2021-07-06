@@ -13,6 +13,8 @@ import andrey from "../assets/images/aboutus_andrey.png";
 import office from "../assets/images/office.png";
 import RegularButton from "../components/buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Burger from "../components/Burger";
+import BurgerMenu from "../components/BurgerMenu";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -77,15 +79,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "20px",
     marginTop: "100px",
- 
+
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
-      alignItems:'center',
+      alignItems: "center",
       padding: "0 10%",
       marginTop: "40px",
       gap: "30px",
-      "&:last-child":{
+      "&:last-child": {
         marginBottom: "40px",
+      },
+      "&:first-of-type": {
+        marginTop: "100px",
       },
     },
   },
@@ -166,8 +171,14 @@ const MainPage = () => {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
+
   const classes = useStyles();
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const handleOpenBurgerMenu = () => {
+    setIsBurgerMenuOpen((state) => !state);
+    console.log("openBurger");
+  };
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
@@ -181,12 +192,38 @@ const MainPage = () => {
         <div className="content">
           <div className="components">
             <div className={classes.root} onClick={handleCloseForm}>
-              <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
+              {matches[1200] ? (
+                <Burger color="black" click={handleOpenBurgerMenu} />
+              ) : null}
+              <BurgerMenu
+                isBurgerMenuOpen={isBurgerMenuOpen}
+                click={handleOpenBurgerMenu}
+                clickToOpenForm={handleClickConnect}
+              />
+              <SendForm
+                isFormOpen={isFormOpen}
+                click={handleClickConnect}
+                burger={
+                  matches[1200] ? (
+                    <Burger
+                      isOpen={true}
+                      click={() => (
+                        handleOpenBurgerMenu(), handleClickConnect()
+                      )}
+                    />
+                  ) : null
+                }
+              />
               <Box className={classes.content}>
                 <Box className={classes.button}>
-                  <RegularButton variant="outlined" click={handleClickConnect}>
-                    СВЯЗАТЬСЯ
-                  </RegularButton>
+                  {matches["1200"] ? null : (
+                    <RegularButton
+                      variant="outlined"
+                      click={handleClickConnect}
+                    >
+                      СВЯЗАТЬСЯ
+                    </RegularButton>
+                  )}
                 </Box>
                 <Box className={classes.Block}>
                   {matches[1200] ? (
