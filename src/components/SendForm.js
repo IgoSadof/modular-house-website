@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
       "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
     zIndex: "3",
     padding: "60px 240px 100px 100px",
-    boxShadow: "-5px 0px 100px rgba(0, 0, 0, 0.2) ",
+    boxShadow:  (param) => (param.isFormOpen ? "-5px 0px 100px rgba(0, 0, 0, 0.2) " : null),
     backdropFilter: "blur(10px)",
     transition: "0.7s",
     [theme.breakpoints.down("md")]: {
@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: "0",
       width: "100%",
       justifyContent: "space-between",
+      gap: "initial",
     },
   },
   buttonBox: {
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    marginTop: '30px',
   },
 }));
 

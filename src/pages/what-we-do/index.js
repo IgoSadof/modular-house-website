@@ -12,7 +12,6 @@ import { houses } from "../../constant/houses";
 import { Link } from "gatsby";
 import RegularButton from "../../components/buttons/RegularButton";
 import ModalsSlider from "../../components/ModalsSlider";
-import Fade from "../../components/animations/Fade";
 import HouseModelSlider from "../../components/HouseModelSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 

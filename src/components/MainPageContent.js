@@ -3,7 +3,6 @@ import React, { useState, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import HouseSlider from "./HouseSlider";
 import Accordions from "./Accordion";
 import SquareButton from "./buttons/SquareButton";
@@ -17,7 +16,7 @@ import ReviewsSlider from "../components/ReviewsSlider";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { TableBody } from "@material-ui/core";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,10 +41,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   titleBox: {
-    marginLeft: "auto",
     display: "flex",
     gap: "20px",
     flexDirection: "row-reverse",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "auto",
+    },
   },
   BlockContent: {
     display: "flex",
@@ -128,9 +129,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: "140px",
     width: "165px",
-  },
-  message: {
-    // width: "260px",
   },
   mediaBlock: {
     display: "flex",
@@ -256,7 +254,6 @@ const MainPageContent = () => {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  // console.log(matches[1920]);
   const classes = useStyles();
 
   const [review, setReview] = useState(0);
@@ -277,7 +274,6 @@ const MainPageContent = () => {
   };
 
   const handleReviewCange = (e) => {
-    // console.log(e.target.textContent)
     e.target.textContent === "5-8" ? setAnsweGroup(1) : setAnsweGroup(0);
   };
   const myRef = useRef(null);
@@ -290,11 +286,12 @@ const MainPageContent = () => {
       houseSliderRef.current.slickPrev();
     }
   };
-  const handleMouseOver = (e) => {
+  const scrollOff = (e) => {
     document.body.style.overflow='hidden';
   }
-  const handleMouseOut = (e) => {
+  const scrollOn = (e) => {
     document.body.style.overflow='inherit';
+    
   }
 
   return (
@@ -306,7 +303,7 @@ const MainPageContent = () => {
             <Typography variant="h4" className={classes.text}></Typography>
           ) : null}
         </Box>
-        <Box className={classes.sliderBox} onWheel={handleScrol} onMouseOver ={handleMouseOver} onMouseOut={handleMouseOut}>
+        <Box className={classes.sliderBox} onWheel={handleScrol} onMouseOver ={scrollOff} onClick={scrollOn} onMouseOut={scrollOn}>
           <HouseSlider houseRef={houseSliderRef} mobile={matches[1200]} />
         </Box>
       </Box>
@@ -374,13 +371,11 @@ const MainPageContent = () => {
           </TransitionGroup>
 
           <Box className={classes.buttons}>
-            {/* <Button color="secondary">hello</Button> */}
             <SquareButton variant={"outlined"} click={handleClickLeft} less />
             <SquareButton click={handleClickRight} great variant={"outlined"} />
           </Box>
         </Box>
         <Box className={classes.mediaBlock} onChange={handleReviewCange}>
-          {/* <TransitionGroup className="card-container"> */}
 
           <TransitionGroup className={classes.reviewVideoBox}>
             <CSSTransition
@@ -397,8 +392,6 @@ const MainPageContent = () => {
               ></img>
             </CSSTransition>
           </TransitionGroup>
-
-          {/* </TransitionGroup> */}
 
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
@@ -446,9 +439,6 @@ const MainPageContent = () => {
         </Box>
         <Box className={classes.accordion}>
           <Accordions arr={answers[answeGroup]} />
-          {/* {!matches[1920] ? <Accordions arr={answers[answeGroup]} /> : null} */}
-          {/* {matches[1920] ? <Accordions arr={answers[0]} /> : null}
-          {matches[1920] ? <Accordions arr={answers[1]} /> : null} */}
         </Box>
       </Box>
 

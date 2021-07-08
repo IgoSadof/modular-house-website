@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
-      paddingTop: "50px",
+      paddingTop: "0",
     },
   },
   textBlock: {

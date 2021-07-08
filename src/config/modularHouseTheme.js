@@ -133,7 +133,7 @@ const modularHouseTheme = createMuiTheme({
       lineHeight: 1.15,
       fontWeight: 400,
       fontStyle: "normal",
-      color: "#BDBDBD",
+      color: "#7C7C7C",
       fontFamily: ["Ubuntu", "sans-serif"].join(","),
       "@media (min-width:1900px)": {
         fontSize: myFontsSize.body2 * myFontsSize.width1900,

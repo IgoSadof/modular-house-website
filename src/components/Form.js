@@ -107,7 +107,8 @@ const useStyles = makeStyles((theme) => ({
     border: "none",
     borderBottom: "1px solid #4F4F4F",
     marginTop: "10px",
-    fontSize: "18px",
+    fontFamily:theme.typography.fontFamily,
+    fontSize: theme.typography.h4.fontSize, 
     "&:focus": {
       outline: "none",
     },

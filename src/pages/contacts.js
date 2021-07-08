@@ -11,7 +11,6 @@ import Burger from "../components/Burger";
 import BurgerMenu from "../components/BurgerMenu";
 import SendForm from "../components/SendForm";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import RegularButton from "../components/buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -19,14 +18,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     height: "100vh",
-    overflow:'hidden',
+    overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
   },
 
   Block: {
-    position: 'relative',
+    position: "relative",
     width: "100%",
     padding: "100px 10% 100px 250px",
     backgroundColor: "#D1D1D1",
@@ -57,10 +56,7 @@ const ContactsPage = () => {
         <div className="content">
           <div className={classes.page}>
             <Box className={classes.Block}>
-              {matches[1200] ? (
-                <Burger click={handleOpenBurgerMenu} />
-              ) : null}
-              {/* <Burger color='black'/> */}
+              {matches[1200] ? <Burger click={handleOpenBurgerMenu} /> : null}
               <BurgerMenu
                 isBurgerMenuOpen={isBurgerMenuOpen}
                 click={handleOpenBurgerMenu}
@@ -74,7 +70,8 @@ const ContactsPage = () => {
                     <Burger
                       isOpen={true}
                       click={() => (
-                        handleOpenBurgerMenu(), handleClickConnect()
+                        handleOpenBurgerMenu(),
+                        handleClickConnect()
                       )}
                     />
                   ) : null
