@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       left: (param) => (param.isFormOpen ? "0%" : "100%"),
       padding: "10%",
-      paddingTop:'0',
+      paddingTop: "0",
       width: "100%",
-      justifyContent:'space-between',
+      justifyContent: "space-between",
     },
   },
   buttonBox: {
@@ -74,7 +74,13 @@ const SendForm = ({ isFormOpen, click, burger }) => {
         </Box>
       ) : null}
 
-      <Form title={"Напешите нам"} email text closeForm={click} inBurger={true} />
+      <Form
+        title={"Напешите нам"}
+        email
+        text
+        closeForm={click}
+        inBurger={matches[1200] ? true : false}
+      />
     </div>
   );
 };

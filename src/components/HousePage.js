@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import SendForm from "../components/SendForm";
 import SquareButton from "../components/buttons/SquareButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import model from "../assets/images/model.png"
+import model from "../assets/images/model.png";
 
 // import whatWeDoImg2 from "../assets/images/w-we-do-img2.png";
 import plan from "../assets/images/plan.png";
@@ -24,6 +24,9 @@ import HouseFotosSlider from "../components/HouseFotosSlider";
 import { houses } from "../constant/houses";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Burger from "../components/Burger";
+import BurgerMenu from "../components/BurgerMenu";
+import RegularButton from "../components/buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -54,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     background:
       // "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
       "radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)",
-      
+
     zIndex: "2",
   },
   mainImgBox: {
@@ -104,7 +107,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       gap: "0",
       justifyContent: "space-between",
-
     },
   },
   mainBlockTitle: {
@@ -130,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#D1D1D1",
     [theme.breakpoints.down("md")]: {
       gap: "40px",
-      flexDirection: "colmainImgumn",
+      flexDirection: "column",
       padding: "11%",
       justifyContent: "center",
     },
@@ -180,7 +182,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height:'40vh',
+      height: "40vh",
     },
   },
   modelDescLine: {
@@ -262,8 +264,8 @@ const useStyles = makeStyles((theme) => ({
     left: "14%",
     bottom: "4%",
     [theme.breakpoints.down("md")]: {
-      width:'100%',
-      justifyContent: 'space-around',
+      width: "100%",
+      justifyContent: "space-around",
       left: "0%",
       bottom: "6%",
     },
@@ -391,7 +393,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "0px",
     [theme.breakpoints.down("md")]: {
       padding: "0",
-      width:'100%',
+      width: "100%",
     },
   },
 }));
@@ -407,6 +409,11 @@ const HousePage = ({ house }) => {
   const param = { pilldistance };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const handleOpenBurgerMenu = () => {
+    setIsBurgerMenuOpen((state) => !state);
+    console.log("openBurger");
+  };
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
   const [roomsImg, setRoomsImg] = useState(
@@ -473,14 +480,37 @@ const HousePage = ({ house }) => {
       <div className="conteiner">
         <div className="content">
           <Box className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}>
-            <SendForm isFormOpen={isFormOpen} click={handleClickConnect} />
-            <Button
-              className={classes.button}
-              variant="outlined"
-              onClick={handleClickConnect}
-            >
-              СВЯЗАТЬСЯ
-            </Button>
+            {matches[1200] ? (
+              <Burger
+                color="white"
+                position="absolute"
+                click={handleOpenBurgerMenu}
+              />
+            ) : null}
+            <BurgerMenu
+              isBurgerMenuOpen={isBurgerMenuOpen}
+              click={handleOpenBurgerMenu}
+              clickToOpenForm={handleClickConnect}
+            />
+            <SendForm
+              isFormOpen={isFormOpen}
+              click={handleClickConnect}
+              burger={
+                matches[1200] ? (
+                  <Burger
+                    isOpen={true}
+                    click={() => (handleOpenBurgerMenu(), handleClickConnect())}
+                  />
+                ) : null
+              }
+            />
+            <Box className={classes.button}>
+              {matches["1200"] ? null : (
+                <RegularButton variant="outlined" click={handleClickConnect}>
+                  СВЯЗАТЬСЯ
+                </RegularButton>
+              )}
+            </Box>
             <Box className={classes.mainImgBox}>
               <img
                 className={classes.mainImg}
@@ -614,7 +644,10 @@ const HousePage = ({ house }) => {
                 })}
               </Box>
             </Box>
-            <Box style={{ backgroundImage: `url(${model})` }} className={classes.model}></Box>
+            <Box
+              style={{ backgroundImage: `url(${model})` }}
+              className={classes.model}
+            ></Box>
           </Box>
 
           <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>

@@ -183,7 +183,6 @@ const MainPage = () => {
     setIsFormOpen((state) => !state);
   };
   const handleCloseForm = (e) => {
-    console.log(e.target);
   };
 
   return (
