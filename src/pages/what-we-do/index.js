@@ -18,6 +18,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Burger from "../../components/Burger";
 import BurgerMenu from "../../components/BurgerMenu";
+import { ScatterPlot } from "@material-ui/icons";
 
 const style = {
   flex: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     ...style.flexColumn,
     height: "100vh",
     [theme.breakpoints.down("md")]: {
-      height: "100%",
+      height: "100vh",
     },
   },
   Block: {
@@ -57,6 +58,13 @@ const useStyles = makeStyles((theme) => ({
     top: "5%",
     right: "10%",
     zIndex: "2",
+    transition:'0.5s',
+    [theme.breakpoints.down("md")]: {
+      transform: "scale(0.7)",
+      top:'55%',
+      right: "0",
+      opacity:'1',
+    },
   },
   houseListBlock: {
     width: "11vw",
@@ -64,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
       borderRight: "none",
-      padding: "10%",
+      padding: "0",
     },
   },
   houseList: {
@@ -86,8 +94,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    // border: "1px solid",
-    // marginTop:'20px',
+    [theme.breakpoints.down("md")]: {
+      transform: "scale(0.7)",
+      top: "20px",
+    },
+  },
+  houseListItemActive: {
+    [theme.breakpoints.down("md")]: {
+      transform: "scale(1.2)",
+    },
   },
   houseListNumber: {
     position: "absolute",
@@ -101,6 +116,9 @@ const useStyles = makeStyles((theme) => ({
   houseListActiveNumber: {
     top: "20%",
     transition: "1s",
+    [theme.breakpoints.down("md")]: {
+      opacity: "0",
+    },
   },
   houseListImg: {
     position: "absolute",
@@ -108,6 +126,10 @@ const useStyles = makeStyles((theme) => ({
     top: "20%",
     zIndex: "2",
     width: "80%",
+    transition: "0.5s",
+  },
+  houseListImgActive: {
+    top: "0%",
   },
   houseListName: {
     position: "absolute",
@@ -120,10 +142,11 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      padding: "10%",
+      padding: "4% 10%",
     },
   },
   houseDescContent: {
+    position: "relative",
     display: "flex",
     flexDirection: "column",
     margin: "auto",
@@ -156,34 +179,66 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "contain",
   },
   houseDescTitleBox: {
+    width: "100%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      position: "absolute",
+      top: "-190%",
+      zIndex: "1",
+    },
   },
   houseDescTitle: {
     fontSize: "48px",
     lineHeight: "52px",
     width: "200px",
+    [theme.breakpoints.down("md")]: {
+      color: "#F2F2F2",
+      fontSize: "44px",
+    },
   },
   houseDescIconBox: {
     width: "40px",
     height: "40px",
-    // border: "1px solid",
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      width: "100px",
+      objectFit: "contain",
+      height: "85px",
+    },
   },
   mainPlan: {
-    width: "100%",
-    height: "100%",
+    width: "40px",
+    height: "40px",
+    [theme.breakpoints.down("md")]: {
+      objectFit: "contain",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
   },
   houseDescText: {
     fontSize: "14px",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
-  houseDescSpecBox: style.flex,
+  houseDescSpecBox: {
+    ...style.flex,
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "normal",
+    },
+  },
   houseDescSpec: style.flexColumn,
   houseDescSpecOne: style.flex,
   houseDescMore: style.flex,
   houseDescPrice: style.flexColumn,
   houseSpecPrice: {
     fontSize: "20px",
+    color: "white",
   },
   Link: {
     textDecoration: "none",
@@ -242,7 +297,11 @@ const WhatWeDo = () => {
   const listItem = houses.map((item, index) => {
     return (
       <li
-        className={classes.houseListItem}
+        className={
+          activeSlide === index
+            ? `${classes.houseListItem} ${classes.houseListItemActive}`
+            : classes.houseListItem
+        }
         key={item.id}
         onClick={() => handleItemclick(index)}
       >
@@ -253,7 +312,28 @@ const WhatWeDo = () => {
               : classes.houseListNumber
           }
         >{`0${index + 1}`}</Typography>
-        {!(activeSlide === index) ? (
+        {!matches[1200] ? (
+          !(activeSlide === index) ? (
+            <>
+              <CSSTransition
+                key={item.id}
+                in={true}
+                appear={true}
+                timeout={500}
+                classNames="houseMove"
+              >
+                <img
+                  className={classes.houseListImg}
+                  src={item.img.list}
+                  alt="img"
+                ></img>
+              </CSSTransition>
+              <Typography variant="subtitle1" className={classes.houseListName}>
+                {item.name}
+              </Typography>
+            </>
+          ) : null
+        ) : (
           <>
             <CSSTransition
               key={item.id}
@@ -263,16 +343,30 @@ const WhatWeDo = () => {
               classNames="houseMove"
             >
               <img
-                className={classes.houseListImg}
+                className={
+                  activeSlide === index
+                    ? `${classes.houseListImg} ${classes.houseListImgActive}`
+                    : classes.houseListImg
+                }
                 src={item.img.list}
                 alt="img"
               ></img>
             </CSSTransition>
-            <Typography variant="subtitle1" className={classes.houseListName}>
-              {item.name}
-            </Typography>
+            {activeSlide === index ? (
+              <Box className={classes.button}>
+                <Link className={classes.Link} to={houses[house].link}>
+                  <RegularButton variant="outlined">Подробнее</RegularButton>
+                </Link>
+              </Box>
+            ) : null}
+
+            {!(activeSlide === index) ? (
+              <Typography variant="subtitle1" className={classes.houseListName}>
+                {item.name}
+              </Typography>
+            ) : null}
           </>
-        ) : null}
+        )}
       </li>
     );
   });
@@ -293,10 +387,10 @@ const WhatWeDo = () => {
       houseSliderRef.current.slickPrev();
     }
   };
-  const handleMouseOver = (e) => {
+  const scrollOff = (e) => {
     document.body.style.overflow = "hidden";
   };
-  const handleMouseOut = (e) => {
+  const scrollOn = (e) => {
     document.body.style.overflow = "inherit";
   };
 
@@ -342,8 +436,9 @@ const WhatWeDo = () => {
               <Box
                 className={classes.houseListBlock}
                 onWheel={handleScrol}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
+                onMouseOver={scrollOff}
+                onMouseOut={scrollOn}
+                onClick={scrollOn}
               >
                 {/* <ul className={classes.houseList}>{housesList}</ul> */}
 
@@ -388,6 +483,14 @@ const WhatWeDo = () => {
                         src={houses[house].img.plan}
                         alt="img"
                       ></img>
+                      {matches[1200] ? (
+                        <Typography
+                          variant="h5"
+                          className={classes.houseSpecPrice}
+                        >
+                          {houses[house].price}
+                        </Typography>
+                      ) : null}
                     </Box>
                   </Box>
 
@@ -459,25 +562,29 @@ const WhatWeDo = () => {
                     </Box>
                   </Box>
                   <Box className={classes.houseDescMore}>
-                    <Box className={classes.houseDescPrice}>
-                      <Typography
-                        variant="body1"
-                        className={classes.houseSpecValue}
-                      >
-                        Стоимость всех модулей:
-                      </Typography>
-                      <Typography
-                        variant="h5"
-                        className={classes.houseSpecPrice}
-                      >
-                        {houses[house].price}
-                      </Typography>
-                    </Box>
-                    <Link className={classes.Link} to={houses[house].link}>
-                      <RegularButton variant="outlined">
-                        Подробнее
-                      </RegularButton>
-                    </Link>
+                    {matches[1200] ? null : (
+                      <>
+                        <Box className={classes.houseDescPrice}>
+                          <Typography
+                            variant="body1"
+                            className={classes.houseSpecValue}
+                          >
+                            Стоимость всех модулей:
+                          </Typography>
+                          <Typography
+                            variant="h5"
+                            className={classes.houseSpecPrice}
+                          >
+                            {houses[house].price}
+                          </Typography>
+                        </Box>
+                        <Link className={classes.Link} to={houses[house].link}>
+                          <RegularButton variant="outlined">
+                            Подробнее
+                          </RegularButton>
+                        </Link>
+                      </>
+                    )}
                   </Box>
                 </Box>
               </Box>

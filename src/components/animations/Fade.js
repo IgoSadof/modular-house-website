@@ -1,6 +1,5 @@
 import React from "react";
 import { Transition } from "react-transition-group";
-import Box from "@material-ui/core/Box";
 
 // const duration = 500;
 
