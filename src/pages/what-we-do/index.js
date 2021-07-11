@@ -58,12 +58,12 @@ const useStyles = makeStyles((theme) => ({
     top: "5%",
     right: "10%",
     zIndex: "2",
-    transition:'0.5s',
+    transition: "0.5s",
     [theme.breakpoints.down("md")]: {
       transform: "scale(0.7)",
-      top:'55%',
+      top: "55%",
       right: "0",
-      opacity:'1',
+      opacity: "1",
     },
   },
   houseListBlock: {
@@ -237,8 +237,10 @@ const useStyles = makeStyles((theme) => ({
   houseDescMore: style.flex,
   houseDescPrice: style.flexColumn,
   houseSpecPrice: {
-    fontSize: "20px",
-    color: "white",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      color: "white",
+    },
   },
   Link: {
     textDecoration: "none",

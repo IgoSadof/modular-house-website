@@ -22,27 +22,15 @@ const ModalsSlider = ({ listItem, houseRef,mobile}) => {
     arrows: false,
     speed: 500,
     slidesToShow: mobile? 3:5,
-    slidesToScroll: 1,
+    slidesToScroll: mobile? 3:1,
     vertical: mobile? false : true,
     swipeToSlide: true,
     // focusOnSelect: true,
   };
-  const myRef = useRef(null);
-
-  const next = () => {
-    myRef.current.slickNext();
-  };
-  const previous = () => {
-    myRef.current.slickPrev();
-  };
-  const handleScroll = (e) => {
-    console.log("wheel");
-    next();
-  };
 
   return (
     <ul className={classes.list}>
-      <Slider ref={houseRef} onClick={(e) => handleScroll(e)} {...settings}>
+      <Slider ref={houseRef}{...settings}>
         {listItem}
       </Slider>
     </ul>
