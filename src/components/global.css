@@ -1,8 +1,8 @@
 * {
   box-sizing: border-box;
 }
-html{
-  overflow-y:visible;
+html {
+  overflow-y: visible;
 }
 body {
   margin: 0;
@@ -66,9 +66,25 @@ body {
   cursor: pointer;
   border-collapse: collapse;
 }
+.react-calendar {
+  display: flex;
+  flex-direction: column-reverse;
+}
 .react-calendar__navigation {
+  /* display: none !important; */
+}
+.react-calendar__navigation__label {
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  text-align: end;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.react-calendar__navigation__arrow {
   display: none !important;
 }
+
 .react-calendar__month-view__weekdays__weekday {
   display: flex;
   justify-content: center;
@@ -84,6 +100,43 @@ body {
 abbr {
   text-decoration: none !important;
   border-color: black;
+}
+
+.react-calendar__tile--active {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+.react-calendar__tile--now {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+.react-calendar__tile--range {
+  background-color: rgb(255, 255, 255, 0.5);
+  color: black;
+}
+.react-calendar__tile--rangeStart,
+.react-calendar__tile--rangeEnd {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+.react-calendar__tile:hover {
+  background-color: rgb(255, 255, 255, 0.5);
+  color: black;
+}
+.unAnableDate {
+  position: relative;
+  pointer-events: none;
+}
+.unAnableDate::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 300%;
+  height: 1px;
+  background-color: black;
+  transform: rotate(45deg);
 }
 
 .slick-list {
@@ -190,8 +243,6 @@ abbr {
 .houseMove-exit-done {
   opacity: 0;
 }
-
-
 
 .fadeHouse-appear {
   opacity: 0;

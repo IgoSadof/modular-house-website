@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -29,17 +27,7 @@ const HouseFotosSlider = ({listItem,myRef}) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
-  };
-
-  const next = () => {
-    myRef.current.slickNext();
-  }
-  const previous = () => {
-    myRef.current.slickPrev();
-  }
-  const handleScroll = (e) => {
-    console.log('wheel')
-    next()
+    adaptiveHeight: true,
   };
   
   return (
