@@ -285,11 +285,10 @@ const WhatWeDo = () => {
   };
   const handleItemclick = (index) => {
     setHouse((state) => index);
-    // console.log(animation);
-    setAnimation((state) => !state);
-    // console.log(element.current.getBoundingClientRect());
     myRef.current.slickGoTo(index);
-    // modelsRef.current.slickGoTo(index)
+    // houseSliderRef.current.slickGoTo(index);
+    // setTimeout(() => houseSliderRef.current.slickPrev(), 600);
+
     setActiveSlide(index);
   };
   const element = useRef(null);
@@ -447,7 +446,7 @@ const WhatWeDo = () => {
                 <ModalsSlider
                   houseRef={houseSliderRef}
                   listItem={listItem}
-                  mobile={matches[1200] ? true : null}
+                  mobile={matches[1200]}
                 />
               </Box>
               <Box className={classes.houseDesc}>
