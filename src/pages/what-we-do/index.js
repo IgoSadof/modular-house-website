@@ -18,7 +18,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Burger from "../../components/Burger";
 import BurgerMenu from "../../components/BurgerMenu";
-import { ScatterPlot } from "@material-ui/icons";
 
 const style = {
   flex: {
@@ -270,7 +269,7 @@ const WhatWeDo = () => {
   };
   const [house, setHouse] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [animation, setAnimation] = useState(true);
+  const [animation] = useState(true);
   const param = { matches };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);

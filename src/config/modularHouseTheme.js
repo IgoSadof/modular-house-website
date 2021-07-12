@@ -1,5 +1,4 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import purple from "@material-ui/core/colors/purple";
 import green from "@material-ui/core/colors/green";
 
 const myFontsSize = {
@@ -10,7 +9,6 @@ const myFontsSize = {
   h4: 18,
   h5: 18,
   h6: 14,
-  body1: 12,
   body1: 12,
   subtitle1: 14,
   subtitle2: 14,

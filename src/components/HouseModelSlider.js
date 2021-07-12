@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -25,14 +23,6 @@ const useStyles = makeStyles((theme) => ({
 const HouseModelSlider = ({listItem,myRef}) => {
   const classes = useStyles();
   const settings = {
-    customPaging: function(i) {
-      return (
-        <a>
-          {/* <img src={`${baseUrl}/abstract0${i + 1}.jpg`} /> */}
-          <div className={classes.item}>i</div>
-        </a>
-      );
-    },
     infinite: true,
     arrows: false,
     speed: 2000,
@@ -41,17 +31,6 @@ const HouseModelSlider = ({listItem,myRef}) => {
     swipeToSlide: false,
     swipe:false,
     adaptiveHeight: true
-  };
-
-  const next = () => {
-    myRef.current.slickNext();
-  }
-  const previous = () => {
-    myRef.current.slickPrev();
-  }
-  const handleScroll = (e) => {
-    console.log('wheel')
-    next()
   };
   
   return (

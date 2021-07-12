@@ -3,14 +3,9 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-// import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
 import slides from "../constant/slides";
-// import gif from "../asssets/images/gif.gif";
-// import Button from "@material-ui/core/Button";
 import numbers from "../constant/numbers";
-// import axios from "axios";
-// import findDataFromCategory from "../utils/findDataFromCategory";
 import SendForm from "./SendForm";
 import RegularButton from "./buttons/RegularButton";
 import video from "../assets/video/video.webm";
@@ -18,6 +13,8 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Burger from "../components/Burger";
 import BurgerMenu from "../components/BurgerMenu";
+// import axios from "axios";
+// import findDataFromCategory from "../utils/findDataFromCategory";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -238,13 +235,13 @@ const Slider = ({ scrol, isFirstEntry }) => {
   const [playVideo, setPlayVideo] = useState(true);
   const param = { scrol, lineLength };
   const classes = useStyles(param);
-  const [opacity, setOpasity] = useState(true);
+  const [opacity] = useState(true);
 
   // const [resources, setResources] = useState(null);
   // const [resourcestv, setResourcestv] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
-  const [fields, setFields] = useState({
+  const [fields] = useState({
     headers: null,
     subtitles: null,
   });
@@ -413,7 +410,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
                     }
                     variant="h6"
                   >
-                    <span key={index} onClick={handleNumberClick}>
+                    <span role = "number" key={index} onClick={handleNumberClick}>
                       {item}
                     </span>
                   </Typography>

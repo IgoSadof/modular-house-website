@@ -259,7 +259,7 @@ const MainPageContent = () => {
   const [review, setReview] = useState(0);
   const [answeGroup, setAnsweGroup] = useState(0);
   const [reviewVideo, setReviewVideo] = useState(reviews.length - 1);
-  const [opacity, setOpasity] = useState(true);
+  const [opacity] = useState(true);
 
   const handleClickLeft = () => {
     setReview((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));

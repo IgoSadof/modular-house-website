@@ -44,8 +44,6 @@ const useStyles = makeStyles((theme) => ({
   img: {
     width: "100%",
     height: "100%",
-    // objectFit: "cover",
-    transition: "1s",
     backgroundPosition: "center",
     backgroundSize: "cover",
     transition: "all .5s",

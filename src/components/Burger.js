@@ -20,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
     filter:param=>param.color==="white"?"invert(1)": null,
   },
   logo: {
-    width: "60px",
-    height: "40px",
-  },
-  logo: {
     width: "50px",
     height: "50px",
   },

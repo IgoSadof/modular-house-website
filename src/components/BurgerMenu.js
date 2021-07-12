@@ -1,11 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Form from "./Form";
-import SquareButton from "./buttons/SquareButton";
-import ClearIcon from "@material-ui/icons/Clear";
 import Menu from "./Menu";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Burger from "./Burger";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,10 +32,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SendForm = ({ isBurgerMenuOpen, click, clickToOpenForm }) => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+  // const matches = {
+  //   1920: useMediaQuery("(min-width:1920px)"),
+  //   1200: useMediaQuery("(max-width:1200px)"),
+  // };
   // const [review, setReview] = useState(0);
   // const [isOpen, setIsOpen] = useState(isBurgerMenuOpen);
   const param = {isBurgerMenuOpen};

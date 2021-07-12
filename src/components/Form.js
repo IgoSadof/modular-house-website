@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -123,8 +122,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    background:
-      "radial-gradient(100% 100% at 0% 0%, #E2E2E2, rgba(232, 232, 232, 0.12) 100%)",
     background: "radial-gradient(#E2E2E2,rgba(232, 232, 232, 0.12))",
     backdropFilter: "blur(10px)",
     boxShadow: theme.shadows[5],
@@ -159,9 +156,6 @@ const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) 
     checkAbsbutton();
   }, [matches]);
 
-  // const handleClick = () => {
-
-  // }
   const handleOpen = () => {
     setOpen(true);
   };

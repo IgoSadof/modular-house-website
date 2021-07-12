@@ -4,9 +4,7 @@ import Box from "@material-ui/core/Box";
 import Form from "./Form";
 import SquareButton from "./buttons/SquareButton";
 import ClearIcon from "@material-ui/icons/Clear";
-import Menu from "../components/Menu";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Burger from "../components/Burger";
 import call from "../assets/images/call.png";
 import Typography from "@material-ui/core/Typography";
 

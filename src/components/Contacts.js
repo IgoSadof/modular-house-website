@@ -105,7 +105,6 @@ const Contacts = ({ header }) => {
                 className={classes.logo}
                 src={logo}
                 alt="logo"
-                alt="img"
               ></img>
               <Typography variant="subtitle1">MODULAR HOUSE</Typography>
             </Box>
@@ -120,7 +119,6 @@ const Contacts = ({ header }) => {
                   className={classes.contactsFoto}
                   src={andrey}
                   alt="Foto"
-                  alt="img"
                 ></img>
                 <Typography variant="body1">Андрей</Typography>
                 <Typography variant="body1">Главный</Typography>
@@ -131,7 +129,6 @@ const Contacts = ({ header }) => {
                   className={classes.contactsFoto}
                   src={alexey}
                   alt="Foto"
-                  alt="img"
                 ></img>
                 <Typography variant="body1">Алексей</Typography>
                 <Typography variant="body1">Главный</Typography>
@@ -146,7 +143,6 @@ const Contacts = ({ header }) => {
                       className={classes.logo}
                       src={logo}
                       alt="logo"
-                      alt="img"
                     ></img>
                     <Typography variant="subtitle1">MODULAR HOUSE</Typography>
                   </Box>
@@ -170,7 +166,6 @@ const Contacts = ({ header }) => {
                     className={classes.logo}
                     src={logo}
                     alt="logo"
-                    alt="img"
                   ></img>
                   <Typography variant="subtitle1">MODULAR HOUSE</Typography>
                 </Box>

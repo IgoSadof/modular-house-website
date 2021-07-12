@@ -402,7 +402,7 @@ const HousePage = ({ house }) => {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  const [houseNumber, setHouseNumber] = useState(house);
+  const [houseNumber] = useState(house);
   const [pilldistance, setPilldistance] = useState(20);
   const [pillClick, setPillClick] = useState(0);
   const param = { pilldistance };
@@ -419,7 +419,7 @@ const HousePage = ({ house }) => {
     houses[houseNumber].modules[0].rooms[0].img
   );
   const [roomsImgIndex, setRoomsImgIndex] = useState(0);
-  const [opacity, setOpasity] = useState(true);
+  const [opacity] = useState(true);
   const handleRoomsImgChange = (img, index) => {
     setRoomsImg(img);
     setRoomsImgIndex(index);

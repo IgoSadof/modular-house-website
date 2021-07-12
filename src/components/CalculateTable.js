@@ -1,18 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { houses } from "../constant/houses";
 import Box from "@material-ui/core/Box";
-// import RegularButton from "./buttons/RegularButton";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
-  table: {
-    width: "100%",
-    minWidth: 200,
-  },
   conteiner: {
     display: "flex",
     flexDirection: "column",
@@ -30,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "25px",
   },
   table: {
-    borderCollapse: "collapse",
     width: "100%",
+    minWidth: 200,
+    borderCollapse: "collapse",
     padding: "0 20px",
   },
   tableRow: {

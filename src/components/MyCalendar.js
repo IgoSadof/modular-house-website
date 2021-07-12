@@ -11,7 +11,6 @@ const MyCalendar = () => {
   const [selectDate, setSelectDate] = useState(null);
   const handleClick = (value, e) => {
     setSelectDate(value);
-    // console.log(Calendar.)
   };
   useEffect(() => {
     let days = document.getElementsByClassName("react-calendar__tile");
@@ -21,25 +20,18 @@ const MyCalendar = () => {
         unavailableDates.includes(item.children[0].getAttribute("aria-label"))
       ) {
         item.classList.add("unAnableDate");
-        console.log(item.children[0].getAttribute("aria-label"), item);
       }
     });
-
-    if (
-      unavailableDates.filter((item) => item.toString() === value.toString())
-        .length > 0
-    ) {
-      console.log("current date is unavaliable");
-    } else {
-      console.log("current date is avaliable");
-    }
   }, []);
 
   return (
     <div>
       <Calendar
+      value={value}
         onChange={onChange}
         tileClassName="calendar"
+        onClickDay={(value, event) => handleClick(value, event)}
+
         // tileClassName={({ activeStartDate, date, view }) => {
         //   if (unavailableDates.includes(date.toString())) {
         //     return "unAnableDate";
