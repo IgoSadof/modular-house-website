@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     height: "50vh",
-    padding: "60px 160px 60px 260px ",
+    padding: "8vh 10% 8vh 18%",
 
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
@@ -92,10 +92,10 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "cover",
   },
   calendar: {
-    width: "280px",
+    width: "260px",
     height: "240px",
-    marginTop: 'auto',
-    marginBottom: 'auto',
+    marginTop: "auto",
+    marginBottom: "auto",
     [theme.breakpoints.up("xl")]: {
       width: "20vw",
       height: "fit-content",
@@ -109,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "50vh",
     objectFit: "cover",
+    objectPosition: "bottom",
   },
 }));
 
@@ -151,7 +152,11 @@ const WhatWeDo = () => {
           <div className={classes.page}>
             <Box className={classes.BlockFullscreen}>
               {matches[1200] ? (
-                <Burger color="white" position="absolute" click={handleOpenBurgerMenu} />
+                <Burger
+                  color="white"
+                  position="absolute"
+                  click={handleOpenBurgerMenu}
+                />
               ) : null}
               <BurgerMenu
                 isBurgerMenuOpen={isBurgerMenuOpen}

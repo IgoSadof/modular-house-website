@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: "0",
     width: "700px",
     backgroundColor: "#D1D1D1",
+    // borderBottom:'1px solid black'
   },
 }));
 

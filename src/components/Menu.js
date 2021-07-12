@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     background:
-      "radial-gradient(rgba(232, 232, 232, 0.12) 100%, rgba(232, 232, 232, 0.12) 100%)",
+      "radial-gradient(rgba(232, 232, 232, 0.3) 100%, rgba(232, 232, 232, 0.12) 100%)",
     backdropFilter: "blur(10px)",
 
     [theme.breakpoints.down("md")]: {

@@ -42,8 +42,8 @@ body {
 }
 .MuiSlider-thumb::after {
   content: "+" !important;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: 1px solid;
   border-radius: 50%;
   font-size: 30px;
@@ -59,8 +59,8 @@ body {
 }
 
 .calendar {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   background-color: transparent;
   border: 1px solid;
   border-radius: "none";
@@ -69,8 +69,8 @@ body {
 }
 @media (min-width: 1900px) {
   .calendar {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 }
 .react-calendar {
