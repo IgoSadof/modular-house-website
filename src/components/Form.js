@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     textTransform: "uppercase",
-    width: "245px",
+    // width: "245px",
   },
   subtitle: {
     marginTop: "60px",

@@ -41,7 +41,7 @@ const modularHouseTheme = createMuiTheme({
       sm: 600,
       md: 960,
       lg: 1280,
-      xl: 1920,
+      xl: 1900,
     },
   },
   typography: {

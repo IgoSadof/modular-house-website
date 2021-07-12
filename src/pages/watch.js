@@ -94,6 +94,12 @@ const useStyles = makeStyles((theme) => ({
   calendar: {
     width: "280px",
     height: "240px",
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    [theme.breakpoints.up("xl")]: {
+      width: "20vw",
+      height: "fit-content",
+    },
     [theme.breakpoints.down("md")]: {
       order: "1",
     },
