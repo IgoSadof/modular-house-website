@@ -440,8 +440,6 @@ const WhatWeDo = () => {
                 onMouseOut={scrollOn}
                 onClick={scrollOn}
               >
-                {/* <ul className={classes.houseList}>{housesList}</ul> */}
-
                 <ModalsSlider
                   houseRef={houseSliderRef}
                   listItem={listItem}

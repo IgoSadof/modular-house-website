@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
 import { houses } from "../constant/houses";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +21,11 @@ const useStyles = makeStyles((theme) => ({
     margin: "0",
   },
   conteiner: {
+    // border: "1px solid",
+    marginRight: "20px",
+    cursor: "pointer",
+  },
+  content: {
     border: "1px solid",
     marginRight: "20px",
     cursor: "pointer",
@@ -53,8 +57,8 @@ const useStyles = makeStyles((theme) => ({
       padding: "15px",
     },
   },
-  name:{
-    width:'60%'
+  name: {
+    width: "60%",
   },
   title: {
     display: "flex",
@@ -79,127 +83,96 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   price: {
-    minWidth:'130px',
+    minWidth: "130px",
   },
 }));
-const HouseSlider = ({mobile,houseRef}) => {
-  const [swipe,setSwipe]=useState(false)
-  const param = {mobile};
+const HouseSlider = ({ mobile, houseRef }) => {
+  const [swipe, setSwipe] = useState(false);
+  const param = { mobile };
   const classes = useStyles(param);
-  const handleClick = (e) =>{
-    if(!swipe){console.log('click')}
-    else{
+  const handleClick = (e) => {
+    if (swipe) {
       e.preventDefault();
-      console.log('swipe')
-      setSwipe(false)
+      setSwipe(false);
     }
-
-    
-  }
+  };
   const settings = {
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: mobile?1:2,
-    slidesToScroll: 1,
-    
+    slidesToShow: mobile ? 1 : 2,
+    // slidesToScroll: 1,
   };
   const listItems = houses.map((item, index) => {
     return (
-      <Slide
-        click={handleClick}
-        key={index}
-        link={item.link}
-        img={item.img.main}
-        name={item.name}
-        price={item.price}
-        totalArea={item.totalArea}
-        effectiveArea={item.effectiveArea}
-        baseModuleArea={item.baseModuleArea}
-        totalAreaText={item.totalAreaText}
-        effectiveAreaText={item.effectiveAreaText}
-        baseModuleAreaText={item.baseModuleAreaText}
-      />
+      <li className={classes.conteiner} key={index}>
+        <Box className={classes.content}>
+          <Link
+            className={classes.link}
+            to={`what-we-do/${item.link}`}
+            onClick={handleClick}
+          >
+            <Box className={classes.imgBox}>
+              <Box
+                className={classes.img}
+                style={{ backgroundImage: `url(${item.img.main})` }}
+              ></Box>
+            </Box>
+          </Link>
+
+          <Box className={classes.description}>
+            <Box className={classes.title}>
+              <Typography
+                variant="h1"
+                color="textSecondary"
+                className={classes.name}
+              >
+                {item.name}
+              </Typography>
+              <Typography variant="h5" className={classes.price}>
+                {item.price}
+              </Typography>
+            </Box>
+            <Box className={classes.subtitle}>
+              <Box className={classes.properties}>
+                <Box className={classes.property}>
+                  <Typography variant="body1" className={classes.propertyName}>
+                    {item.totalAreaText}
+                  </Typography>
+                  <Typography variant="h6" className={classes.propertyValue}>
+                    {item.totalArea}
+                  </Typography>
+                </Box>
+                <Box className={classes.property}>
+                  <Typography variant="body1" className={classes.propertyName}>
+                    {item.effectiveAreaText}
+                  </Typography>
+                  <Typography variant="h6" className={classes.propertyValue}>
+                    {item.effectiveArea}
+                  </Typography>
+                </Box>
+                <Box className={classes.property}>
+                  <Typography variant="body1" className={classes.propertyName}>
+                    {item.baseModuleAreaText}
+                  </Typography>
+                  <Typography variant="h6" className={classes.propertyValue}>
+                    {item.baseModuleArea}
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </li>
     );
   });
 
   return (
     <ul className={classes.list}>
-      <Slider onSwipe={()=> setSwipe(true)} ref={houseRef} {...settings}>{listItems}</Slider>
+      <Slider onSwipe={() => setSwipe(true)} ref={houseRef} {...settings}>
+        {listItems}
+      </Slider>
     </ul>
   );
 };
-
-const Slide = ({
-  click,
-  key,
-  link,
-  img,
-  name,
-  price,
-  totalArea,
-  effectiveArea,
-  baseModuleArea,
-  totalAreaText,
-  effectiveAreaText,
-  baseModuleAreaText,
-}) => {
-  const classes = useStyles();
-  return (
-    <li className={classes.conteiner} key={key}>
-      <Link className={classes.link} to={`what-we-do/${link}`} onClick={click}>
-        <Box className={classes.imgBox}>
-          <Box
-            className={classes.img}
-            style={{ backgroundImage: `url(${img})` }}
-          ></Box>
-        </Box>
-      </Link>
-
-      <Box className={classes.description}>
-        <Box className={classes.title}>
-          <Typography
-            variant="h1"
-            color="textSecondary"
-            className={classes.name}
-          >
-            {name}
-          </Typography>
-          <Typography variant="h5" className={classes.price}>
-            {price}
-          </Typography>
-        </Box>
-        <Box className={classes.subtitle}>
-          <Box className={classes.properties}>
-            <Box className={classes.property}>
-              <Typography variant="body1" className={classes.propertyName}>
-                {totalAreaText}
-              </Typography>
-              <Typography variant="h6" className={classes.propertyValue}>
-                {totalArea}
-              </Typography>
-            </Box>
-            <Box className={classes.property}>
-              <Typography variant="body1" className={classes.propertyName}>
-                {effectiveAreaText}
-              </Typography>
-              <Typography variant="h6" className={classes.propertyValue}>
-                {effectiveArea}
-              </Typography>
-            </Box>
-            <Box className={classes.property}>
-              <Typography variant="body1" className={classes.propertyName}>
-                {baseModuleAreaText}
-              </Typography>
-              <Typography variant="h6" className={classes.propertyValue}>
-                {baseModuleArea}
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-    </li>
-  );
-};
-
 export default HouseSlider;
