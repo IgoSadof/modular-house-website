@@ -158,12 +158,12 @@ const Menu = ({ inBurger,clickToOpenForm }) => {
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/contacts"}>
             {inBurger ? (
-              <Typography variant="button">КАК СВЯЗВТЬСЯ </Typography>
+              <Typography variant="button">КАК СВЯЗАТЬСЯ </Typography>
             ) : (
               <>
                 <Typography variant="button">КАК</Typography>
                 <br />
-                <Typography variant="button">СВЯЗВТЬСЯ</Typography>
+                <Typography variant="button">СВЯЗАТЬСЯ</Typography>
               </>
             )}
           </Link>

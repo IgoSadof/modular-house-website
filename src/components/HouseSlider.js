@@ -1,12 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
 import { houses } from "../constant/houses";
 import Typography from "@material-ui/core/Typography";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Link } from "gatsby";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,20 +83,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const HouseSlider = ({mobile,houseRef}) => {
-  // console.log(mobile)
+  const [swipe,setSwipe]=useState(false)
   const param = {mobile};
-  // console.log(param)
   const classes = useStyles(param);
+  const handleClick = (e) =>{
+    if(!swipe){console.log('click')}
+    else{
+      e.preventDefault();
+      console.log('swipe')
+      setSwipe(false)
+    }
+
+    
+  }
   const settings = {
     infinite: true,
     arrows: false,
     speed: 500,
     slidesToShow: mobile?1:2,
     slidesToScroll: 1,
+    
   };
   const listItems = houses.map((item, index) => {
     return (
       <Slide
+        click={handleClick}
         key={index}
         link={item.link}
         img={item.img.main}
@@ -115,12 +125,13 @@ const HouseSlider = ({mobile,houseRef}) => {
 
   return (
     <ul className={classes.list}>
-      <Slider ref={houseRef} {...settings}>{listItems}</Slider>
+      <Slider onSwipe={()=> setSwipe(true)} ref={houseRef} {...settings}>{listItems}</Slider>
     </ul>
   );
 };
 
 const Slide = ({
+  click,
   key,
   link,
   img,
@@ -136,7 +147,7 @@ const Slide = ({
   const classes = useStyles();
   return (
     <li className={classes.conteiner} key={key}>
-      <Link className={classes.link} to={`what-we-do/${link}`}>
+      <Link className={classes.link} to={`what-we-do/${link}`} onClick={click}>
         <Box className={classes.imgBox}>
           <Box
             className={classes.img}

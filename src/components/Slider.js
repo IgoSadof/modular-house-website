@@ -4,9 +4,7 @@ import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles({
   root: {
-    // position:"absolute",
     height: '100%',
-    // left:"38%",
     color: "black important!"
   },
 });
@@ -14,8 +12,6 @@ const useStyles = makeStyles({
 export default function VerticalSlider() {
   const classes = useStyles();
   function valuetext(value) {
-      // console.log(value)
-    // return `${value}°C`;
   }
 
   return (
@@ -26,8 +22,6 @@ export default function VerticalSlider() {
           getAriaValueText={valuetext}
           defaultValue={30}
           track='inverted'
-        //   color={palette.text.primary}
-        //   aria-labelledby="vertical-slider"
         />
       </div>
     </React.Fragment>
