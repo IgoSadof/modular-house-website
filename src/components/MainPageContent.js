@@ -290,7 +290,7 @@ const MainPageContent = () => {
     document.body.style.overflow='hidden';
   }
   const scrollOn = (e) => {
-    document.body.style.overflow='inherit';
+    document.body.style.overflow='overlay';
     
   }
 
@@ -298,7 +298,7 @@ const MainPageContent = () => {
     <div className={classes.root}>
       <Box className={classes.sliderBlock}>
         <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
+          <span className={`${classes.line} ${classes.firstLine}`}></span>
           {matches[1200] ? (
             <Typography variant="h4" className={classes.text}></Typography>
           ) : null}

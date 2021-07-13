@@ -14,6 +14,8 @@ import ClearIcon from "@material-ui/icons/Clear";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: "flex",
@@ -66,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       marginTop: "10px",
     },
+    field:{
+      width:'100%',
+    }
   },
 
   button: {
@@ -106,8 +111,8 @@ const useStyles = makeStyles((theme) => ({
     border: "none",
     borderBottom: "1px solid #4F4F4F",
     marginTop: "10px",
-    fontFamily:theme.typography.fontFamily,
-    fontSize: theme.typography.h4.fontSize, 
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.h4.fontSize,
     "&:focus": {
       outline: "none",
     },
@@ -139,14 +144,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) => {
-
+const Form = ({
+  title,
+  email,
+  text,
+  subtitle,
+  buttonAbs,
+  closeForm,
+  inBurger,
+}) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
   const [button, setButton] = useState(buttonAbs);
   const [open, setOpen] = React.useState(false);
+  const [emailText, setEmailText] = React.useState("");
+  const [telText, setTelText] = React.useState("");
   const param = { button, buttonAbs };
   const classes = useStyles(param);
   const checkAbsbutton = () => {
@@ -161,6 +175,18 @@ const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) 
   };
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleChangeEmail = (e) => {
+    const myemail = e.target.value;
+    setEmailText(myemail);
+  };
+  const handleChangeTel = (e) => {
+    const mytel = e.target.value;
+    setTelText(mytel);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("message submith");
   };
 
   return (
@@ -187,9 +213,15 @@ const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) 
         ) : null}
       </Box>
 
-      <form className={classes.root} noValidate autoComplete="off">
+      <ValidatorForm
+        onSubmit={handleSubmit}
+        className={classes.root}
+        noValidate
+        autoComplete="off"
+      >
         <Box className={classes.formFields}>
-          <TextField
+          <TextValidator
+            className={classes.field}
             //   required
             id="standard-basic"
             label={<Typography variant="body2">Имя</Typography>}
@@ -197,17 +229,27 @@ const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) 
               endAdornment: <InputAdornment position="end">*</InputAdornment>,
             }}
           />
-          <TextField
+          <TextValidator
+            className={classes.field}
+            onChange={handleChangeTel}
+              value={telText}
             InputProps={{
               endAdornment: <InputAdornment position="end">*</InputAdornment>,
             }}
             id="standard-basic"
             label={<Typography variant="body2">Телефон</Typography>}
+            validators={["isNumber"]}
+              errorMessages={["telefon incorrect",]}
           />
           {email ? (
-            <TextField
+            <TextValidator
+              className={classes.field}
               id="standard-basic"
               label={<Typography variant="body2">Email</Typography>}
+              onChange={handleChangeEmail}
+              value={emailText}
+              validators={["required", "isEmail"]}
+              errorMessages={["this field is required", "email is not valid"]}
               InputProps={{
                 endAdornment: <InputAdornment position="end">*</InputAdornment>,
               }}
@@ -234,7 +276,7 @@ const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) 
         ) : null}
 
         <Box className={classes.button}>
-          <RegularButton variant="outlined" click={handleOpen}>
+          <RegularButton submit={true} variant="outlined" click={handleOpen}>
             Отправить
           </RegularButton>
           {inBurger ? (
@@ -278,7 +320,7 @@ const Form = ({ title, email, text, subtitle, buttonAbs, closeForm, inBurger }) 
             </div>
           </Fade>
         </Modal>
-      </form>
+      </ValidatorForm>
     </Box>
   );
 };

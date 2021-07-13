@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 html {
-  overflow-y: visible;
+  /* overflow-y: visible; */
 }
 body {
   margin: 0;
@@ -34,6 +34,11 @@ body {
   background-color: #d1d1d1;
   padding: 0px 11% 100px 11%;
   overflow: hidden;
+}
+@media (max-width: 1200px) {
+  .components {
+    padding: 0;
+  }
 }
 
 
@@ -281,4 +286,15 @@ abbr {
 }
 .fadeHouse-exit-done {
   opacity: 0;
+}
+
+.MuiFormControl-root{
+  width: 100% !important;
+}
+.MuiFormHelperText-root{
+  position: absolute;
+  bottom: -50%;
+  font-size: 14px !important;
+  text-transform: lowercase !important;
+
 }

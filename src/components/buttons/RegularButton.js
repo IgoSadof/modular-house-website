@@ -22,6 +22,7 @@ export default function RegularButton({
   variant,
   color,
   leftNone,
+  submit,
 }) {
   const param = { color, leftNone };
   const classes = useStyles(param);
@@ -33,6 +34,7 @@ export default function RegularButton({
       variant={variant}
       color="inherit"
       value="check"
+      type={submit?"submit":"button}"}
     >
       {children}
     </Button>

@@ -130,14 +130,8 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       height: "40vh",
+      marginTop:"20px",
     },
-    // marginRight: "auto",
-    // marginLeft: "100px",
-
-    // [theme.breakpoints.down("md")]: {
-    //   marginLeft: "auto",
-    //   marginBottom: "auto",
-    // },
   },
   article: {
     minWidth: "300px",

@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
     marginBottom: "auto",
     [theme.breakpoints.up("xl")]: {
-      width: "20vw",
+      width: "18vw",
       height: "fit-content",
     },
     [theme.breakpoints.down("md")]: {

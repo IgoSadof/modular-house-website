@@ -102,6 +102,7 @@ const HouseSlider = ({ mobile, houseRef }) => {
     speed: 500,
     slidesToShow: mobile ? 1 : 2,
     // slidesToScroll: 1,
+    adaptiveHeight: true,
   };
   const listItems = houses.map((item, index) => {
     return (

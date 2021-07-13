@@ -182,8 +182,7 @@ const MainPage = () => {
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
-  const handleCloseForm = (e) => {
-  };
+  const handleCloseForm = (e) => {};
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
@@ -354,15 +353,12 @@ const MainPage = () => {
               ) : (
                 <>
                   <span className={classes.line}></span>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.blockTitle}
-                  >
-                    Создатели
-                  </Typography>
                 </>
               )}
               <Box className={classes.creatorsBox}>
+                <Typography variant="subtitle1" className={classes.blockTitle}>
+                  Создатели
+                </Typography>
                 <Box className={classes.creatorTextBox}>
                   <Typography
                     variant="subtitle2"
