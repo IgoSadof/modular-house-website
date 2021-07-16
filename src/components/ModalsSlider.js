@@ -24,7 +24,7 @@ const ModalsSlider = ({ listItem, houseRef,mobile}) => {
     slidesToShow: mobile? 3:5,
     vertical: mobile? false : true,
     swipeToSlide: true,
-    verticalSwiping: true,
+    verticalSwiping: mobile? false : true,
     // centerMode:true,
     // adaptiveHeight: true,
     // focusOnSelect: true,
