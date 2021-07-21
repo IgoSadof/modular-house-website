@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     height: "100vh",
     [theme.breakpoints.down("md")]: {
-      height: "100%",
+      height: (param) => (param.page === "houseList" ? "100vh" : "100%"),
     },
   },
 
@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
+    [theme.breakpoints.down("md")]: {
+      height: (param) => (param.page === "houseList" ? "100%": null),
+    },
   },
   button: {
     position: "absolute",
@@ -59,7 +62,7 @@ const Layout = ({ pageTitle, children, page }) => {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  const param = {};
+  const param = {page};
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
@@ -79,14 +82,14 @@ const Layout = ({ pageTitle, children, page }) => {
             <div className={classes.page}>
               <Box
                 className={
-                  page === "watch" ? classes.BlockFullscreen : classes.Block
+                  page === "watch"|| page === "houseList" ? classes.BlockFullscreen : classes.Block
                 }
               >
                 {matches[1200] ? (
                   <Burger
                     click={handleOpenBurgerMenu}
-                    position={page === "watch" ? "absolute" : null}
-                    color={page === "watch" ? "white" : null}
+                    position={page === "watch"|| page === "houseList" ? "absolute" : null}
+                    color={page === "watch"|| page === "houseList" ? "white" : null}
                   />
                 ) : null}
                 <BurgerMenu
