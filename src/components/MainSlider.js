@@ -6,13 +6,9 @@ import Box from "@material-ui/core/Box";
 import ReactPlayer from "react-player";
 import slides from "../constant/slides";
 import numbers from "../constant/numbers";
-import SendForm from "./SendForm";
-import RegularButton from "./buttons/RegularButton";
 import video from "../assets/video/video.webm";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Burger from "../components/Burger";
-import BurgerMenu from "../components/BurgerMenu";
 // import axios from "axios";
 // import findDataFromCategory from "../utils/findDataFromCategory";
 
@@ -130,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       height: "40vh",
-      marginTop:"20px",
+      marginTop: "20px",
     },
   },
   article: {
@@ -304,117 +300,91 @@ const Slider = ({ scrol, isFirstEntry }) => {
   const handleCloseForm = (e) => {};
 
   return (
-    <div className={classes.root} onClick={handleCloseForm}>
-      {matches[1200] ? (
-        <Burger color="black" click={handleOpenBurgerMenu} />
-      ) : null}
-      {/* <Burger color='black'/> */}
-      <BurgerMenu
-        isBurgerMenuOpen={isBurgerMenuOpen}
-        click={handleOpenBurgerMenu}
-        clickToOpenForm={handleClickConnect}
-      />
-      <SendForm
-        isFormOpen={isFormOpen}
-        click={handleClickConnect}
-        burger={
-          matches[1200] ? (
-            <Burger isOpen={true} click={()=>(handleOpenBurgerMenu(),handleClickConnect())} />
-          ) : null
-        }
-      />
-      <Box className={classes.content}>
-        <Box className={classes.button}>
-          {matches["1200"] ? null : (
-            <RegularButton variant="outlined" click={handleClickConnect}>
-              СВЯЗАТЬСЯ
-            </RegularButton>
-          )}
-        </Box>
-        <Box className={classes.midleBlock}>
-          <Box className={classes.textBlock}>
-            <TransitionGroup className={classes.articleBox}>
-              <CSSTransition
-                key={slides[activeNumb].id}
-                in={opacity}
-                appear={true}
-                timeout={500}
-                classNames="fade"
-              >
-                <Box className={classes.article}>
-                  <Typography
-                    className={classes.header}
-                    variant="h1"
-                    component="h1"
-                  >
-                    {fields.headers
-                      ? fields.headers[activeNumb].value
-                      : slides[activeNumb].title}
-                  </Typography>
-                  <Box>
-                    {slides[activeNumb].image ? (
-                      <img
-                        className={classes.logo}
-                        src={slides[activeNumb].image}
-                        alt="icon"
-                      ></img>
-                    ) : null}
-                  </Box>
-                  <Typography
-                    className={classes.text}
-                    variant="body1"
-                    component="h6"
-                  >
-                    {fields.subtitles
-                      ? fields.subtitles[activeNumb].value
-                      : slides[activeNumb].subtitle}
-                  </Typography>
+    <Box className={classes.content}>
+      <Box className={classes.midleBlock}>
+        <Box className={classes.textBlock}>
+          <TransitionGroup className={classes.articleBox}>
+            <CSSTransition
+              key={slides[activeNumb].id}
+              in={opacity}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+            >
+              <Box className={classes.article}>
+                <Typography
+                  className={classes.header}
+                  variant="h1"
+                  component="h1"
+                >
+                  {fields.headers
+                    ? fields.headers[activeNumb].value
+                    : slides[activeNumb].title}
+                </Typography>
+                <Box>
+                  {slides[activeNumb].image ? (
+                    <img
+                      className={classes.logo}
+                      src={slides[activeNumb].image}
+                      alt="icon"
+                    ></img>
+                  ) : null}
                 </Box>
-              </CSSTransition>
-            </TransitionGroup>
+                <Typography
+                  className={classes.text}
+                  variant="body1"
+                  component="h6"
+                >
+                  {fields.subtitles
+                    ? fields.subtitles[activeNumb].value
+                    : slides[activeNumb].subtitle}
+                </Typography>
+              </Box>
+            </CSSTransition>
+          </TransitionGroup>
 
-            <Box className={classes.mainVideoBox}>
-              <div className={classes.fon}></div>
-              <ReactPlayer
-                height="100%"
-                width="100%"
-                url={video}
-                playing={playVideo}
-                muted={true}
-                onProgress={({ playedSeconds, loadedSeconds }) => {
-                  if (playedSeconds > vidSegments[currentSegment]) {
-                    setPlayVideo(false);
+          <Box className={classes.mainVideoBox}>
+            <div className={classes.fon}></div>
+            <ReactPlayer
+              height="100%"
+              width="100%"
+              url={video}
+              playing={playVideo}
+              muted={true}
+              onProgress={({ playedSeconds, loadedSeconds }) => {
+                if (playedSeconds > vidSegments[currentSegment]) {
+                  setPlayVideo(false);
+                }
+              }}
+              onReady={() => {
+                setPlayVideo(true);
+              }}
+            />
+          </Box>
+
+          <Box className={classes.numbersBox}>
+            <div className={classes.numbers}>
+              {numbers.map((item, index) => (
+                <Typography
+                  key={index}
+                  className={
+                    index <= activeNumb
+                      ? `${classes.number} ${classes.activeNumber}`
+                      : classes.number
                   }
-                }}
-                onReady={() => {
-                  setPlayVideo(true);
-                }}
-              />
-            </Box>
-
-            <Box className={classes.numbersBox}>
-              <div className={classes.numbers}>
-                {numbers.map((item, index) => (
-                  <Typography
-                    key={index}
-                    className={
-                      index <= activeNumb
-                        ? `${classes.number} ${classes.activeNumber}`
-                        : classes.number
-                    }
-                    variant="h6"
-                  >
-                    <span role = "number" key={index} onClick={handleNumberClick}>
-                      {item}
-                    </span>
-                  </Typography>
-                ))}
-              </div>
-              <div className={classes.bottomLine}></div>
-            </Box>
+                  variant="h6"
+                >
+                  <span role="number" key={index} onClick={handleNumberClick}>
+                    {item}
+                  </span>
+                </Typography>
+              ))}
+            </div>
+            <div className={classes.bottomLine}></div>
           </Box>
         </Box>
-        {/* <Box className={classes.langBox}>
+      </Box>
+      {/* <Box className={classes.langBox}>
           <Typography className={classes.lang} variant="button" component="h6">
             RU
           </Typography>
@@ -422,8 +392,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
             EN
           </Typography>
         </Box> */}
-      </Box>
-    </div>
+    </Box>
   );
 };
 export default Slider;
