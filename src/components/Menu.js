@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Menu = ({ inBurger,clickToOpenForm }) => {
+const Menu = ({ inBurger, clickToOpenForm }) => {
   const param = { inBurger };
   const classes = useStyles(param);
 
@@ -118,61 +118,65 @@ const Menu = ({ inBurger,clickToOpenForm }) => {
           </Typography>
         </>
       )}
-      <ul className={classes.navList}>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={"/"}>
-            <Typography variant="button">ГЛАВНАЯ</Typography>
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={"/aboutus"}>
-            <Typography variant="button">КТО МЫ </Typography>
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={"/what-we-do"}>
-            {inBurger ? (
-              <Typography variant="button">ЧТО МЫ ДЕЛАЕМ </Typography>
-            ) : (
-              <>
-                <Typography variant="button">ЧТО МЫ </Typography>
-                <br />
-                <Typography variant="button">ДЕЛАЕМ</Typography>
-              </>
-            )}
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={"/watch"}>
-            {inBurger ? (
-              <Typography variant="button">ГДЕ УВИДЕТЬ </Typography>
-            ) : (
-              <>
-                <Typography variant="button">ГДЕ</Typography>
-                <br />
-                <Typography variant="button">УВИДЕТЬ</Typography>
-              </>
-            )}
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={"/contacts"}>
-            {inBurger ? (
-              <Typography variant="button">КАК СВЯЗАТЬСЯ </Typography>
-            ) : (
-              <>
-                <Typography variant="button">КАК</Typography>
-                <br />
-                <Typography variant="button">СВЯЗАТЬСЯ</Typography>
-              </>
-            )}
-          </Link>
-        </li>
-      </ul>
+      <nav>
+        <ul className={classes.navList}>
+          <li className={classes.navItem}>
+            <Link className={classes.Link} to={"/"}>
+              <Typography variant="button">ГЛАВНАЯ</Typography>
+            </Link>
+          </li>
+          <li className={classes.navItem}>
+            <Link className={classes.Link} to={"/aboutus"}>
+              <Typography variant="button">КТО МЫ </Typography>
+            </Link>
+          </li>
+          <li className={classes.navItem}>
+            <Link className={classes.Link} to={"/what-we-do"}>
+              {inBurger ? (
+                <Typography variant="button">ЧТО МЫ ДЕЛАЕМ </Typography>
+              ) : (
+                <>
+                  <Typography variant="button">ЧТО МЫ </Typography>
+                  <br />
+                  <Typography variant="button">ДЕЛАЕМ</Typography>
+                </>
+              )}
+            </Link>
+          </li>
+          <li className={classes.navItem}>
+            <Link className={classes.Link} to={"/watch"}>
+              {inBurger ? (
+                <Typography variant="button">ГДЕ УВИДЕТЬ </Typography>
+              ) : (
+                <>
+                  <Typography variant="button">ГДЕ</Typography>
+                  <br />
+                  <Typography variant="button">УВИДЕТЬ</Typography>
+                </>
+              )}
+            </Link>
+          </li>
+          <li className={classes.navItem}>
+            <Link className={classes.Link} to={"/contacts"}>
+              {inBurger ? (
+                <Typography variant="button">КАК СВЯЗАТЬСЯ </Typography>
+              ) : (
+                <>
+                  <Typography variant="button">КАК</Typography>
+                  <br />
+                  <Typography variant="button">СВЯЗАТЬСЯ</Typography>
+                </>
+              )}
+            </Link>
+          </li>
+        </ul>
+      </nav>
 
       <Box className={classes.menuFooter}>
         {inBurger ? (
-          <RegularButton variant="outlined" click={clickToOpenForm}>СВЯЗАТЬСЯ</RegularButton>
+          <RegularButton variant="outlined" click={clickToOpenForm}>
+            СВЯЗАТЬСЯ
+          </RegularButton>
         ) : null}
         <Box className={classes.iconsBox}>
           <Link className={classes.Link} to={"/"}>

@@ -9,15 +9,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    // position: (param) => (param.isOpen ? "static" : "absolute"),
-    position: param=>param.position? param.position: "relative",
+    position: (param) => (param.position ? param.position : "relative"),
     top: "40px",
     width: "100%",
     height: "40px",
     paddingLeft: (param) => (param.isOpen ? "0" : "10%"),
     paddingRight: (param) => (param.isOpen ? "0" : "10%"),
     zIndex: "3",
-    filter:param=>param.color==="white"?"invert(1)": null,
+    filter: (param) => (param.color === "white" ? "invert(1)" : null),
   },
   logo: {
     width: "50px",
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Burger({ color, click, isOpen, position }) {
-  const param = { color, isOpen,position };
+  const param = { color, isOpen, position };
   const classes = useStyles(param);
 
   return (

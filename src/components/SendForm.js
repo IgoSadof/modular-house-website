@@ -7,6 +7,7 @@ import ClearIcon from "@material-ui/icons/Clear";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import call from "../assets/images/call.png";
 import Typography from "@material-ui/core/Typography";
+import Burger from "./Burger";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
       "radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.12) 100%)",
     zIndex: "3",
     padding: "60px 240px 100px 100px",
-    boxShadow:  (param) => (param.isFormOpen ? "-5px 0px 100px rgba(0, 0, 0, 0.2) " : null),
+    boxShadow: (param) =>
+      param.isFormOpen ? "-5px 0px 100px rgba(0, 0, 0, 0.2) " : null,
     backdropFilter: "blur(10px)",
     transition: "0.7s",
     [theme.breakpoints.down("md")]: {
@@ -40,23 +42,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: '30px',
+    marginTop: "30px",
   },
 }));
 
-const SendForm = ({ isFormOpen, click, burger }) => {
+const SendForm = ({ isFormOpen, click, burger,page }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  // const [review, setReview] = useState(0);
-  // const [isOpen, setIsOpen] = useState(isFormOpen);
   const param = { isFormOpen };
   const classes = useStyles(param);
-  // const handleClick = () => {
-  //   setIsOpen(state=>!state)
-  //   console.log('click')
-  // }
+
 
   return (
     <div className={classes.root} name="form" id="form">
@@ -65,7 +62,11 @@ const SendForm = ({ isFormOpen, click, burger }) => {
           <SquareButton variant="outlined" click={click} icon={<ClearIcon />} />
         </Box>
       ) : (
-        burger
+        <Burger
+          page={page}
+          isOpen={true}
+          click={() => (console.log('burger'))}
+        />
       )}
       {matches[1200] ? (
         <Box className={classes.callBox}>
