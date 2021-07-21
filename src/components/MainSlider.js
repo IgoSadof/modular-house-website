@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    height: "100vh",
+    height: "98vh",
     backgroundColor: "#D1D1D1",
 
     [theme.breakpoints.down("md")]: {
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     alignItems: "flex-start",
-    paddingTop: "10vh",
+    paddingTop: "14vh",
 
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
@@ -229,8 +229,6 @@ const Slider = ({ scrol, isFirstEntry }) => {
 
   // const [resources, setResources] = useState(null);
   // const [resourcestv, setResourcestv] = useState(null);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [fields] = useState({
     headers: null,
     subtitles: null,
@@ -288,16 +286,6 @@ const Slider = ({ scrol, isFirstEntry }) => {
     );
     setActiveNumb(numb - 1);
   };
-
-  const handleClickConnect = () => {
-    console.log("openForm");
-    setIsFormOpen((state) => !state);
-  };
-  const handleOpenBurgerMenu = () => {
-    setIsBurgerMenuOpen((state) => !state);
-    console.log("openBurger");
-  };
-  const handleCloseForm = (e) => {};
 
   return (
     <Box className={classes.content}>

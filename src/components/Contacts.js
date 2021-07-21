@@ -72,6 +72,14 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "space-around",
     },
   },
+  personalBox:{
+    [theme.breakpoints.up("xl")]: {
+      width:'200px',
+    },
+  },
+  contactsFoto:{
+    width:'100%',
+  },
   infoBox: {
     display: "flex",
     gap: "20px",

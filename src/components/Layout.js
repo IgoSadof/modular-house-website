@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: (param) => ( param.page === "aboutUs" ? "100%" : "100vh"),
+    height: (param) => ( param.page === "aboutUs"||param.page === "main" ? "100%" : "100vh"),
     [theme.breakpoints.down("md")]: {
       height: (param) => (param.page === "houseList" ? "100vh" : "100%"),
     },
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     position: "relative",
     width: "100%",
-    padding: "100px 10% 100px 11%",
+    padding: (param) => ( param.page === "main" ? "0 10% 100px 11%" : "100px 10% 100px 11%"),
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100%",
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     position: "absolute",
-    top: (param) => ( param.page === "aboutUs" ? null : "5%"),
+    top: (param) => ( param.page === "aboutUs" ? null : param.page === "main"?"1%":"5%"),
     right: "10%",
     zIndex: "2",
   },
