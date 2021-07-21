@@ -112,7 +112,10 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
     <div className={classes.menu}>
       {inBurger ? null : (
         <>
-          <img className={classes.logo} src={logo} alt="logo"></img>
+          <Link to={"/"}>
+            <img className={classes.logo} src={logo} alt="logo"></img>
+          </Link>
+
           <Typography variant="button" className={classes.text}>
             Меню
           </Typography>

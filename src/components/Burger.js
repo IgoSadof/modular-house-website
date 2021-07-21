@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import logo from "../assets/images/logo.svg";
 import cros from "../assets/images/cros.png";
 import Box from "@material-ui/core/Box";
+import { Link } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   logoBox: {
@@ -10,12 +11,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     position: (param) => (param.position ? param.position : "relative"),
-    top: (param) => (param.position === 'absolute' ? "40px" : "0"),
-    marginTop: (param) => (param.position === 'absolute' ? "0" : "40px"),
+    top: (param) => (param.position === "absolute" ? "40px" : "0"),
+    marginTop: (param) => (param.position === "absolute" ? "0" : "40px"),
     width: "100%",
     height: "40px",
-    paddingLeft: (param) => (param.position === 'absolute' ? "10%" : "0"),
-    paddingRight: (param) => (param.position === 'absolute' ? "10%" : "0"),
+    paddingLeft: (param) => (param.position === "absolute" ? "10%" : "0"),
+    paddingRight: (param) => (param.position === "absolute" ? "10%" : "0"),
     zIndex: "3",
     filter: (param) => (param.color === "white" ? "invert(1)" : null),
   },
@@ -41,9 +42,11 @@ export default function Burger({ color, click, isOpen, position }) {
 
   return (
     <Box className={classes.logoBox}>
-      <Box className={classes.logo}>
-        <img className={classes.logo} src={logo} alt="logo"></img>
-      </Box>
+      <Link to={"/"}>
+        <Box className={classes.logo}>
+          <img className={classes.logo} src={logo} alt="logo"></img>
+        </Box>
+      </Link>
       <Box className={classes.burgerBox} onClick={click}>
         {isOpen ? (
           <img className={classes.cros} src={cros} alt="cros"></img>
