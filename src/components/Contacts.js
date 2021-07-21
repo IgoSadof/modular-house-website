@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     [theme.breakpoints.down("md")]: {
-      paddingTop: '70px',
+      paddingTop: '40px',
     },
   },
   BlockContent: {

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import { container, heading } from "./layout.module.css";
-
+import React, { useState} from "react";
 import "./global.css";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "./Footer";
@@ -18,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "100vh",
+    height: (param) => ( param.page === "aboutUs" ? "100%" : "100vh"),
     [theme.breakpoints.down("md")]: {
       height: (param) => (param.page === "houseList" ? "100vh" : "100%"),
     },
@@ -27,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     position: "relative",
     width: "100%",
-    padding: "100px 10% 100px 250px",
+    padding: "100px 10% 100px 11%",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100%",
@@ -49,10 +47,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     position: "absolute",
-    top: "5%",
+    top: (param) => ( param.page === "aboutUs" ? null : "5%"),
     right: "10%",
-    width: "125px",
-    height: "36px",
     zIndex: "2",
   },
 }));
