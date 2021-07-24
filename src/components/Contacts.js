@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       gap:'80px',
-      marginBottom:'40px',
     },
   },
   BlockColumn: {
@@ -165,7 +164,7 @@ const Contacts = ({ header }) => {
               </Box>
             ) : null}
           </Box>
-          <Form title={"НАПИШИТЕ НАМ"} email text />
+          <Form title={"НАПИШИТЕ НАМ"} email text main />
           {matches[1200] ? (
             <Box className={classes.infoBox}>
               {!header ? (

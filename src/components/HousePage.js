@@ -1,20 +1,14 @@
 import "../components/global.css";
 import React, { useState, useRef } from "react";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Footer from "../components/Footer";
-import Menu from "../components/Menu";
-import modularHouseTheme from "../config/modularHouseTheme";
+import { makeStyles } from "@material-ui/core/styles";
+
 import FormBlock from "../components/FormBlock";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import SendForm from "../components/SendForm";
 import SquareButton from "../components/buttons/SquareButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import model from "../assets/images/model.png";
-
-// import whatWeDoImg2 from "../assets/images/w-we-do-img2.png";
 import plan from "../assets/images/plan.png";
-
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import CalculateTable from "../components/CalculateTable";
@@ -23,9 +17,6 @@ import HouseFotosSlider from "../components/HouseFotosSlider";
 import { houses } from "../constant/houses";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Burger from "../components/Burger";
-import BurgerMenu from "../components/BurgerMenu";
-import RegularButton from "../components/buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -36,16 +27,29 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100vh",
+    [theme.breakpoints.down("md")]: {
+      "& $titleBox": {
+        marginTop:'100px',
+        right: "0",
+        position: "relative",
+      },
+    },
   },
   Block: {
     display: "flex",
     gap: "20px",
-    padding: "100px 10%",
+    padding: "0 10%",
     backgroundColor: "#D1D1D1",
+    marginTop:'100px',
     [theme.breakpoints.down("md")]: {
+      marginTop:'100px',
       flexDirection: "column",
-      padding: "10%",
+      padding: "0 10%",
       justifyContent: "center",
+      "& $titleBox": {
+        right: "-12%",
+        position: "relative",
+      },
     },
   },
 
@@ -61,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainImgBox: {
     height: "72vh",
+    position: "relative",
   },
   mainImg: {
     position: "relative",
@@ -99,6 +104,40 @@ const useStyles = makeStyles((theme) => ({
       gap: "50px",
       justifyContent: "center",
     },
+  },
+  mainBlockTitleBox: {
+    display: "flex",
+    alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      position: "absolute",
+      justifyContent: "space-around",
+      bottom: "7%",
+      zIndex: "1",
+    }
+  },
+  houseDescIconBox: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    width: "100px",
+    objectFit: "contain",
+    height: "85px",
+  },
+  mainPlan: {
+    width: "40px",
+    height: "40px",
+    objectFit: "contain",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  houseDescTitle: {
+    color: "white",
+    width: "50%",
+  },
+  houseSpecPrice: {
+    fontSize: "20px",
+    color: "white",
   },
   mainBlockSubtitleBox: {
     display: "flex",
@@ -155,25 +194,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    // gap: "70px",
     justifyContent: "space-between",
   },
   modelDescSecondColumn: {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    // gap: "70px",
     justifyContent: "space-between",
   },
   modelDescItemTitle: {
     listStyle: "none",
-    // width: "100px",
-    // paddingRight:"40px",
   },
-  // modelNumber: {
-  //   fontSize: "48px",
-  //   fontWeight: "600",
-  // },
   model: {
     width: "50%",
     backgroundPosition: "center",
@@ -279,9 +310,18 @@ const useStyles = makeStyles((theme) => ({
     width: "620px",
     backgroundColor: "#D1D1D1",
   },
+  titleBox: {
+    display: "flex",
+    gap: "20px",
+    flexDirection: "row-reverse",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "auto",
+    },
+  },
   line: {
     display: "inline-block",
     width: "75px",
+    minWidth: "75px",
     height: "1px",
     backgroundColor: "black",
     marginTop: "10px",
@@ -289,11 +329,14 @@ const useStyles = makeStyles((theme) => ({
 
   BlockRooms: {
     height: "auto",
-    paddingLeft: "10%",
     gap: "20px",
+    marginTop: "100px",
     justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
-      padding: "10%",
+      "& $titleBox": {
+        right: "0%",
+      },
+      padding: "0",
       justifyContent: "center",
     },
   },
@@ -328,9 +371,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   BlockCalculation: {
-    paddingLeft: "10%",
     [theme.breakpoints.down("md")]: {
-      padding: "10%",
       justifyContent: "center",
     },
   },
@@ -384,12 +425,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "350px",
     justifyContent: "center",
     [theme.breakpoints.down("md")]: {
-      padding: "10%",
+      padding: "0",
     },
   },
   BlockTable: {
-    paddingBottom: "0px",
-    paddingTop: "0px",
     [theme.breakpoints.down("md")]: {
       padding: "0",
       width: "100%",
@@ -407,12 +446,6 @@ const HousePage = ({ house }) => {
   const [pillClick, setPillClick] = useState(0);
   const param = { pilldistance };
   const classes = useStyles(param);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
-  const handleOpenBurgerMenu = () => {
-    setIsBurgerMenuOpen((state) => !state);
-    console.log("openBurger");
-  };
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
   const [roomsImg, setRoomsImg] = useState(
@@ -427,10 +460,6 @@ const HousePage = ({ house }) => {
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
-
-  const handleClickConnect = () => {
-    setIsFormOpen((state) => !state);
-  };
   const handlePlusClick = (e) => {
     if (pilldistance + 40 <= 120) {
       setPilldistance((state) => state + 40);
@@ -443,7 +472,6 @@ const HousePage = ({ house }) => {
       setPillClick((state) => state - 1);
     }
   };
-
   const handleClickLeft = () => {
     myRef.current.slickPrev();
   };
@@ -452,7 +480,6 @@ const HousePage = ({ house }) => {
   };
 
   const handleChangePanel = (value) => {
-    //   setValue(newValue);
     setCategory(value);
   };
   const handleChangeCheckbox = (event) => {
@@ -475,60 +502,50 @@ const HousePage = ({ house }) => {
   );
 
   return (
-    <ThemeProvider theme={modularHouseTheme}>
-      <div className="conteiner">
-        <div className="content">
-          <Box className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}>
-            {matches[1200] ? (
-              <Burger
-                color="white"
-                position="absolute"
-                click={handleOpenBurgerMenu}
-              />
-            ) : null}
-            <BurgerMenu
-              isBurgerMenuOpen={isBurgerMenuOpen}
-              click={handleOpenBurgerMenu}
-              clickToOpenForm={handleClickConnect}
-            />
-            <SendForm
-              isFormOpen={isFormOpen}
-              click={handleClickConnect}
-              burger={
-                matches[1200] ? (
-                  <Burger
-                    isOpen={true}
-                    click={() => (handleOpenBurgerMenu(), handleClickConnect())}
-                  />
-                ) : null
-              }
-            />
-            <Box className={classes.button}>
-              {matches["1200"] ? null : (
-                <RegularButton variant="outlined" click={handleClickConnect}>
-                  СВЯЗАТЬСЯ
-                </RegularButton>
-              )}
-            </Box>
-            <Box className={classes.mainImgBox}>
-              <img
-                className={classes.mainImg}
-                src={houses[houseNumber].img.main}
-                alt="img"
-              ></img>
-            </Box>
-            <Box className={classes.mainDescBox}>
-              <Box className={classes.mainBlockTitleBox}>
-                <Typography
-                  variant="h1"
-                  color="textSecondary"
-                  className={classes.mainBlockTitle}
-                >
-                  {houses[houseNumber].name}
+    <>
+      <Box className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}>
+        <Box className={classes.mainImgBox}>
+          <img
+            className={classes.mainImg}
+            src={houses[houseNumber].img.main}
+            alt="img"
+          ></img>
+          {matches[1200] ? (
+            <Box className={classes.mainBlockTitleBox}>
+              <Typography
+                variant="h1"
+                color="textSecondary"
+                className={classes.houseDescTitle}
+              >
+                {houses[houseNumber].name}
+              </Typography>
+              <Box className={classes.houseDescIconBox}>
+                <img
+                  className={classes.mainPlan}
+                  src={houses[houseNumber].img.plan}
+                  alt="img"
+                ></img>
+                <Typography variant="h5" className={classes.houseSpecPrice}>
+                  {houses[houseNumber].price}
                 </Typography>
               </Box>
-              <Box className={classes.mainBlockSubtitleBox}>
-                {/* <ul className={classes.mainBlockList}>
+            </Box>
+          ) : null}
+        </Box>
+        <Box className={classes.mainDescBox}>
+          {matches[1200] ? null : (
+            <Box className={classes.mainBlockTitleBox}>
+              <Typography
+                variant="h1"
+                color="textSecondary"
+                className={classes.mainBlockTitle}
+              >
+                {houses[houseNumber].name}
+              </Typography>
+            </Box>
+          )}
+          <Box className={classes.mainBlockSubtitleBox}>
+            {/* <ul className={classes.mainBlockList}>
                   {houses[houseNumber].modules.map((item, index) => {
                     return (
                       <li className={classes.mainBlockItem} key={index}>
@@ -539,244 +556,245 @@ const HousePage = ({ house }) => {
                     );
                   })}
                 </ul> */}
-                <ul className={classes.mainBlockList}>
-                  {houses[houseNumber].modules.map((item, index) => {
-                    return (
-                      <li className={classes.mainBlockItem} key={index}>
-                        <Typography variant="body1">
-                          0{index + 1} {item.name}
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <ul className={classes.mainBlockList}>
-                  {houses[houseNumber].modules.map((item, index) => {
-                    return (
-                      <li className={classes.mainBlockItem} key={index}>
-                        <Typography variant="subtitle1">
-                          ${item.price} / {item.term} дней
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Box>
-            </Box>
-          </Box>
-
-          <Box className={classes.modelBlock}>
-            <Box className={classes.modelDesc}>
-              <Box className={classes.modelDescFirstColumn}>
-                {houses[houseNumber].modules.map((item, index) => {
-                  return (
-                    <li className={classes.modelDescItemTitle} key={index}>
-                      <Typography
-                        variant="h1"
-                        color="textSecondary"
-                        className={
-                          pillClick >= index
-                            ? classes.modelNumber
-                            : classes.disable
-                        }
-                      >
-                        0{index + 1}
-                      </Typography>
-                      <Typography
-                        className={pillClick >= index ? null : classes.disable}
-                        variant="h6"
-                      >
-                        {item.name}
-                      </Typography>
-                      <Typography
-                        className={pillClick >= index ? null : classes.disable}
-                        variant="h6"
-                      >
-                        {item.area} м2
-                      </Typography>
-                    </li>
-                  );
-                })}
-              </Box>
-
-              <div className={classes.modelDescLine}>
-                <div className={classes.modelDescLineActive}></div>
-                {pilldistance < 100 ? (
-                  <div className={classes.modelDescLineButton}>
-                    <div
-                      onClick={handleMinusClick}
-                      className={classes.modelDescLineMinus}
-                    >
-                      <div className={classes.minus}>-</div>
-                    </div>
-                    <div
-                      onClick={handlePlusClick}
-                      className={classes.modelDescLinePlus}
-                    >
-                      <div className={classes.plus}>+</div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className={classes.modelDescLineButton}>
-                    <div
-                      onClick={handleMinusClick}
-                      className={classes.modelDescLineMinusCircle}
-                    >
-                      <div className={classes.minus}>-</div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <Box className={classes.modelDescSecondColumn}>
-                {houses[houseNumber].modules.map((item, index) => {
-                  return (
-                    <li className={classes.modelDescItemTitle} key={index}>
-                      <Typography
-                        className={pillClick >= index ? null : classes.disable}
-                        variant="body1"
-                      >
-                        {item.desc}
-                      </Typography>
-                    </li>
-                  );
-                })}
-              </Box>
-            </Box>
-            <Box
-              style={{ backgroundImage: `url(${model})` }}
-              className={classes.model}
-            ></Box>
-          </Box>
-
-          <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
-            <Box className={classes.secondImgBox}>
-              <HouseFotosSlider myRef={myRef} listItem={listItem} />
-              <Box className={classes.buttons}>
-                {/* <Button color="secondary">hello</Button> */}
-                <SquareButton
-                  variant={"contained"}
-                  click={handleClickLeft}
-                  less
-                />
-                <SquareButton
-                  variant={"contained"}
-                  click={handleClickRight}
-                  great
-                />
-              </Box>
-              {matches[1200] ? null : (
-                <Panel ref={categoryRef} change={handleChangePanel} />
-              )}
-            </Box>
-          </Box>
-
-          <Box className={`${classes.Block} ${classes.BlockRooms}`}>
-            <span className={classes.line}></span>
-            <Box className={classes.roomsList}>
-              <Typography variant="h6">Экспликация</Typography>
-              <Box className={classes.accordionBox}>
-                <Accordions
-                  arr={houses[houseNumber].modules[0].rooms}
-                  roomsImg={handleRoomsImgChange}
-                />
-              </Box>
-            </Box>
-            <TransitionGroup className={classes.roomsImgBox}>
-              <CSSTransition
-                key={roomsImgIndex}
-                in={opacity}
-                appear={true}
-                timeout={500}
-                classNames="fade"
-              >
-                <img className={classes.roomImg} src={roomsImg} alt="img"></img>
-              </CSSTransition>
-            </TransitionGroup>
-          </Box>
-
-          <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
-            <span className={classes.line}></span>
-            <Box className={classes.calculationPlan}>
-              <Typography variant="h6">Смета</Typography>
-              <img
-                className={classes.calculationPlanImg}
-                src={plan}
-                alt="img"
-              ></img>
-            </Box>
-            <Box className={classes.calculation}>
+            <ul className={classes.mainBlockList}>
               {houses[houseNumber].modules.map((item, index) => {
                 return (
-                  <li className={classes.calculationItem} key={index}>
-                    <Box className={classes.calculationHeader}>
-                      <FormControlLabel
-                        onChange={handleChangeCheckbox}
-                        value={+item.price.replace(" ", "")}
-                        control={<Checkbox color="primary" />}
-                        label={
-                          <Typography variant="h6">{item.name}</Typography>
-                        }
-                        labelPlacement="end"
-                      />
-                      <Typography variant="h3">${item.price}</Typography>
-                    </Box>
-
-                    <Box className={classes.calculationBody}>
-                      {item.rooms.map((item, index) => {
-                        return (
-                          <li
-                            className={classes.calculationBodyItem}
-                            key={index}
-                          >
-                            <Typography
-                              variant="body1"
-                              className={classes.calculationBodyText}
-                            >
-                              {item.title}
-                            </Typography>
-                            <Typography
-                              variant="body1"
-                              className={classes.calculationBodyText}
-                            >
-                              {item.area ? `${item.area} м2` : null}
-                            </Typography>
-                          </li>
-                        );
-                      })}
-                    </Box>
+                  <li className={classes.mainBlockItem} key={index}>
+                    <Typography variant="body1">
+                      0{index + 1} {item.name}
+                    </Typography>
+                  </li>
+                )
+              })}
+            </ul>
+            <ul className={classes.mainBlockList}>
+              {houses[houseNumber].modules.map((item, index) => {
+                return (
+                  <li className={classes.mainBlockItem} key={index}>
+                    <Typography variant="subtitle1">
+                      ${item.price} / {item.term} дней
+                    </Typography>
                   </li>
                 );
               })}
+            </ul>
+          </Box>
+        </Box>
+      </Box>
 
-              <Box className={classes.calculationResult}>
-                <Typography variant="h6">Цена</Typography>
-                <Typography variant="caption">${modulePrice}</Typography>
-              </Box>
-            </Box>
+      <Box className={classes.modelBlock}>
+        <Box className={classes.modelDesc}>
+          <Box className={classes.modelDescFirstColumn}>
+            {houses[houseNumber].modules.map((item, index) => {
+              return (
+                <li className={classes.modelDescItemTitle} key={index}>
+                  <Typography
+                    variant="h1"
+                    color="textSecondary"
+                    className={
+                      pillClick >= index ? classes.modelNumber : classes.disable
+                    }
+                  >
+                    0{index + 1}
+                  </Typography>
+                  <Typography
+                    className={pillClick >= index ? null : classes.disable}
+                    variant="h6"
+                  >
+                    {item.name}
+                  </Typography>
+                  <Typography
+                    className={pillClick >= index ? null : classes.disable}
+                    variant="h6"
+                  >
+                    {item.area} м2
+                  </Typography>
+                </li>
+              );
+            })}
           </Box>
 
-          <Box className={`${classes.Block} ${classes.BlockTable}`}>
-            <CalculateTable houseN={"1"} />
-          </Box>
+          <div className={classes.modelDescLine}>
+            <div className={classes.modelDescLineActive}></div>
+            {pilldistance < 100 ? (
+              <div className={classes.modelDescLineButton}>
+                <div
+                  onClick={handleMinusClick}
+                  className={classes.modelDescLineMinus}
+                >
+                  <div className={classes.minus}>-</div>
+                </div>
+                <div
+                  onClick={handlePlusClick}
+                  className={classes.modelDescLinePlus}
+                >
+                  <div className={classes.plus}>+</div>
+                </div>
+              </div>
+            ) : (
+              <div className={classes.modelDescLineButton}>
+                <div
+                  onClick={handleMinusClick}
+                  className={classes.modelDescLineMinusCircle}
+                >
+                  <div className={classes.minus}>-</div>
+                </div>
+              </div>
+            )}
+          </div>
 
-          <Box className={`${classes.Block} ${classes.BlockForm}`}>
-            <FormBlock
-              title={`
-                      Можете отправить свой выбор нам, и мы начнем готовиться к встрече.
-              `}
-              subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
-              email
-              img={houses[houseNumber].img.main}
-              formPosition="center"
+          <Box className={classes.modelDescSecondColumn}>
+            {houses[houseNumber].modules.map((item, index) => {
+              return (
+                <li className={classes.modelDescItemTitle} key={index}>
+                  <Typography
+                    className={pillClick >= index ? null : classes.disable}
+                    variant="body1"
+                  >
+                    {item.desc}
+                  </Typography>
+                </li>
+              );
+            })}
+          </Box>
+        </Box>
+        <Box
+          style={{ backgroundImage: `url(${model})` }}
+          className={classes.model}
+        ></Box>
+      </Box>
+
+      <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
+        <Box className={classes.secondImgBox}>
+          <HouseFotosSlider myRef={myRef} listItem={listItem} />
+          <Box className={classes.buttons}>
+            {/* <Button color="secondary">hello</Button> */}
+            <SquareButton variant={"contained"} click={handleClickLeft} less />
+            <SquareButton
+              variant={"contained"}
+              click={handleClickRight}
+              great
             />
           </Box>
+          {matches[1200] ? null : (
+            <Panel ref={categoryRef} change={handleChangePanel} />
+          )}
+        </Box>
+      </Box>
 
-          <Footer />
-        </div>
-        <Menu />
-      </div>
-    </ThemeProvider>
-  );
+      <Box className={`${classes.Block} ${classes.BlockRooms}`}>
+        <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h6" className={classes.text}>
+              Экспликация
+            </Typography>
+          ) : null}
+        </Box>
+        {/* <span className={classes.line}></span> */}
+        <Box className={classes.roomsList}>
+          {matches[1200] ? null : (
+            <Typography variant="h6">Экспликация</Typography>
+          )}
+          <Box className={classes.accordionBox}>
+            <Accordions
+              arr={houses[houseNumber].modules[0].rooms}
+              roomsImg={handleRoomsImgChange}
+            />
+          </Box>
+        </Box>
+        <TransitionGroup className={classes.roomsImgBox}>
+          <CSSTransition
+            key={roomsImgIndex}
+            in={opacity}
+            appear={true}
+            timeout={500}
+            classNames="fade"
+          >
+            <img className={classes.roomImg} src={roomsImg} alt="img"></img>
+          </CSSTransition>
+        </TransitionGroup>
+      </Box>
+
+      <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
+        <Box className={classes.titleBox}>
+          <span className={classes.line}></span>
+          {matches[1200] ? (
+            <Typography variant="h6" className={classes.text}>
+              Смета
+            </Typography>
+          ) : null}
+        </Box>
+        <Box className={classes.calculationPlan}>
+          {matches[1200] ? null : <Typography variant="h6">Смета</Typography>}
+          <img
+            className={classes.calculationPlanImg}
+            src={plan}
+            alt="img"
+          ></img>
+        </Box>
+        <Box className={classes.calculation}>
+          {houses[houseNumber].modules.map((item, index) => {
+            return (
+              <Box className={classes.calculationItem} key={index}>
+                <Box className={classes.calculationHeader}>
+                  <FormControlLabel
+                    onChange={handleChangeCheckbox}
+                    value={+item.price.replace(" ", "")}
+                    control={<Checkbox color="primary" />}
+                    label={<Typography variant="h6">{item.name}</Typography>}
+                    labelPlacement="end"
+                  />
+                  <Typography variant="h3">${item.price}</Typography>
+                </Box>
+
+                <Box className={classes.calculationBody}>
+                  {item.rooms.map((item, index) => {
+                    return (
+                      <li className={classes.calculationBodyItem} key={index}>
+                        <Typography
+                          variant="body1"
+                          className={classes.calculationBodyText}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          className={classes.calculationBodyText}
+                        >
+                          {item.area ? `${item.area} м2` : null}
+                        </Typography>
+                      </li>
+                    );
+                  })}
+                </Box>
+              </Box>
+            );
+          })}
+
+          <Box className={classes.calculationResult}>
+            <Typography variant="h6">Цена</Typography>
+            <Typography variant="caption">${modulePrice}</Typography>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className={`${classes.Block} ${classes.BlockTable}`}>
+        <CalculateTable houseN={"1"} />
+      </Box>
+
+      <Box className={`${classes.Block} ${classes.BlockForm}`}>
+        <FormBlock
+          title={`
+                      Можете отправить свой выбор нам, и мы начнем готовиться к встрече.
+              `}
+          subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
+          email
+          img={houses[houseNumber].img.main}
+          formPosition="center"
+        />
+      </Box>
+    </>
+  )
 };
 export default HousePage;

@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SendForm = ({ isFormOpen, click, burger,page }) => {
+const SendForm = ({ isFormOpen, click, burgerClick, page }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -54,19 +54,14 @@ const SendForm = ({ isFormOpen, click, burger,page }) => {
   const param = { isFormOpen };
   const classes = useStyles(param);
 
-
   return (
     <div className={classes.root} name="form" id="form">
-      {!burger ? (
+      {!burgerClick ? (
         <Box className={classes.buttonBox}>
           <SquareButton variant="outlined" click={click} icon={<ClearIcon />} />
         </Box>
       ) : (
-        <Burger
-          page={page}
-          isOpen={true}
-          click={() => (console.log('burger'))}
-        />
+        <Burger page={page} isOpen={true} click={burgerClick} />
       )}
       {matches[1200] ? (
         <Box className={classes.callBox}>
@@ -81,6 +76,7 @@ const SendForm = ({ isFormOpen, click, burger,page }) => {
         text
         closeForm={click}
         inBurger={matches[1200] ? true : false}
+        main
       />
     </div>
   );

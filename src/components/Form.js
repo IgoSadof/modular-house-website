@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import TextField from "@material-ui/core/TextField";
-
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -22,15 +20,20 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     marginTop: "145px",
   },
-  titleBox: {
+  titleBoxMain: {
     marginLeft: "auto",
     display: "flex",
     gap: "20px",
     flexDirection: "row-reverse",
   },
+  titleBox: {
+    width:'70%',
+    display: "flex",
+  },
   line: {
     display: "inline-block",
     width: "75px",
+    minWidth: "75px",
     height: "1px",
     backgroundColor: "black",
     marginTop: "10px",
@@ -48,7 +51,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   formHeader: {
-    // marginTop: "140px",
+    [theme.breakpoints.down("md")]: {
+      "& $titleBoxMain": {
+        right: "-12%",
+        position: "relative",
+      },
+    },
   },
   title: {
     textTransform: "uppercase",
@@ -68,9 +76,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       marginTop: "10px",
     },
-    field:{
-      width:'100%',
-    }
+    field: {
+      width: "100%",
+    },
   },
 
   button: {
@@ -152,6 +160,7 @@ const Form = ({
   buttonAbs,
   closeForm,
   inBurger,
+  main,
 }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -198,8 +207,8 @@ const Form = ({
               {title}
             </Typography>
           ) : (
-            <Box className={classes.titleBox}>
-              <span className={classes.line}></span>
+            <Box className={main? classes.titleBoxMain:classes.titleBox}>
+              {main ? <span className={classes.line}></span> : null}
               <Typography variant="h4" className={classes.text}>
                 {title}
               </Typography>
@@ -232,14 +241,14 @@ const Form = ({
           <TextValidator
             className={classes.field}
             onChange={handleChangeTel}
-              value={telText}
+            value={telText}
             InputProps={{
               endAdornment: <InputAdornment position="end">*</InputAdornment>,
             }}
             id="standard-basic"
             label={<Typography variant="body2">Телефон</Typography>}
             validators={["isNumber"]}
-              errorMessages={["telefon incorrect",]}
+            errorMessages={["telefon incorrect"]}
           />
           {email ? (
             <TextValidator

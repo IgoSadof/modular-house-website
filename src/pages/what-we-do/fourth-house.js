@@ -1,7 +1,14 @@
 import React from "react";
 import HousePage from "../../components/HousePage";
+import Layout from "../../components/Layout";
 
-const House = () => {
-  return <HousePage house={3}></HousePage>;
+
+const HousesPage = () => {
+  return (
+    <Layout pageTitle="Fourth house" page="house">
+      <HousePage house={3}></HousePage>
+    </Layout>
+  );
 };
-export default House;
+export default HousesPage;
+

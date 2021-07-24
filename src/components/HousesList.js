@@ -1,6 +1,6 @@
 import "../components/global.css";
 import React, { useRef, useState } from "react";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 // import Button from "@material-ui/core/Button";
@@ -128,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
       padding: "4% 10%",
+      height: "auto",
     },
   },
   houseDescContent: {
@@ -168,11 +169,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    [theme.breakpoints.down("md")]: {
-      position: "absolute",
-      top: "-190%",
-      zIndex: "1",
-    },
+  },
+  houseDescTitleBoxMobile: {
+    position: "absolute",
+    justifyContent: "space-around",
+    bottom: "0",
+    zIndex: "1",
   },
   houseDescTitle: {
     fontSize: "48px",
@@ -232,9 +234,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   houseImg: {
+    position: "relative",
     width: "47%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
+      height:'100%',
     },
   },
   mainImg: {
@@ -243,7 +247,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     [theme.breakpoints.down("md")]: {
       padding: "0",
-      height: "50vh",
+      height: "100vh",
     },
   },
 }));
@@ -365,6 +369,7 @@ const HousesList = () => {
     return (
       <li className={classes.mainImg} key={index}>
         <img className={classes.mainImg} src={item.img.main} alt="img"></img>
+        {/* <div className={classes.mainImg} style={{ backgroundImage: `url(${item.img.main})` }}></div> */}
       </li>
     );
   });
@@ -405,27 +410,24 @@ const HousesList = () => {
             </CSSTransition>
           </TransitionGroup>
 
-          <Box className={classes.houseDescTitleBox}>
-            <Typography
-              variant="h1"
-              color="textSecondary"
-              className={classes.houseDescTitle}
-            >
-              {houses[house].name}
-            </Typography>
-            <Box className={classes.houseDescIconBox}>
-              <img
-                className={classes.mainPlan}
-                src={houses[house].img.plan}
-                alt="img"
-              ></img>
-              {matches[1200] ? (
-                <Typography variant="h5" className={classes.houseSpecPrice}>
-                  {houses[house].price}
-                </Typography>
-              ) : null}
+          {!matches[1200] ? (
+            <Box className={classes.houseDescTitleBox}>
+              <Typography
+                variant="h1"
+                color="textSecondary"
+                className={classes.houseDescTitle}
+              >
+                {houses[house].name}
+              </Typography>
+              <Box className={classes.houseDescIconBox}>
+                <img
+                  className={classes.mainPlan}
+                  src={houses[house].img.plan}
+                  alt="img"
+                ></img>
+              </Box>
             </Box>
-          </Box>
+          ) : null}
 
           <Typography variant="body1" className={classes.houseDescText}>
             {houses[house].desc}
@@ -482,9 +484,9 @@ const HousesList = () => {
               </Box>
             </Box>
           </Box>
-          <Box className={classes.houseDescMore}>
-            {matches[1200] ? null : (
-              <>
+          {matches[1200] ? null : (
+            <>
+              <Box className={classes.houseDescMore}>
                 <Box className={classes.houseDescPrice}>
                   <Typography
                     variant="body1"
@@ -499,14 +501,37 @@ const HousesList = () => {
                 <Link className={classes.Link} to={houses[house].link}>
                   <RegularButton variant="outlined">Подробнее</RegularButton>
                 </Link>
-              </>
-            )}
-          </Box>
+              </Box>
+            </>
+          )}
         </Box>
       </Box>
 
       <Box className={classes.houseImg}>
         <HouseModelSlider myRef={myRef} listItem={listMainImages} />
+        {matches[1200] ? (
+          <Box
+            className={`${classes.houseDescTitleBox} ${classes.houseDescTitleBoxMobile}`}
+          >
+            <Typography
+              variant="h1"
+              color="textSecondary"
+              className={classes.houseDescTitle}
+            >
+              {houses[house].name}
+            </Typography>
+            <Box className={classes.houseDescIconBox}>
+              <img
+                className={classes.mainPlan}
+                src={houses[house].img.plan}
+                alt="img"
+              ></img>
+              <Typography variant="h5" className={classes.houseSpecPrice}>
+                {houses[house].price}
+              </Typography>
+            </Box>
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );

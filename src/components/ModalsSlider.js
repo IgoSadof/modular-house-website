@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     listStyle: "none",
     padding: "10px",
+    margin:'0',
   },
   slickList: {
     height: "90vh !important",
@@ -25,9 +26,7 @@ const ModalsSlider = ({ listItem, houseRef,mobile}) => {
     vertical: mobile? false : true,
     swipeToSlide: true,
     verticalSwiping: mobile? false : true,
-    // centerMode:true,
-    // adaptiveHeight: true,
-    // focusOnSelect: true,
+    adaptiveHeight: mobile? true : false,
   };
 
   return (

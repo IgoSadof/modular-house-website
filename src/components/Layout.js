@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: (param) => ( param.page === "aboutUs"||param.page === "main" ? "100%" : "100vh"),
+    height: (param) => ( param.page === "aboutUs"||param.page === "main"||param.page === "house" ? "100%" : "100vh"),
     [theme.breakpoints.down("md")]: {
       height: (param) => (param.page === "houseList" ? "100vh" : "100%"),
     },
@@ -26,12 +26,13 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     padding: (param) => ( param.page === "main" ? "0 10% 100px 11%" : "100px 10% 100px 11%"),
+    // padding: "100px 10% 100px 11%",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100%",
     [theme.breakpoints.down("md")]: {
-      padding: "10%",
-      paddingTop: "0",
+      padding: "0 10% !important",
+      marginBottom:'40px',
     },
   },
   BlockFullscreen: {
@@ -41,8 +42,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
+    padding: (param) => ( param.page === "main" ? "0 10% 100px 11%" : null),
     [theme.breakpoints.down("md")]: {
       height: (param) => (param.page === "houseList" ? "100%": null),
+      padding:'0 !important',
+      marginBottom:(param) => (param.page === "house"||param.page === "main" ? "40px": null),
     },
   },
   button: {
@@ -78,14 +82,15 @@ const Layout = ({ pageTitle, children, page }) => {
             <div className={classes.page}>
               <Box
                 className={
-                  page === "watch"|| page === "houseList" ? classes.BlockFullscreen : classes.Block
+                  page === "watch"|| page === "houseList" || page === "main"|| page === "house" ? classes.BlockFullscreen : classes.Block
                 }
               >
                 {matches[1200] ? (
                   <Burger
                     click={handleOpenBurgerMenu}
-                    position={page === "watch"|| page === "houseList" ? "absolute" : null}
-                    color={page === "watch"|| page === "houseList" ? "white" : null}
+                    page={page}
+                    position={page === "watch"|| page === "houseList"|| page === "house" ? "absolute" : null}
+                    color={page === "watch"|| page === "houseList"|| page === "house" ? "white" : null}
                   />
                 ) : null}
                 <BurgerMenu
@@ -96,14 +101,9 @@ const Layout = ({ pageTitle, children, page }) => {
                 <SendForm
                   isFormOpen={isFormOpen}
                   click={handleClickConnect}
-                  burger={
+                  burgerClick={
                     matches[1200] ? (
-                      <Burger
-                        isOpen={true}
-                        click={() => (
-                          handleOpenBurgerMenu(), handleClickConnect()
-                        )}
-                      />
+                      () => (handleOpenBurgerMenu(), handleClickConnect())
                     ) : null
                   }
                 />

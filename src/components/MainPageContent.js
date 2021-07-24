@@ -17,7 +17,6 @@ import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
@@ -36,8 +35,20 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "100px",
       flexDirection: "column",
       width: "100%",
-      padding: "0 20px",
+      padding: "0 10%",
       gap: "30px",
+      "& $titleBox": {
+        right: "-12%",
+        position: "relative",
+      },
+    },
+  },
+  BlockFullscreen: {
+    [theme.breakpoints.down("md")]: {
+      padding: "0",
+      "& $titleBox": {
+        right: "0",
+      },
     },
   },
   titleBox: {
@@ -74,11 +85,16 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       width: "100%",
       padding: "0 20px",
+      "& $titleBox": {
+        right: "-12%",
+        position: "relative",
+      },
     },
   },
   line: {
     display: "inline-block",
     width: "75px",
+    minWidth: "75px",
     height: "1px",
     backgroundColor: "black",
     marginTop: "10px",
@@ -287,30 +303,43 @@ const MainPageContent = () => {
     }
   };
   const scrollOff = (e) => {
-    document.body.style.overflow='hidden';
-  }
+    document.body.style.overflow = "hidden";
+  };
   const scrollOn = (e) => {
-    document.body.style.overflow='overlay';
-    
-  }
+    document.body.style.overflow = "overlay";
+  };
 
   return (
     <div className={classes.root}>
       <Box className={classes.sliderBlock}>
         <Box className={classes.titleBox}>
-          <span className={`${classes.line} ${classes.firstLine}`}></span>
+          {!matches[1200] ? (
+            <span className={`${classes.line} ${classes.firstLine}`}></span>
+          ) : null}
           {matches[1200] ? (
             <Typography variant="h4" className={classes.text}></Typography>
           ) : null}
         </Box>
-        <Box className={classes.sliderBox} onWheel={handleScrol} onMouseOver ={scrollOff} onClick={scrollOn} onMouseOut={scrollOn}>
+        <Box
+          className={classes.sliderBox}
+          onWheel={handleScrol}
+          onMouseOver={scrollOff}
+          onClick={scrollOn}
+          onMouseOut={scrollOn}
+        >
           <HouseSlider houseRef={houseSliderRef} mobile={matches[1200]} />
         </Box>
       </Box>
 
       {/* ПОДРОБНЕЕ */}
 
-      <Box className={classes.Block}>
+      <Box
+        className={
+          matches[1200]
+            ? `${classes.Block} ${classes.BlockFullscreen}`
+            : classes.Block
+        }
+      >
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
@@ -376,7 +405,6 @@ const MainPageContent = () => {
           </Box>
         </Box>
         <Box className={classes.mediaBlock} onChange={handleReviewCange}>
-
           <TransitionGroup className={classes.reviewVideoBox}>
             <CSSTransition
               key={reviews[reviewVideo].id}
@@ -408,7 +436,13 @@ const MainPageContent = () => {
 
       {/* ОТВЕТЫ */}
 
-      <Box className={classes.Block}>
+      <Box
+        className={
+          matches[1200]
+            ? `${classes.Block} ${classes.BlockFullscreen}`
+            : classes.Block
+        }
+      >
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
@@ -423,7 +457,7 @@ const MainPageContent = () => {
               ОТВЕТЫ
             </Typography>
           ) : null}
-          <Box className={classes.ButtonGroup}>
+          <Box className={classes.buttonGroup}>
             <RegularButton variant="outlined" click={handleReviewCange}>
               1-4
             </RegularButton>

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       height: "auto",
-      padding: "60px 0px 0px",
+      padding: "0",
     },
   },
   button: {
@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       height: "40vh",
-      marginTop: "20px",
+      marginTop: "40px",
     },
   },
   article: {

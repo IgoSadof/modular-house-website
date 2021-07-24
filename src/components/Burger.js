@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: (param) => (param.position === "absolute" ? "0" : "40px"),
     width: "100%",
     height: "40px",
-    paddingLeft: (param) => (param.position === "absolute" ? "10%" : "0"),
-    paddingRight: (param) => (param.position === "absolute" ? "10%" : "0"),
+    paddingLeft: (param) => (param.position === "absolute"||param.page === 'main' ? "10%" : "0"),
+    paddingRight: (param) => (param.position === "absolute"||param.page === 'main' ? "10%" : "0"),
     zIndex: "3",
     filter: (param) => (param.color === "white" ? "invert(1)" : null),
   },
@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Burger({ color, click, isOpen, position }) {
-  const param = { color, isOpen, position };
+export default function Burger({ color, click, isOpen, position,page }) {
+  const param = { color, isOpen, position,page };
   const classes = useStyles(param);
 
   return (

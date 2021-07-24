@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     border:'1px solid'
   },
   slickList:{
-    height:'90vh !important'
+    // height:'90vh !important'
   }
 }));
 const HouseModelSlider = ({listItem,myRef}) => {
@@ -30,7 +30,7 @@ const HouseModelSlider = ({listItem,myRef}) => {
     slidesToScroll: 1,
     swipeToSlide: false,
     swipe:false,
-    adaptiveHeight: true
+    adaptiveHeight: true,
   };
   
   return (
