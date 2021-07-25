@@ -100,8 +100,8 @@ const Contacts = ({ header }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Box className={classes.BlockMain}>
+    <Box components="main" className={classes.root}>
+      <Box components="section" className={classes.BlockMain}>
         {header ? (
           <Box className={classes.BlockColumn}>
             <Typography variant="h4" className={classes.textHeader}>
@@ -118,7 +118,7 @@ const Contacts = ({ header }) => {
           </Box>
         ) : null}
 
-        <Box className={classes.BlockContent}>
+        <Box components="section"  className={classes.BlockContent}>
           <Box className={classes.contactsBox}>
             <Box className={classes.contactsBoxes}>
               <Box className={classes.personalBox}>
@@ -188,7 +188,7 @@ const Contacts = ({ header }) => {
           ) : null}
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 export default Contacts;

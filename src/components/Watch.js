@@ -103,14 +103,14 @@ const Watch = () => {
   });
 
   return (
-    <Box className={classes.BlockFullscreen}>
-      <Box className={classes.imageSlider}>
+    <Box components="main"  className={classes.BlockFullscreen}>
+      <Box components="section"  className={classes.imageSlider}>
         <HouseFotosSlider listItem={listItem} />
         {matches[1200] ? null : (
           <Panel ref={categoryRef} change={handleChangePanel} />
         )}
       </Box>
-      <Box className={classes.excursion}>
+      <Box components="section"  className={classes.excursion}>
         {matches[1200] ? (
           <Typography className={classes.excursionText} variant="subtitle1">
             Оставьте заявку и наш менеджер свяжеться с вами

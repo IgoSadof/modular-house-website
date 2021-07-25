@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import "./global.css";
+import "../components/global.css";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Footer from "./Footer";
-import Menu from "./Menu";
+import Footer from "../components/Footer";
+import Menu from "../components/Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
 import Box from "@material-ui/core/Box";
-import SendForm from "./SendForm";
+import SendForm from "../components/SendForm";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Burger from "./Burger";
-import BurgerMenu from "./BurgerMenu";
-import RegularButton from "./buttons/RegularButton";
+import Burger from "../components/Burger";
+import BurgerMenu from "../components/BurgerMenu";
+import RegularButton from "../components/buttons/RegularButton";
 
 const useStyles = makeStyles((theme) => ({
   page: {

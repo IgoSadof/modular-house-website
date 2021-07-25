@@ -310,8 +310,8 @@ const MainPageContent = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Box className={classes.sliderBlock}>
+    <Box className={classes.root}>
+      <Box component='section' className={classes.sliderBlock}>
         <Box className={classes.titleBox}>
           {!matches[1200] ? (
             <span className={`${classes.line} ${classes.firstLine}`}></span>
@@ -334,6 +334,7 @@ const MainPageContent = () => {
       {/* ПОДРОБНЕЕ */}
 
       <Box
+        component="section"
         className={
           matches[1200]
             ? `${classes.Block} ${classes.BlockFullscreen}`
@@ -361,7 +362,7 @@ const MainPageContent = () => {
 
       {/* ОТЗЫВЫ */}
 
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
@@ -437,6 +438,7 @@ const MainPageContent = () => {
       {/* ОТВЕТЫ */}
 
       <Box
+        component="section"
         className={
           matches[1200]
             ? `${classes.Block} ${classes.BlockFullscreen}`
@@ -478,7 +480,7 @@ const MainPageContent = () => {
 
       {/* "ЭКСПОДОМ" */}
 
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
@@ -495,7 +497,7 @@ const MainPageContent = () => {
         />
       </Box>
 
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
@@ -506,7 +508,7 @@ const MainPageContent = () => {
         </Box>
         <Contacrs header={!matches[1200] ? "Контакты" : null} />
       </Box>
-    </div>
+    </Box>
   );
 };
 export default MainPageContent;

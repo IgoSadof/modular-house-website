@@ -3,6 +3,7 @@ import { makeStyles} from "@material-ui/core/styles";
 import MainSlider from "../components/MainSlider";
 import MainPageContent from "../components/MainPageContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -49,13 +50,14 @@ const Main = () => {
   };
 
   return (
-    <div
+    <Box
+      components='main'
       className={classes.componets}
       onWheel={(e) => handleScroll(e)}
     >
       <MainSlider scrol={scrol} isFirstEntry={isFirstEntry} />
       <MainPageContent />
-    </div>
+    </Box>
   );
 };
 export default Main;

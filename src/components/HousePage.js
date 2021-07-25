@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     [theme.breakpoints.down("md")]: {
       "& $titleBox": {
-        marginTop:'100px',
+        marginTop: "100px",
         right: "0",
         position: "relative",
       },
@@ -40,9 +40,9 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     padding: "0 10%",
     backgroundColor: "#D1D1D1",
-    marginTop:'100px',
+    marginTop: "100px",
     [theme.breakpoints.down("md")]: {
-      marginTop:'100px',
+      marginTop: "100px",
       flexDirection: "column",
       padding: "0 10%",
       justifyContent: "center",
@@ -114,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "space-around",
       bottom: "7%",
       zIndex: "1",
-    }
+    },
   },
   houseDescIconBox: {
     display: "flex",
@@ -502,8 +502,11 @@ const HousePage = ({ house }) => {
   );
 
   return (
-    <>
-      <Box className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}>
+    <Box components="main">
+      <Box
+        components="section"
+        className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
+      >
         <Box className={classes.mainImgBox}>
           <img
             className={classes.mainImg}
@@ -564,7 +567,7 @@ const HousePage = ({ house }) => {
                       0{index + 1} {item.name}
                     </Typography>
                   </li>
-                )
+                );
               })}
             </ul>
             <ul className={classes.mainBlockList}>
@@ -582,7 +585,7 @@ const HousePage = ({ house }) => {
         </Box>
       </Box>
 
-      <Box className={classes.modelBlock}>
+      <Box components="section" className={classes.modelBlock}>
         <Box className={classes.modelDesc}>
           <Box className={classes.modelDescFirstColumn}>
             {houses[houseNumber].modules.map((item, index) => {
@@ -794,7 +797,7 @@ const HousePage = ({ house }) => {
           formPosition="center"
         />
       </Box>
-    </>
-  )
+    </Box>
+  );
 };
 export default HousePage;

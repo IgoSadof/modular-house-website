@@ -1,6 +1,6 @@
 import "../components/global.css";
 import React from "react";
-import { makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import FormBlock from "./FormBlock";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -8,7 +8,6 @@ import alexey from "../assets/images/aboutus_alexey.png";
 import andrey from "../assets/images/aboutus_andrey.png";
 import office from "../assets/images/office.png";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -86,8 +85,8 @@ const useStyles = makeStyles((theme) => ({
     gap: "20px",
     flexDirection: "row-reverse",
     [theme.breakpoints.down("md")]: {
-      position:'relative',
-      right: '-12%',
+      position: "relative",
+      right: "-12%",
     },
   },
   textBox: {
@@ -165,8 +164,8 @@ const AboutUs = () => {
   const classes = useStyles();
 
   return (
-    <>
-      <Box className={classes.Block}>
+    <Box component="main">
+      <Box component="section" className={classes.Block}>
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
@@ -189,7 +188,7 @@ const AboutUs = () => {
         </Typography>
       </Box>
 
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
@@ -208,7 +207,7 @@ const AboutUs = () => {
           </>
         )}
 
-        <Box className={classes.textBox}>
+        <Box component="section" className={classes.textBox}>
           <Typography variant="body1" className={classes.text}>
             Мы видим миссию нашей команды в изменении окружающего мира за счет
             качественной концептуальной архитектуры. В каждом нашем проекте
@@ -227,7 +226,7 @@ const AboutUs = () => {
         </Box>
       </Box>
 
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
@@ -243,7 +242,7 @@ const AboutUs = () => {
             </Typography>
           </>
         )}
-        <Box className={classes.textBox}>
+        <Box component="section" className={classes.textBox}>
           <Typography variant="body1" className={classes.text}>
             Модульная система, являющаяся основой наших проектов, позволяет
             людям с небольшим бюджетом начать с маленького домика и расширить
@@ -263,7 +262,7 @@ const AboutUs = () => {
         </Box>
       </Box>
 
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
@@ -303,7 +302,10 @@ const AboutUs = () => {
         </Box>
       </Box>
 
-      <Box className={`${classes.Block} ${classes.BlockMt0}`}>
+      <Box
+        component="section"
+        className={`${classes.Block} ${classes.BlockMt0}`}
+      >
         <span className={`${classes.line} ${classes.lineInvis}`}></span>
         <Box className={classes.creatorsBox}>
           <Box className={classes.creatorTextBox}>
@@ -328,7 +330,7 @@ const AboutUs = () => {
           <img className={classes.img} src={andrey} alt="img"></img>
         </Box>
       </Box>
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
@@ -348,7 +350,7 @@ const AboutUs = () => {
           Модульные дома - экологичность, технологичность, оптимальность.
         </Typography>
       </Box>
-      <Box className={classes.Block}>
+      <Box component="section" className={classes.Block}>
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
@@ -373,7 +375,7 @@ const AboutUs = () => {
           email
         />
       </Box>
-    </>
+    </Box>
   );
 };
 export default AboutUs;

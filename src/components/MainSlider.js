@@ -288,7 +288,7 @@ const Slider = ({ scrol, isFirstEntry }) => {
   };
 
   return (
-    <Box className={classes.content}>
+    <Box component='section' className={classes.content}>
       <Box className={classes.midleBlock}>
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>

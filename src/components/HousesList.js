@@ -1,6 +1,6 @@
 import "../components/global.css";
 import React, { useRef, useState } from "react";
-import { makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 // import Button from "@material-ui/core/Button";
@@ -238,7 +238,7 @@ const useStyles = makeStyles((theme) => ({
     width: "47%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height:'100%',
+      height: "100%",
     },
   },
   mainImg: {
@@ -375,8 +375,9 @@ const HousesList = () => {
   });
 
   return (
-    <Box className={classes.Block}>
+    <Box components="main" className={classes.Block}>
       <Box
+        components="section"
         className={classes.houseListBlock}
         onWheel={handleScrol}
         onMouseOver={scrollOff}
@@ -389,7 +390,7 @@ const HousesList = () => {
           mobile={matches[1200]}
         />
       </Box>
-      <Box className={classes.houseDesc}>
+      <Box components="section" className={classes.houseDesc}>
         <Box className={classes.houseDescContent}>
           <TransitionGroup className={classes.houseDescImgBox}>
             <CSSTransition
@@ -507,7 +508,7 @@ const HousesList = () => {
         </Box>
       </Box>
 
-      <Box className={classes.houseImg}>
+      <Box components="section" className={classes.houseImg}>
         <HouseModelSlider myRef={myRef} listItem={listMainImages} />
         {matches[1200] ? (
           <Box
