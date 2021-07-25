@@ -11,14 +11,11 @@ const useStyles = makeStyles((theme) => ({
     height: "36px",
     marginLeft: "auto",
     border: "1px solid",
+    
   },
   componets: {
-    position: (param) =>
-      param.isFirstEntry
-        ? !param.matches[1200]
-          ? "fixed !important"
-          : "relative"
-        : "relative",
+    height: '100%',
+    width: '100%',
   },
 }));
 
@@ -27,23 +24,27 @@ const Main = () => {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  const [scrol, setScrol] = useState(0);
+  const [scroll, setScrol] = useState(0);
   let firstEntry = true;
   if (typeof window !== "undefined") {
     firstEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
+    firstEntry? document.body.style.overflow = "hidden":document.body.style.overflow = "overlay";
   }
+  
+  
   const [isFirstEntry, setIsFirstEntry] = useState(firstEntry);
-  const param = { scrol, isFirstEntry, matches };
+  const param = { scroll, isFirstEntry, matches };
   const classes = useStyles(param);
   const handleScroll = (e) => {
-    if (scrol >= 4) {
+    if (scroll >= 4) {
       localStorage.setItem("isFirstEntry", false);
       setIsFirstEntry(false);
+      document.body.style.overflow = "overlay"
     }
     if (e.nativeEvent.wheelDelta > 0) {
-      scrol <= 0 ? setScrol(0) : setScrol((state) => state - 1);
+      scroll <= 0 ? setScrol(0) : setScrol((state) => state - 1);
     } else if (e.nativeEvent.wheelDelta < 0) {
-      scrol > 4 ? setScrol(4) : setScrol((state) => state + 1);
+      scroll > 4 ? setScrol(4) : setScrol((state) => state + 1);
     } else {
       setScrol((state) => state + 1);
     }
@@ -51,11 +52,11 @@ const Main = () => {
 
   return (
     <Box
-      components='main'
+      component='main'
       className={classes.componets}
       onWheel={(e) => handleScroll(e)}
     >
-      <MainSlider scrol={scrol} isFirstEntry={isFirstEntry} />
+      <MainSlider scroll={scroll} isFirstEntry={isFirstEntry} />
       <MainPageContent />
     </Box>
   );

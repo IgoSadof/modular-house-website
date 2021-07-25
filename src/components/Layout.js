@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
   BlockFullscreen: {
     position: "relative",
+    height:'100%',
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",

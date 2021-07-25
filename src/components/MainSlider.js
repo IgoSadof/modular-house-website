@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    height: "98vh",
+    height: "100vh",
     backgroundColor: "#D1D1D1",
 
     [theme.breakpoints.down("md")]: {
@@ -61,25 +61,25 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     top: 0,
     left: 0,
-    opacity: (param) => 1 - 0.1 * param.scrol,
+    opacity: (param) => 1 - 0.1 * param.scroll,
   },
   leftpartImg: {
     position: "absolute",
     top: "47%",
     left: "3%",
     transform: (param) =>
-      `translate(0%,${-50 - param.scrol * 10}% ) scale(1.15)`,
-    opacity: (param) => 0.1 * param.scrol,
+      `translate(0%,${-50 - param.scroll * 10}% ) scale(1.15)`,
+    opacity: (param) => 0.1 * param.scroll,
   },
   rightpartImg: {
     position: "absolute",
     top: "47%",
     left: "62%",
     transform: (param) =>
-      `translate(${-50 + param.scrol * 10}%, ${
-        -50 - param.scrol * 10
+      `translate(${-50 + param.scroll * 10}%, ${
+        -50 - param.scroll * 10
       }% ) scale(1.15)`,
-    opacity: (param) => 0.1 * param.scrol,
+    opacity: (param) => 0.1 * param.scroll,
   },
   langBox: {
     position: "relative",
@@ -216,16 +216,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slider = ({ scrol, isFirstEntry }) => {
+const Slider = ({ scroll, isFirstEntry }) => {
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(true);
-  const param = { scrol, lineLength };
+  const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
+  // console.log(scroll)
 
   // const [resources, setResources] = useState(null);
   // const [resourcestv, setResourcestv] = useState(null);
@@ -250,19 +251,18 @@ const Slider = ({ scrol, isFirstEntry }) => {
   // }, []);
 
   useEffect(() => {
-    // console.log(scrol);
     if (isFirstEntry) {
-      scrol < 1
+      scroll < 1
         ? handleNumberClick(null, 1)
-        : scrol >= 1 && scrol < 2
+        : scroll >= 1 && scroll < 2
         ? handleNumberClick(null, 2)
-        : scrol >= 2 && scrol < 3
+        : scroll >= 2 && scroll < 3
         ? handleNumberClick(null, 3)
-        : scrol >= 3 && scrol < 4
+        : scroll >= 3 && scroll < 4
         ? handleNumberClick(null, 4)
-        : (scrol = 4);
+        : (scroll = 4);
     }
-  }, [scrol]);
+  }, [scroll]);
 
   // useEffect(() => {
   //   if (resources && resourcestv) {
