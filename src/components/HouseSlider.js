@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   name: {
-    width: "60%",
+    width: "50%",
   },
   title: {
     display: "flex",
@@ -84,6 +84,9 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     minWidth: "130px",
+    [theme.breakpoints.down("md")]: {
+      textAlign: 'right',
+    },
   },
 }));
 const HouseSlider = ({ mobile, houseRef }) => {

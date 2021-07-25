@@ -2,7 +2,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import green from "@material-ui/core/colors/green";
 
 const myFontsSize = {
-  width1900: 1.5,
+  xl: 1.5,
   widthMobile: 0.75,
   h1: 48,
   h3: 24,
@@ -36,6 +36,7 @@ const modularHouseTheme = createMuiTheme({
   breakpoints: {
     values: {
       xs: 0,
+      s: 350,
       sm: 600,
       md: 960,
       lg: 1280,
@@ -64,7 +65,7 @@ const modularHouseTheme = createMuiTheme({
       fontWeight: 600,
       fontStyle: "normal",
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.h1 * myFontsSize.width1900,
+        fontSize: myFontsSize.h1 * myFontsSize.xl,
       },
       "@media (max-width:1200px)": {
         fontSize: myFontsSize.h1 * myFontsSize.widthMobile,
@@ -77,7 +78,7 @@ const modularHouseTheme = createMuiTheme({
       fontStyle: "normal",
       color: "#4F4F4F",
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.h3 * myFontsSize.width1900,
+        fontSize: myFontsSize.h3 * myFontsSize.xl,
       },
     },
     h4: {
@@ -89,7 +90,7 @@ const modularHouseTheme = createMuiTheme({
       color: "#333333",
       fontFamily: ["Ubuntu", "sans-serif"].join(","),
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.h4 * myFontsSize.width1900,
+        fontSize: myFontsSize.h4 * myFontsSize.xl,
       },
     },
 
@@ -101,7 +102,7 @@ const modularHouseTheme = createMuiTheme({
       textTransform: "uppercase",
       color: "#4F4F4F",
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.h5 * myFontsSize.width1900,
+        fontSize: myFontsSize.h5 * myFontsSize.xl,
       },
     },
     h6: {
@@ -112,7 +113,7 @@ const modularHouseTheme = createMuiTheme({
       textTransform: "uppercase",
       color: "#4F4F4F",
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.h6 * myFontsSize.width1900,
+        fontSize: myFontsSize.h6 * myFontsSize.xl,
       },
     },
     body1: {
@@ -123,7 +124,10 @@ const modularHouseTheme = createMuiTheme({
       color: "#4F4F4F",
       fontFamily: ["Ubuntu", "sans-serif"].join(","),
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.body1 * myFontsSize.width1900,
+        fontSize: myFontsSize.body1 * myFontsSize.xl,
+      },
+      "@media (max-width:350px)": {
+        fontSize: myFontsSize.body1 * myFontsSize.widthMobile,
       },
     },
     body2: {
@@ -134,7 +138,7 @@ const modularHouseTheme = createMuiTheme({
       color: "#7C7C7C",
       fontFamily: ["Ubuntu", "sans-serif"].join(","),
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.body2 * myFontsSize.width1900,
+        fontSize: myFontsSize.body2 * myFontsSize.xl,
       },
     },
     subtitle1: {
@@ -146,7 +150,7 @@ const modularHouseTheme = createMuiTheme({
       color: "#4F4F4F",
       fontFamily: ["Ubuntu", "sans-serif"].join(","),
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.subtitle1 * myFontsSize.width1900,
+        fontSize: myFontsSize.subtitle1 * myFontsSize.xl,
       },
     },
     subtitle2: {
@@ -157,7 +161,7 @@ const modularHouseTheme = createMuiTheme({
       textTransform: "uppercase",
       color: "#333333",
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.subtitle2 * myFontsSize.width1900,
+        fontSize: myFontsSize.subtitle2 * myFontsSize.xl,
       },
     },
     button: {
@@ -169,7 +173,7 @@ const modularHouseTheme = createMuiTheme({
       color: "#333333",
       fontFamily: ["Ubuntu", "sans-serif"].join(","),
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.button * myFontsSize.width1900,
+        fontSize: myFontsSize.button * myFontsSize.xl,
       },
     },
     caption: {
@@ -180,7 +184,7 @@ const modularHouseTheme = createMuiTheme({
       textTransform: "uppercase",
       color: "#333333",
       "@media (min-width:1900px)": {
-        fontSize: myFontsSize.caption * myFontsSize.width1900,
+        fontSize: myFontsSize.caption * myFontsSize.xl,
       },
     },
     srOnly: {},

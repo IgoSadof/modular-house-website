@@ -169,9 +169,10 @@ const useStyles = makeStyles((theme) => ({
     padding: "100px 10% 100px 12vw",
     backgroundColor: "#D1D1D1",
     [theme.breakpoints.down("md")]: {
-      gap: "40px",
+      gap: "20px",
       flexDirection: "column",
       padding: "11%",
+      paddingTop:'0',
       justifyContent: "center",
     },
   },
@@ -183,7 +184,7 @@ const useStyles = makeStyles((theme) => ({
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height: "65vh",
+      height: "54vh",
     },
   },
   accordionBox: {
