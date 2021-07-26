@@ -141,14 +141,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginLeft: "100px",
     width: "70%",
-    "& h1":{
-      fontSize:'24px'
-    },
+   
     [theme.breakpoints.down("md")]: {
       marginLeft: "auto",
       marginRight: "auto",
       marginBottom: "auto",
       gap: "20px",
+      "& h1":{
+        fontSize:'24px'
+      },
     },
   },
   header: {

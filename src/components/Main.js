@@ -25,21 +25,25 @@ const Main = () => {
     1200: useMediaQuery("(max-width:1200px)"),
   };
   const [scroll, setScrol] = useState(0);
-  let firstEntry = true;
-  if (typeof window !== "undefined") {
-    firstEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
-    firstEntry? document.body.style.overflow = "hidden":document.body.style.overflow = "overlay";
-  }
+  const [isFirstEntry, setIsFirstEntry] = useState(false);
+  // const [visability, setVisability] = useState(false);
+  // if (!visability && typeof window !== "undefined" && !matches[1200]) {
+  //   console.log(!!window.localStorage.getItem("isFirstEntry"))
+  //   if(isFirstEntry && window.localStorage.getItem("isFirstEntry")) setIsFirstEntry(false);
+  //   isFirstEntry? document.body.style.overflow = "hidden":document.body.style.overflow = "overlay";
+  // }
   
   
-  const [isFirstEntry, setIsFirstEntry] = useState(firstEntry);
+  
   const param = { scroll, isFirstEntry, matches };
   const classes = useStyles(param);
   const handleScroll = (e) => {
     if (scroll >= 4) {
       localStorage.setItem("isFirstEntry", false);
-      setIsFirstEntry(false);
-      document.body.style.overflow = "overlay"
+      // if(isFirstEntry) setIsFirstEntry(false);
+      // if(!visability) setVisability(true);
+      // console.log('firstEntry = ', isFirstEntry)
+      // if(isFirstEntry) document.body.style.overflow = "overlay"
     }
     if (e.nativeEvent.wheelDelta > 0) {
       scroll <= 0 ? setScrol(0) : setScrol((state) => state - 1);
