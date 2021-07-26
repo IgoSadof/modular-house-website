@@ -30,7 +30,11 @@ const Main = () => {
     firsEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
   }
   const [isFirstEntry, setIsFirstEntry] = useState(firsEntry);
-  if(isFirstEntry && !matches[1200]) document.body.style.overflow = "hidden";
+  if(isFirstEntry && !matches[1200]){
+    document.body.style.overflow = "hidden"
+  }else if (matches[1200]){
+    document.body.style.overflow = "overlay"
+  } ;
   const param = { scroll, isFirstEntry, matches };
   const classes = useStyles(param);
   const handleScroll = (e) => {
