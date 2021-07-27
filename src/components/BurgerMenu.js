@@ -23,7 +23,9 @@ const useStyles = makeStyles((theme) => ({
       left: (param) => (param.isBurgerMenuOpen ? "0%" : "100%"),
       padding: "10%",
       paddingTop:'0',
+      paddingBottom:'10vh',
       width: "100%",
+      gap: "0",
     },
   },
   buttonBox: {

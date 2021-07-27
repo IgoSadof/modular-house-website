@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "130px",
     [theme.breakpoints.down("md")]: {
       textAlign: 'right',
+      paddingRight:'10px',
     },
   },
 }));

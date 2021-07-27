@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
       display: (param) => (param.inBurger ? "flex" : "none"),
       borderRight: "none",
       position: "relative",
-      padding: "8vh 0px 8vh",
+      padding: "0",
       background: "none",
       backdropFilter: "none",
       alignItems: "self-start",
@@ -83,10 +83,22 @@ const useStyles = makeStyles((theme) => ({
     gap: "30px",
     [theme.breakpoints.down("md")]: {
       opacity: "1",
+      gap: "50px",
+      marginTop:'auto',
+      marginBottom:'auto',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.s)]: {
+      gap: "40px",
     },
   },
   navItem: {
     cursor: "pointer",
+    [theme.breakpoints.down("md")]: {
+      opacity: "1",
+      "& span":{
+        fontSize: "18px",
+      },
+    },
   },
   Link: {
     color: "black",
