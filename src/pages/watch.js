@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 
 const WatchPage = () => {
   return (
-    <Layout pageTitle="Watch" page="watch">
+    <Layout pageTitle="Where to see" page="watch">
       <Watch />
     </Layout>
   );

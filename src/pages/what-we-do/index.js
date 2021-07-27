@@ -1,12 +1,12 @@
 import "../../components/global.css";
 import React from "react";
 import HousesList from "../../components/HousesList";
-import Layout from "../../components/Layout";
+import Layout from "../../layouts/index";
 
 
 const HousesListPage = () => {
   return (
-    <Layout pageTitle="House List" page="houseList">
+    <Layout pageTitle="What we do" page="houseList">
       <HousesList />
     </Layout>
   );

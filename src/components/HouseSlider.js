@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import { houses } from "../constant/houses";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,6 +91,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const HouseSlider = ({ mobile, houseRef }) => {
+  const matches = {
+    1920: useMediaQuery("(min-width:1920px)"),
+    1200: useMediaQuery("(max-width:1200px)"),
+    600: useMediaQuery("(max-width:600px)"),
+  };
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
   const classes = useStyles(param);
@@ -103,7 +109,7 @@ const HouseSlider = ({ mobile, houseRef }) => {
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: mobile ? 1 : 2,
+    slidesToShow: matches[600] ? 1 : 2,
     // slidesToScroll: 1,
     adaptiveHeight: true,
   };

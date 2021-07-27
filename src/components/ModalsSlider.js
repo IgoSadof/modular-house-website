@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
@@ -17,12 +18,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const ModalsSlider = ({ listItem, houseRef,mobile}) => {
+  const matches = {
+    600: useMediaQuery("(max-width:600px)"),
+    500: useMediaQuery("(max-width:500px)"),
+  };
   const classes = useStyles();
   const settings = {
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: mobile? 3:5,
+    slidesToShow: matches[600]?matches[500]?3:4:5,
     vertical: mobile? false : true,
     swipeToSlide: true,
     verticalSwiping: mobile? false : true,

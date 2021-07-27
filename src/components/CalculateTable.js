@@ -220,7 +220,7 @@ const CalculateTable = ({ houseN }) => {
       <Box className={classes.tableResult}>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
         <Typography variant="h6" className={classes.textPrice}>
-          Иотого
+          Итого
         </Typography>
         <Typography variant="caption" className={classes.textPriceValue}>
           $ {price}

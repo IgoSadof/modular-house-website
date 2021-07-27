@@ -66,9 +66,9 @@ const useStyles = makeStyles((theme) => ({
   contactsBoxes: {
     display: "flex",
     gap: "40px",
+    justifyContent: "center",
     [theme.breakpoints.down("md")]: {
       gap: "20px",
-      justifyContent: "space-around",
     },
   },
   personalBox:{

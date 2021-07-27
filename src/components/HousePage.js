@@ -620,7 +620,16 @@ const HousePage = ({ house }) => {
 
           <div className={classes.modelDescLine}>
             <div className={classes.modelDescLineActive}></div>
-            {pilldistance < 100 ? (
+            {pilldistance === 20 ? (
+              <div className={classes.modelDescLineButton}>
+                <div
+                  onClick={handlePlusClick}
+                  className={classes.modelDescLineMinusCircle}
+                >
+                  <div style={{top:"-10%"}} className={classes.plus}>+</div>
+                </div>
+              </div>
+            ): pilldistance < 100 ? (
               <div className={classes.modelDescLineButton}>
                 <div
                   onClick={handleMinusClick}
@@ -641,7 +650,7 @@ const HousePage = ({ house }) => {
                   onClick={handleMinusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
-                  <div className={classes.minus}>-</div>
+                  <div style={{top:"-13%"}}  className={classes.minus}>-</div>
                 </div>
               </div>
             )}

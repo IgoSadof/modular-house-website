@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListItem: {
     height: "19vh",
+    minHeight: "140px",
     position: "relative",
     cursor: "pointer",
     display: "flex !important",
@@ -111,7 +112,15 @@ const useStyles = makeStyles((theme) => ({
     top: "20%",
     zIndex: "2",
     width: "80%",
+    maxWidth:'150px',
     transition: "0.5s",
+    [theme.breakpoints.down("md")]: {
+      width: "80%",
+      top: "10%",
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
+      top: "20%",
+    },
   },
   houseListImgActive: {
     top: "0%",
@@ -214,7 +223,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescSpecBox: {
     ...style.flex,
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
       flexDirection: "column",
       alignItems: "normal",
     },
@@ -255,7 +264,8 @@ const useStyles = makeStyles((theme) => ({
 const HousesList = () => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
+    1280: useMediaQuery("(max-width:1280px)"),
+    700: useMediaQuery("(max-width:700px)"),
   };
   const [house, setHouse] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -306,7 +316,7 @@ const HousesList = () => {
               : classes.houseListNumber
           }
         >{`0${index + 1}`}</Typography>
-        {!matches[1200] ? (
+        {!matches[1280] ? (
           !(activeSlide === index) ? (
             <>
               <CSSTransition
@@ -387,7 +397,7 @@ const HousesList = () => {
         <ModalsSlider
           houseRef={houseSliderRef}
           listItem={listItem}
-          mobile={matches[1200]}
+          mobile={matches[1280]}
         />
       </Box>
       <Box components="section" className={classes.houseDesc}>
@@ -411,7 +421,7 @@ const HousesList = () => {
             </CSSTransition>
           </TransitionGroup>
 
-          {!matches[1200] ? (
+          {!matches[1280] ? (
             <Box className={classes.houseDescTitleBox}>
               <Typography
                 variant="h1"
@@ -485,7 +495,7 @@ const HousesList = () => {
               </Box>
             </Box>
           </Box>
-          {matches[1200] ? null : (
+          {matches[1280] ? null : (
             <>
               <Box className={classes.houseDescMore}>
                 <Box className={classes.houseDescPrice}>
@@ -510,7 +520,7 @@ const HousesList = () => {
 
       <Box components="section" className={classes.houseImg}>
         <HouseModelSlider myRef={myRef} listItem={listMainImages} />
-        {matches[1200] ? (
+        {matches[1280] ? (
           <Box
             className={`${classes.houseDescTitleBox} ${classes.houseDescTitleBoxMobile}`}
           >
