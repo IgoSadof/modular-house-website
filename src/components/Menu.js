@@ -12,7 +12,7 @@ import RegularButton from "./buttons/RegularButton";
 const useStyles = makeStyles((theme) => ({
   menu: {
     boxSizing: "border-box",
-    position: "fixed",
+    position: 'fixed',
     top: "0",
     left: "0",
     display: "flex",
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     width: (param) => (param.inBurger ? "100%" : "11%"),
-    height: "100vh",
+    height:  (param) => (param.inBurger ? "80vh" : "100vh"),
     borderRight: "1px solid #4F4F4F",
     padding: "40px 0px 90px",
     transition: "0.5s",
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       display: (param) => (param.inBurger ? "flex" : "none"),
       borderRight: "none",
-      position: "relative",
+      position: 'relative',
       padding: "0",
       background: "none",
       backdropFilter: "none",

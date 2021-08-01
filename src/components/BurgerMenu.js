@@ -2,9 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Menu from "./Menu";
 import Burger from "./Burger";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  burgerConteiner: {
     position: "absolute",
     top: "0",
     left: (param) => (param.isBurgerMenuOpen ? "61%" : "100%"),
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "3",
     padding: "60px 240px 100px 100px",
     boxShadow: "-5px 0px 100px rgba(0, 0, 0, 0.2) ",
+    backdropFilter: "blur(10px)",
     backdropFilter: "blur(10px)",
     transition: "0.7s",
     [theme.breakpoints.down("md")]: {
@@ -31,9 +33,18 @@ const useStyles = makeStyles((theme) => ({
   buttonBox: {
     marginLeft: "auto",
   },
+  menuBox:{
+    display:'none',
+    [theme.breakpoints.down("md")]: {
+      display:'flex',
+    
+    },
+
+
+  },
 }));
 
-const SendForm = ({ isBurgerMenuOpen, click, clickToOpenForm }) => {
+const BurgerMenu = ({ isBurgerMenuOpen, click, clickToOpenForm }) => {
   // const matches = {
   //   1920: useMediaQuery("(min-width:1920px)"),
   //   1200: useMediaQuery("(max-width:1200px)"),
@@ -48,10 +59,12 @@ const SendForm = ({ isBurgerMenuOpen, click, clickToOpenForm }) => {
   // }
 
   return (
-    <div className={classes.root} name="form" id="form">
+    <div className={classes.burgerConteiner}>
       <Burger isOpen={true} click={click} />
-      <Menu inBurger={true} clickToOpenForm={clickToOpenForm} />
+      <Box className={classes.menuBox} >
+        <Menu inBurger={true} clickToOpenForm={clickToOpenForm} />
+      </Box>
     </div>
   );
 };
-export default SendForm;
+export default BurgerMenu;
