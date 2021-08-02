@@ -323,10 +323,10 @@ const MainPageContent = () => {
         </Box>
         <Box
           className={classes.sliderBox}
-          onWheel={handleScrol}
-          onMouseOver={scrollOff}
-          onClick={scrollOn}
-          onMouseOut={scrollOn}
+          // onWheel={handleScrol}
+          // onMouseOver={scrollOff}
+          // onClick={scrollOn}
+          // onMouseOut={scrollOn}
         >
           <HouseSlider houseRef={houseSliderRef} mobile={matches[1200]} />
         </Box>

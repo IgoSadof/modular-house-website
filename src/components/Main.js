@@ -33,7 +33,7 @@ const Main = () => {
   if(isFirstEntry && !matches[1200]){
     document.body.style.overflow = "hidden"
   }else if (matches[1200]){
-    document.body.style.overflow = "overlay"
+    document.body.style.overflow = "scroll"
   } ;
   const param = { scroll, isFirstEntry, matches };
   const classes = useStyles(param);
@@ -42,7 +42,7 @@ const Main = () => {
       if(isFirstEntry){
         localStorage.setItem("isFirstEntry", false);
         setIsFirstEntry(false);
-        document.body.style.overflow = "overlay"
+        document.body.style.overflow = "scroll"
       } 
     }
     if (e.nativeEvent.wheelDelta > 0) {
