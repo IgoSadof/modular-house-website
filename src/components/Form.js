@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   expodom_img: {
-    width: "100%",
+    width: "90%",
   },
   Expodom: {
     marginTop: "100px",

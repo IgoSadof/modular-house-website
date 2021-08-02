@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   secondImgBox: {
     position: "relative",
     width: "100%",
-    height: "90vh",
+    height: "80vh",
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "20px",
     justifyContent: "space-between",
-    padding: "50px 280px",
+    padding: "50px 18vw",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       padding: "10%",
@@ -166,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
   modelBlock: {
     display: "flex",
     gap: "100px",
-    padding: "100px 10% 100px 12vw",
+    padding: "100px 10% 100px 18vw",
     backgroundColor: "#D1D1D1",
     [theme.breakpoints.down("md")]: {
       gap: "20px",
@@ -354,7 +354,7 @@ const useStyles = makeStyles((theme) => ({
   roomsImgBox: {
     position: "relative",
     width: "40%",
-    height: "90vh",
+    height: "85vh",
     marginLeft: "20px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
@@ -423,8 +423,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   BlockForm: {
-    paddingLeft: "350px",
+    paddingLeft: "18vw",
     justifyContent: "center",
+    paddingBottom: '100px',
     [theme.breakpoints.down("md")]: {
       padding: "0",
     },
