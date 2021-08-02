@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     padding: (param) =>
-      param.page === "main" ? "0 10% 100px 11%" : "100px 10% 100px 11%",
+      param.page === "main" ? "0 10% 100px 11%" : "14vh 10% 14vh 11%",
     // padding: "100px 10% 100px 11%",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",

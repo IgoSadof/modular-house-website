@@ -49,9 +49,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       alignSelf: "center",
     },
-    [theme.breakpoints.up("xl")]: {
-      justifyContent: "space-around",
-    },
   },
   formHeader: {
     [theme.breakpoints.down("md")]: {

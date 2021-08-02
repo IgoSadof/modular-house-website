@@ -118,7 +118,7 @@ const Watch = () => {
         ) : null}
         <Box className={classes.excursionSend}>
           {matches[1200] ? null : (
-            <Typography variant="subtitle1">На экскурсию</Typography>
+            <Typography variant="h5">На экскурсию</Typography>
           )}
           <Box className={classes.formBox}>
             {!matches[1200] ? (

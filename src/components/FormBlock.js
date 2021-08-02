@@ -75,8 +75,9 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   expodom_img: {
-    width: "100%",
+    width: "90%",
     objectFit: 'cover',
+    marginLeft: 'auto',
   },
   Expodom: {
     "& .makeStyles-message-392": {
