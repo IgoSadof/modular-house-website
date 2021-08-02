@@ -150,6 +150,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     marginLeft: "auto",
     height: "70vh",
+    maxHeight: "600px",
     [theme.breakpoints.down("md")]: {
       order: "2",
       marginRight: "auto",

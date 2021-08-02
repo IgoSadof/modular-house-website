@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     marginLeft: "auto",
     // border: "1px solid",
-    width: "55%",
+    width: "50%",
     gap: "20px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    height: "750px",
+    height: "70vh",
     justifyContent: param => param.formPosition? param.formPosition:"space-between",
     gap:"140px",
     minWidth:'300px',
