@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import ReactPlayer from "react-player";
 import slides from "../constant/slides";
 import numbers from "../constant/numbers";
-import video from "../assets/video/video.webm";
+import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import axios from "axios";
