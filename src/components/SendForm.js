@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
     top: "0",
-    left: (param) => (param.isFormOpen ? "61%" : "100%"),
+    left: (param) => (param.isFormOpen ? "64%" : "100%"),
     display: "flex",
     flexDirection: "column",
     gap: "50px",
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
       param.isFormOpen ? "-5px 0px 100px rgba(0, 0, 0, 0.2) " : null,
     backdropFilter: "blur(10px)",
     transition: "0.7s",
+    justifyContent: 'center',
     [theme.breakpoints.down("md")]: {
       left: (param) => (param.isFormOpen ? "0%" : "100%"),
       padding: "10%",
