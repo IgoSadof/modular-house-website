@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
   personalBox:{
     [theme.breakpoints.up("xl")]: {
-      width:'200px',
+      width:'20vh',
     },
   },
   contactsFoto:{
