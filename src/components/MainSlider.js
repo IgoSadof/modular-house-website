@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fon: {
     position: "absolute",
-    background: "radial-gradient(transparent 30%, #D1D1D1 70%)",
+    background: "radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)",
     height: "100%",
     width: "100%",
   },
