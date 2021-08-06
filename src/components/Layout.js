@@ -81,7 +81,6 @@ const Layout = ({ pageTitle, children, page }) => {
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
   };
-
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <title>{pageTitle}</title>
@@ -141,6 +140,7 @@ const Layout = ({ pageTitle, children, page }) => {
             <Footer />
           </Box>
         </Box>
+      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
       </Box>
     </ThemeProvider>
   );

@@ -7,7 +7,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import SquareButton from "../components/buttons/SquareButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import model from "../assets/images/model.png";
 import plan from "../assets/images/plan.png";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -17,6 +16,7 @@ import HouseFotosSlider from "../components/HouseFotosSlider";
 import { houses } from "../constant/houses";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Model3d from "./Model3d";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -165,6 +165,7 @@ const useStyles = makeStyles((theme) => ({
   },
   modelBlock: {
     display: "flex",
+    justifyContent: "space-between",
     gap: "100px",
     padding: "100px 10% 100px 18vw",
     backgroundColor: "#D1D1D1",
@@ -172,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
       gap: "20px",
       flexDirection: "column",
       padding: "11%",
-      paddingTop:'0',
+      paddingTop: "0",
       justifyContent: "center",
     },
   },
@@ -212,8 +213,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     [theme.breakpoints.down("md")]: {
-      width: "100%",
-      height: "40vh",
+      width: "100px",
+      height: "100px",
     },
   },
   modelDescLine: {
@@ -425,7 +426,7 @@ const useStyles = makeStyles((theme) => ({
   BlockForm: {
     paddingLeft: "18vw",
     justifyContent: "center",
-    paddingBottom: '100px',
+    paddingBottom: "100px",
     [theme.breakpoints.down("md")]: {
       padding: "0",
     },
@@ -459,6 +460,7 @@ const HousePage = ({ house }) => {
     setRoomsImg(img);
     setRoomsImgIndex(index);
   };
+  const [model3d, setModel3d] = useState(0);
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -466,12 +468,14 @@ const HousePage = ({ house }) => {
     if (pilldistance + 40 <= 120) {
       setPilldistance((state) => state + 40);
       setPillClick((state) => state + 1);
+      setModel3d(state => state + 1)
     }
   };
   const handleMinusClick = (e) => {
     if (pilldistance - 40 >= 10) {
       setPilldistance((state) => state - 40);
       setPillClick((state) => state - 1);
+      setModel3d(state => state - 1)
     }
   };
   const handleClickLeft = () => {
@@ -627,10 +631,12 @@ const HousePage = ({ house }) => {
                   onClick={handlePlusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
-                  <div style={{top:"-10%"}} className={classes.plus}>+</div>
+                  <div style={{ top: "-10%" }} className={classes.plus}>
+                    +
+                  </div>
                 </div>
               </div>
-            ): pilldistance < 100 ? (
+            ) : pilldistance < 100 ? (
               <div className={classes.modelDescLineButton}>
                 <div
                   onClick={handleMinusClick}
@@ -651,7 +657,9 @@ const HousePage = ({ house }) => {
                   onClick={handleMinusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
-                  <div style={{top:"-13%"}}  className={classes.minus}>-</div>
+                  <div style={{ top: "-13%" }} className={classes.minus}>
+                    -
+                  </div>
                 </div>
               </div>
             )}
@@ -672,10 +680,9 @@ const HousePage = ({ house }) => {
             })}
           </Box>
         </Box>
-        <Box
-          style={{ backgroundImage: `url(${model})` }}
-          className={classes.model}
-        ></Box>
+        <Box className={classes.model}>
+          <Model3d index = {model3d}></Model3d>
+        </Box>
       </Box>
 
       <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
