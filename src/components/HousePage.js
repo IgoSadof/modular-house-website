@@ -16,14 +16,8 @@ import HouseFotosSlider from "../components/HouseFotosSlider";
 import { houses } from "../constant/houses";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import '@google/model-viewer'
+import '@google/model-viewer';
 import Model3d from "./Model3d";
-// import '@google/model-viewer'
-// import loadable from '@loadable/component'
-// const Model3d = loadable(() => {
-  // import('./Model3d')
-// })
-
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -220,8 +214,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     [theme.breakpoints.down("md")]: {
-      width: "100px",
-      height: "100px",
+      width: "100%",
+      height: "35vh",
     },
   },
   modelDescLine: {
