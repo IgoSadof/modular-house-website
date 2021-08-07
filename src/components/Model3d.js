@@ -1,6 +1,8 @@
 import React,{ Fragment, useState,useEffect } from "react";
 import { jsonMock } from "../assets/model/mockData";
-import '@google/model-viewer'
+// import '@google/model-viewer'
+// import loadable from '@loadable/component'
+// loadable(() => import('@google/model-viewer'))
 
 const Model3d = ({index}) => {
     console.log(index)
