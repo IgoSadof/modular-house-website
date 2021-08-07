@@ -1,4 +1,4 @@
-import React,{ Fragment, useState,useEffect } from "react";
+import React,{ Fragment} from "react";
 import { jsonMock } from "../assets/model/mockData";
 import '@google/model-viewer'
 // import loadable from '@loadable/component'
