@@ -16,7 +16,10 @@ import HouseFotosSlider from "../components/HouseFotosSlider";
 import { houses } from "../constant/houses";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Model3d from "./Model3d";
+// import Model3d from "./Model3d";
+import loadable from '@loadable/component'
+const Model3d = loadable(() => import('./Model3d'))
+
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
