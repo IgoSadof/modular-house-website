@@ -10,6 +10,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Burger from "./Burger";
 import BurgerMenu from "./BurgerMenu";
 import RegularButton from "./buttons/RegularButton";
+import { useStaticQuery, graphql } from 'gatsby'
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -67,6 +68,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Layout = ({ pageTitle, children, page }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -83,7 +93,8 @@ const Layout = ({ pageTitle, children, page }) => {
   };
   return (
     <ThemeProvider theme={modularHouseTheme}>
-      <title>{pageTitle}</title>
+      <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+      {/* <header>{data.site.siteMetadata.title}</header> */}
       <Box className="conteiner">
         <Menu />
         <Box className="content">

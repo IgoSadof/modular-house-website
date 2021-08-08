@@ -1,7 +1,7 @@
 {
   "name": "my-gatsby-site",
   "version": "1.0.0",
-  "homepage": "http://atestmod.vh109.hosterby.com",
+  "homepage": "http://modularh.vh108.hosterby.com",
   "private": true,
   "description": "My Gatsby Site",
   "keywords": [
@@ -12,7 +12,7 @@
     "not dead"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "GATSBY_CONCURRENT_DOWNLOAD=5 gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -30,6 +30,8 @@
     "gatsby": "^3.4.0",
     "gatsby-plugin-material-ui": "^3.0.1",
     "gatsby-plugin-styled-components": "^4.7.1",
+    "gatsby-source-filesystem": "^3.11.0",
+    "gatsby-source-mysql": "^2.2.3",
     "react": "^17.0.1",
     "react-calendar": "^3.4.0",
     "react-dom": "^17.0.1",
