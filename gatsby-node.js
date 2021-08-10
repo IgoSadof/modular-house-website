@@ -7,6 +7,19 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
               test: /model-viewer/,
               use: loaders.null(),
             },
+            {
+                test: /\.(glb|gltf)$/,
+                use:
+                [
+                    {
+                        loader: 'file-loader',
+                        options:
+                        {
+                            outputPath: 'assets/models3d/'
+                        }
+                    }
+                ]
+            },
           ],
         },
       })
