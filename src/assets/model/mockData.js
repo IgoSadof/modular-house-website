@@ -1,8 +1,9 @@
-
+import house from "../models3d/28_House.glb"
 export const jsonMock = {
     linksGLB: [
+      house,
+      // "https://s3.amazonaws.com/modelviwer.dev/models-3d/Astronaut+(1).glb",
       "https://s3.amazonaws.com/modelviwer.dev/models-3d/Cubo.glb",
-      "https://storage.googleapis.com/modular-house/28_House.glb",
       "https://s3.amazonaws.com/modelviwer.dev/models-3d/bebe01.glb",
     ],
     linksUSDZ: [
