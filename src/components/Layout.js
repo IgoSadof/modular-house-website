@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     position: "absolute",
     top: (param) =>
-      param.page === "aboutUs" ? null : param.page === "main" ? "1%" : "5%",
+      param.page === "aboutUs" || param.page === "main" || param.page === "house"  ? "1%" : "5%",
     right: "10%",
     zIndex: "2",
   },
