@@ -11,6 +11,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import axios from "axios";
 // import findDataFromCategory from "../utils/findDataFromCategory";
+import { useStaticQuery, graphql } from 'gatsby'
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -221,6 +222,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Slider = ({ scroll, isFirstEntry }) => {
+  const data = useStaticQuery(graphql`{
+  allMysqlDefaultText {
+    edges {
+      node {
+        id
+        default_text
+      }
+    }
+  }
+}`)
+  const titles = data.allMysqlDefaultText.edges.map((item)=> item.node.default_text);
+  // console.log(titles)
+  console.log(titles);
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -309,8 +323,8 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   variant="h1"
                   component="h1"
                 >
-                  {fields.headers
-                    ? fields.headers[activeNumb].value
+                  {titles
+                    ? titles[activeNumb]
                     : slides[activeNumb].title}
                 </Typography>
                 <Box>
