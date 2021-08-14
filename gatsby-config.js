@@ -12,10 +12,6 @@ module.exports = {
           user: 'root',
           password: 'banderas021290',
           database: 'modhouse_modx254'
-          // host: 'vh108.hoster.by',
-          // user: 'modularh_user',
-          // password: 'banderas021290',
-          // database: 'modularh_test'
         },
         queries: [
           {
@@ -28,7 +24,3 @@ module.exports = {
     }
   ],
 };
-// host: 'ns1.hoster.by',
-// user: 'modularh_modx369',
-// password: 'banderas021290',
-// database: 'modularh_modx369'
