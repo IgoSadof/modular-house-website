@@ -15,7 +15,7 @@ module.exports = {
         },
         queries: [
           {
-            statement: 'SELECT * FROM modxgk_site_tmplvars',
+            statement: 'SELECT * FROM modx_site_tmplvars',
             idFieldName: 'id',
             name: 'default_text'
           }

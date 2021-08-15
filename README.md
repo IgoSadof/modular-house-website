@@ -52,3 +52,57 @@
 Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
 
 [<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+
+6. **Work with data-base**
+
+    - Create a New User:
+
+    ```shell
+    CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+    ```
+
+    Therefore, the first thing to do is to provide the user with access to the information they will need:
+
+    GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+    ```
+
+    FLUSH PRIVILEGES;
+    ```
+
+    To provide a specific user with a permission, you can use this framework:
+    ```shell
+    GRANT type_of_permission ON database_name.table_name TO 'username'@'localhost';
+    ```
+
+    If you need to revoke a permission, the structure is almost identical to granting it:
+
+    ```shell
+    REVOKE type_of_permission ON database_name.table_name FROM 'username'@'localhost';
+    ```
+    ```shell
+    SHOW GRANTS FOR 'username'@'localhost';
+    ```
+    ```shell
+    DROP USER 'username'@'localhost';
+    ```
+    - Create a New database:
+
+    ```shell
+    CREATE DATABASE my_project_copy;
+    USE my_project_copy;
+    SOURCE my_project.sql;
+    ```
+    import database
+
+    ```shell
+    USE yourdb;
+    source <path_of_your_.sql>
+    ```
+
+    
+
+
+
+
+
+
