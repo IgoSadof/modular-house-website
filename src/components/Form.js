@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -11,8 +11,15 @@ import RegularButton from "./buttons/RegularButton";
 import ClearIcon from "@material-ui/icons/Clear";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+// import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+// import addToMailchimp from "gatsby-plugin-mailchimp";
+import TextField from "@material-ui/core/TextField";
 
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { useForm, ValidationError } from "@formspree/react";
+import { ContactsOutlined } from "@material-ui/icons";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+// import { useForm, ValidationError } from '@formspree/react';
 
 const useStyles = makeStyles((theme) => ({
   Block: {
@@ -27,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row-reverse",
   },
   titleBox: {
-    width:'70%',
+    width: "70%",
     display: "flex",
   },
   line: {
@@ -170,8 +177,11 @@ const Form = ({
   const [open, setOpen] = React.useState(false);
   const [emailText, setEmailText] = React.useState("");
   const [telText, setTelText] = React.useState("");
+  const [nameText, setNameText] = React.useState("");
+  const [messageText, setMessageText] = React.useState("");
   const param = { button, buttonAbs };
   const classes = useStyles(param);
+
   const checkAbsbutton = () => {
     setButton(matches[1200] ? false : buttonAbs);
   };
@@ -193,10 +203,42 @@ const Form = ({
     const mytel = e.target.value;
     setTelText(mytel);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("message submith");
+  const handleChangeName = (e) => {
+    const name = e.target.value;
+    setNameText(name);
   };
+  const handleChangeMessage = (e) => {
+    const message = e.target.value;
+    setMessageText(message);
+  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("message submith");
+  // };
+
+  // const _handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const result = await addToMailchimp(emailText, {
+  //     FNAME: nameText ?? "none",
+  //     emailText: emailText ?? "none",
+  //     telText: telText ?? "none",
+  //     messageText: messageText ?? "none",
+  //   });
+  //   console.log('message send')
+  //   console.log(result)
+  // };
+  const formRef = useRef(null);
+
+  let [state, handleSubmit] = useForm("xgerpayy");
+  useEffect(() => {
+    if (state.succeeded && state.submitting && !open) {
+      console.log(state);
+      setOpen(true);
+      console.log(formRef.current.reset);
+      formRef.current.reset()
+      }
+  },[state]);
+  
 
   return (
     <Box className={classes.formBox}>
@@ -207,7 +249,7 @@ const Form = ({
               {title}
             </Typography>
           ) : (
-            <Box className={main? classes.titleBoxMain:classes.titleBox}>
+            <Box className={main ? classes.titleBoxMain : classes.titleBox}>
               {main ? <span className={classes.line}></span> : null}
               <Typography variant="h4" className={classes.text}>
                 {title}
@@ -222,47 +264,69 @@ const Form = ({
         ) : null}
       </Box>
 
-      <ValidatorForm
+      <form
+        ref={formRef}
         onSubmit={handleSubmit}
         className={classes.root}
-        noValidate
+        // noValidate
         autoComplete="off"
+        method="POST"
+        action="https://formspree.io/f/xgerpayy"
       >
         <Box className={classes.formFields}>
-          <TextValidator
+          <TextField
             className={classes.field}
+            onChange={handleChangeName}
+            value={nameText}
             //   required
-            id="standard-basic"
+            id="name"
+            name="name"
             label={<Typography variant="body2">Имя</Typography>}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">*</InputAdornment>,
-            }}
+            // InputProps={{
+            //   endAdornment: <InputAdornment position="end">*</InputAdornment>,
+            // }}
           />
-          <TextValidator
+          {/* For ditection of bots */}
+          <input type="text" name="_gotcha" style={{display : "none"}} />
+          <TextField
             className={classes.field}
             onChange={handleChangeTel}
             value={telText}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">*</InputAdornment>,
-            }}
-            id="standard-basic"
+            // InputProps={{
+            //   endAdornment: <InputAdornment position="end">*</InputAdornment>,
+            // }}
+            id="phone"
+            name="phone"
             label={<Typography variant="body2">Телефон</Typography>}
-            validators={["isNumber"]}
-            errorMessages={["telefon incorrect"]}
+            // validators={["isNumber"]}
+            // errorMessages={["telefon incorrect"]}
           />
           {email ? (
-            <TextValidator
-              className={classes.field}
-              id="standard-basic"
-              label={<Typography variant="body2">Email</Typography>}
-              onChange={handleChangeEmail}
-              value={emailText}
-              validators={["required", "isEmail"]}
-              errorMessages={["this field is required", "email is not valid"]}
-              InputProps={{
-                endAdornment: <InputAdornment position="end">*</InputAdornment>,
-              }}
-            />
+            <>
+              <TextField
+                className={classes.field}
+                id="email"
+                type="email"
+                name="email"
+                label={<Typography variant="body2">Email</Typography>}
+                onChange={handleChangeEmail}
+                value={emailText}
+                
+                // validators={["required", "isEmail"]}
+                // errorMessages={["this field is required", "email is not valid"]}
+                // InputProps={{
+                //   endAdornment: (
+                //     <InputAdornment position="end">*</InputAdornment>
+                //   ),
+                // }}
+              />
+              <ValidationError field="email" prefix="Email" errors={state.errors} />
+              {/* <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+              /> */}
+            </>
           ) : null}
         </Box>
         {text ? (
@@ -274,18 +338,32 @@ const Form = ({
               <div>*</div>
             </Box>
             {/* <TextField className={classes.messageField} id="standard-basic" /> */}
-            <TextareaAutosize
-              rowsMin={3}
+            <textarea
+              id="message"
+              name="message"
+              value={messageText}
+              onChange={handleChangeMessage}
+              // rowsMin={3}
               className={classes.messageField}
 
               // aria-label="empty textarea"
               // placeholder="Empty"
             />
+            {/* <ValidationError
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+            /> */}
           </Box>
         ) : null}
 
         <Box className={classes.button}>
-          <RegularButton submit={true} variant="outlined" click={handleOpen}>
+          <RegularButton
+            submit={true}
+            disabled={state.submitting}
+            variant="outlined"
+            click={state.succeeded? handleOpen: null}
+          >
             Отправить
           </RegularButton>
           {inBurger ? (
@@ -306,6 +384,7 @@ const Form = ({
             timeout: 500,
           }}
         >
+          {state.submitting? <CircularProgress color="secondary"/> :
           <Fade in={open}>
             <div className={classes.paper}>
               <Box className={classes.buttonBox}>
@@ -327,9 +406,9 @@ const Form = ({
                 </RegularButton>
               </Box>
             </div>
-          </Fade>
+          </Fade>}
         </Modal>
-      </ValidatorForm>
+      </form>
     </Box>
   );
 };
