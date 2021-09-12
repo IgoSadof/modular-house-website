@@ -11,14 +11,19 @@ module.exports = {
           host: 'localhost',
           user: 'root',
           password: 'banderas021290',
-          database: 'modhouse_modx254'
+          database: 'atestmod_modx254'
         },
         queries: [
           {
-            statement: 'SELECT * FROM modx_site_tmplvars',
+            statement: 'SELECT * FROM modx_site_tmplvar_contentvalues',
             idFieldName: 'id',
-            name: 'default_text'
-          }
+            name: 'value',
+          },
+          {
+            statement: 'SELECT * FROM modx_site_content',
+            idFieldName: 'id',
+            name: 'parent',
+          },
         ]
       }
     }

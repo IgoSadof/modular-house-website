@@ -98,7 +98,17 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
     USE yourdb;
     source <path_of_your_.sql>
     ```
+    show tables
 
+    ```shell
+     show tables;
+    ```
+    
+    remove DATABASE
+
+    ```shell
+     DROP DATABASE databasename;
+    ```
     
 
 

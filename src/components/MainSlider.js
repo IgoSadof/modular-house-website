@@ -9,9 +9,7 @@ import numbers from "../constant/numbers";
 import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-// import axios from "axios";
-// import findDataFromCategory from "../utils/findDataFromCategory";
-import { useStaticQuery, graphql } from 'gatsby'
+import useData from '../utils/useData';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -142,14 +140,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginLeft: "100px",
     width: "70%",
-   
+
     [theme.breakpoints.down("md")]: {
       marginLeft: "auto",
       marginRight: "auto",
       marginBottom: "auto",
       gap: "20px",
-      "& h1":{
-        fontSize:'24px'
+      "& h1": {
+        fontSize: "24px",
       },
     },
   },
@@ -222,19 +220,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Slider = ({ scroll, isFirstEntry }) => {
-  const data = useStaticQuery(graphql`{
-  allMysqlDefaultText {
-    edges {
-      node {
-        id
-        default_text
-      }
-    }
-  }
-}`)
-  const titles = data.allMysqlDefaultText.edges.map((item)=> item.node.default_text);
-  // console.log(titles)
-  console.log(titles);
+  const data = useData(2)
+  console.log(data)
+  const titles = {};
+
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -306,7 +295,7 @@ const Slider = ({ scroll, isFirstEntry }) => {
   };
 
   return (
-    <Box component='section' className={classes.content}>
+    <Box component="section" className={classes.content}>
       <Box className={classes.midleBlock}>
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>
@@ -323,15 +312,13 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   variant="h1"
                   component="h1"
                 >
-                  {titles
-                    ? titles[activeNumb]
-                    : slides[activeNumb].title}
+                  {data ? data[activeNumb]["1"]: slides[activeNumb].title}
                 </Typography>
                 <Box>
                   {slides[activeNumb].image ? (
                     <img
                       className={classes.logo}
-                      src={slides[activeNumb].image}
+                      src={data[activeNumb]["30"]? data[activeNumb]["30"]: slides[activeNumb].image}
                       alt="icon"
                     ></img>
                   ) : null}
@@ -341,9 +328,7 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   variant="body1"
                   component="h6"
                 >
-                  {fields.subtitles
-                    ? fields.subtitles[activeNumb].value
-                    : slides[activeNumb].subtitle}
+                  {data[activeNumb]["5"] ? data[activeNumb]["5"]:slides[activeNumb].subtitle}
                 </Typography>
               </Box>
             </CSSTransition>
