@@ -10,6 +10,8 @@ import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useData from '../utils/useData';
+// import { StaticImage } from "gatsby-plugin-image"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -221,9 +223,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scroll, isFirstEntry }) => {
   const data = useData(2)
-  console.log(data)
-  const titles = {};
-
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -233,29 +232,12 @@ const Slider = ({ scroll, isFirstEntry }) => {
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
-  // console.log(scroll)
-
-  // const [resources, setResources] = useState(null);
-  // const [resourcestv, setResourcestv] = useState(null);
-  const [fields] = useState({
-    headers: null,
-    subtitles: null,
-  });
   const vidSegments = {
     0: 2,
     1: 9.5,
     2: 20.5,
     3: 24,
   };
-
-  // useEffect(() => {
-  //   axios.get("/rest/resources").then((response) => {
-  //     setResources(response.data.results);
-  //   });
-  //   axios.get("/rest/resourcestv").then((response) => {
-  //     setResourcestv(response.data.results);
-  //   });
-  // }, []);
 
   useEffect(() => {
     if (isFirstEntry) {
@@ -270,15 +252,7 @@ const Slider = ({ scroll, isFirstEntry }) => {
         : (scroll = 4);
     }
   }, [scroll]);
-
-  // useEffect(() => {
-  //   if (resources && resourcestv) {
-  //     setFields({
-  //       headers: findDataFromCategory(resources, resourcestv, 2),
-  //       subtitles: findDataFromCategory(resources, resourcestv, 3),
-  //     });
-  //   }
-  // }, [resources, resourcestv]);
+  
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
       numb = +e.target.textContent[1];
@@ -315,13 +289,13 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   {data ? data[activeNumb]["1"]: slides[activeNumb].title}
                 </Typography>
                 <Box>
-                  {slides[activeNumb].image ? (
+                  {ImageBitmapRenderingContext ? (
                     <img
                       className={classes.logo}
-                      src={data[activeNumb]["30"]? data[activeNumb]["30"]: slides[activeNumb].image}
+                      src={`../../${data[activeNumb]["30"].substr(data[activeNumb]["30"].search(/\/\w+.\w+$/))}`}
                       alt="icon"
-                    ></img>
-                  ) : null}
+                      ></img>
+                   ) : null}
                 </Box>
                 <Typography
                   className={classes.text}

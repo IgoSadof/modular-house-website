@@ -3,6 +3,13 @@ module.exports = {
     title: "Modular House",
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
     `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-source-mysql`,
@@ -26,6 +33,9 @@ module.exports = {
           },
         ]
       }
-    }
+    },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
   ],
 };
