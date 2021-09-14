@@ -16,6 +16,7 @@ import ReviewsSlider from "../components/ReviewsSlider";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import useData from '../utils/useData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -267,6 +268,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainPageContent = () => {
+  const detail = useData(4)
+  const dataAnswers = useData(18)
+  const answers = [[...(dataAnswers.slice(0,4))],[...(dataAnswers.slice(4))]]
+
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),

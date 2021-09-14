@@ -71,10 +71,10 @@ export default function Accordions({ arr,roomsImg }) {
               id={`panel${index + 1}d-header`}
               expandIcon={<AddIcon />}
             >
-              <Typography variant="h3">{item.title}</Typography>
+              <Typography variant="h3">{item[9]}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">{item.subtitle}</Typography>
+              <Typography variant="body1">{item[14]}</Typography>
             </AccordionDetails>
           </Accordion>
         );

@@ -10,8 +10,6 @@ import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useData from '../utils/useData';
-// import { StaticImage } from "gatsby-plugin-image"
-// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -289,10 +287,10 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   {data ? data[activeNumb]["1"]: slides[activeNumb].title}
                 </Typography>
                 <Box>
-                  {ImageBitmapRenderingContext ? (
+                  { data[activeNumb]["30"]? (
                     <img
                       className={classes.logo}
-                      src={`../../${data[activeNumb]["30"].substr(data[activeNumb]["30"].search(/\/\w+.\w+$/))}`}
+                      src={`../../images/mainTitleIcons/${data[activeNumb]["30"].substr(data[activeNumb]["30"].search(/\/\w+.\w+$/))}`}
                       alt="icon"
                       ></img>
                    ) : null}
