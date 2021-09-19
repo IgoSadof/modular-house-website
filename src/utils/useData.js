@@ -29,6 +29,8 @@ function useData(parent) {
       }
     });
   });
+  // console.log(dataList)
+  //  to get Format [{id:textField,...},{...},...]
   let keys = {}
   dataList.forEach((item)=>{
       if(`${item.contentid}` in keys){

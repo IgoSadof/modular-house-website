@@ -10,6 +10,7 @@ import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useData from '../utils/useData';
+import useHome from '../utils/useHome';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -221,6 +222,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scroll, isFirstEntry }) => {
   const data = useData(2)
+  // const dataHome = useHome(3)
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -237,19 +239,19 @@ const Slider = ({ scroll, isFirstEntry }) => {
     3: 24,
   };
 
-  useEffect(() => {
-    if (isFirstEntry) {
-      scroll < 1
-        ? handleNumberClick(null, 1)
-        : scroll >= 1 && scroll < 2
-        ? handleNumberClick(null, 2)
-        : scroll >= 2 && scroll < 3
-        ? handleNumberClick(null, 3)
-        : scroll >= 3 && scroll < 4
-        ? handleNumberClick(null, 4)
-        : (scroll = 4);
-    }
-  }, [scroll]);
+  // useEffect(() => {
+  //   if (isFirstEntry) {
+  //     scroll < 1
+  //       ? handleNumberClick(null, 1)
+  //       : scroll >= 1 && scroll < 2
+  //       ? handleNumberClick(null, 2)
+  //       : scroll >= 2 && scroll < 3
+  //       ? handleNumberClick(null, 3)
+  //       : scroll >= 3 && scroll < 4
+  //       ? handleNumberClick(null, 4)
+  //       : (scroll = 4);
+  //   }
+  // }, [scroll]);
   
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
