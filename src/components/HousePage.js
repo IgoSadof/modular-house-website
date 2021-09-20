@@ -181,12 +181,12 @@ const useStyles = makeStyles((theme) => ({
   modelDesc: {
     position: "relative",
     width: "450px",
-    height: "50vh",
+    height: (param) => `${param.modulesCounts*param.heightOneLine}vh`,
     display: "flex",
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height: "54vh",
+      height: (param) => `${param.modulesCounts*(param.heightOneLine+4)}vh`,
     },
   },
   accordionBox: {
@@ -207,6 +207,12 @@ const useStyles = makeStyles((theme) => ({
   },
   modelDescItemTitle: {
     listStyle: "none",
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"center",
+    marginRight:"auto",
+    height: "16vh",
+    // marginBottom:'20px',
   },
   model: {
     width: "50%",
@@ -446,10 +452,7 @@ const HousePage = ({ house }) => {
     1200: useMediaQuery("(max-width:1200px)"),
   };
   const [houseNumber] = useState(house);
-  const [pilldistance, setPilldistance] = useState(20);
-  const [pillClick, setPillClick] = useState(0);
-  const param = { pilldistance };
-  const classes = useStyles(param);
+ 
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
   const [roomsImg, setRoomsImg] = useState(
@@ -461,22 +464,31 @@ const HousePage = ({ house }) => {
     setRoomsImg(img);
     setRoomsImgIndex(index);
   };
-  const [model3d, setModel3d] = useState(0);
+  const modulesCounts = houses[houseNumber]['modules'].length;
+  const pillStep = 100/modulesCounts;
+  const heightOneLine = 16;
+
+  const [pilldistance, setPilldistance] = useState(heightOneLine);
+  const [pillClick, setPillClick] = useState(0);
+  const param = { pilldistance, modulesCounts,heightOneLine };
+  const classes = useStyles(param);
+
+  const [model3d, setModel3d] = useState(houses[houseNumber]['modules'][pillClick]['model3d']);
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
   const handlePlusClick = (e) => {
-    if (pilldistance + 40 <= 120) {
-      setPilldistance((state) => state + 40);
+    if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
+      setPilldistance((state) => state + pillStep);
       setPillClick((state) => state + 1);
-      setModel3d(state => state + 1)
+      setModel3d(houses[houseNumber]['modules'][pillClick+1]['model3d'])
     }
   };
   const handleMinusClick = (e) => {
-    if (pilldistance - 40 >= 10) {
-      setPilldistance((state) => state - 40);
+    if (pilldistance - pillStep >= 10 && pillClick - 1 >= 0) {
+      setPilldistance((state) => state - pillStep);
       setPillClick((state) => state - 1);
-      setModel3d(state => state - 1)
+      setModel3d(houses[houseNumber]['modules'][pillClick-1]['model3d'])
     }
   };
   const handleClickLeft = () => {
@@ -626,7 +638,7 @@ const HousePage = ({ house }) => {
 
           <div className={classes.modelDescLine}>
             <div className={classes.modelDescLineActive}></div>
-            {pilldistance === 20 ? (
+            {pillClick === 0 ? (
               <div className={classes.modelDescLineButton}>
                 <div
                   onClick={handlePlusClick}
@@ -637,7 +649,7 @@ const HousePage = ({ house }) => {
                   </div>
                 </div>
               </div>
-            ) : pilldistance < 100 ? (
+            ) : pillClick+1 < modulesCounts ? (
               <div className={classes.modelDescLineButton}>
                 <div
                   onClick={handleMinusClick}
@@ -682,7 +694,7 @@ const HousePage = ({ house }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          <Model3d index = {model3d}></Model3d>
+          <Model3d srcPath = {model3d}></Model3d>
         </Box>
       </Box>
 
