@@ -16,7 +16,6 @@ import ReviewsSlider from "../components/ReviewsSlider";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import useData from '../utils/useData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -268,11 +267,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainPageContent = () => {
-  const detail = useData(4)
-  const dataAnswers = useData(18)
-  const answers = [[...(dataAnswers.slice(0,4))],[...(dataAnswers.slice(4))]]
-  const reviews = useData(5)
-
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -387,7 +381,7 @@ const MainPageContent = () => {
 
           <TransitionGroup className={classes.commentBoxWrap}>
             <CSSTransition
-              key={reviewVideo}
+              key={reviews[reviewVideo].id}
               in={opacity}
               appear={true}
               timeout={500}
@@ -396,12 +390,12 @@ const MainPageContent = () => {
               <Box className={classes.commentBox}>
                 <Typography
                   className={classes.name}
-                >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
+                >{`${reviews[review].name} ${reviews[review].place}`}</Typography>
                 <Typography
                   className={classes.place}
-                >{`${reviews[review][20]}, ${reviews[review][22].slice(6)}`}</Typography>
+                >{`${reviews[review].place}, ${reviews[review].year}`}</Typography>
                 <Typography variant="body1" className={classes.message}>
-                  {reviews[review][21]}
+                  {reviews[review].text}
                 </Typography>
               </Box>
             </CSSTransition>
@@ -415,7 +409,7 @@ const MainPageContent = () => {
         <Box className={classes.mediaBlock} onChange={handleReviewCange}>
           <TransitionGroup className={classes.reviewVideoBox}>
             <CSSTransition
-              key={reviewVideo}
+              key={reviews[reviewVideo].id}
               in={opacity}
               appear={true}
               timeout={500}
@@ -423,7 +417,7 @@ const MainPageContent = () => {
             >
               <img
                 className={classes.reviewVideo}
-                src={`../../images/reviews/${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/\/\w+.\w+$/))}`}
+                src={reviews[reviewVideo].video}
                 alt="img"
               ></img>
             </CSSTransition>
@@ -432,7 +426,7 @@ const MainPageContent = () => {
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
               <Typography variant="h4">
-                {`${reviews[review][22].slice(0,2)}/${reviews[review][22].slice(3,5)} `}
+                {`${reviews[review].monts}/${reviews[review].day} `}
               </Typography>
             </Box>
             <Box className={classes.imagesBoxes}>

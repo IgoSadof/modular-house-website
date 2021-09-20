@@ -9,8 +9,8 @@ import numbers from "../constant/numbers";
 import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import useData from '../utils/useData';
-import useHome from '../utils/useHome';
+// import axios from "axios";
+// import findDataFromCategory from "../utils/findDataFromCategory";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -141,14 +141,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginLeft: "100px",
     width: "70%",
-
+   
     [theme.breakpoints.down("md")]: {
       marginLeft: "auto",
       marginRight: "auto",
       marginBottom: "auto",
       gap: "20px",
-      "& h1": {
-        fontSize: "24px",
+      "& h1":{
+        fontSize:'24px'
       },
     },
   },
@@ -221,8 +221,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Slider = ({ scroll, isFirstEntry }) => {
-  const data = useData(2)
-  // const dataHome = useHome(3)
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -232,6 +230,14 @@ const Slider = ({ scroll, isFirstEntry }) => {
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
+  // console.log(scroll)
+
+  // const [resources, setResources] = useState(null);
+  // const [resourcestv, setResourcestv] = useState(null);
+  const [fields] = useState({
+    headers: null,
+    subtitles: null,
+  });
   const vidSegments = {
     0: 2,
     1: 9.5,
@@ -240,19 +246,36 @@ const Slider = ({ scroll, isFirstEntry }) => {
   };
 
   // useEffect(() => {
-  //   if (isFirstEntry) {
-  //     scroll < 1
-  //       ? handleNumberClick(null, 1)
-  //       : scroll >= 1 && scroll < 2
-  //       ? handleNumberClick(null, 2)
-  //       : scroll >= 2 && scroll < 3
-  //       ? handleNumberClick(null, 3)
-  //       : scroll >= 3 && scroll < 4
-  //       ? handleNumberClick(null, 4)
-  //       : (scroll = 4);
+  //   axios.get("/rest/resources").then((response) => {
+  //     setResources(response.data.results);
+  //   });
+  //   axios.get("/rest/resourcestv").then((response) => {
+  //     setResourcestv(response.data.results);
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    if (isFirstEntry) {
+      scroll < 1
+        ? handleNumberClick(null, 1)
+        : scroll >= 1 && scroll < 2
+        ? handleNumberClick(null, 2)
+        : scroll >= 2 && scroll < 3
+        ? handleNumberClick(null, 3)
+        : scroll >= 3 && scroll < 4
+        ? handleNumberClick(null, 4)
+        : (scroll = 4);
+    }
+  }, [scroll]);
+
+  // useEffect(() => {
+  //   if (resources && resourcestv) {
+  //     setFields({
+  //       headers: findDataFromCategory(resources, resourcestv, 2),
+  //       subtitles: findDataFromCategory(resources, resourcestv, 3),
+  //     });
   //   }
-  // }, [scroll]);
-  
+  // }, [resources, resourcestv]);
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
       numb = +e.target.textContent[1];
@@ -269,7 +292,7 @@ const Slider = ({ scroll, isFirstEntry }) => {
   };
 
   return (
-    <Box component="section" className={classes.content}>
+    <Box component='section' className={classes.content}>
       <Box className={classes.midleBlock}>
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>
@@ -286,23 +309,27 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   variant="h1"
                   component="h1"
                 >
-                  {data ? data[activeNumb]["1"]: slides[activeNumb].title}
+                  {fields.headers
+                    ? fields.headers[activeNumb].value
+                    : slides[activeNumb].title}
                 </Typography>
                 <Box>
-                  { data[activeNumb]["30"]? (
+                  {slides[activeNumb].image ? (
                     <img
                       className={classes.logo}
-                      src={`../../images/mainTitleIcons/${data[activeNumb]["30"].substr(data[activeNumb]["30"].search(/\/\w+.\w+$/))}`}
+                      src={slides[activeNumb].image}
                       alt="icon"
-                      ></img>
-                   ) : null}
+                    ></img>
+                  ) : null}
                 </Box>
                 <Typography
                   className={classes.text}
                   variant="body1"
                   component="h6"
                 >
-                  {data[activeNumb]["5"] ? data[activeNumb]["5"]:slides[activeNumb].subtitle}
+                  {fields.subtitles
+                    ? fields.subtitles[activeNumb].value
+                    : slides[activeNumb].subtitle}
                 </Typography>
               </Box>
             </CSSTransition>
