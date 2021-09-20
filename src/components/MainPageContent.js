@@ -17,6 +17,7 @@ import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useData from '../utils/useData';
+import useHomeData from '../utils/useHomeData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -272,6 +273,8 @@ const MainPageContent = () => {
   const dataAnswers = useData(18)
   const answers = [[...(dataAnswers.slice(0,4))],[...(dataAnswers.slice(4))]]
   const reviews = useData(5)
+  const dataHouses = useHomeData()
+  console.log(dataHouses)
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),

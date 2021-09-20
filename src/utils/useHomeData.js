@@ -1,82 +1,112 @@
-// import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
-// function useHomeData(parent) {
-//     const data = useStaticQuery(graphql`
-//     {
-//       allMysqlValue {
-//         nodes {
-//           contentid
-//           value
-//           tmplvarid
-//         }
-//       }
-//       allMysqlParent {
-//         nodes {
-//           mysqlId
-//           mysqlParent
-//         }
-//       }
-//     }
-//   `);
+function useHomeData() {
+  const data = useStaticQuery(graphql`
+    {
+      allMysqlModules {
+        nodes {
+          moduleName
+          parameterValue
+          parameterName
+          parentId
+          contentId
+        }
+      }
+      allMysqlHouses {
+        nodes {
+          alias
+          mysqlId
+          name
+          contentID
+          value
+        }
+      }
+    }
+  `);
 
-//   const findAllwithSameParent = (parentElement) => {
-//     return data.allMysqlParent.nodes.filter(
-//       (item) => item.mysqlParent === parentElement
-//     );
+  const elements = data.allMysqlHouses.nodes;
+  const moduleParametrs = data.allMysqlModules.nodes;
+  //   console.log(elements);
+  const houses = {};
+
+  elements.forEach((item) => {
+    if (houses[item.alias]) {
+      houses[item.alias][item.name] = item.value;
+    } else {
+      houses[item.alias] = {};
+      houses[item.alias][item.name] = item.value;
+      houses[item.alias]["id"] = item.contentID;
+      houses[item.alias]["modules"] = [];
+    }
+  });
+//   console.log(houses);
+  const houseArr = [];
+  for (let key in houses) {
+    houses[key]["alias"] = key;
+    houseArr.push(houses[key]);
+  }
+  //   console.log(houseArr);
+
+  houseArr.forEach((house) => {
+    let modules = {};
+    moduleParametrs.forEach((moduleParametr) => {
+      if(moduleParametr.parentId === house.id){
+        if (modules[moduleParametr.moduleName]) {
+            modules[moduleParametr.moduleName][moduleParametr.parameterName] =
+              moduleParametr.parameterValue;
+          } else {
+            modules[moduleParametr.moduleName] = {};
+            modules[moduleParametr.moduleName][moduleParametr.parameterName] =
+              moduleParametr.parameterValue;
+            modules[moduleParametr.moduleName]["id"] = moduleParametr.contentId;
+            modules[moduleParametr.moduleName]["rooms"] = [];
+          }
+      }
+    });
+    let modulesArr = [];
+    for (let key in modules) {
+        modules[key]["name"] = key;
+        modulesArr.push(modules[key]);
+      }
+    house['modules'] = modulesArr;
+    modules = {}
+  });
+//   добавляем методы для модулей
+
+//   houseArr.forEach((house) => {
+//     house[count]
+
 //   }
-//   const parentElements = findAllwithSameParent(parent)
-//   // console.log('parentElements',parentElements)
-  
-//   const FirstdataList = [];
-
-//   const findAllinValueDAta = (listElementsWithSameParent,list) => {
-//     listElementsWithSameParent.forEach((element) => {
-//       data.allMysqlValue.nodes.forEach((item) => {
-//         if (item.contentid === element.mysqlId) {
-//           list.push(item);
-//         }
-//       });
-//     });
-//   }
-//   findAllinValueDAta(parentElements,FirstdataList)
 
 
 
-//   // console.log('FirstdataList=',FirstdataList)
-//   //  to get Format [{id:textField,...},{...},...]
-//   let keys = {}
-//   FirstdataList.forEach((item)=>{
-//       if(`${item.contentid}` in keys){
-//         keys[item.contentid][item.tmplvarid] = item.value
-//       }else{
-//         keys[`${item.contentid}`] = {[item.tmplvarid]:item.value}
-//       }
-//   })
-//   // console.log('id=',keys)
 
-//   const houseFoldersId = [];
-  
-//   for(let key in keys){
-//     houseFoldersId.push(findAllwithSameParent(+key))
-//   }
-//   console.log('houseFoldersId', houseFoldersId)
+  //   houseArr.forEach((item) => {
+  //     modules.forEach((module) => {
+  //         if(item.id===module.parentId){
+  //             if(item['modules'][module.moduleName]){
+  //                 item['modules'][module.moduleName] = module.parameterName;
+  //             }
+  //             item['modules'][module.moduleName][module.parameterName] = module.parameterName;
+  //         }
+  //     })
+  //   })
+//   console.log(houseArr);
 
-//   const foldersElements = [];
+  //   modules.forEach((item) => {
+  //     if (item.contentId in houses) {
+  //       if (houses[item.contentId]["modules"]) {
+  //         houses[item.contentId]["modules"] = [
+  //           ...houses[item.contentId]["modules"],
+  //           item,
+  //         ];
+  //       } else {
+  //         houses[item.contentId]["modules"] = [item];
+  //       }
+  //     }
+  //     // console.log("houses", houses);
+  //   });
 
-//   houseFoldersId.forEach((item, index)=>{
-//     console.log('item',item[0].mysqlId)
-//     foldersElements.push(findAllwithSameParent(item[0].mysqlId))
-//     findAllinValueDAta(parentElements, FirstdataList)
-//   })
-//   console.log(foldersElements)
-
-
-
-  
-//   let orderedData = []
-//   for(let key in keys){
-//     orderedData.push(keys[key])
-//   }
-//   return orderedData;
-// }
-// export default useHomeData
+  return houseArr;
+}
+export default useHomeData;

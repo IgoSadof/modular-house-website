@@ -10,7 +10,6 @@ import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useData from '../utils/useData';
-import useHome from '../utils/useHome';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -222,7 +221,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scroll, isFirstEntry }) => {
   const data = useData(2)
-  // const dataHome = useHome(3)
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -286,23 +284,23 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   variant="h1"
                   component="h1"
                 >
-                  {data ? data[activeNumb]["1"]: slides[activeNumb].title}
+                  {/* {data[activeNumb]["1"] ? data[activeNumb]["1"]: slides[activeNumb].title} */}
                 </Typography>
                 <Box>
-                  { data[activeNumb]["30"]? (
+                  {/* { data[activeNumb]["30"]? (
                     <img
                       className={classes.logo}
                       src={`../../images/mainTitleIcons/${data[activeNumb]["30"].substr(data[activeNumb]["30"].search(/\/\w+.\w+$/))}`}
                       alt="icon"
                       ></img>
-                   ) : null}
+                   ) : null} */}
                 </Box>
                 <Typography
                   className={classes.text}
                   variant="body1"
                   component="h6"
                 >
-                  {data[activeNumb]["5"] ? data[activeNumb]["5"]:slides[activeNumb].subtitle}
+                  {/* {data[activeNumb]["5"] ? data[activeNumb]["5"]:slides[activeNumb].subtitle} */}
                 </Typography>
               </Box>
             </CSSTransition>

@@ -6,6 +6,7 @@ import { houses } from "../constant/houses";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useHomeData from '../utils/useHomeData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,6 +93,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const HouseSlider = ({ mobile, houseRef }) => {
+  const dataHouses = useHomeData()
+  console.log(dataHouses)
+  // houses = dataHouses? dataHouses:houses;
+
+
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -114,19 +120,19 @@ const HouseSlider = ({ mobile, houseRef }) => {
     // slidesToScroll: 1,
     adaptiveHeight: true,
   };
-  const listItems = houses.map((item, index) => {
+  const listItems = dataHouses? (dataHouses.map((item, index) => {
     return (
       <li className={classes.conteiner} key={index}>
         <Box className={classes.content}>
           <Link
             className={classes.link}
-            to={`what-we-do/${item.link}`}
+            to={`what-we-do/model${item['URL']}`}
             onClick={handleClick}
           >
             <Box className={classes.imgBox}>
               <Box
                 className={classes.img}
-                style={{ backgroundImage: `url(${item.img.main})` }}
+                style={item['Баннер']?{ backgroundImage: `url(../../${item['Баннер']})`}:null}
               ></Box>
             </Box>
           </Link>
@@ -138,17 +144,19 @@ const HouseSlider = ({ mobile, houseRef }) => {
                 color="textSecondary"
                 className={classes.name}
               >
-                {item.name}
+                {item.Код}
               </Typography>
               <Typography variant="h5" className={classes.price}>
-                {item.price}
+                {/* {item.price} */}
+                $100 000
               </Typography>
             </Box>
             <Box className={classes.subtitle}>
               <Box className={classes.properties}>
                 <Box className={classes.property}>
                   <Typography variant="body1" className={classes.propertyName}>
-                    {item.totalAreaText}
+                    {/* {item.totalAreaText} */}
+                    Общая площадь:
                   </Typography>
                   <Typography variant="h6" className={classes.propertyValue}>
                     {item.totalArea}
@@ -156,7 +164,8 @@ const HouseSlider = ({ mobile, houseRef }) => {
                 </Box>
                 <Box className={classes.property}>
                   <Typography variant="body1" className={classes.propertyName}>
-                    {item.effectiveAreaText}
+                    {/* {item.effectiveAreaText} */}
+                    Эффективная площадь:
                   </Typography>
                   <Typography variant="h6" className={classes.propertyValue}>
                     {item.effectiveArea}
@@ -164,10 +173,13 @@ const HouseSlider = ({ mobile, houseRef }) => {
                 </Box>
                 <Box className={classes.property}>
                   <Typography variant="body1" className={classes.propertyName}>
-                    {item.baseModuleAreaText}
+                    {/* {item.baseModuleAreaText} */}
+                    Площадь базового дома:
                   </Typography>
                   <Typography variant="h6" className={classes.propertyValue}>
-                    {item.baseModuleArea}
+                    {/* {item.baseModuleArea} */}
+                    {/* {item['modules'].length > 0? item['modules'].filter((module) => module['Название модуля'] === 'Базовый модуль')['Площадь общая']: 100} */}
+
                   </Typography>
                 </Box>
               </Box>
@@ -176,7 +188,7 @@ const HouseSlider = ({ mobile, houseRef }) => {
         </Box>
       </li>
     );
-  });
+  })):null;
 
   return (
     <ul className={classes.list}>
