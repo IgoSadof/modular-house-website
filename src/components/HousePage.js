@@ -444,6 +444,12 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
+  text: {
+    marginBottom:"40px",
+    [theme.breakpoints.down("md")]: {
+      marginBottom:"20px",
+    },
+  }
 }));
 
 const HousePage = ({ house }) => {
@@ -760,10 +766,11 @@ const HousePage = ({ house }) => {
           ) : null}
         </Box>
         <Box className={classes.calculationPlan}>
-          {matches[1200] ? null : <Typography variant="h6">Смета</Typography>}
+          {matches[1200] ? null : <Typography className={classes.text}  variant="h6">Смета</Typography>}
           <img
             className={classes.calculationPlanImg}
-            src={plan}
+            src={houses[houseNumber].img.plan}
+
             alt="img"
           ></img>
         </Box>
