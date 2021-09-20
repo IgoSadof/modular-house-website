@@ -140,14 +140,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginLeft: "100px",
     width: "70%",
-
+   
     [theme.breakpoints.down("md")]: {
       marginLeft: "auto",
       marginRight: "auto",
       marginBottom: "auto",
       gap: "20px",
-      "& h1": {
-        fontSize: "24px",
+      "& h1":{
+        fontSize:'24px'
       },
     },
   },
@@ -230,6 +230,14 @@ const Slider = ({ scroll, isFirstEntry }) => {
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
+  // console.log(scroll)
+
+  // const [resources, setResources] = useState(null);
+  // const [resourcestv, setResourcestv] = useState(null);
+  const [fields] = useState({
+    headers: null,
+    subtitles: null,
+  });
   const vidSegments = {
     0: 2,
     1: 9.5,
@@ -238,19 +246,36 @@ const Slider = ({ scroll, isFirstEntry }) => {
   };
 
   // useEffect(() => {
-  //   if (isFirstEntry) {
-  //     scroll < 1
-  //       ? handleNumberClick(null, 1)
-  //       : scroll >= 1 && scroll < 2
-  //       ? handleNumberClick(null, 2)
-  //       : scroll >= 2 && scroll < 3
-  //       ? handleNumberClick(null, 3)
-  //       : scroll >= 3 && scroll < 4
-  //       ? handleNumberClick(null, 4)
-  //       : (scroll = 4);
+  //   axios.get("/rest/resources").then((response) => {
+  //     setResources(response.data.results);
+  //   });
+  //   axios.get("/rest/resourcestv").then((response) => {
+  //     setResourcestv(response.data.results);
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    if (isFirstEntry) {
+      scroll < 1
+        ? handleNumberClick(null, 1)
+        : scroll >= 1 && scroll < 2
+        ? handleNumberClick(null, 2)
+        : scroll >= 2 && scroll < 3
+        ? handleNumberClick(null, 3)
+        : scroll >= 3 && scroll < 4
+        ? handleNumberClick(null, 4)
+        : (scroll = 4);
+    }
+  }, [scroll]);
+
+  // useEffect(() => {
+  //   if (resources && resourcestv) {
+  //     setFields({
+  //       headers: findDataFromCategory(resources, resourcestv, 2),
+  //       subtitles: findDataFromCategory(resources, resourcestv, 3),
+  //     });
   //   }
-  // }, [scroll]);
-  
+  // }, [resources, resourcestv]);
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
       numb = +e.target.textContent[1];
@@ -267,7 +292,7 @@ const Slider = ({ scroll, isFirstEntry }) => {
   };
 
   return (
-    <Box component="section" className={classes.content}>
+    <Box component='section' className={classes.content}>
       <Box className={classes.midleBlock}>
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>
@@ -290,7 +315,7 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   {/* { data[activeNumb]["30"]? (
                     <img
                       className={classes.logo}
-                      src={`../../images/mainTitleIcons/${data[activeNumb]["30"].substr(data[activeNumb]["30"].search(/\/\w+.\w+$/))}`}
+                      src={slides[activeNumb].image}
                       alt="icon"
                       ></img>
                    ) : null} */}

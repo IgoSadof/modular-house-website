@@ -78,6 +78,10 @@ const useStyles = makeStyles((theme) => ({
     width: "90%",
     objectFit: 'cover',
     marginLeft: 'auto',
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      margin:"0",
+    },
   },
   Expodom: {
     "& .makeStyles-message-392": {
