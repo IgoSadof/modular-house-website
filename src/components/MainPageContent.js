@@ -6,9 +6,9 @@ import Box from "@material-ui/core/Box";
 import HouseSlider from "./HouseSlider";
 import Accordions from "./Accordion";
 import SquareButton from "./buttons/SquareButton";
-import detail from "../constant/detail";
-import answers from "../constant/answers";
-import reviews from "../constant/reviews";
+// import detail from "../constant/detail";
+// import answers from "../constant/answers";
+// import reviews from "../constant/reviews";
 import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
 import expodom from "../assets/images/expodom_img.png";
@@ -274,7 +274,7 @@ const MainPageContent = () => {
   const answers = [[...(dataAnswers.slice(0,4))],[...(dataAnswers.slice(4))]]
   const reviews = useData(5)
   const dataHouses = useHomeData()
-  console.log(dataHouses)
+  // console.log(dataHouses)
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -305,20 +305,20 @@ const MainPageContent = () => {
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
 
-  const handleScrol = (e) => {
-    if (e.nativeEvent.wheelDelta > 0) {
-      houseSliderRef.current.slickNext();
-    } else {
-      houseSliderRef.current.slickPrev();
-    }
-  };
-  const scrollOff = (e) => {
-    document.body.style.overflow = "hidden";
-  };
-  const scrollOn = (e) => {
-    document.body.style.overflow = "overlay";
-  };
-
+  // const handleScrol = (e) => {
+  //   if (e.nativeEvent.wheelDelta > 0) {
+  //     houseSliderRef.current.slickNext();
+  //   } else {
+  //     houseSliderRef.current.slickPrev();
+  //   }
+  // };
+  // const scrollOff = (e) => {
+  //   document.body.style.overflow = "hidden";
+  // };
+  // const scrollOn = (e) => {
+  //   document.body.style.overflow = "overlay";
+  // };
+console.log(`${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/\/\w+.\w+$/))}`)
   return (
     <Box className={classes.root}>
       <Box component='section' className={classes.sliderBlock}>
@@ -390,7 +390,7 @@ const MainPageContent = () => {
 
           <TransitionGroup className={classes.commentBoxWrap}>
             <CSSTransition
-              key={reviews[reviewVideo].id}
+              key={reviewVideo}
               in={opacity}
               appear={true}
               timeout={500}
@@ -399,12 +399,12 @@ const MainPageContent = () => {
               <Box className={classes.commentBox}>
                 <Typography
                   className={classes.name}
-                >{`${reviews[review].name} ${reviews[review].place}`}</Typography>
+                >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
                 <Typography
                   className={classes.place}
-                >{`${reviews[review].place}, ${reviews[review].year}`}</Typography>
+                >{`${reviews[review][20]}, ${reviews[review][22].slice(6)}`}</Typography>
                 <Typography variant="body1" className={classes.message}>
-                  {reviews[review].text}
+                  {reviews[review][21]}
                 </Typography>
               </Box>
             </CSSTransition>
@@ -418,7 +418,7 @@ const MainPageContent = () => {
         <Box className={classes.mediaBlock} onChange={handleReviewCange}>
           <TransitionGroup className={classes.reviewVideoBox}>
             <CSSTransition
-              key={reviews[reviewVideo].id}
+              key={reviewVideo}
               in={opacity}
               appear={true}
               timeout={500}
@@ -426,7 +426,7 @@ const MainPageContent = () => {
             >
               <img
                 className={classes.reviewVideo}
-                src={reviews[reviewVideo].video}
+                src={`../../images/reviews/${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/\/\w+.\w+$/))}`}
                 alt="img"
               ></img>
             </CSSTransition>
@@ -435,7 +435,7 @@ const MainPageContent = () => {
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
               <Typography variant="h4">
-                {`${reviews[review].monts}/${reviews[review].day} `}
+                {`${reviews[review][22].slice(0,2)}/${reviews[review][22].slice(3,5)} `}
               </Typography>
             </Box>
             <Box className={classes.imagesBoxes}>

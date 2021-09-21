@@ -1,7 +1,7 @@
-import main1 from "../assets/images/houses/1/main-img.png";
+// import main1 from "../assets/images/houses/1/main-img.png";
 import model1 from "../assets/images/houses/1/model.png";
 import model2 from "../assets/images/houses/2/model.png";
-import plan1 from "../assets/images/houses/1/plan-img.png";
+// import plan1 from "../assets/images/houses/1/plan-img.png";
 import kitchen from "../assets/images/houses/1/rooms/kitchen.png";
 import toilet from "../assets/images/houses/1/rooms/toilet.png";
 import outside from "../assets/images/houses/1/rooms/outside.png";

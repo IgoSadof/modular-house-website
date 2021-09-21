@@ -44,6 +44,22 @@ function useHomeData() {
   for (let key in houses) {
     houses[key]["alias"] = key;
     houseArr.push(houses[key]);
+    houses[key]['countArea'] = (arr,field)=>{
+      let sum = 0;
+      if(arr.length>0){
+        arr.forEach((item) => sum+= +(item[field]? item[field].replace('К','000'):0))
+      };
+      return sum;
+    };
+    houses[key]['takeFromBaseModule'] = (arr,field)=>{
+      if(arr.length>0){
+        let value = arr.filter((module) => module["Название модуля"] === "Базовый модуль")?.[0]?.[field];
+        if(value){value = value.replace('К','000')};
+        return value;
+      };
+    };
+
+    // houseArr.push(houses[key])
   }
   //   console.log(houseArr);
 
