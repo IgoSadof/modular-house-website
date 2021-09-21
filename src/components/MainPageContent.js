@@ -1,14 +1,11 @@
 import "./global.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import HouseSlider from "./HouseSlider";
 import Accordions from "./Accordion";
 import SquareButton from "./buttons/SquareButton";
-// import detail from "../constant/detail";
-// import answers from "../constant/answers";
-// import reviews from "../constant/reviews";
 import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
 import expodom from "../assets/images/expodom_img.png";
@@ -16,8 +13,8 @@ import ReviewsSlider from "../components/ReviewsSlider";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import useData from '../utils/useData';
-import useHomeData from '../utils/useHomeData';
+import getData from '../utils/getData';
+import { useStaticQuery, graphql } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -269,12 +266,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainPageContent = () => {
-  const detail = useData(4)
-  const dataAnswers = useData(18)
+  const data = useStaticQuery(graphql`
+    {
+      allMysqlValue {
+        nodes {
+          contentid
+          value
+          tmplvarid
+        }
+      }
+      allMysqlParent {
+        nodes {
+          mysqlId
+          mysqlParent
+        }
+      }
+    }
+  `);
+  const detail = useMemo(() => getData(data,4),[data]);
+  const dataAnswers = useMemo(() => getData(data,18),[data]);
+  const reviews = useMemo(() => getData(data,5),[data]);
   const answers = [[...(dataAnswers.slice(0,4))],[...(dataAnswers.slice(4))]]
-  const reviews = useData(5)
-  const dataHouses = useHomeData()
-  // console.log(dataHouses)
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -318,7 +330,6 @@ const MainPageContent = () => {
   // const scrollOn = (e) => {
   //   document.body.style.overflow = "overlay";
   // };
-console.log(`${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/\/\w+.\w+$/))}`)
   return (
     <Box className={classes.root}>
       <Box component='section' className={classes.sliderBlock}>

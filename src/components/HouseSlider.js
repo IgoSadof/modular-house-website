@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
@@ -6,7 +6,8 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import useHomeData from "../utils/useHomeData";
+import getHousesData from "../utils/getHousesData";
+import { useStaticQuery, graphql } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -120,8 +121,30 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const HouseSlider = ({ mobile, houseRef }) => {
-  const dataHouses = useHomeData();
-  console.log(dataHouses)
+  const housesQuery = useStaticQuery(graphql`
+    {
+      allMysqlModules {
+        nodes {
+          moduleName
+          parameterValue
+          parameterName
+          parentId
+          contentId
+        }
+      }
+      allMysqlHouses {
+        nodes {
+          alias
+          mysqlId
+          name
+          contentID
+          value
+        }
+      }
+    }
+  `);
+
+  const dataHouses = useMemo(() => getHousesData(housesQuery),[housesQuery]);
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),

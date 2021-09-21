@@ -1,29 +1,5 @@
-import { useStaticQuery, graphql } from "gatsby";
-
-function useHomeData() {
-  const data = useStaticQuery(graphql`
-    {
-      allMysqlModules {
-        nodes {
-          moduleName
-          parameterValue
-          parameterName
-          parentId
-          contentId
-        }
-      }
-      allMysqlHouses {
-        nodes {
-          alias
-          mysqlId
-          name
-          contentID
-          value
-        }
-      }
-    }
-  `);
-
+function getHousesData(data) {
+  console.log('getHousesData run'); 
   const elements = data.allMysqlHouses.nodes;
   const moduleParametrs = data.allMysqlModules.nodes;
   //   console.log(elements);
@@ -58,8 +34,6 @@ function useHomeData() {
         return value;
       };
     };
-
-    // houseArr.push(houses[key])
   }
   //   console.log(houseArr);
 
@@ -87,42 +61,7 @@ function useHomeData() {
     house['modules'] = modulesArr;
     modules = {}
   });
-//   добавляем методы для модулей
-
-//   houseArr.forEach((house) => {
-//     house[count]
-
-//   }
-
-
-
-
-  //   houseArr.forEach((item) => {
-  //     modules.forEach((module) => {
-  //         if(item.id===module.parentId){
-  //             if(item['modules'][module.moduleName]){
-  //                 item['modules'][module.moduleName] = module.parameterName;
-  //             }
-  //             item['modules'][module.moduleName][module.parameterName] = module.parameterName;
-  //         }
-  //     })
-  //   })
-//   console.log(houseArr);
-
-  //   modules.forEach((item) => {
-  //     if (item.contentId in houses) {
-  //       if (houses[item.contentId]["modules"]) {
-  //         houses[item.contentId]["modules"] = [
-  //           ...houses[item.contentId]["modules"],
-  //           item,
-  //         ];
-  //       } else {
-  //         houses[item.contentId]["modules"] = [item];
-  //       }
-  //     }
-  //     // console.log("houses", houses);
-  //   });
 
   return houseArr;
 }
-export default useHomeData;
+export default getHousesData;

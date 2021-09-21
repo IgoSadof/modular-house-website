@@ -1,5 +1,5 @@
 import "../components/global.css";
-import React, { useRef, useState,useMemo } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -11,7 +11,9 @@ import ModalsSlider from "./ModalsSlider";
 import HouseModelSlider from "./HouseModelSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import useHomeData from "../utils/useHomeData";
+import getHousesData from "../utils/getHousesData";
+
+import { useStaticQuery, graphql } from "gatsby";
 
 const style = {
   flex: {
@@ -263,6 +265,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousesList = () => {
+  const hosesQuery = useStaticQuery(graphql`
+    {
+      allMysqlModules {
+        nodes {
+          moduleName
+          parameterValue
+          parameterName
+          parentId
+          contentId
+        }
+      }
+      allMysqlHouses {
+        nodes {
+          alias
+          mysqlId
+          name
+          contentID
+          value
+        }
+      }
+    }
+  `);
+  const dataHouses = useMemo(() => getHousesData(hosesQuery),[hosesQuery]);
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1280: useMediaQuery("(max-width:1280px)"),
@@ -298,11 +323,6 @@ const HousesList = () => {
   const element = useRef(null);
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
-
-  // const dataHouses = useMemo(() => useHomeData());
-  const dataHouses = useHomeData();
-
-
   const listItem = dataHouses.map((item, index) => {
     return (
       <li

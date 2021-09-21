@@ -1,29 +1,12 @@
-import { useStaticQuery, graphql } from "gatsby";
 
-function useData(parent) {
-    const data = useStaticQuery(graphql`
-    {
-      allMysqlValue {
-        nodes {
-          contentid
-          value
-          tmplvarid
-        }
-      }
-      allMysqlParent {
-        nodes {
-          mysqlId
-          mysqlParent
-        }
-      }
-    }
-  `);
-  const parentElements = data.allMysqlParent.nodes.filter(
+function getData(query, parent) {
+  console.log('getData run')
+  const parentElements = query?.allMysqlParent?.nodes.filter(
     (item) => item.mysqlParent === parent
   );
   const dataList = [];
-  parentElements.forEach((element) => {
-    data.allMysqlValue.nodes.forEach((item) => {
+  parentElements?.forEach((element) => {
+    query.allMysqlValue.nodes.forEach((item) => {
       if (item.contentid === element.mysqlId) {
         dataList.push(item);
       }
@@ -32,7 +15,7 @@ function useData(parent) {
   // console.log(dataList)
   //  to get Format [{id:textField,...},{...},...]
   let keys = {}
-  dataList.forEach((item)=>{
+  dataList?.forEach((item)=>{
       if(`${item.contentid}` in keys){
         keys[item.contentid][item.tmplvarid] = item.value
       }else{
@@ -45,4 +28,4 @@ function useData(parent) {
   }
   return orderedData;
 }
-export default useData
+export default getData
