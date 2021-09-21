@@ -740,6 +740,7 @@ const HousePage = ({ house }) => {
             <Accordions
               arr={houses[houseNumber].modules[0].rooms}
               roomsImg={handleRoomsImgChange}
+              hardCode = {true}
             />
           </Box>
         </Box>

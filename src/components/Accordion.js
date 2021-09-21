@@ -49,7 +49,7 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function Accordions({ arr,roomsImg }) {
+export default function Accordions({ arr,roomsImg,hardCode}) {
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -71,10 +71,10 @@ export default function Accordions({ arr,roomsImg }) {
               id={`panel${index + 1}d-header`}
               expandIcon={<AddIcon />}
             >
-              <Typography variant="h3">{item[70]}</Typography>
+              <Typography variant="h3">{hardCode? item.title:item[70]}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">{item[71]}</Typography>
+              <Typography variant="body1">{hardCode? item.subtitle:item[71]}</Typography>
             </AccordionDetails>
           </Accordion>
         );
