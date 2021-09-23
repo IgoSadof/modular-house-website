@@ -115,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
     top: "8%",
     zIndex: "2",
     width: "80%",
-    maxWidth:'150px',
+    maxWidth: "150px",
     transition: "0.5s",
     [theme.breakpoints.down("md")]: {
       width: "80%",
@@ -287,7 +287,7 @@ const HousesList = () => {
       }
     }
   `);
-  const dataHouses = useMemo(() => getHousesData(hosesQuery),[hosesQuery]);
+  const dataHouses = useMemo(() => getHousesData(hosesQuery), [hosesQuery]);
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1280: useMediaQuery("(max-width:1280px)"),
@@ -353,7 +353,9 @@ const HousesList = () => {
               >
                 <img
                   className={classes.houseListImg}
-                  src={`../../${item["Иконка дома"]}`}
+                  src={`../../${item["Иконка дома"].substr(
+                    item["Иконка дома"].search(/images/)
+                  )}`}
                   alt="img"
                 ></img>
               </CSSTransition>
@@ -377,13 +379,18 @@ const HousesList = () => {
                     ? `${classes.houseListImg} ${classes.houseListImgActive}`
                     : classes.houseListImg
                 }
-                src={`../../${item["Иконка дома"]}`}
+                src={`../../${item["Иконка дома"].substr(
+                  item["Иконка дома"].search(/images/)
+                )}`}
                 alt="img"
               ></img>
             </CSSTransition>
             {activeSlide === index ? (
               <Box className={classes.button}>
-                <Link className={classes.Link} to={`model${dataHouses[house]["URL"].toUpperCase()}`}>
+                <Link
+                  className={classes.Link}
+                  to={`model${dataHouses[house]["URL"].toUpperCase()}`}
+                >
                   <RegularButton variant="outlined">Подробнее</RegularButton>
                 </Link>
               </Box>
@@ -403,7 +410,13 @@ const HousesList = () => {
   const listMainImages = dataHouses.map((item, index) => {
     return (
       <li className={classes.mainImg} key={index}>
-        <img className={classes.mainImg} src={`../../${item["Баннер"]}`} alt="img"></img>
+        <img
+          className={classes.mainImg}
+          src={`../../${item["Баннер"].substr(
+            item["Баннер"].search(/images/)
+          )}`}
+          alt="img"
+        ></img>
         {/* <div className={classes.mainImg} style={{ backgroundImage: `url(${item.img.main})` }}></div> */}
       </li>
     );
@@ -439,7 +452,9 @@ const HousesList = () => {
               <img
                 ref={element}
                 className={classes.houseDescImg}
-                src={`../../${dataHouses[house]["Иконка дома"]}`}
+                src={`../../${dataHouses[house]["Иконка дома"].substr(
+                  dataHouses[house]["Иконка дома"].search(/images/)
+                )}`}
                 alt="img"
               ></img>
               {/* </Fade> */}
@@ -458,7 +473,9 @@ const HousesList = () => {
               <Box className={classes.houseDescIconBox}>
                 <img
                   className={classes.mainPlan}
-                  src={`../../${dataHouses[house]["Иконка планировки"]}`}
+                  src={`../../${dataHouses[house]["Иконка планировки"].substr(
+                    dataHouses[house]["Иконка планировки"].search(/images/)
+                  )}`}
                   alt="img"
                 ></img>
               </Box>
@@ -478,10 +495,13 @@ const HousesList = () => {
                 >
                   {/* {houses[house].totalAreaText} */}
                   Общая площадь:
-                  
                 </Typography>
                 <Typography variant="h6" className={classes.houseSpecValue}>
-                {dataHouses[house].countArea(dataHouses[house].modules, "Площадь общая")} М2
+                  {dataHouses[house].countArea(
+                    dataHouses[house].modules,
+                    "Площадь общая"
+                  )}{" "}
+                  М2
                   {/* {houses[house].totalArea} */}
                 </Typography>
               </Box>
@@ -495,7 +515,11 @@ const HousesList = () => {
                 </Typography>
                 <Typography variant="h6" className={classes.houseSpecValue}>
                   {/* {houses[house].effectiveArea} */}
-                  {dataHouses[house].countArea(dataHouses[house].modules, "Площадь полезная")} М2
+                  {dataHouses[house].countArea(
+                    dataHouses[house].modules,
+                    "Площадь полезная"
+                  )}{" "}
+                  М2
                 </Typography>
               </Box>
             </Box>
@@ -538,13 +562,16 @@ const HousesList = () => {
                   <Typography variant="h5" className={classes.houseSpecPrice}>
                     {/* {houses[house].price} */}
                     {dataHouses[house].countArea(
-                          dataHouses[house].modules,
-                          "Стоимость"
-                        ) ?? 100}{" "}
-                        $
+                      dataHouses[house].modules,
+                      "Стоимость"
+                    ) ?? 100}{" "}
+                    $
                   </Typography>
                 </Box>
-                <Link className={classes.Link} to={`model${dataHouses[house]["URL"].toUpperCase()}`}>
+                <Link
+                  className={classes.Link}
+                  to={`model${dataHouses[house]["URL"].toUpperCase()}`}
+                >
                   <RegularButton variant="outlined">Подробнее</RegularButton>
                 </Link>
               </Box>
@@ -574,9 +601,9 @@ const HousesList = () => {
               ></img>
               <Typography variant="h5" className={classes.houseSpecPrice}>
                 {dataHouses[house].countArea(
-                          dataHouses[house].modules,
-                          "Стоимость"
-                        ) ?? 100}
+                  dataHouses[house].modules,
+                  "Стоимость"
+                ) ?? 100}
               </Typography>
             </Box>
           </Box>

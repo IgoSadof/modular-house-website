@@ -1,5 +1,5 @@
 import "../components/global.css";
-import React, { useState, useRef,useMemo } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import FormBlock from "../components/FormBlock";
@@ -478,7 +478,7 @@ const HousePage = ({ house }) => {
     }
   `);
 
-  const dataHouses = useMemo(() => getHousesData(housesQuery),[housesQuery]);
+  const dataHouses = useMemo(() => getHousesData(housesQuery), [housesQuery]);
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -497,7 +497,7 @@ const HousePage = ({ house }) => {
     setRoomsImg(img);
     setRoomsImgIndex(index);
   };
-  const modulesCounts = houses[houseNumber]["modules"].length;
+  const modulesCounts = dataHouses[houseNumber]["modules"].length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 16;
 
@@ -506,9 +506,7 @@ const HousePage = ({ house }) => {
   const param = { pilldistance, modulesCounts, heightOneLine };
   const classes = useStyles(param);
 
-  const [model3d, setModel3d] = useState(
-    houses[houseNumber]["modules"][pillClick]["model3d"]
-  );
+  const [model3d, setModel3d] = useState(`../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].search(/models3d/))}`);
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -516,14 +514,14 @@ const HousePage = ({ house }) => {
     if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
       setPilldistance((state) => state + pillStep);
       setPillClick((state) => state + 1);
-      setModel3d(houses[houseNumber]["modules"][pillClick + 1]["model3d"]);
+      setModel3d(`../../${dataHouses[houseNumber]["modules"][pillClick + 1]["3D Модель"].substr(dataHouses[houseNumber]["modules"][pillClick+1]["3D Модель"].search(/models3d/))}`);
     }
   };
   const handleMinusClick = (e) => {
     if (pilldistance - pillStep >= 10 && pillClick - 1 >= 0) {
       setPilldistance((state) => state - pillStep);
       setPillClick((state) => state - 1);
-      setModel3d(houses[houseNumber]["modules"][pillClick - 1]["model3d"]);
+      setModel3d(`../../${dataHouses[houseNumber]["modules"][pillClick - 1]["3D Модель"].substr(dataHouses[houseNumber]["modules"][pillClick-1]["3D Модель"].search(/models3d/))}`);
     }
   };
   const handleClickLeft = () => {
@@ -564,7 +562,9 @@ const HousePage = ({ house }) => {
         <Box className={classes.mainImgBox}>
           <img
             className={classes.mainImg}
-            src={houses[houseNumber].img.main}
+            src={`../../${dataHouses[houseNumber]["Баннер"].substr(
+              dataHouses[houseNumber]["Баннер"].search(/images/)
+            )}`}
             alt="img"
           ></img>
           {matches[1200] ? (
@@ -574,16 +574,18 @@ const HousePage = ({ house }) => {
                 color="textSecondary"
                 className={classes.houseDescTitle}
               >
-                {houses[houseNumber].name}
+                {dataHouses[houseNumber]["Код"]}
               </Typography>
               <Box className={classes.houseDescIconBox}>
                 <img
                   className={classes.mainPlan}
-                  src={houses[houseNumber].img.plan}
+                  src={`../../${dataHouses[houseNumber]["Иконка планировки"].substr(
+                    dataHouses[houseNumber]["Иконка планировки"].search(/images/)
+                  )}`}
                   alt="img"
                 ></img>
                 <Typography variant="h5" className={classes.houseSpecPrice}>
-                  {houses[houseNumber].price}
+                  {/* {dataHouses[houseNumber].price} */}
                 </Typography>
               </Box>
             </Box>
@@ -597,7 +599,7 @@ const HousePage = ({ house }) => {
                 color="textSecondary"
                 className={classes.mainBlockTitle}
               >
-                {houses[houseNumber].name}
+                {dataHouses[houseNumber]["Код"]}
               </Typography>
             </Box>
           )}
@@ -614,22 +616,22 @@ const HousePage = ({ house }) => {
                   })}
                 </ul> */}
             <ul className={classes.mainBlockList}>
-              {houses[houseNumber].modules.map((item, index) => {
+              {dataHouses[houseNumber].modules.map((item, index) => {
                 return (
                   <li className={classes.mainBlockItem} key={index}>
                     <Typography variant="body1">
-                      0{index + 1} {item.name}
+                      0{index + 1} {item["Название модуля"]}
                     </Typography>
                   </li>
                 );
               })}
             </ul>
             <ul className={classes.mainBlockList}>
-              {houses[houseNumber].modules.map((item, index) => {
+              {dataHouses[houseNumber].modules.map((item, index) => {
                 return (
                   <li className={classes.mainBlockItem} key={index}>
                     <Typography variant="subtitle1">
-                      ${item.price} / {item.term} дней
+                      ${item["Стоимость"]} / {item["Срок изготовления"]} дней
                     </Typography>
                   </li>
                 );
@@ -642,7 +644,7 @@ const HousePage = ({ house }) => {
       <Box components="section" className={classes.modelBlock}>
         <Box className={classes.modelDesc}>
           <Box className={classes.modelDescFirstColumn}>
-            {houses[houseNumber].modules.map((item, index) => {
+            {dataHouses[houseNumber].modules.map((item, index) => {
               return (
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
@@ -660,12 +662,12 @@ const HousePage = ({ house }) => {
                   >
                     {item.name}
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     className={pillClick >= index ? null : classes.disable}
                     variant="h6"
                   >
                     {item.area} м2
-                  </Typography>
+                  </Typography> */}
                 </li>
               );
             })}
@@ -714,14 +716,14 @@ const HousePage = ({ house }) => {
           </div>
 
           <Box className={classes.modelDescSecondColumn}>
-            {houses[houseNumber].modules.map((item, index) => {
+            {dataHouses[houseNumber].modules.map((item, index) => {
               return (
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
                     className={pillClick >= index ? null : classes.disable}
                     variant="body1"
                   >
-                    {item.desc}
+                    {item["Описание модуля"]}
                   </Typography>
                 </li>
               );
@@ -803,18 +805,56 @@ const HousePage = ({ house }) => {
           )}
           <img
             className={classes.calculationPlanImg}
-            src={houses[houseNumber].img.plan}
+            src={`../../${dataHouses[houseNumber]["План"].substr(
+              dataHouses[houseNumber]["План"].search(/images/)
+            )}`}
             alt="img"
           ></img>
         </Box>
         <Box className={classes.calculation}>
-          {houses[houseNumber].modules.map((item, index) => {
+          {dataHouses.modules?.rooms? dataHouses[houseNumber].modules.map((item, index) => {
             return (
               <Box className={classes.calculationItem} key={index}>
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    value={+item.price.replace(" ", "")}
+                    value={+item["Стоимость"].replace("К", "000")}
+                    control={<Checkbox color="primary" />}
+                    label={<Typography variant="h6">{item["Название модуля"]}</Typography>}
+                    labelPlacement="end"
+                  />
+                  <Typography variant="h3">${item["Стоимость"]}</Typography>
+                </Box>
+
+                <Box className={classes.calculationBody}>
+                  {item.rooms.map((item, index) => {
+                    return (
+                      <li className={classes.calculationBodyItem} key={index}>
+                        <Typography
+                          variant="body1"
+                          className={classes.calculationBodyText}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          className={classes.calculationBodyText}
+                        >
+                          {item.area ? `${item.area} м2` : null}
+                        </Typography>
+                      </li>
+                    );
+                  })}
+                </Box>
+              </Box>
+            );
+          }):(houses[houseNumber].modules.map((item, index) => {
+            return (
+              <Box className={classes.calculationItem} key={index}>
+                <Box className={classes.calculationHeader}>
+                  <FormControlLabel
+                    onChange={handleChangeCheckbox}
+                    value={+item.price.replace("К", "000")}
                     control={<Checkbox color="primary" />}
                     label={<Typography variant="h6">{item.name}</Typography>}
                     labelPlacement="end"
@@ -843,8 +883,7 @@ const HousePage = ({ house }) => {
                   })}
                 </Box>
               </Box>
-            );
-          })}
+            );}))}
 
           <Box className={classes.calculationResult}>
             <Typography variant="h6">Цена</Typography>
@@ -864,7 +903,9 @@ const HousePage = ({ house }) => {
               `}
           subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
           email
-          img={houses[houseNumber].img.main}
+          img={`../../${dataHouses[houseNumber]["Баннер"].substr(
+            dataHouses[houseNumber]["Баннер"].search(/images/)
+          )}`}
           formPosition="center"
         />
       </Box>
