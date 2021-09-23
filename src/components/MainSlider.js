@@ -1,15 +1,16 @@
 import "./global.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import ReactPlayer from "react-player";
-import slides from "../constant/slides";
 import numbers from "../constant/numbers";
 import video from "../assets/video/video.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import getData from '../utils/getData';
+import getMainPage from "../utils/getMainPage";
+import { useStaticQuery, graphql } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -104,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textBlock: {
-    width: "45%",
+    width: "50%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -140,14 +141,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     marginLeft: "100px",
     width: "70%",
-   
+
     [theme.breakpoints.down("md")]: {
       marginLeft: "auto",
       marginRight: "auto",
       marginBottom: "auto",
       gap: "20px",
-      "& h1":{
-        fontSize:'24px'
+      "& h1": {
+        fontSize: "24px",
       },
     },
   },
@@ -220,7 +221,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Slider = ({ scroll, isFirstEntry }) => {
-  // const data = getData(2)
+  const housesQuery = useStaticQuery(graphql`
+    {
+      allMysqlMainPage {
+        nodes {
+          mysqlId
+          parameterName
+          parameterValue
+        }
+      }
+    }
+  `);
+
+  const dataSlides = useMemo(() => getMainPage(housesQuery), [housesQuery]);
+  // console.log(dataSlides)
+
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -230,29 +245,12 @@ const Slider = ({ scroll, isFirstEntry }) => {
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
-  // console.log(scroll)
-
-  // const [resources, setResources] = useState(null);
-  // const [resourcestv, setResourcestv] = useState(null);
-  const [fields] = useState({
-    headers: null,
-    subtitles: null,
-  });
   const vidSegments = {
     0: 2,
     1: 9.5,
     2: 20.5,
     3: 24,
   };
-
-  // useEffect(() => {
-  //   axios.get("/rest/resources").then((response) => {
-  //     setResources(response.data.results);
-  //   });
-  //   axios.get("/rest/resourcestv").then((response) => {
-  //     setResourcestv(response.data.results);
-  //   });
-  // }, []);
 
   useEffect(() => {
     if (isFirstEntry) {
@@ -268,14 +266,6 @@ const Slider = ({ scroll, isFirstEntry }) => {
     }
   }, [scroll]);
 
-  // useEffect(() => {
-  //   if (resources && resourcestv) {
-  //     setFields({
-  //       headers: findDataFromCategory(resources, resourcestv, 2),
-  //       subtitles: findDataFromCategory(resources, resourcestv, 3),
-  //     });
-  //   }
-  // }, [resources, resourcestv]);
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
       numb = +e.target.textContent[1];
@@ -292,12 +282,12 @@ const Slider = ({ scroll, isFirstEntry }) => {
   };
 
   return (
-    <Box component='section' className={classes.content}>
+    <Box component="section" className={classes.content}>
       <Box className={classes.midleBlock}>
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>
             <CSSTransition
-              key={slides[activeNumb].id}
+              key={dataSlides[activeNumb].id}
               in={opacity}
               appear={true}
               timeout={500}
@@ -309,23 +299,21 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   variant="h1"
                   component="h1"
                 >
-                  {/* {data[activeNumb]["1"] ? data[activeNumb]["1"]: slides[activeNumb].title} */}
+                  {dataSlides[activeNumb].title.toUpperCase()}
                 </Typography>
                 <Box>
-                  {/* { data[activeNumb]["30"]? (
-                    <img
-                      className={classes.logo}
-                      src={slides[activeNumb].image}
-                      alt="icon"
-                      ></img>
-                   ) : null} */}
+                  <img
+                    className={classes.logo}
+                    src={`../../${dataSlides[activeNumb].image.substr(dataSlides[activeNumb].image.search(/images/))}`}
+                    alt="icon"
+                  ></img>
                 </Box>
                 <Typography
                   className={classes.text}
                   variant="body1"
                   component="h6"
                 >
-                  {/* {data[activeNumb]["5"] ? data[activeNumb]["5"]:slides[activeNumb].subtitle} */}
+                  {dataSlides[activeNumb].subtitle}
                 </Typography>
               </Box>
             </CSSTransition>

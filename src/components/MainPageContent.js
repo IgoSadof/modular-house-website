@@ -437,7 +437,7 @@ const MainPageContent = () => {
             >
               <img
                 className={classes.reviewVideo}
-                src={`../../images/reviews/${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/\/\w+.\w+$/))}`}
+                src={`../../${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/images/))}`}
                 alt="img"
               ></img>
             </CSSTransition>

@@ -1,5 +1,5 @@
 import "../components/global.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import FormBlock from "../components/FormBlock";
@@ -16,8 +16,10 @@ import HouseFotosSlider from "../components/HouseFotosSlider";
 import { houses } from "../constant/houses";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import '@google/model-viewer';
+import "@google/model-viewer";
 import Model3d from "./Model3d";
+import getHousesData from "../utils/getHousesData";
+import { useStaticQuery, graphql } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -181,12 +183,12 @@ const useStyles = makeStyles((theme) => ({
   modelDesc: {
     position: "relative",
     width: "450px",
-    height: (param) => `${param.modulesCounts*param.heightOneLine}vh`,
+    height: (param) => `${param.modulesCounts * param.heightOneLine}vh`,
     display: "flex",
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height: (param) => `${param.modulesCounts*(param.heightOneLine+4)}vh`,
+      height: (param) => `${param.modulesCounts * (param.heightOneLine + 4)}vh`,
     },
   },
   accordionBox: {
@@ -207,10 +209,10 @@ const useStyles = makeStyles((theme) => ({
   },
   modelDescItemTitle: {
     listStyle: "none",
-    display:"flex",
-    flexDirection:"column",
-    justifyContent:"center",
-    marginRight:"auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginRight: "auto",
     height: "16vh",
     // marginBottom:'20px',
   },
@@ -445,20 +447,45 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    marginBottom:"40px",
+    marginBottom: "40px",
     [theme.breakpoints.down("md")]: {
-      marginBottom:"20px",
+      marginBottom: "20px",
     },
-  }
+  },
 }));
 
 const HousePage = ({ house }) => {
+  const housesQuery = useStaticQuery(graphql`
+    {
+      allMysqlModules {
+        nodes {
+          moduleName
+          parameterValue
+          parameterName
+          parentId
+          contentId
+        }
+      }
+      allMysqlHouses {
+        nodes {
+          alias
+          mysqlId
+          name
+          contentID
+          value
+        }
+      }
+    }
+  `);
+
+  const dataHouses = useMemo(() => getHousesData(housesQuery),[housesQuery]);
+
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
   const [houseNumber] = useState(house);
- 
+
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
   const [roomsImg, setRoomsImg] = useState(
@@ -470,16 +497,18 @@ const HousePage = ({ house }) => {
     setRoomsImg(img);
     setRoomsImgIndex(index);
   };
-  const modulesCounts = houses[houseNumber]['modules'].length;
-  const pillStep = 100/modulesCounts;
+  const modulesCounts = houses[houseNumber]["modules"].length;
+  const pillStep = 100 / modulesCounts;
   const heightOneLine = 16;
 
   const [pilldistance, setPilldistance] = useState(heightOneLine);
   const [pillClick, setPillClick] = useState(0);
-  const param = { pilldistance, modulesCounts,heightOneLine };
+  const param = { pilldistance, modulesCounts, heightOneLine };
   const classes = useStyles(param);
 
-  const [model3d, setModel3d] = useState(houses[houseNumber]['modules'][pillClick]['model3d']);
+  const [model3d, setModel3d] = useState(
+    houses[houseNumber]["modules"][pillClick]["model3d"]
+  );
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -487,14 +516,14 @@ const HousePage = ({ house }) => {
     if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
       setPilldistance((state) => state + pillStep);
       setPillClick((state) => state + 1);
-      setModel3d(houses[houseNumber]['modules'][pillClick+1]['model3d'])
+      setModel3d(houses[houseNumber]["modules"][pillClick + 1]["model3d"]);
     }
   };
   const handleMinusClick = (e) => {
     if (pilldistance - pillStep >= 10 && pillClick - 1 >= 0) {
       setPilldistance((state) => state - pillStep);
       setPillClick((state) => state - 1);
-      setModel3d(houses[houseNumber]['modules'][pillClick-1]['model3d'])
+      setModel3d(houses[houseNumber]["modules"][pillClick - 1]["model3d"]);
     }
   };
   const handleClickLeft = () => {
@@ -655,7 +684,7 @@ const HousePage = ({ house }) => {
                   </div>
                 </div>
               </div>
-            ) : pillClick+1 < modulesCounts ? (
+            ) : pillClick + 1 < modulesCounts ? (
               <div className={classes.modelDescLineButton}>
                 <div
                   onClick={handleMinusClick}
@@ -700,7 +729,7 @@ const HousePage = ({ house }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          <Model3d srcPath = {model3d}></Model3d>
+          <Model3d srcPath={model3d}></Model3d>
         </Box>
       </Box>
 
@@ -740,7 +769,7 @@ const HousePage = ({ house }) => {
             <Accordions
               arr={houses[houseNumber].modules[0].rooms}
               roomsImg={handleRoomsImgChange}
-              hardCode = {true}
+              hardCode={true}
             />
           </Box>
         </Box>
@@ -767,11 +796,14 @@ const HousePage = ({ house }) => {
           ) : null}
         </Box>
         <Box className={classes.calculationPlan}>
-          {matches[1200] ? null : <Typography className={classes.text}  variant="h6">Смета</Typography>}
+          {matches[1200] ? null : (
+            <Typography className={classes.text} variant="h6">
+              Смета
+            </Typography>
+          )}
           <img
             className={classes.calculationPlanImg}
             src={houses[houseNumber].img.plan}
-
             alt="img"
           ></img>
         </Box>

@@ -31,7 +31,7 @@ module.exports = {
             idFieldName: 'id',
             name: 'parent',
           },
-          // это достает все дома
+          // all houses
           {
             statement: `SELECT modx_site_tmplvar_contentvalues.id,modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value, modx_site_content.id AS contentID, modx_site_content.alias
             FROM modx_site_tmplvar_contentvalues
@@ -42,7 +42,7 @@ module.exports = {
             idFieldName: 'id',
             name: 'Houses',
           },
-          // это достает все модули
+          // all modules
           {
             statement: `SELECT modx_site_tmplvar_contentvalues.id , modx_site_tmplvars.name AS parameterName, modx_site_tmplvar_contentvalues.value AS parameterValue, modx_site_content.id AS contentId, modx_site_content.parent AS parentId, modx_site_content.alias AS moduleName
             FROM modx_site_tmplvar_contentvalues
@@ -52,6 +52,16 @@ module.exports = {
             WHERE modx_site_templates.templatename = "Модуль"`,
             idFieldName: 'id',
             name: 'Modules',
+          },
+          // main page slider
+          {
+            statement: `SELECT modx_site_tmplvar_contentvalues.id AS id, modx_site_tmplvars.name AS parameterName, modx_site_tmplvar_contentvalues.value AS parameterValue
+            FROM modx_site_tmplvar_contentvalues
+            JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
+            JOIN modx_categories ON modx_categories.id = modx_site_tmplvars.category
+            WHERE modx_categories.category = "Параметры Главной"`,
+            idFieldName: 'id',
+            name: 'MainPage',
           },
         ]
       }

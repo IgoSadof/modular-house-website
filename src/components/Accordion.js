@@ -71,7 +71,7 @@ export default function Accordions({ arr,roomsImg,hardCode}) {
               id={`panel${index + 1}d-header`}
               expandIcon={<AddIcon />}
             >
-              <Typography variant="h3">{hardCode? item.title:item[70]}</Typography>
+              <Typography variant="h3">{hardCode? item.title:item[70].toUpperCase()}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">{hardCode? item.subtitle:item[71]}</Typography>

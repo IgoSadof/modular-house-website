@@ -1,5 +1,5 @@
 import "../components/global.css";
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -11,9 +11,6 @@ import ModalsSlider from "./ModalsSlider";
 import HouseModelSlider from "./HouseModelSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import getHousesData from "../utils/getHousesData";
-
-import { useStaticQuery, graphql } from "gatsby";
 
 const style = {
   flex: {
@@ -112,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
   houseListImg: {
     position: "absolute",
     left: "10%",
-    top: "8%",
+    top: "20%",
     zIndex: "2",
     width: "80%",
     maxWidth:'150px',
@@ -265,29 +262,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousesList = () => {
-  const hosesQuery = useStaticQuery(graphql`
-    {
-      allMysqlModules {
-        nodes {
-          moduleName
-          parameterValue
-          parameterName
-          parentId
-          contentId
-        }
-      }
-      allMysqlHouses {
-        nodes {
-          alias
-          mysqlId
-          name
-          contentID
-          value
-        }
-      }
-    }
-  `);
-  const dataHouses = useMemo(() => getHousesData(hosesQuery),[hosesQuery]);
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1280: useMediaQuery("(max-width:1280px)"),
@@ -323,7 +297,8 @@ const HousesList = () => {
   const element = useRef(null);
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
-  const listItem = dataHouses.map((item, index) => {
+
+  const listItem = houses.map((item, index) => {
     return (
       <li
         className={
@@ -353,12 +328,12 @@ const HousesList = () => {
               >
                 <img
                   className={classes.houseListImg}
-                  src={`../../${item["Иконка дома"]}`}
+                  src={item.img.list}
                   alt="img"
                 ></img>
               </CSSTransition>
               <Typography variant="subtitle1" className={classes.houseListName}>
-                {item["Код"]}
+                {item.name}
               </Typography>
             </>
           ) : null
@@ -377,13 +352,13 @@ const HousesList = () => {
                     ? `${classes.houseListImg} ${classes.houseListImgActive}`
                     : classes.houseListImg
                 }
-                src={`../../${item["Иконка дома"]}`}
+                src={item.img.list}
                 alt="img"
               ></img>
             </CSSTransition>
             {activeSlide === index ? (
               <Box className={classes.button}>
-                <Link className={classes.Link} to={`model${dataHouses[house]["URL"].toUpperCase()}`}>
+                <Link className={classes.Link} to={houses[house].link}>
                   <RegularButton variant="outlined">Подробнее</RegularButton>
                 </Link>
               </Box>
@@ -391,7 +366,7 @@ const HousesList = () => {
 
             {!(activeSlide === index) ? (
               <Typography variant="subtitle1" className={classes.houseListName}>
-                {item["Код"]}
+                {item.name}
               </Typography>
             ) : null}
           </>
@@ -400,10 +375,10 @@ const HousesList = () => {
     );
   });
 
-  const listMainImages = dataHouses.map((item, index) => {
+  const listMainImages = houses.map((item, index) => {
     return (
       <li className={classes.mainImg} key={index}>
-        <img className={classes.mainImg} src={`../../${item["Баннер"]}`} alt="img"></img>
+        <img className={classes.mainImg} src={item.img.main} alt="img"></img>
         {/* <div className={classes.mainImg} style={{ backgroundImage: `url(${item.img.main})` }}></div> */}
       </li>
     );
@@ -439,7 +414,7 @@ const HousesList = () => {
               <img
                 ref={element}
                 className={classes.houseDescImg}
-                src={`../../${dataHouses[house]["Иконка дома"]}`}
+                src={houses[house].img.desc}
                 alt="img"
               ></img>
               {/* </Fade> */}
@@ -458,7 +433,7 @@ const HousesList = () => {
               <Box className={classes.houseDescIconBox}>
                 <img
                   className={classes.mainPlan}
-                  src={`../../${dataHouses[house]["Иконка планировки"]}`}
+                  src={houses[house].img.plan}
                   alt="img"
                 ></img>
               </Box>
@@ -466,7 +441,7 @@ const HousesList = () => {
           ) : null}
 
           <Typography variant="body1" className={classes.houseDescText}>
-            {dataHouses[house]["Описание"]}
+            {houses[house].desc}
           </Typography>
 
           <Box className={classes.houseDescSpecBox}>
@@ -476,13 +451,10 @@ const HousesList = () => {
                   variant="body1"
                   className={classes.houseDescSpecName}
                 >
-                  {/* {houses[house].totalAreaText} */}
-                  Общая площадь:
-                  
+                  {houses[house].totalAreaText}
                 </Typography>
                 <Typography variant="h6" className={classes.houseSpecValue}>
-                {dataHouses[house].countArea(dataHouses[house].modules, "Площадь общая")} М2
-                  {/* {houses[house].totalArea} */}
+                  {houses[house].totalArea}
                 </Typography>
               </Box>
               <Box className={classes.houseDescSpecOne}>
@@ -490,12 +462,10 @@ const HousesList = () => {
                   variant="body1"
                   className={classes.houseDescSpecName}
                 >
-                  {/* {houses[house].effectiveAreaText} */}
-                  Эффективная площадь:
+                  {houses[house].effectiveAreaText}
                 </Typography>
                 <Typography variant="h6" className={classes.houseSpecValue}>
-                  {/* {houses[house].effectiveArea} */}
-                  {dataHouses[house].countArea(dataHouses[house].modules, "Площадь полезная")} М2
+                  {houses[house].effectiveArea}
                 </Typography>
               </Box>
             </Box>
@@ -509,7 +479,7 @@ const HousesList = () => {
                   Этажность:
                 </Typography>
                 <Typography variant="h6" className={classes.houseSpecValue}>
-                  {dataHouses[house]["Этажность"] ?? 1}
+                  {houses[house].totalArea}
                 </Typography>
               </Box>
               <Box className={classes.houseDescSpecOne}>
@@ -520,7 +490,7 @@ const HousesList = () => {
                   Cтадии роста:
                 </Typography>
                 <Typography variant="h6" className={classes.houseSpecValue}>
-                  {dataHouses[house]["modules"]?.length}
+                  {houses[house].effectiveArea}
                 </Typography>
               </Box>
             </Box>
@@ -536,15 +506,10 @@ const HousesList = () => {
                     Стоимость всех модулей:
                   </Typography>
                   <Typography variant="h5" className={classes.houseSpecPrice}>
-                    {/* {houses[house].price} */}
-                    {dataHouses[house].countArea(
-                          dataHouses[house].modules,
-                          "Стоимость"
-                        ) ?? 100}{" "}
-                        $
+                    {houses[house].price}
                   </Typography>
                 </Box>
-                <Link className={classes.Link} to={`model${dataHouses[house]["URL"].toUpperCase()}`}>
+                <Link className={classes.Link} to={houses[house].link}>
                   <RegularButton variant="outlined">Подробнее</RegularButton>
                 </Link>
               </Box>
@@ -564,19 +529,16 @@ const HousesList = () => {
               color="textSecondary"
               className={classes.houseDescTitle}
             >
-              {dataHouses[house]["Код"]}
+              {houses[house].name}
             </Typography>
             <Box className={classes.houseDescIconBox}>
               <img
                 className={classes.mainPlan}
-                src={`../../${dataHouses[house]["Иконка планировки"]}`}
+                src={houses[house].img.plan}
                 alt="img"
               ></img>
               <Typography variant="h5" className={classes.houseSpecPrice}>
-                {dataHouses[house].countArea(
-                          dataHouses[house].modules,
-                          "Стоимость"
-                        ) ?? 100}
+                {houses[house].price}
               </Typography>
             </Box>
           </Box>

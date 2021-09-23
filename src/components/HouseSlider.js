@@ -263,7 +263,8 @@ const HouseSlider = ({ mobile, houseRef }) => {
                   <Box className={classes.houseDescIconBox}>
                     <img
                       className={classes.mainPlan}
-                      src={`../../${item["Иконка планировки"]}`}
+      
+                      src={`../../${item["Иконка планировки"].substr(item["Иконка планировки"].search(/images/))}`}
                       alt="img"
                     ></img>
                   </Box>

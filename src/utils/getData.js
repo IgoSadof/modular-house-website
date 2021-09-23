@@ -26,6 +26,7 @@ function getData(query, parent) {
   for(let key in keys){
     orderedData.push(keys[key])
   }
+  console.log(orderedData)
   return orderedData;
 }
 export default getData
