@@ -1,6 +1,6 @@
 
 function getData(query, parent) {
-  console.log('getData run')
+  // console.log('getData run')
   const parentElements = query?.allMysqlParent?.nodes.filter(
     (item) => item.mysqlParent === parent
   );
@@ -26,7 +26,7 @@ function getData(query, parent) {
   for(let key in keys){
     orderedData.push(keys[key])
   }
-  console.log(orderedData)
+  // console.log(orderedData)
   return orderedData;
 }
 export default getData

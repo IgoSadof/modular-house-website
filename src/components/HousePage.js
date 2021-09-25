@@ -185,6 +185,7 @@ const useStyles = makeStyles((theme) => ({
     width: "450px",
     height: (param) => `${param.modulesCounts * param.heightOneLine}vh`,
     display: "flex",
+    minHeight:"60vh",
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
@@ -473,6 +474,16 @@ const HousePage = ({ house }) => {
           name
           contentID
           value
+        }
+      }
+      allMysqlRooms {
+        nodes {
+          contentId
+          houseName
+          parameterName
+          parameterValue
+          mysqlId
+          parentId
         }
       }
     }
@@ -854,7 +865,8 @@ const HousePage = ({ house }) => {
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    value={+item.price.replace("К", "000")}
+                    value={+item.price.replace(" ", "")}
+                    // value={+item.price.replace("К", "000")}
                     control={<Checkbox color="primary" />}
                     label={<Typography variant="h6">{item.name}</Typography>}
                     labelPlacement="end"

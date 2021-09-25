@@ -8,6 +8,8 @@ import { Link } from "gatsby";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import getHousesData from "../utils/getHousesData";
 import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -121,8 +123,27 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const HouseSlider = ({ mobile, houseRef }) => {
-  const housesQuery = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
+      allFile(
+        filter: {extension: {regex: "/(jpg)|(png)/"}}
+      ) {
+        edges {
+          node {
+            id
+            base
+            relativeDirectory
+            relativePath
+            childImageSharp {
+              gatsbyImageData(
+                width: 200
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        }
+      }
       allMysqlModules {
         nodes {
           moduleName
@@ -144,13 +165,16 @@ const HouseSlider = ({ mobile, houseRef }) => {
     }
   `);
 
-  const dataHouses = useMemo(() => getHousesData(housesQuery),[housesQuery]);
+  const dataHouses = useMemo(() => getHousesData(data),[data]);
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
     600: useMediaQuery("(max-width:600px)"),
   };
+  const getImg = (path) =>{
+    return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
+  }
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
   const classes = useStyles(param);
@@ -261,12 +285,11 @@ const HouseSlider = ({ mobile, houseRef }) => {
                     </Box>
                   </Box>
                   <Box className={classes.houseDescIconBox}>
-                    <img
+                    <GatsbyImage
                       className={classes.mainPlan}
-      
-                      src={`../../${item["Иконка планировки"].substr(item["Иконка планировки"].search(/images/))}`}
+                      image={getImg(`${item["Иконка планировки"].substr(item["Иконка планировки"].search(/images\//))}`)}
                       alt="img"
-                    ></img>
+                    ></GatsbyImage>
                   </Box>
                 </Box>
               </Box>

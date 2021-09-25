@@ -44,14 +44,26 @@ module.exports = {
           },
           // all modules
           {
-            statement: `SELECT modx_site_tmplvar_contentvalues.id , modx_site_tmplvars.name AS parameterName, modx_site_tmplvar_contentvalues.value AS parameterValue, modx_site_content.id AS contentId, modx_site_content.parent AS parentId, modx_site_content.alias AS moduleName
+            statement: `SELECT modx_site_tmplvar_contentvalues.id , modx_site_tmplvars.name AS parameterName, modx_site_tmplvar_contentvalues.value AS parameterValue, modx_site_content.id AS contentId, modx_site_content.parent AS parentId, modx_site_content.alias AS moduleName, modx_site_content.pagetitle AS contentName
             FROM modx_site_tmplvar_contentvalues
             JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
             JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
             JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id
-            WHERE modx_site_templates.templatename = "Модуль"`,
+            WHERE modx_site_templates.templatename = "Модуль"
+            ORDER BY modx_site_content.pagetitle`,
             idFieldName: 'id',
             name: 'Modules',
+          },
+          // rooms
+          {
+            statement: `SELECT modx_site_tmplvar_contentvalues.id , modx_site_tmplvars.name AS parameterName, modx_site_tmplvar_contentvalues.value AS parameterValue, modx_site_content.id AS contentId, modx_site_content.parent AS parentId, modx_site_content.alias AS houseName
+            FROM modx_site_tmplvar_contentvalues
+            JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
+            JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
+            JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id
+            WHERE modx_site_templates.templatename = "Комната"`,
+            idFieldName: 'id',
+            name: 'Rooms',
           },
           // main page slider
           {

@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Form from "./Form"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,11 +104,11 @@ const FormBlock = ({header,title, subtitle, text, email, img, formPosition}) => 
           <Form title={title} subtitle={subtitle?subtitle:null} email={email?email:null} text={text?text:null}/>
         </Box>
         <Box className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}>
-          <img
+          <GatsbyImage
             className={classes.expodom_img}
-            src={img}
+            image={img}
             alt="img"
-          ></img>
+          ></GatsbyImage>
         </Box>
       </Box>
     </div>

@@ -8,13 +8,14 @@ import Accordions from "./Accordion";
 import SquareButton from "./buttons/SquareButton";
 import Contacrs from "../components/Contacts";
 import FormBlock from "../components/FormBlock";
-import expodom from "../assets/images/expodom_img.png";
 import ReviewsSlider from "../components/ReviewsSlider";
 import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getData from '../utils/getData';
 import { useStaticQuery, graphql } from "gatsby";
+
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -268,6 +269,25 @@ const useStyles = makeStyles((theme) => ({
 const MainPageContent = () => {
   const data = useStaticQuery(graphql`
     {
+      allFile(
+              filter: {extension: {regex: "/(jpg)|(png)|(svg)/"}}
+            ) {
+              edges {
+                node {
+                  id
+                  base
+                  relativeDirectory
+                  relativePath
+                  childImageSharp {
+                    gatsbyImageData(
+                      width: 500
+                      placeholder: BLURRED
+                      formats: [AUTO, WEBP, AVIF]
+                    )
+                  }
+                }
+              }
+            }
       allMysqlValue {
         nodes {
           contentid
@@ -287,6 +307,10 @@ const MainPageContent = () => {
   const dataAnswers = useMemo(() => getData(data,18),[data]);
   const reviews = useMemo(() => getData(data,5),[data]);
   const answers = [[...(dataAnswers.slice(0,4))],[...(dataAnswers.slice(4))]]
+
+  const getImg = (path) =>{
+    return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
+  }
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -377,6 +401,7 @@ const MainPageContent = () => {
           </Typography>
         ) : null}
         <Box className={classes.accordion}>
+
           <Accordions arr={detail} />
         </Box>
       </Box>
@@ -435,11 +460,11 @@ const MainPageContent = () => {
               timeout={500}
               classNames="fade"
             >
-              <img
+              <GatsbyImage
                 className={classes.reviewVideo}
-                src={`../../${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/images/))}`}
+                image={getImg(`${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/images\//g))}`)}
                 alt="img"
-              ></img>
+              ></GatsbyImage>
             </CSSTransition>
           </TransitionGroup>
 
@@ -450,7 +475,7 @@ const MainPageContent = () => {
               </Typography>
             </Box>
             <Box className={classes.imagesBoxes}>
-              <ReviewsSlider myRef={myRef} />
+              <ReviewsSlider myRef={myRef} reviews={reviews} getImg={getImg} />
             </Box>
           </Box>
         </Box>
@@ -512,7 +537,7 @@ const MainPageContent = () => {
         </Box>
         <FormBlock
           subtitle
-          img={expodom}
+          img={getImg("images/expodom_img.png")}
           header={!matches[1200] ? "ЭКСПОДОМ" : null}
           title={"Пожить в модульном доме на Браславских озерах"}
         />
@@ -533,3 +558,38 @@ const MainPageContent = () => {
   );
 };
 export default MainPageContent;
+
+// export const pageQuery = graphql`
+//   {
+//       allFile(
+//               filter: {relativeDirectory: {eq: ""}, extension: {regex: "/(jpg)|(png)/"}}
+//             ) {
+//               edges {
+//                 node {
+//                   id
+//                   base
+//                   childImageSharp {
+//                     gatsbyImageData(
+//                       width: 200
+//                       placeholder: BLURRED
+//                       formats: [AUTO, WEBP, AVIF]
+//                     )
+//                   }
+//                 }
+//               }
+//             }
+//       allMysqlValue {
+//         nodes {
+//           contentid
+//           value
+//           tmplvarid
+//         }
+//       }
+//       allMysqlParent {
+//         nodes {
+//           mysqlId
+//           mysqlParent
+//         }
+//       }
+//     }
+// `

@@ -1,8 +1,8 @@
 function getHousesData(data) {
-  console.log('getHousesData run'); 
+  // console.log('getHousesData run'); 
   const elements = data.allMysqlHouses.nodes;
   const moduleParametrs = data.allMysqlModules.nodes;
-  //   console.log(elements);
+    // console.log(moduleParametrs);
   const houses = {};
 
   elements.forEach((item) => {
@@ -35,7 +35,7 @@ function getHousesData(data) {
       };
     };
   }
-  //   console.log(houseArr);
+  // console.log(houseArr);
 
   houseArr.forEach((house) => {
     let modules = {};
@@ -61,6 +61,7 @@ function getHousesData(data) {
     house['modules'] = modulesArr;
     modules = {}
   });
+  console.log(houseArr)
 
   return houseArr;
 }
