@@ -13,7 +13,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import CalculateTable from "../components/CalculateTable";
 import Panel from "../components/Panel";
 import HouseFotosSlider from "../components/HouseFotosSlider";
-import { houses } from "../constant/houses";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "@google/model-viewer";
@@ -460,7 +459,7 @@ const useStyles = makeStyles((theme) => ({
 const HousePage = ({ house }) => {
   const data = useStaticQuery(graphql`
     {
-      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
+      allFile(filter: { extension: { regex: "/(jpg)|(png)|(gif)/" } }) {
         edges {
           node {
             id
@@ -548,13 +547,16 @@ const HousePage = ({ house }) => {
   //   item["Иконка дома"].search(/images\//)
   // )}`)}
 
-  const baseImg = dataHouses[houseNumber].modules[0].rooms[0][
-    "Главное изображение"
-  ].substr(
-    dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(
-      /images\//
-    )
-  );
+  const baseImg = dataHouses[houseNumber].modules[0]?.rooms[0]
+    ? dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(
+        dataHouses[houseNumber].modules[0].rooms[0][
+          "Главное изображение"
+        ].search(/images\//)
+      )
+    : `${dataHouses[houseNumber]["Баннер"].substr(
+        dataHouses[houseNumber]["Баннер"].search(/images/)
+      )}`;
+
   const [roomsImg, setRoomsImg] = useState(baseImg);
   // console.log(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(/images\//)))
 
@@ -572,7 +574,6 @@ const HousePage = ({ house }) => {
   const [pillClick, setPillClick] = useState(0);
   const param = { pilldistance, modulesCounts, heightOneLine };
   const classes = useStyles(param);
-
   const [model3d, setModel3d] = useState(
     `../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(
       dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].search(
@@ -621,7 +622,7 @@ const HousePage = ({ house }) => {
   };
 
   const handleChangePanel = (value) => {
-    console.log(baseFolder + value)
+    // console.log(baseFolder + value);
     setRelativeDirectory(baseFolder + value);
   };
   const handleChangeCheckbox = (event) => {
@@ -637,20 +638,22 @@ const HousePage = ({ house }) => {
     (item, index) => {
       return (
         <li className={classes.mainImgItem} key={index}>
-          <GatsbyImage
-            className={classes.mainImgSlider}
-            image={item}
-            alt="img"
-          ></GatsbyImage>
+          {item ? (
+            <GatsbyImage
+              className={classes.mainImgSlider}
+              image={item}
+              alt="img"
+            ></GatsbyImage>
+          ) : null}
         </li>
       );
     }
   );
 
-  let all = {}
-  all['Название модуля']="Все";
-  all.name="";
-  const panelTabs = [all,...dataHouses[house].modules];
+  let all = {};
+  all["Название модуля"] = "Все";
+  all.name = "";
+  const panelTabs = [all, ...dataHouses[house].modules];
 
   return (
     <Box components="main">
@@ -659,7 +662,7 @@ const HousePage = ({ house }) => {
         className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
       >
         <Box className={classes.mainImgBox}>
-          <GatsbyImage
+          {dataHouses[houseNumber]["Баннер"]?(<GatsbyImage
             className={classes.mainImg}
             image={getImg(
               `${dataHouses[houseNumber]["Баннер"].substr(
@@ -667,7 +670,7 @@ const HousePage = ({ house }) => {
               )}`
             )}
             alt="img"
-          ></GatsbyImage>
+          ></GatsbyImage>):null}
           {matches[1200] ? (
             <Box className={classes.mainBlockTitleBox}>
               <Typography
@@ -678,7 +681,7 @@ const HousePage = ({ house }) => {
                 {dataHouses[houseNumber]["Код"]}
               </Typography>
               <Box className={classes.houseDescIconBox}>
-                <GatsbyImage
+                {dataHouses[houseNumber]["Иконка планировки"]?(<GatsbyImage
                   className={classes.mainPlan}
                   image={getImg(
                     `${dataHouses[houseNumber]["Иконка планировки"].substr(
@@ -688,7 +691,7 @@ const HousePage = ({ house }) => {
                     )}`
                   )}
                   alt="img"
-                ></GatsbyImage>
+                ></GatsbyImage>):null}
                 <Typography variant="h5" className={classes.houseSpecPrice}>
                   {/* {dataHouses[houseNumber].price} */}
                 </Typography>
@@ -892,11 +895,11 @@ const HousePage = ({ house }) => {
             timeout={500}
             classNames="fade"
           >
-            <GatsbyImage
+            {roomsImg?(<GatsbyImage
               className={classes.roomImg}
               image={getImg(roomsImg)}
               alt="img"
-            ></GatsbyImage>
+            ></GatsbyImage>):null}
           </CSSTransition>
         </TransitionGroup>
       </Box>
@@ -916,15 +919,17 @@ const HousePage = ({ house }) => {
               Смета
             </Typography>
           )}
-          <GatsbyImage
-            className={classes.calculationPlanImg}
-            image={getImg(
-              `${dataHouses[houseNumber]["План"].substr(
-                dataHouses[houseNumber]["План"].search(/images/)
-              )}`
-            )}
-            alt="img"
-          ></GatsbyImage>
+          {dataHouses[houseNumber]["План"] && !dataHouses[houseNumber]["План"].includes("gif") ? (
+            <GatsbyImage
+              className={classes.calculationPlanImg}
+              image={getImg(
+                `${dataHouses[houseNumber]["План"].substr(
+                  dataHouses[houseNumber]["План"].search(/images/)
+                )}`
+              )}
+              alt="img"
+            ></GatsbyImage>
+          ) : null}
         </Box>
         <Box className={classes.calculation}>
           {dataHouses[houseNumber].modules.map((item, index) => {
@@ -933,7 +938,7 @@ const HousePage = ({ house }) => {
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    value={+item["Стоимость"].replace("К", "000")}
+                    value={item["Стоимость"]? +item["Стоимость"].replace(/[KК]/, "000"): 0}
                     control={<Checkbox color="primary" />}
                     label={
                       <Typography variant="h6">

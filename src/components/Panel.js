@@ -21,7 +21,6 @@ const Panel = React.forwardRef(({change,arr}, ref) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
-    console.log(arr[newValue].name)
     setValue(state=>newValue);
     change(arr[newValue].name)
   };
