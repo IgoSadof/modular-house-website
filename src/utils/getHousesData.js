@@ -27,8 +27,6 @@ function getHousesData(data) {
   // console.log(rooms)
   
 
-  
-
   const houses = {};
 
   elements.forEach((item) => {
@@ -87,8 +85,9 @@ function getHousesData(data) {
     house['modules'] = modulesArr;
     modules = {}
   });
-  console.log(houseArr)
+  // console.log(houseArr)
 
+// add rooms in modules
   roomsArr.forEach((room)=>{
     houseArr.forEach(house=>{
       house.modules.forEach(module=>{
@@ -98,7 +97,15 @@ function getHousesData(data) {
       })
     })
   })
-
+  // create all rooms Arr
+  houseArr.forEach((house)=>{
+    house.allRooms = [];
+    house.modules.forEach(module=>{
+      module.rooms.forEach(room=>{
+        house.allRooms.push(room) 
+      })
+    })
+  })
   return houseArr;
 }
 export default getHousesData;

@@ -539,7 +539,7 @@ const HousePage = ({ house }) => {
         imagesArr.push(getImage(item.node));
       }
     });
-    console.log(imagesArr);
+    // console.log(imagesArr);
     return imagesArr;
   };
 
@@ -626,7 +626,7 @@ const HousePage = ({ house }) => {
   };
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
-      console.log(`add ${event.target.value}`);
+      // console.log(`add ${event.target.value}`);
       setModulePrice((state) => state + +event.target.value);
     } else {
       setModulePrice((state) => state - +event.target.value);
@@ -878,7 +878,7 @@ const HousePage = ({ house }) => {
           )}
           <Box className={classes.accordionBox}>
             <Accordions
-              arr={dataHouses[houseNumber].modules[0].rooms}
+              arr={dataHouses[houseNumber].allRooms}
               roomsImg={handleRoomsImgChange}
               houseRooms={true}
             />
