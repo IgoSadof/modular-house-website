@@ -2,26 +2,32 @@ function getHousesData(data) {
   // console.log('getHousesData run'); 
   const elements = data.allMysqlHouses.nodes;
   const moduleParametrs = data.allMysqlModules.nodes;
-  const roomsData = data.allMysqlRooms.nodes;
+  const roomsData = data?.allMysqlRooms?.nodes;
     // console.log(moduleParametrs);
   const rooms = {};
-
-  roomsData?.forEach((item) => {
-    if (rooms[item.contentId]) {
-      rooms[item.contentId][item.parameterName] = item.parameterValue;
-    } else {
-      rooms[item.contentId] = {};
-      rooms[item.contentId][item.parameterName] = item.parameterValue;
-      rooms[item.contentId]["ModuleId"] = item.parentId;
-      rooms[item.contentId]["id"] = item.contentId;
-    }
-  });
-  console.log(rooms)
   const roomsArr = [];
 
-  for (let key in rooms) {
-    roomsArr.push(rooms[key]);
+
+  if(roomsData){
+    roomsData?.forEach((item) => {
+      if (rooms[item.contentId]) {
+        rooms[item.contentId][item.parameterName] = item.parameterValue;
+      } else {
+        rooms[item.contentId] = {};
+        rooms[item.contentId][item.parameterName] = item.parameterValue;
+        rooms[item.contentId]["ModuleId"] = item.parentId;
+        rooms[item.contentId]["id"] = item.contentId;
+      }
+    });
+    for (let key in rooms) {
+      roomsArr.push(rooms[key]);
+    }
   }
+  
+  // console.log(rooms)
+  
+
+  
 
   const houses = {};
 

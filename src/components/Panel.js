@@ -11,21 +11,22 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     right: "0",
     bottom: "0",
-    width: "700px",
+    // width: "60%",
     backgroundColor: "#D1D1D1",
     // borderBottom:'1px solid black'
   },
 }));
 
-const Panel = React.forwardRef((props, ref) => {
+const Panel = React.forwardRef(({change,arr}, ref) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
+    console.log(arr[newValue].name)
     setValue(state=>newValue);
-    props.change(Object.keys(houses[0].img.fotosCategory)[newValue])
+    change(arr[newValue].name)
   };
-  const listItem = Object.keys(houses[0].img.fotosCategory).map((item,index) => {
-    return <Tab key={index} label={ <Typography variant='h6' color='textPrimary'> {item} </Typography>}></Tab>
+  const listItem = arr.map((item,index) => {
+    return <Tab key={index} label={ <Typography variant='h6' color='textPrimary'> {item['Название модуля']} </Typography>}></Tab>
     });
   return (
     <Box className={classes.panel}>

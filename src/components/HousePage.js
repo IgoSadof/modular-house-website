@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
     width: "450px",
     height: (param) => `${param.modulesCounts * param.heightOneLine}vh`,
     display: "flex",
-    minHeight:"60vh",
+    minHeight: "60vh",
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
@@ -216,7 +216,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginRight: "auto",
     height: "16vh",
-    overflowY: 'auto',
+    overflowY: "auto",
     // marginBottom:'20px',
   },
   model: {
@@ -460,9 +460,7 @@ const useStyles = makeStyles((theme) => ({
 const HousePage = ({ house }) => {
   const data = useStaticQuery(graphql`
     {
-      allFile(
-        filter: {extension: {regex: "/(jpg)|(png)/"}}
-      ) {
+      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
         edges {
           node {
             id
@@ -511,23 +509,52 @@ const HousePage = ({ house }) => {
   `);
 
   const dataHouses = useMemo(() => getHousesData(data), [data]);
-  const getImg = (path) =>{
-    // console.log(path)
-    return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
-  }
+  const getImg = (path) => {
+    return getImage(
+      data.allFile.edges.find(
+        (item) => item.node.relativePath === path.substr(7)
+      ).node
+    );
+  };
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
   const [houseNumber] = useState(house);
+  const baseFolder = `houses/${dataHouses[house]["Код"].replace(
+    " ",
+    ""
+  )}/модули/`;
 
-  const [category, setCategory] = React.useState("все");
+  const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
+  const getImgsFromDirectory = (directory) => {
+    let regExp = new RegExp(`^${directory}\/?[a-zA-Z0-9_\/-]*`);
+    // console.log(regExp);
+    let imagesArr = [];
+    data.allFile.edges.forEach((item) => {
+      if (!!!item.node.relativeDirectory.search(regExp)) {
+        // console.log(item.node.relativeDirectory);
+
+        imagesArr.push(getImage(item.node));
+      }
+    });
+    console.log(imagesArr);
+    return imagesArr;
+  };
+
   const [modulePrice, setModulePrice] = useState(0);
   // image={getImg(`${item["Иконка дома"].substr(
   //   item["Иконка дома"].search(/images\//)
   // )}`)}
- const baseImg = dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(/images\//))
+
+  const baseImg = dataHouses[houseNumber].modules[0].rooms[0][
+    "Главное изображение"
+  ].substr(
+    dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(
+      /images\//
+    )
+  );
   const [roomsImg, setRoomsImg] = useState(baseImg);
   // console.log(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(/images\//)))
 
@@ -546,7 +573,13 @@ const HousePage = ({ house }) => {
   const param = { pilldistance, modulesCounts, heightOneLine };
   const classes = useStyles(param);
 
-  const [model3d, setModel3d] = useState(`../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].search(/models3d/))}`);
+  const [model3d, setModel3d] = useState(
+    `../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(
+      dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].search(
+        /models3d/
+      )
+    )}`
+  );
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -554,14 +587,30 @@ const HousePage = ({ house }) => {
     if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
       setPilldistance((state) => state + pillStep);
       setPillClick((state) => state + 1);
-      setModel3d(`../../${dataHouses[houseNumber]["modules"][pillClick + 1]["3D Модель"].substr(dataHouses[houseNumber]["modules"][pillClick+1]["3D Модель"].search(/models3d/))}`);
+      setModel3d(
+        `../../${dataHouses[houseNumber]["modules"][pillClick + 1][
+          "3D Модель"
+        ].substr(
+          dataHouses[houseNumber]["modules"][pillClick + 1]["3D Модель"].search(
+            /models3d/
+          )
+        )}`
+      );
     }
   };
   const handleMinusClick = (e) => {
     if (pilldistance - pillStep >= 10 && pillClick - 1 >= 0) {
       setPilldistance((state) => state - pillStep);
       setPillClick((state) => state - 1);
-      setModel3d(`../../${dataHouses[houseNumber]["modules"][pillClick - 1]["3D Модель"].substr(dataHouses[houseNumber]["modules"][pillClick-1]["3D Модель"].search(/models3d/))}`);
+      setModel3d(
+        `../../${dataHouses[houseNumber]["modules"][pillClick - 1][
+          "3D Модель"
+        ].substr(
+          dataHouses[houseNumber]["modules"][pillClick - 1]["3D Модель"].search(
+            /models3d/
+          )
+        )}`
+      );
     }
   };
   const handleClickLeft = () => {
@@ -572,7 +621,8 @@ const HousePage = ({ house }) => {
   };
 
   const handleChangePanel = (value) => {
-    setCategory(value);
+    console.log(baseFolder + value)
+    setRelativeDirectory(baseFolder + value);
   };
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
@@ -583,15 +633,24 @@ const HousePage = ({ house }) => {
     }
   };
 
-  const listItem = houses[houseNumber].img.fotosCategory[category].map(
+  const listItem = getImgsFromDirectory(relativeDirectory).map(
     (item, index) => {
       return (
         <li className={classes.mainImgItem} key={index}>
-          <img className={classes.mainImgSlider} src={item} alt="img"></img>
+          <GatsbyImage
+            className={classes.mainImgSlider}
+            image={item}
+            alt="img"
+          ></GatsbyImage>
         </li>
       );
     }
   );
+
+  let all = {}
+  all['Название модуля']="Все";
+  all.name="";
+  const panelTabs = [all,...dataHouses[house].modules];
 
   return (
     <Box components="main">
@@ -602,9 +661,11 @@ const HousePage = ({ house }) => {
         <Box className={classes.mainImgBox}>
           <GatsbyImage
             className={classes.mainImg}
-            image={getImg(`${dataHouses[houseNumber]["Баннер"].substr(
-              dataHouses[houseNumber]["Баннер"].search(/images/)
-            )}`)}
+            image={getImg(
+              `${dataHouses[houseNumber]["Баннер"].substr(
+                dataHouses[houseNumber]["Баннер"].search(/images/)
+              )}`
+            )}
             alt="img"
           ></GatsbyImage>
           {matches[1200] ? (
@@ -619,9 +680,13 @@ const HousePage = ({ house }) => {
               <Box className={classes.houseDescIconBox}>
                 <GatsbyImage
                   className={classes.mainPlan}
-                  image={getImg(`${dataHouses[houseNumber]["Иконка планировки"].substr(
-                    dataHouses[houseNumber]["Иконка планировки"].search(/images/)
-                  )}`)}
+                  image={getImg(
+                    `${dataHouses[houseNumber]["Иконка планировки"].substr(
+                      dataHouses[houseNumber]["Иконка планировки"].search(
+                        /images/
+                      )
+                    )}`
+                  )}
                   alt="img"
                 ></GatsbyImage>
                 <Typography variant="h5" className={classes.houseSpecPrice}>
@@ -788,7 +853,11 @@ const HousePage = ({ house }) => {
             />
           </Box>
           {matches[1200] ? null : (
-            <Panel ref={categoryRef} change={handleChangePanel} />
+            <Panel
+              ref={categoryRef}
+              arr={panelTabs}
+              change={handleChangePanel}
+            />
           )}
         </Box>
       </Box>
@@ -823,7 +892,11 @@ const HousePage = ({ house }) => {
             timeout={500}
             classNames="fade"
           >
-            <GatsbyImage className={classes.roomImg} image={getImg(roomsImg)} alt="img"></GatsbyImage>
+            <GatsbyImage
+              className={classes.roomImg}
+              image={getImg(roomsImg)}
+              alt="img"
+            ></GatsbyImage>
           </CSSTransition>
         </TransitionGroup>
       </Box>
@@ -845,9 +918,11 @@ const HousePage = ({ house }) => {
           )}
           <GatsbyImage
             className={classes.calculationPlanImg}
-            image={getImg(`${dataHouses[houseNumber]["План"].substr(
-              dataHouses[houseNumber]["План"].search(/images/)
-            )}`)}
+            image={getImg(
+              `${dataHouses[houseNumber]["План"].substr(
+                dataHouses[houseNumber]["План"].search(/images/)
+              )}`
+            )}
             alt="img"
           ></GatsbyImage>
         </Box>
@@ -860,7 +935,11 @@ const HousePage = ({ house }) => {
                     onChange={handleChangeCheckbox}
                     value={+item["Стоимость"].replace("К", "000")}
                     control={<Checkbox color="primary" />}
-                    label={<Typography variant="h6">{item["Название модуля"]}</Typography>}
+                    label={
+                      <Typography variant="h6">
+                        {item["Название модуля"]}
+                      </Typography>
+                    }
                     labelPlacement="end"
                   />
                   <Typography variant="h3">${item["Стоимость"]}</Typography>
@@ -874,13 +953,15 @@ const HousePage = ({ house }) => {
                           variant="body1"
                           className={classes.calculationBodyText}
                         >
-                          {item['Экспликация']}
+                          {item["Экспликация"]}
                         </Typography>
                         <Typography
                           variant="body1"
                           className={classes.calculationBodyText}
                         >
-                          {item['Площадь комнаты'] ? `${item['Площадь комнаты']} м2` : null}
+                          {item["Площадь комнаты"]
+                            ? `${item["Площадь комнаты"]} м2`
+                            : null}
                         </Typography>
                       </li>
                     );
@@ -908,9 +989,11 @@ const HousePage = ({ house }) => {
               `}
           subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
           email
-          img={getImg(`${dataHouses[houseNumber]["Баннер"].substr(
-            dataHouses[houseNumber]["Баннер"].search(/images/)
-          )}`)}
+          img={getImg(
+            `${dataHouses[houseNumber]["Баннер"].substr(
+              dataHouses[houseNumber]["Баннер"].search(/images/)
+            )}`
+          )}
           formPosition="center"
         />
       </Box>
