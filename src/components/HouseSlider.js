@@ -1,4 +1,4 @@
-import React, { useState,useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
@@ -8,8 +8,8 @@ import { Link } from "gatsby";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import getHousesData from "../utils/getHousesData";
 import { useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import BackgroundImage from "gatsby-background-image";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -116,31 +116,33 @@ const useStyles = makeStyles((theme) => ({
       marginRight: "auto",
     },
   },
-  subtitle:{
-    display:"flex",
+  subtitle: {
+    display: "flex",
     marginTop: "40px",
-
-  }
+  },
 }));
 const HouseSlider = ({ mobile, houseRef }) => {
   const data = useStaticQuery(graphql`
     {
       allFile(
-        filter: {extension: {regex: "/(jpg)|(png)/"}}
+        filter: {
+          extension: { regex: "/(jpg)|(png)/" }
+        }
       ) {
         edges {
           node {
-            id
             base
-            relativeDirectory
-            relativePath
             childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
               gatsbyImageData(
-                width: 200
+                width: 500
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
               )
             }
+            relativePath
           }
         }
       }
@@ -165,15 +167,20 @@ const HouseSlider = ({ mobile, houseRef }) => {
     }
   `);
 
-  const dataHouses = useMemo(() => getHousesData(data),[data]);
+  const dataHouses = useMemo(() => getHousesData(data), [data]);
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
     600: useMediaQuery("(max-width:600px)"),
   };
+  const getBackgroundImg = (path) => {
+    let img = data.allFile.edges.find((item) => item.node.relativePath === path.substr(7))?.node.childImageSharp.fluid;
+    return img;
+  };
   const getImg = (path) =>{
-    return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
+    let img = getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7))?.node);
+    return img;
   }
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
@@ -203,14 +210,11 @@ const HouseSlider = ({ mobile, houseRef }) => {
                 onClick={handleClick}
               >
                 <Box className={classes.imgBox}>
-                  <Box
+                  <BackgroundImage
                     className={classes.img}
-                    style={
-                      item["Баннер"]
-                        ? { backgroundImage: `url(../../${item["Баннер"]})` }
-                        : null
-                    }
-                  ></Box>
+                    Tag="div"
+                    fluid={getBackgroundImg(`${item["Баннер"]}`)}
+                  ></BackgroundImage>
                 </Box>
               </Link>
 
@@ -287,7 +291,11 @@ const HouseSlider = ({ mobile, houseRef }) => {
                   <Box className={classes.houseDescIconBox}>
                     <GatsbyImage
                       className={classes.mainPlan}
-                      image={getImg(`${item["Иконка планировки"].substr(item["Иконка планировки"].search(/images\//))}`)}
+                      image={getImg(
+                        `${item["Иконка планировки"].substr(
+                          item["Иконка планировки"].search(/images\//)
+                        )}`
+                      )}
                       alt="img"
                     ></GatsbyImage>
                   </Box>

@@ -20,6 +20,7 @@ import "@google/model-viewer";
 import Model3d from "./Model3d";
 import getHousesData from "../utils/getHousesData";
 import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -215,6 +216,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginRight: "auto",
     height: "16vh",
+    overflowY: 'auto',
     // marginBottom:'20px',
   },
   model: {
@@ -456,8 +458,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousePage = ({ house }) => {
-  const housesQuery = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
+      allFile(
+        filter: {extension: {regex: "/(jpg)|(png)/"}}
+      ) {
+        edges {
+          node {
+            id
+            base
+            relativeDirectory
+            relativePath
+            childImageSharp {
+              gatsbyImageData(
+                width: 1000
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        }
+      }
       allMysqlModules {
         nodes {
           moduleName
@@ -489,7 +510,11 @@ const HousePage = ({ house }) => {
     }
   `);
 
-  const dataHouses = useMemo(() => getHousesData(housesQuery), [housesQuery]);
+  const dataHouses = useMemo(() => getHousesData(data), [data]);
+  const getImg = (path) =>{
+    // console.log(getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node))
+    return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
+  }
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -571,13 +596,13 @@ const HousePage = ({ house }) => {
         className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
       >
         <Box className={classes.mainImgBox}>
-          <img
+          <GatsbyImage
             className={classes.mainImg}
-            src={`../../${dataHouses[houseNumber]["Баннер"].substr(
+            image={getImg(`${dataHouses[houseNumber]["Баннер"].substr(
               dataHouses[houseNumber]["Баннер"].search(/images/)
-            )}`}
+            )}`)}
             alt="img"
-          ></img>
+          ></GatsbyImage>
           {matches[1200] ? (
             <Box className={classes.mainBlockTitleBox}>
               <Typography
@@ -588,13 +613,13 @@ const HousePage = ({ house }) => {
                 {dataHouses[houseNumber]["Код"]}
               </Typography>
               <Box className={classes.houseDescIconBox}>
-                <img
+                <GatsbyImage
                   className={classes.mainPlan}
-                  src={`../../${dataHouses[houseNumber]["Иконка планировки"].substr(
+                  image={getImg(`${dataHouses[houseNumber]["Иконка планировки"].substr(
                     dataHouses[houseNumber]["Иконка планировки"].search(/images/)
-                  )}`}
+                  )}`)}
                   alt="img"
-                ></img>
+                ></GatsbyImage>
                 <Typography variant="h5" className={classes.houseSpecPrice}>
                   {/* {dataHouses[houseNumber].price} */}
                 </Typography>
@@ -814,13 +839,13 @@ const HousePage = ({ house }) => {
               Смета
             </Typography>
           )}
-          <img
+          <GatsbyImage
             className={classes.calculationPlanImg}
-            src={`../../${dataHouses[houseNumber]["План"].substr(
+            image={getImg(`${dataHouses[houseNumber]["План"].substr(
               dataHouses[houseNumber]["План"].search(/images/)
-            )}`}
+            )}`)}
             alt="img"
-          ></img>
+          ></GatsbyImage>
         </Box>
         <Box className={classes.calculation}>
           {dataHouses.modules?.rooms? dataHouses[houseNumber].modules.map((item, index) => {
@@ -915,9 +940,9 @@ const HousePage = ({ house }) => {
               `}
           subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
           email
-          img={`../../${dataHouses[houseNumber]["Баннер"].substr(
+          img={getImg(`${dataHouses[houseNumber]["Баннер"].substr(
             dataHouses[houseNumber]["Баннер"].search(/images/)
-          )}`}
+          )}`)}
           formPosition="center"
         />
       </Box>

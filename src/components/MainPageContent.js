@@ -270,7 +270,7 @@ const MainPageContent = () => {
   const data = useStaticQuery(graphql`
     {
       allFile(
-              filter: {extension: {regex: "/(jpg)|(png)|(svg)/"}}
+              filter: {extension: {regex: "/(jpg)|(png)/"}}
             ) {
               edges {
                 node {
