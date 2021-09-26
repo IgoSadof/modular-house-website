@@ -183,13 +183,13 @@ const useStyles = makeStyles((theme) => ({
   modelDesc: {
     position: "relative",
     width: "450px",
-    height: (param) => `${param.modulesCounts * param.heightOneLine}vh`,
+    height: (param) => `${param.heightOneLine * param.modulesCounts}vh`,
     display: "flex",
-    minHeight: "60vh",
+    minHeight: (param) => `${param.heightModuleList}vh`,
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height: (param) => `${param.modulesCounts * (param.heightOneLine + 4)}vh`,
+      height: (param) => `${(param.heightModuleList / param.modulesCounts) + 4}vh`,
     },
   },
   accordionBox: {
@@ -200,13 +200,13 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   modelDescSecondColumn: {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   modelDescItemTitle: {
     listStyle: "none",
@@ -214,7 +214,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     marginRight: "auto",
-    height: "16vh",
+    minHeight: "16vh",
+    height:(param) => `${param.heightModuleList / param.modulesCounts}vh`,
     overflowY: "auto",
     // marginBottom:'20px',
   },
@@ -229,6 +230,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   modelDescLine: {
+    display: (param) => param.modulesCounts > 1?"block":"none",
     position: "relative",
     width: "1px",
     height: "100%",
@@ -569,10 +571,12 @@ const HousePage = ({ house }) => {
   const modulesCounts = dataHouses[houseNumber]["modules"].length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 16;
+  const heightModuleList = 60;
+
 
   const [pilldistance, setPilldistance] = useState(heightOneLine);
   const [pillClick, setPillClick] = useState(0);
-  const param = { pilldistance, modulesCounts, heightOneLine };
+  const param = { pilldistance, modulesCounts, heightOneLine, heightModuleList };
   const classes = useStyles(param);
   const [model3d, setModel3d] = useState(
     `../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(
