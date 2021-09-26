@@ -512,7 +512,7 @@ const HousePage = ({ house }) => {
 
   const dataHouses = useMemo(() => getHousesData(data), [data]);
   const getImg = (path) =>{
-    // console.log(getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node))
+    // console.log(path)
     return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
   }
 
@@ -524,9 +524,13 @@ const HousePage = ({ house }) => {
 
   const [category, setCategory] = React.useState("все");
   const [modulePrice, setModulePrice] = useState(0);
-  const [roomsImg, setRoomsImg] = useState(
-    houses[houseNumber].modules[0].rooms[0].img
-  );
+  // image={getImg(`${item["Иконка дома"].substr(
+  //   item["Иконка дома"].search(/images\//)
+  // )}`)}
+ const baseImg = dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(/images\//))
+  const [roomsImg, setRoomsImg] = useState(baseImg);
+  // console.log(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(/images\//)))
+
   const [roomsImgIndex, setRoomsImgIndex] = useState(0);
   const [opacity] = useState(true);
   const handleRoomsImgChange = (img, index) => {
@@ -805,9 +809,9 @@ const HousePage = ({ house }) => {
           )}
           <Box className={classes.accordionBox}>
             <Accordions
-              arr={houses[houseNumber].modules[0].rooms}
+              arr={dataHouses[houseNumber].modules[0].rooms}
               roomsImg={handleRoomsImgChange}
-              hardCode={true}
+              houseRooms={true}
             />
           </Box>
         </Box>
@@ -819,7 +823,7 @@ const HousePage = ({ house }) => {
             timeout={500}
             classNames="fade"
           >
-            <img className={classes.roomImg} src={roomsImg} alt="img"></img>
+            <GatsbyImage className={classes.roomImg} image={getImg(roomsImg)} alt="img"></GatsbyImage>
           </CSSTransition>
         </TransitionGroup>
       </Box>
@@ -848,7 +852,7 @@ const HousePage = ({ house }) => {
           ></GatsbyImage>
         </Box>
         <Box className={classes.calculation}>
-          {dataHouses.modules?.rooms? dataHouses[houseNumber].modules.map((item, index) => {
+          {dataHouses[houseNumber].modules.map((item, index) => {
             return (
               <Box className={classes.calculationItem} key={index}>
                 <Box className={classes.calculationHeader}>
@@ -870,13 +874,13 @@ const HousePage = ({ house }) => {
                           variant="body1"
                           className={classes.calculationBodyText}
                         >
-                          {item.title}
+                          {item['Экспликация']}
                         </Typography>
                         <Typography
                           variant="body1"
                           className={classes.calculationBodyText}
                         >
-                          {item.area ? `${item.area} м2` : null}
+                          {item['Площадь комнаты'] ? `${item['Площадь комнаты']} м2` : null}
                         </Typography>
                       </li>
                     );
@@ -884,43 +888,7 @@ const HousePage = ({ house }) => {
                 </Box>
               </Box>
             );
-          }):(houses[houseNumber].modules.map((item, index) => {
-            return (
-              <Box className={classes.calculationItem} key={index}>
-                <Box className={classes.calculationHeader}>
-                  <FormControlLabel
-                    onChange={handleChangeCheckbox}
-                    value={+item.price.replace(" ", "")}
-                    // value={+item.price.replace("К", "000")}
-                    control={<Checkbox color="primary" />}
-                    label={<Typography variant="h6">{item.name}</Typography>}
-                    labelPlacement="end"
-                  />
-                  <Typography variant="h3">${item.price}</Typography>
-                </Box>
-
-                <Box className={classes.calculationBody}>
-                  {item.rooms.map((item, index) => {
-                    return (
-                      <li className={classes.calculationBodyItem} key={index}>
-                        <Typography
-                          variant="body1"
-                          className={classes.calculationBodyText}
-                        >
-                          {item.title}
-                        </Typography>
-                        <Typography
-                          variant="body1"
-                          className={classes.calculationBodyText}
-                        >
-                          {item.area ? `${item.area} м2` : null}
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </Box>
-              </Box>
-            );}))}
+          })}
 
           <Box className={classes.calculationResult}>
             <Typography variant="h6">Цена</Typography>

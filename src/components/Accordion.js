@@ -49,7 +49,7 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function Accordions({ arr,roomsImg,hardCode}) {
+export default function Accordions({ arr,roomsImg,houseRooms}) {
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -60,7 +60,8 @@ export default function Accordions({ arr,roomsImg,hardCode}) {
       {arr.map((item, index) => {
         return (
           <Accordion
-            onClick={roomsImg?()=>roomsImg(item.img,index):null}
+          // .substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"]).search(/images\//)
+            onClick={roomsImg?()=>roomsImg(item['Главное изображение'].substr(item['Главное изображение'].search(/images\//)),index):null}
             key={index}
             square
             expanded={expanded === `panel${index + 1}`}
@@ -71,10 +72,10 @@ export default function Accordions({ arr,roomsImg,hardCode}) {
               id={`panel${index + 1}d-header`}
               expandIcon={<AddIcon />}
             >
-              <Typography variant="h3">{hardCode? item.title:item[70].toUpperCase()}</Typography>
+              <Typography variant="h3">{houseRooms? item['Экспликация']:item[70].toUpperCase()}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">{hardCode? item.subtitle:item[71]}</Typography>
+              <Typography variant="body1">{houseRooms? item['Описание комнаты']:item[71]}</Typography>
             </AccordionDetails>
           </Accordion>
         );
