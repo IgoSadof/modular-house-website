@@ -526,10 +526,11 @@ const HousePage = ({ house }) => {
   const baseFolder = `houses/${dataHouses[house]["Код"].replace(
     " ",
     ""
-  )}/модули/`;
+  )}/`;
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const getImgsFromDirectory = (directory) => {
+    console.log(directory)
     let regExp = new RegExp(`^${directory}\/?[a-zA-Z0-9_\/-]*`);
     // console.log(regExp);
     let imagesArr = [];
@@ -540,7 +541,7 @@ const HousePage = ({ house }) => {
         imagesArr.push(getImage(item.node));
       }
     });
-    // console.log(imagesArr);
+    console.log(imagesArr);
     return imagesArr;
   };
 
@@ -627,7 +628,12 @@ const HousePage = ({ house }) => {
 
   const handleChangePanel = (value) => {
     // console.log(baseFolder + value);
-    setRelativeDirectory(baseFolder + value);
+    if(value === ""){
+      setRelativeDirectory(baseFolder);
+    }else{
+      setRelativeDirectory(baseFolder +"/модули/"+ value);
+    }
+    
   };
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
