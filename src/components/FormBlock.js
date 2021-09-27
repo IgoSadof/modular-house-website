@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FormBlock = ({header,title, subtitle, text, email, img, formPosition}) => {
+const FormBlock = ({header,title, subtitle, text, email, img, formPosition, staticImg}) => {
   const param = { formPosition };
   const classes = useStyles(param);
   // const [review, setReview] = useState(0);
@@ -104,11 +104,16 @@ const FormBlock = ({header,title, subtitle, text, email, img, formPosition}) => 
           <Form title={title} subtitle={subtitle?subtitle:null} email={email?email:null} text={text?text:null}/>
         </Box>
         <Box className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}>
-          <GatsbyImage
+          
+        {!staticImg?(<GatsbyImage
             className={classes.expodom_img}
             image={img}
             alt="img"
-          ></GatsbyImage>
+          ></GatsbyImage>):(<img
+          className={classes.expodom_img}
+          src={img}
+          alt="img"
+        ></img>)}
         </Box>
       </Box>
     </div>

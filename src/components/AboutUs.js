@@ -365,6 +365,7 @@ const AboutUs = () => {
         )}
         <FormBlock
           img={office}
+          staticImg={true}
           header={
             matches[1200]
               ? null

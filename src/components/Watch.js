@@ -3,7 +3,7 @@ import React from "react";
 import { makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import Panel from "./Panel";
+import StaticPanel from "./StaticPanel";
 import Form from "./Form";
 import MyCalendar from "./MyCalendar";
 import { houses } from "../constant/houses";
@@ -107,7 +107,7 @@ const Watch = () => {
       <Box components="section"  className={classes.imageSlider}>
         <HouseFotosSlider listItem={listItem} />
         {matches[1200] ? null : (
-          <Panel ref={categoryRef} change={handleChangePanel} />
+          <StaticPanel ref={categoryRef} change={handleChangePanel} />
         )}
       </Box>
       <Box components="section"  className={classes.excursion}>
