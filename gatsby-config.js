@@ -17,8 +17,8 @@ module.exports = {
       options: {
         connectionDetails: {
           host: 'localhost',
-          user: 'root',
-          password: 'banderas021290',
+          user: 'modularh_user',
+          password: 'modularhouse',
           database: 'modularh_db'
         },
         queries: [
