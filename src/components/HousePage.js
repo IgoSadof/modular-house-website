@@ -7,7 +7,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import SquareButton from "../components/buttons/SquareButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-// import plan from "../assets/images/plan.png";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import CalculateTable from "../components/CalculateTable";

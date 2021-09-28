@@ -3,8 +3,6 @@ import React, { useRef, useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
-import { houses } from "../constant/houses";
 import { Link } from "gatsby";
 import RegularButton from "./buttons/RegularButton";
 import ModalsSlider from "./ModalsSlider";
@@ -495,7 +493,7 @@ const HousesList = () => {
                 color="textSecondary"
                 className={classes.houseDescTitle}
               >
-                {houses[house].name}
+                {dataHouses[house]["Код"]}
               </Typography>
               <Box className={classes.houseDescIconBox}>
                 <GatsbyImage

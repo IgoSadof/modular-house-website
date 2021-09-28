@@ -96,5 +96,6 @@ module.exports = {
     },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
+    "gatsby-plugin-webpack-bundle-analyser-v2",
   ],
 };

@@ -1,7 +1,5 @@
-// import main1 from "../assets/images/houses/1/main-img.png";
 import model1 from "../assets/images/houses/1/model.png";
 import model2 from "../assets/images/houses/2/model.png";
-// import plan1 from "../assets/images/houses/1/plan-img.png";
 import kitchen from "../assets/images/houses/1/rooms/kitchen.png";
 import toilet from "../assets/images/houses/1/rooms/toilet.png";
 import outside from "../assets/images/houses/1/rooms/outside.png";
@@ -87,29 +85,6 @@ import ModelS121interer13 from "../assets/images/houses/ModelS121/рендер/1
 import ModelS121interer14 from "../assets/images/houses/ModelS121/рендер/14.jpg";
 import ModelS121plan from "../assets/images/houses/ModelS121/smuga-plan1st.jpg";
 
-// 3d modules
-
-import A192module1 from "../assets/models3d/ModelsA192/Module1.glb";
-import A192module2 from "../assets/models3d/ModelsA192/Module1+2.glb";
-import A192module3 from "../assets/models3d/ModelsA192/Module1+2+3.glb";
-import A192module4 from "../assets/models3d/ModelsA192/Module1+2+3+4.glb";
-import A192module5 from "../assets/models3d/ModelsA192/Module1+2+3+4+5.glb";
-
-import B120module1 from "../assets/models3d/ModelsB120/Module1.glb";
-import B120module2 from "../assets/models3d/ModelsB120/Module1+2.glb";
-import B120module3 from "../assets/models3d/ModelsB120/Module1+2+3.glb";
-import B120module4 from "../assets/models3d/ModelsB120/Module1+2+3+4.glb";
-
-import F195module1 from "../assets/models3d/ModelsF195/Module1.glb";
-import F195module2 from "../assets/models3d/ModelsF195/Module1+2.glb";
-import F195module3 from "../assets/models3d/ModelsF195/Module1+2+3.glb";
-import F195module4 from "../assets/models3d/ModelsF195/Module1+2+3+4.glb";
-
-import I220module1 from "../assets/models3d/ModelsI220/Module1.glb";
-
-import S121module1 from "../assets/models3d/ModelsS121/Module1.glb";
-import S121module2 from "../assets/models3d/ModelsS121/Module1+2.glb";
-
 const lang = "RU";
 export const houses = [
   {
@@ -194,7 +169,6 @@ export const houses = [
             img: ModelA192projekt1,
           },
         ],
-        model3d: A192module1,
       },
       {
         name: "Жилой блок",
@@ -245,7 +219,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: A192module2,
       },
       {
         name: "Терраса на входе",
@@ -262,7 +235,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: A192module3,
       },
       {
         name: "Гараж",
@@ -279,7 +251,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: A192module4,
       },
       {
         name: "Второй этаж",
@@ -296,7 +267,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: A192module5,
       },
     ],
     options: [
@@ -416,7 +386,6 @@ export const houses = [
             img: ModelB120projekt2,
           },
         ],
-        model3d: B120module1,
       },
       {
         name: "Жилой модуль",
@@ -469,7 +438,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: B120module2,
       },
       {
         name: "Гараж",
@@ -488,7 +456,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: B120module3,
       },
       {
         name: "Гараж",
@@ -507,7 +474,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: B120module4,
       },
     ],
     options: [
@@ -640,7 +606,6 @@ export const houses = [
             img: ModelF195fasad12,
           },
         ],
-        model3d: F195module1,
       },
       {
         name: "Жилой модуль",
@@ -693,7 +658,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: F195module2,
       },
       {
         name: "Гараж",
@@ -712,7 +676,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: F195module3,
       },
       {
         name: "Гараж",
@@ -731,7 +694,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: F195module4,
       },
     ],
     options: [
@@ -854,7 +816,6 @@ export const houses = [
             img: ModelI220fasad1,
           },
         ],
-        model3d: I220module1,
       },
     ],
     options: [
@@ -980,7 +941,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: S121module1,
       },
       {
         name: "Дополнительный модуль",
@@ -1031,7 +991,6 @@ export const houses = [
             img: outside,
           },
         ],
-        model3d: S121module2,
       },
     ],
     options: [
@@ -1065,178 +1024,4 @@ export const houses = [
       },
     ],
   },
-  // {
-  //   id: 6,
-  //   name: "SIXTH HOUSE",
-  //   link: "sixth-house",
-  //   desc:
-  //     "Мы видим миссию нашей команды в изменении окружающего мира за счет качественной концептуальной архитектуры. ",
-  //   price: `$ 115 764`,
-  //   totalArea: "170 M2",
-  //   effectiveArea: "170 M2",
-  //   baseModuleArea: "97 M2",
-  //   totalAreaText: lang === "RU" ? "Общая площадь дома:" : "Total Area:",
-  //   effectiveAreaText:
-  //     lang === "RU" ? "Полезная площадь дома:" : "Effective Area:",
-  //   baseModuleAreaText:
-  //     lang === "RU" ? "Площадь базового дома:" : "Base Module Area:",
-  //   img: {
-  //     main: main1,
-  //     list: model2,
-  //     desc: model2,
-  //     plan: plan1,
-  //     fotosCategory: {
-  //       все: [fasad, fasad],
-  //       фасад: [all, all],
-  //       кухня: [fasad, all, fasad, all],
-  //       туалет: [fasad, all, fasad, all],
-  //     },
-  //   },
-  //   modules: [
-  //     {
-  //       name: "Базовый модуль",
-  //       area: "100",
-  //       price: "25 000",
-  //       term: "45",
-  //       desc: `Развитие дома происходит по горизонтали в двух
-  //       направлениях. Кбазовому модулю могут быть пристроены
-  //       навес для автомобиля в одном направлении.`,
-  //       rooms: [
-  //         {
-  //           title: `ГОСТИННАЯ`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной 
-  //           конфигурации, дом площадью 50 м. кв. обходится в 33 к$. Домокомплект привозится на участок
-  //             и собирается на специально подготовленном фундаменте в течении двух недель. Отсутствие 
-  //             затяжного строительства существенно экономит деньги заказчика.`,
-  //           img: kitchen,
-  //           area: "10",
-  //         },
-  //         {
-  //           title: `КУХНЯ`,
-  //           subtitle: `Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. 
-  //           Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, 
-  //           а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации 
-  //           "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.."`,
-  //           img: outside,
-  //           area: "15",
-  //         },
-  //         {
-  //           title: `САНУЗЕЛ`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной. `,
-  //           img: toilet,
-  //           area: "10",
-  //         },
-  //         {
-  //           title: `ФАСАД`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной 
-  //           конфигурации, дом площадью 50 м. кв. обходится в 33 к$. Домокомплект привозится на участок.`,
-  //           img: outside,
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       name: "Жилой модуль",
-  //       area: "170",
-  //       price: "40 000",
-  //       term: "30",
-  //       desc: `Развитие дома происходит по горизонтали в двух
-  //       направлениях. К базовому модулю могут быть пристроены
-  //       навес для автомобиля в одном направлении.`,
-  //       rooms: [
-  //         {
-  //           title: `ГОСТИННАЯ`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной 
-  //           конфигурации, дом площадью 50 м. кв. обходится в 33 к$. Домокомплект привозится на участок
-  //             и собирается на специально подготовленном фундаменте в течении двух недель. Отсутствие 
-  //             затяжного строительства существенно экономит деньги заказчика.`,
-  //           img: kitchen,
-  //           area: "10",
-  //         },
-  //         {
-  //           title: `КУХНЯ`,
-  //           subtitle: `Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. 
-  //           Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, 
-  //           а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации 
-  //           "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.."`,
-  //           img: outside,
-  //           area: "15",
-  //         },
-  //         {
-  //           title: `САНУЗЕЛ`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной. `,
-  //           img: toilet,
-  //           area: "10",
-  //         },
-  //         {
-  //           title: `КЛАДОВКА`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной 
-  //           конфигурации, дом площадью 50 м. кв. обходится в 33 к$. Домокомплект привозится на участок.`,
-  //           img: kitchen,
-  //           area: "10",
-  //         },
-  //         {
-  //           title: `ФАСАД`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной 
-  //           конфигурации, дом площадью 50 м. кв. обходится в 33 к$. Домокомплект привозится на участок.`,
-  //           img: outside,
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       name: "Гараж",
-  //       price: "10 000",
-  //       area: "80",
-  //       term: "15",
-  //       desc: `Развитие дома происходит по горизонтали в двух
-  //       направлениях. К базовому модулю могут быть пристроены
-  //       навес для автомобиля в одном направлении.`,
-  //       rooms: [
-  //         {
-  //           title: `ФАСАД`,
-  //           subtitle: `Стоимость дома «под ключ», с панорамным остеклением, отделкой лиственницей, 
-  //           фальцевой кровлей и разводкой коммуникаций внутри дома составляет 660$ за метр. В полной 
-  //           конфигурации, дом площадью 50 м. кв. обходится в 33 к$. Домокомплект привозится на участок.`,
-  //           img: outside,
-  //         },
-  //       ],
-  //     },
-  //   ],
-  //   options: [
-  //     {
-  //       name: "фундамент",
-  //       variants: [
-  //         { name: "ленточный", price: "4000" },
-  //         { name: "свайный", price: "5100" },
-  //       ],
-  //     },
-  //     {
-  //       name: "стены",
-  //       variants: [
-  //         { name: "газоселикат", price: "4000" },
-  //         { name: "кирпич", price: "4000" },
-  //       ],
-  //     },
-  //     {
-  //       name: "кровля",
-  //       variants: [
-  //         { name: "двускатная", price: "4000" },
-  //         { name: "четырехскатная", price: "4000" },
-  //       ],
-  //     },
-  //     {
-  //       name: "внутренняя отделка",
-  //       variants: [
-  //         { name: "чистовая", price: "4000" },
-  //         { name: "черновая", price: "4000" },
-  //       ],
-  //     },
-  //   ],
-  // },
 ];
