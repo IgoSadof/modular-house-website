@@ -161,6 +161,9 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     height: "28vh",
+    "& picture img": {
+      objectFit: 'contain !important',
+    },
     [theme.breakpoints.down("md")]: {
       display: "none",
     },

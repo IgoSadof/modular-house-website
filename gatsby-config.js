@@ -87,7 +87,7 @@ module.exports = {
         // Set to false to allow builds to continue on image errors
         failOnError: true,
         // deprecated options and their defaults:
-        base64Width: 20,
+        base64Width:40,
         // forceBase64Format: `[png, jpg, webp]`, // valid formats: png,jpg,webp
         useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
         stripMetadata: true,

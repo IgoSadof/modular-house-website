@@ -188,7 +188,7 @@ const useStyles = makeStyles((theme) => ({
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height: (param) => `${(param.heightModuleList / param.modulesCounts) + 4}vh`,
+      height: (param) => `${(param.heightOneLine * param.modulesCounts) + 4}vh`,
     },
   },
   accordionBox: {
