@@ -460,7 +460,7 @@ const useStyles = makeStyles((theme) => ({
 const HousePage = ({ house }) => {
   const data = useStaticQuery(graphql`
     {
-      allFile(filter: { extension: { regex: "/(jpg)|(png)|(gif)/" } }) {
+      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
         edges {
           node {
             id
