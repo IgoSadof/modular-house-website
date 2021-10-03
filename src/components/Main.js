@@ -42,7 +42,7 @@ const Main = () => {
       if(isFirstEntry){
         localStorage.setItem("isFirstEntry", false);
         setIsFirstEntry(false);
-        document.body.style.overflow = "scroll"
+        document.body.style.overflowY = "scroll"
       } 
     }
     if (e.nativeEvent.wheelDelta > 0) {
@@ -58,7 +58,7 @@ const Main = () => {
     <Box
       component='main'
       className={classes.componets}
-      // onWheel={(e) => handleScroll(e)}
+      onWheel={(e) => handleScroll(e)}
     >
       <MainSlider scroll={scroll} isFirstEntry={isFirstEntry} />
       <MainPageContent />
