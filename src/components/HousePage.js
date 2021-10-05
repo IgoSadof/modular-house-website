@@ -458,6 +458,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousePage = ({ house }) => {
+  // allFile(filter: {relativeDirectory: {regex: "/houses/{[a-zA-Z0-9_]+}/"}, extension: { regex: "/(jpg)|(png)|(git)/" } }) {
   const data = useStaticQuery(graphql`
     {
       allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
@@ -505,6 +506,15 @@ const HousePage = ({ house }) => {
           parentId
         }
       }
+      allMysqlOptions {
+        nodes {
+          house
+          parameterName
+          parameterValue
+          mysqlId
+          contentId
+        }
+      }
     }
   `);
 
@@ -513,7 +523,7 @@ const HousePage = ({ house }) => {
     return getImage(
       data.allFile.edges.find(
         (item) => item.node.relativePath === path.substr(7)
-      ).node
+      )?.node
     );
   };
 
@@ -529,7 +539,7 @@ const HousePage = ({ house }) => {
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const getImgsFromDirectory = (directory) => {
-    console.log(directory)
+    // console.log(directory)
     let regExp = new RegExp(`^${directory}\/?[a-zA-Z0-9_\/-]*`);
     // console.log(regExp);
     let imagesArr = [];
@@ -540,7 +550,7 @@ const HousePage = ({ house }) => {
         imagesArr.push(getImage(item.node));
       }
     });
-    console.log(imagesArr);
+    // console.log(imagesArr);
     return imagesArr;
   };
 
@@ -993,7 +1003,7 @@ const HousePage = ({ house }) => {
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockTable}`}>
-        <CalculateTable houseN={"1"} />
+        <CalculateTable houseOptions={dataHouses[houseNumber].options} />
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockForm}`}>

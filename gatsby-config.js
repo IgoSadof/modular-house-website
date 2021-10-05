@@ -76,6 +76,18 @@ module.exports = {
             idFieldName: 'id',
             name: 'MainPage',
           },
+          {
+            statement: `
+            SELECT modx_site_tmplvar_contentvalues.id AS id, modx_site_tmplvars.name AS parameterName, modx_site_tmplvar_contentvalues.value AS parameterValue,
+            modx_site_content.alias AS house, modx_site_content.id AS contentId
+            FROM modx_site_tmplvar_contentvalues
+            JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
+            JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
+            JOIN modx_categories ON modx_categories.id = modx_site_tmplvars.category
+            WHERE modx_categories.category = "Параметры Опции"`,
+            idFieldName: 'id',
+            name: 'Options',
+          },
         ]
       }
     },

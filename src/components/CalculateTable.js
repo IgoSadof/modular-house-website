@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { houses } from "../constant/houses";
 import Box from "@material-ui/core/Box";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
@@ -73,13 +72,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CalculateTable = ({ houseN }) => {
+const CalculateTable = ({ houseOptions }) => {
+  console.log(houseOptions)
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
   const options = {};
-  houses[houseN].options.forEach((item) => {
+  houseOptions.forEach((item) => {
     options[item.name] = item.variants[0].price;
   });
 
@@ -109,7 +109,7 @@ const CalculateTable = ({ houseN }) => {
       <table className={classes.table}>
         <tbody>
           {!matches[1200]
-            ? houses[houseN].options.map((item, index) => (
+            ? houseOptions.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
                   <td
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}
@@ -164,7 +164,7 @@ const CalculateTable = ({ houseN }) => {
                   </td>
                 </tr>
               ))
-            : houses[houseN].options.map((item, index) => (
+            : houseOptions.options.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
                   <td
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}

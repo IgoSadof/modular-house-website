@@ -3,10 +3,9 @@ function getHousesData(data) {
   const elements = data.allMysqlHouses.nodes;
   const moduleParametrs = data.allMysqlModules.nodes;
   const roomsData = data?.allMysqlRooms?.nodes;
-    // console.log(moduleParametrs);
+  const optionsData = data?.allMysqlOptions?.nodes;
   const rooms = {};
   const roomsArr = [];
-
 
   if(roomsData){
     roomsData?.forEach((item) => {
@@ -23,10 +22,41 @@ function getHousesData(data) {
       roomsArr.push(rooms[key]);
     }
   }
-  
-  // console.log(rooms)
-  
 
+  const options = {};
+
+  if(optionsData){
+    optionsData?.forEach((item) => {
+      if (options[item.house] && options[item.house][item.contentId]) {
+        options[item.house][item.contentId][item.parameterName] = item.parameterValue;
+      } else {
+        if(!options[item.house]){options[item.house] = {};}
+        options[item.house][item.contentId]={};
+        options[item.house][item.contentId][item.parameterName] = item.parameterValue;
+      }
+    });
+  }
+  // options
+
+  let optionVariant = {}
+  let newOptions = {}
+
+    for (let key in options) {
+      for (let element in options[key]){
+        optionVariant.name = options[key][element]['Название'];
+        optionVariant.variants = [];
+        optionVariant.variants.push({name:options[key][element]['Предложение дороже'],price:options[key][element]['Цена дороже']});
+        optionVariant.variants.push({name:options[key][element]['Предложение дешевле'],price:options[key][element]['Цена дешевле']});
+        if(newOptions[key]){
+          newOptions[key].push(optionVariant);
+        }else{
+          newOptions[key] = []
+          newOptions[key].push(optionVariant);
+        }
+        optionVariant = {}
+      }
+    }
+  
   const houses = {};
 
   elements.forEach((item) => {
@@ -37,8 +67,10 @@ function getHousesData(data) {
       houses[item.alias][item.name] = item.value;
       houses[item.alias]["id"] = item.contentID;
       houses[item.alias]["modules"] = [];
+      houses[item.alias]["options"] = [];
     }
   });
+  
 //   console.log(houses);
   const houseArr = [];
   for (let key in houses) {
@@ -85,7 +117,6 @@ function getHousesData(data) {
     house['modules'] = modulesArr;
     modules = {}
   });
-  // console.log(houseArr)
 
 // add rooms in modules
   roomsArr.forEach((room)=>{
@@ -97,6 +128,7 @@ function getHousesData(data) {
       })
     })
   })
+
   // create all rooms Arr
   houseArr.forEach((house)=>{
     house.allRooms = [];
@@ -106,6 +138,18 @@ function getHousesData(data) {
       })
     })
   })
+
+// add options  on house Arr
+  houseArr.forEach((house)=>{
+    for(let option in newOptions){
+      if (option === house.alias){
+        house.options = newOptions[option]
+      }
+    }
+  })
+
+  // console.log(houseArr)
+
   return houseArr;
 }
 export default getHousesData;
