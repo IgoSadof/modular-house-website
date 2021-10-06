@@ -10,7 +10,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Burger from "./Burger";
 import BurgerMenu from "./BurgerMenu";
 import RegularButton from "./buttons/RegularButton";
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   BlockFullscreen: {
     position: "relative",
-    height:'100%',
+    height: "100%",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
@@ -61,7 +62,11 @@ const useStyles = makeStyles((theme) => ({
   button: {
     position: "absolute",
     top: (param) =>
-      param.page === "aboutUs" || param.page === "main" || param.page === "house"  ? "1%" : "5%",
+      param.page === "aboutUs" ||
+      param.page === "main" ||
+      param.page === "house"
+        ? "1%"
+        : "5%",
     right: "10%",
     zIndex: "2",
   },
@@ -76,7 +81,7 @@ const Layout = ({ pageTitle, children, page }) => {
         }
       }
     }
-  `)
+  `);
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -93,7 +98,16 @@ const Layout = ({ pageTitle, children, page }) => {
   };
   return (
     <ThemeProvider theme={modularHouseTheme}>
-      <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          {pageTitle} | {data.site.siteMetadata.title}
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+      </Helmet>
+
       {/* <header>{data.site.siteMetadata.title}</header> */}
       <Box className="conteiner">
         <Menu />

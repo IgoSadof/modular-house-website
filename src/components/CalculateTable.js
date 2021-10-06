@@ -73,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CalculateTable = ({ houseOptions }) => {
-  console.log(houseOptions)
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -164,7 +163,7 @@ const CalculateTable = ({ houseOptions }) => {
                   </td>
                 </tr>
               ))
-            : houseOptions.options.map((item, index) => (
+            : houseOptions.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
                   <td
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}

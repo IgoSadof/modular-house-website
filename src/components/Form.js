@@ -232,9 +232,9 @@ const Form = ({
   let [state, handleSubmit] = useForm("xgerpayy");
   useEffect(() => {
     if (state.succeeded && state.submitting && !open) {
-      console.log(state);
+      // console.log(state);
       setOpen(true);
-      console.log(formRef.current.reset);
+      // console.log(formRef.current.reset);
       formRef.current.reset()
       }
   },[state]);

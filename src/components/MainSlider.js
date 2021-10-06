@@ -246,7 +246,7 @@ const Slider = ({ scroll, isFirstEntry }) => {
   const classes = useStyles(param);
   const [opacity] = useState(true);
   const vidSegments = {
-    0: 2,
+    0: 3.5,
     1: 9.5,
     2: 20.5,
     3: 24,

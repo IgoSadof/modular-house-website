@@ -193,15 +193,15 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
           </RegularButton>
         ) : null}
         <Box className={classes.iconsBox}>
-          <Link className={classes.Link} to={"/"}>
+          <a className={classes.Link} href={"https://www.facebook.com/zrobimarchitects/"}>
             <img className={classes.icon} src={facebook} alt="icons"></img>
-          </Link>
-          <Link className={classes.Link} to={"/"}>
+          </a>
+          <a className={classes.Link} href={"https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ"}>
             <img className={classes.icon} src={youtube} alt="icons"></img>
-          </Link>
-          <Link className={classes.Link} to={"/"}>
+          </a>
+          <a className={classes.Link} href={"https://www.instagram.com/by___home/"}>
             <img className={classes.icon} src={instagram} alt="icons"></img>
-          </Link>
+          </a>
         </Box>
       </Box>
     </Box>
