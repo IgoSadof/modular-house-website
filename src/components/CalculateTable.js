@@ -84,7 +84,7 @@ const CalculateTable = ({ houseOptions }) => {
 
   const [currentOption, setCheckboxesCheck] = useState(options);
   const [price, setPrice] = useState(
-    Object.values(currentOption).reduce(
+    Object.keys(currentOption).length === 0? "0": Object.values(currentOption).reduce(
       (accumulator, currentValue) => +accumulator + +currentValue
     )
   );
@@ -97,7 +97,7 @@ const CalculateTable = ({ houseOptions }) => {
   };
 
   useEffect(() => {
-    let sum = Object.values(currentOption).reduce(
+    let sum = Object.keys(currentOption).length === 0? 0 : Object.values(currentOption).reduce(
       (accumulator, currentValue) => +accumulator + +currentValue
     );
     setPrice(sum);
