@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import ReactPlayer from "react-player";
 import numbers from "../constant/numbers";
-import video from "../assets/video/video.mp4";
+import video2 from "../assets/video/video2.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import getData from '../utils/getData';
@@ -246,10 +246,10 @@ const Slider = ({ scroll, isFirstEntry }) => {
   const classes = useStyles(param);
   const [opacity] = useState(true);
   const vidSegments = {
-    0: 3.5,
-    1: 9.5,
-    2: 20.5,
-    3: 24,
+    0: 1.5,
+    1: 2.9,
+    2: 6.8,
+    3: 8,
   };
 
   useEffect(() => {
@@ -324,11 +324,11 @@ const Slider = ({ scroll, isFirstEntry }) => {
             <ReactPlayer
               height="100%"
               width="100%"
-              url={video}
+              url={video2}
               playing={playVideo}
               muted={true}
               onProgress={({ playedSeconds, loadedSeconds }) => {
-                if (playedSeconds > vidSegments[currentSegment]) {
+                if (playedSeconds >= vidSegments[currentSegment]) {
                   setPlayVideo(false);
                 }
               }}
