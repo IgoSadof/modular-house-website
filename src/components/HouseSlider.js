@@ -10,6 +10,7 @@ import getHousesData from "../utils/getHousesData";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import BackgroundImage from "gatsby-background-image";
+import { convertToBgImage } from "gbimage-bridge";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -124,20 +125,13 @@ const useStyles = makeStyles((theme) => ({
 const HouseSlider = ({ mobile, houseRef }) => {
   const data = useStaticQuery(graphql`
     {
-      allFile(
-        filter: {
-          extension: { regex: "/(jpg)|(png)/" }
-        }
-      ) {
+      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
         edges {
           node {
             base
             childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
               gatsbyImageData(
-                width: 500
+                width: 1000
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
               )
@@ -175,13 +169,19 @@ const HouseSlider = ({ mobile, houseRef }) => {
     600: useMediaQuery("(max-width:600px)"),
   };
   const getBackgroundImg = (path) => {
-    let img = data.allFile.edges.find((item) => item.node.relativePath === path.substr(7))?.node.childImageSharp.fluid;
+    let img = data.allFile.edges.find(
+      (item) => item.node.relativePath === path.substr(7)
+    )?.node.childImageSharp.fluid;
     return img;
   };
-  const getImg = (path) =>{
-    let img = getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7))?.node);
+  const getImg = (path) => {
+    let img = getImage(
+      data.allFile.edges.find(
+        (item) => item.node.relativePath === path.substr(7)
+      )?.node
+    );
     return img;
-  }
+  };
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
   const classes = useStyles(param);
@@ -213,8 +213,9 @@ const HouseSlider = ({ mobile, houseRef }) => {
                   <BackgroundImage
                     className={classes.img}
                     Tag="div"
-                    fluid={getBackgroundImg(`${item["Баннер"]}`)}
-                  ></BackgroundImage>
+                    {...convertToBgImage(getImg(`${item["Баннер"]}`))}
+                  >
+                  </BackgroundImage>
                 </Box>
               </Link>
 
