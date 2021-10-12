@@ -81,6 +81,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    border: "none",
+    background:"none",
     [theme.breakpoints.down("md")]: {
       transform: "scale(0.7)",
       top: "20px",
@@ -162,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "28vh",
     "& picture img": {
-      objectFit: 'contain !important',
+      objectFit: "contain !important",
     },
     [theme.breakpoints.down("md")]: {
       display: "none",
@@ -221,9 +223,9 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescText: {
     fontSize: "14px",
-    margin:"20px 0",
-    overflowY:'auto',
-    maxHeight:'25vh',
+    margin: "20px 0",
+    overflowY: "auto",
+    maxHeight: "25vh",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
@@ -237,7 +239,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescSpec: style.flexColumn,
   houseDescSpecOne: style.flex,
-  houseDescMore: {...style.flex, marginTop:'20px',},
+  houseDescMore: { ...style.flex, marginTop: "20px" },
   houseDescPrice: style.flexColumn,
   houseSpecPrice: {
     [theme.breakpoints.down("md")]: {
@@ -271,9 +273,7 @@ const useStyles = makeStyles((theme) => ({
 const HousesList = () => {
   const data = useStaticQuery(graphql`
     {
-      allFile(
-        filter: {extension: {regex: "/(jpg)|(png)/"}}
-      ) {
+      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
         edges {
           node {
             id
@@ -312,10 +312,14 @@ const HousesList = () => {
   `);
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
-  const getImg = (path) =>{
+  const getImg = (path) => {
     // console.log(getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node))
-    return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
-  }
+    return getImage(
+      data.allFile.edges.find(
+        (item) => item.node.relativePath === path.substr(7)
+      ).node
+    );
+  };
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1280: useMediaQuery("(max-width:1280px)"),
@@ -348,12 +352,12 @@ const HousesList = () => {
   const scrollOn = (e) => {
     document.body.style.overflow = "inherit";
   };
-  const element = useRef(null);
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
   const listItem = dataHouses.map((item, index) => {
     return (
-      <li
+      <button
+        tabindex="0"
         className={
           activeSlide === index
             ? `${classes.houseListItem} ${classes.houseListItemActive}`
@@ -361,6 +365,7 @@ const HousesList = () => {
         }
         key={item.id}
         onClick={() => handleItemclick(index)}
+        onKeyDown={() => handleItemclick(index)}
       >
         <Typography
           className={
@@ -381,9 +386,11 @@ const HousesList = () => {
               >
                 <GatsbyImage
                   className={classes.houseListImg}
-                  image={getImg(`${item["Иконка дома"].substr(
-                    item["Иконка дома"].search(/images\//)
-                  )}`)}
+                  image={getImg(
+                    `${item["Иконка дома"].substr(
+                      item["Иконка дома"].search(/images\//)
+                    )}`
+                  )}
                   alt="img"
                 ></GatsbyImage>
               </CSSTransition>
@@ -407,9 +414,11 @@ const HousesList = () => {
                     ? `${classes.houseListImg} ${classes.houseListImgActive}`
                     : classes.houseListImg
                 }
-                image={getImg(`${item["Иконка дома"].substr(
-                  item["Иконка дома"].search(/images\//)
-                )}`)}
+                image={getImg(
+                  `${item["Иконка дома"].substr(
+                    item["Иконка дома"].search(/images\//)
+                  )}`
+                )}
                 alt="img"
               ></GatsbyImage>
             </CSSTransition>
@@ -431,7 +440,7 @@ const HousesList = () => {
             ) : null}
           </>
         )}
-      </li>
+      </button>
     );
   });
 
@@ -440,9 +449,9 @@ const HousesList = () => {
       <li className={classes.mainImg} key={index}>
         <GatsbyImage
           className={classes.mainImg}
-          image={getImg(`${item["Баннер"].substr(
-            item["Баннер"].search(/images/)
-          )}`)}
+          image={getImg(
+            `${item["Баннер"].substr(item["Баннер"].search(/images/))}`
+          )}
           alt="img"
         ></GatsbyImage>
         {/* <div className={classes.mainImg} style={{ backgroundImage: `url(${item.img.main})` }}></div> */}
@@ -480,9 +489,11 @@ const HousesList = () => {
               <GatsbyImage
                 // ref={element}
                 className={classes.houseDescImg}
-                image={getImg(`${dataHouses[house]["Иконка дома"].substr(
-                  dataHouses[house]["Иконка дома"].search(/images\//)
-                )}`)}
+                image={getImg(
+                  `${dataHouses[house]["Иконка дома"].substr(
+                    dataHouses[house]["Иконка дома"].search(/images\//)
+                  )}`
+                )}
                 alt="img"
               ></GatsbyImage>
               {/* </Fade> */}
@@ -501,9 +512,11 @@ const HousesList = () => {
               <Box className={classes.houseDescIconBox}>
                 <GatsbyImage
                   className={classes.mainPlan}
-                  image={getImg(`${dataHouses[house]["Иконка планировки"].substr(
-                    dataHouses[house]["Иконка планировки"].search(/images/)
-                  )}`)}
+                  image={getImg(
+                    `${dataHouses[house]["Иконка планировки"].substr(
+                      dataHouses[house]["Иконка планировки"].search(/images/)
+                    )}`
+                  )}
                   alt="img"
                 ></GatsbyImage>
               </Box>

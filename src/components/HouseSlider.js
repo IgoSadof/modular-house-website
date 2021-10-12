@@ -168,12 +168,6 @@ const HouseSlider = ({ mobile, houseRef }) => {
     1200: useMediaQuery("(max-width:1200px)"),
     600: useMediaQuery("(max-width:600px)"),
   };
-  const getBackgroundImg = (path) => {
-    let img = data.allFile.edges.find(
-      (item) => item.node.relativePath === path.substr(7)
-    )?.node.childImageSharp.fluid;
-    return img;
-  };
   const getImg = (path) => {
     let img = getImage(
       data.allFile.edges.find(

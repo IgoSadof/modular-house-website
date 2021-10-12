@@ -187,7 +187,7 @@ const Form = ({
   };
   useEffect(() => {
     checkAbsbutton();
-  }, [matches]);
+  }, [matches,checkAbsbutton]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -237,7 +237,7 @@ const Form = ({
       // console.log(formRef.current.reset);
       formRef.current.reset()
       }
-  },[state]);
+  },[state,open]);
   
 
   return (

@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "60px 240px 100px 100px",
     boxShadow: "-5px 0px 100px rgba(0, 0, 0, 0.2) ",
     backdropFilter: "blur(10px)",
-    backdropFilter: "blur(10px)",
     transition: "0.7s",
     [theme.breakpoints.down("md")]: {
       left: (param) => (param.isBurgerMenuOpen ? "0%" : "100%"),

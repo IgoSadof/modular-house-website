@@ -188,7 +188,7 @@ const useStyles = makeStyles((theme) => ({
     gap: "40px",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      height: (param) => `${(param.heightOneLine * param.modulesCounts) + 4}vh`,
+      height: (param) => `${param.heightOneLine * param.modulesCounts + 4}vh`,
     },
   },
   accordionBox: {
@@ -214,7 +214,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginRight: "auto",
     minHeight: "16vh",
-    height:(param) => `${param.heightModuleList / param.modulesCounts}vh`,
+    height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
     overflowY: "auto",
     // marginBottom:'20px',
   },
@@ -229,7 +229,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   modelDescLine: {
-    display: (param) => param.modulesCounts > 1?"block":"none",
+    display: (param) => (param.modulesCounts > 1 ? "block" : "none"),
     position: "relative",
     width: "1px",
     height: "100%",
@@ -532,15 +532,12 @@ const HousePage = ({ house }) => {
     1200: useMediaQuery("(max-width:1200px)"),
   };
   const [houseNumber] = useState(house);
-  const baseFolder = `houses/${dataHouses[house]["Код"].replace(
-    " ",
-    ""
-  )}/`;
+  const baseFolder = `houses/${dataHouses[house]["Код"].replace(" ", "")}/`;
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const getImgsFromDirectory = (directory) => {
     // console.log(directory)
-    let regExp = new RegExp(`^${directory}\/?[a-zA-Z0-9_\/-]*`);
+    let regExp = new RegExp(`^${directory}/?[a-zA-Z0-9_/-]*`);
     // console.log(regExp);
     let imagesArr = [];
     data.allFile.edges.forEach((item) => {
@@ -583,10 +580,14 @@ const HousePage = ({ house }) => {
   const heightOneLine = 16;
   const heightModuleList = 60;
 
-
   const [pilldistance, setPilldistance] = useState(heightOneLine);
   const [pillClick, setPillClick] = useState(0);
-  const param = { pilldistance, modulesCounts, heightOneLine, heightModuleList };
+  const param = {
+    pilldistance,
+    modulesCounts,
+    heightOneLine,
+    heightModuleList,
+  };
   const classes = useStyles(param);
   const [model3d, setModel3d] = useState(
     `../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(
@@ -637,12 +638,11 @@ const HousePage = ({ house }) => {
 
   const handleChangePanel = (value) => {
     // console.log(baseFolder + value);
-    if(value === ""){
+    if (value === "") {
       setRelativeDirectory(baseFolder);
-    }else{
-      setRelativeDirectory(baseFolder +"/модули/"+ value);
+    } else {
+      setRelativeDirectory(baseFolder + "/модули/" + value);
     }
-    
   };
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
@@ -681,15 +681,17 @@ const HousePage = ({ house }) => {
         className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
       >
         <Box className={classes.mainImgBox}>
-          {dataHouses[houseNumber]["Баннер"]?(<GatsbyImage
-            className={classes.mainImg}
-            image={getImg(
-              `${dataHouses[houseNumber]["Баннер"].substr(
-                dataHouses[houseNumber]["Баннер"].search(/images/)
-              )}`
-            )}
-            alt="img"
-          ></GatsbyImage>):null}
+          {dataHouses[houseNumber]["Баннер"] ? (
+            <GatsbyImage
+              className={classes.mainImg}
+              image={getImg(
+                `${dataHouses[houseNumber]["Баннер"].substr(
+                  dataHouses[houseNumber]["Баннер"].search(/images/)
+                )}`
+              )}
+              alt="img"
+            ></GatsbyImage>
+          ) : null}
           {matches[1200] ? (
             <Box className={classes.mainBlockTitleBox}>
               <Typography
@@ -700,17 +702,19 @@ const HousePage = ({ house }) => {
                 {dataHouses[houseNumber]["Код"]}
               </Typography>
               <Box className={classes.houseDescIconBox}>
-                {dataHouses[houseNumber]["Иконка планировки"]?(<GatsbyImage
-                  className={classes.mainPlan}
-                  image={getImg(
-                    `${dataHouses[houseNumber]["Иконка планировки"].substr(
-                      dataHouses[houseNumber]["Иконка планировки"].search(
-                        /images/
-                      )
-                    )}`
-                  )}
-                  alt="img"
-                ></GatsbyImage>):null}
+                {dataHouses[houseNumber]["Иконка планировки"] ? (
+                  <GatsbyImage
+                    className={classes.mainPlan}
+                    image={getImg(
+                      `${dataHouses[houseNumber]["Иконка планировки"].substr(
+                        dataHouses[houseNumber]["Иконка планировки"].search(
+                          /images/
+                        )
+                      )}`
+                    )}
+                    alt="img"
+                  ></GatsbyImage>
+                ) : null}
                 <Typography variant="h5" className={classes.houseSpecPrice}>
                   {/* {dataHouses[houseNumber].price} */}
                 </Typography>
@@ -805,7 +809,10 @@ const HousePage = ({ house }) => {
             {pillClick === 0 ? (
               <div className={classes.modelDescLineButton}>
                 <div
+                  role="button"
+                  tabindex="0"
                   onClick={handlePlusClick}
+                  onKeyDown={handlePlusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
                   <div style={{ top: "-10%" }} className={classes.plus}>
@@ -816,13 +823,19 @@ const HousePage = ({ house }) => {
             ) : pillClick + 1 < modulesCounts ? (
               <div className={classes.modelDescLineButton}>
                 <div
+                  role="button"
+                  tabindex="0"
                   onClick={handleMinusClick}
+                  onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinus}
                 >
                   <div className={classes.minus}>-</div>
                 </div>
                 <div
+                  role="button"
+                  tabindex="0"
                   onClick={handlePlusClick}
+                  onKeyDown={handlePlusClick}
                   className={classes.modelDescLinePlus}
                 >
                   <div className={classes.plus}>+</div>
@@ -831,7 +844,10 @@ const HousePage = ({ house }) => {
             ) : (
               <div className={classes.modelDescLineButton}>
                 <div
+                  role="button"
+                  tabindex="0"
                   onClick={handleMinusClick}
+                  onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
                   <div style={{ top: "-13%" }} className={classes.minus}>
@@ -914,11 +930,13 @@ const HousePage = ({ house }) => {
             timeout={500}
             classNames="fade"
           >
-            {roomsImg?(<GatsbyImage
-              className={classes.roomImg}
-              image={getImg(roomsImg)}
-              alt="img"
-            ></GatsbyImage>):null}
+            {roomsImg ? (
+              <GatsbyImage
+                className={classes.roomImg}
+                image={getImg(roomsImg)}
+                alt="img"
+              ></GatsbyImage>
+            ) : null}
           </CSSTransition>
         </TransitionGroup>
       </Box>
@@ -938,7 +956,8 @@ const HousePage = ({ house }) => {
               Смета
             </Typography>
           )}
-          {dataHouses[houseNumber]["План"] && !dataHouses[houseNumber]["План"].includes("gif") ? (
+          {dataHouses[houseNumber]["План"] &&
+          !dataHouses[houseNumber]["План"].includes("gif") ? (
             <GatsbyImage
               className={classes.calculationPlanImg}
               image={getImg(
@@ -957,7 +976,11 @@ const HousePage = ({ house }) => {
                 <Box className={classes.calculationHeader}>
                   <FormControlLabel
                     onChange={handleChangeCheckbox}
-                    value={item["Стоимость"]? +item["Стоимость"].replace(/[KК]/, "000"): 0}
+                    value={
+                      item["Стоимость"]
+                        ? +item["Стоимость"].replace(/[KК]/, "000")
+                        : 0
+                    }
                     control={<Checkbox color="primary" />}
                     label={
                       <Typography variant="h6">

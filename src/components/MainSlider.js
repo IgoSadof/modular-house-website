@@ -1,5 +1,5 @@
 import "./global.css";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -252,20 +252,6 @@ const Slider = ({ scroll, isFirstEntry }) => {
     3: 8,
   };
 
-  useEffect(() => {
-    if (isFirstEntry) {
-      scroll < 1
-        ? handleNumberClick(null, 1)
-        : scroll >= 1 && scroll < 2
-        ? handleNumberClick(null, 2)
-        : scroll >= 2 && scroll < 3
-        ? handleNumberClick(null, 3)
-        : scroll >= 3 && scroll < 4
-        ? handleNumberClick(null, 4)
-        : (scroll = 4);
-    }
-  }, [scroll]);
-
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
       numb = +e.target.textContent[1];
@@ -280,6 +266,18 @@ const Slider = ({ scroll, isFirstEntry }) => {
     );
     setActiveNumb(numb - 1);
   };
+
+  if (isFirstEntry) {
+    scroll < 1
+      ? handleNumberClick(null, 1)
+      : scroll >= 1 && scroll < 2
+      ? handleNumberClick(null, 2)
+      : scroll >= 2 && scroll < 3
+      ? handleNumberClick(null, 3)
+      : scroll >= 3 && scroll < 4
+      ? handleNumberClick(null, 4)
+      : (scroll = 4);
+  }
 
   return (
     <Box component="section" className={classes.content}>
@@ -304,7 +302,9 @@ const Slider = ({ scroll, isFirstEntry }) => {
                 <Box>
                   <img
                     className={classes.logo}
-                    src={`../../${dataSlides[activeNumb].image.substr(dataSlides[activeNumb].image.search(/images/))}`}
+                    src={`../../${dataSlides[activeNumb].image.substr(
+                      dataSlides[activeNumb].image.search(/images/)
+                    )}`}
                     alt="icon"
                   ></img>
                 </Box>
@@ -350,7 +350,13 @@ const Slider = ({ scroll, isFirstEntry }) => {
                   }
                   variant="h6"
                 >
-                  <span role="number" key={index} onClick={handleNumberClick}>
+                  <span
+                    role="button"
+                    tabIndex="0"
+                    key={index}
+                    onClick={handleNumberClick}
+                    onKeyDown={handleNumberClick}
+                  >
                     {item}
                   </span>
                 </Typography>

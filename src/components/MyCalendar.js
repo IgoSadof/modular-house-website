@@ -8,9 +8,9 @@ const MyCalendar = () => {
   const [value, onChange] = useState(
     new Date(today.getFullYear(), today.getMonth(), today.getDate())
   );
-  const [selectDate, setSelectDate] = useState(null);
+  // const [selectDate, setSelectDate] = useState(null);
   const handleClick = (value, e) => {
-    setSelectDate(value);
+    // setSelectDate(value);
   };
   useEffect(() => {
     let days = document.getElementsByClassName("react-calendar__tile");
