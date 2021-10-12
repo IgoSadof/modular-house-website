@@ -149,7 +149,7 @@ const Layout = ({ pageTitle, children, page }) => {
                 click={handleClickConnect}
                 burgerClick={
                   matches[1200]
-                    ? () => (handleOpenBurgerMenu(), handleClickConnect())
+                    ? () => (handleOpenBurgerMenu())
                     : null
                 }
               />

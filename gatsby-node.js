@@ -32,7 +32,7 @@ fs.rmdirSync(path.join(__dirname, 'public'), { recursive: true });
               test: /\.(glb|gltf)$/,
               use:[
                 {
-                  loader: 'url-loader',
+                  loader: 'file-loader',
                   options: {
                     outputPath: 'assets/models3d/',
                   },

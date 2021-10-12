@@ -1,7 +1,7 @@
 import "../../components/global.css";
 import React from "react";
 import HousesList from "../../components/HousesList";
-import Layout from "../../layouts/index";
+import Layout from "../../components/Layout";
 
 
 const HousesListPage = () => {
