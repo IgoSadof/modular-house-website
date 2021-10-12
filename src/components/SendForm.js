@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     transition: "0.7s",
     justifyContent: 'center',
     [theme.breakpoints.down("md")]: {
+      position: "fixed",
       left: (param) => (param.isFormOpen ? "0%" : "100%"),
       padding: "10%",
       paddingTop: "0",

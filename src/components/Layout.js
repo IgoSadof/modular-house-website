@@ -92,8 +92,21 @@ const Layout = ({ pageTitle, children, page }) => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const handleOpenBurgerMenu = () => {
     setIsBurgerMenuOpen((state) => !state);
+    if(!isBurgerMenuOpen){
+      document.body.style.overflowY = "hidden";
+    }else{
+      document.body.style.overflowY = "overlay";
+    }
+    if(isFormOpen){
+      setIsFormOpen((state) => !state)
+    }
   };
   const handleClickConnect = () => {
+    if(!isFormOpen){
+      document.body.style.overflowY = "hidden";
+    }else{
+      document.body.style.overflowY = "overlay";
+    }
     setIsFormOpen((state) => !state);
   };
   return (

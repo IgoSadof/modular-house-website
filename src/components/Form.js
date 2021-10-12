@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "1px solid #4F4F4F",
     marginTop: "10px",
     fontFamily: theme.typography.fontFamily,
-    fontSize: theme.typography.h4.fontSize,
+    fontSize: theme.typography.body1.fontSize,
     "&:focus": {
       outline: "none",
     },
@@ -332,7 +332,7 @@ const Form = ({
         {text ? (
           <Box className={classes.messageBox}>
             <Box className={classes.messageLabelBox}>
-              <Typography variant="body1">
+              <Typography variant="body2">
                 Оставьте заявку и наш менеджер свяжеться с вами
               </Typography>
               <div>*</div>
