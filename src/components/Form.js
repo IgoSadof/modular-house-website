@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -17,7 +17,7 @@ import TextField from "@material-ui/core/TextField";
 
 import { useForm, ValidationError } from "@formspree/react";
 // import { ContactsOutlined } from "@material-ui/icons";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // import { useForm, ValidationError } from '@formspree/react';
 
@@ -173,7 +173,7 @@ const Form = ({
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  const [button, setButton] = useState(buttonAbs);
+  const [button] = useState(buttonAbs);
   const [open, setOpen] = React.useState(false);
   const [emailText, setEmailText] = React.useState("");
   const [telText, setTelText] = React.useState("");
@@ -181,19 +181,16 @@ const Form = ({
   const [messageText, setMessageText] = React.useState("");
   const param = { button, buttonAbs };
   const classes = useStyles(param);
-
-  const checkAbsbutton = () => {
-    setButton(matches[1200] ? false : buttonAbs);
-  };
-  useEffect(() => {
-    checkAbsbutton();
-  }, [matches,checkAbsbutton]);
+  const formRef = useRef(null);
 
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    console.log(formRef.current)
+    formRef.current.reset();
+
   };
   const handleChangeEmail = (e) => {
     const myemail = e.target.value;
@@ -211,34 +208,13 @@ const Form = ({
     const message = e.target.value;
     setMessageText(message);
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("message submith");
-  // };
-
-  // const _handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const result = await addToMailchimp(emailText, {
-  //     FNAME: nameText ?? "none",
-  //     emailText: emailText ?? "none",
-  //     telText: telText ?? "none",
-  //     messageText: messageText ?? "none",
-  //   });
-  //   console.log('message send')
-  //   console.log(result)
-  // };
-  const formRef = useRef(null);
 
   let [state, handleSubmit] = useForm("xgerpayy");
   useEffect(() => {
     if (state.succeeded && state.submitting && !open) {
-      // console.log(state);
       setOpen(true);
-      // console.log(formRef.current.reset);
-      formRef.current.reset()
-      }
-  },[state,open]);
-  
+    }
+  }, [state, open]);
 
   return (
     <Box className={classes.formBox}>
@@ -287,7 +263,7 @@ const Form = ({
             // }}
           />
           {/* For ditection of bots */}
-          <input type="text" name="_gotcha" style={{display : "none"}} />
+          <input type="text" name="_gotcha" style={{ display: "none" }} />
           <TextField
             className={classes.field}
             onChange={handleChangeTel}
@@ -311,7 +287,7 @@ const Form = ({
                 label={<Typography variant="body2">Email</Typography>}
                 onChange={handleChangeEmail}
                 value={emailText}
-                
+
                 // validators={["required", "isEmail"]}
                 // errorMessages={["this field is required", "email is not valid"]}
                 // InputProps={{
@@ -320,7 +296,11 @@ const Form = ({
                 //   ),
                 // }}
               />
-              <ValidationError field="email" prefix="Email" errors={state.errors} />
+              <ValidationError
+                field="email"
+                prefix="Email"
+                errors={state.errors}
+              />
               {/* <ValidationError
                 prefix="Email"
                 field="email"
@@ -362,7 +342,7 @@ const Form = ({
             submit={true}
             disabled={state.submitting}
             variant="outlined"
-            click={state.succeeded? handleOpen: null}
+            click={state.succeeded ? handleOpen : null}
           >
             Отправить
           </RegularButton>
@@ -384,29 +364,32 @@ const Form = ({
             timeout: 500,
           }}
         >
-          {state.submitting? <CircularProgress color="secondary"/> :
-          <Fade in={open}>
-            <div className={classes.paper}>
-              <Box className={classes.buttonBox}>
-                <SquareButton
-                  variant="outlined"
-                  click={handleClose}
-                  icon={<ClearIcon />}
-                />
-              </Box>
-              <Typography>
-                СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ
-              </Typography>
-              <Typography variant="body1">
-                Никто ни за что ответственность не несет
-              </Typography>
-              <Box className={classes.buttonBoxLeft}>
-                <RegularButton variant="outlined" click={handleClose}>
-                  ОК
-                </RegularButton>
-              </Box>
-            </div>
-          </Fade>}
+          {state.submitting ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <Box className={classes.buttonBox}>
+                  <SquareButton
+                    variant="outlined"
+                    click={handleClose}
+                    icon={<ClearIcon />}
+                  />
+                </Box>
+                <Typography>
+                  СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ
+                </Typography>
+                <Typography variant="body1">
+                  Никто ни за что ответственность не несет
+                </Typography>
+                <Box className={classes.buttonBoxLeft}>
+                  <RegularButton variant="outlined" click={handleClose}>
+                    ОК
+                  </RegularButton>
+                </Box>
+              </div>
+            </Fade>
+          )}
         </Modal>
       </form>
     </Box>
