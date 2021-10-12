@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     [theme.breakpoints.down("md")]: {
-      paddingTop: '40px',
+      paddingTop: "40px",
     },
   },
   BlockContent: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
-      gap:'80px',
+      gap: "80px",
     },
   },
   BlockColumn: {
@@ -71,13 +71,16 @@ const useStyles = makeStyles((theme) => ({
       gap: "20px",
     },
   },
-  personalBox:{
+  personalBoxLink: {
+    textDecoration: "none",
+  },
+  personalBox: {
     [theme.breakpoints.up("xl")]: {
-      width:'20vh',
+      width: "20vh",
     },
   },
-  contactsFoto:{
-    width:'100%',
+  contactsFoto: {
+    width: "100%",
   },
   infoBox: {
     display: "flex",
@@ -108,55 +111,57 @@ const Contacts = ({ header }) => {
               {header}
             </Typography>
             <Box className={classes.logoBox}>
-              <img
-                className={classes.logo}
-                src={logo}
-                alt="logo"
-              ></img>
+              <img className={classes.logo} src={logo} alt="logo"></img>
               <Typography variant="subtitle1">MODULAR HOUSE</Typography>
             </Box>
           </Box>
         ) : null}
 
-        <Box components="section"  className={classes.BlockContent}>
+        <Box components="section" className={classes.BlockContent}>
           <Box className={classes.contactsBox}>
             <Box className={classes.contactsBoxes}>
-              <Box className={classes.personalBox}>
-                <img
-                  className={classes.contactsFoto}
-                  src={andrey}
-                  alt="Foto"
-                ></img>
-                <Typography variant="body1">Андрей</Typography>
-                <Typography variant="body1">Главный</Typography>
-                <Typography variant="body1">+375 29 3650669 </Typography>
-              </Box>
-              <Box className={classes.personalBox}>
-                <img
-                  className={classes.contactsFoto}
-                  src={alexey}
-                  alt="Foto"
-                ></img>
-                <Typography variant="body1">Алексей</Typography>
-                <Typography variant="body1">Главный</Typography>
-                <Typography variant="body1">+375 44 5180676</Typography>
-              </Box>
+              <a className={classes.personalBoxLink} href="tel:+375293650669">
+                <Box className={classes.personalBox}>
+                  <img
+                    className={classes.contactsFoto}
+                    src={andrey}
+                    alt="Foto"
+                  ></img>
+                  <Typography variant="body1">Андрей</Typography>
+                  <Typography variant="body1">Главный</Typography>
+                  <Typography variant="body1">+375 29 3650669 </Typography>
+                </Box>
+              </a>
+
+              <a className={classes.personalBoxLink} href="tel:+375445180676">
+                <Box className={classes.personalBox}>
+                  <img
+                    className={classes.contactsFoto}
+                    src={alexey}
+                    alt="Foto"
+                  ></img>
+                  <Typography variant="body1">Алексей</Typography>
+                  <Typography variant="body1">Главный</Typography>
+                  <Typography variant="body1">+375 44 5180676</Typography>
+                </Box>
+              </a>
             </Box>
             {!matches[1200] ? (
               <Box className={classes.infoBox}>
                 {!header ? (
                   <Box className={classes.logoBox}>
-                    <img
-                      className={classes.logo}
-                      src={logo}
-                      alt="logo"
-                    ></img>
+                    <img className={classes.logo} src={logo} alt="logo"></img>
                     <Typography variant="subtitle1">MODULAR HOUSE</Typography>
                   </Box>
                 ) : null}
 
                 <Box className={classes.infoBoxText}>
-                  <Typography variant="body1">info@zrobym.by</Typography>
+                  <a
+                    className={classes.personalBoxLink}
+                    href="mailto:info@zrobym.by"
+                  >
+                    <Typography variant="body1">info@zrobym.by</Typography>
+                  </a>
                   <Typography variant="body1">
                     ул. Богдановича 11, 3 этаж
                   </Typography>
@@ -169,17 +174,18 @@ const Contacts = ({ header }) => {
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>
-                  <img
-                    className={classes.logo}
-                    src={logo}
-                    alt="logo"
-                  ></img>
+                  <img className={classes.logo} src={logo} alt="logo"></img>
                   <Typography variant="subtitle1">MODULAR HOUSE</Typography>
                 </Box>
               ) : null}
 
               <Box className={classes.infoBoxText}>
-                <Typography variant="body1">info@zrobym.by</Typography>
+                <a
+                  className={classes.personalBoxLink}
+                  href="mailto:info@zrobym.by"
+                >
+                  <Typography variant="body1">info@zrobym.by</Typography>
+                </a>
                 <Typography variant="body1">
                   ул. Богдановича 11, 3 этаж
                 </Typography>

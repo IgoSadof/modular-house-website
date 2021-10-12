@@ -68,7 +68,7 @@ const SendForm = ({ isFormOpen, click, burgerClick, page }) => {
       {matches[1200] ? (
         <Box className={classes.callBox}>
           <Typography variant="h6">Позвонить</Typography>
-          <img className={classes.call} src={call} alt="call"></img>
+          <a href="tel:+375293650669"><img className={classes.call} src={call} alt="call"></img></a>
         </Box>
       ) : null}
 
