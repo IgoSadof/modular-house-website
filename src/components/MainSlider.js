@@ -1,5 +1,5 @@
 import "./global.css";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -267,17 +267,19 @@ const Slider = ({ scroll, isFirstEntry }) => {
     setActiveNumb(numb - 1);
   };
 
-  if (isFirstEntry) {
-    scroll < 1
-      ? handleNumberClick(null, 1)
-      : scroll >= 1 && scroll < 2
-      ? handleNumberClick(null, 2)
-      : scroll >= 2 && scroll < 3
-      ? handleNumberClick(null, 3)
-      : scroll >= 3 && scroll < 4
-      ? handleNumberClick(null, 4)
-      : (scroll = 4);
-  }
+  useEffect(() => {
+    if (isFirstEntry) {
+      scroll < 1
+        ? handleNumberClick(null, 1)
+        : scroll >= 1 && scroll < 2
+        ? handleNumberClick(null, 2)
+        : scroll >= 2 && scroll < 3
+        ? handleNumberClick(null, 3)
+        : scroll >= 3 && scroll < 4
+        ? handleNumberClick(null, 4)
+        : (scroll = 4);
+    }
+  }, [scroll]);
 
   return (
     <Box component="section" className={classes.content}>
