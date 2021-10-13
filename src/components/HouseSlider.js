@@ -64,7 +64,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   name: {
-    width: "50%",
+    width: "80%",
+    fontSize: "42px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "36px",
+    },
   },
   title: {
     display: "flex",
