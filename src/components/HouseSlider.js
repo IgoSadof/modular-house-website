@@ -2,12 +2,10 @@ import React, { useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
-// import { houses } from "../constant/houses";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import getHousesData from "../utils/getHousesData";
-import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
@@ -126,44 +124,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "40px",
   },
 }));
-const HouseSlider = ({ mobile, houseRef }) => {
-  const data = useStaticQuery(graphql`
-    {
-      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
-        edges {
-          node {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                width: 1000
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
-            relativePath
-          }
-        }
-      }
-      allMysqlModules {
-        nodes {
-          moduleName
-          parameterValue
-          parameterName
-          parentId
-          contentId
-        }
-      }
-      allMysqlHouses {
-        nodes {
-          alias
-          mysqlId
-          name
-          contentID
-          value
-        }
-      }
-    }
-  `);
+const HouseSlider = ({ mobile, houseRef, data }) => {
 
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
@@ -174,7 +135,7 @@ const HouseSlider = ({ mobile, houseRef }) => {
   };
   const getImg = (path) => {
     let img = getImage(
-      data.allFile.edges.find(
+      data?.allFile.edges.find(
         (item) => item.node.relativePath === path.substr(7)
       )?.node
     );

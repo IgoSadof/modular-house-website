@@ -8,9 +8,7 @@ import numbers from "../constant/numbers";
 import video2 from "../assets/video/video2.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-// import getData from '../utils/getData';
 import getMainPage from "../utils/getMainPage";
-import { useStaticQuery, graphql } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -220,22 +218,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slider = ({ scroll, isFirstEntry }) => {
-  const housesQuery = useStaticQuery(graphql`
-    {
-      allMysqlMainPage {
-        nodes {
-          mysqlId
-          parameterName
-          parameterValue
-        }
-      }
-    }
-  `);
-
-  const dataSlides = useMemo(() => getMainPage(housesQuery), [housesQuery]);
-  // console.log(dataSlides)
-
+const Slider = ({ scroll, isFirstEntry, data }) => {
+  const dataSlides = useMemo(() => getMainPage(data), [data]);
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
   const baseLength = matches["1200"] ? 30 : 46;
   const [lineLength, setLineLength] = useState(baseLength);

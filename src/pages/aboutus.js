@@ -5,8 +5,7 @@ import Layout from "../components/Layout";
 
 export default function AboutUsPage() {
   return (
-    <Layout pageTitle="About us" page='aboutUs'>
-      <AboutUs />
+    <Layout pageTitle="About us" page='aboutUs' component = {AboutUs}>
     </Layout>
   );
 }

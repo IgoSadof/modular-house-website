@@ -1,4 +1,4 @@
-function getMainPage(query) {
+function getMainPage(query) { 
   const data = query?.allMysqlMainPage?.nodes;
   let obj = {};
   let names = {
@@ -7,7 +7,7 @@ function getMainPage(query) {
     Иконка: "image",
   };
 
-  data.forEach((item) => {
+  data?.forEach((item) => {
     let key = item.parameterName.slice(0, 8);
     let name = item.parameterName.slice(9);
 

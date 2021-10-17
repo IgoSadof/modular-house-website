@@ -17,7 +17,6 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "@google/model-viewer";
 import Model3d from "./Model3d";
 import getHousesData from "../utils/getHousesData";
-import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const useStyles = makeStyles((theme) => ({
@@ -457,67 +456,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HousePage = ({ house }) => {
-  // allFile(filter: {relativeDirectory: {regex: "/houses/{[a-zA-Z0-9_]+}/"}, extension: { regex: "/(jpg)|(png)|(git)/" } }) {
-  const data = useStaticQuery(graphql`
-    {
-      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
-        edges {
-          node {
-            id
-            base
-            relativeDirectory
-            relativePath
-            childImageSharp {
-              gatsbyImageData(
-                width: 1000
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
-          }
-        }
-      }
-      allMysqlModules {
-        nodes {
-          moduleName
-          parameterValue
-          parameterName
-          parentId
-          contentId
-        }
-      }
-      allMysqlHouses {
-        nodes {
-          alias
-          mysqlId
-          name
-          contentID
-          value
-        }
-      }
-      allMysqlRooms {
-        nodes {
-          contentId
-          houseName
-          parameterName
-          parameterValue
-          mysqlId
-          parentId
-        }
-      }
-      allMysqlOptions {
-        nodes {
-          house
-          parameterName
-          parameterValue
-          mysqlId
-          contentId
-        }
-      }
-    }
-  `);
-
+const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
   const getImg = (path) => {
     return getImage(
@@ -810,7 +749,7 @@ const HousePage = ({ house }) => {
               <div className={classes.modelDescLineButton}>
                 <div
                   role="button"
-                  tabindex="0"
+                  tabIndex="0"
                   onClick={handlePlusClick}
                   onKeyDown={handlePlusClick}
                   className={classes.modelDescLineMinusCircle}
@@ -824,7 +763,7 @@ const HousePage = ({ house }) => {
               <div className={classes.modelDescLineButton}>
                 <div
                   role="button"
-                  tabindex="0"
+                  tabIndex="0"
                   onClick={handleMinusClick}
                   onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinus}
@@ -833,7 +772,7 @@ const HousePage = ({ house }) => {
                 </div>
                 <div
                   role="button"
-                  tabindex="0"
+                  tabIndex="0"
                   onClick={handlePlusClick}
                   onKeyDown={handlePlusClick}
                   className={classes.modelDescLinePlus}
@@ -845,7 +784,7 @@ const HousePage = ({ house }) => {
               <div className={classes.modelDescLineButton}>
                 <div
                   role="button"
-                  tabindex="0"
+                  tabIndex="0"
                   onClick={handleMinusClick}
                   onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinusCircle}

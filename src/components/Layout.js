@@ -13,6 +13,10 @@ import RegularButton from "./buttons/RegularButton";
 import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 
+const dataToComponent = (WrappedComponent, currebtData, house) => {
+  return <WrappedComponent data={currebtData} house={house} />;
+};
+
 const useStyles = makeStyles((theme) => ({
   page: {
     display: "flex",
@@ -72,12 +76,86 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Layout = ({ pageTitle, children, page }) => {
+const Layout = ({ pageTitle, children, page, component, house }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
           title
+        }
+      }
+      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
+        edges {
+          node {
+            id
+            base
+            relativeDirectory
+            relativePath
+            childImageSharp {
+              gatsbyImageData(
+                width: 2000
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        }
+      }
+      allMysqlModules {
+        nodes {
+          moduleName
+          parameterValue
+          parameterName
+          parentId
+          contentId
+        }
+      }
+      allMysqlHouses {
+        nodes {
+          alias
+          mysqlId
+          name
+          contentID
+          value
+        }
+      }
+      allMysqlRooms {
+        nodes {
+          contentId
+          houseName
+          parameterName
+          parameterValue
+          mysqlId
+          parentId
+        }
+      }
+      allMysqlOptions {
+        nodes {
+          house
+          parameterName
+          parameterValue
+          mysqlId
+          contentId
+        }
+      }
+      allMysqlValue {
+        nodes {
+          contentid
+          value
+          tmplvarid
+        }
+      }
+      allMysqlParent {
+        nodes {
+          mysqlId
+          mysqlParent
+        }
+      }
+      allMysqlMainPage {
+        nodes {
+          mysqlId
+          parameterName
+          parameterValue
         }
       }
     }
@@ -92,19 +170,19 @@ const Layout = ({ pageTitle, children, page }) => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const handleOpenBurgerMenu = () => {
     setIsBurgerMenuOpen((state) => !state);
-    if(!isBurgerMenuOpen){
+    if (!isBurgerMenuOpen) {
       document.body.style.overflowY = "hidden";
-    }else{
+    } else {
       document.body.style.overflowY = "overlay";
     }
-    if(isFormOpen){
-      setIsFormOpen((state) => !state)
+    if (isFormOpen) {
+      setIsFormOpen((state) => !state);
     }
   };
   const handleClickConnect = () => {
-    if(!isFormOpen){
+    if (!isFormOpen) {
       document.body.style.overflowY = "hidden";
-    }else{
+    } else {
       document.body.style.overflowY = "overlay";
     }
     setIsFormOpen((state) => !state);
@@ -116,9 +194,12 @@ const Layout = ({ pageTitle, children, page }) => {
         <title>
           {pageTitle} | {data.site.siteMetadata.title}
         </title>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
       </Helmet>
 
       {/* <header>{data.site.siteMetadata.title}</header> */}
@@ -161,9 +242,7 @@ const Layout = ({ pageTitle, children, page }) => {
                 isFormOpen={isFormOpen}
                 click={handleClickConnect}
                 burgerClick={
-                  matches[1200]
-                    ? () => (handleOpenBurgerMenu())
-                    : null
+                  matches[1200] ? () => handleOpenBurgerMenu() : null
                 }
               />
               <Box className={classes.button}>
@@ -173,7 +252,8 @@ const Layout = ({ pageTitle, children, page }) => {
                   </RegularButton>
                 )}
               </Box>
-              {children}
+              {component ? dataToComponent(component, data, house) : children}
+              {/* {children} */}
             </Box>
             <Footer />
           </Box>

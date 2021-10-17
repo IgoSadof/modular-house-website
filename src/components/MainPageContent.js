@@ -13,8 +13,6 @@ import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getData from '../utils/getData';
-import { useStaticQuery, graphql } from "gatsby";
-
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles((theme) => ({
@@ -266,43 +264,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainPageContent = () => {
-  const data = useStaticQuery(graphql`
-    {
-      allFile(
-              filter: {extension: {regex: "/(jpg)|(png)/"}}
-            ) {
-              edges {
-                node {
-                  id
-                  base
-                  relativeDirectory
-                  relativePath
-                  childImageSharp {
-                    gatsbyImageData(
-                      width: 500
-                      placeholder: BLURRED
-                      formats: [AUTO, WEBP, AVIF]
-                    )
-                  }
-                }
-              }
-            }
-      allMysqlValue {
-        nodes {
-          contentid
-          value
-          tmplvarid
-        }
-      }
-      allMysqlParent {
-        nodes {
-          mysqlId
-          mysqlParent
-        }
-      }
-    }
-  `);
+const MainPageContent = ({data}) => {
   const detail = useMemo(() => getData(data,4),[data]);
   const dataAnswers = useMemo(() => getData(data,18),[data]);
   const reviews = useMemo(() => getData(data,5),[data]);
@@ -372,7 +334,7 @@ const MainPageContent = () => {
           // onClick={scrollOn}
           // onMouseOut={scrollOn}
         >
-          <HouseSlider houseRef={houseSliderRef} mobile={matches[1200]} />
+          <HouseSlider houseRef={houseSliderRef} mobile={matches[1200]} data={data} />
         </Box>
       </Box>
 
@@ -558,38 +520,3 @@ const MainPageContent = () => {
   );
 };
 export default MainPageContent;
-
-// export const pageQuery = graphql`
-//   {
-//       allFile(
-//               filter: {relativeDirectory: {eq: ""}, extension: {regex: "/(jpg)|(png)/"}}
-//             ) {
-//               edges {
-//                 node {
-//                   id
-//                   base
-//                   childImageSharp {
-//                     gatsbyImageData(
-//                       width: 200
-//                       placeholder: BLURRED
-//                       formats: [AUTO, WEBP, AVIF]
-//                     )
-//                   }
-//                 }
-//               }
-//             }
-//       allMysqlValue {
-//         nodes {
-//           contentid
-//           value
-//           tmplvarid
-//         }
-//       }
-//       allMysqlParent {
-//         nodes {
-//           mysqlId
-//           mysqlParent
-//         }
-//       }
-//     }
-// `

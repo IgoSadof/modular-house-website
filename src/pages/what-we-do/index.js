@@ -6,8 +6,7 @@ import Layout from "../../components/Layout";
 
 const HousesListPage = () => {
   return (
-    <Layout pageTitle="What we do" page="houseList">
-      <HousesList />
+    <Layout pageTitle="What we do" page="houseList" component = {HousesList}>
     </Layout>
   );
 };

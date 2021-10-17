@@ -10,7 +10,6 @@ import HouseModelSlider from "./HouseModelSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getHousesData from "../utils/getHousesData";
-import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const style = {
@@ -270,46 +269,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HousesList = () => {
-  const data = useStaticQuery(graphql`
-    {
-      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
-        edges {
-          node {
-            id
-            base
-            relativeDirectory
-            relativePath
-            childImageSharp {
-              gatsbyImageData(
-                width: 1000
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
-          }
-        }
-      }
-      allMysqlModules {
-        nodes {
-          moduleName
-          parameterValue
-          parameterName
-          parentId
-          contentId
-        }
-      }
-      allMysqlHouses {
-        nodes {
-          alias
-          mysqlId
-          name
-          contentID
-          value
-        }
-      }
-    }
-  `);
+const HousesList = ({data}) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
   const getImg = (path) => {

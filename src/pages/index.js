@@ -5,8 +5,8 @@ import Layout from "../components/Layout";
 
 export default function MainPage() {
   return (
-    <Layout pageTitle="Main page" page='main'>
-      <Main />
+    <Layout pageTitle="Main page" page='main' component={Main}>
+      {/* <Main /> */}
     </Layout>
   );
 }

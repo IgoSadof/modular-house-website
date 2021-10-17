@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Main = () => {
+const Main = ({data}) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -60,8 +60,8 @@ const Main = () => {
       className={classes.componets}
       onWheel={(e) => handleScroll(e)}
     >
-      <MainSlider scroll={scroll} isFirstEntry={isFirstEntry} />
-      <MainPageContent />
+      <MainSlider scroll={scroll} isFirstEntry={isFirstEntry} data={data} />
+      <MainPageContent data={data} />
     </Box>
   );
 };

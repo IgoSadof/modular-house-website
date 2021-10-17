@@ -1,7 +1,7 @@
 function getHousesData(data) {
   // console.log('getHousesData run'); 
-  const elements = data.allMysqlHouses.nodes;
-  const moduleParametrs = data.allMysqlModules.nodes;
+  const elements = data?.allMysqlHouses.nodes;
+  const moduleParametrs = data?.allMysqlModules.nodes;
   const roomsData = data?.allMysqlRooms?.nodes;
   const optionsData = data?.allMysqlOptions?.nodes;
   const rooms = {};
