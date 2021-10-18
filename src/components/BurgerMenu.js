@@ -45,18 +45,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BurgerMenu = ({ isBurgerMenuOpen, click, clickToOpenForm }) => {
-  // const matches = {
-  //   1920: useMediaQuery("(min-width:1920px)"),
-  //   1200: useMediaQuery("(max-width:1200px)"),
-  // };
-  // const [review, setReview] = useState(0);
-  // const [isOpen, setIsOpen] = useState(isBurgerMenuOpen);
   const param = {isBurgerMenuOpen};
   const classes = useStyles(param);
-  // const handleClick = () => {
-  //   setIsOpen(state=>!state)
-  //   console.log('click')
-  // }
 
   return (
     <div className={classes.burgerConteiner}>

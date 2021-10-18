@@ -93,7 +93,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
             relativePath
             childImageSharp {
               gatsbyImageData(
-                width: 2000
+                width: 1600
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
               )
@@ -170,23 +170,18 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const handleOpenBurgerMenu = () => {
     setIsBurgerMenuOpen((state) => !state);
-    if (!isBurgerMenuOpen) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "overlay";
-    }
     if (isFormOpen) {
       setIsFormOpen((state) => !state);
     }
   };
   const handleClickConnect = () => {
-    if (!isFormOpen) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "overlay";
-    }
     setIsFormOpen((state) => !state);
   };
+  if (isBurgerMenuOpen) {
+    document.body.style.overflowY = "hidden";
+  } else {
+    document.body.style.overflowY = "overlay";
+  }
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <Helmet>

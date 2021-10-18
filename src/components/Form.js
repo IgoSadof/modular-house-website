@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -89,9 +89,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-    position: (param) => (param.button ? "absolute" : "relative"),
-    bottom: (param) => (param.button ? "0" : null),
-    left: (param) => (param.button ? "0" : null),
+    position: (param) => (!param.matches[1200] ? "absolute" : "relative"),
+    bottom: (param) => (!param.matches[1200] ? "0" : null),
+    left: (param) => (!param.matches[1200] ? "0" : null),
     marginTop: "100px",
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
@@ -164,7 +164,6 @@ const Form = ({
   email,
   text,
   subtitle,
-  buttonAbs,
   closeForm,
   inBurger,
   main,
@@ -173,13 +172,12 @@ const Form = ({
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
-  const [button] = useState(buttonAbs);
   const [open, setOpen] = React.useState(false);
   const [emailText, setEmailText] = React.useState("");
   const [telText, setTelText] = React.useState("");
   const [nameText, setNameText] = React.useState("");
   const [messageText, setMessageText] = React.useState("");
-  const param = { button, buttonAbs };
+  const param = { matches} ;
   const classes = useStyles(param);
   const formRef = useRef(null);
 

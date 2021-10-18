@@ -124,10 +124,9 @@ const Watch = () => {
             {!matches[1200] ? (
               <Form
                 title="Оставьте заявку и наш менеджер свяжеться с вами"
-                buttonAbs={true}
               />
             ) : (
-              <Form />
+              <Form/>
             )}
           </Box>
         </Box>
