@@ -58,7 +58,7 @@ const Main = ({data}) => {
     <Box
       component='main'
       className={classes.componets}
-      onWheel={(e) => handleScroll(e)}
+      onWheel={isFirstEntry? ((e) => handleScroll(e)):null}
     >
       <MainSlider scroll={scroll} isFirstEntry={isFirstEntry} data={data} />
       <MainPageContent data={data} />

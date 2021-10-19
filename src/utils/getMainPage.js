@@ -21,13 +21,11 @@ function getMainPage(query) {
 
   let dataArr = [];
   let index = 0
-  console.log(obj);
   for (let key in obj) {
     obj[key].id = index;
     dataArr.push(obj[key]);
     index+=1;
   }
-  console.log(dataArr);
   return dataArr;
 }
 
