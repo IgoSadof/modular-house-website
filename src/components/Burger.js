@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/images/newlogo.png";
 import cros from "../assets/images/cros.png";
 import Box from "@material-ui/core/Box";
 import { Link } from "gatsby";
@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: "50px",
     height: "50px",
+    objectFit: "contain",
   },
   burgerBox: {
     cursor: "pointer",

@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/images/newlogo.png";
 import facebook from "../assets/images/icons/facebook.svg";
 import youtube from "../assets/images/icons/youtube.svg";
 import instagram from "../assets/images/icons/instagram.svg";
@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     alignItems: "center",
     cursor: "pointer",
+    width:"30%",
+    "& img":{
+      width:"100%"
+    }
   },
   iconsBox: {
     display: "flex",
@@ -125,8 +129,8 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
     <Box component="nav" className={classes.menu}>
       {inBurger ? null : (
         <>
-          <Link to={"/"}>
-            <img className={classes.logo} src={logo} alt="logo"></img>
+          <Link className={classes.logo} to={"/"}>
+            <img  src={logo} alt="logo"></img>
           </Link>
 
           <Typography variant="button" className={classes.text}>

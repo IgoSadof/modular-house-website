@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/images/newlogo.png";
 import andrey from "../assets/images/andrey.png";
 import alexey from "../assets/images/alexey.png";
 import Form from "./Form";
@@ -112,7 +112,7 @@ const Contacts = ({ header }) => {
             </Typography>
             <Box className={classes.logoBox}>
               <img className={classes.logo} src={logo} alt="logo"></img>
-              <Typography variant="subtitle1">MODULAR HOUSE</Typography>
+              {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
             </Box>
           </Box>
         ) : null}
@@ -151,7 +151,7 @@ const Contacts = ({ header }) => {
                 {!header ? (
                   <Box className={classes.logoBox}>
                     <img className={classes.logo} src={logo} alt="logo"></img>
-                    <Typography variant="subtitle1">MODULAR HOUSE</Typography>
+                    {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
                   </Box>
                 ) : null}
 
@@ -175,7 +175,7 @@ const Contacts = ({ header }) => {
               {!header ? (
                 <Box className={classes.logoBox}>
                   <img className={classes.logo} src={logo} alt="logo"></img>
-                  <Typography variant="subtitle1">MODULAR HOUSE</Typography>
+                  {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
                 </Box>
               ) : null}
 
