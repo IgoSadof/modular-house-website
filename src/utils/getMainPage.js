@@ -8,7 +8,7 @@ function getMainPage(query) {
   };
 
   data?.forEach((item) => {
-    let key = item.parameterName.slice(0, 8);
+    let key = item.parameterName.slice(7, 8);
     let name = item.parameterName.slice(9);
 
     if (obj[key]) {
@@ -21,11 +21,13 @@ function getMainPage(query) {
 
   let dataArr = [];
   let index = 0
+  console.log(obj);
   for (let key in obj) {
     obj[key].id = index;
     dataArr.push(obj[key]);
     index+=1;
   }
+  console.log(dataArr);
   return dataArr;
 }
 

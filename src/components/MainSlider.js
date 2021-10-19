@@ -285,7 +285,8 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 >
                   {dataSlides[activeNumb].title.toUpperCase()}
                 </Typography>
-                <Box>
+                {dataSlides[activeNumb].image?(
+                  <Box>
                   <img
                     className={classes.logo}
                     src={`../../${dataSlides[activeNumb].image.substr(
@@ -294,6 +295,8 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                     alt="icon"
                   ></img>
                 </Box>
+                ):null}
+                
                 <Typography
                   className={classes.text}
                   variant="body1"
