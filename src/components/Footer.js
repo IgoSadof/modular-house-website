@@ -14,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: "#D1D1D1",
+    fontSize:"12px",
+    lineHeight:"18px",
   },
 }));
 
