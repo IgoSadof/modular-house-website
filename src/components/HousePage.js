@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   secondImgBox: {
     position: "relative",
     width: "100%",
-    height: "80vh",
+    height: "100vh",
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
