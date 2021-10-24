@@ -273,7 +273,6 @@ const HousesList = ({data}) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
   const getImg = (path) => {
-    // console.log(getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node))
     return getImage(
       data.allFile.edges.find(
         (item) => item.node.relativePath === path.substr(7)

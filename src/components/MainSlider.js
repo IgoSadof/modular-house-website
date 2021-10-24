@@ -226,7 +226,6 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(true);
-  const [loopVideo, setLoopVideo] = useState(false);
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
@@ -234,7 +233,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     0: 1.7,
     1: 3.41,
     2: 5,
-    3: 8.5,
+    3: 8.3,
   };
 
   const handleNumberClick = (e, numb = 0) => {
@@ -250,16 +249,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     );
     setActiveNumb(numb - 1);
   };
- 
-  // useEffect(() => {
-  //   if (activeNumb > currentSegment) {
-  //     if(!loopVideo)setLoopVideo(true);
-  //   }else if (activeNumb < currentSegment) {
-  //     setCurrentSegment(activeNumb)
-  //     if(!playVideo)setPlayVideo(true);
-  //   }
- 
-  // }, [activeNumb]);
+
+  useEffect(() => {
+    if (activeNumb < currentSegment) {
+      setPlayVideo(true);
+    }
+  }, [activeNumb, currentSegment]);
 
   useEffect(() => {
     if (isFirstEntry) {
@@ -324,13 +319,22 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
               height="100%"
               width="100%"
               url={video2}
-              loop={loopVideo}
+              loop={true}
               playing={playVideo}
               progressInterval={10}
               muted={true}
-              onProgress={({ playedSeconds, played, loadedSeconds }) => {
-                if (playedSeconds >= vidSegments[activeNumb]) {
+              onProgress={({playedSeconds}) => {
+                if (activeNumb >= currentSegment) {
+                  if (playedSeconds >= vidSegments[activeNumb]) {
+                    setPlayVideo(false);
+                    setCurrentSegment(activeNumb);
+                  }
+                } else if (
+                  playedSeconds >= vidSegments[activeNumb] &&
+                  playedSeconds <= vidSegments[currentSegment]
+                ) {
                   setPlayVideo(false);
+                  setCurrentSegment(activeNumb);
                 }
               }}
               onReady={() => {
