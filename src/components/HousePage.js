@@ -535,6 +535,13 @@ const HousePage = ({ house, data }) => {
       )
     )}`
   );
+  const [model3dIos, setModel3dIos] = useState(
+    `../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(
+      dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].search(
+        /models3d/
+      )
+    )}`.replace('models3d','models3dIos').replace('glb','usdz')
+  );
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -813,7 +820,11 @@ const HousePage = ({ house, data }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          <Model3d srcPath={model3d}></Model3d>
+          <Model3d 
+            srcPath={model3d} 
+            srcPathIos={model3dIos}
+          >
+          </Model3d>
         </Box>
       </Box>
 
