@@ -178,9 +178,9 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
     setIsFormOpen((state) => !state);
   };
   if (isBurgerMenuOpen) {
-    document.body.style.overflowY = "hidden";
+    if (typeof window !== "undefined"){document.body.style.overflowY = "hidden"};
   } else {
-    document.body.style.overflowY = "overlay";
+    if (typeof window !== "undefined"){document.body.style.overflowY = "overlay"};
   }
   return (
     <ThemeProvider theme={modularHouseTheme}>
