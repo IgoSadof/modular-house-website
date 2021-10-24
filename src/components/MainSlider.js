@@ -1,5 +1,5 @@
 import "./global.css";
-import React, { useState, useMemo, useEffect} from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -226,14 +226,15 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(true);
+  const [loopVideo, setLoopVideo] = useState(false);
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
   const vidSegments = {
-    0: 1.5,
-    1: 2.9,
-    2: 6.8,
-    3: 8,
+    0: 1.7,
+    1: 3.41,
+    2: 5,
+    3: 8.5,
   };
 
   const handleNumberClick = (e, numb = 0) => {
@@ -242,7 +243,6 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     }
     if (numb - 1 > currentSegment) {
       setPlayVideo(true);
-      setCurrentSegment(numb - 1);
     }
 
     setLineLength(() =>
@@ -250,6 +250,16 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     );
     setActiveNumb(numb - 1);
   };
+ 
+  // useEffect(() => {
+  //   if (activeNumb > currentSegment) {
+  //     if(!loopVideo)setLoopVideo(true);
+  //   }else if (activeNumb < currentSegment) {
+  //     setCurrentSegment(activeNumb)
+  //     if(!playVideo)setPlayVideo(true);
+  //   }
+ 
+  // }, [activeNumb]);
 
   useEffect(() => {
     if (isFirstEntry) {
@@ -285,18 +295,18 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 >
                   {dataSlides[activeNumb].title.toUpperCase()}
                 </Typography>
-                {dataSlides[activeNumb].image?(
+                {dataSlides[activeNumb].image ? (
                   <Box>
-                  <img
-                    className={classes.logo}
-                    src={`../../${dataSlides[activeNumb].image.substr(
-                      dataSlides[activeNumb].image.search(/images/)
-                    )}`}
-                    alt="icon"
-                  ></img>
-                </Box>
-                ):null}
-                
+                    <img
+                      className={classes.logo}
+                      src={`../../${dataSlides[activeNumb].image.substr(
+                        dataSlides[activeNumb].image.search(/images/)
+                      )}`}
+                      alt="icon"
+                    ></img>
+                  </Box>
+                ) : null}
+
                 <Typography
                   className={classes.text}
                   variant="body1"
@@ -314,10 +324,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
               height="100%"
               width="100%"
               url={video2}
+              loop={loopVideo}
               playing={playVideo}
+              progressInterval={10}
               muted={true}
-              onProgress={({ playedSeconds, loadedSeconds }) => {
-                if (playedSeconds >= vidSegments[currentSegment]) {
+              onProgress={({ playedSeconds, played, loadedSeconds }) => {
+                if (playedSeconds >= vidSegments[activeNumb]) {
                   setPlayVideo(false);
                 }
               }}
