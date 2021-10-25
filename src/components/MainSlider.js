@@ -187,7 +187,6 @@ const useStyles = makeStyles((theme) => ({
   },
   bottomLine: {
     position: "relative",
-    width: (param) => param.lineLength + "%",
     height: "1px",
     backgroundColor: "black",
     "&::before": {
@@ -257,6 +256,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [activeNumb, currentSegment]);
 
   useEffect(() => {
+
     if (isFirstEntry) {
       scroll < 1
         ? handleNumberClick(null, 1)
@@ -367,7 +367,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 </Typography>
               ))}
             </div>
-            <div className={classes.bottomLine}></div>
+            <div className={classes.bottomLine} style={{ width: `${matches["1200"] ? 30 : 46}%` }}></div>
           </Box>
         </Box>
       </Box>
