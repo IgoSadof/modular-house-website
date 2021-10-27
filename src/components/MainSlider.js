@@ -241,6 +241,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     }
     if (numb - 1 > currentSegment) {
       setPlayVideo(true);
+      setCurrentSegment(numb - 1);
     }
 
     setLineLength(() =>
@@ -256,7 +257,10 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [activeNumb, currentSegment]);
 
   useEffect(() => {
+    setLineLength(baseLength)
+  }, [baseLength]);
 
+  useEffect(() => {
     if (isFirstEntry) {
       scroll < 1
         ? handleNumberClick(null, 1)
@@ -269,6 +273,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
         : (scroll = 4);
     }
   }, [scroll]);
+  console.log(baseLength,lineLength)
 
   return (
     <Box component="section" className={classes.content}>
@@ -323,7 +328,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
               playing={playVideo}
               progressInterval={10}
               muted={true}
-              onProgress={({playedSeconds}) => {
+              onProgress={({ playedSeconds }) => {
                 if (activeNumb >= currentSegment) {
                   if (playedSeconds >= vidSegments[activeNumb]) {
                     setPlayVideo(false);
@@ -367,7 +372,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 </Typography>
               ))}
             </div>
-            <div className={classes.bottomLine} style={{ width: `${matches["1200"] ? 30 : 46}%` }}></div>
+            <div
+              className={classes.bottomLine}
+              style={{
+                width: `${lineLength}%`,
+              }}
+            ></div>
           </Box>
         </Box>
       </Box>
