@@ -273,8 +273,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
         : (scroll = 4);
     }
   }, [scroll]);
-  console.log(baseLength,lineLength)
-
+  
   return (
     <Box component="section" className={classes.content}>
       <Box className={classes.midleBlock}>
