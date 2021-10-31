@@ -6,14 +6,17 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import getHousesData from "../utils/getHousesData";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { StaticImage, getImage } from "gatsby-plugin-image";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    display: "flex",
+    // display: "flex",
     flexDirection: "column",
     width: "100%",
     marginTop: "125px",
@@ -30,13 +33,14 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   content: {
+    width: "100%",
+    height: "100%",
     border: "1px solid",
-    marginRight: "20px",
     cursor: "pointer",
   },
   imgBox: {
     width: "100%",
-    height: "400px",
+    height: "20vw",
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
@@ -56,13 +60,13 @@ const useStyles = makeStyles((theme) => ({
     transition: "all .5s",
   },
   description: {
-    padding: "35px 45px",
+    padding: "40px",
     [theme.breakpoints.down("md")]: {
       padding: "15px",
     },
   },
   name: {
-    width: "80%",
+    width: "60%",
     fontSize: "42px",
     [theme.breakpoints.down("md")]: {
       fontSize: "36px",
@@ -79,13 +83,15 @@ const useStyles = makeStyles((theme) => ({
     // marginTop: "40px",
     display: "flex",
     flexDirection: "column",
-
-    width: "100%",
+    width: "60%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   property: {
     display: "flex",
     justifyContent: "space-between",
-    width: "70%",
+    width: "100%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
@@ -99,33 +105,40 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseDescIconBox: {
-    width: "40px",
-    height: "40px",
+    display: "flex",
+    marginTop: "auto",
+    marginLeft: "40px",
+    alignItems: "end",
+    "& img": { objectFit: "contain !important" },
     [theme.breakpoints.down("md")]: {
       display: "flex",
-      flexDirection: "column",
+      marginTop: "25px",
+      marginLeft: "0",
       justifyContent: "space-between",
-      width: "100px",
       objectFit: "contain",
-      height: "85px",
     },
   },
   mainPlan: {
-    width: "40px",
-    height: "40px",
+    marginTop: "auto",
+    marginLeft: "20px",
+    marginBottom: "2px",
+    objectFit: "contain",
     [theme.breakpoints.down("md")]: {
       objectFit: "contain",
       marginLeft: "auto",
-      marginRight: "auto",
     },
   },
   subtitle: {
     display: "flex",
     marginTop: "40px",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      marginTop: "25px",
+    },
   },
 }));
 const HouseSlider = ({ mobile, houseRef, data }) => {
-
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
   const matches = {
@@ -161,7 +174,10 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
   const listItems = dataHouses
     ? dataHouses.map((item, index) => {
         return (
-          <li className={classes.conteiner} key={index}>
+          <SwiperSlide
+            // className={classes.conteiner}
+            key={index}
+          >
             <Box className={classes.content}>
               <Link
                 className={classes.link}
@@ -173,8 +189,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                     className={classes.img}
                     Tag="div"
                     {...convertToBgImage(getImg(`${item["Баннер"]}`))}
-                  >
-                  </BackgroundImage>
+                  ></BackgroundImage>
                 </Box>
               </Link>
 
@@ -187,7 +202,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                   >
                     {item.Код}
                   </Typography>
-                  <Typography variant="h5" className={classes.price}>
+                  <Typography variant="h4" className={classes.price}>
                     {/* {item.price} */}
                     от{" "}
                     {item.takeFromBaseModule(item.modules, "Стоимость") ??
@@ -249,7 +264,13 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                     </Box>
                   </Box>
                   <Box className={classes.houseDescIconBox}>
-                    <GatsbyImage
+                    <Typography
+                      variant="body1"
+                      className={classes.propertyValue}
+                    >
+                      Стадии роста:
+                    </Typography>
+                    {/* <GatsbyImage
                       className={classes.mainPlan}
                       image={getImg(
                         `${item["Иконка планировки"].substr(
@@ -257,22 +278,41 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                         )}`
                       )}
                       alt="img"
-                    ></GatsbyImage>
+                    ></GatsbyImage> */}
+                    <StaticImage
+                      className={classes.mainPlan}
+                      src="../assets/images/mainTitleIcons/stages/stage3.png"
+                      alt="Grow stage"
+                      placeholder="blurred"
+                      layout="fixed"
+                      width={50}
+                      height={20}
+                    />
                   </Box>
                 </Box>
               </Box>
             </Box>
-          </li>
+          </SwiperSlide>
         );
       })
     : null;
 
   return (
-    <ul className={classes.list}>
-      <Slider onSwipe={() => setSwipe(true)} ref={houseRef} {...settings}>
-        {listItems}
-      </Slider>
-    </ul>
+    <Swiper
+      // slidesPerView={"auto"}
+      slidesPerView={"auto"}
+      grabCursor={true}
+      loop={true}
+      // centeredSlides={true}
+      freeMode={true}
+      spaceBetween={20}
+      grabCursor={true}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {listItems}
+    </Swiper>
   );
 };
+
 export default HouseSlider;

@@ -227,7 +227,7 @@ const Form = ({
           ) : (
             <Box className={main ? classes.titleBoxMain : classes.titleBox}>
               {main ? <span className={classes.line}></span> : null}
-              <Typography variant="h4" className={classes.text}>
+              <Typography variant="h2" className={classes.text}>
                 {title}
               </Typography>
             </Box>

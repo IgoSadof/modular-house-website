@@ -324,7 +324,7 @@ const MainPageContent = ({data}) => {
             <span className={`${classes.line} ${classes.firstLine}`}></span>
           ) : null}
           {matches[1200] ? (
-            <Typography variant="h4" className={classes.text}></Typography>
+            <Typography variant="h2" className={classes.text}></Typography>
           ) : null}
         </Box>
         <Box
@@ -351,14 +351,14 @@ const MainPageContent = ({data}) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               ПОДРОБНЕЕ
             </Typography>
           ) : null}
         </Box>
 
         {!matches[1200] ? (
-          <Typography variant="h4" className={classes.text}>
+          <Typography variant="h2" className={classes.text}>
             ПОДРОБНЕЕ
           </Typography>
         ) : null}
@@ -374,14 +374,14 @@ const MainPageContent = ({data}) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               ОТЗЫВЫ
             </Typography>
           ) : null}
         </Box>
         <Box className={classes.BlockColumn}>
           {!matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               ОТЗЫВЫ
             </Typography>
           ) : null}
@@ -432,7 +432,7 @@ const MainPageContent = ({data}) => {
 
           <Box className={classes.secondBlock}>
             <Box className={classes.reviewData}>
-              <Typography variant="h4">
+              <Typography variant="h2">
                 {`${reviews[review][22].slice(0,2)}/${reviews[review][22].slice(3,5)} `}
               </Typography>
             </Box>
@@ -456,14 +456,14 @@ const MainPageContent = ({data}) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               ОТВЕТЫ
             </Typography>
           ) : null}
         </Box>
         <Box className={classes.BlockColumn}>
           {!matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               ОТВЕТЫ
             </Typography>
           ) : null}
@@ -492,7 +492,7 @@ const MainPageContent = ({data}) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               ЭКСПОДОМ
             </Typography>
           ) : null}
@@ -509,7 +509,7 @@ const MainPageContent = ({data}) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h4" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               КОНТАКТЫ
             </Typography>
           ) : null}

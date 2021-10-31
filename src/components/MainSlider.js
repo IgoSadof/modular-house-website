@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
     left: "0",
     right: "0",
     zIndex: 1,
-    gap: "40px",
+    gap: "30px",
     flexDirection: "column",
     marginLeft: "100px",
     width: "70%",
@@ -357,7 +357,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                       ? `${classes.number} ${classes.activeNumber}`
                       : classes.number
                   }
-                  variant="h6"
+                  variant="h5"
                 >
                   <span
                     role="button"

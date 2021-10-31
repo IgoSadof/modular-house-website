@@ -107,7 +107,7 @@ const Contacts = ({ header }) => {
       <Box components="section" className={classes.BlockMain}>
         {header ? (
           <Box className={classes.BlockColumn}>
-            <Typography variant="h4" className={classes.textHeader}>
+            <Typography variant="h2" className={classes.textHeader}>
               {header}
             </Typography>
             <Box className={classes.logoBox}>
