@@ -226,6 +226,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "20px 0",
     overflowY: "auto",
     maxHeight: "25vh",
+    lineHeight:'1.6',
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
@@ -241,6 +242,9 @@ const useStyles = makeStyles((theme) => ({
   houseDescSpecOne: style.flex,
   houseDescMore: { ...style.flex, marginTop: "20px" },
   houseDescPrice: style.flexColumn,
+  "& p":{
+    lineHeight:"1.6",
+  },
   houseSpecPrice: {
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
