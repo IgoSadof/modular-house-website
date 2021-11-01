@@ -61,6 +61,10 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     padding: "40px",
+    
+    "@media (max-width: 1900px)":{
+      padding: "20px",
+    },
     [theme.breakpoints.down("md")]: {
       padding: "15px",
     },
@@ -78,12 +82,21 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: "100%",
     fontSize: "48px",
+    "& h1":{
+      [theme.breakpoints.down("xl")]: {
+        fontSize: "36px",
+      },
+    }
   },
   properties: {
     // marginTop: "40px",
     display: "flex",
     flexDirection: "column",
     width: "60%",
+    
+    [theme.breakpoints.down("xl")]: {
+      width: "75%",
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
@@ -95,6 +108,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
+    "@media (max-width: 1900px)":{
+      "& p":{
+        width: "70%",
+        fontSize:"12px",
+      }
+    },
+    
   },
   price: {
     minWidth: "130px",

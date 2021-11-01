@@ -34,16 +34,15 @@ const modularHouseTheme = createMuiTheme({
       main: "#4F4F4F",
     },
   },
-  breakpoints: {
-    values: {
-      xs: 0,
-      s: 350,
-      sm: 600,
-      md: 960,
-      lg: 1280,
-      xl: 1900,
-    },
-  },
+  // breakpoints: {
+  //   values: {
+  //     xs: 0,
+  //     sm: 600,
+  //     md: 960,
+  //     lg: 1280,
+  //     xl: 1900,
+  //   },
+  // },
   typography: {
     fontFamily: [
       "Montserrat",
@@ -104,6 +103,9 @@ const modularHouseTheme = createMuiTheme({
       fontFamily: ["Montserrat", "sans-serif"].join(","),
       "@media (min-width:1900px)": {
         // fontSize: myFontsSize.h4 * myFontsSize.xl,
+      },
+      "@media (max-width:600px)": {
+        fontSize: '18px',
       },
     },
 
