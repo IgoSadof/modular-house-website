@@ -11,11 +11,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     backgroundColor: "#4F4F4F",
     alignItems: "center",
+    height:"50px",
   },
   text: {
     color: "#D1D1D1",
-    fontSize:"12px",
-    lineHeight:"18px",
+    fontSize:"14px",
+    lineHeight:"14px",
   },
 }));
 
