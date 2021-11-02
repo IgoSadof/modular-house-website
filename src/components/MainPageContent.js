@@ -482,7 +482,7 @@ const MainPageContent = ({data}) => {
           </Box>
         </Box>
         <Box className={classes.accordion}>
-          <Accordions arr={answers[answeGroup]} />
+          <Accordions answers={true} arr={answers[answeGroup]} />
         </Box>
       </Box>
 

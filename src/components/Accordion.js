@@ -30,6 +30,11 @@ const AccordionSummary = withStyles({
     borderBottom: "1px solid #333333",
     marginBottom: 0,
     minHeight: 56,
+    "& h4":{
+      textTransform:'inherit',
+      letterSpacing:"0.03em",
+
+    },
     "&$expanded": {
       minHeight: 56,
     },
@@ -49,7 +54,7 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function Accordions({ arr,roomsImg,houseRooms}) {
+export default function Accordions({ arr,roomsImg,houseRooms,answers}) {
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -72,7 +77,7 @@ export default function Accordions({ arr,roomsImg,houseRooms}) {
               id={`panel${index + 1}d-header`}
               expandIcon={<AddIcon />}
             >
-              <Typography variant="h3">{houseRooms? item['Экспликация']:item[70].toUpperCase()}</Typography>
+              <Typography variant="h4">{houseRooms? item['Экспликация']:answers?item[70]:item[70].toUpperCase()}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">{houseRooms? item['Описание комнаты']:item[71]}</Typography>
