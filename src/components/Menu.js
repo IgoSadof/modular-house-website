@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from "../assets/images/newlogo.png";
+import Logo from "./svg/Logo";
+
 import facebook from "../assets/images/icons/facebook.svg";
 import youtube from "../assets/images/icons/youtube.svg";
 import instagram from "../assets/images/icons/instagram.svg";
@@ -20,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    width: (param) => (param.inBurger ? "100%" : "11%"),
+    width: (param) => (param.inBurger ? "100%" : "10%"),
     height:  (param) => (param.inBurger ? "80vh" : "100vh"),
     borderRight: "1px solid #4F4F4F",
-    padding: "40px 0px 90px",
+    padding: "50px 0px 100px",
     transition: "0.5s",
     opacity: "1",
     zIndex: "2",
@@ -71,6 +72,11 @@ const useStyles = makeStyles((theme) => ({
   text: {
     transition: "0.5s",
     position: "absolute",
+    fontSize: "16px",
+    lineHeight: "1em",
+    fontWeight: 600,
+    textTransform: "uppercase",
+    letterSpacing:"0.015em",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
@@ -130,9 +136,8 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
       {inBurger ? null : (
         <>
           <Link className={classes.logo} to={"/"}>
-            <img  src={logo} alt="logo"></img>
+            <Logo color={"#4F4F4F"}/>
           </Link>
-
           <Typography variant="button" className={classes.text}>
             Меню
           </Typography>

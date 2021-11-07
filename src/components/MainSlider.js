@@ -12,7 +12,7 @@ import getMainPage from "../utils/getMainPage";
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    padding: "60px 0px 100px",
+    padding: "50px 0px 100px",
     boxSizing: "border-box",
     position: "relative",
     display: "flex",
@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       position: "relative",
       height: "85vw",
+      top:"60px",
     },
   },
   fon: {
@@ -99,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
+      height: "80vh",
       paddingTop: "0",
     },
   },
@@ -118,6 +120,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   articleBox: {
+    display:"flex",
+    alignItems:"center",
     position: "relative",
     zIndex: 1,
     height: "55vh",
@@ -131,20 +135,23 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "300px",
     display: "flex",
     position: "absolute",
-    top: "0",
+    // top: "40%",
     left: "0",
     right: "0",
     zIndex: 1,
     gap: "30px",
     flexDirection: "column",
+    // marginTop:"-20%",
     marginLeft: "100px",
-    width: "70%",
+    width: "470px",
 
     [theme.breakpoints.down("md")]: {
       marginLeft: "auto",
       marginRight: "auto",
       marginBottom: "auto",
-      gap: "20px",
+      top: "0",
+      gap: "10px",
+      width: "70%",
       "& h1": {
         fontSize: "24px",
       },
@@ -166,20 +173,23 @@ const useStyles = makeStyles((theme) => ({
   },
   numbers: {
     width: "100%",
-    marginLeft: "25%",
+    marginLeft: "5vw",
     display: "flex",
     height: "20px",
 
     [theme.breakpoints.down("md")]: {
-      marginLeft: "10%",
+      marginLeft: "0",
     },
   },
   number: {
     display: "flex",
     justifyContent: "center",
     cursor: "pointer",
-    width: "20%",
+    width: "10vw",
     height: "20px",
+    [theme.breakpoints.down("md")]: {
+      width: "24vw",
+    },
     // marginLeft:'auto',
   },
   activeNumber: {
@@ -189,6 +199,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: "1px",
     backgroundColor: "black",
+    marginBottom: "10px",
     "&::before": {
       transformOrigin: "100% 50%",
       position: "absolute",
@@ -199,7 +210,7 @@ const useStyles = makeStyles((theme) => ({
       top: "0",
       right: "0",
       backgroundColor: "black",
-      transform: "rotate(40deg)",
+      transform: "rotate(45deg)",
     },
     "&::after": {
       transformOrigin: "100% 50%",
@@ -211,16 +222,21 @@ const useStyles = makeStyles((theme) => ({
       top: "0",
       right: "0",
       backgroundColor: "black",
-      transform: "rotate(330deg)",
+      transform: "rotate(315deg)",
     },
     transition: "0.5s",
+  },
+  icon:{
+    [theme.breakpoints.down("md")]: {
+      width: "50px",
+    },
   },
 }));
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getMainPage(data), [data]);
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
-  const baseLength = matches["1200"] ? 30 : 46;
+  const baseLength = matches["1200"] ? 24 : 15;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
@@ -243,9 +259,15 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
       setPlayVideo(true);
       setCurrentSegment(numb - 1);
     }
+    let interval = matches["1200"]
+      ? 24 * (numb - 1):
+      10 * (numb - 1);
 
     setLineLength(() =>
-      numb === 1 ? baseLength : baseLength + 20 * (numb - 1)
+      numb === 1
+        ? baseLength
+        : baseLength 
+        + interval
     );
     setActiveNumb(numb - 1);
   };
@@ -257,7 +279,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [activeNumb, currentSegment]);
 
   useEffect(() => {
-    setLineLength(baseLength)
+    setLineLength(baseLength);
   }, [baseLength]);
 
   useEffect(() => {
@@ -273,7 +295,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
         : (scroll = 4);
     }
   }, [scroll]);
-  
+
   return (
     <Box component="section" className={classes.content}>
       <Box className={classes.midleBlock}>
@@ -297,7 +319,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 {dataSlides[activeNumb].image ? (
                   <Box>
                     <img
-                      className={classes.logo}
+                      className={classes.icon}
                       src={`../../${dataSlides[activeNumb].image.substr(
                         dataSlides[activeNumb].image.search(/images/)
                       )}`}
@@ -374,7 +396,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
             <div
               className={classes.bottomLine}
               style={{
-                width: `${lineLength}%`,
+                width: `${lineLength}vw`,
               }}
             ></div>
           </Box>

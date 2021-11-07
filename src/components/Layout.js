@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     padding: (param) =>
-      param.page === "main" ? "0 10% 100px 11%" : "14vh 10% 14vh 11%",
+      param.page === "main" ? "0 10% 100px 10%" : "14vh 10% 14vh 10%",
     // padding: "100px 10% 100px 11%",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
-    padding: (param) => (param.page === "main" ? "0 10% 100px 11%" : null),
+    padding: (param) => (param.page === "main" ? "0 10% 100px 10%" : null),
     [theme.breakpoints.down("md")]: {
       height: (param) => (param.page === "houseList" ? "100%" : null),
       padding: "0 !important",
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
       param.page === "aboutUs" ||
       param.page === "main" ||
       param.page === "house"
-        ? "1%"
+        ? "50px"
         : "5%",
     right: "10%",
     zIndex: "2",
@@ -178,9 +178,13 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
     setIsFormOpen((state) => !state);
   };
   if (isBurgerMenuOpen) {
-    if (typeof window !== "undefined"){document.body.style.overflowY = "hidden"};
+    if (typeof window !== "undefined") {
+      document.body.style.overflowY = "hidden";
+    }
   } else {
-    if (typeof window !== "undefined"){document.body.style.overflowY = "overlay"};
+    if (typeof window !== "undefined") {
+      document.body.style.overflowY = "overlay";
+    }
   }
   return (
     <ThemeProvider theme={modularHouseTheme}>

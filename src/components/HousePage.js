@@ -173,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       gap: "20px",
       flexDirection: "column",
-      padding: "11%",
+      padding: "10%",
       paddingTop: "0",
       justifyContent: "center",
     },
@@ -475,13 +475,10 @@ const HousePage = ({ house, data }) => {
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const getImgsFromDirectory = (directory) => {
-    // console.log(directory)
     let regExp = new RegExp(`^${directory}/?[a-zA-Z0-9_/-]*`);
-    // console.log(regExp);
     let imagesArr = [];
     data.allFile.edges.forEach((item) => {
       if (!!!item.node.relativeDirectory.search(regExp)) {
-        // console.log(item.node.relativeDirectory);
 
         imagesArr.push(getImage(item.node));
       }
