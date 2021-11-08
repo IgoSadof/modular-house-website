@@ -176,7 +176,7 @@ abbr {
 }
 
 .slick-list {
-  height: 90vh;
+  /* height: 90vh; */
 }
 
 /* appear - on page load */
@@ -330,15 +330,17 @@ abbr {
 }
 
 .swiper-slide {
-  width: 45% !important;
+  /* width: 645px !important;
+  height: 633px !important; */
   /* height: 33vw !important; */
 }
 
 @media (max-width: 1200px) {
   .slick-list {
-    height: auto;
+    height: auto ;
   }
   .swiper-slide {
-    width: 90% !important;
+    /* width: 90% !important; */
+    height: auto !important;
   }
 }

@@ -83,6 +83,10 @@ const modularHouseTheme = createMuiTheme({
       "@media (min-width:1900px)": {
         // fontSize: myFontsSize.h3 * myFontsSize.xl,
       },
+      "@media (max-width:600px)": {
+        fontSize: 24,
+        textAlign: "end",
+      },
     },
     h3: {
       fontSize: 24,

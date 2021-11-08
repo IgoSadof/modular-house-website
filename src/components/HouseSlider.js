@@ -27,20 +27,28 @@ const useStyles = makeStyles((theme) => ({
     padding: "0",
     margin: "0",
   },
+  slide: {
+    width: "645px ",
+    height: "633px ",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+      height: "auto",
+    },
+  },
   conteiner: {
     // border: "1px solid",
     marginRight: "20px",
     cursor: "pointer",
   },
   content: {
-    width: "100%",
+    width: "645px",
     height: "100%",
     border: "1px solid",
     cursor: "pointer",
   },
   imgBox: {
     width: "100%",
-    height: "20vw",
+    height: "410px",
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
@@ -61,12 +69,13 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     padding: "40px",
-    
-    "@media (max-width: 1900px)":{
-      padding: "20px",
-    },
+
+    // "@media (max-width: 1900px)":{
+    //   padding: "20px",
+    // },
     [theme.breakpoints.down("md")]: {
       padding: "15px",
+      paddingBottom: "40px",
     },
   },
   name: {
@@ -81,22 +90,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    fontSize: "48px",
-    "& h1":{
-      [theme.breakpoints.down("xl")]: {
-        fontSize: "36px",
-      },
-    }
+    fontSize: "42px",
   },
   properties: {
-    // marginTop: "40px",
     display: "flex",
     flexDirection: "column",
-    width: "60%",
-    
-    [theme.breakpoints.down("xl")]: {
-      width: "75%",
-    },
+    width: "50%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
@@ -108,13 +107,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
-    "@media (max-width: 1900px)":{
-      "& p":{
+    "@media (max-width: 1900px)": {
+      "& p": {
         width: "70%",
-        fontSize:"12px",
-      }
+        fontSize: "12px",
+      },
     },
-    
   },
   price: {
     minWidth: "130px",
@@ -194,10 +192,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
   const listItems = dataHouses
     ? dataHouses.map((item, index) => {
         return (
-          <SwiperSlide
-            // className={classes.conteiner}
-            key={index}
-          >
+          <SwiperSlide className={classes.slide} key={index}>
             <Box className={classes.content}>
               <Link
                 className={classes.link}

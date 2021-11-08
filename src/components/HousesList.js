@@ -11,6 +11,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getHousesData from "../utils/getHousesData";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import {SwiperSlide } from "swiper/react";
 
 const style = {
   flex: {
@@ -45,10 +46,11 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "2",
     transition: "0.5s",
     [theme.breakpoints.down("md")]: {
-      transform: "scale(0.7)",
+      transform: "scale(0.55)",
       top: "55%",
       right: "0",
       opacity: "1",
+      left: "-15%",
     },
   },
   houseListBlock: {
@@ -72,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     // gap: "40px",
   },
   houseListItem: {
+    width:"100%",
     height: "19vh",
     minHeight: "140px",
     position: "relative",
@@ -85,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       transform: "scale(0.7)",
       top: "20px",
+      width:"120px",
     },
   },
   houseListItemActive: {
@@ -303,13 +307,14 @@ const HousesList = ({data}) => {
 
     setActiveSlide(index);
   };
-  const handleScrol = (e) => {
-    if (e.nativeEvent.wheelDelta > 0) {
-      houseSliderRef.current.slickNext();
-    } else {
-      houseSliderRef.current.slickPrev();
-    }
-  };
+  // const handleScrol = (e) => {
+  //   if (e.nativeEvent.wheelDelta > 0) {
+  //     console.log(houseSliderRef.current)
+  //     houseSliderRef.current.slideNext();
+  //   } else {
+  //     houseSliderRef.current.slidePrev();
+  //   }
+  // };
   const scrollOff = (e) => {
     document.body.style.overflow = "hidden";
   };
@@ -320,14 +325,15 @@ const HousesList = ({data}) => {
   const houseSliderRef = useRef(null);
   const listItem = dataHouses.map((item, index) => {
     return (
-      <button
-        tabindex="0"
+      <SwiperSlide key={item.id}>
+         <button
+        tabIndex="0"
         className={
           activeSlide === index
             ? `${classes.houseListItem} ${classes.houseListItemActive}`
             : classes.houseListItem
         }
-        key={item.id}
+        
         onClick={() => handleItemclick(index)}
         onKeyDown={() => handleItemclick(index)}
       >
@@ -405,6 +411,9 @@ const HousesList = ({data}) => {
           </>
         )}
       </button>
+
+      </SwiperSlide>
+     
     );
   });
 
@@ -428,7 +437,7 @@ const HousesList = ({data}) => {
       <Box
         components="section"
         className={classes.houseListBlock}
-        onWheel={handleScrol}
+        // onWheel={handleScrol}
         onMouseOver={scrollOff}
         onMouseOut={scrollOn}
         onClick={scrollOn}

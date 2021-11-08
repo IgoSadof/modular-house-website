@@ -1,45 +1,33 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Slider from "react-slick";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import { Swiper } from "swiper/react";
+import "swiper/css";
+import SwiperCore, {
+  Mousewheel
+} from 'swiper';
 
-const useStyles = makeStyles((theme) => ({
-  list: {
-    width: "100%",
-    height: "100%",
-    listStyle: "none",
-    padding: "10px",
-    margin:'0',
-  },
-  slickList: {
-    height: "90vh !important",
-  },
-}));
-const ModalsSlider = ({ listItem, houseRef,mobile}) => {
+SwiperCore.use([Mousewheel]);
+
+const ModalsSlider = ({ listItem, houseRef, mobile }) => {
   const matches = {
     600: useMediaQuery("(max-width:600px)"),
     500: useMediaQuery("(max-width:500px)"),
   };
-  const classes = useStyles();
-  const settings = {
-    infinite: true,
-    arrows: false,
-    speed: 500,
-    slidesToShow: matches[600]?matches[500]?3:4:5,
-    vertical: mobile? false : true,
-    swipeToSlide: true,
-    verticalSwiping: mobile? false : true,
-    adaptiveHeight: mobile? true : false,
-  };
 
   return (
-    <ul className={classes.list}>
-      <Slider ref={houseRef}{...settings}>
+      <Swiper
+        ref={houseRef}
+        slidesPerView={matches[600] ? (matches[500] ? "3" : "4") : "5"}
+        grabCursor={true}
+        loop={true}
+        mousewheel={mobile ? false : true}
+        direction={mobile ? 'horizontal' : 'vertical'}
+        freeMode={true}
+        spaceBetween={20}
+        grabCursor={true}
+      >
         {listItem}
-      </Slider>
-    </ul>
+      </Swiper>
   );
 };
 

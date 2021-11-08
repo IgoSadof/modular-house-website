@@ -6,14 +6,14 @@ import Box from "@material-ui/core/Box";
 import HouseSlider from "./HouseSlider";
 import Accordions from "./Accordion";
 import SquareButton from "./buttons/SquareButton";
-import Contacrs from "../components/Contacts";
-import FormBlock from "../components/FormBlock";
+import ContactsBlock from "../components/ContactsBlock";
+import Form from "../components/Form";
 import ReviewsSlider from "../components/ReviewsSlider";
-import RegularButton from "./buttons/RegularButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import getData from '../utils/getData';
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import getData from "../utils/getData";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import OneImageAutoSlider from "./OneImageAutoSlider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    marginTop: "125px",
+    marginTop: "120px",
     overflow: "hidden",
   },
   Block: {
     display: "flex",
-    gap: "20px",
-    marginTop: "145px",
+    gap: "60px",
+    marginTop: "120px",
 
     [theme.breakpoints.down("md")]: {
       marginTop: "100px",
@@ -52,9 +52,13 @@ const useStyles = makeStyles((theme) => ({
   titleBox: {
     display: "flex",
     gap: "20px",
-    flexDirection: "row-reverse",
+    width: "30vw",
+    flexDirection: "row",
+    flexShrink: "0",
     [theme.breakpoints.down("md")]: {
+      flexDirection: "row-reverse",
       marginLeft: "auto",
+      width: "100%",
     },
   },
   BlockContent: {
@@ -63,14 +67,13 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   BlockColumn: {
-    width: "30%",
+    width: "100%",
     display: "flex",
     gap: "20px",
     justifyContent: "space-between",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
       order: "3",
-      width: "100%",
     },
   },
   sliderBlock: {
@@ -91,11 +94,11 @@ const useStyles = makeStyles((theme) => ({
   },
   line: {
     display: "inline-block",
-    width: "75px",
-    minWidth: "75px",
+    width: "80px",
+    minWidth: "80px",
     height: "1px",
     backgroundColor: "black",
-    marginTop: "10px",
+    marginTop: "22px",
   },
   firstLine: {
     marginTop: "0px",
@@ -122,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     height: "30%",
     gap: "20px",
     [theme.breakpoints.down("md")]: {
-      height: "150px",
+      height: "200px",
     },
   },
   commentBox: {
@@ -131,11 +134,19 @@ const useStyles = makeStyles((theme) => ({
     left: "0",
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
+    gap: "10px",
+  },
+  name: {
+    fontSize: "14px",
+    lineHeight: 1.2,
+    fontWeight: 600,
+  },
+  message: {
+    marginTop: "10px",
   },
   buttons: {
     display: "flex",
-    gap: "40px",
+    gap: "12px",
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
     },
@@ -147,8 +158,9 @@ const useStyles = makeStyles((theme) => ({
   mediaBlock: {
     display: "flex",
     marginLeft: "auto",
-    height: "70vh",
-    maxHeight: "600px",
+    width: "100%",
+    // height: "70vh",
+    // maxHeight: "600px",
     [theme.breakpoints.down("md")]: {
       order: "2",
       marginRight: "auto",
@@ -159,7 +171,12 @@ const useStyles = makeStyles((theme) => ({
     border: "none",
   },
   formBox: {
-    width: "260px",
+    width: "30vw",
+    marginLeft: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      marginLeft: "0",
+    },
   },
   sliderBox: {
     width: "100%",
@@ -224,11 +241,14 @@ const useStyles = makeStyles((theme) => ({
   },
   reviewVideoBox: {
     position: "relative",
-    width: "275px",
-    height: "100%",
+    width: "100%",
+    // maxWidth: "500px",
+    height: "27vw",
+    maxHeight: "500px",
 
     [theme.breakpoints.down("md")]: {
       width: "50%",
+      height: "100%",
     },
   },
   reviewVideo: {
@@ -241,20 +261,22 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "cover",
   },
   secondBlock: {
-    width: "57%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    marginTop: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "50%",
+    },
   },
+  
   imagesBoxes: {
     width: "360px",
-    height: "170px",
   },
-  reviewData: {
+  reviewDate: {
     display: "flex",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "space-between",
+    alignItems: "end",
   },
   Expodom: {
     marginTop: "100px",
@@ -264,15 +286,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainPageContent = ({data}) => {
-  const detail = useMemo(() => getData(data,4),[data]);
-  const dataAnswers = useMemo(() => getData(data,18),[data]);
-  const reviews = useMemo(() => getData(data,5),[data]);
-  const answers = [[...(dataAnswers.slice(0,4))],[...(dataAnswers.slice(4))]]
+const MainPageContent = ({ data }) => {
+  const detail = useMemo(() => getData(data, 4), [data]);
+  const dataAnswers = useMemo(() => getData(data, 18), [data]);
+  const reviews = useMemo(() => getData(data, 5), [data]);
+  const answers = [[...dataAnswers.slice(0, 4)], [...dataAnswers.slice(4)]];
 
-  const getImg = (path) =>{
-    return getImage(data.allFile.edges.find(item=>item.node.relativePath===path.substr(7)).node)
-  }
+  const getImg = (path) => {
+    return getImage(
+      data.allFile.edges.find(
+        (item) => item.node.relativePath === path.substr(7)
+      ).node
+    );
+  };
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -297,8 +323,11 @@ const MainPageContent = ({data}) => {
     myRef.current.slickPrev();
   };
 
-  const handleReviewCange = (e) => {
-    e.target.textContent === "5-8" ? setAnsweGroup(1) : setAnsweGroup(0);
+  const handleReviewCangeNext = (e) => {
+    setAnsweGroup((state) => (state < answers.length - 1 ? state + 1 : 0));
+  };
+  const handleReviewCangePrev = (e) => {
+    setAnsweGroup((state) => (state > 0 ? state - 1 : answers.length - 1));
   };
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
@@ -318,15 +347,15 @@ const MainPageContent = ({data}) => {
   // };
   return (
     <Box className={classes.root}>
-      <Box component='section' className={classes.sliderBlock}>
-        <Box className={classes.titleBox}>
-          {!matches[1200] ? (
-            <span className={`${classes.line} ${classes.firstLine}`}></span>
-          ) : null}
-          {matches[1200] ? (
+      <Box component="section" className={classes.sliderBlock}>
+        {/* <Box className={classes.titleBox}> */}
+        {!matches[1200] ? (
+          <span className={`${classes.line} ${classes.firstLine}`}></span>
+        ) : null}
+        {/* {matches[1200] ? (
             <Typography variant="h2" className={classes.text}></Typography>
-          ) : null}
-        </Box>
+          ) : null} */}
+        {/* </Box> */}
         <Box
           className={classes.sliderBox}
           // onWheel={handleScrol}
@@ -334,7 +363,11 @@ const MainPageContent = ({data}) => {
           // onClick={scrollOn}
           // onMouseOut={scrollOn}
         >
-          <HouseSlider houseRef={houseSliderRef} mobile={matches[1200]} data={data} />
+          <HouseSlider
+            houseRef={houseSliderRef}
+            mobile={matches[1200]}
+            data={data}
+          />
         </Box>
       </Box>
 
@@ -350,20 +383,19 @@ const MainPageContent = ({data}) => {
       >
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
-          {matches[1200] ? (
-            <Typography variant="h2" className={classes.text}>
-              ПОДРОБНЕЕ
-            </Typography>
-          ) : null}
+          {/* {matches[1200] ? ( */}
+          <Typography variant="h2" className={classes.text}>
+            ПРЕИМУЩЕСТВА
+          </Typography>
+          {/* ) : null} */}
         </Box>
 
-        {!matches[1200] ? (
+        {/* {!matches[1200] ? (
           <Typography variant="h2" className={classes.text}>
             ПОДРОБНЕЕ
           </Typography>
-        ) : null}
+        ) : null} */}
         <Box className={classes.accordion}>
-
           <Accordions arr={detail} />
         </Box>
       </Box>
@@ -371,76 +403,174 @@ const MainPageContent = ({data}) => {
       {/* ОТЗЫВЫ */}
 
       <Box component="section" className={classes.Block}>
-        <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
-          {matches[1200] ? (
-            <Typography variant="h2" className={classes.text}>
-              ОТЗЫВЫ
-            </Typography>
-          ) : null}
-        </Box>
-        <Box className={classes.BlockColumn}>
-          {!matches[1200] ? (
-            <Typography variant="h2" className={classes.text}>
-              ОТЗЫВЫ
-            </Typography>
-          ) : null}
-
-          <TransitionGroup className={classes.commentBoxWrap}>
-            <CSSTransition
-              key={reviewVideo}
-              in={opacity}
-              appear={true}
-              timeout={500}
-              classNames="fade"
-            >
-              <Box className={classes.commentBox}>
-                <Typography
-                  className={classes.name}
-                >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
-                <Typography
-                  className={classes.place}
-                >{`${reviews[review][20]}, ${reviews[review][22].slice(6)}`}</Typography>
-                <Typography variant="body1" className={classes.message}>
-                  {reviews[review][21]}
+        {!matches[1200] ? (
+          <>
+            <Box className={classes.titleBox}>
+              <span className={classes.line}></span>
+              <Box className={classes.BlockColumn}>
+                <Typography variant="h2" className={classes.text}>
+                  РЕАЛЬНЫЕ ОТЗЫВЫ
                 </Typography>
+
+                <TransitionGroup className={classes.commentBoxWrap}>
+                  <CSSTransition
+                    key={reviewVideo}
+                    in={opacity}
+                    appear={true}
+                    timeout={500}
+                    classNames="fade"
+                  >
+                    <Box className={classes.commentBox}>
+                      <Typography
+                        className={classes.name}
+                      >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
+                      <Typography className={classes.place}>{`${
+                        reviews[review][20]
+                      }, ${reviews[review][22].slice(6)}`}</Typography>
+                      <Typography variant="body1" className={classes.message}>
+                        {reviews[review][21]}
+                      </Typography>
+                    </Box>
+                  </CSSTransition>
+                </TransitionGroup>
+
+                <Box className={classes.reviewDate}>
+                  <Box className={classes.buttons}>
+                    <SquareButton
+                      variant={"outlined"}
+                      click={handleClickLeft}
+                      less
+                    />
+                    <SquareButton
+                      click={handleClickRight}
+                      great
+                      variant={"outlined"}
+                    />
+                  </Box>
+                  <Typography variant="h5">
+                    {`${reviews[review][22].slice(0, 2)}/${reviews[
+                      review
+                    ][22].slice(3, 5)} `}
+                  </Typography>
+                </Box>
               </Box>
-            </CSSTransition>
-          </TransitionGroup>
+            </Box>
+            <Box className={classes.mediaBlock}>
+              <TransitionGroup className={classes.reviewVideoBox}>
+                <CSSTransition
+                  key={reviewVideo}
+                  in={opacity}
+                  appear={true}
+                  timeout={500}
+                  classNames="fade"
+                >
+                  <GatsbyImage
+                    className={classes.reviewVideo}
+                    image={getImg(
+                      `${reviews[reviewVideo][23].substr(
+                        reviews[reviewVideo][23].search(/images\//g)
+                      )}`
+                    )}
+                    alt="img"
+                  ></GatsbyImage>
+                </CSSTransition>
+              </TransitionGroup>
 
-          <Box className={classes.buttons}>
-            <SquareButton variant={"outlined"} click={handleClickLeft} less />
-            <SquareButton click={handleClickRight} great variant={"outlined"} />
-          </Box>
-        </Box>
-        <Box className={classes.mediaBlock} onChange={handleReviewCange}>
-          <TransitionGroup className={classes.reviewVideoBox}>
-            <CSSTransition
-              key={reviewVideo}
-              in={opacity}
-              appear={true}
-              timeout={500}
-              classNames="fade"
-            >
-              <GatsbyImage
-                className={classes.reviewVideo}
-                image={getImg(`${reviews[reviewVideo][23].substr(reviews[reviewVideo][23].search(/images\//g))}`)}
-                alt="img"
-              ></GatsbyImage>
-            </CSSTransition>
-          </TransitionGroup>
-
-          <Box className={classes.secondBlock}>
-            <Box className={classes.reviewData}>
-              <Typography variant="h2">
-                {`${reviews[review][22].slice(0,2)}/${reviews[review][22].slice(3,5)} `}
+              <Box className={classes.secondBlock}>
+                <Box className={classes.imagesBoxes}>
+                  <ReviewsSlider
+                    myRef={myRef}
+                    reviews={reviews}
+                    getImg={getImg}
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </>
+        ) : (
+          <>
+            <Box className={classes.titleBox}>
+              <span className={classes.line}></span>
+              <Typography variant="h2" className={classes.text}>
+                РЕАЛЬНЫЕ ОТЗЫВЫ
               </Typography>
             </Box>
-            <Box className={classes.imagesBoxes}>
-              <ReviewsSlider myRef={myRef} reviews={reviews} getImg={getImg} />
+            <Box className={classes.BlockColumn}>
+              <TransitionGroup className={classes.commentBoxWrap}>
+                <CSSTransition
+                  key={reviewVideo}
+                  in={opacity}
+                  appear={true}
+                  timeout={500}
+                  classNames="fade"
+                >
+                  <Box className={classes.commentBox}>
+                    <Typography
+                      className={classes.name}
+                    >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
+                    <Typography className={classes.place}>{`${
+                      reviews[review][20]
+                    }, ${reviews[review][22].slice(6)}`}</Typography>
+                    <Typography variant="body1" className={classes.message}>
+                      {reviews[review][21]}
+                    </Typography>
+                  </Box>
+                </CSSTransition>
+              </TransitionGroup>
+
+              <Box className={classes.reviewDate}>
+                <Box className={classes.buttons}>
+                  <SquareButton
+                    variant={"outlined"}
+                    click={handleClickLeft}
+                    less
+                  />
+                  <SquareButton
+                    click={handleClickRight}
+                    great
+                    variant={"outlined"}
+                  />
+                </Box>
+                <Typography variant="h5">
+                  {`${reviews[review][22].slice(0, 2)}/${reviews[
+                    review
+                  ][22].slice(3, 5)} `}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-        </Box>
+            <Box className={classes.mediaBlock}>
+              <TransitionGroup className={classes.reviewVideoBox}>
+                <CSSTransition
+                  key={reviewVideo}
+                  in={opacity}
+                  appear={true}
+                  timeout={500}
+                  classNames="fade"
+                >
+                  <GatsbyImage
+                    className={classes.reviewVideo}
+                    image={getImg(
+                      `${reviews[reviewVideo][23].substr(
+                        reviews[reviewVideo][23].search(/images\//g)
+                      )}`
+                    )}
+                    alt="img"
+                  ></GatsbyImage>
+                </CSSTransition>
+              </TransitionGroup>
+
+              <Box className={classes.secondBlock}>
+                <Box className={classes.imagesBoxes}>
+                  <ReviewsSlider
+                    myRef={myRef}
+                    reviews={reviews}
+                    getImg={getImg}
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </>
+        )}
       </Box>
 
       {/* ОТВЕТЫ */}
@@ -453,34 +583,59 @@ const MainPageContent = ({data}) => {
             : classes.Block
         }
       >
-        <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
-          {matches[1200] ? (
-            <Typography variant="h2" className={classes.text}>
-              ОТВЕТЫ
-            </Typography>
-          ) : null}
-        </Box>
-        <Box className={classes.BlockColumn}>
-          {!matches[1200] ? (
-            <Typography variant="h2" className={classes.text}>
-              ОТВЕТЫ
-            </Typography>
-          ) : null}
-          <Box className={classes.buttonGroup}>
-            <RegularButton variant="outlined" click={handleReviewCange}>
-              1-4
-            </RegularButton>
+        {matches[1200] ? (
+          <>
+            <Box className={classes.titleBox}>
+              <span className={classes.line}></span>
+              <Typography variant="h2" className={classes.text}>
+                ОТВЕТЫ НА ВОПРОСЫ
+              </Typography>
+            </Box>
+            <Box className={classes.BlockColumn}>
+              {!matches[1200] ? (
+                <Typography variant="h2" className={classes.text}>
+                  ОТВЕТЫ НА ВОПРОСЫ
+                </Typography>
+              ) : null}
 
-            <RegularButton
-              leftNone
-              variant="outlined"
-              click={handleReviewCange}
-            >
-              5-8
-            </RegularButton>
+              <Box className={classes.buttons}>
+                <SquareButton
+                  variant={"outlined"}
+                  click={handleReviewCangePrev}
+                  less
+                />
+                <SquareButton
+                  click={handleReviewCangeNext}
+                  great
+                  variant={"outlined"}
+                />
+              </Box>
+            </Box>
+          </>
+        ) : (
+          <Box className={classes.titleBox} style={{ minHeight: "224px" }}>
+            <span className={classes.line}></span>
+            <Box className={classes.BlockColumn}>
+              <Typography variant="h2" className={classes.text}>
+                ОТВЕТЫ НА ВОПРОСЫ
+              </Typography>
+
+              <Box className={classes.buttons}>
+                <SquareButton
+                  variant={"outlined"}
+                  click={handleReviewCangePrev}
+                  less
+                />
+                <SquareButton
+                  click={handleReviewCangeNext}
+                  great
+                  variant={"outlined"}
+                />
+              </Box>
+            </Box>
           </Box>
-        </Box>
+        )}
+
         <Box className={classes.accordion}>
           <Accordions answers={true} arr={answers[answeGroup]} />
         </Box>
@@ -489,32 +644,97 @@ const MainPageContent = ({data}) => {
       {/* "ЭКСПОДОМ" */}
 
       <Box component="section" className={classes.Block}>
-        <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
-          {matches[1200] ? (
-            <Typography variant="h2" className={classes.text}>
-              ЭКСПОДОМ
-            </Typography>
-          ) : null}
-        </Box>
-        <FormBlock
-          subtitle
-          img={getImg("images/expodom_img.png")}
-          header={!matches[1200] ? "ЭКСПОДОМ" : null}
-          title={"Пожить в модульном доме на Браславских озерах"}
-        />
+        {!matches[1200] ? (
+          <>
+            <Box className={classes.titleBox} style={{ marginTop: "100px" }}>
+              <span className={classes.line}></span>
+
+              <Box
+                className={classes.BlockColumn}
+                style={{ justifyContent: "start" }}
+              >
+                <Typography variant="h2" className={classes.text}>
+                  Приглашаем
+                </Typography>
+                <Form
+                  title="В готовый модульный дом под Минском на ознакомительную экскурсиюшаем"
+                  subtitle="Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии"
+                />
+              </Box>
+            </Box>
+            <OneImageAutoSlider />
+          </>
+        ) : (
+          <>
+            <Box className={classes.titleBox}>
+              <span className={classes.line}></span>
+              <Typography variant="h2" className={classes.text}>
+                Приглашаем
+              </Typography>
+            </Box>
+            <Box className={classes.BlockColumn}>
+              <OneImageAutoSlider />
+              <Form
+                title="В готовый модульный дом под Минском на ознакомительную экскурсиюшаем"
+                subtitle="Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии"
+              />
+            </Box>
+          </>
+        )}
       </Box>
 
-      <Box component="section" className={classes.Block}>
-        <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
-          {matches[1200] ? (
-            <Typography variant="h2" className={classes.text}>
-              КОНТАКТЫ
-            </Typography>
-          ) : null}
-        </Box>
-        <Contacrs header={!matches[1200] ? "Контакты" : null} />
+      <Box
+        component="section"
+        className={classes.Block}
+        style={{ marginTop: !matches[1200] ? "180px" : "100px" }}
+      >
+        {!matches[1200] ? (
+          <>
+            <Box className={classes.titleBox}>
+              <span className={classes.line}></span>
+              <Box className={classes.BlockColumn}>
+                <Typography
+                  variant="h2"
+                  className={classes.text}
+                  style={{ marginBottom: "60px" }}
+                >
+                  КОНТАКТЫ
+                </Typography>
+                <ContactsBlock />
+              </Box>
+            </Box>
+
+            <Box className={classes.formBox}>
+              <Typography
+                variant="h2"
+                className={classes.text}
+                style={{ marginBottom: "100px" }}
+              >
+                Напишите нам
+              </Typography>
+              <Form email text main />
+            </Box>
+          </>
+        ) : (
+          <>
+            <Box className={classes.titleBox}>
+              <span className={classes.line}></span>
+              <Typography variant="h2" className={classes.text}>
+                КОНТАКТЫ
+              </Typography>
+            </Box>
+            <Box className={classes.BlockColumn}>
+              <ContactsBlock />
+              <Box className={classes.titleBox} style={{ marginTop: "40px" }}>
+                <span className={classes.line}></span>
+                <Typography variant="h2" className={classes.text}>
+                  Напишите нам
+                </Typography>
+              </Box>
+              <Form email text main />
+            </Box>
+          </>
+        )}
       </Box>
     </Box>
   );

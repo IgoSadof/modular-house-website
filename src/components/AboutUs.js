@@ -63,10 +63,10 @@ const useStyles = makeStyles((theme) => ({
 
   line: {
     display: "inline-block",
-    width: "75px",
+    width: "80px",
     height: "1px",
     backgroundColor: "black",
-    marginTop: "10px",
+    marginTop: "22px",
   },
   Block: {
     display: "flex",

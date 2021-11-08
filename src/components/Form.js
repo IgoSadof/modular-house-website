@@ -39,11 +39,10 @@ const useStyles = makeStyles((theme) => ({
   },
   line: {
     display: "inline-block",
-    width: "75px",
-    minWidth: "75px",
+    width: "80px",
     height: "1px",
     backgroundColor: "black",
-    marginTop: "10px",
+    marginTop: "22px",
   },
   formBox: {
     // position: "relative",
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     minWidth: "300px",
-    width: "22vw",
+    // width: "22vw",
     [theme.breakpoints.down("md")]: {
       alignSelf: "center",
     },
@@ -67,11 +66,12 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     textTransform: "uppercase",
+    marginTop: "80px",
     // width: "245px",
   },
   subtitle: {
     marginTop: "60px",
-    width: "120px",
+    width: "200px",
     // color: "#4F4F4F",
   },
 
@@ -85,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
     },
     field: {
       width: "100%",
+      height:"82px !important",
     },
   },
 
@@ -227,7 +228,7 @@ const Form = ({
           ) : (
             <Box className={main ? classes.titleBoxMain : classes.titleBox}>
               {main ? <span className={classes.line}></span> : null}
-              <Typography variant="h2" className={classes.text}>
+              <Typography variant="h5" className={classes.text}>
                 {title}
               </Typography>
             </Box>
@@ -263,7 +264,7 @@ const Form = ({
             // }}
           />
           {/* For ditection of bots */}
-          <input type="text" name="_gotcha" style={{ display: "none" }} />
+          <input type="text" name="_gotcha" style={{ display: "none" }}  className={classes.field}/>
           <TextField
             className={classes.field}
             onChange={handleChangeTel}

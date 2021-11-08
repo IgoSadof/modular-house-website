@@ -19,25 +19,27 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: "0",
     margin: "0",
-    height: "170px",
   },
   conteiner: {
     display: "flex",
-    // border:"1px solid",
-    // marginRight:"20px",
-    height: "170px",
-    // width:"170px",
     marginLeft: "20px",
     gap: "20px",
+    [theme.breakpoints.down("md")]: {
+      // marginLeft: "0",
+    },
   },
   imgBox: {
-    width: "100%",
-    height: "100%",
+    width: "176px",
+    height: "176px",
+    [theme.breakpoints.down("md")]: {
+
+    },
   },
   img: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
+    opacity:'0.5',
   },
 }));
 const ReviewsSlider = ({myRef,reviews,getImg}) => {

@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
-      gap: "80px",
+      gap: "60px",
     },
   },
   BlockColumn: {
@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Contacts = ({ header }) => {
+const ContactsBlock = ({ header }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -191,8 +191,8 @@ const Contacts = ({ header }) => {
               </Box>
             ) : null}
           </Box>
-          <Form title={"НАПИШИТЕ НАМ"} email text main />
-          {/* {matches[1200] ? (
+          
+          {matches[1200] ? (
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>
@@ -212,10 +212,10 @@ const Contacts = ({ header }) => {
                 </Typography>
               </Box>
             </Box>
-          ) : null} */}
+          ) : null}
         </Box>
       </Box>
     </Box>
   );
 };
-export default Contacts;
+export default ContactsBlock;
