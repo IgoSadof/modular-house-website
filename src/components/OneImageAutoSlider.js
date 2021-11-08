@@ -9,7 +9,7 @@ import slide2 from "../assets/images/slide2.jpg";
 import slide3 from "../assets/images/slide3.jpg";
 import SwiperCore, { Autoplay } from "swiper";
 
-SwiperCore.use([Autoplay]);
+// SwiperCore.use([Autoplay]);
 
 const useStyles = makeStyles((theme) => ({
   imgBox: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     backgroundPosition: "center",
-    backgroundSize: "cover",
+    objectFit: "cover",
     transition: "all .5s",
   },
 }));
