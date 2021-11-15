@@ -42,6 +42,13 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  BlockMobile: {
+    padding: "0",
+  },
+  FormBox: {
+    width: "100%",
+    padding: "0 10%",
+  },
   BlockFullscreen: {
     [theme.breakpoints.down("md")]: {
       padding: "0",
@@ -151,10 +158,9 @@ const useStyles = makeStyles((theme) => ({
   message: {
     marginTop: "20px",
     [theme.breakpoints.down("md")]: {
-      height:"150px",
+      height: "150px",
       overflow: "scroll",
     },
-
   },
   buttons: {
     display: "flex",
@@ -669,45 +675,48 @@ const MainPageContent = ({ data }) => {
 
       {/* "ЭКСПОДОМ" */}
 
-      <Box component="section" className={classes.Block}>
-        {!matches[1200] ? (
-          <>
-            <Box className={classes.titleBox} style={{ marginTop: "100px" }}>
-              <span className={classes.line}></span>
+      {!matches[1200] ? (
+        <Box component="section" className={classes.Block}>
+          <Box className={classes.titleBox} style={{ marginTop: "100px" }}>
+            <span className={classes.line}></span>
 
-              <Box
-                className={classes.BlockColumn}
-                style={{ justifyContent: "start" }}
-              >
-                <Typography variant="h2" className={classes.text}>
-                  Приглашаем
-                </Typography>
-                <Form
-                  title="В готовый модульный дом под Минском на ознакомительную экскурсиюшаем"
-                  subtitle="Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии"
-                />
-              </Box>
-            </Box>
-            <OneImageAutoSlider />
-          </>
-        ) : (
-          <>
-            <Box className={classes.titleBox}>
-              <span className={classes.line}></span>
+            <Box
+              className={classes.BlockColumn}
+              style={{ justifyContent: "start" }}
+            >
               <Typography variant="h2" className={classes.text}>
                 Приглашаем
               </Typography>
-            </Box>
-            <Box className={classes.BlockColumn}>
-              <OneImageAutoSlider />
               <Form
                 title="В готовый модульный дом под Минском на ознакомительную экскурсиюшаем"
                 subtitle="Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии"
               />
             </Box>
-          </>
-        )}
-      </Box>
+          </Box>
+          <OneImageAutoSlider />
+        </Box>
+      ) : (
+        <Box
+          component="section"
+          className={`${classes.Block} ${classes.BlockMobile}`}
+        >
+          <Box className={classes.titleBox}>
+            <span className={classes.line}></span>
+            <Typography variant="h2" className={classes.text}>
+              Приглашаем
+            </Typography>
+          </Box>
+          <Box className={classes.BlockColumn}>
+            <OneImageAutoSlider />
+            <Box className={classes.FormBox}>
+              <Form
+                title="В готовый модульный дом под Минском на ознакомительную экскурсиюшаем"
+                subtitle="Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии"
+              />
+            </Box>
+          </Box>
+        </Box>
+      )}
 
       <Box
         component="section"
