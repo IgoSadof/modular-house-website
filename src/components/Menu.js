@@ -13,7 +13,7 @@ import RegularButton from "./buttons/RegularButton";
 const useStyles = makeStyles((theme) => ({
   menu: {
     boxSizing: "border-box",
-    position: 'fixed',
+    position: "fixed",
     top: "0",
     left: "0",
     display: "flex",
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     width: (param) => (param.inBurger ? "100%" : "10%"),
-    height:  (param) => (param.inBurger ? "80vh" : "100vh"),
+    height: (param) => (param.inBurger ? "80vh" : "100vh"),
     borderRight: "1px solid #4F4F4F",
     padding: "50px 0px 100px",
     transition: "0.5s",
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       display: (param) => (param.inBurger ? "flex" : "none"),
       borderRight: "none",
-      position: 'relative',
+      position: "relative",
       padding: "0",
       background: "none",
       backdropFilter: "none",
@@ -57,13 +57,14 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     alignItems: "center",
     cursor: "pointer",
-    "& img":{
-      width:"100%"
-    }
+    "& img": {
+      width: "100%",
+    },
   },
   iconsBox: {
     display: "flex",
     gap: "30px",
+    alignItems: "center",
   },
   icon: {
     cursor: "pointer",
@@ -75,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1em",
     fontWeight: 600,
     textTransform: "uppercase",
-    letterSpacing:"0.015em",
+    letterSpacing: "0.015em",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
@@ -93,8 +94,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       opacity: "1",
       gap: "50px",
-      marginTop:'auto',
-      marginBottom:'auto',
+      marginTop: "auto",
+      marginBottom: "auto",
     },
     [theme.breakpoints.down(theme.breakpoints.values.s)]: {
       gap: "40px",
@@ -104,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     [theme.breakpoints.down("md")]: {
       opacity: "1",
-      "& span":{
+      "& span": {
         fontSize: "18px",
       },
     },
@@ -135,7 +136,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
       {inBurger ? null : (
         <>
           <Link className={classes.logo} to={"/"}>
-            <Logo color={"#4F4F4F"}/>
+            <Logo color={"#4F4F4F"} />
           </Link>
           <Typography variant="button" className={classes.text}>
             Меню
@@ -201,13 +202,22 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
           </RegularButton>
         ) : null}
         <Box className={classes.iconsBox}>
-          <a className={classes.Link} href={"https://www.facebook.com/zrobimarchitects/"}>
+          <a
+            className={classes.Link}
+            href={"https://www.facebook.com/zrobimarchitects/"}
+          >
             <img className={classes.icon} src={facebook} alt="icons"></img>
           </a>
-          <a className={classes.Link} href={"https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ"}>
+          <a
+            className={classes.Link}
+            href={"https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ"}
+          >
             <img className={classes.icon} src={youtube} alt="icons"></img>
           </a>
-          <a className={classes.Link} href={"https://www.instagram.com/by___home/"}>
+          <a
+            className={classes.Link}
+            href={"https://www.instagram.com/by___home/"}
+          >
             <img className={classes.icon} src={instagram} alt="icons"></img>
           </a>
         </Box>

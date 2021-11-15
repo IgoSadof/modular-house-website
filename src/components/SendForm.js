@@ -11,7 +11,7 @@ import Burger from "./Burger";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "absolute",
+    position: "fixed",
     top: "0",
     left: (param) => (param.isFormOpen ? "65%" : "100%"),
     display: "flex",
@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
     backdropFilter: "blur(10px)",
     transition: "0.7s",
     justifyContent: 'center',
+    "& h5":{
+      alignSelf: "end",
+
+
+    },
     [theme.breakpoints.down("md")]: {
       position: "fixed",
       left: (param) => (param.isFormOpen ? "0%" : "100%"),
