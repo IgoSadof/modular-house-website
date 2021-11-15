@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
     gap: "30px",
     justifyContent: "space-between",
     marginLeft: "100px",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0",
+    },
   },
   contactsBoxes: {
     display: "flex",
@@ -111,6 +114,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent:"space-between",
     margin: "0 auto",
     width: "400px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
 }));
 
