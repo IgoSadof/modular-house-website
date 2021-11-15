@@ -3,10 +3,10 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Swiper } from "swiper/react";
 import "swiper/css";
 import SwiperCore, {
-  Mousewheel
+  Mousewheel,FreeMode
 } from 'swiper';
 
-SwiperCore.use([Mousewheel]);
+SwiperCore.use([Mousewheel,FreeMode]);
 
 const ModalsSlider = ({ listItem, houseRef, mobile }) => {
   const matches = {
