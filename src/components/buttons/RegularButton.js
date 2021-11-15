@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
       background: (param) => (param.color ? param.color : "#4F4F4F"),
       color: (param) => (param.color ? "#4F4F4F" : "#F2F2F2"),
     },
+    [theme.breakpoints.down("md")]: {
+      transform:"scale(0.9)",
+    },
   },
 }));
 

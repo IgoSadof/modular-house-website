@@ -329,18 +329,23 @@ abbr {
   justify-content: start;
 }
 
-.swiper-slide {
-  /* width: 645px !important;
-  height: 633px !important; */
-  /* height: 33vw !important; */
-}
-
 @media (max-width: 1200px) {
   .slick-list {
     height: auto ;
   }
   .swiper-slide {
-    /* width: 90% !important; */
     height: auto !important;
+  }
+}
+/* Drawer */
+.MuiDrawer-paper{
+  background-color: transparent !important;
+  background: radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.5) 100%) !important;
+  backdrop-filter: blur(10px);
+}
+@media (max-width: 1200px) {
+  .MuiDrawer-paper{
+    width: 100% !important;
+    overflow: hidden !important;
   }
 }

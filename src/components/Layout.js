@@ -5,13 +5,17 @@ import Footer from "./Footer";
 import Menu from "./Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
 import Box from "@material-ui/core/Box";
-import SendForm from "./SendForm";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Burger from "./Burger";
-import BurgerMenu from "./BurgerMenu";
 import RegularButton from "./buttons/RegularButton";
 import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
+import Drawer from "@material-ui/core/Drawer";
+import ClearIcon from "@material-ui/icons/Clear";
+import Form from "./Form";
+import call from "../assets/images/call.png";
+import Typography from "@material-ui/core/Typography";
+import SquareButton from "./buttons/SquareButton";
 
 const dataToComponent = (WrappedComponent, currebtData, house) => {
   return <WrappedComponent data={currebtData} house={house} />;
@@ -73,6 +77,34 @@ const useStyles = makeStyles((theme) => ({
         : "5%",
     right: "10%",
     zIndex: "2",
+  },
+  connectBox: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "50px",
+    height: "100vh",
+    zIndex: "3",
+    padding: "60px 100px 100px 100px",
+    justifyContent: "center",
+    "& h5": {
+      alignSelf: "end",
+    },
+    [theme.breakpoints.down("md")]: {
+      padding: "10%",
+      paddingTop: "0",
+      width: "100%",
+      justifyContent: "space-between",
+      gap: "initial",
+    },
+  },
+  buttonBox: {
+    marginLeft: "auto",
+  },
+  callBox: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: "30px",
   },
 }));
 
@@ -164,28 +196,33 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
   };
+
   const param = { page };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const handleOpenBurgerMenu = () => {
     setIsBurgerMenuOpen((state) => !state);
-    if (isFormOpen) {
-      setIsFormOpen((state) => !state);
-    }
   };
   const handleClickConnect = () => {
     setIsFormOpen((state) => !state);
+    setIsBurgerMenuOpen(false);
   };
-  if (isBurgerMenuOpen) {
-    if (typeof window !== "undefined") {
-      document.body.style.overflowY = "hidden";
+
+  const toggleDrawer = (open) => (event) => {
+    if (event.target.getAttribute("role") === "presentation") {
+      setIsFormOpen(false);
+      return;
     }
-  } else {
-    if (typeof window !== "undefined") {
-      document.body.style.overflowY = "overlay";
+    if (event && event.type === "keydown" && event.key !== "Escape") {
+      return;
     }
-  }
+    if (event && event.type === "click") {
+      return;
+    }
+    open ? setIsFormOpen(true) : setIsFormOpen(false);
+  };
+
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <Helmet>
@@ -196,8 +233,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       </Helmet>
-
-      {/* <header>{data.site.siteMetadata.title}</header> */}
       <Box className="conteiner">
         <Menu />
         <Box className="content">
@@ -214,7 +249,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
             >
               {matches[1200] ? (
                 <Burger
-                  click={handleOpenBurgerMenu}
+                  click={handleClickConnect}
                   page={page}
                   position={
                     page === "watch" || page === "houseList" || page === "house"
@@ -228,18 +263,82 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                   }
                 />
               ) : null}
-              <BurgerMenu
-                isBurgerMenuOpen={isBurgerMenuOpen}
-                click={handleOpenBurgerMenu}
-                clickToOpenForm={handleClickConnect}
-              />
-              <SendForm
-                isFormOpen={isFormOpen}
-                click={handleClickConnect}
-                burgerClick={
-                  matches[1200] ? () => handleOpenBurgerMenu() : null
-                }
-              />
+              <div
+                className={classes.ConnectBox}
+                name="form"
+                onClick={toggleDrawer(false)}
+                onKeyDown={toggleDrawer(false)}
+              >
+                <React.Fragment>
+                  <Drawer
+                    hideBackdrop={true}
+                    anchor={"right"}
+                    open={isFormOpen}
+                    onClose={toggleDrawer(false)}
+                  >
+                    <Box className={classes.connectBox}>
+                      {!matches[1200] ? (
+                        <>
+                          <Box className={classes.buttonBox}>
+                            <SquareButton
+                              variant="outlined"
+                              click={handleClickConnect}
+                              icon={<ClearIcon />}
+                            />
+                          </Box>
+                          <Form
+                            title={"Напешите нам"}
+                            email
+                            text
+                            closeForm={handleClickConnect}
+                            inBurger={matches[1200] ? true : false}
+                            main
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <Burger
+                            isOpen={true}
+                            click={
+                              matches[1200] ? () => handleClickConnect() : null
+                            }
+                          />
+                          {!isBurgerMenuOpen ? (
+                            <Box className={classes.menuBox}>
+                              <Menu
+                                inBurger={true}
+                                clickToOpenForm={handleOpenBurgerMenu}
+                              />
+                            </Box>
+                          ) : (
+                            <>
+                              <Box className={classes.callBox}>
+                                <Typography variant="h6">Позвонить</Typography>
+                                <a href="tel:+375293650669">
+                                  <img
+                                    className={classes.call}
+                                    src={call}
+                                    alt="call"
+                                  ></img>
+                                </a>
+                              </Box>
+                              <Form
+                                title={"Напешите нам"}
+                                email
+                                text
+                                closeForm={handleOpenBurgerMenu}
+                                inBurger={true}
+                                main
+                              />
+                            </>
+                          )}
+                        </>
+                      )}
+                    </Box>
+                  </Drawer>
+                </React.Fragment>
+              </div>
+
               <Box className={classes.button}>
                 {matches["1200"] ? null : (
                   <RegularButton variant="outlined" click={handleClickConnect}>
@@ -248,7 +347,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                 )}
               </Box>
               {component ? dataToComponent(component, data, house) : children}
-              {/* {children} */}
             </Box>
             <Footer />
           </Box>
