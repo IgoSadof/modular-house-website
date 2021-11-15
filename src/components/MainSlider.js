@@ -9,6 +9,7 @@ import video2 from "../assets/video/video2.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import getMainPage from "../utils/getMainPage";
+// import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       position: "relative",
       height: "85vw",
-      top:"60px",
+      top: "60px",
     },
   },
   fon: {
@@ -120,8 +121,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   articleBox: {
-    display:"flex",
-    alignItems:"center",
+    display: "flex",
+    alignItems: "center",
     position: "relative",
     zIndex: 1,
     height: "55vh",
@@ -226,7 +227,7 @@ const useStyles = makeStyles((theme) => ({
     },
     transition: "0.5s",
   },
-  icon:{
+  icon: {
     [theme.breakpoints.down("md")]: {
       width: "50px",
     },
@@ -240,7 +241,8 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
-  const [playVideo, setPlayVideo] = useState(true);
+  const [playVideo, setPlayVideo] = useState(false);
+  
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
@@ -259,16 +261,9 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
       setPlayVideo(true);
       setCurrentSegment(numb - 1);
     }
-    let interval = matches["1200"]
-      ? 24 * (numb - 1):
-      10 * (numb - 1);
+    let interval = matches["1200"] ? 24 * (numb - 1) : 10 * (numb - 1);
 
-    setLineLength(() =>
-      numb === 1
-        ? baseLength
-        : baseLength 
-        + interval
-    );
+    setLineLength(() => (numb === 1 ? baseLength : baseLength + interval));
     setActiveNumb(numb - 1);
   };
 
@@ -295,6 +290,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
         : (scroll = 4);
     }
   }, [scroll]);
+  console.log(playVideo)
 
   return (
     <Box component="section" className={classes.content}>
@@ -341,32 +337,37 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
 
           <Box className={classes.mainVideoBox}>
             <div className={classes.fon}></div>
-            <ReactPlayer
-              height="100%"
-              width="100%"
-              url={video2}
-              loop={true}
-              playing={playVideo}
-              progressInterval={10}
-              muted={true}
-              onProgress={({ playedSeconds }) => {
-                if (activeNumb >= currentSegment) {
-                  if (playedSeconds >= vidSegments[activeNumb]) {
+            {/* {!playVideo ? (
+              <CircularProgress />
+            ) : ( */}
+              <ReactPlayer
+                height="100%"
+                width="100%"
+                url={video2}
+                loop={true}
+                playing={playVideo}
+                progressInterval={10}
+                muted={true}
+                onProgress={({ playedSeconds }) => {
+                  if (activeNumb >= currentSegment) {
+                    if (playedSeconds >= vidSegments[activeNumb]) {
+                      setPlayVideo(false);
+                      setCurrentSegment(activeNumb);
+                    }
+                  } else if (
+                    playedSeconds >= vidSegments[activeNumb] &&
+                    playedSeconds <= vidSegments[currentSegment]
+                  ) {
                     setPlayVideo(false);
                     setCurrentSegment(activeNumb);
                   }
-                } else if (
-                  playedSeconds >= vidSegments[activeNumb] &&
-                  playedSeconds <= vidSegments[currentSegment]
-                ) {
-                  setPlayVideo(false);
-                  setCurrentSegment(activeNumb);
-                }
-              }}
-              onReady={() => {
-                setPlayVideo(true);
-              }}
-            />
+                }}
+                onReady={() => {
+                  setPlayVideo(true);
+                }}
+                
+              />
+            {/* )} */}
           </Box>
 
           <Box className={classes.numbersBox}>

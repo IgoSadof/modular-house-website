@@ -690,7 +690,7 @@ const MainPageContent = ({ data }) => {
               />
             </Box>
           </Box>
-          <OneImageAutoSlider />
+          <OneImageAutoSlider data={data} />
         </Box>
       ) : (
         <Box
