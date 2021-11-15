@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
   blockTitle: {
     textTransform: "uppercase",
-    fontSize: "14px",
+    // fontSize: "14px",
     width: "200px",
     [theme.breakpoints.down("md")]: {
       width: "fit-content",
@@ -169,14 +169,14 @@ const AboutUs = () => {
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Автор концепции MH - Андрусь Bezdar
             </Typography>
           </Box>
         ) : (
           <>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Автор концепции MH - Андрусь Bezdar
             </Typography>
           </>
@@ -192,7 +192,7 @@ const AboutUs = () => {
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Разработка технологии MH - Андрусь Bezdar, Кораблёв Алексей,
               Амбражейчик Кирилл, Короленко Николай.
             </Typography>
@@ -230,14 +230,14 @@ const AboutUs = () => {
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Модульная система
             </Typography>
           </Box>
         ) : (
           <>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Модульная система:
             </Typography>
           </>
@@ -266,7 +266,7 @@ const AboutUs = () => {
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Создатели
             </Typography>
           </Box>
@@ -276,7 +276,7 @@ const AboutUs = () => {
           </>
         )}
         <Box className={classes.creatorsBox}>
-          <Typography variant="subtitle1" className={classes.blockTitle}>
+          <Typography variant="h2" className={classes.blockTitle}>
             Создатели
           </Typography>
           <Box className={classes.creatorTextBox}>
@@ -334,14 +334,14 @@ const AboutUs = () => {
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Наш друг, В. Татаров.
             </Typography>
           </Box>
         ) : (
           <>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               Наш друг, В. Татаров.
             </Typography>
           </>
@@ -354,7 +354,7 @@ const AboutUs = () => {
         {matches[1200] ? (
           <Box className={classes.titleBox}>
             <span className={classes.line}></span>
-            <Typography variant="subtitle1" className={classes.blockTitle}>
+            <Typography variant="h2" className={classes.blockTitle}>
               В офисе студии ZROBYM architects, за кружкой хорошего кофе всегда
               можно получить необходимую информацию, выбрать готовый проект или
               заказать разработку модульного дома индивидуально.

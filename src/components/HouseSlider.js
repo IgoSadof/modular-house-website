@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
@@ -181,14 +180,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
       setSwipe(false);
     }
   };
-  const settings = {
-    infinite: true,
-    arrows: false,
-    speed: 500,
-    slidesToShow: matches[600] ? 1 : 2,
-    // slidesToScroll: 1,
-    adaptiveHeight: true,
-  };
+
   const listItems = dataHouses
     ? dataHouses.map((item, index) => {
         return (
@@ -321,7 +313,6 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
       // centeredSlides={true}
       freeMode={true}
       spaceBetween={20}
-      grabCursor={true}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
     >

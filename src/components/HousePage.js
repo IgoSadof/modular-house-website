@@ -843,7 +843,7 @@ const HousePage = ({ house, data }) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h6" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               Экспликация
             </Typography>
           ) : null}
@@ -851,7 +851,7 @@ const HousePage = ({ house, data }) => {
         {/* <span className={classes.line}></span> */}
         <Box className={classes.roomsList}>
           {matches[1200] ? null : (
-            <Typography variant="h6">Экспликация</Typography>
+            <Typography variant="h2">Экспликация</Typography>
           )}
           <Box className={classes.accordionBox}>
             <Accordions
@@ -884,14 +884,14 @@ const HousePage = ({ house, data }) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {matches[1200] ? (
-            <Typography variant="h6" className={classes.text}>
+            <Typography variant="h2" className={classes.text}>
               Смета
             </Typography>
           ) : null}
         </Box>
         <Box className={classes.calculationPlan}>
           {matches[1200] ? null : (
-            <Typography className={classes.text} variant="h6">
+            <Typography className={classes.text} variant="h2">
               Смета
             </Typography>
           )}

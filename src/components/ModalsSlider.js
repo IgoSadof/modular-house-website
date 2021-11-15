@@ -24,7 +24,6 @@ const ModalsSlider = ({ listItem, houseRef, mobile }) => {
         direction={mobile ? 'horizontal' : 'vertical'}
         freeMode={true}
         spaceBetween={20}
-        grabCursor={true}
       >
         {listItem}
       </Swiper>

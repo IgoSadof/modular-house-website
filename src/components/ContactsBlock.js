@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import alexey from "../assets/images/alexey.png";
 import Form from "./Form";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { StaticImage } from "gatsby-plugin-image";
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   BlockContent: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     width: "100%",
     height: "100%",
 
@@ -55,15 +54,16 @@ const useStyles = makeStyles((theme) => ({
   contactsBox: {
     display: "flex",
     flexDirection: "column",
-    gap: "40px",
+    gap: "60px",
     justifyContent: "space-between",
   },
   contactsBoxes: {
     display: "flex",
     gap: "20px",
-    justifyContent: "center",
+    justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
       gap: "20px",
+      justifyContent: "center",
     },
   },
   personalBoxLink: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
   personalBox: {
     width: "225px",
-    "@media (max-width: 1900px)":{
+    [theme.breakpoints.down("md")]: {
       width: "150px",
     },
   },

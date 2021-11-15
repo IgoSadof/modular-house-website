@@ -4,7 +4,7 @@ export default function Logo({ width = "60", height = "90", color = "white" }) {
   return (
     <svg
       width={width}
-      height="89"
+      height={height}
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

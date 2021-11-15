@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import alexey from "../assets/images/alexey.png";
 import Form from "./Form";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { StaticImage } from "gatsby-plugin-image";
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   BlockContent: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     width: "100%",
     height: "100%",
 
@@ -55,15 +54,17 @@ const useStyles = makeStyles((theme) => ({
   contactsBox: {
     display: "flex",
     flexDirection: "column",
-    gap: "40px",
+    gap: "30px",
     justifyContent: "space-between",
+    marginLeft: "100px",
   },
   contactsBoxes: {
     display: "flex",
     gap: "20px",
-    justifyContent: "center",
+    justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
       gap: "20px",
+      justifyContent: "center",
     },
   },
   personalBoxLink: {
@@ -71,7 +72,10 @@ const useStyles = makeStyles((theme) => ({
   },
   personalBox: {
     width: "225px",
-    "@media (max-width: 1900px)":{
+    // [theme.breakpoints.down("md")]: {
+    //   width: "150px",
+    // },
+    "@media (max-width: 1900px)": {
       width: "150px",
     },
   },
@@ -89,18 +93,25 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
     gap: "30px",
   },
-  contactsName:{
-    marginTop:"30px",
-    fontWeight:"400",
+  contactsName: {
+    marginTop: "30px",
+    fontWeight: "400",
   },
-  contactsPosition:{
-    fontSize:"12px",
-    fontWeight:"300",
-    marginTop:"10px",
+  contactsPosition: {
+    fontSize: "12px",
+    fontWeight: "300",
+    marginTop: "10px",
   },
   contactsPhone: {
-    marginTop:"30px",
-  }
+    marginTop: "30px",
+  },
+  formBox: {
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"space-between",
+    margin: "0 auto",
+    width: "400px",
+  },
 }));
 
 const Contacts = ({ header }) => {
@@ -120,7 +131,7 @@ const Contacts = ({ header }) => {
             </Typography>
             <Box className={classes.logoBox}>
               {/* <img className={classes.logo} src={logo} alt="logo"></img> */}
-              <Logo color={"#4F4F4F"}/>
+              <Logo color={"#4F4F4F"} />
               {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
             </Box>
           </Box>
@@ -131,18 +142,27 @@ const Contacts = ({ header }) => {
             <Box className={classes.contactsBoxes}>
               <a className={classes.personalBoxLink} href="tel:+375293650669">
                 <Box className={classes.personalBox}>
-                <StaticImage
-                      className={classes.mainPlan}
-                      src="../assets/images/andrey2.png"
-                      alt="foto"
-                      placeholder="blurred"
-                      // layout="fixed"
-                      // width={225}
-                      // height={420}
-                    />
-                  <Typography className={classes.contactsName} variant="h4">Андрусь Bezdar</Typography>
-                  <Typography className={classes.contactsPosition} variant="body1">CEO & FOUNDER</Typography>
-                  <Typography className={classes.contactsPhone} variant="h4">+375 44 5180676</Typography>
+                  <StaticImage
+                    className={classes.mainPlan}
+                    src="../assets/images/andrey2.png"
+                    alt="foto"
+                    placeholder="blurred"
+                    // layout="fixed"
+                    // width={225}
+                    // height={420}
+                  />
+                  <Typography className={classes.contactsName} variant="h4">
+                    Андрусь Bezdar
+                  </Typography>
+                  <Typography
+                    className={classes.contactsPosition}
+                    variant="body1"
+                  >
+                    CEO & FOUNDER
+                  </Typography>
+                  <Typography className={classes.contactsPhone} variant="h4">
+                    +375 44 5180676
+                  </Typography>
                 </Box>
               </a>
 
@@ -153,18 +173,27 @@ const Contacts = ({ header }) => {
                     src={alexey}
                     alt="Foto"
                   ></img> */}
-                   <StaticImage
-                      className={classes.mainPlan}
-                      src="../assets/images/alexey2.png"
-                      alt="foto"
-                      placeholder="blurred"
-                      // layout="fixed"
-                      // width={225}
-                      // height={420}
-                    />
-                  <Typography className={classes.contactsName} variant="h4">Алексей Кораблев</Typography>
-                  <Typography className={classes.contactsPosition} variant="body1">CEO & FOUNDER</Typography>
-                  <Typography className={classes.contactsPhone} variant="h4">+375 29 3650669</Typography>
+                  <StaticImage
+                    className={classes.mainPlan}
+                    src="../assets/images/alexey2.png"
+                    alt="foto"
+                    placeholder="blurred"
+                    // layout="fixed"
+                    // width={225}
+                    // height={420}
+                  />
+                  <Typography className={classes.contactsName} variant="h4">
+                    Алексей Кораблев
+                  </Typography>
+                  <Typography
+                    className={classes.contactsPosition}
+                    variant="body1"
+                  >
+                    CEO & FOUNDER
+                  </Typography>
+                  <Typography className={classes.contactsPhone} variant="h4">
+                    +375 29 3650669
+                  </Typography>
                 </Box>
               </a>
             </Box>
@@ -172,7 +201,7 @@ const Contacts = ({ header }) => {
               <Box className={classes.infoBox}>
                 {!header ? (
                   <Box className={classes.logoBox}>
-                    <Logo color={"#4F4F4F"}/>
+                    <Logo color={"#4F4F4F"} />
                     {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
                   </Box>
                 ) : null}
@@ -191,7 +220,11 @@ const Contacts = ({ header }) => {
               </Box>
             ) : null}
           </Box>
-          <Form title={"НАПИШИТЕ НАМ"} email text main />
+          <Box className={classes.formBox}>
+            <Typography variant="h2">НАПИШИТЕ НАМ</Typography>
+            <Form email text main />
+          </Box>
+
           {/* {matches[1200] ? (
             <Box className={classes.infoBox}>
               {!header ? (

@@ -236,7 +236,7 @@ const Form = ({
         ) : null}
         {subtitle ? (
           <Typography variant="body1" className={classes.subtitle}>
-            Оставьте заявку и наш менеджер свяжеться с вами
+            {typeof subtitle === "string"? subtitle : "Оставьте заявку и наш менеджер свяжеться с вами"}
           </Typography>
         ) : null}
       </Box>

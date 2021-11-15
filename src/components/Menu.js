@@ -57,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     alignItems: "center",
     cursor: "pointer",
-    width:"30%",
     "& img":{
       width:"100%"
     }

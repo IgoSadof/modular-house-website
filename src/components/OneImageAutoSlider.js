@@ -4,12 +4,13 @@ import Box from "@material-ui/core/Box";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/effect-fade"
 import slide1 from "../assets/images/slide1.png";
 import slide2 from "../assets/images/slide2.jpg";
 import slide3 from "../assets/images/slide3.jpg";
-import SwiperCore, { Autoplay } from "swiper";
+import SwiperCore, { Autoplay,EffectFade } from "swiper";
 
-// SwiperCore.use([Autoplay]);
+SwiperCore.use([Autoplay,EffectFade]);
 
 const useStyles = makeStyles((theme) => ({
   imgBox: {
@@ -57,7 +58,7 @@ const OneImageAutoSlider = ({ mobile, houseRef, data }) => {
       slidesPerView={"1"}
       grabCursor={true}
       autoplay={{
-        delay: 2500,
+        delay: 3000,
         disableOnInteraction: false,
       }}
       navigation={true}
@@ -65,9 +66,9 @@ const OneImageAutoSlider = ({ mobile, houseRef, data }) => {
       // centeredSlides={true}
       freeMode={true}
       spaceBetween={20}
-      grabCursor={true}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
+      effect={'fade'}
+      // onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
     >
       {listItems}
     </Swiper>

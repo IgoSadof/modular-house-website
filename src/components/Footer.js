@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#4F4F4F",
     alignItems: "center",
     height:"50px",
+    [theme.breakpoints.down("md")]: {
+      padding:"10px",
+    },
+    
   },
   text: {
     color: "#D1D1D1",

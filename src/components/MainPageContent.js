@@ -14,6 +14,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getData from "../utils/getData";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import OneImageAutoSlider from "./OneImageAutoSlider";
+import Quote from "./svg/Quote";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -134,15 +135,26 @@ const useStyles = makeStyles((theme) => ({
     left: "0",
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
+  },
+  commentTitleBox: {
+    display: "flex",
+    justifyContent: "space-between",
   },
   name: {
     fontSize: "14px",
     lineHeight: 1.2,
     fontWeight: 600,
   },
-  message: {
+  place: {
     marginTop: "10px",
+  },
+  message: {
+    marginTop: "20px",
+    [theme.breakpoints.down("md")]: {
+      height:"150px",
+      overflow: "scroll",
+    },
+
   },
   buttons: {
     display: "flex",
@@ -242,8 +254,7 @@ const useStyles = makeStyles((theme) => ({
   reviewVideoBox: {
     position: "relative",
     width: "100%",
-    // maxWidth: "500px",
-    height: "27vw",
+    height: "500px",
     maxHeight: "500px",
 
     [theme.breakpoints.down("md")]: {
@@ -269,7 +280,7 @@ const useStyles = makeStyles((theme) => ({
       width: "50%",
     },
   },
-  
+
   imagesBoxes: {
     width: "360px",
   },
@@ -421,12 +432,19 @@ const MainPageContent = ({ data }) => {
                     classNames="fade"
                   >
                     <Box className={classes.commentBox}>
-                      <Typography
-                        className={classes.name}
-                      >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
-                      <Typography className={classes.place}>{`${
-                        reviews[review][20]
-                      }, ${reviews[review][22].slice(6)}`}</Typography>
+                      <Box className={classes.commentTitleBox}>
+                        <Box>
+                          <Typography
+                            className={classes.name}
+                          >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
+                          <Typography className={classes.place}>
+                            {`${reviews[review][20]}, ${reviews[
+                              review
+                            ][22].slice(6)}`}
+                          </Typography>
+                        </Box>
+                        <Quote />
+                      </Box>
                       <Typography variant="body1" className={classes.message}>
                         {reviews[review][21]}
                       </Typography>
@@ -505,12 +523,20 @@ const MainPageContent = ({ data }) => {
                   classNames="fade"
                 >
                   <Box className={classes.commentBox}>
-                    <Typography
-                      className={classes.name}
-                    >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
-                    <Typography className={classes.place}>{`${
-                      reviews[review][20]
-                    }, ${reviews[review][22].slice(6)}`}</Typography>
+                    <Box className={classes.commentTitleBox}>
+                      <Box>
+                        <Typography
+                          className={classes.name}
+                        >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
+                        <Typography className={classes.place}>
+                          {`${reviews[review][20]}, ${reviews[review][22].slice(
+                            6
+                          )}`}
+                        </Typography>
+                      </Box>
+                      <Quote />
+                    </Box>
+
                     <Typography variant="body1" className={classes.message}>
                       {reviews[review][21]}
                     </Typography>
