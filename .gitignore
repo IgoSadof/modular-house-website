@@ -3,3 +3,5 @@ node_modules/
 public
 images
 public.zip
+gatsby-config.js
+gatsby-node.js
