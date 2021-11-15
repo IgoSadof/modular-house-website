@@ -8,6 +8,7 @@ import getHousesData from "../utils/getHousesData";
 import { StaticImage, getImage } from "gatsby-plugin-image";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
+import getImg from "../utils/getImg";
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -170,14 +171,6 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
     1200: useMediaQuery("(max-width:1200px)"),
     600: useMediaQuery("(max-width:600px)"),
   };
-  const getImg = (path) => {
-    let img = getImage(
-      data?.allFile.edges.find(
-        (item) => item.node.relativePath === path.substr(7)
-      )?.node
-    );
-    return img;
-  };
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
   const classes = useStyles(param);
@@ -202,7 +195,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                   <BackgroundImage
                     className={classes.img}
                     Tag="div"
-                    {...convertToBgImage(getImg(`${item["Баннер"]}`))}
+                    {...convertToBgImage(getImg(data,`${item["Баннер"]}`))}
                   ></BackgroundImage>
                 </Box>
               </Link>

@@ -18,6 +18,7 @@ import "@google/model-viewer";
 import Model3d from "./Model3d";
 import getHousesData from "../utils/getHousesData";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import getImg from "../utils/getImg";
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -457,13 +458,6 @@ const useStyles = makeStyles((theme) => ({
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
-  const getImg = (path) => {
-    return getImage(
-      data.allFile.edges.find(
-        (item) => item.node.relativePath === path.substr(7)
-      )?.node
-    );
-  };
 
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -478,7 +472,6 @@ const HousePage = ({ house, data }) => {
     let imagesArr = [];
     data.allFile.edges.forEach((item) => {
       if (!!!item.node.relativeDirectory.search(regExp)) {
-
         imagesArr.push(getImage(item.node));
       }
     });
@@ -620,6 +613,7 @@ const HousePage = ({ house, data }) => {
             <GatsbyImage
               className={classes.mainImg}
               image={getImg(
+                data,
                 `${dataHouses[houseNumber]["Баннер"].substr(
                   dataHouses[houseNumber]["Баннер"].search(/images/)
                 )}`
@@ -641,6 +635,7 @@ const HousePage = ({ house, data }) => {
                   <GatsbyImage
                     className={classes.mainPlan}
                     image={getImg(
+                      data,
                       `${dataHouses[houseNumber]["Иконка планировки"].substr(
                         dataHouses[houseNumber]["Иконка планировки"].search(
                           /images/
@@ -809,11 +804,12 @@ const HousePage = ({ house, data }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          <Model3d 
-            srcPath={model3d} 
-            srcPathIos={model3d.replace('models3d','models3dIos').replace('glb','usdz')}
-          >
-          </Model3d>
+          <Model3d
+            srcPath={model3d}
+            srcPathIos={model3d
+              .replace("models3d", "models3dIos")
+              .replace("glb", "usdz")}
+          ></Model3d>
         </Box>
       </Box>
 
@@ -872,7 +868,7 @@ const HousePage = ({ house, data }) => {
             {roomsImg ? (
               <GatsbyImage
                 className={classes.roomImg}
-                image={getImg(roomsImg)}
+                image={getImg(data, roomsImg)}
                 alt="img"
               ></GatsbyImage>
             ) : null}
@@ -900,6 +896,7 @@ const HousePage = ({ house, data }) => {
             <GatsbyImage
               className={classes.calculationPlanImg}
               image={getImg(
+                data,
                 `${dataHouses[houseNumber]["План"].substr(
                   dataHouses[houseNumber]["План"].search(/images/)
                 )}`
@@ -976,6 +973,7 @@ const HousePage = ({ house, data }) => {
           subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
           email
           img={getImg(
+            data,
             `${dataHouses[houseNumber]["Баннер"].substr(
               dataHouses[houseNumber]["Баннер"].search(/images/)
             )}`

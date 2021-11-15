@@ -11,7 +11,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getHousesData from "../utils/getHousesData";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import {SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
+import getImg from "../utils/getImg";
 
 const style = {
   flex: {
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     // gap: "40px",
   },
   houseListItem: {
-    width:"100%",
+    width: "100%",
     height: "19vh",
     minHeight: "140px",
     position: "relative",
@@ -84,11 +85,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     border: "none",
-    background:"none",
+    background: "none",
     [theme.breakpoints.down("md")]: {
       transform: "scale(0.7)",
       top: "20px",
-      width:"120px",
+      width: "120px",
     },
   },
   houseListItemActive: {
@@ -142,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      marginTop:"20px",
+      marginTop: "20px",
       padding: "4% 10%",
       height: "auto",
     },
@@ -230,7 +231,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "20px 0",
     overflowY: "auto",
     maxHeight: "25vh",
-    lineHeight:'1.6',
+    lineHeight: "1.6",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
@@ -246,8 +247,8 @@ const useStyles = makeStyles((theme) => ({
   houseDescSpecOne: style.flex,
   houseDescMore: { ...style.flex, marginTop: "20px" },
   houseDescPrice: style.flexColumn,
-  "& p":{
-    lineHeight:"1.6",
+  "& p": {
+    lineHeight: "1.6",
   },
   houseSpecPrice: {
     [theme.breakpoints.down("md")]: {
@@ -278,16 +279,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HousesList = ({data}) => {
+const HousesList = ({ data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
-  const getImg = (path) => {
-    return getImage(
-      data.allFile.edges.find(
-        (item) => item.node.relativePath === path.substr(7)
-      ).node
-    );
-  };
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1280: useMediaQuery("(max-width:1280px)"),
@@ -326,26 +320,53 @@ const HousesList = ({data}) => {
   const listItem = dataHouses.map((item, index) => {
     return (
       <SwiperSlide key={item.id}>
-         <button
-        tabIndex="0"
-        className={
-          activeSlide === index
-            ? `${classes.houseListItem} ${classes.houseListItemActive}`
-            : classes.houseListItem
-        }
-        
-        onClick={() => handleItemclick(index)}
-        onKeyDown={() => handleItemclick(index)}
-      >
-        <Typography
+        <button
+          tabIndex="0"
           className={
             activeSlide === index
-              ? `${classes.houseListNumber} ${classes.houseListActiveNumber}`
-              : classes.houseListNumber
+              ? `${classes.houseListItem} ${classes.houseListItemActive}`
+              : classes.houseListItem
           }
-        >{`0${index + 1}`}</Typography>
-        {!matches[1280] ? (
-          !(activeSlide === index) ? (
+          onClick={() => handleItemclick(index)}
+          onKeyDown={() => handleItemclick(index)}
+        >
+          <Typography
+            className={
+              activeSlide === index
+                ? `${classes.houseListNumber} ${classes.houseListActiveNumber}`
+                : classes.houseListNumber
+            }
+          >{`0${index + 1}`}</Typography>
+          {!matches[1280] ? (
+            !(activeSlide === index) ? (
+              <>
+                <CSSTransition
+                  key={item.id}
+                  in={true}
+                  appear={true}
+                  timeout={500}
+                  classNames="houseMove"
+                >
+                  <GatsbyImage
+                    className={classes.houseListImg}
+                    image={getImg(
+                      data,
+                      `${item["Иконка дома"].substr(
+                        item["Иконка дома"].search(/images\//)
+                      )}`
+                    )}
+                    alt="img"
+                  ></GatsbyImage>
+                </CSSTransition>
+                <Typography
+                  variant="subtitle1"
+                  className={classes.houseListName}
+                >
+                  {item["Код"]}
+                </Typography>
+              </>
+            ) : null
+          ) : (
             <>
               <CSSTransition
                 key={item.id}
@@ -355,8 +376,13 @@ const HousesList = ({data}) => {
                 classNames="houseMove"
               >
                 <GatsbyImage
-                  className={classes.houseListImg}
+                  className={
+                    activeSlide === index
+                      ? `${classes.houseListImg} ${classes.houseListImgActive}`
+                      : classes.houseListImg
+                  }
                   image={getImg(
+                    data,
                     `${item["Иконка дома"].substr(
                       item["Иконка дома"].search(/images\//)
                     )}`
@@ -364,56 +390,29 @@ const HousesList = ({data}) => {
                   alt="img"
                 ></GatsbyImage>
               </CSSTransition>
-              <Typography variant="subtitle1" className={classes.houseListName}>
-                {item["Код"]}
-              </Typography>
-            </>
-          ) : null
-        ) : (
-          <>
-            <CSSTransition
-              key={item.id}
-              in={true}
-              appear={true}
-              timeout={500}
-              classNames="houseMove"
-            >
-              <GatsbyImage
-                className={
-                  activeSlide === index
-                    ? `${classes.houseListImg} ${classes.houseListImgActive}`
-                    : classes.houseListImg
-                }
-                image={getImg(
-                  `${item["Иконка дома"].substr(
-                    item["Иконка дома"].search(/images\//)
-                  )}`
-                )}
-                alt="img"
-              ></GatsbyImage>
-            </CSSTransition>
-            {activeSlide === index ? (
-              <Box className={classes.button}>
-                <Link
-                  className={classes.Link}
-                  to={`model${dataHouses[house]["URL"].toUpperCase()}`}
+              {activeSlide === index ? (
+                <Box className={classes.button}>
+                  <Link
+                    className={classes.Link}
+                    to={`model${dataHouses[house]["URL"].toUpperCase()}`}
+                  >
+                    <RegularButton variant="outlined">Подробнее</RegularButton>
+                  </Link>
+                </Box>
+              ) : null}
+
+              {!(activeSlide === index) ? (
+                <Typography
+                  variant="subtitle1"
+                  className={classes.houseListName}
                 >
-                  <RegularButton variant="outlined">Подробнее</RegularButton>
-                </Link>
-              </Box>
-            ) : null}
-
-            {!(activeSlide === index) ? (
-              <Typography variant="subtitle1" className={classes.houseListName}>
-                {item["Код"]}
-              </Typography>
-            ) : null}
-          </>
-        )}
-      </button>
-
+                  {item["Код"]}
+                </Typography>
+              ) : null}
+            </>
+          )}
+        </button>
       </SwiperSlide>
-     
     );
   });
 
@@ -423,6 +422,7 @@ const HousesList = ({data}) => {
         <GatsbyImage
           className={classes.mainImg}
           image={getImg(
+            data,
             `${item["Баннер"].substr(item["Баннер"].search(/images/))}`
           )}
           alt="img"
@@ -463,6 +463,7 @@ const HousesList = ({data}) => {
                 // ref={element}
                 className={classes.houseDescImg}
                 image={getImg(
+                  data,
                   `${dataHouses[house]["Иконка дома"].substr(
                     dataHouses[house]["Иконка дома"].search(/images\//)
                   )}`
@@ -486,6 +487,7 @@ const HousesList = ({data}) => {
                 <GatsbyImage
                   className={classes.mainPlan}
                   image={getImg(
+                    data,
                     `${dataHouses[house]["Иконка планировки"].substr(
                       dataHouses[house]["Иконка планировки"].search(/images/)
                     )}`
@@ -610,7 +612,10 @@ const HousesList = ({data}) => {
             <Box className={classes.houseDescIconBox}>
               <GatsbyImage
                 className={classes.mainPlan}
-                image={getImg(`${dataHouses[house]["Иконка планировки"]}`)}
+                image={getImg(
+                  data,
+                  `${dataHouses[house]["Иконка планировки"]}`
+                )}
                 alt="img"
               ></GatsbyImage>
               <Typography variant="h5" className={classes.houseSpecPrice}>

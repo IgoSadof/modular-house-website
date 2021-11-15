@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     opacity:'0.5',
   },
 }));
-const ReviewsSlider = ({myRef,reviews,getImg}) => {
+const ReviewsSlider = ({myRef,reviews,getImg,data}) => {
   const classes = useStyles();
   const settings = {
     infinite: true,
@@ -54,7 +54,7 @@ const ReviewsSlider = ({myRef,reviews,getImg}) => {
     swipe:false,
   };
   const listItems = reviews.map((item, index) => {
-    return <Slide key={index}  image={getImg(`${reviews[index][23].substr(reviews[index][23].search(/images\//g))}`)} />;
+    return <Slide key={index}  image={getImg(data,`${reviews[index][23].substr(reviews[index][23].search(/images\//g))}`)} />;
   });
 
   return (

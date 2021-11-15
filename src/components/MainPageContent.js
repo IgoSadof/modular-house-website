@@ -12,9 +12,10 @@ import ReviewsSlider from "../components/ReviewsSlider";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getData from "../utils/getData";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import OneImageAutoSlider from "./OneImageAutoSlider";
 import Quote from "./svg/Quote";
+import getImg from "../utils/getImg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -309,14 +310,6 @@ const MainPageContent = ({ data }) => {
   const reviews = useMemo(() => getData(data, 5), [data]);
   const answers = [[...dataAnswers.slice(0, 4)], [...dataAnswers.slice(4)]];
 
-  const getImg = (path) => {
-    return getImage(
-      data.allFile.edges.find(
-        (item) => item.node.relativePath === path.substr(7)
-      ).node
-    );
-  };
-
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -491,6 +484,7 @@ const MainPageContent = ({ data }) => {
                   <GatsbyImage
                     className={classes.reviewVideo}
                     image={getImg(
+                      data,
                       `${reviews[reviewVideo][23].substr(
                         reviews[reviewVideo][23].search(/images\//g)
                       )}`
@@ -506,6 +500,7 @@ const MainPageContent = ({ data }) => {
                     myRef={myRef}
                     reviews={reviews}
                     getImg={getImg}
+                    data={data}
                   />
                 </Box>
               </Box>
@@ -582,6 +577,7 @@ const MainPageContent = ({ data }) => {
                   <GatsbyImage
                     className={classes.reviewVideo}
                     image={getImg(
+                      data,
                       `${reviews[reviewVideo][23].substr(
                         reviews[reviewVideo][23].search(/images\//g)
                       )}`
@@ -597,6 +593,7 @@ const MainPageContent = ({ data }) => {
                     myRef={myRef}
                     reviews={reviews}
                     getImg={getImg}
+                    data={data}
                   />
                 </Box>
               </Box>
