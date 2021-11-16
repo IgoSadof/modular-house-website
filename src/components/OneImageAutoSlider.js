@@ -34,17 +34,9 @@ const useStyles = makeStyles((theme) => ({
     transition: "all .5s",
   },
 }));
-const OneImageAutoSlider = ({ mobile, houseRef, data }) => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-    600: useMediaQuery("(max-width:600px)"),
-  };
-
+const OneImageAutoSlider = ({ mobile, slides }) => {
   const param = { mobile };
   const classes = useStyles(param);
-  let slides = [getImg(data,"images/slide1.jpg"), getImg(data,"images/slide2.jpg"), getImg(data,"images/slide3.jpg")];
-
   const listItems = slides
     ? slides.map((item, index) => {
         return (
@@ -54,7 +46,6 @@ const OneImageAutoSlider = ({ mobile, houseRef, data }) => {
                 className={classes.houseListImg}
                 image={item}
                 alt="img"
-                height="100%"
               ></GatsbyImage>
             </Box>
           </SwiperSlide>

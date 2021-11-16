@@ -290,7 +290,6 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
         : (scroll = 4);
     }
   }, [scroll]);
-  console.log(playVideo)
 
   return (
     <Box component="section" className={classes.content}>

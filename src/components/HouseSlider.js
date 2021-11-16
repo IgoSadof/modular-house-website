@@ -312,8 +312,8 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
       loop={true}
       freeMode={true}
       spaceBetween={20}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
     >
       {listItems}
     </Swiper>

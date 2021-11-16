@@ -341,6 +341,15 @@ const MainPageContent = ({ data }) => {
   };
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
+  const slidesPath = [
+    "images/slide1.jpg",
+    "images/slide2.jpg",
+    "images/slide3.jpg",
+  ];
+  const slides = [];
+  slidesPath.forEach((item) => {
+    slides.push(getImg(data, item));
+  });
 
   // const handleScrol = (e) => {
   //   if (e.nativeEvent.wheelDelta > 0) {
@@ -690,7 +699,7 @@ const MainPageContent = ({ data }) => {
               />
             </Box>
           </Box>
-          <OneImageAutoSlider data={data} />
+          <OneImageAutoSlider slides={slides} />
         </Box>
       ) : (
         <Box
@@ -704,7 +713,7 @@ const MainPageContent = ({ data }) => {
             </Typography>
           </Box>
           <Box className={classes.BlockColumn}>
-            <OneImageAutoSlider />
+            <OneImageAutoSlider slides={slides} />
             <Box className={classes.FormBox}>
               <Form
                 title="В готовый модульный дом под Минском на ознакомительную экскурсиюшаем"
