@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SquareButton({ icon, great, less, click, variant }) {
   const classes = useStyles();
   //   const [selected, setSelected] = React.useState(false);
-
+  // let c = "str"
   return (
     <Button
       onClick={click}
@@ -51,10 +51,7 @@ export default function SquareButton({ icon, great, less, click, variant }) {
       variant={variant}
       color="inherit"
       value="check"
-      //   selected={selected}
-      //   onChange={() => {
-      //     setSelected(!selected);
-      //   }}
+      aria-label={great ? "Next button" : less ? "Prev button" : "Close button"}
     >
       {icon ? icon : great ? (<div className={classes.buttonGreat}></div>) : less ? (<div className={classes.buttonLess}></div>) : null}
     </Button>

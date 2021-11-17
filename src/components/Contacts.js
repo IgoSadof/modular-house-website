@@ -157,16 +157,17 @@ const Contacts = ({ header }) => {
                     // width={225}
                     // height={420}
                   />
-                  <Typography className={classes.contactsName} variant="h4">
+                  <Typography className={classes.contactsName} variant="h4" component="p">
                     Андрусь Bezdar
                   </Typography>
                   <Typography
                     className={classes.contactsPosition}
                     variant="body1"
+                    component="p"
                   >
                     CEO & FOUNDER
                   </Typography>
-                  <Typography className={classes.contactsPhone} variant="h4">
+                  <Typography className={classes.contactsPhone} variant="h4" component="p">
                     +375 44 5180676
                   </Typography>
                 </Box>
@@ -188,16 +189,17 @@ const Contacts = ({ header }) => {
                     // width={225}
                     // height={420}
                   />
-                  <Typography className={classes.contactsName} variant="h4">
+                  <Typography className={classes.contactsName} variant="h4" component="p">
                     Алексей Кораблев
                   </Typography>
                   <Typography
                     className={classes.contactsPosition}
                     variant="body1"
+                    component="p"
                   >
                     CEO & FOUNDER
                   </Typography>
-                  <Typography className={classes.contactsPhone} variant="h4">
+                  <Typography className={classes.contactsPhone} variant="h4" component="p">
                     +375 29 3650669
                   </Typography>
                 </Box>

@@ -59,9 +59,9 @@ const ReviewsSlider = ({myRef,reviews,getImg,data}) => {
 
   return (
     <div>
-      <ul className={classes.list}>
+      <div className={classes.list}>
         <Slider ref={myRef} {...settings}>{listItems}</Slider>
-      </ul>
+      </div>
     </div>
   );
 };
@@ -69,11 +69,11 @@ const ReviewsSlider = ({myRef,reviews,getImg,data}) => {
 const Slide = ({ image,key }) => {
   const classes = useStyles();
   return (
-    <li className={classes.conteiner} key={key}>
+    <div className={classes.conteiner} key={key}>
       <Box className={classes.imgBox}>
         <GatsbyImage className={classes.img} image={image} alt="img" />
       </Box>
-    </li>
+    </div>
   );
 };
 

@@ -1,16 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
-// import slide1 from "../assets/images/slide1.png";
-// import slide2 from "../assets/images/slide2.jpg";
-// import slide3 from "../assets/images/slide3.jpg";
 import SwiperCore, { Autoplay, EffectFade } from "swiper";
 import { GatsbyImage } from "gatsby-plugin-image";
-import getImg from "../utils/getImg";
 
 SwiperCore.use([Autoplay, EffectFade]);
 

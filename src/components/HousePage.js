@@ -720,6 +720,7 @@ const HousePage = ({ house, data }) => {
                   <Typography
                     className={pillClick >= index ? null : classes.disable}
                     variant="h6"
+                    component="p"
                   >
                     {item.name}
                   </Typography>

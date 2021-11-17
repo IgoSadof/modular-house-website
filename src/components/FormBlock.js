@@ -101,7 +101,7 @@ const FormBlock = ({header,title, subtitle, text, email, img, formPosition, stat
       <Box className={`${classes.Block} ${classes.Expodom}`}>
         <Box className={classes.formBox} >
           {header?(<Typography variant="h2" className={classes.text}>{header}</Typography>):null }
-          <Form title={title} subtitle={subtitle?subtitle:null} email={email?email:null} text={text?text:null}/>
+          <Form title={title} subtitle={subtitle?subtitle:null} email={email?email:null} text={text?text:null} id="formBlock"/>
         </Box>
         <Box className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}>
           

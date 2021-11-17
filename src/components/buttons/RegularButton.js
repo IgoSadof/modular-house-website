@@ -43,7 +43,7 @@ export default function RegularButton({
       variant={variant}
       color="inherit"
       value="check"
-      type={submit?"submit":"button}"}
+      type={submit?"submit":"button"}
     >
       {children}
     </Button>

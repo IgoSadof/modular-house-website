@@ -395,6 +395,7 @@ const HousesList = ({ data }) => {
                   <Link
                     className={classes.Link}
                     to={`model${dataHouses[house]["URL"].toUpperCase()}`}
+                    aria-label={`model ${item["URL"]}`}
                   >
                     <RegularButton variant="outlined">Подробнее</RegularButton>
                   </Link>
@@ -512,7 +513,7 @@ const HousesList = ({ data }) => {
                   {/* {houses[house].totalAreaText} */}
                   Общая площадь:
                 </Typography>
-                <Typography variant="h6" className={classes.houseSpecValue}>
+                <Typography variant="h6" component="p" className={classes.houseSpecValue}>
                   {dataHouses[house].countArea(
                     dataHouses[house].modules,
                     "Площадь общая"
@@ -529,7 +530,7 @@ const HousesList = ({ data }) => {
                   {/* {houses[house].effectiveAreaText} */}
                   Эффективная площадь:
                 </Typography>
-                <Typography variant="h6" className={classes.houseSpecValue}>
+                <Typography variant="h6" component="p"className={classes.houseSpecValue}>
                   {/* {houses[house].effectiveArea} */}
                   {dataHouses[house].countArea(
                     dataHouses[house].modules,
@@ -548,7 +549,7 @@ const HousesList = ({ data }) => {
                 >
                   Этажность:
                 </Typography>
-                <Typography variant="h6" className={classes.houseSpecValue}>
+                <Typography variant="h6" component="p" className={classes.houseSpecValue}>
                   {dataHouses[house]["Этажность"] ?? 1}
                 </Typography>
               </Box>
@@ -559,7 +560,7 @@ const HousesList = ({ data }) => {
                 >
                   Cтадии роста:
                 </Typography>
-                <Typography variant="h6" className={classes.houseSpecValue}>
+                <Typography variant="h6" component="p" className={classes.houseSpecValue}>
                   {dataHouses[house]["modules"]?.length}
                 </Typography>
               </Box>

@@ -226,10 +226,12 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <Helmet>
-        <meta charSet="utf-8" />
+        <html lang="ru"/>
         <title>
           {pageTitle} | {data.site.siteMetadata.title}
         </title>
+        <meta charSet="utf-8" />
+        <meta name="description" content="Moduls houses for living" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       </Helmet>
@@ -293,6 +295,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                             closeForm={handleClickConnect}
                             inBurger={matches[1200] ? true : false}
                             main
+                            id="burgerForm"
                           />
                         </>
                       ) : (
@@ -313,7 +316,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                           ) : (
                             <>
                               <Box className={classes.callBox}>
-                                <Typography variant="h6">Позвонить</Typography>
+                                <Typography variant="h6" component="p">Позвонить</Typography>
                                 <a href="tel:+375293650669">
                                   <img
                                     className={classes.call}
@@ -329,6 +332,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                 closeForm={handleOpenBurgerMenu}
                                 inBurger={true}
                                 main
+                                id="burgerForm"
                               />
                             </>
                           )}

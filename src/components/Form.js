@@ -169,6 +169,7 @@ const Form = ({
   inBurger,
   main,
   buttonAbs,
+  id
 }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -222,13 +223,13 @@ const Form = ({
       <Box className={classes.formHeader}>
         {title ? (
           !matches[1200] ? (
-            <Typography variant="h5" className={classes.title}>
+            <Typography variant="h5" component="h3" className={classes.title}>
               {title}
             </Typography>
           ) : (
             <Box className={main ? classes.titleBoxMain : classes.titleBox}>
               {main ? <span className={classes.line}></span> : null}
-              <Typography variant="h5" className={classes.text}>
+              <Typography variant="h5" component="h3" className={classes.text}>
                 {title}
               </Typography>
             </Box>
@@ -257,6 +258,7 @@ const Form = ({
             value={nameText}
             //   required
             id="name"
+            id={`name-${id?id:"0"}`}
             name="name"
             label={<Typography variant="body2">Имя</Typography>}
             // InputProps={{
@@ -272,7 +274,7 @@ const Form = ({
             // InputProps={{
             //   endAdornment: <InputAdornment position="end">*</InputAdornment>,
             // }}
-            id="phone"
+            id={`phone-${id?id:"0"}`}
             name="phone"
             label={<Typography variant="body2">Телефон</Typography>}
             // validators={["isNumber"]}
@@ -282,7 +284,7 @@ const Form = ({
             <>
               <TextField
                 className={classes.field}
-                id="email"
+                id={`email-${id?id:"0"}`}
                 type="email"
                 name="email"
                 label={<Typography variant="body2">Email</Typography>}
@@ -312,12 +314,12 @@ const Form = ({
         </Box>
         {text ? (
           <Box className={classes.messageBox}>
-            <Box className={classes.messageLabelBox}>
+            <label for="message" className={classes.messageLabelBox}>
               <Typography variant="body2">
                 Оставьте заявку и наш менеджер свяжеться с вами
               </Typography>
               <div>*</div>
-            </Box>
+            </label>
             {/* <TextField className={classes.messageField} id="standard-basic" /> */}
             <textarea
               id="message"

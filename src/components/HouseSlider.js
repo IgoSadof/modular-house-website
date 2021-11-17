@@ -190,6 +190,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                 className={classes.link}
                 to={`what-we-do/model${item["URL"].toUpperCase()}`}
                 onClick={handleClick}
+                aria-label={`model ${item["URL"]}`}
               >
                 <Box className={classes.imgBox}>
                   <BackgroundImage
@@ -209,7 +210,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                   >
                     {item.Код}
                   </Typography>
-                  <Typography variant="h4" className={classes.price}>
+                  <Typography variant="h4" component="p" className={classes.price}>
                     {/* {item.price} */}
                     от{" "}
                     {item.takeFromBaseModule(item.modules, "Стоимость") ??
@@ -229,6 +230,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                       </Typography>
                       <Typography
                         variant="h6"
+                        component="p"
                         className={classes.propertyValue}
                       >
                         {item.countArea(item.modules, "Площадь общая")} М2
@@ -244,6 +246,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                       </Typography>
                       <Typography
                         variant="h6"
+                        component="p"
                         className={classes.propertyValue}
                       >
                         {item.countArea(item.modules, "Площадь полезная")} М2
@@ -259,6 +262,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                       </Typography>
                       <Typography
                         variant="h6"
+                        component="p"
                         className={classes.propertyValue}
                       >
                         {/* {item.baseModuleArea} */}

@@ -326,7 +326,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 <Typography
                   className={classes.text}
                   variant="body1"
-                  component="h6"
+                  component="p"
                 >
                   {dataSlides[activeNumb].subtitle}
                 </Typography>
@@ -380,6 +380,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                       : classes.number
                   }
                   variant="h5"
+                  component="p"
                 >
                   <span
                     role="button"

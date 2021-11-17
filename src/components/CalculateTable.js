@@ -113,7 +113,7 @@ const CalculateTable = ({ houseOptions }) => {
                   <td
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}
                   >
-                    <Typography variant="h6">{item.name}</Typography>
+                    <Typography variant="h6" component="p">{item.name}</Typography>
                   </td>
 
                   <td className={classes.tableCell} align="left">
@@ -169,7 +169,7 @@ const CalculateTable = ({ houseOptions }) => {
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}
                   >
                     <Box className={classes.innerRow}>
-                      <Typography variant="h6">{item.name}</Typography>
+                      <Typography variant="h6" component="p">{item.name}</Typography>
                       <Box style={{ paddingLeft: `20px` }} className={classes.secondRadio}>+${currentOption[item.name]}</Box>
                     </Box>
                     <Box className={classes.innerRow}>
@@ -218,7 +218,7 @@ const CalculateTable = ({ houseOptions }) => {
 
       <Box className={classes.tableResult}>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
-        <Typography variant="h6" className={classes.textPrice}>
+        <Typography variant="h6" component="p" className={classes.textPrice}>
           Итого
         </Typography>
         <Typography variant="caption" className={classes.textPriceValue}>

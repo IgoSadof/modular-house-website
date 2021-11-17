@@ -140,9 +140,9 @@ const ContactsBlock = ({ header }) => {
                       // width={225}
                       // height={420}
                     />
-                  <Typography className={classes.contactsName} variant="h4">Андрусь Bezdar</Typography>
-                  <Typography className={classes.contactsPosition} variant="body1">CEO & FOUNDER</Typography>
-                  <Typography className={classes.contactsPhone} variant="h4">+375 44 5180676</Typography>
+                  <Typography className={classes.contactsName} variant="h4" component="p">Андрусь Bezdar</Typography>
+                  <Typography className={classes.contactsPosition} variant="body1" component="p">CEO & FOUNDER</Typography>
+                  <Typography className={classes.contactsPhone} variant="h4" component="p">+375 44 5180676</Typography>
                 </Box>
               </a>
 
@@ -162,9 +162,9 @@ const ContactsBlock = ({ header }) => {
                       // width={225}
                       // height={420}
                     />
-                  <Typography className={classes.contactsName} variant="h4">Алексей Кораблев</Typography>
+                  <Typography className={classes.contactsName} variant="h4" component="p">Алексей Кораблев</Typography>
                   <Typography className={classes.contactsPosition} variant="body1">CEO & FOUNDER</Typography>
-                  <Typography className={classes.contactsPhone} variant="h4">+375 29 3650669</Typography>
+                  <Typography className={classes.contactsPhone} variant="h4" component="p">+375 29 3650669</Typography>
                 </Box>
               </a>
             </Box>

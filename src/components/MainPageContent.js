@@ -415,7 +415,7 @@ const MainPageContent = ({ data }) => {
           </Typography>
         ) : null} */}
         <Box className={classes.accordion}>
-          <Accordions arr={detail} />
+          <Accordions arr={detail} title="advantages" />
         </Box>
       </Box>
 
@@ -473,7 +473,7 @@ const MainPageContent = ({ data }) => {
                       variant={"outlined"}
                     />
                   </Box>
-                  <Typography variant="h5">
+                  <Typography variant="h5" component="p" >
                     {`${reviews[review][22].slice(0, 2)}/${reviews[
                       review
                     ][22].slice(3, 5)} `}
@@ -567,7 +567,7 @@ const MainPageContent = ({ data }) => {
                     variant={"outlined"}
                   />
                 </Box>
-                <Typography variant="h5">
+                <Typography variant="h5" component="p">
                   {`${reviews[review][22].slice(0, 2)}/${reviews[
                     review
                   ][22].slice(3, 5)} `}
@@ -675,7 +675,7 @@ const MainPageContent = ({ data }) => {
         )}
 
         <Box className={classes.accordion}>
-          <Accordions answers={true} arr={answers[answeGroup]} />
+          <Accordions answers={true} arr={answers[answeGroup]} title="answers"/>
         </Box>
       </Box>
 
@@ -772,7 +772,7 @@ const MainPageContent = ({ data }) => {
                   Напишите нам
                 </Typography>
               </Box>
-              <Form email text main />
+              <Form email text main id="contacts" />
             </Box>
           </>
         )}
