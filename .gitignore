@@ -1,7 +1,8 @@
 node_modules/
 .cache/
 public
-images
+/images
 public.zip
 gatsby-config.js
 gatsby-node.js
+static/
