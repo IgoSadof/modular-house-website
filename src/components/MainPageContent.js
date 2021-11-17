@@ -16,6 +16,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import OneImageAutoSlider from "./OneImageAutoSlider";
 import Quote from "./svg/Quote";
 import getImg from "../utils/getImg";
+import TitleWithLine from "../components/TitleWithLine";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+
   BlockMobile: {
     padding: "0",
   },
@@ -60,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
   titleBox: {
     display: "flex",
-    gap: "20px",
+    // gap: "20px",
     width: "30vw",
     flexDirection: "row",
     flexShrink: "0",
@@ -79,10 +81,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     gap: "20px",
+    marginLeft: "100px",
     justifyContent: "space-between",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
       order: "3",
+      marginLeft: "0",
     },
   },
   sliderBlock: {
@@ -401,19 +405,13 @@ const MainPageContent = ({ data }) => {
         }
       >
         <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
-          {/* {matches[1200] ? ( */}
-          <Typography variant="h2" className={classes.text}>
-            ПРЕИМУЩЕСТВА
-          </Typography>
-          {/* ) : null} */}
+          <Box className={classes.BlockColumn}>
+            <TitleWithLine title="ПРЕИМУЩЕСТВА" />
+
+            {/* ) : null} */}
+          </Box>
         </Box>
 
-        {/* {!matches[1200] ? (
-          <Typography variant="h2" className={classes.text}>
-            ПОДРОБНЕЕ
-          </Typography>
-        ) : null} */}
         <Box className={classes.accordion}>
           <Accordions arr={detail} title="advantages" />
         </Box>
@@ -425,11 +423,14 @@ const MainPageContent = ({ data }) => {
         {!matches[1200] ? (
           <>
             <Box className={classes.titleBox}>
-              <span className={classes.line}></span>
               <Box className={classes.BlockColumn}>
-                <Typography variant="h2" className={classes.text}>
-                  РЕАЛЬНЫЕ ОТЗЫВЫ
-                </Typography>
+                {/* <Box className={classes.sectionTitle}>
+                  <span className={classes.line}></span>
+                  <Typography variant="h2" className={classes.text}>
+                    РЕАЛЬНЫЕ ОТЗЫВЫ
+                  </Typography>
+                </Box> */}
+                <TitleWithLine title="РЕАЛЬНЫЕ ОТЗЫВЫ" />
 
                 <TransitionGroup className={classes.commentBoxWrap}>
                   <CSSTransition
@@ -473,7 +474,7 @@ const MainPageContent = ({ data }) => {
                       variant={"outlined"}
                     />
                   </Box>
-                  <Typography variant="h5" component="p" >
+                  <Typography variant="h5" component="p">
                     {`${reviews[review][22].slice(0, 2)}/${reviews[
                       review
                     ][22].slice(3, 5)} `}
@@ -518,10 +519,7 @@ const MainPageContent = ({ data }) => {
         ) : (
           <>
             <Box className={classes.titleBox}>
-              <span className={classes.line}></span>
-              <Typography variant="h2" className={classes.text}>
-                РЕАЛЬНЫЕ ОТЗЫВЫ
-              </Typography>
+              <TitleWithLine title="РЕАЛЬНЫЕ ОТЗЫВЫ" />
             </Box>
             <Box className={classes.BlockColumn}>
               <TransitionGroup className={classes.commentBoxWrap}>
@@ -624,18 +622,9 @@ const MainPageContent = ({ data }) => {
         {matches[1200] ? (
           <>
             <Box className={classes.titleBox}>
-              <span className={classes.line}></span>
-              <Typography variant="h2" className={classes.text}>
-                ОТВЕТЫ НА ВОПРОСЫ
-              </Typography>
+              <TitleWithLine title="ОТВЕТЫ НА ВОПРОСЫ" />
             </Box>
             <Box className={classes.BlockColumn}>
-              {!matches[1200] ? (
-                <Typography variant="h2" className={classes.text}>
-                  ОТВЕТЫ НА ВОПРОСЫ
-                </Typography>
-              ) : null}
-
               <Box className={classes.buttons}>
                 <SquareButton
                   variant={"outlined"}
@@ -652,11 +641,8 @@ const MainPageContent = ({ data }) => {
           </>
         ) : (
           <Box className={classes.titleBox} style={{ minHeight: "224px" }}>
-            <span className={classes.line}></span>
             <Box className={classes.BlockColumn}>
-              <Typography variant="h2" className={classes.text}>
-                ОТВЕТЫ НА ВОПРОСЫ
-              </Typography>
+              <TitleWithLine title="ОТВЕТЫ НА ВОПРОСЫ" />
 
               <Box className={classes.buttons}>
                 <SquareButton
@@ -675,7 +661,11 @@ const MainPageContent = ({ data }) => {
         )}
 
         <Box className={classes.accordion}>
-          <Accordions answers={true} arr={answers[answeGroup]} title="answers"/>
+          <Accordions
+            answers={true}
+            arr={answers[answeGroup]}
+            title="answers"
+          />
         </Box>
       </Box>
 
@@ -684,15 +674,11 @@ const MainPageContent = ({ data }) => {
       {!matches[1200] ? (
         <Box component="section" className={classes.Block}>
           <Box className={classes.titleBox} style={{ marginTop: "100px" }}>
-            <span className={classes.line}></span>
-
             <Box
               className={classes.BlockColumn}
               style={{ justifyContent: "start" }}
             >
-              <Typography variant="h2" className={classes.text}>
-                Приглашаем
-              </Typography>
+              <TitleWithLine title="Приглашаем" />
               <Form
                 title="В готовый модульный дом под Минском на ознакомительную экскурсиюшаем"
                 subtitle="Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии"
@@ -704,13 +690,10 @@ const MainPageContent = ({ data }) => {
       ) : (
         <Box
           component="section"
-          className={`${classes.Block} ${classes.BlockMobile}`}
+          className={`${classes.Block} ${classes.BlockFullscreen}`}
         >
           <Box className={classes.titleBox}>
-            <span className={classes.line}></span>
-            <Typography variant="h2" className={classes.text}>
-              Приглашаем
-            </Typography>
+            <TitleWithLine title="Приглашаем" />
           </Box>
           <Box className={classes.BlockColumn}>
             <OneImageAutoSlider slides={slides} />
@@ -732,15 +715,11 @@ const MainPageContent = ({ data }) => {
         {!matches[1200] ? (
           <>
             <Box className={classes.titleBox}>
-              <span className={classes.line}></span>
               <Box className={classes.BlockColumn}>
-                <Typography
-                  variant="h2"
-                  className={classes.text}
+                <TitleWithLine
+                  title="Контакты"
                   style={{ marginBottom: "60px" }}
-                >
-                  КОНТАКТЫ
-                </Typography>
+                />
                 <ContactsBlock />
               </Box>
             </Box>
@@ -759,18 +738,14 @@ const MainPageContent = ({ data }) => {
         ) : (
           <>
             <Box className={classes.titleBox}>
-              <span className={classes.line}></span>
-              <Typography variant="h2" className={classes.text}>
-                КОНТАКТЫ
-              </Typography>
+              <TitleWithLine title="Контакты" />
             </Box>
             <Box className={classes.BlockColumn}>
               <ContactsBlock />
               <Box className={classes.titleBox} style={{ marginTop: "40px" }}>
-                <span className={classes.line}></span>
-                <Typography variant="h2" className={classes.text}>
-                  Напишите нам
-                </Typography>
+                <TitleWithLine
+                  title="Напишите нам"
+                />
               </Box>
               <Form email text main id="contacts" />
             </Box>

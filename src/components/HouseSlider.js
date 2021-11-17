@@ -114,12 +114,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
-    "@media (max-width: 1900px)": {
-      "& p": {
-        width: "70%",
-        fontSize: "12px",
-      },
-    },
   },
   price: {
     minWidth: "130px",

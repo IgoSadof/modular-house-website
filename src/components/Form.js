@@ -36,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
   titleBox: {
     width: "70%",
     display: "flex",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      marginTop:"40px",
+    },
   },
   line: {
     display: "inline-block",

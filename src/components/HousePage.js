@@ -177,6 +177,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "10%",
       paddingTop: "0",
       justifyContent: "center",
+      marginTop:"10px",
     },
   },
   modelDesc: {
@@ -216,7 +217,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "16vh",
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
     overflowY: "auto",
-    // marginBottom:'20px',
+    margin:'10px 0',
   },
   model: {
     width: "50%",
@@ -973,6 +974,7 @@ const HousePage = ({ house, data }) => {
               `}
           subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
           email
+          padding={true}
           img={getImg(
             data,
             `${dataHouses[houseNumber]["Баннер"].substr(
