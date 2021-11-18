@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   BlockColumn: {
-    width: "100%",
+    width: "30vw",
     display: "flex",
     gap: "20px",
     marginLeft: "100px",
@@ -86,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       order: "3",
       marginLeft: "0",
+      width: "100%",
     },
   },
   sliderBlock: {

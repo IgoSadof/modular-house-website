@@ -436,7 +436,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   BlockForm: {
-    paddingLeft: "18vw",
+    // paddingLeft: "18vw",
     justifyContent: "center",
     paddingBottom: "100px",
     [theme.breakpoints.down("md")]: {
