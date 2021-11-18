@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Menu from "./Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
 import Box from "@material-ui/core/Box";
-import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import Burger from "./Burger";
 import RegularButton from "./buttons/RegularButton";
 import { useStaticQuery, graphql } from "gatsby";
@@ -16,6 +16,7 @@ import Form from "./Form";
 import call from "../assets/images/call.png";
 import Typography from "@material-ui/core/Typography";
 import SquareButton from "./buttons/SquareButton";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const dataToComponent = (WrappedComponent, currebtData, house) => {
   return <WrappedComponent data={currebtData} house={house} />;
@@ -106,6 +107,16 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: "30px",
   },
+  loaderBox: {
+    width: "40px",
+    height: "40px",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    zIndex: "5",
+    marginLeft: "-20px",
+    marginTop: "-20px",
+  },
 }));
 
 const Layout = ({ pageTitle, children, page, component, house }) => {
@@ -194,6 +205,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   `);
 
   const breakpoints = useBreakpoint();
+  console.log(breakpoints);
 
   const param = { page };
   const classes = useStyles(param);
@@ -224,7 +236,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <Helmet>
-        <html lang="ru"/>
+        <html lang="ru" />
         <title>
           {pageTitle} | {data.site.siteMetadata.title}
         </title>
@@ -233,126 +245,149 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       </Helmet>
-      <Box className="conteiner">
-        <Menu />
-        <Box className="content">
-          <Box className={classes.page}>
-            <Box
-              className={
-                page === "watch" ||
-                page === "houseList" ||
-                page === "main" ||
-                page === "house"
-                  ? classes.BlockFullscreen
-                  : classes.Block
-              }
-            >
-              {breakpoints.md ? (
-                <Burger
-                  click={handleClickConnect}
-                  page={page}
-                  position={
-                    page === "watch" || page === "houseList" || page === "house"
-                      ? "absolute"
-                      : null
+      <Box position="relative" className="conteiner">
+        {breakpoints.isLoad ? (
+          <>
+            <Menu />
+            <Box className="content">
+              <Box className={classes.page}>
+                <Box
+                  className={
+                    page === "watch" ||
+                    page === "houseList" ||
+                    page === "main" ||
+                    page === "house"
+                      ? classes.BlockFullscreen
+                      : classes.Block
                   }
-                  color={
-                    page === "watch" || page === "houseList" || page === "house"
-                      ? "white"
-                      : null
-                  }
-                />
-              ) : null}
-              <div
-                className={classes.ConnectBox}
-                name="form"
-                onClick={toggleDrawer(false)}
-                onKeyDown={toggleDrawer(false)}
-              >
-                <React.Fragment>
-                  <Drawer
-                    hideBackdrop={true}
-                    anchor={"right"}
-                    open={isFormOpen}
-                    onClose={toggleDrawer(false)}
+                >
+                  {breakpoints.md ? (
+                    <Burger
+                      click={handleClickConnect}
+                      page={page}
+                      position={
+                        page === "watch" ||
+                        page === "houseList" ||
+                        page === "house"
+                          ? "absolute"
+                          : null
+                      }
+                      color={
+                        page === "watch" ||
+                        page === "houseList" ||
+                        page === "house"
+                          ? "white"
+                          : null
+                      }
+                    />
+                  ) : null}
+                  <div
+                    className={classes.ConnectBox}
+                    name="form"
+                    onClick={toggleDrawer(false)}
+                    onKeyDown={toggleDrawer(false)}
                   >
-                    <Box className={classes.connectBox}>
-                      {!breakpoints.md ? (
-                        <>
-                          <Box className={classes.buttonBox}>
-                            <SquareButton
-                              variant="outlined"
-                              click={handleClickConnect}
-                              icon={<ClearIcon />}
-                            />
-                          </Box>
-                          <Form
-                            title={"Напешите нам"}
-                            email
-                            text
-                            closeForm={handleClickConnect}
-                            inBurger={breakpoints.md ? true : false}
-                            main
-                            id="burgerForm"
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <Burger
-                            isOpen={true}
-                            click={
-                              breakpoints.md ? () => handleClickConnect() : null
-                            }
-                          />
-                          {!isBurgerMenuOpen ? (
-                            <Box className={classes.menuBox}>
-                              <Menu
-                                inBurger={true}
-                                clickToOpenForm={handleOpenBurgerMenu}
-                              />
-                            </Box>
-                          ) : (
+                    <React.Fragment>
+                      <Drawer
+                        hideBackdrop={true}
+                        anchor={"right"}
+                        open={isFormOpen}
+                        onClose={toggleDrawer(false)}
+                      >
+                        <Box className={classes.connectBox}>
+                          {!breakpoints.md ? (
                             <>
-                              <Box className={classes.callBox}>
-                                <Typography variant="h6" component="p">Позвонить</Typography>
-                                <a href="tel:+375293650669">
-                                  <img
-                                    className={classes.call}
-                                    src={call}
-                                    alt="call"
-                                  ></img>
-                                </a>
+                              <Box className={classes.buttonBox}>
+                                <SquareButton
+                                  variant="outlined"
+                                  click={handleClickConnect}
+                                  icon={<ClearIcon />}
+                                />
                               </Box>
                               <Form
                                 title={"Напешите нам"}
                                 email
                                 text
-                                closeForm={handleOpenBurgerMenu}
-                                inBurger={true}
+                                closeForm={handleClickConnect}
+                                inBurger={breakpoints.md ? true : false}
                                 main
                                 id="burgerForm"
                               />
                             </>
+                          ) : (
+                            <>
+                              <Burger
+                                isOpen={true}
+                                click={
+                                  breakpoints.md
+                                    ? () => handleClickConnect()
+                                    : null
+                                }
+                              />
+                              {!isBurgerMenuOpen ? (
+                                <Box className={classes.menuBox}>
+                                  <Menu
+                                    inBurger={true}
+                                    clickToOpenForm={handleOpenBurgerMenu}
+                                  />
+                                </Box>
+                              ) : (
+                                <>
+                                  <Box className={classes.callBox}>
+                                    <Typography variant="h6" component="p">
+                                      Позвонить
+                                    </Typography>
+                                    <a href="tel:+375293650669">
+                                      <img
+                                        className={classes.call}
+                                        src={call}
+                                        alt="call"
+                                      ></img>
+                                    </a>
+                                  </Box>
+                                  <Form
+                                    title={"Напешите нам"}
+                                    email
+                                    text
+                                    closeForm={handleOpenBurgerMenu}
+                                    inBurger={true}
+                                    main
+                                    id="burgerForm"
+                                  />
+                                </>
+                              )}
+                            </>
                           )}
-                        </>
-                      )}
-                    </Box>
-                  </Drawer>
-                </React.Fragment>
-              </div>
+                        </Box>
+                      </Drawer>
+                    </React.Fragment>
+                  </div>
 
-              <Box className={classes.button}>
-                {breakpoints.md ? null : (
-                  <RegularButton variant="outlined" click={handleClickConnect}>
-                    СВЯЗАТЬСЯ
-                  </RegularButton>
-                )}
+                  <Box className={classes.button}>
+                    {breakpoints.md ? null : (
+                      <RegularButton
+                        variant="outlined"
+                        click={handleClickConnect}
+                      >
+                        СВЯЗАТЬСЯ
+                      </RegularButton>
+                    )}
+                  </Box>
+                  {component
+                    ? dataToComponent(component, data, house)
+                    : children}
+                </Box>
+                <Footer />
               </Box>
-              {component ? dataToComponent(component, data, house) : children}
             </Box>
-            <Footer />
+          </>
+        ) : (
+          <Box className="loaderConteiner">
+            <div className={classes.loaderBox}>
+              <CircularProgress />
+            </div>
           </Box>
-        </Box>
+        )}
       </Box>
     </ThemeProvider>
   );

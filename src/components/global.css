@@ -43,6 +43,13 @@ body {
   height: 100%;
   background-color: #d1d1d1;
 }
+.loaderConteiner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #d1d1d1;
+
+}
 @media (min-width: 1900px) {
   .components {
     padding: 0;
