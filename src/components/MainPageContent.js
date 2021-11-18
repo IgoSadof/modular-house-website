@@ -720,7 +720,7 @@ const MainPageContent = ({ data }) => {
                   title="Контакты"
                   style={{ marginBottom: "60px" }}
                 />
-                <ContactsBlock />
+                <ContactsBlock data={data}/>
               </Box>
             </Box>
 
@@ -741,7 +741,7 @@ const MainPageContent = ({ data }) => {
               <TitleWithLine title="Контакты" />
             </Box>
             <Box className={classes.BlockColumn}>
-              <ContactsBlock />
+              <ContactsBlock data={data}/>
               <Box className={classes.titleBox} style={{ marginTop: "40px" }}>
                 <TitleWithLine
                   title="Напишите нам"

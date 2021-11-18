@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      marginTop:"40px",
+      marginTop: "40px",
     },
   },
   line: {
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     },
     field: {
       width: "100%",
-      height:"82px !important",
+      height: "82px !important",
     },
   },
 
@@ -173,7 +173,7 @@ const Form = ({
   inBurger,
   main,
   buttonAbs,
-  id
+  id,
 }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
@@ -185,7 +185,7 @@ const Form = ({
   const [telText, setTelText] = React.useState("");
   const [nameText, setNameText] = React.useState("");
   const [messageText, setMessageText] = React.useState("");
-  const param = { button, buttonAbs, matches} ;
+  const param = { button, buttonAbs, matches };
   const classes = useStyles(param);
   const formRef = useRef(null);
 
@@ -194,9 +194,8 @@ const Form = ({
   };
   const handleClose = () => {
     setOpen(false);
-    console.log(formRef.current)
+    console.log(formRef.current);
     formRef.current.reset();
-
   };
   const handleChangeEmail = (e) => {
     const myemail = e.target.value;
@@ -241,7 +240,9 @@ const Form = ({
         ) : null}
         {subtitle ? (
           <Typography variant="body1" className={classes.subtitle}>
-            {typeof subtitle === "string"? subtitle : "Оставьте заявку и наш менеджер свяжеться с вами"}
+            {typeof subtitle === "string"
+              ? subtitle
+              : "Оставьте заявку и наш менеджер свяжеться с вами"}
           </Typography>
         ) : null}
       </Box>
@@ -262,7 +263,7 @@ const Form = ({
             value={nameText}
             //   required
             id="name"
-            id={`name-${id?id:"0"}`}
+            id={`name-${id ? id : "0"}`}
             name="name"
             label={<Typography variant="body2">Имя</Typography>}
             // InputProps={{
@@ -270,7 +271,12 @@ const Form = ({
             // }}
           />
           {/* For ditection of bots */}
-          <input type="text" name="_gotcha" style={{ display: "none" }}  className={classes.field}/>
+          <input
+            type="text"
+            name="_gotcha"
+            style={{ display: "none" }}
+            className={classes.field}
+          />
           <TextField
             className={classes.field}
             onChange={handleChangeTel}
@@ -278,7 +284,7 @@ const Form = ({
             // InputProps={{
             //   endAdornment: <InputAdornment position="end">*</InputAdornment>,
             // }}
-            id={`phone-${id?id:"0"}`}
+            id={`phone-${id ? id : "0"}`}
             name="phone"
             label={<Typography variant="body2">Телефон</Typography>}
             // validators={["isNumber"]}
@@ -288,7 +294,7 @@ const Form = ({
             <>
               <TextField
                 className={classes.field}
-                id={`email-${id?id:"0"}`}
+                id={`email-${id ? id : "0"}`}
                 type="email"
                 name="email"
                 label={<Typography variant="body2">Email</Typography>}
@@ -318,15 +324,17 @@ const Form = ({
         </Box>
         {text ? (
           <Box className={classes.messageBox}>
-            <label for="message" className={classes.messageLabelBox}>
+            <label htmlFor="message"></label>
+            <Box className={classes.messageLabelBox}>
               <Typography variant="body2">
                 Оставьте заявку и наш менеджер свяжеться с вами
               </Typography>
               <div>*</div>
-            </label>
+            </Box>
+
             {/* <TextField className={classes.messageField} id="standard-basic" /> */}
             <textarea
-              id="message"
+              id={`message-${id ? id : "0"}`}
               name="message"
               value={messageText}
               onChange={handleChangeMessage}

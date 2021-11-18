@@ -4,7 +4,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Form from "./Form";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
+import getImg from "../utils/getImg";
 import Logo from "./svg/Logo";
 
 const useStyles = makeStyles((theme) => ({
@@ -109,9 +110,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "30px",
   },
   formBox: {
-    display:"flex",
-    flexDirection:"column",
-    justifyContent:"space-between",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
     margin: "0 auto",
     width: "400px",
     [theme.breakpoints.down("md")]: {
@@ -120,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Contacts = ({ header }) => {
+const Contacts = ({ header, data }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -148,16 +149,16 @@ const Contacts = ({ header }) => {
             <Box className={classes.contactsBoxes}>
               <a className={classes.personalBoxLink} href="tel:+375293650669">
                 <Box className={classes.personalBox}>
-                  <StaticImage
+                  <GatsbyImage
                     className={classes.mainPlan}
-                    src="../assets/images/andrey2.png"
-                    alt="foto"
-                    placeholder="blurred"
-                    // layout="fixed"
-                    // width={225}
-                    // height={420}
-                  />
-                  <Typography className={classes.contactsName} variant="h4" component="p">
+                    image={getImg(data, "images/andrey2.png")}
+                    alt="img"
+                  ></GatsbyImage>
+                  <Typography
+                    className={classes.contactsName}
+                    variant="h4"
+                    component="p"
+                  >
                     Андрусь Bezdar
                   </Typography>
                   <Typography
@@ -167,7 +168,11 @@ const Contacts = ({ header }) => {
                   >
                     CEO & FOUNDER
                   </Typography>
-                  <Typography className={classes.contactsPhone} variant="h4" component="p">
+                  <Typography
+                    className={classes.contactsPhone}
+                    variant="h4"
+                    component="p"
+                  >
                     +375 44 5180676
                   </Typography>
                 </Box>
@@ -175,21 +180,16 @@ const Contacts = ({ header }) => {
 
               <a className={classes.personalBoxLink} href="tel:+375445180676">
                 <Box className={classes.personalBox}>
-                  {/* <img
-                    className={classes.contactsFoto}
-                    src={alexey}
-                    alt="Foto"
-                  ></img> */}
-                  <StaticImage
+                  <GatsbyImage
                     className={classes.mainPlan}
-                    src="../assets/images/alexey2.png"
-                    alt="foto"
-                    placeholder="blurred"
-                    // layout="fixed"
-                    // width={225}
-                    // height={420}
-                  />
-                  <Typography className={classes.contactsName} variant="h4" component="p">
+                    image={getImg(data, "images/alexey2.png")}
+                    alt="img"
+                  ></GatsbyImage>
+                  <Typography
+                    className={classes.contactsName}
+                    variant="h4"
+                    component="p"
+                  >
                     Алексей Кораблев
                   </Typography>
                   <Typography
@@ -199,7 +199,11 @@ const Contacts = ({ header }) => {
                   >
                     CEO & FOUNDER
                   </Typography>
-                  <Typography className={classes.contactsPhone} variant="h4" component="p">
+                  <Typography
+                    className={classes.contactsPhone}
+                    variant="h4"
+                    component="p"
+                  >
                     +375 29 3650669
                   </Typography>
                 </Box>

@@ -2,10 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Form from "./Form";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { StaticImage } from "gatsby-plugin-image";
 import Logo from "./svg/Logo";
+import { GatsbyImage } from "gatsby-plugin-image";
+import getImg from "../utils/getImg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,21 +89,21 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
     gap: "30px",
   },
-  contactsName:{
-    marginTop:"30px",
-    fontWeight:"400",
+  contactsName: {
+    marginTop: "30px",
+    fontWeight: "400",
   },
-  contactsPosition:{
-    fontSize:"12px",
-    fontWeight:"300",
-    marginTop:"10px",
+  contactsPosition: {
+    fontSize: "12px",
+    fontWeight: "300",
+    marginTop: "10px",
   },
   contactsPhone: {
-    marginTop:"30px",
-  }
+    marginTop: "30px",
+  },
 }));
 
-const ContactsBlock = ({ header }) => {
+const ContactsBlock = ({ header, data }) => {
   const matches = {
     1920: useMediaQuery("(min-width:1920px)"),
     1200: useMediaQuery("(max-width:1200px)"),
@@ -120,7 +120,7 @@ const ContactsBlock = ({ header }) => {
             </Typography>
             <Box className={classes.logoBox}>
               {/* <img className={classes.logo} src={logo} alt="logo"></img> */}
-              <Logo color={"#4F4F4F"}/>
+              <Logo color={"#4F4F4F"} />
               {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
             </Box>
           </Box>
@@ -131,40 +131,63 @@ const ContactsBlock = ({ header }) => {
             <Box className={classes.contactsBoxes}>
               <a className={classes.personalBoxLink} href="tel:+375293650669">
                 <Box className={classes.personalBox}>
-                <StaticImage
-                      className={classes.mainPlan}
-                      src="../assets/images/andrey2.png"
-                      alt="foto"
-                      placeholder="blurred"
-                      // layout="fixed"
-                      // width={225}
-                      // height={420}
-                    />
-                  <Typography className={classes.contactsName} variant="h4" component="p">Андрусь Bezdar</Typography>
-                  <Typography className={classes.contactsPosition} variant="body1" component="p">CEO & FOUNDER</Typography>
-                  <Typography className={classes.contactsPhone} variant="h4" component="p">+375 44 5180676</Typography>
+                  <GatsbyImage
+                    className={classes.mainPlan}
+                    image={getImg(data, "images/andrey2.png")}
+                    alt="img"
+                  ></GatsbyImage>
+                  <Typography
+                    className={classes.contactsName}
+                    variant="h4"
+                    component="p"
+                  >
+                    Андрусь Bezdar
+                  </Typography>
+                  <Typography
+                    className={classes.contactsPosition}
+                    variant="body1"
+                    component="p"
+                  >
+                    CEO & FOUNDER
+                  </Typography>
+                  <Typography
+                    className={classes.contactsPhone}
+                    variant="h4"
+                    component="p"
+                  >
+                    +375 44 5180676
+                  </Typography>
                 </Box>
               </a>
 
               <a className={classes.personalBoxLink} href="tel:+375445180676">
                 <Box className={classes.personalBox}>
-                  {/* <img
-                    className={classes.contactsFoto}
-                    src={alexey}
-                    alt="Foto"
-                  ></img> */}
-                   <StaticImage
-                      className={classes.mainPlan}
-                      src="../assets/images/alexey2.png"
-                      alt="foto"
-                      placeholder="blurred"
-                      // layout="fixed"
-                      // width={225}
-                      // height={420}
-                    />
-                  <Typography className={classes.contactsName} variant="h4" component="p">Алексей Кораблев</Typography>
-                  <Typography className={classes.contactsPosition} variant="body1">CEO & FOUNDER</Typography>
-                  <Typography className={classes.contactsPhone} variant="h4" component="p">+375 29 3650669</Typography>
+                  <GatsbyImage
+                    className={classes.mainPlan}
+                    image={getImg(data, "images/alexey2.png")}
+                    alt="img"
+                  ></GatsbyImage>
+
+                  <Typography
+                    className={classes.contactsName}
+                    variant="h4"
+                    component="p"
+                  >
+                    Алексей Кораблев
+                  </Typography>
+                  <Typography
+                    className={classes.contactsPosition}
+                    variant="body1"
+                  >
+                    CEO & FOUNDER
+                  </Typography>
+                  <Typography
+                    className={classes.contactsPhone}
+                    variant="h4"
+                    component="p"
+                  >
+                    +375 29 3650669
+                  </Typography>
                 </Box>
               </a>
             </Box>
@@ -172,7 +195,7 @@ const ContactsBlock = ({ header }) => {
               <Box className={classes.infoBox}>
                 {!header ? (
                   <Box className={classes.logoBox}>
-                    <Logo color={"#4F4F4F"}/>
+                    <Logo color={"#4F4F4F"} />
                     {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
                   </Box>
                 ) : null}
@@ -191,12 +214,12 @@ const ContactsBlock = ({ header }) => {
               </Box>
             ) : null}
           </Box>
-          
+
           {matches[1200] ? (
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>
-                  <Logo color={"#4F4F4F"}/>
+                  <Logo color={"#4F4F4F"} />
                 </Box>
               ) : null}
 

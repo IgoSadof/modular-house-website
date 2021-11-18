@@ -3,20 +3,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import getHousesData from "../utils/getHousesData";
-import { StaticImage, getImage } from "gatsby-plugin-image";
+// import { StaticImage, getImage } from "gatsby-plugin-image";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
 import getImg from "../utils/getImg";
-
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import SwiperCore, {
-  FreeMode
-} from 'swiper';
+import SwiperCore, { FreeMode } from "swiper";
 
 SwiperCore.use([FreeMode]);
 
@@ -156,15 +153,13 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "25px",
     },
   },
+  growStageIcon: {
+    width: "50px",
+    height: "20px",
+  },
 }));
 const HouseSlider = ({ mobile, houseRef, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
-
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-    600: useMediaQuery("(max-width:600px)"),
-  };
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
   const classes = useStyles(param);
@@ -190,7 +185,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                   <BackgroundImage
                     className={classes.img}
                     Tag="div"
-                    {...convertToBgImage(getImg(data,`${item["Баннер"]}`))}
+                    {...convertToBgImage(getImg(data, `${item["Баннер"]}`))}
                   ></BackgroundImage>
                 </Box>
               </Link>
@@ -204,7 +199,11 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                   >
                     {item.Код}
                   </Typography>
-                  <Typography variant="h4" component="p" className={classes.price}>
+                  <Typography
+                    variant="h4"
+                    component="p"
+                    className={classes.price}
+                  >
                     {/* {item.price} */}
                     от{" "}
                     {item.takeFromBaseModule(item.modules, "Стоимость") ??
@@ -284,7 +283,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                       )}
                       alt="img"
                     ></GatsbyImage> */}
-                    <StaticImage
+                    {/* <StaticImage
                       className={classes.mainPlan}
                       src="../assets/images/mainTitleIcons/stages/stage3.png"
                       alt="Grow stage"
@@ -292,7 +291,17 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                       layout="fixed"
                       width={50}
                       height={20}
-                    />
+                    /> */}
+                    <Box className={classes.growStageIcon}>
+                      <GatsbyImage
+                        className={classes.mainPlan}
+                        image={getImg(
+                          data,
+                          "images/mainTitleIcons/stages/stage3.png"
+                        )}
+                        alt="Grow stage"
+                      ></GatsbyImage>
+                    </Box>
                   </Box>
                 </Box>
               </Box>

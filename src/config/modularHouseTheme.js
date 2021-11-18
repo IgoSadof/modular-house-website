@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 import green from "@material-ui/core/colors/green";
 
 const myFontsSize = {
@@ -17,11 +17,11 @@ const myFontsSize = {
   caption: 30,
 };
 
-const modularHouseTheme = createMuiTheme({
+const modularHouseTheme = createTheme({
   palette: {
     primary: {
       // main: 'purple[500]',
-      main: '#000000',
+      main: "#000000",
       fon: "#D1D1D1",
     },
     secondary: {
@@ -62,7 +62,7 @@ const modularHouseTheme = createMuiTheme({
       fontSize: myFontsSize.h1,
       color: "white",
       lineHeight: "1.1em",
-      letterSpacing:"0.02em",
+      letterSpacing: "0.02em",
       fontWeight: 700,
       fontStyle: "normal",
       "@media (min-width:1900px)": {
@@ -77,7 +77,7 @@ const modularHouseTheme = createMuiTheme({
       lineHeight: 1,
       fontWeight: 600,
       textTransform: "uppercase",
-      letterSpacing:"0.015em",
+      letterSpacing: "0.015em",
       fontStyle: "normal",
       color: "#4F4F4F",
       "@media (min-width:1900px)": {
@@ -110,7 +110,7 @@ const modularHouseTheme = createMuiTheme({
         // fontSize: myFontsSize.h4 * myFontsSize.xl,
       },
       "@media (max-width:600px)": {
-        fontSize: '18px',
+        fontSize: "18px",
       },
     },
 
@@ -139,7 +139,7 @@ const modularHouseTheme = createMuiTheme({
     body1: {
       fontSize: 14,
       lineHeight: 1.4,
-      letterSpacing:"0.03em",
+      letterSpacing: "0.03em",
       fontWeight: 500,
       fontStyle: "normal",
       color: "#4F4F4F",
