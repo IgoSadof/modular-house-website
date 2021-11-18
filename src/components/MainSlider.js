@@ -231,20 +231,22 @@ const useStyles = makeStyles((theme) => ({
       width: "50px",
     },
   },
-  loaderBox:{
-    width:"40px",
-    height:"40px",
+  loaderBox: {
+    width: "40px",
+    height: "40px",
     position: "absolute",
     left: "50%",
     top: "50%",
     zIndex: "5",
+    marginLeft: "-20px",
+    marginTop: "-20px",
   },
 }));
-
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getMainPage(data), [data]);
   const matches = { 1200: useMediaQuery("(max-width:1200px)") };
+  console.log(matches[1200])
   const baseLength = matches["1200"] ? 24 : 15;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
@@ -252,7 +254,8 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [playVideo, setPlayVideo] = useState(false);
   const [video2, setVideo2] = useState(false);
   import("../assets/video/video2.mp4").then((video) => {
-    setVideo2(video);
+    // setTimeout(()=>{setVideo2(video);},3000)
+    setVideo2(video)
   });
 
   const param = { scroll, lineLength };
@@ -347,11 +350,13 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
           </TransitionGroup>
 
           <Box className={classes.mainVideoBox}>
-          {!video2.default ? (<div className={classes.loaderBox}><CircularProgress /></div>):null}
-            <div className={classes.fon}></div>
             {!video2.default ? (
-              null
-            ) : (
+              <div className={classes.loaderBox}>
+                <CircularProgress />
+              </div>
+            ) : null}
+            <div className={classes.fon}></div>
+            {!video2.default ? null : (
               <ReactPlayer
                 height="100%"
                 width="100%"

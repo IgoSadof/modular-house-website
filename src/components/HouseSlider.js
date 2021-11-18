@@ -154,6 +154,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   growStageIcon: {
+    display: "flex",
     width: "50px",
     height: "20px",
   },
