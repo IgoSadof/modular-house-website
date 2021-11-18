@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
   titleBox: {
     display: "flex",
     // gap: "20px",
-    width: "30vw",
     flexDirection: "row",
     flexShrink: "0",
     [theme.breakpoints.down("md")]: {
