@@ -3,13 +3,12 @@ import React, { useState, useMemo, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/lazy";
 import numbers from "../constant/numbers";
-import video2 from "../assets/video/video2.mp4";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import getMainPage from "../utils/getMainPage";
-// import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -232,7 +231,16 @@ const useStyles = makeStyles((theme) => ({
       width: "50px",
     },
   },
+  loaderBox:{
+    width:"40px",
+    height:"40px",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    zIndex: "5",
+  },
 }));
+
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getMainPage(data), [data]);
@@ -242,7 +250,11 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(false);
-  
+  const [video2, setVideo2] = useState(false);
+  import("../assets/video/video2.mp4").then((video) => {
+    setVideo2(video);
+  });
+
   const param = { scroll, lineLength };
   const classes = useStyles(param);
   const [opacity] = useState(true);
@@ -335,14 +347,15 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
           </TransitionGroup>
 
           <Box className={classes.mainVideoBox}>
+          {!video2.default ? (<div className={classes.loaderBox}><CircularProgress /></div>):null}
             <div className={classes.fon}></div>
-            {/* {!playVideo ? (
-              <CircularProgress />
-            ) : ( */}
+            {!video2.default ? (
+              null
+            ) : (
               <ReactPlayer
                 height="100%"
                 width="100%"
-                url={video2}
+                url={video2.default}
                 loop={true}
                 playing={playVideo}
                 progressInterval={10}
@@ -364,9 +377,8 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 onReady={() => {
                   setPlayVideo(true);
                 }}
-                
               />
-            {/* )} */}
+            )}
           </Box>
 
           <Box className={classes.numbersBox}>
