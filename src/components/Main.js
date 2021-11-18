@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles} from "@material-ui/core/styles";
 import MainSlider from "../components/MainSlider";
 import MainPageContent from "../components/MainPageContent";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,22 +20,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Main = ({data}) => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
   const [scroll, setScrol] = useState(0);
   let firsEntry
-  if (typeof window !== "undefined" && !matches[1200]) {
+  if (typeof window !== "undefined" && !breakpoints.md) {
     firsEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
   }
   const [isFirstEntry, setIsFirstEntry] = useState(firsEntry);
-  if(isFirstEntry && !matches[1200]){
+  if(isFirstEntry && !breakpoints.md){
     document.body.style.overflow = "hidden"
-  }else if (matches[1200]){
+  }else if (breakpoints.md){
     document.body.style.overflow = "overlay"
   } ;
-  const param = { scroll, isFirstEntry, matches };
+  const param = { scroll, isFirstEntry };
   const classes = useStyles(param);
   const handleScroll = (e) => {
     if (scroll >= 4) {

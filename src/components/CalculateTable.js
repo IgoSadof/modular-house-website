@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
 const useStyles = makeStyles((theme) => ({
   conteiner: {
@@ -73,10 +73,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CalculateTable = ({ houseOptions }) => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
   const options = {};
   houseOptions.forEach((item) => {
     options[item.name] = item.variants[0].price;
@@ -107,7 +104,7 @@ const CalculateTable = ({ houseOptions }) => {
     <div className={classes.conteiner}>
       <table className={classes.table}>
         <tbody>
-          {!matches[1200]
+          {!breakpoints.md
             ? houseOptions.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
                   <td

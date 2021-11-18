@@ -9,7 +9,7 @@ import SquareButton from "./buttons/SquareButton";
 import ContactsBlock from "../components/ContactsBlock";
 import Form from "../components/Form";
 import ReviewsSlider from "../components/ReviewsSlider";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getData from "../utils/getData";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -314,10 +314,7 @@ const MainPageContent = ({ data }) => {
   const reviews = useMemo(() => getData(data, 5), [data]);
   const answers = [[...dataAnswers.slice(0, 4)], [...dataAnswers.slice(4)]];
 
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
   const classes = useStyles();
 
   const [review, setReview] = useState(0);
@@ -372,10 +369,10 @@ const MainPageContent = ({ data }) => {
     <Box className={classes.root}>
       <Box component="section" className={classes.sliderBlock}>
         {/* <Box className={classes.titleBox}> */}
-        {!matches[1200] ? (
+        {!breakpoints.md ? (
           <span className={`${classes.line} ${classes.firstLine}`}></span>
         ) : null}
-        {/* {matches[1200] ? (
+        {/* {breakpoints.md ? (
             <Typography variant="h2" className={classes.text}></Typography>
           ) : null} */}
         {/* </Box> */}
@@ -388,7 +385,7 @@ const MainPageContent = ({ data }) => {
         >
           <HouseSlider
             houseRef={houseSliderRef}
-            mobile={matches[1200]}
+            mobile={breakpoints.md}
             data={data}
           />
         </Box>
@@ -399,7 +396,7 @@ const MainPageContent = ({ data }) => {
       <Box
         component="section"
         className={
-          matches[1200]
+          breakpoints.md
             ? `${classes.Block} ${classes.BlockFullscreen}`
             : classes.Block
         }
@@ -420,7 +417,7 @@ const MainPageContent = ({ data }) => {
       {/* ОТЗЫВЫ */}
 
       <Box component="section" className={classes.Block}>
-        {!matches[1200] ? (
+        {!breakpoints.md ? (
           <>
             <Box className={classes.titleBox}>
               <Box className={classes.BlockColumn}>
@@ -614,12 +611,12 @@ const MainPageContent = ({ data }) => {
       <Box
         component="section"
         className={
-          matches[1200]
+          breakpoints.md
             ? `${classes.Block} ${classes.BlockFullscreen}`
             : classes.Block
         }
       >
-        {matches[1200] ? (
+        {breakpoints.md ? (
           <>
             <Box className={classes.titleBox}>
               <TitleWithLine title="ОТВЕТЫ НА ВОПРОСЫ" />
@@ -671,7 +668,7 @@ const MainPageContent = ({ data }) => {
 
       {/* "ЭКСПОДОМ" */}
 
-      {!matches[1200] ? (
+      {!breakpoints.md ? (
         <Box component="section" className={classes.Block}>
           <Box className={classes.titleBox} style={{ marginTop: "100px" }}>
             <Box
@@ -710,9 +707,9 @@ const MainPageContent = ({ data }) => {
       <Box
         component="section"
         className={classes.Block}
-        style={{ marginTop: !matches[1200] ? "180px" : "100px" }}
+        style={{ marginTop: !breakpoints.md ? "180px" : "100px" }}
       >
-        {!matches[1200] ? (
+        {!breakpoints.md ? (
           <>
             <Box className={classes.titleBox}>
               <Box className={classes.BlockColumn}>

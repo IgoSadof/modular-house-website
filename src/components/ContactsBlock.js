@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Logo from "./svg/Logo";
 import { GatsbyImage } from "gatsby-plugin-image";
 import getImg from "../utils/getImg";
@@ -104,10 +104,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactsBlock = ({ header, data }) => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
   const classes = useStyles();
 
   return (
@@ -191,7 +188,7 @@ const ContactsBlock = ({ header, data }) => {
                 </Box>
               </a>
             </Box>
-            {!matches[1200] ? (
+            {!breakpoints.md ? (
               <Box className={classes.infoBox}>
                 {!header ? (
                   <Box className={classes.logoBox}>
@@ -215,7 +212,7 @@ const ContactsBlock = ({ header, data }) => {
             ) : null}
           </Box>
 
-          {matches[1200] ? (
+          {breakpoints.md ? (
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>

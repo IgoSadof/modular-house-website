@@ -8,7 +8,7 @@ import Form from "./Form";
 import MyCalendar from "./MyCalendar";
 import { houses } from "../constant/houses";
 import HouseFotosSlider from "./HouseFotosSlider";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
 const useStyles = makeStyles((theme) => ({
   imageSlider: {
@@ -81,11 +81,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Watch = () => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
-  // console.log(matches);
+ const breakpoints = useBreakpoint();
   const [category, setCategory] = React.useState("все");
   const param = {};
   const classes = useStyles(param);
@@ -106,22 +102,22 @@ const Watch = () => {
     <Box components="main"  className={classes.BlockFullscreen}>
       <Box components="section"  className={classes.imageSlider}>
         <HouseFotosSlider listItem={listItem} />
-        {matches[1200] ? null : (
+        {breakpoints.md ? null : (
           <StaticPanel ref={categoryRef} change={handleChangePanel} />
         )}
       </Box>
       <Box components="section"  className={classes.excursion}>
-        {matches[1200] ? (
+        {breakpoints.md ? (
           <Typography className={classes.excursionText} variant="subtitle1">
             Оставьте заявку и наш менеджер свяжеться с вами
           </Typography>
         ) : null}
         <Box className={classes.excursionSend}>
-          {matches[1200] ? null : (
+          {breakpoints.md ? null : (
             <Typography variant="h5">На экскурсию</Typography>
           )}
           <Box className={classes.formBox}>
-            {!matches[1200] ? (
+            {!breakpoints.md ? (
               <Form
                 title="Оставьте заявку и наш менеджер свяжеться с вами"
                 buttonAbs={true}

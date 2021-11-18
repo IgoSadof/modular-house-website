@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Box from "@material-ui/core/Box";
 import Form from "./Form";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -114,14 +114,12 @@ const FormBlock = ({
 }) => {
   const param = { formPosition };
   const classes = useStyles(param);
-  const matches = {
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
 
   return (
     <div className={classes.root}>
       <Box className={`${classes.Block} ${classes.Expodom}`}>
-        {!matches[1200] ? (
+        {!breakpoints.md ? (
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>

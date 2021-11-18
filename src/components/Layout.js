@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Menu from "./Menu";
 import modularHouseTheme from "../config/modularHouseTheme";
 import Box from "@material-ui/core/Box";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Burger from "./Burger";
 import RegularButton from "./buttons/RegularButton";
 import { useStaticQuery, graphql } from "gatsby";
@@ -192,10 +192,8 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
       }
     }
   `);
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+
+  const breakpoints = useBreakpoint();
 
   const param = { page };
   const classes = useStyles(param);
@@ -249,7 +247,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                   : classes.Block
               }
             >
-              {matches[1200] ? (
+              {breakpoints.md ? (
                 <Burger
                   click={handleClickConnect}
                   page={page}
@@ -279,7 +277,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     onClose={toggleDrawer(false)}
                   >
                     <Box className={classes.connectBox}>
-                      {!matches[1200] ? (
+                      {!breakpoints.md ? (
                         <>
                           <Box className={classes.buttonBox}>
                             <SquareButton
@@ -293,7 +291,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                             email
                             text
                             closeForm={handleClickConnect}
-                            inBurger={matches[1200] ? true : false}
+                            inBurger={breakpoints.md ? true : false}
                             main
                             id="burgerForm"
                           />
@@ -303,7 +301,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                           <Burger
                             isOpen={true}
                             click={
-                              matches[1200] ? () => handleClickConnect() : null
+                              breakpoints.md ? () => handleClickConnect() : null
                             }
                           />
                           {!isBurgerMenuOpen ? (
@@ -344,7 +342,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
               </div>
 
               <Box className={classes.button}>
-                {matches["1200"] ? null : (
+                {breakpoints.md ? null : (
                   <RegularButton variant="outlined" click={handleClickConnect}>
                     СВЯЗАТЬСЯ
                   </RegularButton>

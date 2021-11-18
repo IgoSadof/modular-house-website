@@ -10,7 +10,7 @@ import SquareButton from "./buttons/SquareButton";
 import RegularButton from "./buttons/RegularButton";
 import ClearIcon from "@material-ui/icons/Clear";
 // import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 // import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 // import addToMailchimp from "gatsby-plugin-mailchimp";
 import TextField from "@material-ui/core/TextField";
@@ -175,17 +175,14 @@ const Form = ({
   buttonAbs,
   id,
 }) => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
   const [open, setOpen] = React.useState(false);
   const [emailText, setEmailText] = React.useState("");
   const [telText, setTelText] = React.useState("");
   const [nameText, setNameText] = React.useState("");
   const [messageText, setMessageText] = React.useState("");
-  const param = { button, buttonAbs, matches };
+  const param = { button, buttonAbs };
   const classes = useStyles(param);
   const formRef = useRef(null);
 
@@ -225,7 +222,7 @@ const Form = ({
     <Box className={classes.formBox}>
       <Box className={classes.formHeader}>
         {title ? (
-          !matches[1200] ? (
+          !breakpoints.md ? (
             <Typography variant="h5" component="h3" className={classes.title}>
               {title}
             </Typography>
@@ -261,8 +258,6 @@ const Form = ({
             className={classes.field}
             onChange={handleChangeName}
             value={nameText}
-            //   required
-            id="name"
             id={`name-${id ? id : "0"}`}
             name="name"
             label={<Typography variant="body2">Имя</Typography>}

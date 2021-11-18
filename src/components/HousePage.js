@@ -6,7 +6,7 @@ import FormBlock from "../components/FormBlock";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import SquareButton from "../components/buttons/SquareButton";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import CalculateTable from "../components/CalculateTable";
@@ -460,10 +460,7 @@ const useStyles = makeStyles((theme) => ({
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
   const baseFolder = `houses/${dataHouses[house]["Код"].replace(" ", "")}/`;
 
@@ -622,7 +619,7 @@ const HousePage = ({ house, data }) => {
               alt="img"
             ></GatsbyImage>
           ) : null}
-          {matches[1200] ? (
+          {breakpoints.md ? (
             <Box className={classes.mainBlockTitleBox}>
               <Typography
                 variant="h1"
@@ -654,7 +651,7 @@ const HousePage = ({ house, data }) => {
           ) : null}
         </Box>
         <Box className={classes.mainDescBox}>
-          {matches[1200] ? null : (
+          {breakpoints.md ? null : (
             <Box className={classes.mainBlockTitleBox}>
               <Typography
                 variant="h1"
@@ -827,7 +824,7 @@ const HousePage = ({ house, data }) => {
               great
             />
           </Box>
-          {matches[1200] ? null : (
+          {breakpoints.md ? null : (
             <Panel
               ref={categoryRef}
               arr={panelTabs}
@@ -840,7 +837,7 @@ const HousePage = ({ house, data }) => {
       <Box className={`${classes.Block} ${classes.BlockRooms}`}>
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
-          {matches[1200] ? (
+          {breakpoints.md ? (
             <Typography variant="h2" className={classes.text}>
               Экспликация
             </Typography>
@@ -848,7 +845,7 @@ const HousePage = ({ house, data }) => {
         </Box>
         {/* <span className={classes.line}></span> */}
         <Box className={classes.roomsList}>
-          {matches[1200] ? null : (
+          {breakpoints.md ? null : (
             <Typography variant="h2">Экспликация</Typography>
           )}
           <Box className={classes.accordionBox}>
@@ -881,14 +878,14 @@ const HousePage = ({ house, data }) => {
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
-          {matches[1200] ? (
+          {breakpoints.md ? (
             <Typography variant="h2" className={classes.text}>
               Смета
             </Typography>
           ) : null}
         </Box>
         <Box className={classes.calculationPlan}>
-          {matches[1200] ? null : (
+          {breakpoints.md ? null : (
             <Typography className={classes.text} variant="h2">
               Смета
             </Typography>

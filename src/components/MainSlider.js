@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import ReactPlayer from "react-player/lazy";
 import numbers from "../constant/numbers";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import getMainPage from "../utils/getMainPage";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -245,9 +245,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getMainPage(data), [data]);
-  const matches = { 1200: useMediaQuery("(max-width:1200px)") };
-  console.log(matches[1200])
-  const baseLength = matches["1200"] ? 24 : 15;
+  const breakpoints = useBreakpoint();
+  const baseLength = breakpoints.md ? 24 : 15;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
@@ -276,7 +275,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
       setPlayVideo(true);
       setCurrentSegment(numb - 1);
     }
-    let interval = matches["1200"] ? 24 * (numb - 1) : 10 * (numb - 1);
+    let interval = breakpoints.md ? 24 * (numb - 1) : 10 * (numb - 1);
 
     setLineLength(() => (numb === 1 ? baseLength : baseLength + interval));
     setActiveNumb(numb - 1);

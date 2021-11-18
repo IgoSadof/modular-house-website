@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import alexey from "../assets/images/aboutus_alexey.png";
 import andrey from "../assets/images/aboutus_andrey.png";
 import office from "../assets/images/office.png";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import TitleWithLine from "../components/TitleWithLine";
 
 const useStyles = makeStyles((theme) => ({
@@ -180,19 +180,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AboutUs = () => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
-
+  const breakpoints = useBreakpoint();
   const classes = useStyles();
-
   return (
     <Box component="main">
       <Box
         component="section"
         className={classes.Block}
-        // style={matches[1200] ? { flexDirection: "column" } : null}
       >
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
@@ -263,7 +257,7 @@ const AboutUs = () => {
       </Box>
 
       <Box component="section" className={classes.Block}>
-        {!matches[1200]? (
+        {!breakpoints.md ? (
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
@@ -353,7 +347,7 @@ const AboutUs = () => {
       <Box
         component="section"
         className={`${classes.Block} ${classes.BlockMt0}`}
-        style={matches[1200] ? { flexDirection: "column" } : null}
+        style={breakpoints.md ? { flexDirection: "column" } : null}
       >
         <Box className={classes.BlockColumn}>
           <Box className={classes.creatorsBox}>
@@ -380,11 +374,7 @@ const AboutUs = () => {
           <img className={classes.img} src={andrey} alt="img"></img>
         </Box>
       </Box>
-      <Box
-        component="section"
-        className={classes.Block}
-        // style={matches[1200] ? { flexDirection: "column" } : null}
-      >
+      <Box component="section" className={classes.Block}>
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
             <TitleWithLine title="Наш друг, В. Татаров." />

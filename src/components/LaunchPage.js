@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import backgroundImg from "../assets/images/launchPage/background.png";
 import Logo from "./svg/Logo.js";
 import Burger from "./svg/Burger.js";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
@@ -114,13 +114,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LaunchPage = () => {
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1200: useMediaQuery("(max-width:1200px)"),
-  };
+ const breakpoints = useBreakpoint();
   const [emailText, setEmailText] = React.useState("Ваш Email");
 
-  const param = { matches };
+  const param = {};
   const classes = useStyles(param);
   const handleChangeEmail = (e) => {
     const myemail = e.target.value;

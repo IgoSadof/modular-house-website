@@ -7,10 +7,10 @@ import { Link } from "gatsby";
 import RegularButton from "./buttons/RegularButton";
 import ModalsSlider from "./ModalsSlider";
 import HouseModelSlider from "./HouseModelSlider";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getHousesData from "../utils/getHousesData";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { SwiperSlide } from "swiper/react";
 import getImg from "../utils/getImg";
 
@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     zIndex: "0",
     top: "-7%",
-    fontSize: (param) => (param.matches[1920] ? "92px" : "64px"),
+    fontSize: (param) => (param.breakpoints.xl ? "92px" : "64px"),
     margin: "auto",
     color: "white",
     transition: "1s",
@@ -282,15 +282,11 @@ const useStyles = makeStyles((theme) => ({
 const HousesList = ({ data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
-  const matches = {
-    1920: useMediaQuery("(min-width:1920px)"),
-    1280: useMediaQuery("(max-width:1280px)"),
-    700: useMediaQuery("(max-width:700px)"),
-  };
+const breakpoints = useBreakpoint();
   const [house, setHouse] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [animation] = useState(true);
-  const param = { matches };
+  const param = { breakpoints };
   const classes = useStyles(param);
 
   const handleItemclick = (index) => {
@@ -337,7 +333,7 @@ const HousesList = ({ data }) => {
                 : classes.houseListNumber
             }
           >{`0${index + 1}`}</Typography>
-          {!matches[1280] ? (
+          {!breakpoints.md ? (
             !(activeSlide === index) ? (
               <>
                 <CSSTransition
@@ -446,7 +442,7 @@ const HousesList = ({ data }) => {
         <ModalsSlider
           houseRef={houseSliderRef}
           listItem={listItem}
-          mobile={matches[1280]}
+          mobile={breakpoints.md}
         />
       </Box>
       <Box components="section" className={classes.houseDesc}>
@@ -475,7 +471,7 @@ const HousesList = ({ data }) => {
             </CSSTransition>
           </TransitionGroup>
 
-          {!matches[1280] ? (
+          {!breakpoints.md ? (
             <Box className={classes.houseDescTitleBox}>
               <Typography
                 variant="h1"
@@ -566,7 +562,7 @@ const HousesList = ({ data }) => {
               </Box>
             </Box>
           </Box>
-          {matches[1280] ? null : (
+          {breakpoints.md ? null : (
             <>
               <Box className={classes.houseDescMore}>
                 <Box className={classes.houseDescPrice}>
@@ -599,7 +595,7 @@ const HousesList = ({ data }) => {
 
       <Box components="section" className={classes.houseImg}>
         <HouseModelSlider myRef={myRef} listItem={listMainImages} />
-        {matches[1280] ? (
+        {breakpoints.md ? (
           <Box
             className={`${classes.houseDescTitleBox} ${classes.houseDescTitleBoxMobile}`}
           >
