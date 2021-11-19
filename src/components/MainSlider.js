@@ -251,11 +251,19 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
   const [playVideo, setPlayVideo] = useState(false);
-  const [video2, setVideo2] = useState(false);
-  import("../assets/video/video2.mp4").then((video) => {
-    // setTimeout(()=>{setVideo2(video);},3000)
-    setVideo2(video)
-  });
+  const [video, setVideo] = useState(false);
+
+  if(breakpoints && breakpoints.sm ){
+    import("../assets/video/videoMobile.mp4").then((video) => {
+      setVideo(video)
+    });
+  }else{
+    import("../assets/video/videoDesktop.mp4").then((video) => {
+      setVideo(video)
+    });
+  }
+
+  
 
   const param = { scroll, lineLength };
   const classes = useStyles(param);
@@ -349,17 +357,17 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
           </TransitionGroup>
 
           <Box className={classes.mainVideoBox}>
-            {!video2.default ? (
+            {!video.default ? (
               <div className={classes.loaderBox}>
                 <CircularProgress />
               </div>
             ) : null}
             <div className={classes.fon}></div>
-            {!video2.default ? null : (
+            {!video.default ? null : (
               <ReactPlayer
                 height="100%"
                 width="100%"
-                url={video2.default}
+                url={video.default}
                 loop={true}
                 playing={playVideo}
                 progressInterval={10}
