@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    marginTop: "60px",
+    marginTop: "40px",
     width: "100%",
   },
   messageLabelBox: {
@@ -333,7 +333,9 @@ const Form = ({
               id={`message-${id ? id : "0"}`}
               name="message"
               value={messageText}
+              rows="3"
               onChange={handleChangeMessage}
+              style={{resize: "none",}}
               // rowsMin={3}
               className={classes.messageField}
 
