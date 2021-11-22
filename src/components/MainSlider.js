@@ -1,79 +1,81 @@
-import "./global.css";
-import React, { useState, useMemo, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import ReactPlayer from "react-player/lazy";
-import numbers from "../constant/numbers";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import './global.css';
+import React, { useState, useMemo, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import ReactPlayer from 'react-player/lazy';
+import numbers from '../constant/numbers';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import getMainPage from "../utils/getMainPage";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import getMainPage from '../utils/getMainPage';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import getImg from '../utils/getImg';
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    padding: "50px 0px 100px",
-    boxSizing: "border-box",
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    height: "100vh",
-    backgroundColor: "#D1D1D1",
+    padding: '50px 0px 100px',
+    boxSizing: 'border-box',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100vh',
+    backgroundColor: '#D1D1D1',
 
-    [theme.breakpoints.down("md")]: {
-      height: "auto",
-      padding: "0",
+    [theme.breakpoints.down('md')]: {
+      height: 'auto',
+      padding: '0',
     },
   },
   button: {
-    position: "relative",
-    zIndex: "2",
-    marginLeft: "auto",
+    position: 'relative',
+    zIndex: '2',
+    marginLeft: 'auto',
   },
   menuButton: {
-    padding: "0",
+    padding: '0',
   },
   mainVideoBox: {
-    position: "absolute",
-    right: "-160px",
-    width: "70%",
-    height: "100vh",
-    top: "0",
-    zIndex: "0",
-    [theme.breakpoints.down("md")]: {
-      right: "0",
-      width: "100%",
-      position: "relative",
-      height: "85vw",
-      top: "60px",
+    position: 'absolute',
+    right: '-160px',
+    width: '70%',
+    height: '100vh',
+    top: '0',
+    zIndex: '0',
+    [theme.breakpoints.down('md')]: {
+      right: '0',
+      width: '100%',
+      position: 'relative',
+      height: '85vw',
+      top: '60px',
     },
   },
   fon: {
-    position: "absolute",
-    background: "radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)",
-    height: "100%",
-    width: "100%",
+    position: 'absolute',
+    background: 'radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)',
+    height: '100%',
+    width: '100%',
   },
   fullImg: {
-    position: "absolute",
-    width: "100%",
+    position: 'absolute',
+    width: '100%',
     top: 0,
     left: 0,
     opacity: (param) => 1 - 0.1 * param.scroll,
   },
   leftpartImg: {
-    position: "absolute",
-    top: "47%",
-    left: "3%",
+    position: 'absolute',
+    top: '47%',
+    left: '3%',
     transform: (param) =>
       `translate(0%,${-50 - param.scroll * 10}% ) scale(1.15)`,
     opacity: (param) => 0.1 * param.scroll,
   },
   rightpartImg: {
-    position: "absolute",
-    top: "47%",
-    left: "62%",
+    position: 'absolute',
+    top: '47%',
+    left: '62%',
     transform: (param) =>
       `translate(${-50 + param.scroll * 10}%, ${
         -50 - param.scroll * 10
@@ -81,164 +83,165 @@ const useStyles = makeStyles((theme) => ({
     opacity: (param) => 0.1 * param.scroll,
   },
   langBox: {
-    position: "relative",
-    zIndex: "2",
-    display: "flex",
-    gap: "6px",
-    cursor: "pointer",
-    marginLeft: "auto",
+    position: 'relative',
+    zIndex: '2',
+    display: 'flex',
+    gap: '6px',
+    cursor: 'pointer',
+    marginLeft: 'auto',
   },
   midleBlock: {
-    marginTop: "auto",
-    marginBottom: "auto",
-    display: "flex",
-    gap: "50px",
-    width: "100%",
-    height: "100%",
-    alignItems: "flex-start",
-    paddingTop: "14vh",
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    display: 'flex',
+    gap: '50px',
+    width: '100%',
+    height: '100%',
+    alignItems: 'flex-start',
+    paddingTop: '14vh',
 
-    [theme.breakpoints.down("md")]: {
-      justifyContent: "center",
-      height: "80vh",
-      paddingTop: "0",
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'center',
+      height: '80vh',
+      paddingTop: '0',
     },
   },
   textBlock: {
-    width: "50%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
+    width: '50%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
 
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
     },
   },
   midleLine: {
-    width: "75px",
-    height: "1px",
-    backgroundColor: "black",
+    width: '75px',
+    height: '1px',
+    backgroundColor: 'black',
   },
   articleBox: {
-    display: "flex",
-    alignItems: "center",
-    position: "relative",
+    display: 'flex',
+    alignItems: 'center',
+    position: 'relative',
     zIndex: 1,
-    height: "55vh",
+    height: '55vh',
 
-    [theme.breakpoints.down("md")]: {
-      height: "20vh",
-      marginTop: "40px",
+    [theme.breakpoints.down('md')]: {
+      height: '20vh',
+      marginTop: '40px',
     },
   },
   article: {
-    minWidth: "300px",
-    display: "flex",
-    position: "absolute",
+    minWidth: '300px',
+    display: 'flex',
+    position: 'absolute',
     // top: "40%",
-    left: "0",
-    right: "0",
+    left: '0',
+    right: '0',
     zIndex: 1,
-    gap: "30px",
-    flexDirection: "column",
+    gap: '30px',
+    flexDirection: 'column',
     // marginTop:"-20%",
-    marginLeft: "100px",
-    width: "470px",
+    marginLeft: '100px',
+    width: '470px',
 
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "auto",
-      marginRight: "auto",
-      marginBottom: "auto",
-      top: "0",
-      gap: "10px",
-      width: "70%",
-      "& h1": {
-        fontSize: "24px",
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginBottom: 'auto',
+      top: '0',
+      gap: '10px',
+      width: '70%',
+      '& h1': {
+        fontSize: '24px',
       },
     },
   },
   header: {
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
   },
   text: {
     // width: "70%",
   },
 
   numbersBox: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "30px",
-    position: "relative",
-    marginTop: "auto",
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '30px',
+    position: 'relative',
+    marginTop: 'auto',
   },
   numbers: {
-    width: "100%",
-    marginLeft: "5vw",
-    display: "flex",
-    height: "20px",
+    width: '100%',
+    marginLeft: '5vw',
+    display: 'flex',
+    height: '20px',
 
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "0",
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
     },
   },
   number: {
-    display: "flex",
-    justifyContent: "center",
-    cursor: "pointer",
-    width: "10vw",
-    height: "20px",
-    [theme.breakpoints.down("md")]: {
-      width: "24vw",
+    display: 'flex',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    width: '10vw',
+    height: '20px',
+    [theme.breakpoints.down('md')]: {
+      width: '24vw',
     },
     // marginLeft:'auto',
   },
   activeNumber: {
-    color: "#828282",
+    color: '#828282',
   },
   bottomLine: {
-    position: "relative",
-    height: "1px",
-    backgroundColor: "#4F4F4F",
-    "&::before": {
-      transformOrigin: "100% 50%",
-      position: "absolute",
+    position: 'relative',
+    height: '1px',
+    backgroundColor: '#4F4F4F',
+    '&::before': {
+      transformOrigin: '100% 50%',
+      position: 'absolute',
       content: `''`,
-      display: "block",
-      width: "10px",
-      height: "1px",
-      top: "0",
-      right: "0",
-      backgroundColor: "#4F4F4F",
-      transform: "rotate(45deg)",
+      display: 'block',
+      width: '10px',
+      height: '1px',
+      top: '0',
+      right: '0',
+      backgroundColor: '#4F4F4F',
+      transform: 'rotate(45deg)',
     },
-    "&::after": {
-      transformOrigin: "100% 50%",
-      position: "absolute",
+    '&::after': {
+      transformOrigin: '100% 50%',
+      position: 'absolute',
       content: `''`,
-      display: "block",
-      width: "10px",
-      height: "1px",
-      top: "0",
-      right: "0",
-      backgroundColor: "#4F4F4F",
-      transform: "rotate(315deg)",
+      display: 'block',
+      width: '10px',
+      height: '1px',
+      top: '0',
+      right: '0',
+      backgroundColor: '#4F4F4F',
+      transform: 'rotate(315deg)',
     },
-    transition: "0.5s",
+    transition: '0.5s',
   },
   icon: {
-    [theme.breakpoints.down("md")]: {
-      width: "50px",
+    width:"75px",
+    [theme.breakpoints.down('md')]: {
+      width: '50px',
     },
   },
   loaderBox: {
-    width: "40px",
-    height: "40px",
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    zIndex: "5",
-    marginLeft: "-20px",
-    marginTop: "-20px",
+    width: '40px',
+    height: '40px',
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    zIndex: '5',
+    marginLeft: '-20px',
+    marginTop: '-20px',
   },
 }));
 
@@ -252,17 +255,15 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [playVideo, setPlayVideo] = useState(false);
   const [video, setVideo] = useState(false);
 
-  if(breakpoints && breakpoints.sm ){
-    import("../assets/video/videoMobile.mp4").then((video) => {
-      setVideo(video)
+  if (breakpoints && breakpoints.sm) {
+    import('../assets/video/videoMobile.mp4').then((video) => {
+      setVideo(video);
     });
-  }else{
-    import("../assets/video/videoDesktop.mp4").then((video) => {
-      setVideo(video)
+  } else {
+    import('../assets/video/videoDesktop.mp4').then((video) => {
+      setVideo(video);
     });
   }
-
-  
 
   const param = { scroll, lineLength };
   const classes = useStyles(param);
@@ -313,7 +314,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [scroll]);
 
   return (
-    <Box component="section" className={classes.content}>
+    <Box component='section' className={classes.content}>
       <Box className={classes.midleBlock}>
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>
@@ -322,32 +323,35 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
               in={opacity}
               appear={true}
               timeout={500}
-              classNames="fade"
+              classNames='fade'
             >
               <Box className={classes.article}>
                 <Typography
                   className={classes.header}
-                  variant="h1"
-                  component="h1"
+                  variant='h1'
+                  component='h1'
                 >
                   {dataSlides[activeNumb].title.toUpperCase()}
                 </Typography>
                 {dataSlides[activeNumb].image ? (
                   <Box>
-                    <img
+                    <GatsbyImage
                       className={classes.icon}
-                      src={`../../${dataSlides[activeNumb].image.substr(
-                        dataSlides[activeNumb].image.search(/images/)
-                      )}`}
-                      alt="icon"
-                    ></img>
+                      image={getImg(
+                        data,
+                        `${dataSlides[activeNumb].image.substr(
+                          dataSlides[activeNumb].image.search(/images/)
+                        )}`
+                      )}
+                      alt='img'
+                    ></GatsbyImage>
                   </Box>
                 ) : null}
 
                 <Typography
                   className={classes.text}
-                  variant="body1"
-                  component="p"
+                  variant='body1'
+                  component='p'
                 >
                   {dataSlides[activeNumb].subtitle}
                 </Typography>
@@ -364,8 +368,8 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
             <div className={classes.fon}></div>
             {!video.default ? null : (
               <ReactPlayer
-                height="100%"
-                width="100%"
+                height='100%'
+                width='100%'
                 url={video.default}
                 loop={true}
                 playing={playVideo}
@@ -402,12 +406,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                       ? `${classes.number} ${classes.activeNumber}`
                       : classes.number
                   }
-                  variant="h5"
-                  component="p"
+                  variant='h5'
+                  component='p'
                 >
                   <span
-                    role="button"
-                    tabIndex="0"
+                    role='button'
+                    tabIndex='0'
                     key={index}
                     onClick={handleNumberClick}
                     onKeyDown={handleNumberClick}
