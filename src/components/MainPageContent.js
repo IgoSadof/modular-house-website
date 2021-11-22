@@ -313,13 +313,12 @@ const MainPageContent = ({ data }) => {
   const detail = useMemo(() => getData(data, 4), [data]);
   const dataAnswers = useMemo(() => getData(data, 18), [data]);
   const reviews = useMemo(() => getData(data, 5), [data]);
-  const answers = [[...dataAnswers.slice(0, 4)], [...dataAnswers.slice(4)]];
+  const answers = [...dataAnswers];
 
  const breakpoints = useBreakpoint();
   const classes = useStyles();
 
   const [review, setReview] = useState(0);
-  const [answeGroup, setAnsweGroup] = useState(0);
   const [reviewVideo, setReviewVideo] = useState(reviews.length - 1);
   const [opacity] = useState(true);
 
@@ -334,13 +333,6 @@ const MainPageContent = ({ data }) => {
     setReviewVideo((state) => (state - 1 < 0 ? reviews.length - 1 : state - 1));
     myRef.current.slickPrev();
   };
-
-  const handleReviewCangeNext = (e) => {
-    setAnsweGroup((state) => (state < answers.length - 1 ? state + 1 : 0));
-  };
-  const handleReviewCangePrev = (e) => {
-    setAnsweGroup((state) => (state > 0 ? state - 1 : answers.length - 1));
-  };
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
   const slidesPath = [
@@ -353,19 +345,6 @@ const MainPageContent = ({ data }) => {
     slides.push(getImg(data, item));
   });
 
-  // const handleScrol = (e) => {
-  //   if (e.nativeEvent.wheelDelta > 0) {
-  //     houseSliderRef.current.slickNext();
-  //   } else {
-  //     houseSliderRef.current.slickPrev();
-  //   }
-  // };
-  // const scrollOff = (e) => {
-  //   document.body.style.overflow = "hidden";
-  // };
-  // const scrollOn = (e) => {
-  //   document.body.style.overflow = "overlay";
-  // };
   return (
     <Box className={classes.root}>
       <Box component="section" className={classes.sliderBlock}>
@@ -379,10 +358,7 @@ const MainPageContent = ({ data }) => {
         {/* </Box> */}
         <Box
           className={classes.sliderBox}
-          // onWheel={handleScrol}
-          // onMouseOver={scrollOff}
-          // onClick={scrollOn}
-          // onMouseOut={scrollOn}
+ 
         >
           <HouseSlider
             houseRef={houseSliderRef}
@@ -622,38 +598,11 @@ const MainPageContent = ({ data }) => {
             <Box className={classes.titleBox}>
               <TitleWithLine title="ОТВЕТЫ НА ВОПРОСЫ" />
             </Box>
-            <Box className={classes.BlockColumn}>
-              <Box className={classes.buttons}>
-                <SquareButton
-                  variant={"outlined"}
-                  click={handleReviewCangePrev}
-                  less
-                />
-                <SquareButton
-                  click={handleReviewCangeNext}
-                  great
-                  variant={"outlined"}
-                />
-              </Box>
-            </Box>
           </>
         ) : (
           <Box className={classes.titleBox} style={{ minHeight: "224px" }}>
             <Box className={classes.BlockColumn}>
               <TitleWithLine title="ОТВЕТЫ НА ВОПРОСЫ" />
-
-              <Box className={classes.buttons}>
-                <SquareButton
-                  variant={"outlined"}
-                  click={handleReviewCangePrev}
-                  less
-                />
-                <SquareButton
-                  click={handleReviewCangeNext}
-                  great
-                  variant={"outlined"}
-                />
-              </Box>
             </Box>
           </Box>
         )}
@@ -661,7 +610,7 @@ const MainPageContent = ({ data }) => {
         <Box className={classes.accordion}>
           <Accordions
             answers={true}
-            arr={answers[answeGroup]}
+            arr={answers}
             title="answers"
           />
         </Box>

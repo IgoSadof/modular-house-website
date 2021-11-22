@@ -9,7 +9,6 @@ import AddIcon from "@material-ui/icons/Add";
 const Accordion = withStyles({
   root: {
     width: "100%",
-    // borderBottom: "1px solid #333333",
     boxShadow: "none",
     "&:not(:last-child)": {
       borderBottom: 0,
@@ -60,7 +59,7 @@ export default function Accordions({
   answers,
   title,
 }) {
-  const [expanded, setExpanded] = React.useState("panel1");
+  const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
