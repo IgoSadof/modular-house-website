@@ -132,10 +132,10 @@ const ContactsBlock = ({ header, data }) => {
                 <Box
                   className={classes.personalBox}
                   style={
-                    breakpoints.l
-                      ? { width: '180px' }
-                      : breakpoints.md
+                    breakpoints.md
                       ? { width: '150px' }
+                      : breakpoints.l
+                      ? { width: '180px' }
                       : null
                   }
                 >
@@ -172,10 +172,10 @@ const ContactsBlock = ({ header, data }) => {
                 <Box
                   className={classes.personalBox}
                   style={
-                    breakpoints.l
-                      ? { width: '180px' }
-                      : breakpoints.md
+                    breakpoints.md
                       ? { width: '150px' }
+                      : breakpoints.l
+                      ? { width: '180px' }
                       : null
                   }
                 >
