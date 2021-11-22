@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import RegularButton from "./buttons/RegularButton";
-import ModalsSlider from "./ModalsSlider";
+import ModelsSlider from "./ModelsSlider";
 import HouseModelSlider from "./HouseModelSlider";
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -439,7 +439,7 @@ const breakpoints = useBreakpoint();
         onMouseOut={scrollOn}
         onClick={scrollOn}
       >
-        <ModalsSlider
+        <ModelsSlider
           houseRef={houseSliderRef}
           listItem={listItem}
           mobile={breakpoints.md}

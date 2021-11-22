@@ -11,11 +11,12 @@ import getImg from "../utils/getImg";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 
-import SwiperCore, { FreeMode } from "swiper";
+import SwiperCore, { Mousewheel, FreeMode } from "swiper";
 
-SwiperCore.use([FreeMode]);
+SwiperCore.use([Mousewheel, FreeMode]);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -318,8 +319,9 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
       slidesPerView={"auto"}
       grabCursor={true}
       loop={true}
-      freeMode={true}
+      // freeMode={true}
       spaceBetween={20}
+      mousewheel={true}
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
     >

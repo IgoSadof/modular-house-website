@@ -6,7 +6,7 @@ import SwiperCore, { Mousewheel, FreeMode } from "swiper";
 
 SwiperCore.use([Mousewheel, FreeMode]);
 
-const ModalsSlider = ({ listItem, houseRef, mobile }) => {
+const ModelsSlider = ({ listItem, houseRef, mobile }) => {
 const breakpoints = useBreakpoint();
 
   return (
@@ -25,4 +25,4 @@ const breakpoints = useBreakpoint();
   );
 };
 
-export default ModalsSlider;
+export default ModelsSlider;

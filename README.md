@@ -88,8 +88,8 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
     - Create a New database:
 
     ```shell
-    CREATE DATABASE my_project_copy;
-    USE my_project_copy;
+    CREATE DATABASE modularh_db;
+    USE modularh_db;
     SOURCE my_project.sql;
     ```
     import database
