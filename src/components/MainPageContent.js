@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "60px",
     marginTop: "120px",
+    paddingRight:"10vw",
 
     [theme.breakpoints.down("md")]: {
       marginTop: "100px",

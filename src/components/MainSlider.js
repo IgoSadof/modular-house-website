@@ -198,8 +198,7 @@ const useStyles = makeStyles((theme) => ({
   bottomLine: {
     position: "relative",
     height: "1px",
-    backgroundColor: "black",
-    marginBottom: "10px",
+    backgroundColor: "#4F4F4F",
     "&::before": {
       transformOrigin: "100% 50%",
       position: "absolute",
@@ -209,7 +208,7 @@ const useStyles = makeStyles((theme) => ({
       height: "1px",
       top: "0",
       right: "0",
-      backgroundColor: "black",
+      backgroundColor: "#4F4F4F",
       transform: "rotate(45deg)",
     },
     "&::after": {
@@ -221,7 +220,7 @@ const useStyles = makeStyles((theme) => ({
       height: "1px",
       top: "0",
       right: "0",
-      backgroundColor: "black",
+      backgroundColor: "#4F4F4F",
       transform: "rotate(315deg)",
     },
     transition: "0.5s",
@@ -418,12 +417,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 </Typography>
               ))}
             </div>
-            <div
+            <span
               className={classes.bottomLine}
               style={{
                 width: `${lineLength}vw`,
               }}
-            ></div>
+            ></span>
           </Box>
         </Box>
       </Box>

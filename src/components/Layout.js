@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
-    padding: (param) => (param.page === "main" ? "0 10% 120px 10%" : null),
+    padding: (param) => (param.page === "main" ? "0 0 0 10%" : null),
     [theme.breakpoints.down("md")]: {
       height: (param) => (param.page === "houseList" ? "100%" : null),
       padding: "0 !important",
