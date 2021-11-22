@@ -446,7 +446,7 @@ const MainPageContent = ({ data }) => {
                     />
                   </Box>
                   <Typography variant='h5' component='p'>
-                    {`${review + 1}/${reviews.length}`}
+                    {`${review + 1>9? review + 1:`0${review + 1}`}/${reviews.length>9? reviews.length:`0${reviews.length}`}`}
                   </Typography>
                 </Box>
               </Box>
