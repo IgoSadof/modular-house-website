@@ -116,6 +116,7 @@ const useStyles = makeStyles((theme) => ({
   price: {
     minWidth: "130px",
     textAlign: "end",
+    textTransform:"lowercase",
     [theme.breakpoints.down("md")]: {
       textAlign: "right",
       paddingRight: "10px",
@@ -228,7 +229,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                         component="p"
                         className={classes.propertyValue}
                       >
-                        {item.countArea(item.modules, "Площадь общая")} М2
+                        {item.countArea(item.modules, "Площадь общая")} м<sup>2</sup>
                       </Typography>
                     </Box>
                     <Box className={classes.property}>
@@ -244,7 +245,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                         component="p"
                         className={classes.propertyValue}
                       >
-                        {item.countArea(item.modules, "Площадь полезная")} М2
+                        {item.countArea(item.modules, "Площадь полезная")} м<sup>2</sup>
                       </Typography>
                     </Box>
                     <Box className={classes.property}>
@@ -265,7 +266,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                           item.modules,
                           "Площадь общая"
                         ) ?? 100}{" "}
-                        M2
+                        м<sup>2</sup>
                       </Typography>
                     </Box>
                   </Box>
@@ -276,24 +277,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
                     >
                       Стадии роста:
                     </Typography>
-                    {/* <GatsbyImage
-                      className={classes.mainPlan}
-                      image={getImg(
-                        `${item["Иконка планировки"].substr(
-                          item["Иконка планировки"].search(/images\//)
-                        )}`
-                      )}
-                      alt="img"
-                    ></GatsbyImage> */}
-                    {/* <StaticImage
-                      className={classes.mainPlan}
-                      src="../assets/images/mainTitleIcons/stages/stage3.png"
-                      alt="Grow stage"
-                      placeholder="blurred"
-                      layout="fixed"
-                      width={50}
-                      height={20}
-                    /> */}
+        
                     <Box className={classes.growStageIcon}>
                       <GatsbyImage
                         className={classes.mainPlan}

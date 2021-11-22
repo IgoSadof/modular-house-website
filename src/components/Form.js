@@ -174,6 +174,7 @@ const Form = ({
   main,
   buttonAbs,
   id,
+  buttonText,
 }) => {
  const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
@@ -353,8 +354,9 @@ const Form = ({
             disabled={state.submitting}
             variant="outlined"
             click={state.succeeded ? handleOpen : null}
+            lowerCase = {true}
           >
-            Отправить
+            {buttonText?buttonText:"Отправить"}
           </RegularButton>
           {inBurger ? (
             <RegularButton variant="outlined" click={closeForm}>

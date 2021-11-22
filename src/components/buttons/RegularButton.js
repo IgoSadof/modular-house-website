@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing:"0.015em",
     width:"152px",
     height:"38px",
+    textTransform:(param) => (param.lowerCase ? "capitalize" : "uppercase"),
     borderLeft: (param) => (param.leftNone ? "none" : "1px solid"),
     color: (param) => (param.color ? param.color : "#4F4F4F"),
     borderColor: (param) => (param.color ? param.color : "#4F4F4F"),
@@ -32,8 +33,9 @@ export default function RegularButton({
   color,
   leftNone,
   submit,
+  lowerCase,
 }) {
-  const param = { color, leftNone };
+  const param = { color, leftNone,lowerCase };
   const classes = useStyles(param);
 
   return (
