@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   BlockColumn: {
-    width: '30vw',
+    width: '28vw',
     display: 'flex',
     gap: '20px',
     marginLeft: '100px',
@@ -395,12 +395,6 @@ const MainPageContent = ({ data }) => {
           <>
             <Box className={classes.titleBox}>
               <Box className={classes.BlockColumn}>
-                {/* <Box className={classes.sectionTitle}>
-                  <span className={classes.line}></span>
-                  <Typography variant="h2" className={classes.text}>
-                    РЕАЛЬНЫЕ ОТЗЫВЫ
-                  </Typography>
-                </Box> */}
                 <TitleWithLine title='РЕАЛЬНЫЕ ОТЗЫВЫ' />
 
                 <TransitionGroup className={classes.commentBoxWrap}>
@@ -446,7 +440,9 @@ const MainPageContent = ({ data }) => {
                     />
                   </Box>
                   <Typography variant='h5' component='p'>
-                    {`${review + 1>9? review + 1:`0${review + 1}`}/${reviews.length>9? reviews.length:`0${reviews.length}`}`}
+                    {`${review + 1 > 9 ? review + 1 : `0${review + 1}`}/${
+                      reviews.length > 9 ? reviews.length : `0${reviews.length}`
+                    }`}
                   </Typography>
                 </Box>
               </Box>
@@ -603,7 +599,7 @@ const MainPageContent = ({ data }) => {
         )}
 
         <Box className={classes.accordion}>
-          <Accordions answers={true} arr={answers} title='answers' />
+          <Accordions answers={true} arr={answers} title='answers' uppercase={false} />
         </Box>
       </Box>
 
@@ -611,17 +607,22 @@ const MainPageContent = ({ data }) => {
 
       {!breakpoints.md ? (
         <Box component='section' className={classes.Block}>
-          <Box className={classes.titleBox} style={{ marginTop: '100px' }}>
+          <Box
+            className={classes.titleBox}
+            // style={{ marginTop: '100px' }}
+          >
             <Box
               className={classes.BlockColumn}
               style={{ justifyContent: 'start' }}
             >
               <TitleWithLine title='Приглашаем' />
-              <Form
-                title='В готовый модульный дом под Минском на ознакомительную экскурсиюшаем'
-                subtitle='Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии'
-                buttonText='Записаться'
-              />
+              <Box m='auto'>
+                <Form
+                  title='В готовый модульный дом под Минском на ознакомительную экскурсиюшаем'
+                  subtitle='Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии'
+                  buttonText='Записаться'
+                />
+              </Box>
             </Box>
           </Box>
           <OneImageAutoSlider slides={slides} />

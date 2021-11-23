@@ -1,17 +1,16 @@
 const customQueries = {
-  xs: "(max-width: 500px)",
-  s: "(max-width: 600px)",
-  sm: "(max-width: 720px)",
-  md: "(max-width: 1200px)",
-  l: "(max-width: 1536px)",
-  xl: "(max-width: 1926px)",
-  isLoad: "(min-width: 320px)",
-  
+  xs: '(max-width: 500px)',
+  s: '(max-width: 600px)',
+  sm: '(max-width: 720px)',
+  md: '(max-width: 1200px)',
+  l: '(max-width: 1536px)',
+  xl: '(max-width: 1926px)',
+  isLoad: '(min-width: 320px)',
 };
 
 module.exports = {
   siteMetadata: {
-    title: "Modular House",
+    title: 'Modular House',
   },
   // flags: { PRESERVE_WEBPACK_CACHE: true },
   plugins: [
@@ -38,18 +37,18 @@ module.exports = {
           host: 'localhost',
           user: 'modularh_user',
           password: 'modularhouse',
-          database: 'modularh_db'
+          database: 'modularh_db',
         },
         queries: [
           {
-            statement: "SELECT * FROM modx_site_tmplvar_contentvalues",
-            idFieldName: "id",
-            name: "value",
+            statement: 'SELECT * FROM modx_site_tmplvar_contentvalues',
+            idFieldName: 'id',
+            name: 'value',
           },
           {
-            statement: "SELECT * FROM modx_site_content",
-            idFieldName: "id",
-            name: "parent",
+            statement: 'SELECT * FROM modx_site_content',
+            idFieldName: 'id',
+            name: 'parent',
           },
           // all houses
           {
@@ -59,8 +58,8 @@ module.exports = {
             JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
             JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id
             WHERE modx_site_templates.templatename = "Дом"`,
-            idFieldName: "id",
-            name: "Houses",
+            idFieldName: 'id',
+            name: 'Houses',
           },
           // all modules
           {
@@ -71,8 +70,8 @@ module.exports = {
             JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id
             WHERE modx_site_templates.templatename = "Модуль"
             ORDER BY modx_site_content.pagetitle`,
-            idFieldName: "id",
-            name: "Modules",
+            idFieldName: 'id',
+            name: 'Modules',
           },
           // rooms
           {
@@ -82,8 +81,8 @@ module.exports = {
             JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
             JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id
             WHERE modx_site_templates.templatename = "Комната"`,
-            idFieldName: "id",
-            name: "Rooms",
+            idFieldName: 'id',
+            name: 'Rooms',
           },
           // main page slider
           {
@@ -92,8 +91,8 @@ module.exports = {
             JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
             JOIN modx_categories ON modx_categories.id = modx_site_tmplvars.category
             WHERE modx_categories.category = "Параметры Главной"`,
-            idFieldName: "id",
-            name: "MainPage",
+            idFieldName: 'id',
+            name: 'MainPage',
           },
           {
             statement: `
@@ -104,8 +103,8 @@ module.exports = {
             JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
             JOIN modx_categories ON modx_categories.id = modx_site_tmplvars.category
             WHERE modx_categories.category = "Параметры Опции"`,
-            idFieldName: "id",
-            name: "Options",
+            idFieldName: 'id',
+            name: 'Options',
           },
         ],
       },
@@ -115,7 +114,8 @@ module.exports = {
       options: {
         // Defaults used for gatsbyImageData and StaticImage
         defaults: {
-          breakpoints: [750, 1920],
+          quality: 70,
+          breakpoints: [750, 1366, 1920],
         },
         // Set to false to allow builds to continue on image errors
         failOnError: true,
@@ -124,7 +124,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
     {
-      resolve: "gatsby-plugin-breakpoints",
+      resolve: 'gatsby-plugin-breakpoints',
       options: {
         queries: customQueries,
       },

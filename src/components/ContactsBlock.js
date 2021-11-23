@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   infoBox: {
     display: 'flex',
     gap: '20px',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
   },
   infoBoxText: {
     display: 'flex',
@@ -128,7 +128,7 @@ const ContactsBlock = ({ header, data }) => {
         <Box components='section' className={classes.BlockContent}>
           <Box className={classes.contactsBox}>
             <Box className={classes.contactsBoxes}>
-              <a className={classes.personalBoxLink} href='tel:+375293650669'>
+              {/* <a className={classes.personalBoxLink} href='tel:+375293650669'> */}
                 <Box
                   className={classes.personalBox}
                   style={
@@ -166,9 +166,9 @@ const ContactsBlock = ({ header, data }) => {
                     +375 44 5180676
                   </Typography>
                 </Box>
-              </a>
+              {/* </a> */}
 
-              <a className={classes.personalBoxLink} href='tel:+375445180676'>
+              {/* <a className={classes.personalBoxLink} href='tel:+375445180676'> */}
                 <Box
                   className={classes.personalBox}
                   style={
@@ -206,7 +206,7 @@ const ContactsBlock = ({ header, data }) => {
                     +375 29 3650669
                   </Typography>
                 </Box>
-              </a>
+              {/* </a> */}
             </Box>
             {!breakpoints.md ? (
               <Box className={classes.infoBox}>

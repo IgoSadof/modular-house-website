@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     gap: "20px",
-    width: "30vw",
+    width: "500px",
     height: "fit-content",
     left: "-100px",
     "& span": {
