@@ -16,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
 
   Block: {
     display: "flex",
-    gap: "20px",
+    gap: "60px",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
+      gap: "20px",
     },
   },
   title: {
@@ -28,10 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mediaBlock: {
     display: "flex",
-    marginLeft: "auto",
-    // border: "1px solid",
-    width: "50%",
-    gap: "20px",
+    width: "100%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
       order: "1,",
@@ -49,8 +47,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   titleBox: {
-    width: "30vw",
-    display: "flex",
     gap: "20px",
     flexDirection: "row-reverse",
     [theme.breakpoints.down("md")]: {
@@ -58,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
       right: "-12%",
       width: "100%",
       marginLeft: "0",
-      // marginLeft: "auto",
     },
   },
 
@@ -87,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   BlockColumn: {
-    width: "30vw",
+    width: "28vw",
     display: "flex",
     gap: "20px",
     marginLeft: "100px",

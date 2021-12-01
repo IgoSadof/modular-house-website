@@ -43,10 +43,8 @@ const useStyles = makeStyles((theme) => ({
   header: {
     fontSize: "72px",
     fontWeight: "600",
-    width: "53%",
     lineHeight: "1.15",
     letterSpacing: "0.03em",
-    marginLeft: "auto",
     color: "#4F4F4F",
     [theme.breakpoints.down("md")]: {
       width: "65%",
@@ -71,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Block: {
     display: "flex",
-    gap: "20px",
+    gap: "60px",
     marginTop: "100px",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column-reverse",
@@ -81,8 +79,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   titleBox: {
-    width: "30vw",
-    display: "flex",
     gap: "20px",
     flexDirection: "row-reverse",
     [theme.breakpoints.down("md")]: {
@@ -94,7 +90,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textBox: {
-    width: "360px",
     display: "flex",
     flexDirection: "column",
     gap: "60px",
@@ -142,6 +137,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgBox: {
     marginLeft: "auto",
+    marginRight: "auto",
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
     },
@@ -159,13 +155,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   header2: {
-    width: "680px",
     [theme.breakpoints.down("md")]: {
       width: "65%",
     },
   },
   BlockColumn: {
-    width: "30vw",
+    width: "28vw",
     display: "flex",
     gap: "20px",
     marginLeft: "100px",

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     width: (param) => (param.inBurger ? "100%" : "10%"),
     height: (param) => (param.inBurger ? "80vh" : "100vh"),
     borderRight: "1px solid #4F4F4F",
-    padding: "50px 0px 100px",
+    padding: "50px 0px 90px",
     transition: "0.5s",
     opacity: "1",
     zIndex: "2",

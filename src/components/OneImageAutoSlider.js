@@ -12,7 +12,7 @@ SwiperCore.use([Autoplay, EffectFade]);
 const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: "100%",
-    height: "850px",
+    height: "100vh",
     "&>div":{
       height: "100%",
     },
