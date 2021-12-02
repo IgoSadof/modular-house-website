@@ -253,11 +253,43 @@ abbr {
 .houseMove-appear {
   opacity: 0;
   z-index: 1;
+  transition: opacity 500ms linear;
 }
 .houseMove-appear.houseMove-appear-active {
   opacity: 1;
   transition: opacity 500ms linear;
 }
+
+/* modelHouseImgMove */
+
+/* appear - on page load */
+.houseMoveMobile-enter {
+  opacity: 0;
+  z-index: 1;
+  transform: scale(1);
+  transition: opacity 500ms linear;
+}
+.houseMoveMobile-enter-active {
+  opacity: 1;
+  transform: scale(1.5);
+  transition: opacity 500ms linear;
+}
+.houseMoveMobile-exit {
+  opacity: 1;
+  transform: scale(2);
+  transition: opacity 500ms linear;
+}
+.houseMoveMobile-exit-active {
+  opacity: 0;
+  transition: opacity 5000ms;
+}
+
+
+
+
+
+
+
 
 /* enter */
 .houseMove-enter {

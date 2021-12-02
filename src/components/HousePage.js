@@ -11,7 +11,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import CalculateTable from "../components/CalculateTable";
 import Panel from "../components/Panel";
-import HouseFotosSlider from "../components/HouseFotosSlider";
+import HouseFotosSlider from "../components/sliders/HouseFotosSlider";
 import Accordions from "../components/Accordion";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "@google/model-viewer";

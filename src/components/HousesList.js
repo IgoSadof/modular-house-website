@@ -5,8 +5,8 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import RegularButton from "./buttons/RegularButton";
-import ModelsSlider from "./ModelsSlider";
-import HouseModelSlider from "./HouseModelSlider";
+import ModelsSlider from "./sliders/ModelsSlider";
+import HouseMainImgSlider from "./sliders/HouseMainImgSlider";
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import getHousesData from "../utils/getHousesData";
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     position: "relative",
     display: "flex",
-    paddingLeft: "11%",
+    paddingLeft: "10%",
     backgroundColor: "#D1D1D1",
     overflow: "hidden",
     height: "100%",
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     display: "flex !important",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
     border: "none",
     background: "none",
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     transition: "1s",
   },
   houseListActiveNumber: {
-    top: "20%",
+    top: "10%",
     transition: "1s",
     [theme.breakpoints.down("md")]: {
       opacity: "0",
@@ -133,9 +133,11 @@ const useStyles = makeStyles((theme) => ({
     top: "0%",
   },
   houseListName: {
-    position: "absolute",
-    left: "10%",
-    top: "70%",
+    position: "relative",
+    // left: "10%",
+    // top: "70%",
+    marginBottom: "30px",
+    zIndex:"2",
   },
   houseDesc: {
     display: "flex",
@@ -154,8 +156,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     margin: "auto",
     width: "100%",
-    height: "80%",
-    padding: "0 60px",
+    height: "90%",
+    padding: "0 40px",
     justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
       padding: "0",
@@ -245,7 +247,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescSpec: style.flexColumn,
   houseDescSpecOne: style.flex,
-  houseDescMore: { ...style.flex, marginTop: "20px" },
+  houseDescMore: { ...style.flex, margin: "20px 0" },
   houseDescPrice: style.flexColumn,
   "& p": {
     lineHeight: "1.6",
@@ -292,19 +294,8 @@ const breakpoints = useBreakpoint();
   const handleItemclick = (index) => {
     setHouse((state) => index);
     myRef.current.slickGoTo(index);
-    // houseSliderRef.current.slickGoTo(index);
-    // setTimeout(() => houseSliderRef.current.slickPrev(), 600);
-
     setActiveSlide(index);
   };
-  // const handleScrol = (e) => {
-  //   if (e.nativeEvent.wheelDelta > 0) {
-  //     console.log(houseSliderRef.current)
-  //     houseSliderRef.current.slideNext();
-  //   } else {
-  //     houseSliderRef.current.slidePrev();
-  //   }
-  // };
   const scrollOff = (e) => {
     document.body.style.overflow = "hidden";
   };
@@ -369,7 +360,7 @@ const breakpoints = useBreakpoint();
                 in={true}
                 appear={true}
                 timeout={500}
-                classNames="houseMove"
+                classNames="houseMoveMobile"
               >
                 <GatsbyImage
                   className={
@@ -594,7 +585,7 @@ const breakpoints = useBreakpoint();
       </Box>
 
       <Box components="section" className={classes.houseImg}>
-        <HouseModelSlider myRef={myRef} listItem={listMainImages} />
+        <HouseMainImgSlider myRef={myRef} listItem={listMainImages} />
         {breakpoints.md ? (
           <Box
             className={`${classes.houseDescTitleBox} ${classes.houseDescTitleBoxMobile}`}

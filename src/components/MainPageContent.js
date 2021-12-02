@@ -3,17 +3,17 @@ import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import HouseSlider from './HouseSlider';
+import HouseSlider from "./sliders/HouseSlider";
 import Accordions from './Accordion';
 import SquareButton from './buttons/SquareButton';
 import ContactsBlock from '../components/ContactsBlock';
 import Form from '../components/Form';
-import ReviewsSlider from '../components/ReviewsSlider';
+import ReviewsSlider from './sliders/ReviewsSlider';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import getData from '../utils/getData';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import OneImageAutoSlider from './OneImageAutoSlider';
+import OneImageAutoSlider from './sliders/OneImageAutoSlider';
 import Quote from './svg/Quote';
 import getImg from '../utils/getImg';
 import TitleWithLine from '../components/TitleWithLine';
@@ -599,7 +599,12 @@ const MainPageContent = ({ data }) => {
         )}
 
         <Box className={classes.accordion}>
-          <Accordions answers={true} arr={answers} title='answers' uppercase={false} />
+          <Accordions
+            answers={true}
+            arr={answers}
+            title='answers'
+            uppercase={false}
+          />
         </Box>
       </Box>
 

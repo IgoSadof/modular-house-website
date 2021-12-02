@@ -3,11 +3,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
-import getHousesData from "../utils/getHousesData";
+import getHousesData from "../../utils/getHousesData";
 // import { StaticImage, getImage } from "gatsby-plugin-image";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
-import getImg from "../utils/getImg";
+import getImg from "../../utils/getImg";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Swiper, SwiperSlide } from "swiper/react";

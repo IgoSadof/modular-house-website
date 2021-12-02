@@ -20,12 +20,12 @@ const useStyles = makeStyles((theme) => ({
     // height:'90vh !important'
   }
 }));
-const HouseModelSlider = ({listItem,myRef}) => {
+const HouseMainImgSlider = ({listItem,myRef}) => {
   const classes = useStyles();
   const settings = {
     infinite: true,
     arrows: false,
-    speed: 2000,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: false,
@@ -40,4 +40,4 @@ const HouseModelSlider = ({listItem,myRef}) => {
   );
 };
 
-export default HouseModelSlider;
+export default HouseMainImgSlider;
