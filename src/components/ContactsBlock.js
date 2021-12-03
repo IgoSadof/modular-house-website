@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '20px',
     width: '100%',
     height: '100%',
-    paddingBottom: '170px',
+    paddingBottom: '120px',
     [theme.breakpoints.down('md')]: {
       paddingTop: '40px',
       paddingBottom: '0',
@@ -57,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     gap: '60px',
-    justifyContent: 'space-between',
   },
   contactsBoxes: {
     display: 'flex',

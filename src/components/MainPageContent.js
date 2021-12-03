@@ -197,9 +197,13 @@ const useStyles = makeStyles((theme) => ({
   formBox: {
     width: '30vw',
     marginLeft: 'auto',
+    display: "flex",
+    flexDirection: "column",
+    paddingBottom: "270px",
     [theme.breakpoints.down('md')]: {
       width: '100%',
       marginLeft: '0',
+      paddingBottom: "0",
     },
   },
   sliderBox: {
