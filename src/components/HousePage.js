@@ -1,458 +1,483 @@
-import "../components/global.css";
-import React, { useState, useRef, useMemo } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import '../components/global.css';
+import React, { useState, useRef, useMemo } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
-import FormBlock from "../components/FormBlock";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import SquareButton from "../components/buttons/SquareButton";
+import FormBlock from '../components/FormBlock';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import SquareButton from '../components/buttons/SquareButton';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import CalculateTable from "../components/CalculateTable";
-import Panel from "../components/Panel";
-import HouseFotosSlider from "../components/sliders/HouseFotosSlider";
-import Accordions from "../components/Accordion";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import "@google/model-viewer";
-import Model3d from "./Model3d";
-import getHousesData from "../utils/getHousesData";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import getImg from "../utils/getImg";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CalculateTable from '../components/CalculateTable';
+import Panel from '../components/Panel';
+import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
+import Accordions from '../components/Accordion';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import '@google/model-viewer';
+import Model3d from './Model3d';
+import getHousesData from '../utils/getHousesData';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import getImg from '../utils/getImg';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
-    position: "relative",
-    boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#D1D1D1",
-    overflow: "hidden",
-    height: "100vh",
-    [theme.breakpoints.down("md")]: {
-      "& $titleBox": {
-        marginTop: "100px",
-        right: "0",
-        position: "relative",
+    position: 'relative',
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#D1D1D1',
+    overflow: 'hidden',
+    height: '100vh',
+    [theme.breakpoints.down('md')]: {
+      '& $titleBox': {
+        marginTop: '100px',
+        right: '0',
+        position: 'relative',
       },
     },
   },
   Block: {
-    display: "flex",
-    gap: "20px",
-    padding: "0 10%",
-    backgroundColor: "#D1D1D1",
-    marginTop: "100px",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "120px",
-      flexDirection: "column",
-      padding: "0 10%",
-      justifyContent: "center",
-      "& $titleBox": {
-        right: "-12%",
-        position: "relative",
+    display: 'flex',
+    gap: '20px',
+    padding: '0 10%',
+    backgroundColor: '#D1D1D1',
+    marginTop: '100px',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '120px',
+      flexDirection: 'column',
+      padding: '0 10%',
+      justifyContent: 'center',
+      '& $titleBox': {
+        right: '-12%',
+        position: 'relative',
       },
     },
   },
 
   button: {
-    position: "absolute",
-    top: "5%",
-    right: "10%",
+    position: 'absolute',
+    top: '5%',
+    right: '10%',
     background:
       // "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
-      "radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)",
+      'radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)',
 
-    zIndex: "2",
+    zIndex: '2',
   },
   mainImgBox: {
-    height: "72vh",
-    position: "relative",
+    height: '72vh',
+    position: 'relative',
   },
   mainImg: {
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   },
   mainImgSlider: {
-    width: "100%",
-    height: "100vh",
-    objectFit: "cover",
-    [theme.breakpoints.down("md")]: {
-      height: "70vh",
+    width: '100%',
+    height: '100vh',
+    objectFit: 'cover',
+    [theme.breakpoints.down('md')]: {
+      height: '70vh',
     },
   },
   mainImgItem: {
-    height: "100%",
+    height: '100%',
   },
   secondImgBox: {
-    position: "relative",
-    width: "100%",
-    height: "100vh",
-    [theme.breakpoints.down("md")]: {
-      height: "auto",
+    position: 'relative',
+    width: '100%',
+    height: '100vh',
+    [theme.breakpoints.down('md')]: {
+      height: 'auto',
     },
   },
   mainDescBox: {
-    width: "100%",
-    display: "flex",
-    gap: "20px",
-    justifyContent: "space-between",
-    padding: "50px 18vw",
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      padding: "10%",
-      gap: "50px",
-      justifyContent: "center",
+    width: '100%',
+    display: 'flex',
+    gap: '60px',
+    // justifyContent: 'space-between',
+    padding: '50px 10%',
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+      padding: '10%',
+      gap: '50px',
+      justifyContent: 'center',
     },
   },
   mainBlockTitleBox: {
-    display: "flex",
-    alignItems: "center",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      position: "absolute",
-      justifyContent: "space-around",
-      bottom: "7%",
-      zIndex: "1",
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      position: 'absolute',
+      justifyContent: 'space-around',
+      bottom: '7%',
+      zIndex: '1',
     },
   },
   houseDescIconBox: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    width: "100px",
-    objectFit: "contain",
-    height: "85px",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: '100px',
+    objectFit: 'contain',
+    height: '85px',
   },
   mainPlan: {
-    width: "40px",
-    height: "40px",
-    objectFit: "contain",
-    marginLeft: "auto",
-    marginRight: "auto",
+    width: '40px',
+    height: '40px',
+    objectFit: 'contain',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   houseDescTitle: {
-    color: "white",
-    width: "50%",
+    color: 'white',
+    width: '50%',
   },
   houseSpecPrice: {
-    fontSize: "20px",
-    color: "white",
+    fontSize: '20px',
+    color: 'white',
   },
   mainBlockSubtitleBox: {
-    display: "flex",
-    gap: "100px",
-    [theme.breakpoints.down("md")]: {
-      gap: "0",
-      justifyContent: "space-between",
+    display: 'flex',
+    gap: '100px',
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+      gap: '10px',
+      justifyContent: 'space-between',
     },
   },
   mainBlockTitle: {
-    textAlign: "left",
-    width: "300px",
+    textAlign: 'left',
+    marginLeft:"100px",
+    // width: '300px',
+    width: '28vw',
   },
   mainBlockList: {
-    listStyle: "none",
-    padding: "0",
-    display: "flex",
-    flexDirection: "column",
-    aligneItems: "center",
-    justifyContent: "space-between",
+    listStyle: 'none',
+    padding: '0',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  mainBlockListRight: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   mainBlockItem: {
-    fontSize: "12px",
-    fontWeight: "400",
+    fontSize: '12px',
+    fontWeight: '400',
   },
   modelBlock: {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "100px",
-    padding: "100px 10% 100px 18vw",
-    backgroundColor: "#D1D1D1",
-    [theme.breakpoints.down("md")]: {
-      gap: "20px",
-      flexDirection: "column",
-      padding: "10%",
-      paddingTop: "0",
-      justifyContent: "center",
-      marginTop:"10px",
+    display: 'flex',
+    // justifyContent: "space-between",
+    gap: '60px',
+    padding: '100px 0 100px 10%',
+    backgroundColor: '#D1D1D1',
+    [theme.breakpoints.down('md')]: {
+      padding: '100px 0',
+      gap: '20px',
+      flexDirection: 'column',
+      // padding: '10%',
+      paddingTop: '20px',
+      justifyContent: 'center',
+      marginTop: '10px',
     },
   },
   modelDesc: {
-    position: "relative",
-    width: "450px",
-    height: (param) => `${param.heightOneLine * param.modulesCounts}vh`,
-    display: "flex",
+    position: 'relative',
+    width: '28vw',
+    marginLeft: '100px',
+    flexShrink: '0',
+    // height: (param) => `${param.heightOneLine * param.modulesCounts}vh`,
+    display: 'flex',
     minHeight: (param) => `${param.heightModuleList}vh`,
-    gap: "40px",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      height: (param) => `${param.heightOneLine * param.modulesCounts + 4}vh`,
+    gap: '40px',
+    [theme.breakpoints.down('md')]: {
+      padding: '0 9%',
+      marginLeft: '0',
+      width: '100%',
+      minheight: (param) =>
+        `${param.heightOneLine * param.modulesCounts + 4}vh`,
     },
   },
   accordionBox: {
-    marginTop: "auto",
-    marginBottom: "auto",
+    marginTop: 'auto',
+    marginBottom: 'auto',
   },
   modelDescFirstColumn: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+    },
   },
   modelDescSecondColumn: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   modelDescItemTitle: {
-    listStyle: "none",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    marginRight: "auto",
-    minHeight: "16vh",
+    listStyle: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 'auto',
+    minHeight: '16vh',
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
-    overflowY: "auto",
-    margin:'10px 0',
+    overflowY: 'auto',
+    margin: '10px 0',
+    '& h1': {
+      fontSize: '48px',
+    },
   },
   model: {
-    width: "50%",
-    backgroundPosition: "center",
-    backgroundSize: "contain",
-    backgroundRepeat: "no-repeat",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      height: "35vh",
+    width: '70%',
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      height: '35vh',
     },
   },
   modelDescLine: {
-    display: (param) => (param.modulesCounts > 1 ? "block" : "none"),
-    position: "relative",
-    width: "1px",
-    height: "100%",
-    backgroundColor: "#BDBDBD",
+    display: (param) => (param.modulesCounts > 1 ? 'block' : 'none'),
+    position: 'relative',
+    width: '1px',
+    // height: '100%',
+    backgroundColor: '#BDBDBD',
   },
   modelDescLineButton: {
-    position: "absolute",
+    position: 'absolute',
     top: (param) => `${param.pilldistance}%`,
-    transition: "0.5s",
+    transition: '0.5s',
     transform: `translate(-50%, 0%)`,
   },
   modelDescLineActive: {
-    position: "absolute",
-    zIndex: "2",
-    left: "50%",
-    width: "1px",
+    position: 'absolute',
+    zIndex: '2',
+    left: '50%',
+    width: '1px',
     height: (param) => `${param.pilldistance}%`,
-    backgroundColor: "black",
-    transition: "0.5s",
+    backgroundColor: 'black',
+    transition: '0.5s',
   },
   modelDescLineMinus: {
-    width: "30px",
-    height: "30px",
-    border: "1px solid",
-    borderRadius: "50% 50% 0 0",
-    fontSize: "30px",
-    backgroundColor: "#D1D1D1",
-    cursor: "pointer",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    transition: "0.5s",
+    width: '30px',
+    height: '30px',
+    border: '1px solid',
+    borderRadius: '50% 50% 0 0',
+    fontSize: '30px',
+    backgroundColor: '#D1D1D1',
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    transition: '0.5s',
   },
   minus: {
-    position: "relative",
-    top: "-8%",
+    // position: 'relative',
+    // top: '-8%',
   },
   modelDescLineMinusCircle: {
-    width: "30px",
-    height: "30px",
-    border: "1px solid",
-    borderRadius: "50%",
-    fontSize: "30px",
-    backgroundColor: "#D1D1D1",
-    cursor: "pointer",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    transition: "0.5s",
+    width: '30px',
+    height: '30px',
+    border: '1px solid',
+    borderRadius: '50%',
+    fontSize: '30px',
+    backgroundColor: '#D1D1D1',
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    transition: '0.5s',
   },
   modelDescLinePlus: {
-    width: "30px",
-    height: "30px",
-    border: "1px solid",
-    borderRadius: "0 0 50% 50%",
-    fontSize: "30px",
-    backgroundColor: "#D1D1D1",
-    cursor: "pointer",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    transition: "0.5s",
+    width: '30px',
+    height: '30px',
+    border: '1px solid',
+    borderRadius: '0 0 50% 50%',
+    fontSize: '30px',
+    backgroundColor: '#D1D1D1',
+    cursor: 'pointer',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    transition: '0.5s',
   },
   plus: {
-    position: "relative",
-    bottom: "12%",
+    // position: "relative",
+    // bottom: "12%",
   },
   disable: {
-    color: "#BDBDBD",
+    color: '#BDBDBD',
   },
   buttons: {
-    position: "absolute",
-    display: "flex",
-    gap: "20px",
-    left: "14%",
-    bottom: "4%",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      justifyContent: "space-around",
-      left: "0%",
-      bottom: "6%",
+    position: 'absolute',
+    display: 'flex',
+    gap: '20px',
+    left: '14%',
+    bottom: '4%',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      justifyContent: 'space-around',
+      left: '0%',
+      bottom: '6%',
     },
   },
   blockGalary: {
-    height: "auto",
+    height: 'auto',
   },
   panel: {
-    position: "absolute",
-    right: "0",
-    bottom: "0",
-    width: "620px",
-    backgroundColor: "#D1D1D1",
+    position: 'absolute',
+    right: '0',
+    bottom: '0',
+    width: '620px',
+    backgroundColor: '#D1D1D1',
   },
   titleBox: {
-    display: "flex",
-    gap: "20px",
-    flexDirection: "row-reverse",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "auto",
+    display: 'flex',
+    gap: '20px',
+    flexDirection: 'row-reverse',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 'auto',
     },
   },
   line: {
-    display: "inline-block",
-    width: "80px",
-    height: "1px",
-    backgroundColor: "black",
-    marginTop: "22px",
+    display: 'inline-block',
+    width: '80px',
+    height: '1px',
+    backgroundColor: 'black',
+    marginTop: '22px',
   },
 
   BlockRooms: {
-    height: "auto",
-    gap: "20px",
-    marginTop: "100px",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("md")]: {
-      "& $titleBox": {
-        right: "0%",
+    height: 'auto',
+    gap: '20px',
+    marginTop: '100px',
+    [theme.breakpoints.down('md')]: {
+      '& $titleBox': {
+        right: '0%',
       },
-      padding: "0",
-      justifyContent: "center",
+      padding: '0',
+      justifyContent: 'center',
     },
   },
   roomsList: {
-    width: "50%",
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      order: "2",
+    width: '28vw',
+    display: 'flex',
+    flexShrink: "0",
+    flexDirection: 'column',
+    marginRight:"40px",
+    gap: '20px',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      marginRight:"0",
+      order: '2',
     },
   },
   roomsImgBox: {
-    position: "relative",
-    width: "40%",
-    height: "85vh",
-    marginLeft: "20px",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      marginLeft: "0",
-      order: "1",
-      height: "100vw",
+    position: 'relative',
+    width: '100%',
+    height: '85vh',
+    marginLeft: '20px',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+      order: '1',
+      height: '100vw',
     },
   },
   roomImg: {
-    position: "absolute",
-    top: "0",
-    left: "0",
-    objectFit: "cover",
-    width: "100%",
-    height: "100%",
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%',
   },
   BlockCalculation: {
-    [theme.breakpoints.down("md")]: {
-      justifyContent: "center",
+    minHeight: '100vh',
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'center',
+      minHeight: '100%',
     },
   },
   calculationPlan: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    width: "50%",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '100%',
+    width: '50%',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      // height: '100%',
     },
   },
   calculation: {
-    display: "flex",
-    gap: "40px",
-    flexDirection: "column",
-    marginLeft: "auto",
-    width: "30%",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "0",
-      width: "100%",
+    display: 'flex',
+    gap: '40px',
+    flexDirection: 'column',
+    marginLeft: 'auto',
+    width: '30%',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+      width: '100%',
     },
   },
   calculationItem: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
   },
   calculationHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   calculationBody: {
-    paddingLeft: "20px",
-    paddingRight: "30px",
-    borderLeft: "1px solid",
+    paddingLeft: '20px',
+    paddingRight: '30px',
+    borderLeft: '1px solid',
   },
   calculationBodyItem: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   calculationResult: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "100px",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '100px',
+    alignItems: 'center',
   },
   BlockForm: {
     // paddingLeft: "18vw",
-    justifyContent: "center",
-    paddingBottom: "100px",
-    [theme.breakpoints.down("md")]: {
-      padding: "0",
+    justifyContent: 'center',
+    paddingBottom: '100px',
+    [theme.breakpoints.down('md')]: {
+      padding: '0',
     },
   },
   BlockTable: {
-    [theme.breakpoints.down("md")]: {
-      padding: "0",
-      width: "100%",
+    [theme.breakpoints.down('md')]: {
+      padding: '0',
+      width: '100%',
     },
   },
   text: {
-    marginBottom: "40px",
-    [theme.breakpoints.down("md")]: {
-      marginBottom: "20px",
+    marginBottom: '40px',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '20px',
     },
   },
 }));
@@ -460,9 +485,9 @@ const useStyles = makeStyles((theme) => ({
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
- const breakpoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
-  const baseFolder = `houses/${dataHouses[house]["Код"].replace(" ", "")}/`;
+  const baseFolder = `houses/${dataHouses[house]['Код'].replace(' ', '')}/`;
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const getImgsFromDirectory = (directory) => {
@@ -477,31 +502,29 @@ const HousePage = ({ house, data }) => {
     return imagesArr;
   };
 
-  const [modulePrice, setModulePrice] = useState(0);
-  // image={getImg(`${item["Иконка дома"].substr(
-  //   item["Иконка дома"].search(/images\//)
-  // )}`)}
+  const baseModulePrice = dataHouses[houseNumber].modules[0]['Стоимость']
+    ? +dataHouses[houseNumber].modules[0]['Стоимость'].replace(/[KК]/, '000')
+    : 0;
+  const [modulePrice, setModulePrice] = useState(baseModulePrice);
 
   const baseImg = dataHouses[houseNumber].modules[0]?.rooms[0]
-    ? dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(
+    ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение'].substr(
         dataHouses[houseNumber].modules[0].rooms[0][
-          "Главное изображение"
+          'Главное изображение'
         ].search(/images\//)
       )
-    : `${dataHouses[houseNumber]["Баннер"].substr(
-        dataHouses[houseNumber]["Баннер"].search(/images/)
+    : `${dataHouses[houseNumber]['Баннер'].substr(
+        dataHouses[houseNumber]['Баннер'].search(/images/)
       )}`;
 
   const [roomsImg, setRoomsImg] = useState(baseImg);
-  // console.log(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"].search(/images\//)))
-
   const [roomsImgIndex, setRoomsImgIndex] = useState(0);
   const [opacity] = useState(true);
   const handleRoomsImgChange = (img, index) => {
     setRoomsImg(img);
     setRoomsImgIndex(index);
   };
-  const modulesCounts = dataHouses[houseNumber]["modules"].length;
+  const modulesCounts = dataHouses[houseNumber]['modules'].length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 16;
   const heightModuleList = 60;
@@ -516,8 +539,8 @@ const HousePage = ({ house, data }) => {
   };
   const classes = useStyles(param);
   const [model3d, setModel3d] = useState(
-    `../../${dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].substr(
-      dataHouses[houseNumber]["modules"][pillClick]["3D Модель"].search(
+    `../../${dataHouses[houseNumber]['modules'][pillClick]['3D Модель'].substr(
+      dataHouses[houseNumber]['modules'][pillClick]['3D Модель'].search(
         /models3d/
       )
     )}`
@@ -530,10 +553,10 @@ const HousePage = ({ house, data }) => {
       setPilldistance((state) => state + pillStep);
       setPillClick((state) => state + 1);
       setModel3d(
-        `../../${dataHouses[houseNumber]["modules"][pillClick + 1][
-          "3D Модель"
+        `../../${dataHouses[houseNumber]['modules'][pillClick + 1][
+          '3D Модель'
         ].substr(
-          dataHouses[houseNumber]["modules"][pillClick + 1]["3D Модель"].search(
+          dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель'].search(
             /models3d/
           )
         )}`
@@ -545,10 +568,10 @@ const HousePage = ({ house, data }) => {
       setPilldistance((state) => state - pillStep);
       setPillClick((state) => state - 1);
       setModel3d(
-        `../../${dataHouses[houseNumber]["modules"][pillClick - 1][
-          "3D Модель"
+        `../../${dataHouses[houseNumber]['modules'][pillClick - 1][
+          '3D Модель'
         ].substr(
-          dataHouses[houseNumber]["modules"][pillClick - 1]["3D Модель"].search(
+          dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель'].search(
             /models3d/
           )
         )}`
@@ -563,16 +586,14 @@ const HousePage = ({ house, data }) => {
   };
 
   const handleChangePanel = (value) => {
-    // console.log(baseFolder + value);
-    if (value === "") {
+    if (value === '') {
       setRelativeDirectory(baseFolder);
     } else {
-      setRelativeDirectory(baseFolder + "/модули/" + value);
+      setRelativeDirectory(baseFolder + '/модули/' + value);
     }
   };
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
-      // console.log(`add ${event.target.value}`);
       setModulePrice((state) => state + +event.target.value);
     } else {
       setModulePrice((state) => state - +event.target.value);
@@ -587,7 +608,7 @@ const HousePage = ({ house, data }) => {
             <GatsbyImage
               className={classes.mainImgSlider}
               image={item}
-              alt="img"
+              alt='img'
             ></GatsbyImage>
           ) : null}
         </li>
@@ -596,54 +617,54 @@ const HousePage = ({ house, data }) => {
   );
 
   let all = {};
-  all["Название модуля"] = "Все";
-  all.name = "";
+  all['Название модуля'] = 'Все';
+  all.name = '';
   const panelTabs = [all, ...dataHouses[house].modules];
 
   return (
-    <Box components="main">
+    <Box components='main'>
       <Box
-        components="section"
+        components='section'
         className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
       >
         <Box className={classes.mainImgBox}>
-          {dataHouses[houseNumber]["Баннер"] ? (
+          {dataHouses[houseNumber]['Баннер'] ? (
             <GatsbyImage
               className={classes.mainImg}
               image={getImg(
                 data,
-                `${dataHouses[houseNumber]["Баннер"].substr(
-                  dataHouses[houseNumber]["Баннер"].search(/images/)
+                `${dataHouses[houseNumber]['Баннер'].substr(
+                  dataHouses[houseNumber]['Баннер'].search(/images/)
                 )}`
               )}
-              alt="img"
+              alt='img'
             ></GatsbyImage>
           ) : null}
           {breakpoints.md ? (
             <Box className={classes.mainBlockTitleBox}>
               <Typography
-                variant="h1"
-                color="textSecondary"
+                variant='h1'
+                color='textSecondary'
                 className={classes.houseDescTitle}
               >
-                {dataHouses[houseNumber]["Код"]}
+                {dataHouses[houseNumber]['Код']}
               </Typography>
               <Box className={classes.houseDescIconBox}>
-                {dataHouses[houseNumber]["Иконка планировки"] ? (
+                {dataHouses[houseNumber]['Иконка планировки'] ? (
                   <GatsbyImage
                     className={classes.mainPlan}
                     image={getImg(
                       data,
-                      `${dataHouses[houseNumber]["Иконка планировки"].substr(
-                        dataHouses[houseNumber]["Иконка планировки"].search(
+                      `${dataHouses[houseNumber]['Иконка планировки'].substr(
+                        dataHouses[houseNumber]['Иконка планировки'].search(
                           /images/
                         )
                       )}`
                     )}
-                    alt="img"
+                    alt='img'
                   ></GatsbyImage>
                 ) : null}
-                <Typography variant="h5" className={classes.houseSpecPrice}>
+                <Typography variant='h5' className={classes.houseSpecPrice}>
                   {/* {dataHouses[houseNumber].price} */}
                 </Typography>
               </Box>
@@ -654,11 +675,11 @@ const HousePage = ({ house, data }) => {
           {breakpoints.md ? null : (
             <Box className={classes.mainBlockTitleBox}>
               <Typography
-                variant="h1"
-                color="textSecondary"
+                variant='h1'
+                color='textSecondary'
                 className={classes.mainBlockTitle}
               >
-                {dataHouses[houseNumber]["Код"]}
+                {dataHouses[houseNumber]['Код']}
               </Typography>
             </Box>
           )}
@@ -678,19 +699,21 @@ const HousePage = ({ house, data }) => {
               {dataHouses[houseNumber].modules.map((item, index) => {
                 return (
                   <li className={classes.mainBlockItem} key={index}>
-                    <Typography variant="body1">
-                      0{index + 1} {item["Название модуля"]}
+                    <Typography variant='body1'>
+                      0{index + 1} {item['Название модуля']}
                     </Typography>
                   </li>
                 );
               })}
             </ul>
-            <ul className={classes.mainBlockList}>
+            <ul
+              className={`${classes.mainBlockList} ${classes.mainBlockListRight}`}
+            >
               {dataHouses[houseNumber].modules.map((item, index) => {
                 return (
                   <li className={classes.mainBlockItem} key={index}>
-                    <Typography variant="subtitle1">
-                      ${item["Стоимость"]} / {item["Срок изготовления"]} дней
+                    <Typography variant='subtitle1'>
+                      ${item['Стоимость']} / {item['Срок изготовления']} дней
                     </Typography>
                   </li>
                 );
@@ -700,15 +723,15 @@ const HousePage = ({ house, data }) => {
         </Box>
       </Box>
 
-      <Box components="section" className={classes.modelBlock}>
+      <Box components='section' className={classes.modelBlock}>
         <Box className={classes.modelDesc}>
           <Box className={classes.modelDescFirstColumn}>
             {dataHouses[houseNumber].modules.map((item, index) => {
               return (
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
-                    variant="h1"
-                    color="textSecondary"
+                    variant='h1'
+                    color='textSecondary'
                     className={
                       pillClick >= index ? classes.modelNumber : classes.disable
                     }
@@ -717,8 +740,8 @@ const HousePage = ({ house, data }) => {
                   </Typography>
                   <Typography
                     className={pillClick >= index ? null : classes.disable}
-                    variant="h6"
-                    component="p"
+                    variant='h6'
+                    component='p'
                   >
                     {item.name}
                   </Typography>
@@ -738,22 +761,20 @@ const HousePage = ({ house, data }) => {
             {pillClick === 0 ? (
               <div className={classes.modelDescLineButton}>
                 <div
-                  role="button"
-                  tabIndex="0"
+                  role='button'
+                  tabIndex='0'
                   onClick={handlePlusClick}
                   onKeyDown={handlePlusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
-                  <div style={{ top: "-10%" }} className={classes.plus}>
-                    +
-                  </div>
+                  <div className={classes.plus}>+</div>
                 </div>
               </div>
             ) : pillClick + 1 < modulesCounts ? (
               <div className={classes.modelDescLineButton}>
                 <div
-                  role="button"
-                  tabIndex="0"
+                  role='button'
+                  tabIndex='0'
                   onClick={handleMinusClick}
                   onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinus}
@@ -761,8 +782,8 @@ const HousePage = ({ house, data }) => {
                   <div className={classes.minus}>-</div>
                 </div>
                 <div
-                  role="button"
-                  tabIndex="0"
+                  role='button'
+                  tabIndex='0'
                   onClick={handlePlusClick}
                   onKeyDown={handlePlusClick}
                   className={classes.modelDescLinePlus}
@@ -773,13 +794,13 @@ const HousePage = ({ house, data }) => {
             ) : (
               <div className={classes.modelDescLineButton}>
                 <div
-                  role="button"
-                  tabIndex="0"
+                  role='button'
+                  tabIndex='0'
                   onClick={handleMinusClick}
                   onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
-                  <div style={{ top: "-13%" }} className={classes.minus}>
+                  <div style={{ top: '-13%' }} className={classes.minus}>
                     -
                   </div>
                 </div>
@@ -793,9 +814,9 @@ const HousePage = ({ house, data }) => {
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
                     className={pillClick >= index ? null : classes.disable}
-                    variant="body1"
+                    variant='body1'
                   >
-                    {item["Описание модуля"]}
+                    {item['Описание модуля']}
                   </Typography>
                 </li>
               );
@@ -806,8 +827,8 @@ const HousePage = ({ house, data }) => {
           <Model3d
             srcPath={model3d}
             srcPathIos={model3d
-              .replace("models3d", "models3dIos")
-              .replace("glb", "usdz")}
+              .replace('models3d', 'models3dIos')
+              .replace('glb', 'usdz')}
           ></Model3d>
         </Box>
       </Box>
@@ -817,9 +838,9 @@ const HousePage = ({ house, data }) => {
           <HouseFotosSlider myRef={myRef} listItem={listItem} />
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
-            <SquareButton variant={"contained"} click={handleClickLeft} less />
+            <SquareButton variant={'contained'} click={handleClickLeft} less />
             <SquareButton
-              variant={"contained"}
+              variant={'contained'}
               click={handleClickRight}
               great
             />
@@ -838,7 +859,7 @@ const HousePage = ({ house, data }) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {breakpoints.md ? (
-            <Typography variant="h2" className={classes.text}>
+            <Typography variant='h2' className={classes.text}>
               Экспликация
             </Typography>
           ) : null}
@@ -846,7 +867,7 @@ const HousePage = ({ house, data }) => {
         {/* <span className={classes.line}></span> */}
         <Box className={classes.roomsList}>
           {breakpoints.md ? null : (
-            <Typography variant="h2">Экспликация</Typography>
+            <Typography variant='h2'>Экспликация</Typography>
           )}
           <Box className={classes.accordionBox}>
             <Accordions
@@ -862,13 +883,13 @@ const HousePage = ({ house, data }) => {
             in={opacity}
             appear={true}
             timeout={500}
-            classNames="fade"
+            classNames='fade'
           >
             {roomsImg ? (
               <GatsbyImage
                 className={classes.roomImg}
                 image={getImg(data, roomsImg)}
-                alt="img"
+                alt='img'
               ></GatsbyImage>
             ) : null}
           </CSSTransition>
@@ -879,28 +900,28 @@ const HousePage = ({ house, data }) => {
         <Box className={classes.titleBox}>
           <span className={classes.line}></span>
           {breakpoints.md ? (
-            <Typography variant="h2" className={classes.text}>
+            <Typography variant='h2' className={classes.text}>
               Смета
             </Typography>
           ) : null}
         </Box>
         <Box className={classes.calculationPlan}>
           {breakpoints.md ? null : (
-            <Typography className={classes.text} variant="h2">
+            <Typography className={classes.text} variant='h2'>
               Смета
             </Typography>
           )}
-          {dataHouses[houseNumber]["План"] &&
-          !dataHouses[houseNumber]["План"].includes("gif") ? (
+          {dataHouses[houseNumber]['План'] &&
+          !dataHouses[houseNumber]['План'].includes('gif') ? (
             <GatsbyImage
               className={classes.calculationPlanImg}
               image={getImg(
                 data,
-                `${dataHouses[houseNumber]["План"].substr(
-                  dataHouses[houseNumber]["План"].search(/images/)
+                `${dataHouses[houseNumber]['План'].substr(
+                  dataHouses[houseNumber]['План'].search(/images/)
                 )}`
               )}
-              alt="img"
+              alt='img'
             ></GatsbyImage>
           ) : null}
         </Box>
@@ -908,41 +929,64 @@ const HousePage = ({ house, data }) => {
           {dataHouses[houseNumber].modules.map((item, index) => {
             return (
               <Box className={classes.calculationItem} key={index}>
-                <Box className={classes.calculationHeader}>
-                  <FormControlLabel
-                    onChange={handleChangeCheckbox}
-                    value={
-                      item["Стоимость"]
-                        ? +item["Стоимость"].replace(/[KК]/, "000")
-                        : 0
-                    }
-                    control={<Checkbox color="primary" />}
-                    label={
-                      <Typography variant="h6">
-                        {item["Название модуля"]}
-                      </Typography>
-                    }
-                    labelPlacement="end"
-                  />
-                  <Typography variant="h3">${item["Стоимость"]}</Typography>
-                </Box>
+                {index === 0 ? (
+                  <Box className={classes.calculationHeader}>
+                    <FormControlLabel
+                      checked
+                      disabled
+                      onChange={handleChangeCheckbox}
+                      value={
+                        item['Стоимость']
+                          ? +item['Стоимость'].replace(/[KК]/, '000')
+                          : 0
+                      }
+                      control={<Checkbox color='primary' />}
+                      label={
+                        <Typography variant='h6'>
+                          {item['Название модуля']}
+                        </Typography>
+                      }
+                      labelPlacement='end'
+                    />
+                    <Typography variant='h3'>${item['Стоимость']}</Typography>
+                  </Box>
+                ) : (
+                  <Box className={classes.calculationHeader}>
+                    <FormControlLabel
+                      onChange={handleChangeCheckbox}
+                      value={
+                        item['Стоимость']
+                          ? +item['Стоимость'].replace(/[KК]/, '000')
+                          : 0
+                      }
+                      control={<Checkbox color='primary' />}
+                      label={
+                        <Typography variant='h6'>
+                          {item['Название модуля']}
+                        </Typography>
+                      }
+                      labelPlacement='end'
+                    />
+                    <Typography variant='h3'>${item['Стоимость']}</Typography>
+                  </Box>
+                )}
 
                 <Box className={classes.calculationBody}>
                   {item.rooms.map((item, index) => {
                     return (
                       <li className={classes.calculationBodyItem} key={index}>
                         <Typography
-                          variant="body1"
+                          variant='body1'
                           className={classes.calculationBodyText}
                         >
-                          {item["Экспликация"]}
+                          {item['Экспликация']}
                         </Typography>
                         <Typography
-                          variant="body1"
+                          variant='body1'
                           className={classes.calculationBodyText}
                         >
-                          {item["Площадь комнаты"]
-                            ? `${item["Площадь комнаты"]} м2`
+                          {item['Площадь комнаты']
+                            ? `${item['Площадь комнаты']} м2`
                             : null}
                         </Typography>
                       </li>
@@ -954,8 +998,8 @@ const HousePage = ({ house, data }) => {
           })}
 
           <Box className={classes.calculationResult}>
-            <Typography variant="h6">Цена</Typography>
-            <Typography variant="caption">${modulePrice}</Typography>
+            <Typography variant='h6'>Цена</Typography>
+            <Typography variant='caption'>${modulePrice}</Typography>
           </Box>
         </Box>
       </Box>
@@ -974,11 +1018,11 @@ const HousePage = ({ house, data }) => {
           padding={true}
           img={getImg(
             data,
-            `${dataHouses[houseNumber]["Баннер"].substr(
-              dataHouses[houseNumber]["Баннер"].search(/images/)
+            `${dataHouses[houseNumber]['Баннер'].substr(
+              dataHouses[houseNumber]['Баннер'].search(/images/)
             )}`
           )}
-          formPosition="center"
+          formPosition='center'
         />
       </Box>
     </Box>

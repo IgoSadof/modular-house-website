@@ -103,7 +103,7 @@ const CalculateTable = ({ houseOptions }) => {
   return (
     <div className={classes.conteiner}>
       <table className={classes.table}>
-        <tbody>
+        <tbody style={{borderBottom:'2px solid'}}>
           {!breakpoints.md
             ? houseOptions.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>

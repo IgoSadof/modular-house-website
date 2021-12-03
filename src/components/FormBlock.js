@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   expodom_img: {
-    width: "90%",
+    width: "100%",
     objectFit: "cover",
     marginLeft: "auto",
     [theme.breakpoints.down("md")]: {
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   BlockColumn: {
-    width: "28vw",
+    // width: "28vw",
     display: "flex",
     gap: "20px",
     marginLeft: "100px",
