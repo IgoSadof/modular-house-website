@@ -85,10 +85,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   BlockColumn: {
-    // width: "28vw",
+    width: "28vw",
     display: "flex",
     gap: "20px",
     marginLeft: "100px",
+    flexShrink: "0",
     justifyContent: "space-between",
     flexDirection: "column",
     [theme.breakpoints.down("md")]: {
