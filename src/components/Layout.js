@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import "./global.css";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Footer from "./Footer";
-import Menu from "./Menu";
-import modularHouseTheme from "../config/modularHouseTheme";
-import Box from "@material-ui/core/Box";
-import { useBreakpoint } from "gatsby-plugin-breakpoints";
-import Burger from "./Burger";
-import RegularButton from "./buttons/RegularButton";
-import { useStaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
-import Drawer from "@material-ui/core/Drawer";
-import ClearIcon from "@material-ui/icons/Clear";
-import Form from "./Form";
-import call from "../assets/images/call.png";
-import Typography from "@material-ui/core/Typography";
-import SquareButton from "./buttons/SquareButton";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import React, { useState } from 'react';
+import './global.css';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import Footer from './Footer';
+import Menu from './Menu';
+import modularHouseTheme from '../config/modularHouseTheme';
+import Box from '@material-ui/core/Box';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import Burger from './Burger';
+import RegularButton from './buttons/RegularButton';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import Drawer from '@material-ui/core/Drawer';
+import ClearIcon from '@material-ui/icons/Clear';
+import Form from './Form';
+import call from '../assets/images/call.png';
+import Typography from '@material-ui/core/Typography';
+import SquareButton from './buttons/SquareButton';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const dataToComponent = (WrappedComponent, currebtData, house) => {
   return <WrappedComponent data={currebtData} house={house} />;
@@ -24,98 +24,96 @@ const dataToComponent = (WrappedComponent, currebtData, house) => {
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     height: (param) =>
-      param.page === "aboutUs" ||
-      param.page === "main" ||
-      param.page === "house"
-        ? "100%"
-        : "100vh",
-    [theme.breakpoints.down("md")]: {
-      height: (param) => (param.page === "houseList" ? "100vh" : "100%"),
+      param.page === 'aboutUs' ||
+      param.page === 'main' ||
+      param.page === 'house'
+        ? '100%'
+        : '100vh',
+    [theme.breakpoints.down('md')]: {
+      height: (param) => (param.page === 'houseList' ? '100vh' : '100%'),
     },
   },
 
   Block: {
-    position: "relative",
-    width: "100%",
+    position: 'relative',
+    width: '100%',
     padding: (param) =>
-      param.page === "main" ? "0 10% 100px 10%" : "14vh 10% 14vh 10%",
+      param.page === 'main' ? '0 10% 100px 10%' : '14vh 10% 14vh 10%',
     // padding: "100px 10% 100px 11%",
-    backgroundColor: "#D1D1D1",
-    overflow: "hidden",
-    height: "100%",
-    [theme.breakpoints.down("md")]: {
-      padding: "0 10% !important",
-      marginBottom: "40px",
+    backgroundColor: '#D1D1D1',
+    overflow: 'hidden',
+    height: '100%',
+    [theme.breakpoints.down('md')]: {
+      padding: '0 10% !important',
+      marginBottom: '40px',
     },
   },
   BlockFullscreen: {
-    position: "relative",
-    height: "100%",
-    boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#D1D1D1",
-    overflow: "hidden",
-    padding: (param) => (param.page === "main" ? "0 0 0 10%" : null),
-    [theme.breakpoints.down("md")]: {
-      height: (param) => (param.page === "houseList" ? "100%" : null),
-      padding: "0 !important",
-      marginBottom: (param) =>
-        param.page === "house" || param.page === "main" ? "40px" : null,
+    position: 'relative',
+    height: '100%',
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#D1D1D1',
+    overflow: 'hidden',
+    padding: (param) => (param.page === 'main' ? '0 0 0 10%' : null),
+    [theme.breakpoints.down('md')]: {
+      height: (param) => (param.page === 'houseList' ? '100%' : null),
+      padding: '0 !important',
     },
   },
   button: {
-    position: "absolute",
+    position: 'absolute',
     top: (param) =>
-      param.page === "aboutUs" ||
-      param.page === "main" ||
-      param.page === "house"
-        ? "50px"
-        : "5%",
-    right: "10%",
-    zIndex: "2",
+      param.page === 'aboutUs' ||
+      param.page === 'main' ||
+      param.page === 'house'
+        ? '50px'
+        : '5%',
+    right: '10%',
+    zIndex: '2',
   },
   connectBox: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "50px",
-    height: "100vh",
-    zIndex: "3",
-    padding: "60px 100px 100px 100px",
-    justifyContent: "center",
-    "& h5": {
-      alignSelf: "end",
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '50px',
+    height: '100vh',
+    zIndex: '3',
+    padding: '60px 100px 100px 100px',
+    justifyContent: 'center',
+    '& h5': {
+      alignSelf: 'end',
     },
-    [theme.breakpoints.down("md")]: {
-      padding: "10%",
-      paddingTop: "0",
-      width: "100%",
-      justifyContent: "space-between",
-      gap: "initial",
+    [theme.breakpoints.down('md')]: {
+      padding: '10%',
+      paddingTop: '0',
+      width: '100%',
+      justifyContent: 'space-between',
+      gap: 'initial',
     },
   },
   buttonBox: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
   callBox: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: "30px",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '30px',
   },
   loaderBox: {
-    width: "40px",
-    height: "40px",
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    zIndex: "5",
-    marginLeft: "-20px",
-    marginTop: "-20px",
+    width: '40px',
+    height: '40px',
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    zIndex: '5',
+    marginLeft: '-20px',
+    marginTop: '-20px',
   },
 }));
 
@@ -205,7 +203,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   `);
 
   const breakpoints = useBreakpoint();
-  console.log(breakpoints);
 
   const param = { page };
   const classes = useStyles(param);
@@ -220,14 +217,14 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   };
 
   const toggleDrawer = (open) => (event) => {
-    if (event.target.getAttribute("role") === "presentation") {
+    if (event.target.getAttribute('role') === 'presentation') {
       setIsFormOpen(false);
       return;
     }
-    if (event && event.type === "keydown" && event.key !== "Escape") {
+    if (event && event.type === 'keydown' && event.key !== 'Escape') {
       return;
     }
-    if (event && event.type === "click") {
+    if (event && event.type === 'click') {
       return;
     }
     open ? setIsFormOpen(true) : setIsFormOpen(false);
@@ -236,61 +233,44 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <Helmet>
-        <html lang="ru" />
+        <html lang='ru' />
         <title>
           {pageTitle} | {data.site.siteMetadata.title}
         </title>
-        <meta charSet="utf-8" />
-        <meta name="description" content="Moduls houses for living" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <meta charSet='utf-8' />
+        <meta name='description' content='Moduls houses for living' />
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
       </Helmet>
-      <Box position="relative" className="conteiner">
+      <Box position='relative' className='conteiner'>
         {breakpoints.isLoad ? (
           <>
             <Menu />
-            <Box className="content">
+            <Box className='content'>
               <Box className={classes.page}>
                 <Box
                   className={
-                    page === "watch" ||
-                    page === "houseList" ||
-                    page === "main" ||
-                    page === "house"
-                      ? classes.BlockFullscreen
-                      : classes.Block
+                    page !== 'aboutUs' ? classes.BlockFullscreen : classes.Block
                   }
                 >
                   {breakpoints.md ? (
                     <Burger
                       click={handleClickConnect}
                       page={page}
-                      position={
-                        page === "watch" ||
-                        page === "houseList" ||
-                        page === "house"
-                          ? "absolute"
-                          : null
-                      }
-                      color={
-                        page === "watch" ||
-                        page === "houseList" ||
-                        page === "house"
-                          ? "white"
-                          : null
-                      }
+                      position={page !== 'aboutUs'}
+                      color={page !== 'aboutUs'}
                     />
                   ) : null}
                   <div
                     className={classes.ConnectBox}
-                    name="form"
+                    name='form'
                     onClick={toggleDrawer(false)}
                     onKeyDown={toggleDrawer(false)}
                   >
                     <React.Fragment>
                       <Drawer
                         hideBackdrop={true}
-                        anchor={"right"}
+                        anchor={'right'}
                         open={isFormOpen}
                         onClose={toggleDrawer(false)}
                       >
@@ -299,19 +279,19 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                             <>
                               <Box className={classes.buttonBox}>
                                 <SquareButton
-                                  variant="outlined"
+                                  variant='outlined'
                                   click={handleClickConnect}
                                   icon={<ClearIcon />}
                                 />
                               </Box>
                               <Form
-                                title={"Напешите нам"}
+                                title={'Напешите нам'}
                                 email
                                 text
                                 closeForm={handleClickConnect}
                                 inBurger={breakpoints.md ? true : false}
                                 main
-                                id="burgerForm"
+                                id='burgerForm'
                               />
                             </>
                           ) : (
@@ -334,25 +314,25 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                               ) : (
                                 <>
                                   <Box className={classes.callBox}>
-                                    <Typography variant="h6" component="p">
+                                    <Typography variant='h6' component='p'>
                                       Позвонить
                                     </Typography>
-                                    <a href="tel:+375293650669">
+                                    <a href='tel:+375293650669'>
                                       <img
                                         className={classes.call}
                                         src={call}
-                                        alt="call"
+                                        alt='call'
                                       ></img>
                                     </a>
                                   </Box>
                                   <Form
-                                    title={"Напешите нам"}
+                                    title={'Напешите нам'}
                                     email
                                     text
                                     closeForm={handleOpenBurgerMenu}
                                     inBurger={true}
                                     main
-                                    id="burgerForm"
+                                    id='burgerForm'
                                   />
                                 </>
                               )}
@@ -364,9 +344,9 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                   </div>
 
                   <Box className={classes.button}>
-                    {breakpoints.md ? null : (
+                    {breakpoints.md || page === 'contacts' ? null : (
                       <RegularButton
-                        variant="outlined"
+                        variant='outlined'
                         click={handleClickConnect}
                       >
                         СВЯЗАТЬСЯ
@@ -382,7 +362,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
             </Box>
           </>
         ) : (
-          <Box className="loaderConteiner">
+          <Box className='loaderConteiner'>
             <div className={classes.loaderBox}>
               <CircularProgress />
             </div>

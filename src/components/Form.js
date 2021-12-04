@@ -55,9 +55,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     minWidth: "300px",
-    // width: "22vw",
     [theme.breakpoints.down("md")]: {
       alignSelf: "center",
+      // padding: '0 10%',
     },
   },
   formHeader: {

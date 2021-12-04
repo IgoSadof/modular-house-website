@@ -157,6 +157,10 @@ const useStyles = makeStyles((theme) => ({
       '& h1': {
         fontSize: '24px',
       },
+      '& p': {
+        height: '25vh',
+        overflow:"overlay",
+      },
     },
   },
   header: {

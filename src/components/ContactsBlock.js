@@ -2,258 +2,118 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Form from './Form';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import Logo from './svg/Logo';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import getImg from '../utils/getImg';
+import TitleWithLine from './TitleWithLine';
+import ContactsElement from './ContactsElement';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    position: 'relative',
+  Block: {
     display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    height: '100%',
-  },
-  BlockMain: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    gap: '20px',
-    width: '100%',
-    height: '100%',
-    paddingBottom: '120px',
-    [theme.breakpoints.down('md')]: {
-      paddingTop: '40px',
-      paddingBottom: '0',
-    },
-  },
-  BlockContent: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '100%',
-    height: '100%',
+    justifyContent:"space-between",
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      gap: '60px',
+      width: '100%',
+      '& form': {
+        padding: '0 5%',
+      },
     },
   },
+
+  titleBox: {
+    display: 'flex',
+    // gap: "20px",
+    flexDirection: 'row',
+    flexShrink: '0',
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'row-reverse',
+      marginLeft: 'auto',
+      width: '100%',
+    },
+  },
+
   BlockColumn: {
+    width: '28vw',
     display: 'flex',
     gap: '20px',
+    marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
+    
+    [theme.breakpoints.down('md')]: {
+      order: '3',
+      marginLeft: '0',
+      width: '100%',
+    },
   },
-  textHeader: {
-    textTransform: 'uppercase',
-  },
-  logoBox: {
-    display: 'flex',
-  },
-  logo: {
-    width: '83px',
-  },
-  contactsBox: {
+
+  formBox: {
+    width: '30vw',
+    marginLeft: 'auto',
     display: 'flex',
     flexDirection: 'column',
-    gap: '60px',
-  },
-  contactsBoxes: {
-    display: 'flex',
-    gap: '20px',
     justifyContent: 'space-between',
+    paddingBottom: '150px',
     [theme.breakpoints.down('md')]: {
-      gap: '20px',
-      justifyContent: 'center',
+      width: '100%',
+      marginLeft: '0',
+      paddingBottom: '0',
+     
     },
-  },
-  personalBoxLink: {
-    textDecoration: 'none',
-  },
-  personalBox: {
-    width: '225px',
-    [theme.breakpoints.down('md')]: {
-      width: '150px',
-    },
-  },
-  contactsFoto: {
-    width: '100%',
-  },
-  infoBox: {
-    display: 'flex',
-    gap: '20px',
-    // justifyContent: 'space-between',
-  },
-  infoBoxText: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: 'auto',
-    gap: '30px',
-  },
-  contactsName: {
-    marginTop: '30px',
-    fontWeight: '400',
-  },
-  contactsPosition: {
-    fontSize: '12px',
-    fontWeight: '300',
-    marginTop: '10px',
-  },
-  contactsPhone: {
-    marginTop: '30px',
   },
 }));
 
-const ContactsBlock = ({ header, data }) => {
+const ContactsBlock = ({ data, title }) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
 
   return (
-    <Box components='main' className={classes.root}>
-      <Box components='section' className={classes.BlockMain}>
-        {header ? (
-          <Box className={classes.BlockColumn}>
-            <Typography variant='h2' className={classes.textHeader}>
-              {header}
-            </Typography>
-            <Box className={classes.logoBox}>
-              {/* <img className={classes.logo} src={logo} alt="logo"></img> */}
-              <Logo color={'#4F4F4F'} />
-              {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
-            </Box>
-          </Box>
-        ) : null}
-
-        <Box components='section' className={classes.BlockContent}>
-          <Box className={classes.contactsBox}>
-            <Box className={classes.contactsBoxes}>
-              {/* <a className={classes.personalBoxLink} href='tel:+375293650669'> */}
-                <Box
-                  className={classes.personalBox}
-                  style={
-                    breakpoints.md
-                      ? { width: '150px' }
-                      : breakpoints.l
-                      ? { width: '180px' }
-                      : null
-                  }
-                >
-                  <GatsbyImage
-                    className={classes.mainPlan}
-                    image={getImg(data, 'images/andrey2.png')}
-                    alt='img'
-                  ></GatsbyImage>
-                  <Typography
-                    className={classes.contactsName}
-                    variant='h4'
-                    component='p'
-                  >
-                    Андрусь Bezdar
-                  </Typography>
-                  <Typography
-                    className={classes.contactsPosition}
-                    variant='body1'
-                    component='p'
-                  >
-                    CEO & FOUNDER
-                  </Typography>
-                  <Typography
-                    className={classes.contactsPhone}
-                    variant='h4'
-                    component='p'
-                  >
-                    +375 44 5180676
-                  </Typography>
-                </Box>
-              {/* </a> */}
-
-              {/* <a className={classes.personalBoxLink} href='tel:+375445180676'> */}
-                <Box
-                  className={classes.personalBox}
-                  style={
-                    breakpoints.md
-                      ? { width: '150px' }
-                      : breakpoints.l
-                      ? { width: '180px' }
-                      : null
-                  }
-                >
-                  <GatsbyImage
-                    className={classes.mainPlan}
-                    image={getImg(data, 'images/alexey2.png')}
-                    alt='img'
-                  ></GatsbyImage>
-
-                  <Typography
-                    className={classes.contactsName}
-                    variant='h4'
-                    component='p'
-                  >
-                    Алексей Кораблев
-                  </Typography>
-                  <Typography
-                    className={classes.contactsPosition}
-                    variant='body1'
-                  >
-                    CEO & FOUNDER
-                  </Typography>
-                  <Typography
-                    className={classes.contactsPhone}
-                    variant='h4'
-                    component='p'
-                  >
-                    +375 29 3650669
-                  </Typography>
-                </Box>
-              {/* </a> */}
-            </Box>
-            {!breakpoints.md ? (
-              <Box className={classes.infoBox}>
-                {!header ? (
-                  <Box className={classes.logoBox}>
-                    <Logo color={'#4F4F4F'} />
-                    {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
-                  </Box>
-                ) : null}
-
-                <Box className={classes.infoBoxText}>
-                  <a
-                    className={classes.personalBoxLink}
-                    href='mailto:info@zrobym.by'
-                  >
-                    <Typography variant='body1'>info@zrobym.by</Typography>
-                  </a>
-                  <Typography variant='body1'>
-                    ул. Богдановича 11, 3 этаж
-                  </Typography>
-                </Box>
-              </Box>
-            ) : null}
-          </Box>
-
-          {breakpoints.md ? (
-            <Box className={classes.infoBox}>
-              {!header ? (
-                <Box className={classes.logoBox}>
-                  <Logo color={'#4F4F4F'} />
-                </Box>
+    <Box className={classes.Block}>
+      {!breakpoints.md ? (
+        <>
+          <Box className={classes.titleBox}>
+            <Box className={classes.BlockColumn}>
+              {title ? (
+                <TitleWithLine title={title} style={{ marginBottom: '60px' }} />
               ) : null}
 
-              <Box className={classes.infoBoxText}>
-                <a
-                  className={classes.personalBoxLink}
-                  href='mailto:info@zrobym.by'
-                >
-                  <Typography variant='body1'>info@zrobym.by</Typography>
-                </a>
-                <Typography variant='body1'>
-                  ул. Богдановича 11, 3 этаж
-                </Typography>
-              </Box>
+              <ContactsElement data={data} />
             </Box>
-          ) : null}
-        </Box>
-      </Box>
+          </Box>
+
+          <Box className={classes.formBox}>
+            <Typography
+              variant='h2'
+              className={classes.text}
+              // style={{ marginBottom: '100px' }}
+            >
+              Напишите нам
+            </Typography>
+            <Form email text main />
+          </Box>
+        </>
+      ) : (
+        <>
+          <Box className={classes.titleBox}>
+          {title ? (
+                <TitleWithLine title={title} 
+                style={{ marginBottom: '40px' }} 
+                />
+              ) : null}
+          </Box>
+          <Box className={classes.BlockColumn}>
+            <ContactsElement data={data} />
+            <Box className={classes.titleBox}
+             style={{ marginTop: '40px' }}
+             >
+            <TitleWithLine title={'Напишите нам'} style={{ marginBottom: '20px' }} />
+              
+            </Box>
+            <Form email text main id='ContactsBlock' />
+          </Box>
+        </>
+      )}
     </Box>
   );
 };

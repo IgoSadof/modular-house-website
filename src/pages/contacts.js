@@ -1,11 +1,11 @@
 import "../components/global.css";
 import React from "react";
-import Contacts from "../components/Contacts";
+import ContactsPage from "../components/ContactsPage";
 import Layout from "../components/Layout";
 
-export default function ContactsPage() {
+export default function Contacts() {
   return (
-    <Layout pageTitle="Contacts" component = {Contacts}>
+    <Layout pageTitle="ContactsBlock" page='contacts' component = {ContactsPage}>
     </Layout>
   );
 }

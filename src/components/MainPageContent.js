@@ -3,10 +3,10 @@ import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import HouseSlider from "./sliders/HouseSlider";
+import HouseSlider from './sliders/HouseSlider';
 import Accordions from './Accordion';
 import SquareButton from './buttons/SquareButton';
-import ContactsBlock from '../components/ContactsBlock';
+import ContactsElement from '../components/ContactsElement';
 import Form from '../components/Form';
 import ReviewsSlider from './sliders/ReviewsSlider';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
@@ -17,6 +17,7 @@ import OneImageAutoSlider from './sliders/OneImageAutoSlider';
 import Quote from './svg/Quote';
 import getImg from '../utils/getImg';
 import TitleWithLine from '../components/TitleWithLine';
+import ContactsBlock from './ContactsBlock';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -165,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '20px',
     [theme.breakpoints.down('md')]: {
       height: '150px',
-      overflow: 'scroll',
+      overflow: 'overlay',
     },
   },
   buttons: {
@@ -197,13 +198,14 @@ const useStyles = makeStyles((theme) => ({
   formBox: {
     width: '30vw',
     marginLeft: 'auto',
-    display: "flex",
-    flexDirection: "column",
-    paddingBottom: "270px",
+    justifyContent: 'space-between',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingBottom: '270px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       marginLeft: '0',
-      paddingBottom: "0",
+      paddingBottom: '0',
     },
   },
   sliderBox: {
@@ -237,11 +239,11 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: '83px',
   },
-  contactsBox: {
+  ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
   },
-  contactsBoxes: {
+  ContactsBoxes: {
     display: 'flex',
     gap: '40px',
   },
@@ -254,17 +256,17 @@ const useStyles = makeStyles((theme) => ({
   formField: {
     width: '285px',
   },
-  contactsFormBox: {
+  ContactsFormBox: {
     display: 'flex',
     flexDirection: 'column',
   },
-  contactsForm: {
+  ContactsForm: {
     marginTop: '120px',
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
   },
-  contactsButton: {
+  ContactsButton: {
     marginTop: 'auto',
   },
   reviewVideoBox: {
@@ -311,6 +313,15 @@ const useStyles = makeStyles((theme) => ({
       color: 'red',
     },
   },
+  ContactsBox:{
+    // display:"flex",
+    margin:"180px 0 120px 0",
+    paddingRight:"10%",
+    [theme.breakpoints.down('md')]: {
+      paddingRight:"0",
+      margin:"40px 0 40px 0",
+    },
+  }
 }));
 
 const MainPageContent = ({ data }) => {
@@ -655,49 +666,8 @@ const MainPageContent = ({ data }) => {
           </Box>
         </Box>
       )}
-
-      <Box
-        component='section'
-        className={classes.Block}
-        style={{ marginTop: !breakpoints.md ? '180px' : '100px' }}
-      >
-        {!breakpoints.md ? (
-          <>
-            <Box className={classes.titleBox}>
-              <Box className={classes.BlockColumn}>
-                <TitleWithLine
-                  title='Контакты'
-                  style={{ marginBottom: '60px' }}
-                />
-                <ContactsBlock data={data} />
-              </Box>
-            </Box>
-
-            <Box className={classes.formBox}>
-              <Typography
-                variant='h2'
-                className={classes.text}
-                style={{ marginBottom: '100px' }}
-              >
-                Напишите нам
-              </Typography>
-              <Form email text main />
-            </Box>
-          </>
-        ) : (
-          <>
-            <Box className={classes.titleBox}>
-              <TitleWithLine title='Контакты' />
-            </Box>
-            <Box className={classes.BlockColumn}>
-              <ContactsBlock data={data} />
-              <Box className={classes.titleBox} style={{ marginTop: '40px' }}>
-                <TitleWithLine title='Напишите нам' />
-              </Box>
-              <Form email text main id='contacts' />
-            </Box>
-          </>
-        )}
+      <Box className={classes.ContactsBox}>
+        <ContactsBlock data={data} title='Контакты' />
       </Box>
     </Box>
   );
