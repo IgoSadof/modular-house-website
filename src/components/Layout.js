@@ -257,8 +257,14 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     <Burger
                       click={handleClickConnect}
                       page={page}
-                      position={page !== 'aboutUs'}
-                      color={page !== 'aboutUs'}
+                      position={page !== 'aboutUs' ? 'absolute' : 'relative'}
+                      color={
+                        page === 'watch' ||
+                        page === 'houseList' ||
+                        page === 'house'
+                          ? 'white'
+                          : null
+                      }
                     />
                   ) : null}
                   <div

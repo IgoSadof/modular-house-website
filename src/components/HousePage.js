@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
   houseDescIconBox: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '100px',
     objectFit: 'contain',
     height: '85px',
@@ -466,6 +466,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '100px',
     [theme.breakpoints.down('md')]: {
       padding: '0',
+      paddingBottom: '40px',
     },
   },
   BlockTable: {

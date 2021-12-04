@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       width: '100%',
       gap: '30px',
-      paddingTop:"40px",
+      paddingTop:"120px",
    
     },
   },

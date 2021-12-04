@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     // left: "10%",
     // top: "70%",
-    marginBottom: "30px",
+    marginBottom: "10px",
     zIndex:"2",
   },
   houseDesc: {

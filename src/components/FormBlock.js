@@ -12,15 +12,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    
   },
 
   Block: {
     display: "flex",
     gap: "60px",
+    height:"100vh",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
       gap: "20px",
+      height:"auto",
     },
   },
   title: {
