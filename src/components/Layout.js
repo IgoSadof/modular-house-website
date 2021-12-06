@@ -293,7 +293,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                 />
                               </Box>
                               <Form
-                                title={'Напешите нам'}
+                                title={'напишите нам'}
                                 email
                                 text
                                 closeForm={handleClickConnect}
@@ -334,7 +334,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                     </a>
                                   </Box>
                                   <Form
-                                    title={'Напешите нам'}
+                                    title={'напишите нам'}
                                     email
                                     text
                                     closeForm={handleOpenBurgerMenu}

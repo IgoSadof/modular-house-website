@@ -405,7 +405,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   BlockCalculation: {
-    minHeight: '100vh',
+    // minHeight: '100vh',
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       minHeight: '100%',
@@ -415,11 +415,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: '100%',
+    height: '95vh',
     width: '50%',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      // height: '100%',
+      height: '100%',
     },
   },
   calculation: {

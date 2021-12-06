@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 200,
     borderCollapse: "collapse",
     padding: "0 20px",
+    marginTop:"-1px",
   },
   tableRow: {
     height: "50px",

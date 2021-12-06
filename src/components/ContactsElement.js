@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '20px',
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
-      alignSelf: (param) => (param.breakpoints.s? 'null' : 'center'),
+      alignSelf: (param) => (param.breakpoints.s ? 'null' : 'center'),
     },
     // justifyContent: 'space-between',
   },
@@ -96,7 +96,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 'auto',
-    gap: '30px',
+    gap: '24px',
+    '& p': {
+      fontSize: '16px',
+    },
+    [theme.breakpoints.down('md')]: {
+      '& p': {
+        fontSize: '14px',
+      },
+    },
   },
   ContactsName: {
     marginTop: '30px',
@@ -134,80 +142,80 @@ const ContactsElement = ({ header, data }) => {
         <Box components='section' className={classes.BlockContent}>
           <Box className={classes.ContactsBox}>
             <Box className={classes.ContactsBoxes}>
-                <Box
-                  className={classes.personalBox}
-                  style={
-                    breakpoints.md
-                      ? { width: '150px' }
-                      : breakpoints.l
-                      ? { width: '180px' }
-                      : null
-                  }
+              <Box
+                className={classes.personalBox}
+                style={
+                  breakpoints.md
+                    ? { width: '150px' }
+                    : breakpoints.l
+                    ? { width: '180px' }
+                    : null
+                }
+              >
+                <GatsbyImage
+                  className={classes.mainPlan}
+                  image={getImg(data, 'images/andrey2.png')}
+                  alt='img'
+                ></GatsbyImage>
+                <Typography
+                  className={classes.ContactsName}
+                  variant='h4'
+                  component='p'
                 >
-                  <GatsbyImage
-                    className={classes.mainPlan}
-                    image={getImg(data, 'images/andrey2.png')}
-                    alt='img'
-                  ></GatsbyImage>
-                  <Typography
-                    className={classes.ContactsName}
-                    variant='h4'
-                    component='p'
-                  >
-                    Андрусь Bezdar
-                  </Typography>
-                  <Typography
-                    className={classes.ContactsPosition}
-                    variant='body1'
-                    component='p'
-                  >
-                    CEO & FOUNDER
-                  </Typography>
-                  <Typography
-                    className={classes.ContactsPhone}
-                    variant='h4'
-                    component='p'
-                  >
-                    +375 44 5180676
-                  </Typography>
-                </Box>
-                <Box
-                  className={classes.personalBox}
-                  style={
-                    breakpoints.md
-                      ? { width: '150px' }
-                      : breakpoints.l
-                      ? { width: '180px' }
-                      : null
-                  }
+                  Андрусь Bezdar
+                </Typography>
+                <Typography
+                  className={classes.ContactsPosition}
+                  variant='body1'
+                  component='p'
                 >
-                  <GatsbyImage
-                    className={classes.mainPlan}
-                    image={getImg(data, 'images/alexey2.png')}
-                    alt='img'
-                  ></GatsbyImage>
+                  CEO & FOUNDER
+                </Typography>
+                <Typography
+                  className={classes.ContactsPhone}
+                  variant='h4'
+                  component='p'
+                >
+                  +375 44 5180676
+                </Typography>
+              </Box>
+              <Box
+                className={classes.personalBox}
+                style={
+                  breakpoints.md
+                    ? { width: '150px' }
+                    : breakpoints.l
+                    ? { width: '180px' }
+                    : null
+                }
+              >
+                <GatsbyImage
+                  className={classes.mainPlan}
+                  image={getImg(data, 'images/alexey2.png')}
+                  alt='img'
+                ></GatsbyImage>
 
-                  <Typography
-                    className={classes.ContactsName}
-                    variant='h4'
-                    component='p'
-                  >
-                    Алексей Кораблев
-                  </Typography>
-                  <Typography
-                    className={classes.ContactsPosition}
-                    variant='body1'
-                  >
-                    CEO & FOUNDER
-                  </Typography>
-                  <Typography
-                    className={classes.ContactsPhone}
-                    variant='h4'
-                    component='p'
-                  >
-                    +375 29 3650669
-                  </Typography>
-                </Box>
+                <Typography
+                  className={classes.ContactsName}
+                  variant='h4'
+                  component='p'
+                >
+                  Алексей Кораблев
+                </Typography>
+                <Typography
+                  className={classes.ContactsPosition}
+                  variant='body1'
+                >
+                  CEO & FOUNDER
+                </Typography>
+                <Typography
+                  className={classes.ContactsPhone}
+                  variant='h4'
+                  component='p'
+                >
+                  +375 29 3650669
+                </Typography>
+              </Box>
               {/* </a> */}
             </Box>
             {!breakpoints.md ? (
@@ -227,6 +235,8 @@ const ContactsElement = ({ header, data }) => {
                     <Typography variant='body1'>info@zrobym.by</Typography>
                   </a>
                   <Typography variant='body1'>
+                    г. Минск
+                    <br />
                     ул. Богдановича 11, 3 этаж
                   </Typography>
                 </Box>
@@ -250,6 +260,8 @@ const ContactsElement = ({ header, data }) => {
                   <Typography variant='body1'>info@zrobym.by</Typography>
                 </a>
                 <Typography variant='body1'>
+                  г. Минск
+                  <br />
                   ул. Богдановича 11, 3 этаж
                 </Typography>
               </Box>

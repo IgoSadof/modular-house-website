@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
     width: "80px",
     height: "1px",
     backgroundColor: "black",
-    marginTop: "22px",
+    marginTop: "auto",
+    marginBottom: "4px",
   },
   formBox: {
     // position: "relative",

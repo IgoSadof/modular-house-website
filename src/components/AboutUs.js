@@ -11,18 +11,11 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import TitleWithLine from "../components/TitleWithLine";
 
 const useStyles = makeStyles((theme) => ({
-  content: {
-    padding: "60px 0px 100px",
-    boxSizing: "border-box",
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    height: "100vh",
-    backgroundColor: "#D1D1D1",
+  main:{
     [theme.breakpoints.down("md")]: {
-      height: "auto",
-      padding: "40px  20px",
+      "& h2":{
+        fontSize:'18px',
+      }
     },
   },
   button: {
@@ -179,7 +172,7 @@ const AboutUs = () => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
   return (
-    <Box component="main">
+    <Box component="main" className={classes.main}>
       <Box
         component="section"
         className={classes.Block}

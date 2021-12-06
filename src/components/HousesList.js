@@ -386,7 +386,7 @@ const breakpoints = useBreakpoint();
                     to={`model${dataHouses[house]["URL"].toUpperCase()}`}
                     aria-label={`model ${item["URL"]}`}
                   >
-                    <RegularButton variant="outlined">Подробнее</RegularButton>
+                    <RegularButton variant="outlined" lowerCase="true">Подробнее</RegularButton>
                   </Link>
                 </Box>
               ) : null}
@@ -578,7 +578,7 @@ const breakpoints = useBreakpoint();
                   className={classes.Link}
                   to={`model${dataHouses[house]["URL"].toUpperCase()}`}
                 >
-                  <RegularButton variant="outlined">Подробнее</RegularButton>
+                  <RegularButton variant="outlined" lowerCase="true">Подробнее</RegularButton>
                 </Link>
               </Box>
             </>
