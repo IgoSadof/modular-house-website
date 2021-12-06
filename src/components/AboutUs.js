@@ -166,6 +166,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "100px",
     justifyContent: "space-between",
     flexDirection: "column",
+    flexShrink: "0",  
     [theme.breakpoints.down("md")]: {
       order: "3",
       marginLeft: "0",

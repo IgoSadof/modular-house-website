@@ -245,7 +245,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: '35vh',
+      height: '50vh',
     },
   },
   modelDescLine: {

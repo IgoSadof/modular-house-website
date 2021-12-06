@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     textTransform: "uppercase",
-    marginTop: "80px",
+    // marginTop: "80px",
     // width: "245px",
   },
   subtitle: {
