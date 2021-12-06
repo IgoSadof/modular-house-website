@@ -422,6 +422,9 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
     },
   },
+  calculationPlanImg:{
+    margin:"auto 0",
+  },
   calculation: {
     display: 'flex',
     gap: '40px',
