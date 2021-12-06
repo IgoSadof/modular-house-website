@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         ? '100%'
         : '100vh',
     [theme.breakpoints.down('md')]: {
-      height: (param) => (param.page === 'houseList' ? '100vh' : '100%'),
+      height: (param) => (param.page === 'houseList' && param.breakpoints.s? '100vh' : '100%'),
     },
   },
 
@@ -204,7 +204,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
 
   const breakpoints = useBreakpoint();
 
-  const param = { page };
+  const param = { page, breakpoints };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
@@ -268,6 +268,8 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     />
                   ) : null}
                   <div
+                    role="link"
+                    tabIndex="0"
                     className={classes.ConnectBox}
                     name='form'
                     onClick={toggleDrawer(false)}

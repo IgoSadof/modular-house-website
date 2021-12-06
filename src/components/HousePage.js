@@ -245,7 +245,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: '50vh',
+      height: (param) => (param.breakpoints.s? '50vh' : '100vh'),
     },
   },
   modelDescLine: {
@@ -537,6 +537,7 @@ const HousePage = ({ house, data }) => {
     modulesCounts,
     heightOneLine,
     heightModuleList,
+    breakpoints,
   };
   const classes = useStyles(param);
   const [model3d, setModel3d] = useState(

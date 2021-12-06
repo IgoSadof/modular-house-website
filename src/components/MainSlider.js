@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
       right: '0',
       width: '100%',
       position: 'relative',
-      height: '85vw',
+      height: (param) => (param.breakpoints.s ? '85vw' : 'null'),
       top: '60px',
     },
   },
@@ -56,6 +56,12 @@ const useStyles = makeStyles((theme) => ({
     background: 'radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)',
     height: '100%',
     width: '100%',
+    [theme.breakpoints.down('md')]: {
+      background: (param) =>
+        param.breakpoints.s
+          ? 'radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)'
+          : 'radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)',
+    },
   },
   fullImg: {
     position: 'absolute',
@@ -102,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
-      height: '80vh',
+      height: (param) => (param.breakpoints.s ? '82vh' : '100%'),
       paddingTop: '0',
     },
   },
@@ -114,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      marginTop:'80px',
+      marginTop: '80px',
     },
   },
   midleLine: {
@@ -160,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
       },
       '& p': {
         height: '25vh',
-        overflow:"overlay",
+        overflow: 'overlay',
       },
     },
   },
@@ -233,7 +239,7 @@ const useStyles = makeStyles((theme) => ({
     transition: '0.5s',
   },
   icon: {
-    width:"75px",
+    width: '75px',
     [theme.breakpoints.down('md')]: {
       width: '50px',
     },
@@ -270,7 +276,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     });
   }
 
-  const param = { scroll, lineLength };
+  const param = { scroll, lineLength, breakpoints };
   const classes = useStyles(param);
   const [opacity] = useState(true);
   const vidSegments = {

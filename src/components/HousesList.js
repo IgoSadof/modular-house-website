@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       borderRight: "none",
       padding: "0",
+      marginBottom:"20px",
     },
   },
   houseList: {
@@ -307,7 +308,8 @@ const breakpoints = useBreakpoint();
   const listItem = dataHouses.map((item, index) => {
     return (
       <SwiperSlide key={item.id}>
-        <button
+        <div
+          role="link"
           tabIndex="0"
           className={
             activeSlide === index
@@ -399,7 +401,7 @@ const breakpoints = useBreakpoint();
               ) : null}
             </>
           )}
-        </button>
+        </div>
       </SwiperSlide>
     );
   });

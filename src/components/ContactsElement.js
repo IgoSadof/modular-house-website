@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '20px',
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
+      alignSelf: (param) => (param.breakpoints.s? 'null' : 'center'),
     },
     // justifyContent: 'space-between',
   },
@@ -113,7 +114,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactsElement = ({ header, data }) => {
   const breakpoints = useBreakpoint();
-  const classes = useStyles();
+  const param = { breakpoints };
+  const classes = useStyles(param);
 
   return (
     <Box components='main' className={classes.root}>
