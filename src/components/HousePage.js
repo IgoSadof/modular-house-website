@@ -491,6 +491,7 @@ const HousePage = ({ house, data }) => {
 
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
+  console.log(houseNumber)
   const baseFolder = `houses/${dataHouses[house]['Код'].replace(' ', '')}/`;
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
@@ -1010,7 +1011,7 @@ const HousePage = ({ house, data }) => {
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockTable}`}>
-        <CalculateTable houseOptions={dataHouses[houseNumber].options} />
+        <CalculateTable houseNumber={houseNumber} houseOptions={dataHouses[houseNumber].options} />
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockForm}`}>

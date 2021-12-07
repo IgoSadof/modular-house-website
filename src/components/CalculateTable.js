@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 200,
     borderCollapse: "collapse",
     padding: "0 20px",
-    marginTop:"-1px",
+    marginTop: (param) => (param.houseNumber===0 ? '0' : '-1px'),
   },
   tableRow: {
     height: "50px",
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CalculateTable = ({ houseOptions }) => {
+const CalculateTable = ({ houseOptions, houseNumber }) => {
  const breakpoints = useBreakpoint();
   const options = {};
   houseOptions.forEach((item) => {
@@ -81,18 +81,21 @@ const CalculateTable = ({ houseOptions }) => {
   });
 
   const [currentOption, setCheckboxesCheck] = useState(options);
+  console.log(options)
   const [price, setPrice] = useState(
     Object.keys(currentOption).length === 0? "0": Object.values(currentOption).reduce(
       (accumulator, currentValue) => +accumulator + +currentValue
     )
   );
-  const classes = useStyles();
+
   const handleChangeCheckbox = (event) => {
     setCheckboxesCheck({
       ...currentOption,
       [event.target.name]: event.target.value,
     });
   };
+  const param = {breakpoints, houseNumber }
+  const classes = useStyles(param);
 
   useEffect(() => {
     let sum = Object.keys(currentOption).length === 0? 0 : Object.values(currentOption).reduce(
