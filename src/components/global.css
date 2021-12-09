@@ -388,3 +388,7 @@ abbr {
     overflow: hidden !important;
   }
 }
+
+.MuiFormLabel-asterisk{
+  display: none;
+}
