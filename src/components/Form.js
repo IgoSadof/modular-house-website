@@ -169,6 +169,8 @@ const Form = ({
   buttonAbs,
   id,
   buttonText,
+  endpoint,
+  extraFormFields,
 }) => {
   const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
@@ -214,13 +216,13 @@ const Form = ({
     event.preventDefault();
 
     let data = {
+      ...extraFormFields,
       name: nameText,
       phone: telText,
       email: emailText,
       message: messageText,
     };
-
-    console.log(data);
+    
     fetch(event.target.action, {
       method: event.target.method,
       body: JSON.stringify(data),
@@ -273,7 +275,7 @@ const Form = ({
         // noValidate
         autoComplete='off'
         method='POST'
-        action='https://formspree.io/f/xoqrqjnd'
+        action={endpoint? endpoint:'https://formspree.io/f/xoqrqjnd'}
       >
         <Box className={classes.formFields}>
           <TextField

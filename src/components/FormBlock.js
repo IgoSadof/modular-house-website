@@ -109,7 +109,9 @@ const FormBlock = ({
   img,
   formPosition,
   staticImg,
-  padding
+  padding,
+  endpoint,
+  extraFormFields,
 }) => {
   const param = { formPosition };
   const classes = useStyles(param);
@@ -126,6 +128,8 @@ const FormBlock = ({
               </Box>
               <Box className={classes.formBox} >
                 <Form
+                  extraFormFields={extraFormFields}
+                  endpoint={endpoint}
                   title={title}
                   subtitle={subtitle ? subtitle : null}
                   email={email ? email : null}
@@ -169,6 +173,8 @@ const FormBlock = ({
             <Box className={classes.BlockColumn}>
               <Box className={classes.formBox} style={padding?{ padding: "0 10%"}:null}>
                 <Form
+                  endpoint={endpoint}
+                  extraFormFields={extraFormFields}
                   title={title}
                   subtitle={subtitle ? subtitle : null}
                   email={email ? email : null}

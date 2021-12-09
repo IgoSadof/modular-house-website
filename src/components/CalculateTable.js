@@ -1,166 +1,180 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
 const useStyles = makeStyles((theme) => ({
   conteiner: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "start",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'start',
+    alignItems: 'center',
     flexGrow: 1,
 
-    marginLeft: "75px",
-    [theme.breakpoints.down("md")]: {
-      margin: "0",
+    marginLeft: '75px',
+    [theme.breakpoints.down('md')]: {
+      margin: '0',
     },
   },
   title: {
-    alignSelf: "end",
-    margin: "25px",
+    alignSelf: 'end',
+    margin: '25px',
   },
   table: {
-    width: "100%",
+    width: '100%',
     minWidth: 200,
-    borderCollapse: "collapse",
-    padding: "0 20px",
-    marginTop: (param) => (param.houseNumber===0 ? '0' : '-1px'),
+    borderCollapse: 'collapse',
+    padding: '0 20px',
+    marginTop: (param) => (param.houseNumber === 0 ? '0' : '-1px'),
   },
   tableRow: {
-    height: "50px",
-    borderTop: "1px solid",
-    borderBottom: "1px solid",
+    height: '50px',
+    borderTop: '1px solid',
+    borderBottom: '1px solid',
   },
   tableCell: {
-    width: "25%",
+    width: '25%',
   },
   tableCellFirst: {
-    paddingLeft: "40px",
-    [theme.breakpoints.down("md")]: {
-      padding: "20px 50px",
+    paddingLeft: '40px',
+    [theme.breakpoints.down('md')]: {
+      padding: '20px 50px',
     },
   },
   tableCellLast: {
-    paddingRight: "40px",
+    paddingRight: '40px',
   },
   tableResult: {
-    display: "flex",
-    width: "100%",
-    padding: "40px",
-    justifyContent: "space-between",
-    borderBottom: "1px solid",
+    display: 'flex',
+    width: '100%',
+    padding: '40px',
+    justifyContent: 'space-between',
+    borderBottom: '1px solid',
   },
   textPrice: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   textPriceValue: {
-    fontSize: "30px",
+    fontSize: '30px',
   },
   innerRow: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "20px",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '20px',
   },
-  secondRadio:{
-    marginRight:'0',
-    width:'100px'
-  }
+  secondRadio: {
+    marginRight: '0',
+    width: '100px',
+  },
 }));
 
-const CalculateTable = ({ houseOptions, houseNumber }) => {
- const breakpoints = useBreakpoint();
+const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
+  const breakpoints = useBreakpoint();
   const options = {};
   houseOptions.forEach((item) => {
-    options[item.name] = item.variants[0].price;
+    options[item.name] = {
+      name: item.variants[0].name,
+      price: item.variants[0].price,
+    };
   });
-
+  
   const [currentOption, setCheckboxesCheck] = useState(options);
-  console.log(options)
   const [price, setPrice] = useState(
-    Object.keys(currentOption).length === 0? "0": Object.values(currentOption).reduce(
-      (accumulator, currentValue) => +accumulator + +currentValue
-    )
+    Object.keys(currentOption).length === 0
+      ? '0'
+      : Object.values(currentOption).reduce(
+          (accumulator, currentValue) => +accumulator + +(currentValue.price),0
+        )
   );
-
   const handleChangeCheckbox = (event) => {
     setCheckboxesCheck({
       ...currentOption,
-      [event.target.name]: event.target.value,
+      [event.target.name]: {name:event.target.name,price:event.target.value},
     });
   };
-  const param = {breakpoints, houseNumber }
+  const param = { breakpoints, houseNumber };
   const classes = useStyles(param);
 
   useEffect(() => {
-    let sum = Object.keys(currentOption).length === 0? 0 : Object.values(currentOption).reduce(
-      (accumulator, currentValue) => +accumulator + +currentValue
-    );
+    let sum =
+      Object.keys(currentOption).length === 0
+        ? 0
+        : Object.values(currentOption).reduce(
+            (accumulator, currentValue) => +accumulator + +currentValue.price,0
+          );
     setPrice(sum);
+  }, [currentOption]);
+
+  useEffect(() => {
+    getOptions(currentOption)
+   
   }, [currentOption]);
 
   return (
     <div className={classes.conteiner}>
       <table className={classes.table}>
-        <tbody style={{borderBottom:'2px solid'}}>
+        <tbody style={{ borderBottom: '2px solid' }}>
           {!breakpoints.md
             ? houseOptions.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
                   <td
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}
                   >
-                    <Typography variant="h6" component="p">{item.name}</Typography>
+                    <Typography variant='h6' component='p'>
+                      {item.name}
+                    </Typography>
                   </td>
 
-                  <td className={classes.tableCell} align="left">
+                  <td className={classes.tableCell} align='left'>
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name] === item.variants[0].price
+                        currentOption[item.name].price === item.variants[0].price
                           ? true
                           : false
                       }
                       onChange={handleChangeCheckbox}
                       value={+item.variants[0].price}
-                      control={<Radio color="primary" />}
+                      control={<Radio color='primary' />}
                       label={
-                        <Typography variant="body1">
+                        <Typography variant='body1'>
                           {item.variants[0].name}
                         </Typography>
                       }
-                      labelPlacement="end"
+                      labelPlacement='end'
                     />
                   </td>
 
-                  <td className={classes.tableCell} align="left">
+                  <td className={classes.tableCell} align='left'>
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name] === item.variants[1].price
+                        currentOption[item.name].price === item.variants[1].price
                           ? true
                           : false
                       }
                       onChange={handleChangeCheckbox}
                       value={+item.variants[1].price}
-                      control={<Radio color="primary" />}
+                      control={<Radio color='primary' />}
                       label={
-                        <Typography variant="body1">
+                        <Typography variant='body1'>
                           {item.variants[1].name}
                         </Typography>
                       }
-                      labelPlacement="end"
+                      labelPlacement='end'
                     />
                   </td>
+
                   <td
                     className={`${classes.tableCell} ${classes.tableCellLast}`}
-                    align="right"
+                    align='right'
                   >
-                    +${currentOption[item.name]}
+                    +${currentOption[item.name].price}
                   </td>
                 </tr>
               ))
@@ -170,45 +184,52 @@ const CalculateTable = ({ houseOptions, houseNumber }) => {
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}
                   >
                     <Box className={classes.innerRow}>
-                      <Typography variant="h6" component="p">{item.name}</Typography>
-                      <Box style={{ paddingLeft: `20px` }} className={classes.secondRadio}>+${currentOption[item.name]}</Box>
+                      <Typography variant='h6' component='p'>
+                        {item.name}
+                      </Typography>
+                      <Box
+                        style={{ paddingLeft: `20px` }}
+                        className={classes.secondRadio}
+                      >
+                        +${currentOption[item.name].price}
+                      </Box>
                     </Box>
                     <Box className={classes.innerRow}>
                       <FormControlLabel
                         name={item.name}
                         checked={
-                          currentOption[item.name] === item.variants[0].price
+                          currentOption[item.name].price === item.variants[0].price
                             ? true
                             : false
                         }
                         onChange={handleChangeCheckbox}
                         value={+item.variants[0].price}
-                        control={<Radio color="primary" />}
+                        control={<Radio color='primary' />}
                         label={
-                          <Typography variant="body1">
+                          <Typography variant='body1'>
                             {item.variants[0].name}
                           </Typography>
                         }
-                        labelPlacement="end"
+                        labelPlacement='end'
                       />
 
                       <FormControlLabel
                         className={classes.secondRadio}
                         name={item.name}
                         checked={
-                          currentOption[item.name] === item.variants[1].price
+                          currentOption[item.name].price === item.variants[1].price
                             ? true
                             : false
                         }
                         onChange={handleChangeCheckbox}
                         value={+item.variants[1].price}
-                        control={<Radio color="primary" />}
+                        control={<Radio color='primary' />}
                         label={
-                          <Typography variant="body1">
+                          <Typography variant='body1'>
                             {item.variants[1].name}
                           </Typography>
                         }
-                        labelPlacement="end"
+                        labelPlacement='end'
                       />
                     </Box>
                   </td>
@@ -219,10 +240,10 @@ const CalculateTable = ({ houseOptions, houseNumber }) => {
 
       <Box className={classes.tableResult}>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
-        <Typography variant="h6" component="p" className={classes.textPrice}>
+        <Typography variant='h6' component='p' className={classes.textPrice}>
           Итого
         </Typography>
-        <Typography variant="caption" className={classes.textPriceValue}>
+        <Typography variant='caption' className={classes.textPriceValue}>
           $ {price}
         </Typography>
       </Box>

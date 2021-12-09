@@ -488,10 +488,11 @@ const useStyles = makeStyles((theme) => ({
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
+  
 
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
-  console.log(houseNumber)
+  // console.log(houseNumber)
   const baseFolder = `houses/${dataHouses[house]['Код'].replace(' ', '')}/`;
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
@@ -510,7 +511,14 @@ const HousePage = ({ house, data }) => {
   const baseModulePrice = dataHouses[houseNumber].modules[0]['Стоимость']
     ? +dataHouses[houseNumber].modules[0]['Стоимость'].replace(/[KК]/, '000')
     : 0;
-  const [modulePrice, setModulePrice] = useState(baseModulePrice);
+  const baseModule = dataHouses[houseNumber].modules[0]['Название модуля']
+  ? dataHouses[houseNumber].modules[0]['Название модуля']
+  : "no-modules";
+  const [modulePrice,setModulePrice] = useState(baseModulePrice);
+  const [userModuleList, setUserModuleList] = useState([baseModule]);
+  const [userOptions, setUserOptions] = useState({});
+  // console.log(userModuleList);
+  // console.log(userOptions)
 
   const baseImg = dataHouses[houseNumber].modules[0]?.rooms[0]
     ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение'].substr(
@@ -601,8 +609,11 @@ const HousePage = ({ house, data }) => {
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
       setModulePrice((state) => state + +event.target.value);
+      setUserModuleList([...userModuleList, event.target.name])
     } else {
       setModulePrice((state) => state - +event.target.value);
+      
+      setUserModuleList([...userModuleList.filter(item=>item !== event.target.name)])
     }
   };
 
@@ -626,6 +637,13 @@ const HousePage = ({ house, data }) => {
   all['Название модуля'] = 'Все';
   all.name = '';
   const panelTabs = [all, ...dataHouses[house].modules];
+
+  const getUserOptions = (options)=>{
+    setUserOptions(options)
+  }
+
+  const extraFormFields = {house:dataHouses[houseNumber]['Код'],userModuleList:userModuleList,options:userOptions}
+  console.log(extraFormFields)
 
   return (
     <Box components='main'>
@@ -952,6 +970,7 @@ const HousePage = ({ house, data }) => {
                           {item['Название модуля']}
                         </Typography>
                       }
+
                       labelPlacement='end'
                     />
                     <Typography variant='h3'>${item['Стоимость']}</Typography>
@@ -971,6 +990,7 @@ const HousePage = ({ house, data }) => {
                           {item['Название модуля']}
                         </Typography>
                       }
+                      name={item['Название модуля']}
                       labelPlacement='end'
                     />
                     <Typography variant='h3'>${item['Стоимость']}</Typography>
@@ -1011,11 +1031,13 @@ const HousePage = ({ house, data }) => {
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockTable}`}>
-        <CalculateTable houseNumber={houseNumber} houseOptions={dataHouses[houseNumber].options} />
+        <CalculateTable getOptions={getUserOptions} houseNumber={houseNumber} houseOptions={dataHouses[houseNumber].options} />
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockForm}`}>
         <FormBlock
+          endpoint="https://formspree.io/f/mgedeody"
+          extraFormFields={extraFormFields}
           title={`
                       Можете отправить свой выбор нам, и мы начнем готовиться к встрече.
               `}
