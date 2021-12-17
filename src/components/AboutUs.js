@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: (param) => 1 - 0.1 * param.scrol,
   },
   header: {
-    fontSize: "72px",
+    fontSize: "68px",
     fontWeight: "600",
     lineHeight: "1.15",
     letterSpacing: "0.03em",
