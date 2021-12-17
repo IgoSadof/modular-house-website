@@ -49,6 +49,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     minWidth: '300px',
+    "& h3":{
+      fontSize: "20px",
+      lineHeight: "1.4",
+
+
+    },
     [theme.breakpoints.down('md')]: {
       alignSelf: 'center',
       // padding: '0 10%',

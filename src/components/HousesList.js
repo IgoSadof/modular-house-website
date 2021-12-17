@@ -55,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseListBlock: {
-    width: "11vw",
+    width: "10vw",
+    flexShrink: "0",
     borderRight: "1px solid",
     [theme.breakpoints.down("md")]: {
       width: "100%",
@@ -158,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     width: "100%",
     height: "90%",
-    padding: "0 40px",
+    padding: "0 24px",
     justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
       padding: "0",
@@ -265,7 +266,7 @@ const useStyles = makeStyles((theme) => ({
 
   houseImg: {
     position: "relative",
-    width: "47%",
+    width: "48vw",
     [theme.breakpoints.down("md")]: {
       width: "100%",
       height: "100%",

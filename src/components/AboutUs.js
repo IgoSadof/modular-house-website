@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
     lineHeight: "1.15",
     letterSpacing: "0.03em",
+    textTransform:"uppercase",
     color: "#4F4F4F",
     [theme.breakpoints.down("md")]: {
       width: "65%",

@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
   infoBox: {
     display: 'flex',
-    gap: '20px',
+    gap: '28px',
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
       alignSelf: (param) => (param.breakpoints.s ? 'null' : 'center'),
@@ -109,6 +109,11 @@ const useStyles = makeStyles((theme) => ({
   ContactsName: {
     marginTop: '30px',
     fontWeight: '400',
+    textTransform: 'capitalize',
+    whiteSpace: 'nowrap',
+    [theme.breakpoints.down("md")]: {
+      fontSize:"16px",
+    },
   },
   ContactsPosition: {
     fontSize: '12px',
@@ -117,6 +122,7 @@ const useStyles = makeStyles((theme) => ({
   },
   ContactsPhone: {
     marginTop: '30px',
+    fontWeight: '600',
   },
 }));
 
