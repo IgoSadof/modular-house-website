@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import getHousesData from "../../utils/getHousesData";
+// import { StaticImage, getImage } from "gatsby-plugin-image";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
 import getImg from "../../utils/getImg";
@@ -12,6 +13,10 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
+
+import SwiperCore, { Mousewheel, FreeMode } from "swiper";
+
+SwiperCore.use([Mousewheel, FreeMode]);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -294,10 +299,15 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
 
   return (
     <Swiper
+      // slidesPerView={"auto"}
       slidesPerView={"auto"}
       grabCursor={true}
       loop={true}
+      // freeMode={true}
       spaceBetween={20}
+      // mousewheel={true}
+      // onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
     >
       {listItems}
     </Swiper>
