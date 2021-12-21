@@ -17,6 +17,7 @@ import call from '../assets/images/call.png';
 import Typography from '@material-ui/core/Typography';
 import SquareButton from './buttons/SquareButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import favicon from '../assets/images/favicon.ico'
 
 const dataToComponent = (WrappedComponent, currebtData, house) => {
   return <WrappedComponent data={currebtData} house={house} />;
@@ -241,6 +242,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         <meta name='description' content='Moduls houses for living' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+        <link rel="shortcut icon" href={favicon} type="image/x-icon"></link>
       </Helmet>
       <Box position='relative' className='conteiner'>
         {breakpoints.isLoad ? (
