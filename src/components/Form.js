@@ -49,11 +49,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     minWidth: '300px',
-    "& h3":{
-      fontSize: "20px",
-      lineHeight: "1.4",
-
-
+    '& h3': {
+      fontSize: '20px',
+      lineHeight: '1.4',
     },
     [theme.breakpoints.down('md')]: {
       alignSelf: 'center',
@@ -133,9 +131,9 @@ const useStyles = makeStyles((theme) => ({
       outline: 'none',
     },
     '&:hover, &:focus': {
-      transition:'border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+      transition: 'border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
       borderBottom: '2px solid rgba(0, 0, 0, 0.87)',
-      marginBottom:"-1px",
+      marginBottom: '-1px',
     },
   },
   modal: {
@@ -228,7 +226,7 @@ const Form = ({
       email: emailText,
       message: messageText,
     };
-    
+
     fetch(event.target.action, {
       method: event.target.method,
       body: JSON.stringify(data),
@@ -281,7 +279,7 @@ const Form = ({
         // noValidate
         autoComplete='off'
         method='POST'
-        action={endpoint? endpoint:'https://formspree.io/f/xoqrqjnd'}
+        action={endpoint ? endpoint : 'https://formspree.io/f/xoqrqjnd'}
       >
         <Box className={classes.formFields}>
           <TextField
@@ -307,7 +305,7 @@ const Form = ({
             value={telText}
             id={`phone-${id ? id : '0'}`}
             name='phone'
-            type="tel"
+            type='tel'
             label={<Typography variant='body2'>Телефон</Typography>}
             // validators={["isNumber"]}
             // errorMessages={["telefon incorrect"]}
@@ -331,14 +329,14 @@ const Form = ({
         </Box>
         {text ? (
           <Box className={classes.messageBox}>
-            <Box className={classes.messageLabelBox}>
-              <Typography variant='body2'>
-                Оставьте заявку и наш менеджер свяжеться с вами
-              </Typography>
-              <div>*</div>
-            </Box>
-
             <label htmlFor={`message-${id ? id : '0'}`}>
+              <Box className={classes.messageLabelBox}>
+                <Typography variant='body2'>
+                  Оставьте заявку и наш менеджер свяжеться с вами
+                </Typography>
+                <div>*</div>
+              </Box>
+
               <textarea
                 id={`message-${id ? id : '0'}`}
                 name='message'
@@ -353,11 +351,7 @@ const Form = ({
         ) : null}
 
         <Box className={classes.button}>
-          <RegularButton
-            submit={true}
-            variant='outlined'
-            lowerCase={true}
-          >
+          <RegularButton submit={true} variant='outlined' lowerCase={true}>
             {buttonText ? buttonText : 'Отправить'}
           </RegularButton>
           {inBurger ? (

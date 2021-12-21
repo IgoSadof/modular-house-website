@@ -271,6 +271,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                   ) : null}
                   <div
                     role="link"
+                    aria-label="Form's block"
                     tabIndex="0"
                     className={classes.ConnectBox}
                     name='form'
