@@ -53,14 +53,14 @@ const useStyles = makeStyles((theme) => ({
   },
   fon: {
     position: 'absolute',
-    background: 'radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)',
+    background: '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)',
     height: '100%',
     width: '100%',
     [theme.breakpoints.down('md')]: {
       background: (param) =>
         param.breakpoints.s
-          ? 'radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)'
-          : 'radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)',
+          ? '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 70%)'
+          : '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)',
     },
   },
   fullImg: {

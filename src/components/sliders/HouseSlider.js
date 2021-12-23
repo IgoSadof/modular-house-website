@@ -14,9 +14,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 
-import SwiperCore, { Mousewheel, FreeMode } from "swiper";
+// import SwiperCore, { Mousewheel, FreeMode } from "swiper";
 
-SwiperCore.use([Mousewheel, FreeMode]);
+// SwiperCore.use([Mousewheel, FreeMode]);
 
 const useStyles = makeStyles((theme) => ({
   root: {

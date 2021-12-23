@@ -93,7 +93,7 @@ export default function Accordions({
               expandIcon={<AddIcon />}
             >
               <Typography
-                style={!uppercase ? { textTransform: 'capitalize' } : null}
+                style={!uppercase ? { textTransform: 'inherit' } : null}
                 variant='h4'
                 component='h3'
               >
