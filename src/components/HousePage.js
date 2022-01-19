@@ -232,10 +232,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     minHeight: '16vh',
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
-    overflowY: 'auto',
     margin: '10px 0',
     '& h1': {
       fontSize: '48px',
+    },
+    '& p': {
+      overflowY: 'scroll',
     },
   },
   model: {
@@ -643,7 +645,6 @@ const HousePage = ({ house, data }) => {
   }
 
   const extraFormFields = {house:dataHouses[houseNumber]['Код'],userModuleList:userModuleList,options:userOptions}
-  console.log(extraFormFields)
 
   return (
     <Box components='main'>
