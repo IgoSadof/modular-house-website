@@ -103,9 +103,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     zIndex: "0",
     top: "-7%",
-    fontSize: (param) => (param.breakpoints.xl ? "92px" : "64px"),
+    fontSize: (param) => (param.breakpoints.xl ? "72px" : "64px"),
     margin: "auto",
-    color: "white",
+    color: "#E0E0E0",
     transition: "1s",
   },
   houseListActiveNumber: {
@@ -159,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     width: "100%",
     height: "90%",
-    padding: "0 24px",
+    padding: "0 60px",
     justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
       padding: "0",
@@ -232,9 +232,9 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescText: {
     fontSize: "14px",
-    margin: "20px 0",
+    margin: "40px 0",
     overflowY: "auto",
-    maxHeight: "25vh",
+    maxHeight: "20vh",
     lineHeight: "1.6",
     [theme.breakpoints.down("md")]: {
       display: "none",
@@ -249,7 +249,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescSpec: style.flexColumn,
   houseDescSpecOne: style.flex,
-  houseDescMore: { ...style.flex, margin: "20px 0" },
+  houseDescMore: { ...style.flex, marginTop: "40px" },
   houseDescPrice: style.flexColumn,
   "& p": {
     lineHeight: "1.6",
@@ -266,7 +266,7 @@ const useStyles = makeStyles((theme) => ({
 
   houseImg: {
     position: "relative",
-    width: "48vw",
+    width: "44vw",
     [theme.breakpoints.down("md")]: {
       width: "100%",
       height: "100%",

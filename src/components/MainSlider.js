@@ -166,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
       },
       '& p': {
         height: '25vh',
-        overflow: 'overlay',
+        // overflow: 'overlay',
       },
     },
   },
