@@ -392,3 +392,7 @@ abbr {
 .MuiFormLabel-asterisk{
   display: none;
 }
+
+.MuiFormControl-root{
+  height: 64px;
+}

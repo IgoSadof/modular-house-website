@@ -203,18 +203,21 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
         ) : null}
         <Box className={classes.iconsBox}>
           <a
+            target="_blank"
             className={classes.Link}
             href={"https://www.facebook.com/zrobimarchitects/"}
           >
             <img className={classes.icon} src={facebook} alt="icons"></img>
           </a>
           <a
+            target="_blank"
             className={classes.Link}
             href={"https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ"}
           >
             <img className={classes.icon} src={youtube} alt="icons"></img>
           </a>
           <a
+            target="_blank"
             className={classes.Link}
             href={"https://www.instagram.com/by___home/"}
           >
