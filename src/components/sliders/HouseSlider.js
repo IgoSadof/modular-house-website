@@ -33,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
     margin: "0",
   },
   slide: {
-    width: "645px ",
-    height: "633px ",
+    width: "45vw",
+    height: "44vw",
     [theme.breakpoints.down("md")]: {
       width: "90%",
       height: "auto",
@@ -46,14 +46,17 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   content: {
-    width: "645px",
+    width: "45vw",
     height: "100%",
     border: "1px solid",
     cursor: "pointer",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   imgBox: {
     width: "100%",
-    height: "410px",
+    height: "60%",
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
@@ -73,19 +76,26 @@ const useStyles = makeStyles((theme) => ({
     transition: "all .5s",
   },
   description: {
-    padding: "40px",
-
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    padding: "6%",
+    height:"40%",
     // "@media (max-width: 1900px)":{
     //   padding: "20px",
     // },
     [theme.breakpoints.down("md")]: {
       padding: "15px",
       paddingBottom: "40px",
+      height:"auto",
     },
   },
   name: {
     width: "60%",
     fontSize: "42px",
+     "@media (min-width: 1900px)":{
+      fontSize: "3vw",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "36px",
     },
@@ -148,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     display: "flex",
-    marginTop: "40px",
+    marginTop: "6%",
     justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
@@ -304,7 +314,7 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
       grabCursor={true}
       loop={true}
       // freeMode={true}
-      spaceBetween={20}
+      spaceBetween="1.6%"
       // mousewheel={true}
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}

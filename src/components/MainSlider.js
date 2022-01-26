@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     // marginTop:"-20%",
     marginLeft: '100px',
-    width: '470px',
+    width: '32vw',
 
     [theme.breakpoints.down('md')]: {
       marginLeft: 'auto',
@@ -183,6 +183,9 @@ const useStyles = makeStyles((theme) => ({
     gap: '30px',
     position: 'relative',
     marginTop: 'auto',
+    "@media (min-width:1921px)": {
+      gap: '2vw',
+    },
   },
   numbers: {
     width: '100%',
@@ -223,6 +226,9 @@ const useStyles = makeStyles((theme) => ({
       right: '0',
       backgroundColor: '#4F4F4F',
       transform: 'rotate(45deg)',
+      "@media (min-width:1921px)": {
+        width: '0.6vw',
+      },
     },
     '&::after': {
       transformOrigin: '100% 50%',
@@ -235,6 +241,9 @@ const useStyles = makeStyles((theme) => ({
       right: '0',
       backgroundColor: '#4F4F4F',
       transform: 'rotate(315deg)',
+      "@media (min-width:1921px)": {
+        width: '0.6vw',
+      },
     },
     transition: '0.5s',
   },

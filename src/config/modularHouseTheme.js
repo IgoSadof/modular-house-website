@@ -2,7 +2,7 @@ import { createTheme } from "@material-ui/core/styles";
 import green from "@material-ui/core/colors/green";
 
 const myFontsSize = {
-  xl: 1.5,
+  xl: 2,
   widthMobile: 0.75,
   h1: 56,
   h2: 28,
@@ -41,7 +41,7 @@ const modularHouseTheme = createTheme({
   //     sm: 600,
   //     md: 960,
   //     lg: 1280,
-  //     xl: 1900,
+  //     xl: 1921,
   //   },
   // },
   typography: {
@@ -66,8 +66,8 @@ const modularHouseTheme = createTheme({
       letterSpacing: "0.02em",
       fontWeight: 700,
       fontStyle: "normal",
-      "@media (min-width:1900px)": {
-        // fontSize: myFontsSize.h1 * myFontsSize.xl,
+      "@media (min-width:1921px)": {
+        fontSize: myFontsSize.h1 * myFontsSize.xl,
       },
       "@media (max-width:1200px)": {
         // fontSize: myFontsSize.h1 * myFontsSize.widthMobile,
@@ -81,8 +81,8 @@ const modularHouseTheme = createTheme({
       letterSpacing: "0.015em",
       fontStyle: "normal",
       color: "#4F4F4F",
-      "@media (min-width:1900px)": {
-        // fontSize: myFontsSize.h3 * myFontsSize.xl,
+      "@media (min-width:1921px)": {
+        fontSize: myFontsSize.h3 * myFontsSize.xl,
       },
       "@media (max-width:600px)": {
         fontSize: 24,
@@ -95,7 +95,7 @@ const modularHouseTheme = createTheme({
       fontWeight: 400,
       fontStyle: "normal",
       color: "#4F4F4F",
-      "@media (min-width:1900px)": {
+      "@media (min-width:1921px)": {
         fontSize: myFontsSize.h3 * myFontsSize.xl,
       },
     },
@@ -107,8 +107,8 @@ const modularHouseTheme = createTheme({
       textTransform: "uppercase",
       color: "#333333",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
-      "@media (min-width:1900px)": {
-        // fontSize: myFontsSize.h4 * myFontsSize.xl,
+      "@media (min-width:1921px)": {
+        fontSize: myFontsSize.h4 * myFontsSize.xl,
       },
       "@media (max-width:600px)": {
         fontSize: "18px",
@@ -122,8 +122,8 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       textTransform: "uppercase",
       color: "#4F4F4F",
-      "@media (min-width:1900px)": {
-        // fontSize: myFontsSize.h5 * myFontsSize.xl,
+      "@media (min-width:1921px)": {
+        fontSize: myFontsSize.h5 * myFontsSize.xl,
       },
     },
     h6: {
@@ -133,8 +133,8 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       textTransform: "uppercase",
       color: "#4F4F4F",
-      "@media (min-width:1900px)": {
-        // fontSize: myFontsSize.h6 * myFontsSize.xl,
+      "@media (min-width:1921px)": {
+        fontSize: myFontsSize.h6 * myFontsSize.xl,
       },
     },
     body1: {
@@ -145,8 +145,8 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       color: "#4F4F4F",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
-      "@media (min-width:1900px)": {
-        // fontSize: myFontsSize.body1 * myFontsSize.xl,
+      "@media (min-width:1921px)": {
+        fontSize: myFontsSize.body1 * myFontsSize.xl,
       },
       "@media (max-width:350px)": {
         fontSize: myFontsSize.body1 * myFontsSize.widthMobile,
@@ -159,7 +159,7 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       color: "#7C7C7C",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
-      "@media (min-width:1900px)": {
+      "@media (min-width:1921px)": {
         fontSize: myFontsSize.body2 * myFontsSize.xl,
       },
     },
@@ -171,7 +171,7 @@ const modularHouseTheme = createTheme({
       textTransform: "uppercase",
       color: "#4F4F4F",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
-      "@media (min-width:1900px)": {
+      "@media (min-width:1921px)": {
         fontSize: myFontsSize.subtitle1 * myFontsSize.xl,
       },
     },
@@ -182,7 +182,7 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       textTransform: "uppercase",
       color: "#333333",
-      "@media (min-width:1900px)": {
+      "@media (min-width:1921px)": {
         fontSize: myFontsSize.subtitle2 * myFontsSize.xl,
       },
     },
@@ -194,7 +194,7 @@ const modularHouseTheme = createTheme({
       textTransform: "uppercase",
       color: "#333333",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
-      "@media (min-width:1900px)": {
+      "@media (min-width:1921px)": {
         fontSize: myFontsSize.button * myFontsSize.xl,
       },
     },
@@ -205,7 +205,7 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       textTransform: "uppercase",
       color: "#333333",
-      "@media (min-width:1900px)": {
+      "@media (min-width:1921px)": {
         fontSize: myFontsSize.caption * myFontsSize.xl,
       },
     },
