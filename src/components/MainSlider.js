@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100vh',
     backgroundColor: '#D1D1D1',
+    "@media (min-width:1921px)": {
+      padding: '3.5vw 0px 7vw',
+    },
 
     [theme.breakpoints.down('md')]: {
       height: 'auto',
@@ -153,6 +156,10 @@ const useStyles = makeStyles((theme) => ({
     // marginTop:"-20%",
     marginLeft: '100px',
     width: '32vw',
+    "@media (min-width:1921px)": {
+      marginLeft: '6.9vw',
+      gap: '2.1vw',
+    },
 
     [theme.breakpoints.down('md')]: {
       marginLeft: 'auto',
@@ -249,6 +256,9 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     width: '75px',
+    "@media (min-width:1921px)": {
+      width: '5.2vw',
+    },
     [theme.breakpoints.down('md')]: {
       width: '50px',
     },

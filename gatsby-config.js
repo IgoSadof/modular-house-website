@@ -5,6 +5,7 @@ const customQueries = {
   md: '(max-width: 1200px)',
   l: '(max-width: 1536px)',
   xl: '(max-width: 1926px)',
+  xxl: '(min-width: 1930px)',
   isLoad: '(min-width: 320px)',
 };
 
@@ -129,5 +130,11 @@ module.exports = {
         queries: customQueries,
       },
     },
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     devMode: true,
+    //   },
+    // },
   ],
 };

@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
       background: (param) => (param.color ? param.color : "#4F4F4F"),
       color: (param) => (param.color ? "#4F4F4F" : "#F2F2F2"),
     },
+    "@media (min-width:1921px)": {
+      width:"10.5vw",
+      height:"2.6vw",
+      fontSize:"0.9vw",
+      padding:"0.8vw 2.1vw",
+    },
     [theme.breakpoints.down("md")]: {
       transform:"scale(0.9)",
     },

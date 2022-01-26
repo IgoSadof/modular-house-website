@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { Link } from "gatsby";
 import RegularButton from "./buttons/RegularButton";
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
 const useStyles = makeStyles((theme) => ({
   menu: {
@@ -43,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     background:
       "radial-gradient(rgba(232, 232, 232, 0.3) 100%, rgba(232, 232, 232, 0.12) 100%)",
     backdropFilter: "blur(10px)",
+    "@media (min-width:1921px)": {
+      padding: '3.5vw 0px 6.5vw',
+    },
 
     [theme.breakpoints.down("md")]: {
       display: (param) => (param.inBurger ? "flex" : "none"),
@@ -65,9 +69,16 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "30px",
     alignItems: "center",
+    "@media (min-width:1921px)": {
+      gap: '1.6vw',
+    },
   },
   icon: {
     cursor: "pointer",
+    "@media (min-width:1921px)": {
+      width: "1vw",
+      height:"1vw",
+    },
   },
   text: {
     transition: "0.5s",
@@ -126,6 +137,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Menu = ({ inBurger, clickToOpenForm }) => {
+  const breakpoints = useBreakpoint();
+  console.log(breakpoints.xxl)
   const param = { inBurger };
   const classes = useStyles(param);
 
@@ -134,7 +147,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
       {inBurger ? null : (
         <>
           <Link className={classes.logo} to={"/"}>
-            <Logo color={"#4F4F4F"} />
+            <Logo width={breakpoints.xxl?"4.2vw":60} height={breakpoints.xxl?"6.2vw":90} color={"#4F4F4F"} />
           </Link>
           <Typography variant="button" className={classes.text}>
             Меню

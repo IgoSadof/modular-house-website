@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
       param.page === 'aboutUs' ||
       param.page === 'main' ||
       param.page === 'house'
-        ? '50px'
+        ? '3.5vw'
         : '5%',
     right: '10%',
     zIndex: '2',
