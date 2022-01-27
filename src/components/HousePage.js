@@ -637,19 +637,6 @@ const HousePage = ({ house, data }) => {
       setRelativeDirectory(baseFolder + '/модули/' + value);
     }
   };
-  const handleChangeCheckbox = (event) => {
-    // debugger
-    if (event.target.checked) {
-      setModulePrice((state) => state + +event.target.value);
-      setUserModuleList([...userModuleList, event.target.name]);
-    } else {
-      setModulePrice((state) => state - +event.target.value);
-
-      setUserModuleList([
-        ...userModuleList.filter((item) => item !== event.target.name),
-      ]);
-    }
-  };
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
   const handleClickCheckbox = (event, curentIndex) => {

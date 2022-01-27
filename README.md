@@ -90,7 +90,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
     ```shell
     CREATE DATABASE modularh_db;
     USE modularh_db;
-    SOURCE my_project.sql;
+    SOURCE c:/modularh_db.sql;
     ```
     import database
 
@@ -109,6 +109,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
     ```shell
      DROP DATABASE databasename;
     ```
+    
     
 
 
