@@ -172,8 +172,8 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '24px',
       },
       '& p': {
-        height: '25vh',
-        // overflow: 'overlay',
+        height: '20vh',
+        overflow: 'overlay',
       },
     },
   },
@@ -300,9 +300,9 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [opacity] = useState(true);
   const vidSegments = {
     0: 1.7,
-    1: 3.41,
-    2: 5,
-    3: 8.3,
+    1: 4.41,
+    2: 7,
+    3: 10.64,
   };
 
   const handleNumberClick = (e, numb = 0) => {
@@ -395,7 +395,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 <CircularProgress />
               </div>
             ) : null}
-            <div className={classes.fon}></div>
+            {/* <div className={classes.fon}></div> */}
             {!video.default ? null : (
               <ReactPlayer
                 height='100%'
