@@ -13,8 +13,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'start',
     alignItems: 'center',
     flexGrow: 1,
-
     marginLeft: '75px',
+    "@media (min-width:1920px)": {
+      marginLeft: '5.5vw',
+    },
+
     [theme.breakpoints.down('md')]: {
       margin: '0',
     },

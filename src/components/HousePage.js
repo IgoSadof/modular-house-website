@@ -43,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 10%',
     backgroundColor: '#D1D1D1',
     marginTop: '100px',
-    "@media (min-width:1920px)": {
-      gap: "1.4vw",
-      marginTop: "6.9vw",
+    '@media (min-width:1920px)': {
+      gap: '1.4vw',
+      marginTop: '6.9vw',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '120px',
@@ -101,11 +101,11 @@ const useStyles = makeStyles((theme) => ({
   mainDescBox: {
     width: '100%',
     display: 'flex',
-    margin:"0 auto",
+    margin: '0 auto',
     gap: '60px',
     // justifyContent: 'space-between',
     padding: '50px 10%',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       padding: '3.5vw 10%',
       gap: '4.2vw',
     },
@@ -152,8 +152,9 @@ const useStyles = makeStyles((theme) => ({
   },
   mainBlockSubtitleBox: {
     display: 'flex',
-    gap: '100px',
+    // gap: '100px',
     width: '100%',
+    justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
       gap: '10px',
       justifyContent: 'space-between',
@@ -161,7 +162,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainBlockTitle: {
     textAlign: 'left',
-    marginLeft:"100px",
+    marginLeft: '100px',
     // width: '300px',
     width: '28vw',
   },
@@ -173,14 +174,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   mainBlockListRight: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    // marginLeft: 'auto',
+    // marginRight: 'auto',
   },
   mainBlockItem: {
     fontSize: '12px',
     fontWeight: '400',
-    "@media (min-width:1920px)": {
-      marginTop: "0.7vw",
+    '@media (min-width:1920px)': {
+      marginTop: '0.7vw',
     },
   },
   modelBlock: {
@@ -259,7 +260,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: (param) => (param.breakpoints.s? '50vh' : '100vh'),
+      height: (param) => (param.breakpoints.s ? '50vh' : '100vh'),
     },
   },
   modelDescLine: {
@@ -356,7 +357,7 @@ const useStyles = makeStyles((theme) => ({
     right: '0',
     bottom: '0',
     width: '620px',
-    "@media (min-width:1920px)": {
+    '@media (min-width:1920px)': {
       width: '43vw',
     },
 
@@ -365,6 +366,10 @@ const useStyles = makeStyles((theme) => ({
   titleBox: {
     display: 'flex',
     gap: '20px',
+    '@media (min-width:1920px)': {
+      gap: '1.4vw',
+    },
+
     flexDirection: 'row-reverse',
     [theme.breakpoints.down('md')]: {
       marginLeft: 'auto',
@@ -376,16 +381,19 @@ const useStyles = makeStyles((theme) => ({
     height: '1px',
     backgroundColor: 'black',
     marginTop: '22px',
-    
+    '@media (min-width:1920px)': {
+      width: '5.5vw',
+      marginTop: '1.5vw',
+    },
   },
 
   BlockRooms: {
     height: 'auto',
     gap: '20px',
     marginTop: '100px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       gap: '1.4vw',
-      marginTop:"6.9vw"
+      marginTop: '6.9vw',
     },
     [theme.breakpoints.down('md')]: {
       '& $titleBox': {
@@ -398,13 +406,13 @@ const useStyles = makeStyles((theme) => ({
   roomsList: {
     width: '28vw',
     display: 'flex',
-    flexShrink: "0",
+    flexShrink: '0',
     flexDirection: 'column',
-    marginRight:"40px",
+    marginRight: '40px',
     gap: '20px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      marginRight:"0",
+      marginRight: '0',
       order: '2',
     },
   },
@@ -445,8 +453,8 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
     },
   },
-  calculationPlanImg:{
-    margin:"auto 0",
+  calculationPlanImg: {
+    margin: 'auto 0',
   },
   calculation: {
     display: 'flex',
@@ -490,7 +498,7 @@ const useStyles = makeStyles((theme) => ({
     // paddingLeft: "18vw",
     justifyContent: 'center',
     paddingBottom: '100px',
-    
+
     [theme.breakpoints.down('md')]: {
       padding: '0',
       paddingBottom: '40px',
@@ -512,7 +520,6 @@ const useStyles = makeStyles((theme) => ({
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
-  
 
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
@@ -536,9 +543,9 @@ const HousePage = ({ house, data }) => {
     ? +dataHouses[houseNumber].modules[0]['Стоимость'].replace(/[KК]/, '000')
     : 0;
   const baseModule = dataHouses[houseNumber].modules[0]['Название модуля']
-  ? dataHouses[houseNumber].modules[0]['Название модуля']
-  : "no-modules";
-  const [modulePrice,setModulePrice] = useState(baseModulePrice);
+    ? dataHouses[houseNumber].modules[0]['Название модуля']
+    : 'no-modules';
+  const [modulePrice, setModulePrice] = useState(baseModulePrice);
   const [userModuleList, setUserModuleList] = useState([baseModule]);
   const [userOptions, setUserOptions] = useState({});
   // console.log(userModuleList);
@@ -633,11 +640,13 @@ const HousePage = ({ house, data }) => {
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
       setModulePrice((state) => state + +event.target.value);
-      setUserModuleList([...userModuleList, event.target.name])
+      setUserModuleList([...userModuleList, event.target.name]);
     } else {
       setModulePrice((state) => state - +event.target.value);
-      
-      setUserModuleList([...userModuleList.filter(item=>item !== event.target.name)])
+
+      setUserModuleList([
+        ...userModuleList.filter((item) => item !== event.target.name),
+      ]);
     }
   };
 
@@ -662,11 +671,15 @@ const HousePage = ({ house, data }) => {
   all.name = '';
   const panelTabs = [all, ...dataHouses[house].modules];
 
-  const getUserOptions = (options)=>{
-    setUserOptions(options)
-  }
+  const getUserOptions = (options) => {
+    setUserOptions(options);
+  };
 
-  const extraFormFields = {house:dataHouses[houseNumber]['Код'],userModuleList:userModuleList,options:userOptions}
+  const extraFormFields = {
+    house: dataHouses[houseNumber]['Код'],
+    userModuleList: userModuleList,
+    options: userOptions,
+  };
 
   return (
     <Box components='main'>
@@ -742,17 +755,44 @@ const HousePage = ({ house, data }) => {
                     );
                   })}
                 </ul> */}
-            <ul className={classes.mainBlockList}>
-              {dataHouses[houseNumber].modules.map((item, index) => {
-                return (
-                  <li className={classes.mainBlockItem} key={index}>
-                    <Typography variant='body1'>
-                      0{index + 1} {item['Название модуля']}
-                    </Typography>
-                  </li>
-                );
-              })}
-            </ul>
+            {!breakpoints.md ? (
+              <>
+                <ul className={classes.mainBlockList}>
+                  {dataHouses[houseNumber].modules.map((item, index) => {
+                    return (
+                      <li className={classes.mainBlockItem} key={index}>
+                        <Typography variant='body1'>
+                          0{index + 1} Модуль
+                        </Typography>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <ul className={classes.mainBlockList}>
+                  {dataHouses[houseNumber].modules.map((item, index) => {
+                    return (
+                      <li className={classes.mainBlockItem} key={index}>
+                        <Typography variant='body1'>
+                          {item['Название модуля']}
+                        </Typography>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            ) : (
+              <ul className={classes.mainBlockList}>
+                {dataHouses[houseNumber].modules.map((item, index) => {
+                  return (
+                    <li className={classes.mainBlockItem} key={index}>
+                      <Typography variant='body1'>
+                        0{index + 1} {item['Название модуля']}
+                      </Typography>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
             <ul
               className={`${classes.mainBlockList} ${classes.mainBlockListRight}`}
             >
@@ -993,7 +1033,6 @@ const HousePage = ({ house, data }) => {
                           {item['Название модуля']}
                         </Typography>
                       }
-
                       labelPlacement='end'
                     />
                     <Typography variant='h3'>${item['Стоимость']}</Typography>
@@ -1054,12 +1093,16 @@ const HousePage = ({ house, data }) => {
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockTable}`}>
-        <CalculateTable getOptions={getUserOptions} houseNumber={houseNumber} houseOptions={dataHouses[houseNumber].options} />
+        <CalculateTable
+          getOptions={getUserOptions}
+          houseNumber={houseNumber}
+          houseOptions={dataHouses[houseNumber].options}
+        />
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockForm}`}>
         <FormBlock
-          endpoint="https://formspree.io/f/mgedeody"
+          endpoint='https://formspree.io/f/mgedeody'
           extraFormFields={extraFormFields}
           title={`
                       Можете отправить свой выбор нам, и мы начнем готовиться к встрече.
