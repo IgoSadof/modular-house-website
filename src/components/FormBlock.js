@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "60px",
     height:"100vh",
+    "@media (min-width:1920px)": {
+      gap: "4.2vw",
+    },
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",

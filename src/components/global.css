@@ -431,6 +431,9 @@ abbr {
   label[class*="MuiInputLabel"] p{
     font-size: 24px;
   }
+  button.MuiTab-root {
+    width: 14vw;
+  }
 
   
 }

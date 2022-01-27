@@ -132,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     marginLeft: "auto",
     marginRight: "auto",
+    width:"100%",
     [theme.breakpoints.down("md")]: {
       marginTop: "40px",
     },
@@ -144,6 +145,7 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     height: "100%",
+    width:"100%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },

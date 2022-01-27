@@ -29,11 +29,15 @@ const useStyles = makeStyles((theme) => ({
     borderCollapse: 'collapse',
     padding: '0 20px',
     marginTop: (param) => (param.houseNumber === 0 ? '0' : '-1px'),
+    
   },
   tableRow: {
     height: '50px',
     borderTop: '1px solid',
     borderBottom: '1px solid',
+    "@media (min-width:1920px)": {
+      height: '3.5vw',
+    },
   },
   tableCell: {
     width: '25%',
@@ -46,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
   },
   tableCellLast: {
     paddingRight: '40px',
+    fontSize:"14px",
+    "@media (min-width:1920px)": {
+      fontSize:"28px"
+    },
   },
   tableResult: {
     display: 'flex',
@@ -57,9 +65,6 @@ const useStyles = makeStyles((theme) => ({
   textPrice: {
     display: 'flex',
     alignItems: 'center',
-  },
-  textPriceValue: {
-    fontSize: '30px',
   },
   innerRow: {
     display: 'flex',

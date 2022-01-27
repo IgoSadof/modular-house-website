@@ -107,9 +107,12 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     color: "#E0E0E0",
     transition: "1s",
+    "@media (min-width:1920px)": {
+      fontSize: "5vw !important",
+    },
   },
   houseListActiveNumber: {
-    top: "10%",
+    top: "15%",
     transition: "1s",
     [theme.breakpoints.down("md")]: {
       opacity: "0",
@@ -121,9 +124,10 @@ const useStyles = makeStyles((theme) => ({
     top: "8%",
     zIndex: "2",
     width: "80%",
-    maxWidth: "150px",
+    
     transition: "0.5s",
     [theme.breakpoints.down("md")]: {
+      maxWidth: "150px",
       width: "80%",
       top: "10%",
     },
@@ -137,9 +141,13 @@ const useStyles = makeStyles((theme) => ({
   houseListName: {
     position: "relative",
     // left: "10%",
-    // top: "70%",
+    top: "-0.7vw",
     marginBottom: "10px",
     zIndex:"2",
+    "@media (min-width:1920px)": {
+      marginBottom: "0.7vw",
+      fontSize:"1vw"
+    },
   },
   houseDesc: {
     display: "flex",
@@ -161,6 +169,9 @@ const useStyles = makeStyles((theme) => ({
     height: "90%",
     padding: "0 60px",
     justifyContent: "space-between",
+    "@media (min-width:1921px)": {
+      padding: "0 4.2vw",
+    },
     [theme.breakpoints.down("md")]: {
       padding: "0",
       order: "2",
@@ -202,20 +213,21 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescTitle: {
     fontSize: "48px",
-    lineHeight: "52px",
-    width: "200px",
+    lineHeight: "1.2",
+    "@media (min-width:1920px)": {
+      fontSize: "3.3vw",
+    },
     [theme.breakpoints.down("md")]: {
       color: "#F2F2F2",
       fontSize: "44px",
     },
   },
   houseDescIconBox: {
-    width: "40px",
-    height: "40px",
     [theme.breakpoints.down("md")]: {
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
+      alignItems:"center",
       width: "100px",
       objectFit: "contain",
       height: "85px",
@@ -224,6 +236,10 @@ const useStyles = makeStyles((theme) => ({
   mainPlan: {
     width: "40px",
     height: "40px",
+    "@media (min-width:1920px)": {
+      width: "2.8vw",
+      height: "2.8vw",
+    },
     [theme.breakpoints.down("md")]: {
       objectFit: "contain",
       marginLeft: "auto",
@@ -231,7 +247,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseDescText: {
-    fontSize: "14px",
     margin: "40px 0",
     overflowY: "auto",
     maxHeight: "20vh",

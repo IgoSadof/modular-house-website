@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 10%',
     backgroundColor: '#D1D1D1',
     marginTop: '100px',
+    "@media (min-width:1920px)": {
+      gap: "1.4vw",
+      marginTop: "6.9vw",
+    },
     [theme.breakpoints.down('md')]: {
       marginTop: '120px',
       flexDirection: 'column',
@@ -97,9 +101,14 @@ const useStyles = makeStyles((theme) => ({
   mainDescBox: {
     width: '100%',
     display: 'flex',
+    margin:"0 auto",
     gap: '60px',
     // justifyContent: 'space-between',
     padding: '50px 10%',
+    "@media (min-width:1921px)": {
+      padding: '3.5vw 10%',
+      gap: '4.2vw',
+    },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
       padding: '10%',
@@ -170,6 +179,9 @@ const useStyles = makeStyles((theme) => ({
   mainBlockItem: {
     fontSize: '12px',
     fontWeight: '400',
+    "@media (min-width:1920px)": {
+      marginTop: "0.7vw",
+    },
   },
   modelBlock: {
     display: 'flex',
@@ -290,11 +302,11 @@ const useStyles = makeStyles((theme) => ({
     // top: '-8%',
   },
   modelDescLineMinusCircle: {
-    width: '30px',
-    height: '30px',
+    width: '40px',
+    height: '40px',
     border: '1px solid',
     borderRadius: '50%',
-    fontSize: '30px',
+    fontSize: '40px',
     backgroundColor: '#D1D1D1',
     cursor: 'pointer',
     display: 'flex',
@@ -344,6 +356,10 @@ const useStyles = makeStyles((theme) => ({
     right: '0',
     bottom: '0',
     width: '620px',
+    "@media (min-width:1920px)": {
+      width: '43vw',
+    },
+
     backgroundColor: '#D1D1D1',
   },
   titleBox: {
@@ -360,12 +376,17 @@ const useStyles = makeStyles((theme) => ({
     height: '1px',
     backgroundColor: 'black',
     marginTop: '22px',
+    
   },
 
   BlockRooms: {
     height: 'auto',
     gap: '20px',
     marginTop: '100px',
+    "@media (min-width:1921px)": {
+      gap: '1.4vw',
+      marginTop:"6.9vw"
+    },
     [theme.breakpoints.down('md')]: {
       '& $titleBox': {
         right: '0%',
@@ -469,6 +490,7 @@ const useStyles = makeStyles((theme) => ({
     // paddingLeft: "18vw",
     justifyContent: 'center',
     paddingBottom: '100px',
+    
     [theme.breakpoints.down('md')]: {
       padding: '0',
       paddingBottom: '40px',

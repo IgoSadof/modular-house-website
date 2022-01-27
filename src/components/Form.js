@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     gap: '20px',
     marginTop: '145px',
+    "@media (min-width:1920px)": {
+      gap: "1.4vw",
+      marginTop: "10vw",
+    },
   },
   titleBoxMain: {
     marginLeft: 'auto',
