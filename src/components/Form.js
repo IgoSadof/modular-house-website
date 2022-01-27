@@ -171,8 +171,8 @@ const useStyles = makeStyles((theme) => ({
     backdropFilter: 'blur(10px)',
     boxShadow: theme.shadows[5],
     padding: '100px 120px',
-    width: '600px',
-    height: '500px',
+    width: '42vw',
+    height: '35vw',
   },
   buttonBox: {
     display: 'inline-block',

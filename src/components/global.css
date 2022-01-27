@@ -435,5 +435,10 @@ abbr {
     width: 14vw;
   }
 
+  svg.MuiSvgIcon-root {
+    width: 2vw;
+    height:2vw;
+  }
+
   
 }

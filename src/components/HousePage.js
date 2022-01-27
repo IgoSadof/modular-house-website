@@ -638,6 +638,7 @@ const HousePage = ({ house, data }) => {
     }
   };
   const handleChangeCheckbox = (event) => {
+    // debugger
     if (event.target.checked) {
       setModulePrice((state) => state + +event.target.value);
       setUserModuleList([...userModuleList, event.target.name]);
@@ -647,6 +648,36 @@ const HousePage = ({ house, data }) => {
       setUserModuleList([
         ...userModuleList.filter((item) => item !== event.target.name),
       ]);
+    }
+  };
+
+  const [currentCheckbox, setCurrentCheckbox] = useState(0);
+  const handleClickCheckbox = (event, curentIndex) => {
+    setCurrentCheckbox(curentIndex);
+
+    const chooseModules = dataHouses[houseNumber].modules.filter(
+      (item, index) => {
+        if (index <= curentIndex) {
+          return item;
+        }
+      }
+    );
+    console.log(userModuleList);
+
+    let price = 0;
+    let mudules = [];
+    chooseModules.forEach((item) => {
+      price += item['Стоимость']
+        ? +item['Стоимость'].replace(/[KК]/, '000')
+        : 0;
+      mudules.push(item['Название модуля']);
+    });
+    
+    setModulePrice(price);
+    setUserModuleList(mudules);
+    
+    if (currentCheckbox === curentIndex) {
+      setCurrentCheckbox(curentIndex - 1);
     }
   };
 
@@ -1021,7 +1052,6 @@ const HousePage = ({ house, data }) => {
                     <FormControlLabel
                       checked
                       disabled
-                      onChange={handleChangeCheckbox}
                       value={
                         item['Стоимость']
                           ? +item['Стоимость'].replace(/[KК]/, '000')
@@ -1040,7 +1070,8 @@ const HousePage = ({ house, data }) => {
                 ) : (
                   <Box className={classes.calculationHeader}>
                     <FormControlLabel
-                      onChange={handleChangeCheckbox}
+                      checked={currentCheckbox >= index ? true : false}
+                      onClick={(event) => handleClickCheckbox(event, index)}
                       value={
                         item['Стоимость']
                           ? +item['Стоимость'].replace(/[KК]/, '000')
