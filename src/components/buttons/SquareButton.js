@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "#D1D1D1",
       },
     },
+    "@media (min-width:1921px)": {
+      width: "3.8vw",
+      height: "3.8vw",
+    },
   },
   buttonLess: {
     position: "relative",
@@ -28,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(-45deg)",
     border: 'solid #4F4F4F',
     borderWidth: '1px 0px 0px 1px',
+    "@media (min-width:1921px)": {
+      width: "1.4vw",
+      height: "1.4vw",
+      left: '15%',
+    },
   },
   buttonGreat: {
     position: "relative",
@@ -37,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(-45deg)",
     border: 'solid #4F4F4F',
     borderWidth: '0 1px 1px 0',
+    "@media (min-width:1921px)": {
+      width: "1.4vw",
+      height: "1.4vw",
+      right: '15%',
+    },
   },
 }));
 

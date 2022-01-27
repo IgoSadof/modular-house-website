@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { customFontsSize } from '../config/modularHouseTheme'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#4F4F4F",
     alignItems: "center",
     height:"50px",
+    "@media (min-width:1921px)": {
+      height: '3.5vw',
+    },
     [theme.breakpoints.down("md")]: {
       padding:"10px",
     },
@@ -19,8 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: "#D1D1D1",
-    fontSize:"14px",
+    fontSize: customFontsSize.h6,
     lineHeight:"14px",
+    "@media (min-width:1921px)": {
+      fontSize: customFontsSize.h6 * customFontsSize.xl,
+    },
   },
 }));
 

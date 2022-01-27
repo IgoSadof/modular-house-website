@@ -11,6 +11,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 // import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import TextField from '@material-ui/core/TextField';
+import { customFontsSize } from '../config/modularHouseTheme'
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -50,9 +51,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     minWidth: '300px',
     '& h3': {
-      fontSize: '20px',
+      fontSize: customFontsSize.h4,
       lineHeight: '1.4',
+      "@media (min-width:1921px)": {
+        fontSize: customFontsSize.h4*customFontsSize.xl,
+      },
     },
+   
     [theme.breakpoints.down('md')]: {
       alignSelf: 'center',
       // padding: '0 10%',
@@ -70,8 +75,12 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
   },
   subtitle: {
-    marginTop: '60px',
     width: '200px',
+    marginTop: '60px',
+    "@media (min-width:1921px)": {
+      width: '13.9vw',
+      marginTop: '4.2vw',
+    },
   },
 
   formFields: {
@@ -79,6 +88,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
+    "@media (min-width:1921px)": {
+      marginTop: '4.2vw',
+    },
     [theme.breakpoints.down('md')]: {
       marginTop: '10px',
     },
@@ -93,6 +105,9 @@ const useStyles = makeStyles((theme) => ({
     bottom: (param) => (param.button ? '0' : null),
     left: (param) => (param.button ? '0' : null),
     marginTop: '100px',
+    "@media (min-width:1921px)": {
+      marginTop: '6.9vw',
+    },
     [theme.breakpoints.down('md')]: {
       marginTop: '40px',
       display: 'flex',
@@ -127,6 +142,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '10px',
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.body1.fontSize,
+    "@media (min-width:1921px)": {
+      fontSize: theme.typography.fontSize*customFontsSize.xl,
+    },
     '&:focus': {
       outline: 'none',
     },
@@ -343,7 +361,7 @@ const Form = ({
                 value={messageText}
                 rows='3'
                 onChange={handleChangeMessage}
-                style={{ resize: 'none', width: '100%' }}
+                style={{ width: '100%' }}
                 className={classes.messageField}
               />
             </label>

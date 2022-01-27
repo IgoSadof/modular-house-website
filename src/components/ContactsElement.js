@@ -61,11 +61,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     gap: '60px',
+    "@media (min-width:1921px)": {
+      gap: '4.2vw'
+    },
   },
   ContactsBoxes: {
     display: 'flex',
     gap: '20px',
     justifyContent: 'space-between',
+    "@media (min-width:1921px)": {
+      gap: '1.4vw'
+    },
     [theme.breakpoints.down('md')]: {
       gap: '20px',
       justifyContent: 'center',
@@ -76,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
   },
   personalBox: {
     width: '225px',
+    "@media (min-width:1921px)": {
+      width: '15.6vw',
+    },
     [theme.breakpoints.down('md')]: {
       width: '150px',
     },
@@ -86,6 +95,9 @@ const useStyles = makeStyles((theme) => ({
   infoBox: {
     display: 'flex',
     gap: '28px',
+    "@media (min-width:1921px)": {
+      gap: '1.9vw',
+    },
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
       alignSelf: (param) => (param.breakpoints.s ? 'null' : 'center'),
@@ -99,6 +111,9 @@ const useStyles = makeStyles((theme) => ({
     gap: '24px',
     '& p': {
       fontSize: '16px',
+      "@media (min-width:1921px)": {
+        fontSize: '32px',
+      },
     },
     [theme.breakpoints.down('md')]: {
       '& p': {
@@ -111,6 +126,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '400',
     textTransform: 'capitalize',
     whiteSpace: 'nowrap',
+    "@media (min-width:1921px)": {
+      marginTop: '2.1vw',
+    },
     [theme.breakpoints.down("md")]: {
       fontSize:"16px",
     },
@@ -119,6 +137,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '12px',
     fontWeight: '300',
     marginTop: '10px',
+    "@media (min-width:1921px)": {
+      fontSize: '24px',
+    },
   },
   ContactsPhone: {
     marginTop: '30px',
@@ -140,7 +161,7 @@ const ContactsElement = ({ header, data }) => {
               {header}
             </Typography>
             <Box className={classes.logoBox}>
-              <Logo color={'#4F4F4F'} />
+              <Logo width={breakpoints.xxl?"4.2vw":60} height={breakpoints.xxl?"6.2vw":90} color={'#4F4F4F'} />
             </Box>
           </Box>
         ) : null}
@@ -228,7 +249,7 @@ const ContactsElement = ({ header, data }) => {
               <Box className={classes.infoBox}>
                 {!header ? (
                   <Box className={classes.logoBox}>
-                    <Logo color={'#4F4F4F'} />
+                    <Logo width={breakpoints.xxl?"4.2vw":60} height={breakpoints.xxl?"6.2vw":90} color={'#4F4F4F'} />
                     {/* <Typography variant="subtitle1">MODULAR HOUSE</Typography> */}
                   </Box>
                 ) : null}
@@ -254,7 +275,7 @@ const ContactsElement = ({ header, data }) => {
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>
-                  <Logo color={'#4F4F4F'} />
+                  <Logo width={breakpoints.xxl?"4.2vw":60} height={breakpoints.xxl?"6.2vw":90}  color={'#4F4F4F'} />
                 </Box>
               ) : null}
 

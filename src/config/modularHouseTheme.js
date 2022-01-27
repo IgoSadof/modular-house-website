@@ -1,7 +1,7 @@
 import { createTheme } from "@material-ui/core/styles";
 import green from "@material-ui/core/colors/green";
 
-const myFontsSize = {
+export const customFontsSize = {
   xl: 2,
   widthMobile: 0.75,
   h1: 56,
@@ -11,6 +11,7 @@ const myFontsSize = {
   h5: 18,
   h6: 14,
   body1: 14,
+  body2: 12,
   subtitle1: 14,
   subtitle2: 14,
   button: 14,
@@ -60,17 +61,17 @@ const modularHouseTheme = createTheme({
     ].join(","),
 
     h1: {
-      fontSize: myFontsSize.h1,
+      fontSize: customFontsSize.h1,
       color: "white",
       lineHeight: "1.1em",
       letterSpacing: "0.02em",
       fontWeight: 700,
       fontStyle: "normal",
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.h1 * myFontsSize.xl,
+        fontSize: customFontsSize.h1 * customFontsSize.xl,
       },
       "@media (max-width:1200px)": {
-        // fontSize: myFontsSize.h1 * myFontsSize.widthMobile,
+        // fontSize: customFontsSize.h1 * customFontsSize.widthMobile,
       },
     },
     h2: {
@@ -82,7 +83,7 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       color: "#4F4F4F",
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.h3 * myFontsSize.xl,
+        fontSize: customFontsSize.h3 * customFontsSize.xl,
       },
       "@media (max-width:600px)": {
         fontSize: 24,
@@ -96,7 +97,7 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       color: "#4F4F4F",
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.h3 * myFontsSize.xl,
+        fontSize: customFontsSize.h3 * customFontsSize.xl,
       },
     },
     h4: {
@@ -108,7 +109,7 @@ const modularHouseTheme = createTheme({
       color: "#333333",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.h4 * myFontsSize.xl,
+        fontSize: customFontsSize.h4 * customFontsSize.xl,
       },
       "@media (max-width:600px)": {
         fontSize: "18px",
@@ -123,7 +124,7 @@ const modularHouseTheme = createTheme({
       textTransform: "uppercase",
       color: "#4F4F4F",
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.h5 * myFontsSize.xl,
+        fontSize: customFontsSize.h5 * customFontsSize.xl,
       },
     },
     h6: {
@@ -134,7 +135,7 @@ const modularHouseTheme = createTheme({
       textTransform: "uppercase",
       color: "#4F4F4F",
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.h6 * myFontsSize.xl,
+        fontSize: customFontsSize.h6 * customFontsSize.xl,
       },
     },
     body1: {
@@ -146,10 +147,10 @@ const modularHouseTheme = createTheme({
       color: "#4F4F4F",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.body1 * myFontsSize.xl,
+        fontSize: customFontsSize.body1 * customFontsSize.xl,
       },
       "@media (max-width:350px)": {
-        fontSize: myFontsSize.body1 * myFontsSize.widthMobile,
+        fontSize: customFontsSize.body1 * customFontsSize.widthMobile,
       },
     },
     body2: {
@@ -160,7 +161,7 @@ const modularHouseTheme = createTheme({
       color: "#7C7C7C",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.body2 * myFontsSize.xl,
+        fontSize: customFontsSize.body2 * customFontsSize.xl,
       },
     },
     subtitle1: {
@@ -172,7 +173,7 @@ const modularHouseTheme = createTheme({
       color: "#4F4F4F",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.subtitle1 * myFontsSize.xl,
+        fontSize: customFontsSize.subtitle1 * customFontsSize.xl,
       },
     },
     subtitle2: {
@@ -183,7 +184,7 @@ const modularHouseTheme = createTheme({
       textTransform: "uppercase",
       color: "#333333",
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.subtitle2 * myFontsSize.xl,
+        fontSize: customFontsSize.subtitle2 * customFontsSize.xl,
       },
     },
     button: {
@@ -195,7 +196,7 @@ const modularHouseTheme = createTheme({
       color: "#333333",
       fontFamily: ["Montserrat", "sans-serif"].join(","),
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.button * myFontsSize.xl,
+        fontSize: customFontsSize.button * customFontsSize.xl,
       },
     },
     caption: {
@@ -206,7 +207,7 @@ const modularHouseTheme = createTheme({
       textTransform: "uppercase",
       color: "#333333",
       "@media (min-width:1921px)": {
-        fontSize: myFontsSize.caption * myFontsSize.xl,
+        fontSize: customFontsSize.caption * customFontsSize.xl,
       },
     },
     srOnly: {},

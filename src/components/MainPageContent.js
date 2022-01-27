@@ -18,6 +18,7 @@ import Quote from './svg/Quote';
 import getImg from '../utils/getImg';
 import TitleWithLine from '../components/TitleWithLine';
 import ContactsBlock from './ContactsBlock';
+import { customFontsSize } from '../config/modularHouseTheme'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
     gap: '60px',
     marginTop: '120px',
     paddingRight: '10vw',
+    "@media (min-width:1921px)": {
+      gap: '4.2vw',
+      marginTop: '8.3vw',
+    },
 
     [theme.breakpoints.down('md')]: {
       marginTop: '100px',
@@ -96,6 +101,9 @@ const useStyles = makeStyles((theme) => ({
     // flexDirection: "column",
     gap: '20px',
     overflow: 'hidden',
+    "@media (min-width:1921px)": {
+      gap: '1.4vw',
+    },
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
@@ -155,15 +163,24 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   name: {
-    fontSize: '14px',
+    fontSize: customFontsSize.h6,
     lineHeight: 1.2,
     fontWeight: 600,
+    "@media (min-width:1921px)": {
+      fontSize: customFontsSize.h6*customFontsSize.xl,
+    },
   },
   place: {
     marginTop: '10px',
+    "@media (min-width:1921px)": {
+      marginTop: '0.7vw',
+    },
   },
   message: {
     marginTop: '20px',
+    "@media (min-width:1921px)": {
+      marginTop: '1.4vw',
+    },
     [theme.breakpoints.down('md')]: {
       height: '150px',
       overflow: 'overlay',
@@ -172,6 +189,9 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: 'flex',
     gap: '12px',
+    "@media (min-width:1921px)": {
+      gap: '0.8vw',
+    },
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
     },
@@ -274,6 +294,10 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '500px',
     maxHeight: '500px',
+    "@media (min-width:1921px)": {
+      height: '34.7vw',
+      maxHeight: '34.7vw',
+    },
 
     [theme.breakpoints.down('md')]: {
       width: '50%',
@@ -301,6 +325,9 @@ const useStyles = makeStyles((theme) => ({
 
   imagesBoxes: {
     width: '360px',
+    "@media (min-width:1921px)": {
+      width: '25vw',
+    },
   },
   reviewDate: {
     display: 'flex',
@@ -432,7 +459,7 @@ const MainPageContent = ({ data }) => {
                             ][22].slice(6)}`}
                           </Typography>
                         </Box>
-                        <Quote />
+                        <Quote width={breakpoints.xxl? "3vw": 54} height={breakpoints.xxl? "3vw": 40} />
                       </Box>
                       <Typography variant='body1' className={classes.message}>
                         {reviews[review][21]}
@@ -522,7 +549,7 @@ const MainPageContent = ({ data }) => {
                           )}`}
                         </Typography>
                       </Box>
-                      <Quote />
+                      <Quote width={breakpoints.xxl? "3vw": 54} height={breakpoints.xxl? "3vw": 40} />
                     </Box>
 
                     <Typography variant='body1' className={classes.message}>

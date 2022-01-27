@@ -114,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LaunchPage = () => {
- const breakpoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
   const [emailText, setEmailText] = React.useState("Ваш Email");
 
   const param = {};
@@ -136,7 +136,7 @@ const LaunchPage = () => {
             ZROBIM<br></br>ARCHITECTS
           </h3>
         </Box>
-        <Logo />
+        <Logo width={breakpoints.xxl?"4.2vw":60} height={breakpoints.xxl?"6.2vw":90} />
       </Box>
       <Box className={classes.main} component="main">
         <Box className={classes.counter}>

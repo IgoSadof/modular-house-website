@@ -137,6 +137,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
     marginLeft: "40px",
     alignItems: "end",
+    "& p": {
+      lineHeight:"1",
+    },
     "& img": { objectFit: "contain !important" },
     [theme.breakpoints.down("md")]: {
       display: "flex",
@@ -169,6 +172,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "50px",
     height: "20px",
+    "@media (min-width:1921px)": {
+      width: "3.5vw",
+      height: "1.4vw",
+    },
   },
 }));
 const HouseSlider = ({ mobile, houseRef, data }) => {

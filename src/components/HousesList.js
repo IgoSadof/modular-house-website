@@ -286,7 +286,7 @@ const useStyles = makeStyles((theme) => ({
 const HousesList = ({ data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
 
-const breakpoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
   const [house, setHouse] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [animation] = useState(true);

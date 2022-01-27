@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: "176px",
     height: "176px",
+    "@media (min-width:1921px)": {
+      width: "12.2vw",
+      height: "12.2vw",
+    },
     [theme.breakpoints.down("md")]: {
 
     },
