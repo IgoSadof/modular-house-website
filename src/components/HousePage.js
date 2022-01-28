@@ -13,12 +13,13 @@ import CalculateTable from '../components/CalculateTable';
 import Panel from '../components/Panel';
 import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
 import Accordions from '../components/Accordion';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import '@google/model-viewer';
 import Model3d from './Model3d';
 import getHousesData from '../utils/getHousesData';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import getImg from '../utils/getImg';
+import FadeAnimation from './animations/FadeAnimation';
+import ImageSVG from './svg/ImageSVG';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -445,16 +446,35 @@ const useStyles = makeStyles((theme) => ({
   calculationPlan: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     height: '95vh',
     width: '50%',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: '100%',
+      height: '50vh',
     },
   },
   calculationPlanImg: {
-    margin: 'auto 0',
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    width: "100%",
+    height:"100%",
+    margin: 'auto',
+    position:"relative",
+    "& img":{
+      objectFit:"contain !important",
+    }
+    
+  },
+  calculationPlanImgInner:{
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    width: "100%",
+    height:"100%",
+    position:"absolute",
+    
   },
   calculation: {
     display: 'flex',
@@ -563,7 +583,6 @@ const HousePage = ({ house, data }) => {
 
   const [roomsImg, setRoomsImg] = useState(baseImg);
   const [roomsImgIndex, setRoomsImgIndex] = useState(0);
-  const [opacity] = useState(true);
   const handleRoomsImgChange = (img, index) => {
     setRoomsImg(img);
     setRoomsImgIndex(index);
@@ -644,12 +663,18 @@ const HousePage = ({ house, data }) => {
 
     const chooseModules = dataHouses[houseNumber].modules.filter(
       (item, index) => {
-        if (index <= curentIndex) {
-          return item;
+        if (event.target.checked) {
+          if (index <= curentIndex) {
+            return item;
+          }
+        } else {
+          if (index < curentIndex) {
+            return item;
+          }
         }
       }
     );
-    console.log(userModuleList);
+    console.log(chooseModules);
 
     let price = 0;
     let mudules = [];
@@ -659,14 +684,16 @@ const HousePage = ({ house, data }) => {
         : 0;
       mudules.push(item['Название модуля']);
     });
-    
+
     setModulePrice(price);
     setUserModuleList(mudules);
-    
+
     if (currentCheckbox === curentIndex) {
       setCurrentCheckbox(curentIndex - 1);
     }
   };
+
+  // console.log(dataHouses[houseNumber]['modules'][currentCheckbox]["План"])
 
   const listItem = getImgsFromDirectory(relativeDirectory).map(
     (item, index) => {
@@ -982,23 +1009,19 @@ const HousePage = ({ house, data }) => {
             />
           </Box>
         </Box>
-        <TransitionGroup className={classes.roomsImgBox}>
-          <CSSTransition
-            key={roomsImgIndex}
-            in={opacity}
-            appear={true}
-            timeout={500}
-            classNames='fade'
-          >
-            {roomsImg ? (
-              <GatsbyImage
-                className={classes.roomImg}
-                image={getImg(data, roomsImg)}
-                alt='img'
-              ></GatsbyImage>
-            ) : null}
-          </CSSTransition>
-        </TransitionGroup>
+        <FadeAnimation
+          index={roomsImgIndex}
+          className={classes.roomsImgBox}
+          timeout={500}
+        >
+          {roomsImg ? (
+            <GatsbyImage
+              className={classes.roomImg}
+              image={getImg(data, roomsImg)}
+              alt='img'
+            ></GatsbyImage>
+          ) : null}
+        </FadeAnimation>
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
@@ -1016,19 +1039,34 @@ const HousePage = ({ house, data }) => {
               Смета
             </Typography>
           )}
-          {dataHouses[houseNumber]['План'] &&
-          !dataHouses[houseNumber]['План'].includes('gif') ? (
-            <GatsbyImage
-              className={classes.calculationPlanImg}
-              image={getImg(
-                data,
-                `${dataHouses[houseNumber]['План'].substr(
-                  dataHouses[houseNumber]['План'].search(/images/)
-                )}`
-              )}
-              alt='img'
-            ></GatsbyImage>
-          ) : null}
+          <Box className={classes.calculationPlanImg}>
+          <FadeAnimation
+            index={currentCheckbox}
+            className={classes.calculationPlanImgInner}
+          >
+            {dataHouses[houseNumber]['modules'][currentCheckbox]['План'] &&
+            !dataHouses[houseNumber]['modules'][currentCheckbox][
+              'План'
+            ].includes('gif') ? (
+              <GatsbyImage
+                className={classes.calculationPlanImg}
+                image={getImg(
+                  data,
+                  `${dataHouses[houseNumber]['modules'][currentCheckbox][
+                    'План'
+                  ].substr(
+                    dataHouses[houseNumber]['modules'][currentCheckbox][
+                      'План'
+                    ].search(/images/)
+                  )}`
+                )}
+                alt='img'
+              ></GatsbyImage>
+            ) : (<ImageSVG/>)}
+          </FadeAnimation>
+
+          </Box>
+          
         </Box>
         <Box className={classes.calculation}>
           {dataHouses[houseNumber].modules.map((item, index) => {
