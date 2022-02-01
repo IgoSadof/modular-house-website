@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListItem: {
     width: "100%",
-    height: "19vh",
+    height: "10vw",
     minHeight: "140px",
     position: "relative",
     cursor: "pointer",
@@ -113,6 +113,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListActiveNumber: {
     top: "15%",
+    color: "#FFFFFF",
     transition: "1s",
     [theme.breakpoints.down("md")]: {
       opacity: "0",
@@ -265,6 +266,9 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescSpec: style.flexColumn,
   houseDescSpecOne: style.flex,
+  "& p": {
+    minWidth: "50px",
+  },
   houseDescMore: { ...style.flex, marginTop: "40px" },
   houseDescPrice: style.flexColumn,
   "& p": {
@@ -524,7 +528,7 @@ const HousesList = ({ data }) => {
                     dataHouses[house].modules,
                     "Площадь общая"
                   )}{" "}
-                  М2
+                  m<sup>2</sup>
                   {/* {houses[house].totalArea} */}
                 </Typography>
               </Box>
@@ -542,7 +546,7 @@ const HousesList = ({ data }) => {
                     dataHouses[house].modules,
                     "Площадь полезная"
                   )}{" "}
-                  М2
+                  m<sup>2</sup>
                 </Typography>
               </Box>
             </Box>

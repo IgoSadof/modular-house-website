@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     minWidth: '300px',
+    "& form": {
+      [theme.breakpoints.down('md')]: {
+        marginTop:"40px",
+      },
+    },
     '& h3': {
       fontSize: customFontsSize.h4,
       lineHeight: '1.4',

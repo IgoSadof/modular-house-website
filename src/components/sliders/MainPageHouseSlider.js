@@ -178,7 +178,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-const HouseSlider = ({ mobile, houseRef, data }) => {
+const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
@@ -316,19 +316,14 @@ const HouseSlider = ({ mobile, houseRef, data }) => {
 
   return (
     <Swiper
-      // slidesPerView={"auto"}
       slidesPerView={"auto"}
       grabCursor={true}
       loop={true}
-      // freeMode={true}
-      spaceBetween="1.6%"
-      // mousewheel={true}
-      // onSlideChange={() => console.log("slide change")}
-      // onSwiper={(swiper) => console.log(swiper)}
+      spaceBetween= "1.6%"
     >
       {listItems}
     </Swiper>
   );
 };
 
-export default HouseSlider;
+export default MainPageHouseSlider;

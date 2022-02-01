@@ -3,7 +3,7 @@ import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import HouseSlider from './sliders/HouseSlider';
+import MainPageHouseSlider from './sliders/MainPageHouseSlider';
 import Accordions from './Accordion';
 import SquareButton from './buttons/SquareButton';
 import ContactsElement from '../components/ContactsElement';
@@ -399,7 +399,7 @@ const MainPageContent = ({ data }) => {
           ) : null} */}
         {/* </Box> */}
         <Box className={classes.sliderBox}>
-          <HouseSlider
+          <MainPageHouseSlider
             houseRef={houseSliderRef}
             mobile={breakpoints.md}
             data={data}
