@@ -394,10 +394,10 @@ abbr {
 }
 
 .MuiFormControl-root{
-  min-height: 64px;
+  min-height: 82px;
 }
 div[class*="MuiFormControl"] {
-  height: 4.4vw;
+  height: 5.7vw;
 }
 
 @media (min-width: 1921px) {
@@ -417,10 +417,6 @@ div[class*="MuiFormControl"] {
 
   [class*="sliderBlock"] span{
     width: 5.5vw;
-  }
-
-  div[class*="MuiFormControl"] {
-    height: 4.4vw;
   }
 
   div[class*="MuiFormControl"] > div {

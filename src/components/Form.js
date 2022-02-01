@@ -131,7 +131,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    marginTop: '40px',
     width: '100%',
   },
   messageLabelBox: {
