@@ -212,6 +212,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "1",
   },
   houseDescTitle: {
+    textTransform:"uppercase",
     fontSize: "48px",
     lineHeight: "1.2",
     "@media (min-width:1920px)": {

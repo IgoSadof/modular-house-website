@@ -108,9 +108,9 @@ const useStyles = makeStyles((theme) => ({
     position: (param) => (param.button ? 'absolute' : 'relative'),
     bottom: (param) => (param.button ? '0' : null),
     left: (param) => (param.button ? '0' : null),
-    marginTop: '100px',
+    marginTop: '40px',
     "@media (min-width:1921px)": {
-      marginTop: '6.9vw',
+      marginTop: '2.8vw',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '40px',
@@ -173,6 +173,11 @@ const useStyles = makeStyles((theme) => ({
     padding: '100px 120px',
     width: '42vw',
     height: '35vw',
+    [theme.breakpoints.down("md")]: {
+      width: '90%',
+      height: '54%',
+      padding: '50px',
+    },
   },
   buttonBox: {
     display: 'inline-block',

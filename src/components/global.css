@@ -394,7 +394,10 @@ abbr {
 }
 
 .MuiFormControl-root{
-  height: 64px;
+  min-height: 64px;
+}
+div[class*="MuiFormControl"] {
+  height: 4.4vw;
 }
 
 @media (min-width: 1921px) {
@@ -428,9 +431,18 @@ abbr {
     font-size: 56px;
   }
 
+  label.MuiInputLabel-formControl {
+    transform: translate(0, 48px) scale(1);
+  }
+
+  label.MuiInputLabel-shrink {
+    transform: translate(0, 1.5px) scale(0.75);
+  }
+
   label[class*="MuiInputLabel"] p{
     font-size: 24px;
   }
+  
   button.MuiTab-root {
     width: 14vw;
   }

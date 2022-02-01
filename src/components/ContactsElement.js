@@ -147,6 +147,9 @@ const useStyles = makeStyles((theme) => ({
   },
   ContactsPhone: {
     fontWeight: '600',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '16px',
+    },
   },
 }));
 

@@ -209,7 +209,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
       <Box className={classes.menuFooter}>
         {inBurger ? (
           <RegularButton variant="outlined" click={clickToOpenForm}>
-            ДАВАЙТЕ СВЯЖЕМСЯ
+            СВЯЗАТЬСЯ
           </RegularButton>
         ) : null}
         <Box className={classes.iconsBox}>
