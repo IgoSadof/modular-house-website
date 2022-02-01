@@ -8,16 +8,20 @@ const useStyles = makeStyles((theme) => ({
     height: "56px",
     minWidth: "10px",
     borderRadius: "0",
-    color: "#4F4F4F",
-    borderColor: "#4F4F4F",
-    // marginLeft:'auto',
+    background: "#4F4F4F",
+    border:"none",
+    color: "#F2F2F2",
+    "& div": {
+      borderColor: "#F2F2F2",
+    },
     boxShadow: "none",
     "&:hover": {
+      filter: 'brightness(1.2)',
       background: "#4F4F4F",
-      color: "#F2F2F2",
       "& div": {
-        borderColor: "#D1D1D1",
+        borderColor: "#F2F2F2",
       },
+    
     },
     "@media (min-width:1921px)": {
       width: "3.8vw",
