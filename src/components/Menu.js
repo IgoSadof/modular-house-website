@@ -157,7 +157,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
       <ul className={classes.navList}>
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/"}>
-            <Typography variant="button">ГЛАВНАЯ</Typography>
+            <Typography variant="button">О НАС</Typography>
           </Link>
         </li>
         <li className={classes.navItem}>
@@ -194,12 +194,12 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
         <li className={classes.navItem}>
           <Link className={classes.Link} to={"/contacts"}>
             {inBurger ? (
-              <Typography variant="button">КАК СВЯЗАТЬСЯ </Typography>
+              <Typography variant="button">ДАВАЙТЕ СВЯЖЕМСЯ </Typography>
             ) : (
               <>
-                <Typography variant="button">КАК</Typography>
+                <Typography variant="button">ДАВАЙТЕ</Typography>
                 <br />
-                <Typography variant="button">СВЯЗАТЬСЯ</Typography>
+                <Typography variant="button"> СВЯЖЕМСЯ</Typography>
               </>
             )}
           </Link>
@@ -209,12 +209,13 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
       <Box className={classes.menuFooter}>
         {inBurger ? (
           <RegularButton variant="outlined" click={clickToOpenForm}>
-            СВЯЗАТЬСЯ
+            ДАВАЙТЕ СВЯЖЕМСЯ
           </RegularButton>
         ) : null}
         <Box className={classes.iconsBox}>
           <a
             target="_blank"
+            rel="noreferrer"
             className={classes.Link}
             href={"https://www.facebook.com/zrobimarchitects/"}
           >
@@ -222,6 +223,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
           </a>
           <a
             target="_blank"
+            rel="noreferrer"
             className={classes.Link}
             href={"https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ"}
           >
@@ -229,6 +231,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
           </a>
           <a
             target="_blank"
+            rel="noreferrer"
             className={classes.Link}
             href={"https://www.instagram.com/by___home/"}
           >
