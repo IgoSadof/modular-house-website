@@ -468,12 +468,14 @@ const useStyles = makeStyles((theme) => ({
     
   },
   calculationPlanImgInner:{
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    width: "100%",
-    height:"100%",
-    position:"absolute",
+    position: 'relative',
+    width: '100%',
+    height: '85vh',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+      order: '1',
+      height: '100vw',
+    },
     
   },
   calculation: {
@@ -1041,7 +1043,8 @@ const HousePage = ({ house, data }) => {
           <Box className={classes.calculationPlanImg}>
           <FadeAnimation
             index={currentCheckbox}
-            className={classes.calculationPlanImgInner}
+            className={classes.roomsImgBox}
+            timeout={1000}
           >
             {dataHouses[houseNumber]['modules'][currentCheckbox]['План'] &&
             !dataHouses[houseNumber]['modules'][currentCheckbox][
