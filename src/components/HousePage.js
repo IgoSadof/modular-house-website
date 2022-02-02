@@ -455,19 +455,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   calculationPlanImg: {
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    width: "100%",
-    height:"100%",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
     margin: 'auto',
-    position:"relative",
-    "& img":{
-      objectFit:"contain !important",
-    }
-    
+    position: 'relative',
+    overflow: 'hidden',
+    '& img': {
+      objectFit: 'contain !important',
+    },
   },
-  calculationPlanImgInner:{
+  calculationPlanImgInner: {
     position: 'relative',
     width: '100%',
     height: '85vh',
@@ -476,7 +476,6 @@ const useStyles = makeStyles((theme) => ({
       order: '1',
       height: '100vw',
     },
-    
   },
   calculation: {
     display: 'flex',
@@ -726,6 +725,24 @@ const HousePage = ({ house, data }) => {
     userModuleList: userModuleList,
     options: userOptions,
   };
+
+  const plans = dataHouses[houseNumber]['modules'].map((item) => {
+    if (item['План']) {
+      return (
+        <GatsbyImage
+          className={classes.calculationPlanImg}
+          image={getImg(
+            data,
+            `${item['План'].substr(item['План'].search(/images/))}`
+          )}
+          alt='img'
+        ></GatsbyImage>
+      );
+    } else{
+      return <ImageSVG/>
+    }
+  });
+  console.log(plans)
 
   return (
     <Box components='main'>
@@ -1041,34 +1058,15 @@ const HousePage = ({ house, data }) => {
             </Typography>
           )}
           <Box className={classes.calculationPlanImg}>
-          <FadeAnimation
-            index={currentCheckbox}
-            className={classes.roomsImgBox}
-            timeout={1000}
-          >
-            {dataHouses[houseNumber]['modules'][currentCheckbox]['План'] &&
-            !dataHouses[houseNumber]['modules'][currentCheckbox][
-              'План'
-            ].includes('gif') ? (
-              <GatsbyImage
-                className={classes.calculationPlanImg}
-                image={getImg(
-                  data,
-                  `${dataHouses[houseNumber]['modules'][currentCheckbox][
-                    'План'
-                  ].substr(
-                    dataHouses[houseNumber]['modules'][currentCheckbox][
-                      'План'
-                    ].search(/images/)
-                  )}`
-                )}
-                alt='img'
-              ></GatsbyImage>
-            ) : (<ImageSVG/>)}
-          </FadeAnimation>
-
+            <FadeAnimation
+              index={currentCheckbox}
+              className={classes.calculationPlanImgInner}
+              timeout={1000}
+            >
+              {plans[currentCheckbox]}
+    
+            </FadeAnimation>
           </Box>
-          
         </Box>
         <Box className={classes.calculation}>
           {dataHouses[houseNumber].modules.map((item, index) => {
