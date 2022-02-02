@@ -540,7 +540,6 @@ const useStyles = makeStyles((theme) => ({
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
-
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
   // console.log(houseNumber)

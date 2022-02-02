@@ -122,9 +122,9 @@ const useStyles = makeStyles((theme) => ({
   houseListImg: {
     position: "absolute",
     left: "10%",
-    top: "8%",
+    top: "15%",
     zIndex: "2",
-    width: "80%",
+    width: "100%",
     
     transition: "0.5s",
     [theme.breakpoints.down("md")]: {
