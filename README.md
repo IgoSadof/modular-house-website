@@ -88,6 +88,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
     - Create a New database:
 
     ```shell
+    DROP DATABASE modularh_db;
     CREATE DATABASE modularh_db;
     USE modularh_db;
     SOURCE c:/modularh_db.sql;
