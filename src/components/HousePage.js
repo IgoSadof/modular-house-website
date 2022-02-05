@@ -23,7 +23,6 @@ import ImageSVG from './svg/ImageSVG';
 import HouseModelPlayer from './HouseModelPlayer';
 import mpduleVideo from '../assets/video/mpduleVideo.mp4';
 
-
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
@@ -259,8 +258,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   model: {
-    display:"flex",
-    alignItems:"center",
+    display: 'flex',
+    alignItems: 'center',
     width: '70%',
     backgroundPosition: 'center',
     backgroundSize: 'contain',
@@ -460,6 +459,12 @@ const useStyles = makeStyles((theme) => ({
       height: '50vh',
     },
   },
+  calculationPlanConteiner:{
+    width:"100%",
+    position:'relative',
+
+  },
+  
   calculationPlanImg: {
     display: 'flex',
     justifyContent: 'center',
@@ -474,7 +479,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   calculationPlanImgInner: {
-    position: 'relative',
+    position: 'absolute',
     width: '100%',
     height: '85vh',
     [theme.breakpoints.down('md')]: {
@@ -744,8 +749,8 @@ const HousePage = ({ house, data }) => {
           alt='img'
         ></GatsbyImage>
       );
-    } else{
-      return <ImageSVG/>
+    } else {
+      return <ImageSVG />;
     }
   });
 
@@ -979,16 +984,16 @@ const HousePage = ({ house, data }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          {breakpoints.md?(    <Model3d
-            srcPath={model3d}
-            srcPathIos={model3d
-              .replace('models3d', 'models3dIos')
-              .replace('glb', 'usdz')}
-          ></Model3d>):(
-            <HouseModelPlayer video={mpduleVideo}/>
-
+          {breakpoints.md ? (
+            <Model3d
+              srcPath={model3d}
+              srcPathIos={model3d
+                .replace('models3d', 'models3dIos')
+                .replace('glb', 'usdz')}
+            ></Model3d>
+          ) : (
+            <HouseModelPlayer video={mpduleVideo} />
           )}
-      
         </Box>
       </Box>
 
@@ -1066,15 +1071,20 @@ const HousePage = ({ house, data }) => {
               Смета
             </Typography>
           )}
-          <Box className={classes.calculationPlanImg}>
-            <FadeAnimation
-              index={currentCheckbox}
-              className={classes.calculationPlanImgInner}
-              timeout={1000}
-            >
-              {plans[currentCheckbox]}
-    
-            </FadeAnimation>
+          <Box className={classes.calculationPlanConteiner}>
+            {plans.map((plan, index) => {
+              if(index <= currentCheckbox){
+                return (
+                  <FadeAnimation
+                    index={currentCheckbox}
+                    className={classes.calculationPlanImgInner}
+                    timeout={1000}
+                  >
+                    {plan}
+                  </FadeAnimation>
+                );
+              }
+            })}
           </Box>
         </Box>
         <Box className={classes.calculation}>
