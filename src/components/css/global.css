@@ -72,10 +72,10 @@ body {
   }
 }
 
-
 .content {
   width: 100%;
 }
+
 .MuiSlider-thumb::after {
   content: "+" !important;
   width: 35px;
@@ -282,13 +282,6 @@ abbr {
   transition: opacity 5000ms;
 }
 
-
-
-
-
-
-
-
 /* enter */
 .houseMove-enter {
   position: absolute;
@@ -445,6 +438,4 @@ div[class*="MuiFormControl"] {
     width: 2vw;
     height:2vw;
   }
-
-  
 }

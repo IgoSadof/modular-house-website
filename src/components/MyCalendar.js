@@ -1,4 +1,3 @@
-import "./css/global.css";
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import unavailableDates from "../constant/unavailableDates";

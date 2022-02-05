@@ -1,4 +1,3 @@
-import '../components/css/global.css';
 import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -1075,13 +1074,15 @@ const HousePage = ({ house, data }) => {
             {plans.map((plan, index) => {
               if(index <= currentCheckbox){
                 return (
+                  
                   <FadeAnimation
-                    index={currentCheckbox}
+                    index={index}
                     className={classes.calculationPlanImgInner}
                     timeout={1000}
                   >
                     {plan}
                   </FadeAnimation>
+           
                 );
               }
             })}

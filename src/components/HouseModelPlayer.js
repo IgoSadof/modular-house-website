@@ -1,4 +1,3 @@
-import './css/global.css';
 import './css/customRange.css';
 import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
