@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './global.css';
+import './css/global.css';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Footer from './Footer';
 import Menu from './Menu';

@@ -1,0 +1,117 @@
+input[type="range"] {
+  display: flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  font-size: 16px;
+  position: relative;
+  line-height: 1;
+  height: 2em;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  margin-top: 0;
+  background-color: #4F4F4F;
+  border-radius: 1em;
+  border: 10px solid #D1D1D1;
+  outline: 1px solid #4F4F4F;
+  cursor: pointer;
+}
+
+
+input[type="range"]::-moz-range-thumb {
+  width: 2em;
+  height: 2em;
+  margin-top: 50px;
+  background-color: #4F4F4F;
+  border-radius: 1em;
+  border: 10px solid #D1D1D1;
+  outline: 1px solid #4F4F4F;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 1.5vw;
+  height: 1.5vw;
+  margin-top: 0;
+  background-color: #4F4F4F;
+  border-radius: 1em;
+  border: 10px solid #D1D1D1;
+  outline: 1px solid #4F4F4F;
+  cursor: pointer;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  /* border-color: #4F4F4F; */
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  /* border-color: #4F4F4F; */
+}
+
+input[type="range"]:hover::-ms-thumb {
+  /* border-color: #4F4F4F; */
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  /* border-color: #4F4F4F; */
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  /* border-color: #4F4F4F; */
+}
+
+input[type="range"]:active::-ms-thumb {
+  /* border-color: #4F4F4F; */
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  cursor: pointer;
+  height: 1em;
+  border-bottom: 1px solid #4F4F4F;
+  background-color: transparent;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  cursor: pointer;
+  height: 1em;
+  border-bottom: 1px solid #4F4F4F;
+  background-color: transparent;
+}
+
+input[type="range"]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+

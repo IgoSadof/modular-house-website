@@ -138,7 +138,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Menu = ({ inBurger, clickToOpenForm }) => {
   const breakpoints = useBreakpoint();
-  console.log(breakpoints.xxl)
   const param = { inBurger };
   const classes = useStyles(param);
 

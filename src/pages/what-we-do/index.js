@@ -1,4 +1,4 @@
-import "../../components/global.css";
+import "../../components/css/global.css";
 import React from "react";
 import HousesList from "../../components/HousesList";
 import Layout from "../../components/Layout";

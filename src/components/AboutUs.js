@@ -1,4 +1,4 @@
-import "../components/global.css";
+import "../components/css/global.css";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FormBlock from "./FormBlock";

@@ -1,4 +1,4 @@
-import './global.css';
+import './css/global.css';
 import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';

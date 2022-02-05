@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding:0;
+}
+html {
+  /* overflow-y: visible; */
+}
+body {
+  margin: 0;
+  font-family: Montserrat, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-moz
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.conteiner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #d1d1d1;
+}
+.loaderConteiner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #d1d1d1;
+
+}
+@media (min-width: 1900px) {
+  .components {
+    padding: 0;
+  }
+}
+.components {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  background-color: #d1d1d1;
+  padding: 0px 11% 100px 11%;
+  overflow: hidden;
+}
+@media (max-width: 1200px) {
+  .components {
+    padding: 0;
+  }
+}
+
+
+.content {
+  width: 100%;
+}
+.MuiSlider-thumb::after {
+  content: "+" !important;
+  width: 35px;
+  height: 35px;
+  border: 1px solid;
+  border-radius: 50%;
+  font-size: 30px;
+  background-color: #d1d1d1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Slider */
+.MuiSlider-root {
+  color: black !important;
+}
+
+.calendar {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: "none";
+  cursor: pointer;
+  border-collapse: collapse;
+}
+@media (min-width: 1900px) {
+  .calendar {
+    width: 50px;
+    height: 50px;
+  }
+}
+.react-calendar {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.react-calendar__navigation {
+  /* display: none !important; */
+}
+.react-calendar__navigation__label {
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  text-align: end;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.react-calendar__navigation__arrow {
+  display: none !important;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  text-decoration: none;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: transparent !important;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #747474 !important;
+}
+abbr {
+  text-decoration: none !important;
+  border-color: black;
+}
+
+.react-calendar__tile--active {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+.react-calendar__tile--now {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+.react-calendar__tile--range {
+  background-color: rgb(255, 255, 255, 0.5);
+  color: black;
+}
+.react-calendar__tile--rangeStart,
+.react-calendar__tile--rangeEnd {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+.react-calendar__tile:hover {
+  background-color: rgb(255, 255, 255, 0.5);
+  color: black;
+}
+.unAnableDate {
+  position: relative;
+  pointer-events: none;
+}
+.unAnableDate::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 300%;
+  height: 1px;
+  background-color: black;
+  transform: rotate(45deg);
+}
+
+.slick-list {
+  /* height: 90vh; */
+}
+
+/* appear - on page load */
+.fade-appear {
+  opacity: 0;
+}
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+/* enter */
+.fade-enter {
+  position: absolute;
+  opacity: 0;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+/* exit */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+.fade-exit-done {
+  opacity: 0;
+}
+
+/* slide enter */
+.slide-enter {
+  opacity: 1;
+  /* transform: translate(100px,100px); */
+  z-index: 1;
+}
+.slide-enter.slide-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: opacity 3000ms linear 1000ms, transform 3000ms ease-in-out 1000ms;
+}
+
+/* slide exit */
+.slide-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.slide-exit.slide-exit-active {
+  opacity: 1;
+  transform: scale(0.4) translate(-800px, -200px);
+  transition: opacity 2500ms linear, transform 2500ms ease-out;
+}
+.slide-exit-done {
+  opacity: 1;
+  transform: scale(0.4) translate(-800px, -200px);
+  transition: opacity 3000ms linear, transform 2500ms ease-out;
+}
+
+/* houseMove */
+
+/* appear - on page load */
+.houseMove-appear {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 500ms linear;
+}
+.houseMove-appear.houseMove-appear-active {
+  opacity: 1;
+  transition: opacity 500ms linear;
+}
+
+/* modelHouseImgMove */
+
+/* appear - on page load */
+.houseMoveMobile-enter {
+  opacity: 0;
+  z-index: 1;
+  transform: scale(1);
+  transition: opacity 500ms linear;
+}
+.houseMoveMobile-enter-active {
+  opacity: 1;
+  transform: scale(1.5);
+  transition: opacity 500ms linear;
+}
+.houseMoveMobile-exit {
+  opacity: 1;
+  transform: scale(2);
+  transition: opacity 500ms linear;
+}
+.houseMoveMobile-exit-active {
+  opacity: 0;
+  transition: opacity 5000ms;
+}
+
+
+
+
+
+
+
+
+/* enter */
+.houseMove-enter {
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+}
+.houseMove-enter.houseMove-enter-active {
+  opacity: 1;
+  transition: opacity 500ms linear;
+}
+
+/* exit */
+.houseMove-exit {
+  opacity: 1;
+}
+.houseMove-exit.houseMove-exit-active {
+  opacity: 0;
+  transition: opacity 500ms linear;
+}
+.houseMove-exit-done {
+  opacity: 0;
+}
+
+.fadeHouse-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.fadeHouse-appear.fadeHouse-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+/* enter */
+.fadeHouse-enter {
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+}
+.fadeHouse-enter.fadeHouse-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+/* exit */
+.fadeHouse-exit {
+  opacity: 1;
+}
+.fadeHouse-exit.fadeHouse-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms linear;
+}
+.fadeHouse-exit-done {
+  opacity: 0;
+}
+
+.MuiFormControl-root{
+  width: 100% !important;
+}
+.MuiFormHelperText-root{
+  position: absolute;
+  bottom: -50%;
+  font-size: 14px !important;
+  text-transform: lowercase !important;
+
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: start;
+}
+
+@media (max-width: 1200px) {
+  .slick-list {
+    height: auto ;
+  }
+  .swiper-slide {
+    height: auto !important;
+  }
+}
+/* Drawer */
+.MuiDrawer-paper{
+  background-color: transparent !important;
+  background: radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.5) 100%) !important;
+  backdrop-filter: blur(10px);
+}
+@media (max-width: 1200px) {
+  .MuiDrawer-paper{
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+}
+
+.MuiFormLabel-asterisk{
+  display: none;
+}
+
+.MuiFormControl-root{
+  min-height: 82px;
+}
+div[class*="MuiFormControl"] {
+  height: 5.7vw;
+}
+
+@media (min-width: 1921px) {
+  div[class*="BlockColumn"] {
+    margin-left: 7vw;
+  }
+
+  div[class*="sectionTitle"] {
+    left: -7vw;
+    gap: 1.4vw;
+    width: 34.7vw;
+  }
+
+  div[class*="sectionTitle"] span {
+    width: 5.5vw;
+  }
+
+  [class*="sliderBlock"] span{
+    width: 5.5vw;
+  }
+
+  div[class*="MuiFormControl"] > div {
+    height: 80px;
+  }
+
+  label[class*="MuiInputLabel"] {
+    font-size: 56px;
+  }
+
+  label.MuiInputLabel-formControl {
+    transform: translate(0, 48px) scale(1);
+  }
+
+  label.MuiInputLabel-shrink {
+    transform: translate(0, 1.5px) scale(0.75);
+  }
+
+  label[class*="MuiInputLabel"] p{
+    font-size: 24px;
+  }
+  
+  button.MuiTab-root {
+    width: 14vw;
+  }
+
+  svg.MuiSvgIcon-root {
+    width: 2vw;
+    height:2vw;
+  }
+
+  
+}

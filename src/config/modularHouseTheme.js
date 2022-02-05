@@ -134,6 +134,7 @@ const modularHouseTheme = createTheme({
       fontStyle: "normal",
       textTransform: "uppercase",
       color: "#4F4F4F",
+      scrollbarWidth: 'none',
       "@media (min-width:1921px)": {
         fontSize: customFontsSize.h6 * customFontsSize.xl,
       },
@@ -145,6 +146,7 @@ const modularHouseTheme = createTheme({
       fontWeight: 500,
       fontStyle: "normal",
       color: "#4F4F4F",
+      scrollbarWidth: 'none',
       fontFamily: ["Montserrat", "sans-serif"].join(","),
       "@media (min-width:1921px)": {
         fontSize: customFontsSize.body1 * customFontsSize.xl,

@@ -1,4 +1,4 @@
-import '../components/global.css';
+import '../components/css/global.css';
 import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -20,6 +20,9 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import getImg from '../utils/getImg';
 import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
+import HouseModelPlayer from './HouseModelPlayer';
+import mpduleVideo from '../assets/video/mpduleVideo.mp4';
+
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -245,6 +248,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     marginRight: 'auto',
     minHeight: '16vh',
+
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
     margin: '10px 0',
     '& h1': {
@@ -255,6 +259,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   model: {
+    display:"flex",
+    alignItems:"center",
     width: '70%',
     backgroundPosition: 'center',
     backgroundSize: 'contain',
@@ -742,7 +748,6 @@ const HousePage = ({ house, data }) => {
       return <ImageSVG/>
     }
   });
-  console.log(plans)
 
   return (
     <Box components='main'>
@@ -974,12 +979,16 @@ const HousePage = ({ house, data }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          <Model3d
+          {breakpoints.md?(    <Model3d
             srcPath={model3d}
             srcPathIos={model3d
               .replace('models3d', 'models3dIos')
               .replace('glb', 'usdz')}
-          ></Model3d>
+          ></Model3d>):(
+            <HouseModelPlayer video={mpduleVideo}/>
+
+          )}
+      
         </Box>
       </Box>
 

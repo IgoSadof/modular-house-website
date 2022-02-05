@@ -1,4 +1,4 @@
-import "../components/global.css";
+import "../components/css/global.css";
 import React, { useRef, useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";

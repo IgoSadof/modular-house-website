@@ -1,5 +1,6 @@
-import './global.css';
-import React, { useState } from 'react';
+import './css/global.css';
+import './css/customRange.css';
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Box from '@material-ui/core/Box';
@@ -13,54 +14,51 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
   content: {
     padding: '50px ',
-    boxSizing: 'border-box',
+    // boxSizing: 'border-box',
     position: 'relative',
     width: '100%',
-    height: '100%',
+    height: '80%',
     [theme.breakpoints.down('md')]: {},
   },
-  elips: {
-    boxSizing: 'border-box',
-    top: '25%',
-    left: '10%',
-    width: '80%',
-    height: '50%',
-    borderRadius: '50%',
-    position: 'absolute',
-    border: '1px solid',
-    zIndex: '1',
+  SliderBox: {
+    display:"flex",
+    alignItems:"center",
+    width: '90%',
+    margin: '3vw auto 0 auto',
   },
-  elipsPoint: {
-    width: '20px',
-    height: '20px',
-    borderRadius: '50%',
-    background: '#4F4F4F',
-    cursor: 'pointer',
-    draggable: 'true',
+  videoBox:{
+    "& video":{
+      objectFit: "cover",
+    }
   },
-  videoBox: {
-    position: 'relative',
-    zIndex: '0',
+  leftArrow:{
+    width:"0.7vw",
+    height: "0.7vw",
+    borderLeft:"1px solid #4F4F4F",
+    borderBottom:"1px solid #4F4F4F",
+    transform: "rotate(45deg) translateY(-0.1vw)",
   },
-  CircleSliderBox: {
-    boxSizing: 'border-box',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    zIndex: '1',
-  },
+  rightArrow:{
+    width:"0.7vw",
+    height: "0.7vw",
+    borderRight:"1px solid #4F4F4F",
+    borderTop:"1px solid #4F4F4F",
+    transform: "rotate(45deg) translateY(-0.1vw)",
+  }
 }));
 
 const HouseModelPlayer = ({ video }) => {
   const breakpoints = useBreakpoint();
-  const [playVideo, setPlayVideo] = useState(false);
-  console.log(video);
-
+  const [rangeValue, setRangeValue] = useState(0.5);
   const param = { breakpoints };
   const classes = useStyles(param);
+
+  const changeRangeValue = (event) => {
+    setRangeValue(event.target.value);
+    playerRef.current.seekTo(event.target.value)
+  };
+  const playerRef = useRef(null)
+  
 
   return (
     <Box className={classes.content}>
@@ -68,36 +66,32 @@ const HouseModelPlayer = ({ video }) => {
         <div className={classes.loaderBox}>
           <CircularProgress />
         </div>
-      ) : null}
-      {/* <div className={classes.fon}></div> */}
-      {!video ? null : (
+      ) : (
         <>
-          <Box className={classes.elips}>
-          <Box className={classes.elipsPoint}></Box>
-          {/* <Box className={classes.CircleSliderBox}>
-            <CircleSlider
-              value={100}
-              size={500}
-              progressColor='transparent'
-              knobRadius='10px'
-              circleColor='#4F4F4F'
-            />
-          </Box> */}
-          </Box>
           <Box className={classes.videoBox}>
             <ReactPlayer
-              height='100%'
+              ref={playerRef}
+              height='50vh'
               width='100%'
               url={video}
-              loop={true}
-              playing={playVideo}
+              fraction="true"
+              played={rangeValue}
+              playing={false}
               progressInterval={10}
               muted={true}
-              onProgress={({ playedSeconds }) => {}}
-              // onReady={() => {
-              //   setPlayVideo(true);
-              // }}
             />
+          </Box>
+          <Box className={classes.SliderBox}>
+            <span className={classes.leftArrow}></span>
+            <input
+              type='range'
+              min='0'
+              max='1'
+              step="0.01"
+              value={rangeValue}
+              onChange={changeRangeValue}
+            />
+            <span className={classes.rightArrow}></span>
           </Box>
         </>
       )}

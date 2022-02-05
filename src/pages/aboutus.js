@@ -1,4 +1,4 @@
-import "../components/global.css";
+import "../components/css/global.css";
 import React from "react";
 import AboutUs from "../components/AboutUs";
 import Layout from "../components/Layout";
