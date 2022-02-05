@@ -1074,14 +1074,16 @@ const HousePage = ({ house, data }) => {
             {plans.map((plan, index) => {
               if(index <= currentCheckbox){
                 return (
-                  
+                  <React.Fragment key={index}>
                   <FadeAnimation
+                    inProp={index <= currentCheckbox}
                     index={index}
                     className={classes.calculationPlanImgInner}
                     timeout={1000}
                   >
                     {plan}
                   </FadeAnimation>
+                  </React.Fragment>
            
                 );
               }
