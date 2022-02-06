@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Block: {
     display: "flex",
-    gap: "60px",
+    gap: "4.2vw",
     marginTop: "100px",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column-reverse",
