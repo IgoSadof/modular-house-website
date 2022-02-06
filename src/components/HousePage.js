@@ -190,10 +190,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     // justifyContent: "space-between",
     gap: '60px',
-    padding: '100px 0 100px 10%',
+    padding: '0 0 100px 10%',
     backgroundColor: '#D1D1D1',
     '@media (min-width:1920px)': {
       gap: '4.2vw',
+      padding: '0 0 3.5vw 10%',
     },
     [theme.breakpoints.down('md')]: {
       padding: '100px 0',
