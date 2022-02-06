@@ -120,12 +120,12 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListImg: {
     position: "absolute",
-    left: "10%",
+
     top: "15%",
     zIndex: "2",
     width: "100%",
-    
     transition: "0.5s",
+    transform: 'scale(1.1)',
     [theme.breakpoints.down("md")]: {
       maxWidth: "150px",
       width: "80%",

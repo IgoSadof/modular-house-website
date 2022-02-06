@@ -12,12 +12,13 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    padding: '50px ',
     // boxSizing: 'border-box',
     position: 'relative',
     width: '100%',
     height: '80%',
-    [theme.breakpoints.down('md')]: {},
+    [theme.breakpoints.down('md')]: {
+      padding: '50px ',
+    },
   },
   SliderBox: {
     display:"flex",

@@ -192,6 +192,9 @@ const useStyles = makeStyles((theme) => ({
     gap: '60px',
     padding: '100px 0 100px 10%',
     backgroundColor: '#D1D1D1',
+    '@media (min-width:1920px)': {
+      gap: '4.2vw',
+    },
     [theme.breakpoints.down('md')]: {
       padding: '100px 0',
       gap: '20px',
