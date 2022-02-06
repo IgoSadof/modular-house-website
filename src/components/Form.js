@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      marginTop: '40px',
+      marginTop: '20px',
     },
   },
   line: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '300px',
     "& form": {
       [theme.breakpoints.down('md')]: {
-        marginTop:"40px",
+        marginTop:"20px",
       },
     },
     '& h3': {
@@ -90,6 +90,9 @@ const useStyles = makeStyles((theme) => ({
       width: '13.9vw',
       marginTop: '4.2vw',
     },
+    [theme.breakpoints.down('md')]: {
+      marginTop: '30px',
+    },
   },
 
   formFields: {
@@ -118,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '2.8vw',
     },
     [theme.breakpoints.down('md')]: {
-      marginTop: '40px',
+      marginTop: (param) => (param.text ? '40px' : '20px'),
       display: 'flex',
       justifyContent: 'space-between',
     },
@@ -216,7 +219,7 @@ const Form = ({
   const [nameText, setNameText] = useState('');
   const [messageText, setMessageText] = useState('');
   const [formProcessing, setFormProcessing] = useState(true);
-  const param = { button, buttonAbs };
+  const param = { button, buttonAbs, text };
   const classes = useStyles(param);
   const formRef = useRef(null);
   const handleClose = () => {
