@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
       width: '100%',
-      padding: '0 20px',
+      paddingLeft: '20px',
       '& $titleBox': {
         right: '-12%',
         position: 'relative',
