@@ -106,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
       gap: "50px",
       marginTop: "auto",
       marginBottom: "auto",
+      alignItems: "flex-start",
     },
     [theme.breakpoints.down(theme.breakpoints.values.s)]: {
       gap: "40px",
