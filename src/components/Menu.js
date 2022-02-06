@@ -98,7 +98,8 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     flexWrap: "wrap",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
+    textAlign:"center",
     gap: "30px",
     [theme.breakpoints.down("md")]: {
       opacity: "1",
