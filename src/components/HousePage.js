@@ -1137,7 +1137,7 @@ const HousePage = ({ house, data }) => {
                       name={item['Название модуля']}
                       labelPlacement='end'
                     />
-                    <Typography variant='h3'>${numberWithSpace(+(item['Стоимость'].replace('К','000')))}</Typography>
+                    <Typography variant='h3'>$ {numberWithSpace(+(item['Стоимость'].replace('К','000')))}</Typography>
                   </Box>
                 )}
 

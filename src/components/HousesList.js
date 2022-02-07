@@ -12,6 +12,7 @@ import getHousesData from "../utils/getHousesData";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { SwiperSlide } from "swiper/react";
 import getImg from "../utils/getImg";
+import numberWithSpace from '../utils/numberWithSpace';
 
 const style = {
   flex: {
@@ -586,12 +587,12 @@ const HousesList = ({ data }) => {
                     Стоимость всех модулей:
                   </Typography>
                   <Typography variant="h5" className={classes.houseSpecPrice}>
-                    {/* {houses[house].price} */}
-                    {dataHouses[house].countArea(
+                    ${" "}
+                    {numberWithSpace(+(dataHouses[house].countArea(
                       dataHouses[house].modules,
                       "Стоимость"
-                    ) ?? 100}{" "}
-                    $
+                    ) ?? 100))}
+                   
                   </Typography>
                 </Box>
                 <Link
