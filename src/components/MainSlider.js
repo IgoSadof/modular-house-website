@@ -198,7 +198,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '5vw',
     display: 'flex',
     height: '20px',
-
+    "& h5":{
+      fontSize:"14px",
+    },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
     },

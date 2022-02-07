@@ -54,14 +54,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    paddingBottom: '224px',
+    paddingBottom: '230px',
+    "$block &":{
+      paddingBottom: '0',
+    },
     [theme.breakpoints.down('md')]: {
       width: '100%',
       marginLeft: '0',
       paddingBottom: '0',
     },
     "@media (min-width:1921px)": {
-      paddingBottom: '15.5vw',
+      paddingBottom: '15.9vw',
     },
   },
 }));
