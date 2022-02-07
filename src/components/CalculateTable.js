@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import numberWithSpace from '../utils/numberWithSpace'
 
 const useStyles = makeStyles((theme) => ({
   conteiner: {
@@ -126,7 +127,7 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
   return (
     <div className={classes.conteiner}>
       <table className={classes.table}>
-        <tbody style={{ borderBottom: '2px solid' }}>
+        <tbody>
           {!breakpoints.md
             ? houseOptions.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
@@ -182,7 +183,7 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
                     className={`${classes.tableCell} ${classes.tableCellLast}`}
                     align='right'
                   >
-                    +${currentOption[item.name].price}
+                    + {currentOption[item.name].price}
                   </td>
                 </tr>
               ))
@@ -252,7 +253,7 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
           Итого
         </Typography>
         <Typography variant='caption' className={classes.textPriceValue}>
-          $ {price}
+          $ {numberWithSpace(price)}
         </Typography>
       </Box>
     </div>

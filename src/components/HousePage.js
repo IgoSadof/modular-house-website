@@ -21,6 +21,7 @@ import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
 import HouseModelPlayer from './HouseModelPlayer';
 import mpduleVideo from '../assets/video/mpduleVideo.mp4';
+import numberWithSpace from '../utils/numberWithSpace'
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -1168,7 +1169,7 @@ const HousePage = ({ house, data }) => {
 
           <Box className={classes.calculationResult}>
             <Typography variant='h6'>Цена</Typography>
-            <Typography variant='caption'>${modulePrice}</Typography>
+            <Typography variant='caption'>$ {numberWithSpace(+modulePrice)}</Typography>
           </Box>
         </Box>
       </Box>
