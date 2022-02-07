@@ -695,7 +695,7 @@ const MainPageContent = ({ data }) => {
         </Box>
       )}
       <Box className={classes.ContactsBox}>
-        <ContactsBlock data={data} title='Контакты' />
+        <ContactsBlock data={data} title='Контакты' paddingBottom />
       </Box>
     </Box>
   );
