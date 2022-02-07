@@ -10,11 +10,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: "40px",
     position: (param) => (param.position ? param.position : 'relative'),
-    top: (param) => (param.position === 'absolute' ? '40px' : '0'),
-    marginTop: (param) => (param.position === 'absolute' ? '0' : '40px'),
     width: '100%',
-    height: '40px',
+    // height: '40px',
     paddingLeft: (param) =>
       param.position === 'absolute' ||
       param.page === 'main' ||

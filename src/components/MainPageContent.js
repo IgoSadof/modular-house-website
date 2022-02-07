@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import MainPageHouseSlider from './sliders/MainPageHouseSlider';
 import Accordions from './Accordion';
 import SquareButton from './buttons/SquareButton';
-import ContactsElement from '../components/ContactsElement';
 import Form from '../components/Form';
 import ReviewsSlider from './sliders/ReviewsSlider';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
@@ -27,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: '120px',
     overflow: 'hidden',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '40px',
+    },
   },
   Block: {
     display: 'flex',

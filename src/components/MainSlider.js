@@ -21,12 +21,11 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100vh',
     backgroundColor: '#D1D1D1',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       padding: '3.5vw 0px 7vw',
     },
 
     [theme.breakpoints.down('md')]: {
-      height: 'auto',
       padding: '0',
     },
   },
@@ -46,16 +45,17 @@ const useStyles = makeStyles((theme) => ({
     top: '0',
     zIndex: '0',
     [theme.breakpoints.down('md')]: {
+      top: '50%',
       right: '0',
       width: '100%',
-      position: 'relative',
       height: (param) => (param.breakpoints.s ? '85vw' : 'null'),
-      top: '60px',
+      transform: ' scale(1.2)',
     },
   },
   fon: {
     position: 'absolute',
-    background: '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)',
+    background:
+      '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)',
     height: '100%',
     width: '100%',
     [theme.breakpoints.down('md')]: {
@@ -110,7 +110,6 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
-      height: (param) => (param.breakpoints.s ? '82vh' : '100%'),
       paddingTop: '0',
     },
   },
@@ -122,7 +121,6 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      marginTop: '80px',
     },
   },
   midleLine: {
@@ -138,8 +136,8 @@ const useStyles = makeStyles((theme) => ({
     height: '55vh',
 
     [theme.breakpoints.down('md')]: {
-      height: '20vh',
-      marginTop: '40px',
+      height: '50%',
+      // marginTop: '40px',
     },
   },
   article: {
@@ -155,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
     // marginTop:"-20%",
     marginLeft: '100px',
     width: '32vw',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       marginLeft: '6.9vw',
       gap: '2.1vw',
     },
@@ -164,14 +162,14 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       marginBottom: 'auto',
-      top: '0',
-      gap: '10px',
+      top: '130px',
+      gap: '20px',
       width: '70%',
       '& h1': {
-        fontSize: '24px',
+        fontSize: (param) => (param.breakpoints.se ? '24px' : '32px'),
       },
       '& p': {
-        height: '20vh',
+        height: '16vh',
         overflow: 'overlay',
       },
     },
@@ -189,8 +187,14 @@ const useStyles = makeStyles((theme) => ({
     gap: '30px',
     position: 'relative',
     marginTop: 'auto',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       gap: '2vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '40px',
+      '& span': {
+        fontSize: '14px',
+      },
     },
   },
   numbers: {
@@ -198,8 +202,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '5vw',
     display: 'flex',
     height: '20px',
-    "& h5":{
-      fontSize:"14px",
+    '& h5': {
+      fontSize: '14px',
     },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
@@ -234,7 +238,7 @@ const useStyles = makeStyles((theme) => ({
       right: '0',
       backgroundColor: '#4F4F4F',
       transform: 'rotate(45deg)',
-      "@media (min-width:1921px)": {
+      '@media (min-width:1921px)': {
         width: '0.6vw',
       },
     },
@@ -249,7 +253,7 @@ const useStyles = makeStyles((theme) => ({
       right: '0',
       backgroundColor: '#4F4F4F',
       transform: 'rotate(315deg)',
-      "@media (min-width:1921px)": {
+      '@media (min-width:1921px)': {
         width: '0.6vw',
       },
     },
@@ -257,7 +261,7 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     width: '75px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       width: '5.2vw',
     },
     [theme.breakpoints.down('md')]: {

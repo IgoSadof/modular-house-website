@@ -17,7 +17,7 @@ import call from '../assets/images/call.png';
 import Typography from '@material-ui/core/Typography';
 import SquareButton from './buttons/SquareButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import favicon from '../assets/images/favicon.ico'
+import favicon from '../assets/images/favicon.ico';
 
 const dataToComponent = (WrappedComponent, currebtData, house) => {
   return <WrappedComponent data={currebtData} house={house} />;
@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
         ? '100%'
         : '100vh',
     [theme.breakpoints.down('md')]: {
-      height: (param) => (param.page === 'houseList' && param.breakpoints.s? '100vh' : '100%'),
+      height: (param) =>
+        param.page === 'houseList' && param.breakpoints.s ? '100vh' : '100%',
     },
   },
 
@@ -94,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '0',
       width: '100%',
       justifyContent: 'space-between',
-      gap: 'initial',
+      gap: "unset",
     },
   },
   buttonBox: {
@@ -242,7 +243,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         <meta name='description' content='Moduls houses for living' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-        <link rel="shortcut icon" href={favicon} type="image/x-icon"></link>
+        <link rel='shortcut icon' href={favicon} type='image/x-icon'></link>
       </Helmet>
       <Box position='relative' className='conteiner'>
         {breakpoints.isLoad ? (
@@ -259,7 +260,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     <Burger
                       click={handleClickConnect}
                       page={page}
-                      position={page !== 'aboutUs' ? 'absolute' : 'relative'}
+                      position={page !== 'aboutUs'? 'absolute' : 'relative'}
                       color={
                         page === 'watch' ||
                         page === 'houseList' ||
@@ -270,9 +271,9 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     />
                   ) : null}
                   <div
-                    role="link"
+                    role='link'
                     aria-label="Form's block"
-                    tabIndex="0"
+                    tabIndex='0'
                     className={classes.ConnectBox}
                     name='form'
                     onClick={toggleDrawer(false)}

@@ -20,18 +20,6 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginLeft: "auto",
   },
-  mainVideoBox: {
-    position: "relative",
-    width: "480px",
-    height: "100%",
-  },
-  fullImg: {
-    position: "absolute",
-    width: "100%",
-    top: 0,
-    left: 0,
-    opacity: (param) => 1 - 0.1 * param.scrol,
-  },
   header: {
     fontSize: "68px",
     fontWeight: "600",
@@ -43,22 +31,6 @@ const useStyles = makeStyles((theme) => ({
       width: "65%",
       fontSize: "24px",
     },
-  },
-  blockTitle: {
-    textTransform: "uppercase",
-    // fontSize: "14px",
-    width: "200px",
-    [theme.breakpoints.down("md")]: {
-      width: "fit-content",
-    },
-  },
-
-  line: {
-    display: "inline-block",
-    width: "80px",
-    height: "1px",
-    backgroundColor: "black",
-    marginTop: "22px",
   },
   Block: {
     display: "flex",
@@ -79,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
       right: "-12%",
       width: "100%",
       marginLeft: "0",
-      // marginLeft: "auto",
     },
   },
   textBox: {
