@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   slide: {
     width: "45vw",
-    height: "44vw",
+    height: "auto",
     [theme.breakpoints.down("md")]: {
       width: "90%",
       height: "auto",
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgBox: {
     width: "100%",
-    height: "60%",
+    height: "28vw",
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     padding: "6%",
-    height:"40%",
+    // height:"17.6vw",
     // "@media (max-width: 1900px)":{
     //   padding: "20px",
     // },
