@@ -876,7 +876,7 @@ const HousePage = ({ house, data }) => {
                 return (
                   <li className={classes.mainBlockItem} key={index}>
                     <Typography variant='subtitle1'>
-                      ${item['Стоимость']} / {item['Срок изготовления']} дней
+                      $ {numberWithSpace(+(item['Стоимость'].replace('К','000'))) } / {item['Срок изготовления']} дней
                     </Typography>
                   </li>
                 );
@@ -1116,7 +1116,7 @@ const HousePage = ({ house, data }) => {
                       }
                       labelPlacement='end'
                     />
-                    <Typography variant='h3'>${item['Стоимость']}</Typography>
+                    <Typography variant='h3'>$ {numberWithSpace(+(item['Стоимость'].replace('К','000')))}</Typography>
                   </Box>
                 ) : (
                   <Box className={classes.calculationHeader}>
@@ -1137,7 +1137,7 @@ const HousePage = ({ house, data }) => {
                       name={item['Название модуля']}
                       labelPlacement='end'
                     />
-                    <Typography variant='h3'>${item['Стоимость']}</Typography>
+                    <Typography variant='h3'>${numberWithSpace(+(item['Стоимость'].replace('К','000')))}</Typography>
                   </Box>
                 )}
 
