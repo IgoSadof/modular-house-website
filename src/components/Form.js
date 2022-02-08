@@ -60,10 +60,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '& h3': {
-      fontSize: customFontsSize.h4,
+      fontSize: customFontsSize.h4.regular,
       lineHeight: '1.4',
       "@media (min-width:1921px)": {
-        fontSize: customFontsSize.h4*customFontsSize.xl,
+        fontSize: customFontsSize.h4.adaptiv,
       },
     },
    

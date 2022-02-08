@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const FadeAnimation = ({ inProp, index, className, children, timeout }) => {
-  console.log(inProp)
 
   return (
     <TransitionGroup className={className?className:null}>

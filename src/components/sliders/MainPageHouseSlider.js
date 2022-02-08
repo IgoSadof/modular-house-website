@@ -31,9 +31,15 @@ const useStyles = makeStyles((theme) => ({
     margin: "0",
   },
   slide: {
-    width: "45vw",
+    width: "645px",
     height: "auto",
-    [theme.breakpoints.down("md")]: {
+    "@media (min-width:1921px)": {
+      width: "33.6vw",
+    },
+    "@media (max-width:768px)": {
+      width: "70vw",
+    },
+    "@media (max-width:600px)": {
       width: "90%",
       height: "auto",
     },
@@ -44,17 +50,25 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   content: {
-    width: "45vw",
+    display:"flex",
+    flexDirection:"column",
+    width: "645px",
     height: "100%",
     border: "1px solid",
     cursor: "pointer",
-    [theme.breakpoints.down("md")]: {
+    "@media (min-width:1921px)": {
+      width: "33.6vw",
+    },
+    "@media (max-width:768px)": {
+      width: "70vw",
+    },
+    "@media (max-width:600px)": {
       width: "100%",
     },
   },
   imgBox: {
     width: "100%",
-    height: "28vw",
+    height: "410px",
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
@@ -62,8 +76,11 @@ const useStyles = makeStyles((theme) => ({
     "&:focus $img": {
       transform: "scale(1.1)",
     },
+    "@media (min-width:1921px)": {
+      height: "21.35vw",
+    },
     [theme.breakpoints.down("md")]: {
-      height: "250px",
+      height: "45vh",
     },
   },
   img: {
@@ -91,8 +108,8 @@ const useStyles = makeStyles((theme) => ({
   name: {
     width: "60%",
     fontSize: "42px",
-     "@media (min-width: 1900px)":{
-      fontSize: "3vw",
+     "@media (min-width: 1921px)":{
+      fontSize: "2.18vw",
     },
     [theme.breakpoints.down("md")]: {
       fontSize: "36px",

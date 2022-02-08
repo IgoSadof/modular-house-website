@@ -164,11 +164,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   name: {
-    fontSize: customFontsSize.h6,
+    fontSize: customFontsSize.h6.regular,
     lineHeight: 1.2,
     fontWeight: 600,
     "@media (min-width:1921px)": {
-      fontSize: customFontsSize.h6*customFontsSize.xl,
+      fontSize: customFontsSize.h6.adaptiv,
     },
   },
   place: {
