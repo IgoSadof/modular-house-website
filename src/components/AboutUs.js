@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.03em",
     textTransform:"uppercase",
     color: "#4F4F4F",
+    '@media (min-width:1921px)': {
+      fontSize: "3.54vw",
+    },
     [theme.breakpoints.down("md")]: {
       width: "65%",
       fontSize: "24px",

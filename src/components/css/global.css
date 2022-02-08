@@ -414,7 +414,7 @@ div[class*="MuiFormControl"] {
   }
 
   label[class*="MuiInputLabel"] {
-    font-size: 56px;
+    font-size: 2.92vw;
   }
 
   label.MuiInputLabel-formControl {
