@@ -588,7 +588,7 @@ const HousesList = ({ data }) => {
                   </Typography>
                   <Typography variant="h5" className={classes.houseSpecPrice}>
                     ${" "}
-                    {numberWithSpace(+(dataHouses[house].countArea(
+                    {numberWithSpace((dataHouses[house].countArea(
                       dataHouses[house].modules,
                       "Стоимость"
                     ) ?? 100))}

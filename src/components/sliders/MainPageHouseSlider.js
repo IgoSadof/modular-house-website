@@ -241,7 +241,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                   >
                     от{" "}
                     ${" "}
-                    {numberWithSpace(+(item.takeFromBaseModule(item.modules, "Стоимость") ??
+                    {numberWithSpace((item.takeFromBaseModule(item.modules, "Стоимость") ??
                       100000))}
                     
                   </Typography>

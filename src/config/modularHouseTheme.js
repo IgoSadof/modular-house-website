@@ -192,14 +192,14 @@ const modularHouseTheme = createTheme({
       },
     },
     caption: {
-      fontSize: customFontsSize.button.regular,
+      fontSize: customFontsSize.caption.regular,
       lineHeight: 1.15,
       fontWeight: 600,
       fontStyle: 'normal',
       textTransform: 'uppercase',
       color: '#333333',
       '@media (min-width:1921px)': {
-        fontSize: customFontsSize.button.adaptiv,
+        fontSize: customFontsSize.caption.adaptiv,
       },
     },
     srOnly: {},
