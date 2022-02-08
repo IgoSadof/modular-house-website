@@ -211,6 +211,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     bottom: "0",
     zIndex: "1",
+    [theme.breakpoints.down("md")]: {
+      padding:"20px 40px"
+    },
   },
   houseDescTitle: {
     textTransform:"uppercase",
