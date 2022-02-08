@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 
 export default function Contacts() {
   return (
-    <Layout pageTitle="ContactsBlock" page='contacts' component = {ContactsPage}>
+    <Layout pageTitle="Contacts us" page='contacts' component = {ContactsPage}>
     </Layout>
   );
 }

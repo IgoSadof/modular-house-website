@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 
 export default function MainPage() {
   return (
-    <Layout pageTitle="Main page" page='main' component={Main}>
+    <Layout pageTitle="About us" page='main' component={Main}>
     </Layout>
   );
 }
