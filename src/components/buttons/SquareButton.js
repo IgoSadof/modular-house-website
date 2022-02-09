@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
     
     },
     "@media (min-width:1921px)": {
-      width: "3.8vw",
-      height: "3.8vw",
+      width: "2.91vw",
+      height: "2.91vw",
     },
   },
   buttonLess: {

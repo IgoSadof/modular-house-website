@@ -351,7 +351,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     gap: '20px',
     left: '14%',
-    bottom: '4%',
+    bottom: '20px',
+    '@media (min-width:1921px)': {
+      bottom: '1.1vw',
+      gap: '1.1vw',
+    },
     [theme.breakpoints.down('md')]: {
       width: '100%',
       justifyContent: 'space-around',
@@ -498,6 +502,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     marginLeft: 'auto',
     width: '30%',
+    '@media (min-width:1921px)': {
+      gap: '2.1vw',
+    },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       width: '100%',
@@ -508,6 +515,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     gap: '20px',
+    '@media (min-width:1921px)': {
+      gap: '1.1vw',
+    },
   },
   calculationHeader: {
     display: 'flex',
