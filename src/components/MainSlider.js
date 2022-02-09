@@ -370,17 +370,16 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 </Typography>
                 {dataSlides[activeNumb].image ? (
                   <Box>
-                    <img
+                      <GatsbyImage
                       className={classes.icon}
-                      image
-                      src={getImg(
+                      image={getImg(
                         data,
                         `${dataSlides[activeNumb].image.substr(
                           dataSlides[activeNumb].image.search(/images/)
                         )}`
-                      ).images.fallback.src}
+                      )}
                       alt='img'
-                    />
+                    ></GatsbyImage>
                   </Box>
                 ) : null}
 
