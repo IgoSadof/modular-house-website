@@ -75,6 +75,12 @@ const useStyles = makeStyles((theme) => ({
   mainImgBox: {
     height: '72vh',
     position: 'relative',
+    [theme.breakpoints.down('md')]: {
+      "@media (orientation: landscape)":{
+        height: '65vh',
+      }
+      
+    },
   },
   mainImg: {
     position: 'relative',
@@ -104,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
   mainDescBox: {
     width: '100%',
     display: 'flex',
-    margin: '0 auto',
+    margin: 'auto',
     gap: '60px',
     // justifyContent: 'space-between',
     padding: '50px 10%',
@@ -117,6 +123,9 @@ const useStyles = makeStyles((theme) => ({
       padding: '10%',
       gap: '50px',
       justifyContent: 'center',
+      "@media (orientation: landscape)":{
+        padding:"1%",
+      }
     },
   },
   mainBlockTitleBox: {
@@ -160,7 +169,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
       gap: '10px',
-      justifyContent: 'space-between',
+      "@media (orientation: landscape)":{
+        justifyContent: 'space-around',
+      }
     },
   },
   mainBlockTitle: {
@@ -438,7 +449,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       order: '1',
-      height: '100vw',
+      height: '50vh',
+      "@media (orientation: landscape)":{
+        height: '100vh',
+      }
     },
   },
   roomImg: {
@@ -450,7 +464,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   BlockCalculation: {
-    // minHeight: '100vh',
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       minHeight: '100%',
@@ -459,20 +472,20 @@ const useStyles = makeStyles((theme) => ({
   calculationPlan: {
     display: 'flex',
     flexDirection: 'column',
-    // justifyContent: 'space-between',
     height: '95vh',
     width: '50%',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       height: '50vh',
+      "@media (orientation: landscape)":{
+        height: '70vw',
+      }
     },
   },
   calculationPlanConteiner:{
     width:"100%",
     position:'relative',
-
   },
-  
   calculationPlanImg: {
     display: 'flex',
     justifyContent: 'center',
@@ -493,7 +506,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       order: '1',
-      height: '100vw',
+      height: '50vh',
+      "@media (orientation: landscape)":{
+        height: '70vw',
+      }
+
     },
   },
   calculation: {
@@ -579,7 +596,6 @@ const HousePage = ({ house, data }) => {
         imagesArr.push(getImage(item.node));
       }
     });
-    // console.log(imagesArr);
     return imagesArr;
   };
 
@@ -739,6 +755,7 @@ const HousePage = ({ house, data }) => {
   all['Название модуля'] = 'Все';
   all.name = '';
   const panelTabs = [all, ...dataHouses[house].modules];
+  console.log(panelTabs)
 
   const getUserOptions = (options) => {
     setUserOptions(options);
@@ -1098,7 +1115,6 @@ const HousePage = ({ house, data }) => {
                     {plan}
                   </FadeAnimation>
                   </React.Fragment>
-           
                 );
               }
             })}

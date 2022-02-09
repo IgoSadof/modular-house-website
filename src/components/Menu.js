@@ -107,6 +107,10 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "auto",
       marginBottom: "auto",
       alignItems: "flex-start",
+      "@media (orientation: landscape)":{
+        flexDirection: "row",
+      }
+
     },
     [theme.breakpoints.down(theme.breakpoints.values.s)]: {
       gap: "40px",
@@ -134,6 +138,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     [theme.breakpoints.down("md")]: {
       justifyContent: "space-between",
+      "@media (orientation: landscape)":{
+        marginBottom: "40px",
+        justifyContent:"center",
+        "& button":{
+          display:"none"
+        }
+      }
     },
   },
 }));
