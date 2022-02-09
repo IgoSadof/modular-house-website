@@ -329,7 +329,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                     <Typography variant='h6' component='p'>
                                       Позвонить
                                     </Typography>
-                                    <a href='tel:+375293650669'>
+                                    <a href='tel:+375447702236'>
                                       <img
                                         className={classes.call}
                                         src={call}

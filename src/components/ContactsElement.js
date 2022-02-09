@@ -254,7 +254,7 @@ const ContactsElement = ({ header, data }) => {
                 variant='h4'
                 component='p'
               >
-                +375 44 1234567
+                +375 44 7702236
               </Typography>
             </Box>
             {!breakpoints.md ? (

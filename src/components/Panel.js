@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     right: '0',
     bottom: '0',
+    minWidth:'50.8vw',
     height: '76px',
     paddingLeft: '50px',
     backgroundColor: '#D1D1D1',

@@ -21,7 +21,7 @@ import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
 import HouseModelPlayer from './HouseModelPlayer';
 import mpduleVideo from '../assets/video/mpduleVideo.mp4';
-import numberWithSpace from '../utils/numberWithSpace'
+import numberWithSpace from '../utils/numberWithSpace';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -76,10 +76,9 @@ const useStyles = makeStyles((theme) => ({
     height: '72vh',
     position: 'relative',
     [theme.breakpoints.down('md')]: {
-      "@media (orientation: landscape)":{
+      '@media (orientation: landscape)': {
         height: '65vh',
-      }
-      
+      },
     },
   },
   mainImg: {
@@ -123,9 +122,9 @@ const useStyles = makeStyles((theme) => ({
       padding: '10%',
       gap: '50px',
       justifyContent: 'center',
-      "@media (orientation: landscape)":{
-        padding:"1%",
-      }
+      '@media (orientation: landscape)': {
+        padding: '1%',
+      },
     },
   },
   mainBlockTitleBox: {
@@ -169,9 +168,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
       gap: '10px',
-      "@media (orientation: landscape)":{
+      '@media (orientation: landscape)': {
         justifyContent: 'space-around',
-      }
+      },
     },
   },
   mainBlockTitle: {
@@ -443,16 +442,18 @@ const useStyles = makeStyles((theme) => ({
   },
   roomsImgBox: {
     position: 'relative',
-    width: '100%',
+    width: '40.8vw',
     height: '85vh',
-    marginLeft: '20px',
+    marginLeft: 'auto',
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       order: '1',
       height: '50vh',
-      "@media (orientation: landscape)":{
+      '@media (orientation: landscape)': {
         height: '100vh',
-      }
+        width: '100%',
+        marginLeft: '20px',
+      },
     },
   },
   roomImg: {
@@ -477,14 +478,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '100%',
       height: '50vh',
-      "@media (orientation: landscape)":{
+      '@media (orientation: landscape)': {
         height: '70vw',
-      }
+      },
     },
   },
-  calculationPlanConteiner:{
-    width:"100%",
-    position:'relative',
+  calculationPlanConteiner: {
+    width: '100%',
+    position: 'relative',
   },
   calculationPlanImg: {
     display: 'flex',
@@ -507,10 +508,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
       order: '1',
       height: '50vh',
-      "@media (orientation: landscape)":{
+      '@media (orientation: landscape)': {
         height: '70vw',
-      }
-
+      },
     },
   },
   calculation: {
@@ -584,15 +584,14 @@ const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
-  // console.log(houseNumber)
-  const baseFolder = `houses/${dataHouses[house]['Код'].replace(' ', '')}/`;
-
+  const baseFolder = `houses/${dataHouses[house]['Код'].replace(' ', '')}/модули`;
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
+
   const getImgsFromDirectory = (directory) => {
-    let regExp = new RegExp(`^${directory}/?[a-zA-Z0-9_/-]*`);
+    let regExp = new RegExp(`^${directory}`);
     let imagesArr = [];
     data.allFile.edges.forEach((item) => {
-      if (!!!item.node.relativeDirectory.search(regExp)) {
+      if (!!(item.node.relativeDirectory.match(regExp))) {
         imagesArr.push(getImage(item.node));
       }
     });
@@ -608,8 +607,6 @@ const HousePage = ({ house, data }) => {
   const [modulePrice, setModulePrice] = useState(baseModulePrice);
   const [userModuleList, setUserModuleList] = useState([baseModule]);
   const [userOptions, setUserOptions] = useState({});
-  // console.log(userModuleList);
-  // console.log(userOptions)
 
   const baseImg = dataHouses[houseNumber].modules[0]?.rooms[0]
     ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение'].substr(
@@ -693,7 +690,7 @@ const HousePage = ({ house, data }) => {
     if (value === '') {
       setRelativeDirectory(baseFolder);
     } else {
-      setRelativeDirectory(baseFolder + '/модули/' + value);
+      setRelativeDirectory(baseFolder + '/' + value);
     }
   };
 
@@ -735,28 +732,29 @@ const HousePage = ({ house, data }) => {
 
   // console.log(dataHouses[houseNumber]['modules'][currentCheckbox]["План"])
 
-  const listItem = getImgsFromDirectory(relativeDirectory).map(
-    (item, index) => {
-      return (
-        <li className={classes.mainImgItem} key={index}>
-          {item ? (
-            <GatsbyImage
-              className={classes.mainImgSlider}
-              image={item}
-              alt='img'
-            ></GatsbyImage>
-          ) : null}
-        </li>
-      );
-    }
-  );
+  const images = getImgsFromDirectory(relativeDirectory).map((item, index) => {
+    return (
+      <li className={classes.mainImgItem} key={index}>
+        {item ? (
+          <GatsbyImage
+            className={classes.mainImgSlider}
+            image={item}
+            alt='img'
+          ></GatsbyImage>
+        ) : null}
+      </li>
+    );
+  });
 
   let all = {};
   all['Название модуля'] = 'Все';
   all.name = '';
-  const panelTabs = [all, ...dataHouses[house].modules];
-  console.log(panelTabs)
 
+  const modulesWithImages = dataHouses[house].modules.filter((item, index) => getImgsFromDirectory(`${baseFolder}/модуль${index+1}`).length);
+
+  const panelTabs = [
+    all,...modulesWithImages
+  ];
   const getUserOptions = (options) => {
     setUserOptions(options);
   };
@@ -903,7 +901,8 @@ const HousePage = ({ house, data }) => {
                 return (
                   <li className={classes.mainBlockItem} key={index}>
                     <Typography variant='subtitle1'>
-                      $ {numberWithSpace((item['Стоимость'])) } / {item['Срок изготовления']} дней
+                      $ {numberWithSpace(item['Стоимость'])} /{' '}
+                      {item['Срок изготовления']} дней
                     </Typography>
                   </li>
                 );
@@ -1029,7 +1028,7 @@ const HousePage = ({ house, data }) => {
 
       <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
         <Box className={classes.secondImgBox}>
-          <HouseFotosSlider myRef={myRef} listItem={listItem} />
+          <HouseFotosSlider myRef={myRef} listItem={images} />
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
             <SquareButton variant={'contained'} click={handleClickLeft} less />
@@ -1103,17 +1102,17 @@ const HousePage = ({ house, data }) => {
           )}
           <Box className={classes.calculationPlanConteiner}>
             {plans.map((plan, index) => {
-              if(index <= currentCheckbox){
+              if (index <= currentCheckbox) {
                 return (
                   <React.Fragment key={index}>
-                  <FadeAnimation
-                    inProp={index <= currentCheckbox}
-                    index={index}
-                    className={classes.calculationPlanImgInner}
-                    timeout={1000}
-                  >
-                    {plan}
-                  </FadeAnimation>
+                    <FadeAnimation
+                      inProp={index <= currentCheckbox}
+                      index={index}
+                      className={classes.calculationPlanImgInner}
+                      timeout={1000}
+                    >
+                      {plan}
+                    </FadeAnimation>
                   </React.Fragment>
                 );
               }
@@ -1142,7 +1141,9 @@ const HousePage = ({ house, data }) => {
                       }
                       labelPlacement='end'
                     />
-                    <Typography variant='h3'>$ {numberWithSpace((item['Стоимость']))}</Typography>
+                    <Typography variant='h3'>
+                      $ {numberWithSpace(item['Стоимость'])}
+                    </Typography>
                   </Box>
                 ) : (
                   <Box className={classes.calculationHeader}>
@@ -1163,7 +1164,9 @@ const HousePage = ({ house, data }) => {
                       name={item['Название модуля']}
                       labelPlacement='end'
                     />
-                    <Typography variant='h3'>$ {numberWithSpace((item['Стоимость']))}</Typography>
+                    <Typography variant='h3'>
+                      $ {numberWithSpace(item['Стоимость'])}
+                    </Typography>
                   </Box>
                 )}
 
@@ -1195,7 +1198,9 @@ const HousePage = ({ house, data }) => {
 
           <Box className={classes.calculationResult}>
             <Typography variant='h6'>Цена</Typography>
-            <Typography variant='caption'>$ {numberWithSpace(modulePrice)}</Typography>
+            <Typography variant='caption'>
+              $ {numberWithSpace(modulePrice)}
+            </Typography>
           </Box>
         </Box>
       </Box>
