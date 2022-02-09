@@ -250,7 +250,7 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
       <Box className={classes.tableResult}>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
         <Typography variant='h6' component='p' className={classes.textPrice}>
-          Итого
+          Цена
         </Typography>
         <Typography variant='caption' className={classes.textPriceValue}>
           $ {numberWithSpace(price)}

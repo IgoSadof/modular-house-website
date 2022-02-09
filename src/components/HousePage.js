@@ -221,11 +221,15 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '28vw',
     marginLeft: '100px',
-    flexShrink: '0',
+    flexGrow: '1',
     // height: (param) => `${param.heightOneLine * param.modulesCounts}vh`,
     display: 'flex',
     minHeight: (param) => `${param.heightModuleList}vh`,
     gap: '40px',
+    '@media (min-width:1920px)': {
+      marginLeft: '4.2vw',
+      gap: '2.1vw',
+    },
     [theme.breakpoints.down('md')]: {
       padding: '0 9%',
       marginLeft: '0',
@@ -274,8 +278,8 @@ const useStyles = makeStyles((theme) => ({
   model: {
     display: 'flex',
     alignItems: 'center',
-    width: '70%',
     backgroundPosition: 'center',
+    width: '50.8vw',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('md')]: {
