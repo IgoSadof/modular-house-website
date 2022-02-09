@@ -449,9 +449,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
       order: '1',
       height: '50vh',
+      width: '100%',
       '@media (orientation: landscape)': {
         height: '100vh',
-        width: '100%',
         marginLeft: '20px',
       },
     },

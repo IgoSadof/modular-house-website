@@ -10,13 +10,18 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     right: '0',
     bottom: '0',
-    minWidth:'50.8vw',
+    minWidth: '50.8vw',
     height: '76px',
     paddingLeft: '50px',
     backgroundColor: '#D1D1D1',
     '@media (min-width:1921px)': {
       height: '3.96vw',
       paddingLeft: '2.6vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '100vw',
+      paddingLeft: '20px',
+      position: 'relative',
     },
   },
   tabs: {
@@ -28,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
     },
     '&>div': {
       boxSizing: 'border-box',
-      overflow:"visible !important",
+      overflow: 'visible !important',
     },
     '&>div>div': {
       height: '100%',
-      overflow:"visible",
+      overflow: 'visible',
     },
     '&>div>span': {
-      bottom:"-4%"
+      bottom: '-4%',
     },
   },
   tab: {
