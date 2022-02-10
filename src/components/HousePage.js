@@ -588,14 +588,17 @@ const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
-  const baseFolder = `houses/${dataHouses[house]['Код'].replace(' ', '')}/модули`;
+  const baseFolder = `houses/${dataHouses[house]['Код'].replace(
+    ' ',
+    ''
+  )}/модули`;
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
 
   const getImgsFromDirectory = (directory) => {
     let regExp = new RegExp(`^${directory}`);
     let imagesArr = [];
     data.allFile.edges.forEach((item) => {
-      if (!!(item.node.relativeDirectory.match(regExp))) {
+      if (!!item.node.relativeDirectory.match(regExp)) {
         imagesArr.push(getImage(item.node));
       }
     });
@@ -653,6 +656,7 @@ const HousePage = ({ house, data }) => {
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
+  
   const handlePlusClick = (e) => {
     if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
       setPilldistance((state) => state + pillStep);
@@ -715,7 +719,6 @@ const HousePage = ({ house, data }) => {
         }
       }
     );
-    console.log(chooseModules);
 
     let price = 0;
     let mudules = [];
@@ -734,31 +737,32 @@ const HousePage = ({ house, data }) => {
     }
   };
 
-  // console.log(dataHouses[houseNumber]['modules'][currentCheckbox]["План"])
-
-  const images = getImgsFromDirectory(relativeDirectory).map((item, index) => {
-    return (
-      <li className={classes.mainImgItem} key={index}>
-        {item ? (
-          <GatsbyImage
-            className={classes.mainImgSlider}
-            image={item}
-            alt='img'
-          ></GatsbyImage>
-        ) : null}
-      </li>
-    );
-  });
+  const images = useMemo(() => {
+     return getImgsFromDirectory(relativeDirectory).map((item, index) => {
+      return (
+        <li className={classes.mainImgItem} key={index}>
+          {item ? (
+            <GatsbyImage
+              className={classes.mainImgSlider}
+              image={item}
+              alt='img'
+            ></GatsbyImage>
+          ) : null}
+        </li>
+      );
+    });
+  },[relativeDirectory]);
 
   let all = {};
   all['Название модуля'] = 'Все';
   all.name = '';
 
-  const modulesWithImages = dataHouses[house].modules.filter((item, index) => getImgsFromDirectory(`${baseFolder}/модуль${index+1}`).length);
+  const modulesWithImages = dataHouses[house].modules.filter(
+    (item, index) =>
+      getImgsFromDirectory(`${baseFolder}/модуль${index + 1}`).length
+  );
 
-  const panelTabs = [
-    all,...modulesWithImages
-  ];
+  const panelTabs = [all, ...modulesWithImages];
   const getUserOptions = (options) => {
     setUserOptions(options);
   };
@@ -769,22 +773,24 @@ const HousePage = ({ house, data }) => {
     options: userOptions,
   };
 
-  const plans = dataHouses[houseNumber]['modules'].map((item) => {
-    if (item['План']) {
-      return (
-        <GatsbyImage
-          className={classes.calculationPlanImg}
-          image={getImg(
-            data,
-            `${item['План'].substr(item['План'].search(/images/))}`
-          )}
-          alt='img'
-        ></GatsbyImage>
-      );
-    } else {
-      return <ImageSVG />;
-    }
-  });
+  const plans = useMemo(() => {
+    return dataHouses[houseNumber]['modules'].map((item) => {
+      if (item['План']) {
+        return (
+          <GatsbyImage
+            className={classes.calculationPlanImg}
+            image={getImg(
+              data,
+              `${item['План'].substr(item['План'].search(/images/))}`
+            )}
+            alt='img'
+          ></GatsbyImage>
+        );
+      } else {
+        return <ImageSVG />;
+      }
+    });
+  },[houseNumber]);
 
   return (
     <Box components='main'>
