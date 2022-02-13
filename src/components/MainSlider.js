@@ -8,8 +8,11 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import getMainPage from '../utils/getMainPage';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import getImg from '../utils/getImg';
+import Title0 from '../assets/images/icons/title0.svg';
+import Title1 from '../assets/images/icons/title1.svg';
+import Title2 from '../assets/images/icons/title2.svg';
+import Title3 from '../assets/images/icons/title3.svg';
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -368,20 +371,11 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 >
                   {dataSlides[activeNumb].title.toUpperCase()}
                 </Typography>
-                {dataSlides[activeNumb].image ? (
-                  <Box>
-                      <GatsbyImage
-                      className={classes.icon}
-                      image={getImg(
-                        data,
-                        `${dataSlides[activeNumb].image.substr(
-                          dataSlides[activeNumb].image.search(/images/)
-                        )}`
-                      )}
-                      alt='img'
-                    ></GatsbyImage>
+               
+                  <Box className={classes.icon}>
+                  {activeNumb===0? <Title0/>: activeNumb===1?<Title1/>:activeNumb===2? <Title2/>:activeNumb===3?<Title3/>:null}
                   </Box>
-                ) : null}
+            
 
                 <Typography
                   className={classes.text}

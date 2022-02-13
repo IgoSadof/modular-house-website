@@ -2,9 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Logo from "./svg/Logo";
 
-import facebook from "../assets/images/icons/facebook.svg";
-import youtube from "../assets/images/icons/youtube.svg";
-import instagram from "../assets/images/icons/instagram.svg";
+import Facebook from "../assets/images/icons/facebook.svg";
+import Youtube from "../assets/images/icons/youtube.svg";
+import Instagram from "../assets/images/icons/instagram.svg";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { Link } from "gatsby";
@@ -231,7 +231,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             className={classes.Link}
             href={"https://www.facebook.com/zrobimarchitects/"}
           >
-            <img className={classes.icon} src={facebook} alt="icons"></img>
+            <Facebook/>
           </a>
           <a
             target="_blank"
@@ -239,7 +239,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             className={classes.Link}
             href={"https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ"}
           >
-            <img className={classes.icon} src={youtube} alt="icons"></img>
+            <Youtube/>
           </a>
           <a
             target="_blank"
@@ -247,7 +247,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             className={classes.Link}
             href={"https://www.instagram.com/by___home/"}
           >
-            <img className={classes.icon} src={instagram} alt="icons"></img>
+            <Instagram/>
           </a>
         </Box>
       </Box>
