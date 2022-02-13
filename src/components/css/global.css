@@ -392,17 +392,19 @@ div[class*="MuiFormControl"] {
 
 @media (min-width: 1921px) {
   div[class*="BlockColumn"] {
-    margin-left: 7vw;
+    margin-left: 5.2vw;
+    flex-shrink: 0;
   }
 
   div[class*="sectionTitle"] {
-    left: -7vw;
+    left: -5.2vw;
     gap: 1.4vw;
     width: 34.7vw;
   }
 
   div[class*="sectionTitle"] span {
-    width: 5.5vw;
+    width: 5.2vw;
+    flex-shrink: 0;
   }
 
   [class*="sliderBlock"] span{

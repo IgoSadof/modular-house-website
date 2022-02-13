@@ -221,12 +221,11 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '28vw',
     marginLeft: '100px',
-    flexGrow: '1',
     // height: (param) => `${param.heightOneLine * param.modulesCounts}vh`,
     display: 'flex',
     minHeight: (param) => `${param.heightModuleList}vh`,
     gap: '40px',
-    '@media (min-width:1920px)': {
+    '@media (min-width:1921px)': {
       marginLeft: '4.2vw',
       gap: '2.1vw',
     },
@@ -279,7 +278,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     backgroundPosition: 'center',
-    width: '50.8vw',
+    width: '56vw',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('md')]: {
@@ -409,8 +408,8 @@ const useStyles = makeStyles((theme) => ({
     height: '1px',
     backgroundColor: 'black',
     marginTop: '22px',
-    '@media (min-width:1920px)': {
-      width: '5.5vw',
+    '@media (min-width:1921px)': {
+      width: '5.2vw',
       marginTop: '1.5vw',
     },
   },
@@ -446,7 +445,7 @@ const useStyles = makeStyles((theme) => ({
   },
   roomsImgBox: {
     position: 'relative',
-    width: '40.8vw',
+    width: '44vw',
     height: '85vh',
     marginLeft: 'auto',
     [theme.breakpoints.down('md')]: {

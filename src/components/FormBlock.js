@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "60px",
     height:"100vh",
-    "@media (min-width:1920px)": {
+    "@media (min-width:1921px)": {
       gap: "4.2vw",
     },
     [theme.breakpoints.down("md")]: {

@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import numberWithSpace from '../utils/numberWithSpace'
+import numberWithSpace from '../utils/numberWithSpace';
 
 const useStyles = makeStyles((theme) => ({
   conteiner: {
@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'start',
     alignItems: 'center',
     flexGrow: 1,
-    marginLeft: '75px',
-    "@media (min-width:1920px)": {
-      marginLeft: '5.5vw',
+    marginLeft: '100px',
+    '@media (min-width:1921px)': {
+      marginLeft: '5.2vw',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -33,13 +33,12 @@ const useStyles = makeStyles((theme) => ({
     borderCollapse: 'collapse',
     padding: '0 20px',
     marginTop: (param) => (param.houseNumber === 0 ? '0' : '-1px'),
-    
   },
   tableRow: {
     height: '50px',
     borderTop: '1px solid',
     borderBottom: '1px solid',
-    "@media (min-width:1920px)": {
+    '@media (min-width:1920px)': {
       height: '3.5vw',
     },
   },
@@ -54,17 +53,32 @@ const useStyles = makeStyles((theme) => ({
   },
   tableCellLast: {
     paddingRight: '40px',
-    fontSize:"14px",
-    "@media (min-width:1920px)": {
-      fontSize:"28px"
+    fontSize: '14px',
+    '@media (min-width:1920px)': {
+      fontSize: '28px',
     },
   },
+  lastRow:{
+    display: 'flex',
+    width: '100%',
+    gap:'60px',
+    borderBottom: '1px solid',
+    '@media (min-width:1921px)': {
+      gap:'4.2vw',
+    },
+  },
+  downloadArea:{
+    display: 'flex',
+    width: '28vw',
+    flexShrink: '0',
+  },
+
   tableResult: {
     display: 'flex',
     width: '100%',
-    padding: '40px',
+    padding: '40px 40px 40px 0',
     justifyContent: 'space-between',
-    borderBottom: '1px solid',
+ 
   },
   textPrice: {
     display: 'flex',
@@ -82,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
+const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
   const breakpoints = useBreakpoint();
   const options = {};
   houseOptions.forEach((item) => {
@@ -91,19 +105,23 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
       price: item.variants[0].price,
     };
   });
-  
+
   const [currentOption, setCheckboxesCheck] = useState(options);
   const [price, setPrice] = useState(
     Object.keys(currentOption).length === 0
       ? '0'
       : Object.values(currentOption).reduce(
-          (accumulator, currentValue) => +accumulator + +(currentValue.price),0
+          (accumulator, currentValue) => +accumulator + +currentValue.price,
+          0
         )
   );
   const handleChangeCheckbox = (event) => {
     setCheckboxesCheck({
       ...currentOption,
-      [event.target.name]: {name:event.target.name,price:event.target.value},
+      [event.target.name]: {
+        name: event.target.name,
+        price: event.target.value,
+      },
     });
   };
   const param = { breakpoints, houseNumber };
@@ -114,14 +132,14 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
       Object.keys(currentOption).length === 0
         ? 0
         : Object.values(currentOption).reduce(
-            (accumulator, currentValue) => +accumulator + +currentValue.price,0
+            (accumulator, currentValue) => +accumulator + +currentValue.price,
+            0
           );
     setPrice(sum);
   }, [currentOption]);
 
   useEffect(() => {
-    getOptions(currentOption)
-   
+    getOptions(currentOption);
   }, [currentOption]);
 
   return (
@@ -143,7 +161,8 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name].price === item.variants[0].price
+                        currentOption[item.name].price ===
+                        item.variants[0].price
                           ? true
                           : false
                       }
@@ -163,7 +182,8 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name].price === item.variants[1].price
+                        currentOption[item.name].price ===
+                        item.variants[1].price
                           ? true
                           : false
                       }
@@ -207,7 +227,8 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
                       <FormControlLabel
                         name={item.name}
                         checked={
-                          currentOption[item.name].price === item.variants[0].price
+                          currentOption[item.name].price ===
+                          item.variants[0].price
                             ? true
                             : false
                         }
@@ -226,7 +247,8 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
                         className={classes.secondRadio}
                         name={item.name}
                         checked={
-                          currentOption[item.name].price === item.variants[1].price
+                          currentOption[item.name].price ===
+                          item.variants[1].price
                             ? true
                             : false
                         }
@@ -247,14 +269,17 @@ const CalculateTable = ({ houseOptions, houseNumber,getOptions }) => {
         </tbody>
       </table>
 
-      <Box className={classes.tableResult}>
+      <Box className={classes.lastRow}>
+        <Box className={classes.downloadArea}></Box>
+        <Box className={classes.tableResult}>
+          <Typography variant='h6' component='p' className={classes.textPrice}>
+            Цена
+          </Typography>
+          <Typography variant='caption' className={classes.textPriceValue}>
+            $ {numberWithSpace(price)}
+          </Typography>
+        </Box>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
-        <Typography variant='h6' component='p' className={classes.textPrice}>
-          Цена
-        </Typography>
-        <Typography variant='caption' className={classes.textPriceValue}>
-          $ {numberWithSpace(price)}
-        </Typography>
       </Box>
     </div>
   );

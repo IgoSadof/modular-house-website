@@ -101,6 +101,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     textAlign:"center",
     gap: "30px",
+    "@media (min-width:1921px)": {
+      gap: "2vw",
+    },
     [theme.breakpoints.down("md")]: {
       opacity: "1",
       gap: "50px",
