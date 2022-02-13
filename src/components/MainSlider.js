@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.down('md')]: {
+      '@media (min-width:600px)': {
+        height: '100%',
+      },
       padding: '0',
     },
   },
@@ -48,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
     top: '0',
     zIndex: '0',
     [theme.breakpoints.down('md')]: {
+      '@media (min-width:600px)': {
+        marginTop: '25vw',
+        position: 'static',
+      },
       top: '50%',
       right: '0',
       width: '100%',
@@ -194,6 +201,9 @@ const useStyles = makeStyles((theme) => ({
       gap: '2vw',
     },
     [theme.breakpoints.down('md')]: {
+      '@media (min-width:600px)': {
+        marginTop: '-10vw',
+      },
       marginBottom: '40px',
       '& span': {
         fontSize: '14px',
