@@ -39,14 +39,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "60px",
     marginTop: "100px",
+    '@media (min-width:1921px)': {
+      gap: "4.2vw",
+    },
     [theme.breakpoints.down("md")]: {
       flexDirection: "column-reverse",
       alignItems: "center",
       marginTop: "40px",
       gap: "30px",
-      '@media (min-width:1921px)': {
-        gap: "4.2vw",
-      },
+      
     },
   },
   titleBox: {
