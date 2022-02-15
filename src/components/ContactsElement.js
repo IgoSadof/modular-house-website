@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   personalBox: {
     width: '225px',
     '@media (min-width:1921px)': {
-      width: '15.6vw',
+      width: '11.7vw',
     },
     [theme.breakpoints.down('md')]: {
       width: '150px',
