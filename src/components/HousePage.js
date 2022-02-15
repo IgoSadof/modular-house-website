@@ -185,6 +185,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    [theme.breakpoints.down('md')]: {
+      gap: '10px',
+    },
   },
   mainBlockListRight: {
     // marginLeft: 'auto',
@@ -203,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '60px',
     padding: '0 0 100px 10%',
     backgroundColor: '#D1D1D1',
-    '@media (min-width:1920px)': {
+    '@media (min-width:1921px)': {
       gap: '4.2vw',
       padding: '0 0 3.5vw 10%',
     },
@@ -221,6 +224,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '28vw',
     marginLeft: '100px',
+    flexShrink: '0',
     // height: (param) => `${param.heightOneLine * param.modulesCounts}vh`,
     display: 'flex',
     minHeight: (param) => `${param.heightModuleList}vh`,
@@ -246,6 +250,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
+    '@media (max-width:1919px)': {
+      gap: '20px',
+    },
+    // gap:"20px",
+    // '@media (min-width:1921px)': {
+    //   gap: '1.4vw',
+    // },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
     },
@@ -255,6 +266,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
+    '@media (max-width:1919px)': {
+      gap: '20px',
+    },
+    // gap:"20px",
+    // '@media (min-width:1921px)': {
+    //   gap: '1.4vw',
+    // },
   },
   modelDescItemTitle: {
     listStyle: 'none',
@@ -263,12 +281,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 'auto',
-    minHeight: '16vh',
+    // minHeight: '16vh',
 
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
     margin: '10px 0',
     '& h1': {
       fontSize: '48px',
+      '@media (min-width:1921px)': {
+        fontSize: '2.5vw',
+      },
     },
     '& p': {
       overflowY: 'scroll',
@@ -320,6 +341,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     transition: '0.5s',
+    '@media (min-width:1921px)': {
+      width: '1.5vw',
+      height: '1.5vw',
+      fontSize: '1.5vw',
+    },
   },
   minus: {
     // position: 'relative',
@@ -337,6 +363,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     transition: '0.5s',
+    '@media (min-width:1921px)': {
+      width: '2.1vw',
+      height: '2.1vw',
+      fontSize: '2.1vw',
+    },
   },
   modelDescLinePlus: {
     width: '30px',
@@ -351,6 +382,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     transition: '0.5s',
+    '@media (min-width:1921px)': {
+      width: '1.5vw',
+      height: '1.5vw',
+      fontSize: '1.5vw',
+    },
   },
   plus: {
     // position: "relative",
@@ -521,7 +557,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '40px',
     flexDirection: 'column',
     marginLeft: 'auto',
-    width: '30%',
+    width: '32%',
     '@media (min-width:1921px)': {
       gap: '2.1vw',
     },
@@ -632,10 +668,10 @@ const HousePage = ({ house, data }) => {
   };
   const modulesCounts = dataHouses[houseNumber]['modules'].length;
   const pillStep = 100 / modulesCounts;
-  const heightOneLine = 16;
-  const heightModuleList = 60;
+  const heightOneLine = 10;
+  const heightModuleList = 50;
 
-  const [pilldistance, setPilldistance] = useState(heightOneLine);
+  const [pilldistance, setPilldistance] = useState(heightOneLine * 1.5);
   const [pillClick, setPillClick] = useState(0);
   const param = {
     pilldistance,
@@ -655,7 +691,7 @@ const HousePage = ({ house, data }) => {
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
-  
+
   const handlePlusClick = (e) => {
     if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
       setPilldistance((state) => state + pillStep);
@@ -737,7 +773,7 @@ const HousePage = ({ house, data }) => {
   };
 
   const images = useMemo(() => {
-     return getImgsFromDirectory(relativeDirectory).map((item, index) => {
+    return getImgsFromDirectory(relativeDirectory).map((item, index) => {
       return (
         <li className={classes.mainImgItem} key={index}>
           {item ? (
@@ -750,7 +786,7 @@ const HousePage = ({ house, data }) => {
         </li>
       );
     });
-  },[relativeDirectory]);
+  }, [relativeDirectory]);
 
   let all = {};
   all['Название модуля'] = 'Все';
@@ -789,7 +825,7 @@ const HousePage = ({ house, data }) => {
         return <ImageSVG />;
       }
     });
-  },[houseNumber]);
+  }, [houseNumber]);
 
   return (
     <Box components='main'>

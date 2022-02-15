@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     // boxSizing: 'border-box',
     position: 'relative',
     width: '100%',
-    height: '80%',
+    height: '100%',
     [theme.breakpoints.down('md')]: {
       padding: '50px ',
     },
@@ -27,8 +27,10 @@ const useStyles = makeStyles((theme) => ({
     margin: '3vw auto 0 auto',
   },
   videoBox:{
+    overflow:"hidden",
     "& video":{
       objectFit: "cover",
+      transform:"scale(1.01)"
     }
   },
   leftArrow:{
@@ -71,7 +73,7 @@ const HouseModelPlayer = ({ video }) => {
           <Box className={classes.videoBox}>
             <ReactPlayer
               ref={playerRef}
-              height='50vh'
+              height='100%'
               width='100%'
               url={video}
               fraction="true"

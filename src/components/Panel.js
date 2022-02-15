@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     height: '76px',
     paddingLeft: '50px',
     backgroundColor: '#D1D1D1',
+    '@media (max-width:1919px)': {
+      minWidth: '50vw',
+    },
     '@media (min-width:1921px)': {
       height: '3.96vw',
       paddingLeft: '2.6vw',
