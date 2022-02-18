@@ -407,9 +407,13 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      justifyContent: 'space-around',
+      justifyContent: 'space-between',
+      padding:"0 40px",
       left: '0%',
-      bottom: '6%',
+      bottom: '14%',
+      '@media (orientation: landscape)': {
+        bottom: '25%',
+      },
     },
   },
   blockGalary: {
@@ -736,6 +740,7 @@ const HousePage = ({ house, data }) => {
       setRelativeDirectory(baseFolder + '/' + value);
     }
   };
+  console.log(relativeDirectory)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
   const handleClickCheckbox = (event, curentIndex) => {
@@ -787,6 +792,7 @@ const HousePage = ({ house, data }) => {
       );
     });
   }, [relativeDirectory]);
+  console.log(images)
 
   let all = {};
   all['Название модуля'] = 'Все';
@@ -1034,7 +1040,7 @@ const HousePage = ({ house, data }) => {
                   onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
-                  <div style={{ top: '-13%' }} className={classes.minus}>
+                  <div style={{ top: '-0.2vw', position:"relative" }} className={classes.minus}>
                     -
                   </div>
                 </div>
@@ -1083,13 +1089,13 @@ const HousePage = ({ house, data }) => {
               great
             />
           </Box>
-          {breakpoints.md ? null : (
+          {/* {breakpoints.md ? null : ( */}
             <Panel
               ref={categoryRef}
               arr={panelTabs}
               change={handleChangePanel}
             />
-          )}
+          {/* )} */}
         </Box>
       </Box>
 

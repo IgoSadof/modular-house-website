@@ -6,15 +6,37 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
-  panel: {
+  panelBox: {
     position: 'absolute',
-    right: '0',
+    left: '10vw',
+    bottom: '0',
+    display: 'flex',
+    gap: '60px',
+    '@media (min-width:1921px)': {
+      gap: '4.2vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      left: '0',
+      position: 'relative',
+    },
+  },
+  mockBox: {
+    width: '28vw',
+    marginLeft: '100px',
+    '@media (min-width:1921px)': {
+      marginLeft: '5.2vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
+  },
+  panel: {
     bottom: '0',
     minWidth: '54vw',
     height: '76px',
     paddingLeft: '50px',
     backgroundColor: '#D1D1D1',
-    '@media (max-width:1919px)': {
+    '@media (max-width:1440px)': {
       minWidth: '50vw',
     },
     '@media (min-width:1921px)': {
@@ -30,13 +52,17 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
     height: '56px',
     borderBottom: '1.5px solid #BDBDBD',
-    overflow: 'visible',
+    overflow: 'visible !important',
+    
     '@media (min-width:1921px)': {
       height: '2.9vw',
     },
     '&>div': {
       boxSizing: 'border-box',
-      overflow: 'visible !important',
+      overflow: 'visible',
+      [theme.breakpoints.down('md')]: {
+        overflow: 'scroll',
+      },
     },
     '&>div>div': {
       height: '100%',
@@ -45,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
     '&>div>span': {
       bottom: '-4%',
     },
+    
   },
   tab: {
     padding: '0',
@@ -85,18 +112,22 @@ const Panel = React.forwardRef(({ change, arr }, ref) => {
     );
   });
   return (
-    <Box className={classes.panel}>
-      <Tabs
-        className={classes.tabs}
-        ref={ref}
-        value={value}
-        indicatorColor='primary'
-        textColor='primary'
-        onChange={handleChange}
-        aria-label='disabled tabs example'
-      >
-        {listItem}
-      </Tabs>
+    <Box className={classes.panelBox}>
+      <Box className={classes.mockBox}></Box>
+      <Box className={classes.panel}>
+        <Tabs
+          className={classes.tabs}
+          ref={ref}
+          value={value}
+          indicatorColor='primary'
+          variant="scrollable"
+          textColor='primary'
+          onChange={handleChange}
+          aria-label="scrollable auto tabs example"
+        >
+          {listItem}
+        </Tabs>
+      </Box>
     </Box>
   );
 });
