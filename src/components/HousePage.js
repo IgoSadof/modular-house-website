@@ -178,6 +178,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '100px',
     // width: '300px',
     width: '28vw',
+    '@media (min-width:1921px)': {
+      marginLeft: '5.2vw',
+    },
   },
   mainBlockList: {
     listStyle: 'none',
@@ -230,7 +233,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: (param) => `${param.heightModuleList}vh`,
     gap: '40px',
     '@media (min-width:1921px)': {
-      marginLeft: '4.2vw',
+      marginLeft: '5.2vw',
       gap: '2.1vw',
     },
     [theme.breakpoints.down('md')]: {
