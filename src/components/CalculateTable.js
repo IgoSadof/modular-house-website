@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import numberWithSpace from '../utils/numberWithSpace';
+import BpRadio from './BpRadio';
 
 const useStyles = makeStyles((theme) => ({
   conteiner: {
@@ -168,7 +169,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       }
                       onChange={handleChangeCheckbox}
                       value={+item.variants[0].price}
-                      control={<Radio color='primary' />}
+                      control={<BpRadio color='primary' />}
                       label={
                         <Typography variant='body1'>
                           {item.variants[0].name}
@@ -189,7 +190,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       }
                       onChange={handleChangeCheckbox}
                       value={+item.variants[1].price}
-                      control={<Radio color='primary' />}
+                      control={<BpRadio color='primary'/>}
                       label={
                         <Typography variant='body1'>
                           {item.variants[1].name}
