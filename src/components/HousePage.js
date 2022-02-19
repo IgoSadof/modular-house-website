@@ -412,7 +412,7 @@ const useStyles = makeStyles((theme) => ({
       left: '0%',
       bottom: '14%',
       '@media (orientation: landscape)': {
-        bottom: '25%',
+          bottom: '25%',
       },
     },
   },

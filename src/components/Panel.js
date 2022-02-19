@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: '0',
     display: 'flex',
     gap: '60px',
+    pointerEvents: "none",
     '@media (min-width:1921px)': {
       gap: '4.2vw',
     },
