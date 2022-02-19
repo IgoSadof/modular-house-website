@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: '0',
     display: 'flex',
     gap: '60px',
-    pointerEvents: "none",
+    zIndex: '1',
     '@media (min-width:1921px)': {
       gap: '4.2vw',
     },
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     height: '56px',
     borderBottom: '1.5px solid #BDBDBD',
     overflow: 'visible !important',
-    
+
     '@media (min-width:1921px)': {
       height: '2.9vw',
     },
@@ -72,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
     '&>div>span': {
       bottom: '-4%',
     },
-    
   },
   tab: {
     padding: '0',
@@ -121,10 +120,10 @@ const Panel = React.forwardRef(({ change, arr }, ref) => {
           ref={ref}
           value={value}
           indicatorColor='primary'
-          variant="scrollable"
+          variant='scrollable'
           textColor='primary'
           onChange={handleChange}
-          aria-label="scrollable auto tabs example"
+          aria-label='scrollable auto tabs example'
         >
           {listItem}
         </Tabs>

@@ -404,6 +404,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '20px',
     left: '14%',
     bottom: '20px',
+    zIndex:'2',
     '@media (min-width:1921px)': {
       bottom: '1.1vw',
       gap: '1.1vw',
