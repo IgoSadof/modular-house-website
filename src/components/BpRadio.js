@@ -17,7 +17,12 @@ const BpIcon = styled('div')(({ theme }) => ({
   borderRadius: '7px',
   width: 18,
   height: 18,
-  border:"1px solid",
+  border:"1px solid #828282",
+  '@media (min-width:1921px)': {
+    borderRadius: '0.35vw',
+    width: '1vw',
+    height: '1vw',
+  },
   backgroundColor: theme.palette.mode === 'tansparent',
   '.Mui-focusVisible &': {
     outline: '2px solid black',
@@ -34,10 +39,15 @@ const BpIcon = styled('div')(({ theme }) => ({
 }));
 
 const BpCheckedIcon = styled(BpIcon)({
+  border:"1px solid #4f4f4f",
   '& svg':{
     display:"block",
     width:"18px",
     height:"18px",
+    '@media (min-width:1921px)': {
+      width: '1vw',
+      height: '1vw',
+    },
   },
   'input:hover ~ &': {
     backgroundColor: '',
@@ -55,7 +65,7 @@ const BpRadio = (props) => {
       }}
       disableRipple
       color="default"
-      checkedIcon={<BpCheckedIcon><MarkIcon fontSize="20px"/></BpCheckedIcon>}
+      checkedIcon={<BpCheckedIcon><MarkIcon/></BpCheckedIcon>}
       icon={<BpIcon />}
       {...props}
     />

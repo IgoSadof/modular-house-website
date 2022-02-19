@@ -744,7 +744,7 @@ const HousePage = ({ house, data }) => {
       setRelativeDirectory(baseFolder + '/' + value);
     }
   };
-  console.log(relativeDirectory)
+  // console.log(relativeDirectory)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
   const handleClickCheckbox = (event, curentIndex) => {
@@ -796,7 +796,6 @@ const HousePage = ({ house, data }) => {
       );
     });
   }, [relativeDirectory]);
-  console.log(images)
 
   let all = {};
   all['Название модуля'] = 'Все';

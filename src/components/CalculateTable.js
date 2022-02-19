@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import numberWithSpace from '../utils/numberWithSpace';
 import BpRadio from './BpRadio';
@@ -45,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
   },
   tableCell: {
     width: '25%',
+    // '& p':{
+    //   color:"#828282"
+    // },
   },
   tableCellFirst: {
     paddingLeft: '40px',
@@ -53,10 +55,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tableCellLast: {
+   
     paddingRight: '40px',
     fontSize: '14px',
     '@media (min-width:1920px)': {
       fontSize: '28px',
+    },
+    '@media (min-width:1921px)': {
+      fontSize: '0.97vw',
     },
   },
   lastRow:{
@@ -106,8 +112,10 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
       price: item.variants[0].price,
     };
   });
+  
 
   const [currentOption, setCheckboxesCheck] = useState(options);
+  console.log(currentOption)
   const [price, setPrice] = useState(
     Object.keys(currentOption).length === 0
       ? '0'
@@ -117,6 +125,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
         )
   );
   const handleChangeCheckbox = (event) => {
+    console.log(event.target.name)
     setCheckboxesCheck({
       ...currentOption,
       [event.target.name]: {
@@ -171,7 +180,9 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       value={+item.variants[0].price}
                       control={<BpRadio color='primary' />}
                       label={
-                        <Typography variant='body1'>
+                        <Typography style={currentOption[item.name].price ===
+                          item.variants[0].price
+                            ?{color:'#4f4f4f'}:{color:'#828282'}} variant='body1'>
                           {item.variants[0].name}
                         </Typography>
                       }
@@ -192,7 +203,9 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       value={+item.variants[1].price}
                       control={<BpRadio color='primary'/>}
                       label={
-                        <Typography variant='body1'>
+                        <Typography style={currentOption[item.name].price ===
+                          item.variants[1].price
+                            ?{color:'#4f4f4f'}:{color:'#828282'}}  variant='body1'>
                           {item.variants[1].name}
                         </Typography>
                       }
@@ -221,7 +234,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         style={{ paddingLeft: `20px` }}
                         className={classes.secondRadio}
                       >
-                        +${currentOption[item.name].price}
+                        +{currentOption[item.name].price}
                       </Box>
                     </Box>
                     <Box className={classes.innerRow}>
@@ -235,9 +248,11 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         }
                         onChange={handleChangeCheckbox}
                         value={+item.variants[0].price}
-                        control={<Radio color='primary' />}
+                        control={<BpRadio color='primary' />}
                         label={
-                          <Typography variant='body1'>
+                          <Typography style={currentOption[item.name].price ===
+                            item.variants[0].price
+                              ?{color:'#4f4f4f'}:{color:'#828282'}} variant='body1'>
                             {item.variants[0].name}
                           </Typography>
                         }
@@ -255,9 +270,11 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         }
                         onChange={handleChangeCheckbox}
                         value={+item.variants[1].price}
-                        control={<Radio color='primary' />}
+                        control={<BpRadio color='primary' />}
                         label={
-                          <Typography variant='body1'>
+                          <Typography style={currentOption[item.name].price ===
+                            item.variants[1].price
+                              ?{color:'#4f4f4f'}:{color:'#828282'}} variant='body1'>
                             {item.variants[1].name}
                           </Typography>
                         }
