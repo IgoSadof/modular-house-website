@@ -1040,7 +1040,6 @@ const HousePage = ({ house, data }) => {
             <Model3d
               srcPath={model3d}
               srcPathIos={model3d
-                .replace('models3d', 'models3dIos')
                 .replace('glb', 'usdz')}
             ></Model3d>
           ) : (
