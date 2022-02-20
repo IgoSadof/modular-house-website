@@ -115,7 +115,6 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
   
 
   const [currentOption, setCheckboxesCheck] = useState(options);
-  console.log(currentOption)
   const [price, setPrice] = useState(
     Object.keys(currentOption).length === 0
       ? '0'

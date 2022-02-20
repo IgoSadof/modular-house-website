@@ -127,13 +127,14 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           title
         }
       }
-      allFile(filter: { extension: { regex: "/(jpg)|(png)/" } }) {
+      allFile(filter: { extension: { regex: "/(jpg)|(png)|(glb)|(usdz)/" } }) {
         edges {
           node {
             id
             base
             relativeDirectory
             relativePath
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 width: 1600

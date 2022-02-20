@@ -1,3 +1,4 @@
+const path = require("path")
 const customQueries = {
   se: '(max-height: 670px)',
   xs: '(max-width: 500px)',
@@ -20,14 +21,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `models3d`,
-        path: `${__dirname}/src/assets/models3d`,
+        path: `${path.join(__dirname, "../images")}`,
       },
     },
     `gatsby-plugin-react-helmet`,

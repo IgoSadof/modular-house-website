@@ -15,13 +15,15 @@ import Accordions from '../components/Accordion';
 import '@google/model-viewer';
 import Model3d from './Model3d';
 import getHousesData from '../utils/getHousesData';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import getImg from '../utils/getImg';
 import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
 import HouseModelPlayer from './HouseModelPlayer';
 import mpduleVideo from '../assets/video/mpduleVideo.mp4';
 import numberWithSpace from '../utils/numberWithSpace';
+import getImagesFromDirectory from '../utils/getImgsFromDirectory';
+import getPublicPath from '../utils/getPublicPath';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -404,7 +406,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '20px',
     left: '14%',
     bottom: '20px',
-    zIndex:'2',
+    zIndex: '2',
     '@media (min-width:1921px)': {
       bottom: '1.1vw',
       gap: '1.1vw',
@@ -412,11 +414,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '100%',
       justifyContent: 'space-between',
-      padding:"0 40px",
+      padding: '0 40px',
       left: '0%',
       bottom: '14%',
       '@media (orientation: landscape)': {
-          bottom: '25%',
+        bottom: '25%',
       },
     },
   },
@@ -636,18 +638,6 @@ const HousePage = ({ house, data }) => {
     ''
   )}/модули`;
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
-
-  const getImgsFromDirectory = (directory) => {
-    let regExp = new RegExp(`^${directory}`);
-    let imagesArr = [];
-    data.allFile.edges.forEach((item) => {
-      if (!!item.node.relativeDirectory.match(regExp)) {
-        imagesArr.push(getImage(item.node));
-      }
-    });
-    return imagesArr;
-  };
-
   const baseModulePrice = dataHouses[houseNumber].modules[0]['Стоимость']
     ? +dataHouses[houseNumber].modules[0]['Стоимость'].replace(/[KК]/, '000')
     : 0;
@@ -659,14 +649,8 @@ const HousePage = ({ house, data }) => {
   const [userOptions, setUserOptions] = useState({});
 
   const baseImg = dataHouses[houseNumber].modules[0]?.rooms[0]
-    ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение'].substr(
-        dataHouses[houseNumber].modules[0].rooms[0][
-          'Главное изображение'
-        ].search(/images\//)
-      )
-    : `${dataHouses[houseNumber]['Баннер'].substr(
-        dataHouses[houseNumber]['Баннер'].search(/images/)
-      )}`;
+    ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение']
+    : `${dataHouses[houseNumber]['Баннер']}`;
 
   const [roomsImg, setRoomsImg] = useState(baseImg);
   const [roomsImgIndex, setRoomsImgIndex] = useState(0);
@@ -689,12 +673,12 @@ const HousePage = ({ house, data }) => {
     breakpoints,
   };
   const classes = useStyles(param);
+
   const [model3d, setModel3d] = useState(
-    `../../${dataHouses[houseNumber]['modules'][pillClick]['3D Модель'].substr(
-      dataHouses[houseNumber]['modules'][pillClick]['3D Модель'].search(
-        /models3d/
-      )
-    )}`
+    getPublicPath(
+      data,
+      dataHouses[houseNumber]['modules'][pillClick]['3D Модель']
+    )
   );
 
   const myRef = useRef(null);
@@ -705,13 +689,10 @@ const HousePage = ({ house, data }) => {
       setPilldistance((state) => state + pillStep);
       setPillClick((state) => state + 1);
       setModel3d(
-        `../../${dataHouses[houseNumber]['modules'][pillClick + 1][
-          '3D Модель'
-        ].substr(
-          dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель'].search(
-            /models3d/
-          )
-        )}`
+        getPublicPath(
+          data,
+          dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель']
+        )
       );
     }
   };
@@ -720,13 +701,10 @@ const HousePage = ({ house, data }) => {
       setPilldistance((state) => state - pillStep);
       setPillClick((state) => state - 1);
       setModel3d(
-        `../../${dataHouses[houseNumber]['modules'][pillClick - 1][
-          '3D Модель'
-        ].substr(
-          dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель'].search(
-            /models3d/
-          )
-        )}`
+        getPublicPath(
+          data,
+          dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель']
+        )
       );
     }
   };
@@ -744,12 +722,11 @@ const HousePage = ({ house, data }) => {
       setRelativeDirectory(baseFolder + '/' + value);
     }
   };
-  // console.log(relativeDirectory)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
+
   const handleClickCheckbox = (event, curentIndex) => {
     setCurrentCheckbox(curentIndex);
-
     const chooseModules = dataHouses[houseNumber].modules.filter(
       (item, index) => {
         if (event.target.checked) {
@@ -763,7 +740,6 @@ const HousePage = ({ house, data }) => {
         }
       }
     );
-
     let price = 0;
     let mudules = [];
     chooseModules.forEach((item) => {
@@ -782,19 +758,21 @@ const HousePage = ({ house, data }) => {
   };
 
   const images = useMemo(() => {
-    return getImgsFromDirectory(relativeDirectory).map((item, index) => {
-      return (
-        <li className={classes.mainImgItem} key={index}>
-          {item ? (
-            <GatsbyImage
-              className={classes.mainImgSlider}
-              image={item}
-              alt='img'
-            ></GatsbyImage>
-          ) : null}
-        </li>
-      );
-    });
+    return getImagesFromDirectory(data, relativeDirectory).map(
+      (item, index) => {
+        return (
+          <li className={classes.mainImgItem} key={index}>
+            {item ? (
+              <GatsbyImage
+                className={classes.mainImgSlider}
+                image={item}
+                alt='img'
+              ></GatsbyImage>
+            ) : null}
+          </li>
+        );
+      }
+    );
   }, [relativeDirectory]);
 
   let all = {};
@@ -803,7 +781,7 @@ const HousePage = ({ house, data }) => {
 
   const modulesWithImages = dataHouses[house].modules.filter(
     (item, index) =>
-      getImgsFromDirectory(`${baseFolder}/модуль${index + 1}`).length
+      getImagesFromDirectory(data, `${baseFolder}/модуль${index + 1}`).length
   );
 
   const panelTabs = [all, ...modulesWithImages];
@@ -823,10 +801,7 @@ const HousePage = ({ house, data }) => {
         return (
           <GatsbyImage
             className={classes.calculationPlanImg}
-            image={getImg(
-              data,
-              `${item['План'].substr(item['План'].search(/images/))}`
-            )}
+            image={getImg(data, `${item['План']}`)}
             alt='img'
           ></GatsbyImage>
         );
@@ -846,12 +821,7 @@ const HousePage = ({ house, data }) => {
           {dataHouses[houseNumber]['Баннер'] ? (
             <GatsbyImage
               className={classes.mainImg}
-              image={getImg(
-                data,
-                `${dataHouses[houseNumber]['Баннер'].substr(
-                  dataHouses[houseNumber]['Баннер'].search(/images/)
-                )}`
-              )}
+              image={getImg(data, `${dataHouses[houseNumber]['Баннер']}`)}
               alt='img'
             ></GatsbyImage>
           ) : null}
@@ -870,11 +840,7 @@ const HousePage = ({ house, data }) => {
                     className={classes.mainPlan}
                     image={getImg(
                       data,
-                      `${dataHouses[houseNumber]['Иконка планировки'].substr(
-                        dataHouses[houseNumber]['Иконка планировки'].search(
-                          /images/
-                        )
-                      )}`
+                      `${dataHouses[houseNumber]['Иконка планировки']}`
                     )}
                     alt='img'
                   ></GatsbyImage>
@@ -1043,7 +1009,10 @@ const HousePage = ({ house, data }) => {
                   onKeyDown={handleMinusClick}
                   className={classes.modelDescLineMinusCircle}
                 >
-                  <div style={{ top: '-0.2vw', position:"relative" }} className={classes.minus}>
+                  <div
+                    style={{ top: '-0.2vw', position: 'relative' }}
+                    className={classes.minus}
+                  >
                     -
                   </div>
                 </div>
@@ -1093,11 +1062,7 @@ const HousePage = ({ house, data }) => {
             />
           </Box>
           {/* {breakpoints.md ? null : ( */}
-            <Panel
-              ref={categoryRef}
-              arr={panelTabs}
-              change={handleChangePanel}
-            />
+          <Panel ref={categoryRef} arr={panelTabs} change={handleChangePanel} />
           {/* )} */}
         </Box>
       </Box>
@@ -1279,9 +1244,7 @@ const HousePage = ({ house, data }) => {
           padding={true}
           img={getImg(
             data,
-            `${dataHouses[houseNumber]['Баннер'].substr(
-              dataHouses[houseNumber]['Баннер'].search(/images/)
-            )}`
+            `${dataHouses[houseNumber]['Баннер']}`
           )}
           formPosition='center'
         />

@@ -271,12 +271,10 @@ const useStyles = makeStyles((theme) => ({
   houseDescSpecOne: style.flex,
   "& p": {
     minWidth: "50px",
+    lineHeight: "1.6",
   },
   houseDescMore: { ...style.flex, marginTop: "40px" },
   houseDescPrice: style.flexColumn,
-  "& p": {
-    lineHeight: "1.6",
-  },
   houseSpecPrice: {
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
@@ -360,16 +358,14 @@ const HousesList = ({ data }) => {
                   timeout={500}
                   classNames="houseMove"
                 >
-                  <GatsbyImage
+                  {item["Иконка дома"]?<GatsbyImage
                     className={classes.houseListImg}
                     image={getImg(
                       data,
-                      `${item["Иконка дома"].substr(
-                        item["Иконка дома"].search(/images\//)
-                      )}`
+                      `${item["Иконка дома"]}`
                     )}
                     alt="img"
-                  ></GatsbyImage>
+                  ></GatsbyImage>:null}
                 </CSSTransition>
                 <Typography
                   variant="subtitle1"
@@ -388,7 +384,7 @@ const HousesList = ({ data }) => {
                 timeout={500}
                 classNames="houseMoveMobile"
               >
-                <GatsbyImage
+                {item["Иконка дома"]?<GatsbyImage
                   className={
                     activeSlide === index
                       ? `${classes.houseListImg} ${classes.houseListImgActive}`
@@ -396,12 +392,10 @@ const HousesList = ({ data }) => {
                   }
                   image={getImg(
                     data,
-                    `${item["Иконка дома"].substr(
-                      item["Иконка дома"].search(/images\//)
-                    )}`
+                    `${item["Иконка дома"]}`
                   )}
                   alt="img"
-                ></GatsbyImage>
+                ></GatsbyImage>:null}
               </CSSTransition>
               {activeSlide === index ? (
                 <Box className={classes.button}>
@@ -433,14 +427,14 @@ const HousesList = ({ data }) => {
   const listMainImages = dataHouses.map((item, index) => {
     return (
       <li className={classes.mainImg} key={index}>
-        <GatsbyImage
+        {item["Баннер"]?<GatsbyImage
           className={classes.mainImg}
           image={getImg(
             data,
-            `${item["Баннер"].substr(item["Баннер"].search(/images/))}`
+            `${item["Баннер"]}`
           )}
           alt="img"
-        ></GatsbyImage>
+        ></GatsbyImage>:null}
         {/* <div className={classes.mainImg} style={{ backgroundImage: `url(${item.img.main})` }}></div> */}
       </li>
     );
@@ -473,17 +467,15 @@ const HousesList = ({ data }) => {
               classNames="fadeHouse"
             >
               {/* <Fade inProp={animation}> */}
-              <GatsbyImage
+              {dataHouses[house]["Иконка дома"]?<GatsbyImage
                 // ref={element}
                 className={classes.houseDescImg}
                 image={getImg(
                   data,
-                  `${dataHouses[house]["Иконка дома"].substr(
-                    dataHouses[house]["Иконка дома"].search(/images\//)
-                  )}`
+                  `${dataHouses[house]["Иконка дома"]}`
                 )}
                 alt="img"
-              ></GatsbyImage>
+              ></GatsbyImage>:null}
               {/* </Fade> */}
             </CSSTransition>
           </TransitionGroup>
@@ -502,9 +494,7 @@ const HousesList = ({ data }) => {
                   className={classes.mainPlan}
                   image={getImg(
                     data,
-                    `${dataHouses[house]["Иконка планировки"].substr(
-                      dataHouses[house]["Иконка планировки"].search(/images/)
-                    )}`
+                    `${dataHouses[house]["Иконка планировки"]?dataHouses[house]["Иконка планировки"]:"images/plan.png"}`
                   )}
                   alt="img"
                 ></GatsbyImage>
@@ -628,7 +618,7 @@ const HousesList = ({ data }) => {
                 className={classes.mainPlan}
                 image={getImg(
                   data,
-                  `${dataHouses[house]["Иконка планировки"]}`
+                  `${dataHouses[house]["Иконка планировки"]?dataHouses[house]["Иконка планировки"]:"images/plan.png"}`
                 )}
                 alt="img"
               ></GatsbyImage>

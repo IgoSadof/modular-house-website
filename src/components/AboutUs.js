@@ -3,11 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import FormBlock from "./FormBlock";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import alexey from "../assets/images/aboutus_alexey.png";
-import andrey from "../assets/images/aboutus_andrey.png";
-import office from "../assets/images/office.png";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import TitleWithLine from "../components/TitleWithLine";
+import getPublicPath from '../utils/getPublicPath';
 
 const useStyles = makeStyles((theme) => ({
   main:{
@@ -148,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AboutUs = () => {
+const AboutUs = ({data}) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
   return (
@@ -265,7 +263,7 @@ const AboutUs = () => {
               </Box>
             </Box>
             <Box className={classes.imgBox}>
-              <img className={classes.img} src={alexey} alt="img"></img>
+              <img className={classes.img} src={getPublicPath(data,"images/aboutus_alexey.png")} alt="img"></img>
             </Box>
           </>
         ) : (
@@ -275,7 +273,7 @@ const AboutUs = () => {
                 <TitleWithLine title="Создатели" />
               </Box>
               <Box className={classes.imgBox}>
-                <img className={classes.img} src={alexey} alt="img"></img>
+                <img className={classes.img} src={getPublicPath(data,"images/aboutus_alexey.png")} alt="img"></img>
               </Box>
               <Box className={classes.creatorsBox}>
                 <Box className={classes.creatorTextBox}>
@@ -340,7 +338,7 @@ const AboutUs = () => {
           </Box>
         </Box>
         <Box className={classes.imgBox}>
-          <img className={classes.img} src={andrey} alt="img"></img>
+          <img className={classes.img} src={getPublicPath(data,"images/aboutus_andrey.png")} alt="img"></img>
         </Box>
       </Box>
       <Box component="section" className={classes.Block}>
@@ -355,7 +353,7 @@ const AboutUs = () => {
       </Box>
       <Box component="section" className={classes.Block}>
         <FormBlock
-          img={office}
+          img={getPublicPath(data,"images/aboutus_office.png")}
           staticImg={true}
           header={"Приглашаем"}
           title={`В офис студии ZROBYM architects, 
