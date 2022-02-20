@@ -20,7 +20,6 @@ import getImg from '../utils/getImg';
 import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
 import HouseModelPlayer from './HouseModelPlayer';
-import mpduleVideo from '../assets/video/mpduleVideo.mp4';
 import numberWithSpace from '../utils/numberWithSpace';
 import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
@@ -673,6 +672,7 @@ const HousePage = ({ house, data }) => {
     breakpoints,
   };
   const classes = useStyles(param);
+  console.log(dataHouses[houseNumber]['modules'][pillClick])
 
   const [model3d, setModel3d] = useState(
     getPublicPath(
@@ -680,6 +680,13 @@ const HousePage = ({ house, data }) => {
       dataHouses[houseNumber]['modules'][pillClick]['3D Модель']
     )
   );
+  const [modelVideo, setModelVideo] = useState(
+    getPublicPath(
+      data,
+      dataHouses[houseNumber]['modules'][pillClick]['3D Модель Видео']
+    )
+  );
+  console.log(dataHouses[houseNumber]['modules'][pillClick])
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
@@ -694,6 +701,12 @@ const HousePage = ({ house, data }) => {
           dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель']
         )
       );
+      setModelVideo(
+        getPublicPath(
+          data,
+          dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель Видео']
+        )
+      );
     }
   };
   const handleMinusClick = (e) => {
@@ -704,6 +717,12 @@ const HousePage = ({ house, data }) => {
         getPublicPath(
           data,
           dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель']
+        )
+      );
+      setModelVideo(
+        getPublicPath(
+          data,
+          dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель Видео']
         )
       );
     }
@@ -1043,7 +1062,7 @@ const HousePage = ({ house, data }) => {
                 .replace('glb', 'usdz')}
             ></Model3d>
           ) : (
-            <HouseModelPlayer video={mpduleVideo} />
+            <HouseModelPlayer video={modelVideo} />
           )}
         </Box>
       </Box>

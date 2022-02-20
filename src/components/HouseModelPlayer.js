@@ -20,6 +20,13 @@ const useStyles = makeStyles((theme) => ({
       padding: '50px ',
     },
   },
+  loaderBox:{
+    width: '100%',
+    height: '100%',
+    display:"flex",
+    justifyContent:'center',
+    alignItems:'center',
+  },
   SliderBox: {
     display:"flex",
     alignItems:"center",

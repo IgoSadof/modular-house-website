@@ -91,7 +91,7 @@ function getHousesData(data) {
       };
     };
   }
-  // console.log(houseArr);
+  console.log(houseArr);
 
   houseArr.forEach((house) => {
     let modules = {};
