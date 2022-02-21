@@ -274,8 +274,10 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     width: '75px',
+    // height:"42px",
     '@media (min-width:1921px)': {
       width: '5.2vw',
+      // height:"2.2vw",
     },
     [theme.breakpoints.down('md')]: {
       width: '50px',
@@ -304,7 +306,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [video, setVideo] = useState(false);
 
   if (breakpoints && breakpoints.sm) {
-    import('../assets/video/videoMobile.mp4').then((video) => {
+    import('../assets/video/videoDesktop.mp4').then((video) => {
       setVideo(video);
     });
   } else {
