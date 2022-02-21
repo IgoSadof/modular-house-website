@@ -134,6 +134,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     width: "100%",
+    "& p":{
+      justifyContent: "space-between",
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
@@ -191,6 +194,9 @@ const useStyles = makeStyles((theme) => ({
       width: "3.5vw",
       height: "1.4vw",
     },
+  },
+  propertyValue:{
+    textTransform: 'none',
   },
 }));
 const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
@@ -261,7 +267,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         component="p"
                         className={classes.propertyValue}
                       >
-                        {item.countArea(item.modules, "Площадь общая")} м<sup>2</sup>
+                        {item.countArea(item.modules, "Площадь общая")} м&#178;
                       </Typography>
                     </Box>
                     <Box className={classes.property}>
@@ -277,7 +283,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         component="p"
                         className={classes.propertyValue}
                       >
-                        {item.countArea(item.modules, "Площадь полезная")} м<sup>2</sup>
+                        {item.countArea(item.modules, "Площадь полезная")} м&#178;
                       </Typography>
                     </Box>
                     <Box className={classes.property}>
@@ -298,7 +304,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                           item.modules,
                           "Площадь общая"
                         ) ?? 100}{" "}
-                        м<sup>2</sup>
+                        м&#178;
                       </Typography>
                     </Box>
                   </Box>

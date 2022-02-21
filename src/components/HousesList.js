@@ -268,7 +268,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseDescSpec: style.flexColumn,
-  houseDescSpecOne: style.flex,
+  houseDescSpecOne: {...style.flex, alignItems: 'end'},
+  textTransform: 'none',
   '& p': {
     minWidth: '50px',
     lineHeight: '1.6',
@@ -527,7 +528,7 @@ const HousesList = ({ data }) => {
                     dataHouses[house].modules,
                     'Площадь общая'
                   )}{' '}
-                  m<sup>2</sup>
+                  м&#178;
                   {/* {houses[house].totalArea} */}
                 </Typography>
               </Box>
@@ -549,7 +550,7 @@ const HousesList = ({ data }) => {
                     dataHouses[house].modules,
                     'Площадь полезная'
                   )}{' '}
-                  m<sup>2</sup>
+                  м&#178;
                 </Typography>
               </Box>
             </Box>

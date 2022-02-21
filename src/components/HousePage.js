@@ -1222,8 +1222,8 @@ const HousePage = ({ house, data }) => {
                           className={classes.calculationBodyText}
                         >
                           {item['Площадь комнаты']
-                            ? `${item['Площадь комнаты']} м2`
-                            : null}
+                            ? `${item['Площадь комнаты']}`
+                            : null} м&#178;
                         </Typography>
                       </li>
                     );
