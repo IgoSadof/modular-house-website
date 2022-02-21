@@ -268,7 +268,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseDescSpec: style.flexColumn,
-  houseDescSpecOne: {...style.flex, alignItems: 'end'},
+  houseDescSpecOne: { ...style.flex, alignItems: 'end', "& p":{textTransform: 'none',} },
   textTransform: 'none',
   '& p': {
     minWidth: '50px',

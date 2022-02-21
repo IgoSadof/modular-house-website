@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   panel: {
+    display:"flex",
     bottom: '0',
     minWidth: '54vw',
     height: '76px',
@@ -51,12 +52,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tabs: {
-    height: '56px',
+    height: '34px',
+    minHeight: '34px',
+    marginTop:'auto',
+    marginBottom:'20px',
     borderBottom: '1.5px solid #BDBDBD',
     overflow: 'visible !important',
-
     '@media (min-width:1921px)': {
-      height: '2.9vw',
+      height: '1.8vw',
+      minHeight: '1.8vw',
+      marginBottom:'1.04vw',
     },
     '&>div': {
       boxSizing: 'border-box',
@@ -74,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tab: {
+    minHeight: '100%',
     padding: '0',
     paddingRight: '20px',
     '@media (min-width:1921px)': {
