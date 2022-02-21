@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import logo from '../assets/images/newlogo.png';
-import cros from '../assets/images/cros.png';
+import Logo from './svg/Logo';
+import Cross from './svg/Cross';
 import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby';
 
@@ -53,13 +53,11 @@ export default function Burger({ color, click, isOpen, position, page }) {
   return (
     <Box className={classes.logoBox}>
       <Link to={'/'}>
-        <Box className={classes.logo}>
-          <img className={classes.logo} src={logo} alt='logo'></img>
-        </Box>
+       <Logo/>
       </Link>
       <Box className={classes.burgerBox} onClick={click}>
         {isOpen ? (
-          <img className={classes.cros} src={cros} alt='cros'></img>
+          <Cross/>
         ) : (
           <div className={classes.burger}>
             <div className={classes.bar}></div>

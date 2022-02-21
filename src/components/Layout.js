@@ -18,6 +18,8 @@ import Typography from '@material-ui/core/Typography';
 import SquareButton from './buttons/SquareButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import favicon from '../assets/images/favicon.ico';
+import Cross from './svg/Cross';
+import Call from './svg/Call';
 
 const dataToComponent = (WrappedComponent, currebtData, house) => {
   return <WrappedComponent data={currebtData} house={house} />;
@@ -95,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '0',
       width: '100%',
       justifyContent: 'space-between',
-      gap: "unset",
+      gap: 'unset',
     },
   },
   buttonBox: {
@@ -127,7 +129,9 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           title
         }
       }
-      allFile(filter: { extension: { regex: "/(jpg)|(png)|(glb)|(usdz)|(mp4)/" } }) {
+      allFile(
+        filter: { extension: { regex: "/(jpg)|(png)|(glb)|(usdz)|(mp4)/" } }
+      ) {
         edges {
           node {
             id
@@ -261,7 +265,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     <Burger
                       click={handleClickConnect}
                       page={page}
-                      position={page !== 'aboutUs'? 'absolute' : 'relative'}
+                      position={page !== 'aboutUs' ? 'absolute' : 'relative'}
                       color={
                         page === 'watch' ||
                         page === 'houseList' ||
@@ -331,11 +335,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                       Позвонить
                                     </Typography>
                                     <a href='tel:+375447702236'>
-                                      <img
-                                        className={classes.call}
-                                        src={call}
-                                        alt='call'
-                                      ></img>
+                                      <Call/>
                                     </a>
                                   </Box>
                                   <Form

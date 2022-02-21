@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function Logo({ width = "60", height = "90", color = "white" }) {
+export default function Logo({ width = "40", height = "60", color = "#4f4f4f" }) {
   return (
     <svg
       width={width}
       height={height}
       viewBox={`0 0 60 90`}
-      fill="none"
+      fill='#4f4f4f'
       xmlns="http://www.w3.org/2000/svg"
     >
       <g clipPath="url(#clip0_1765:1686)">
