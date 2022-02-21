@@ -29,6 +29,14 @@ const useStyles = makeStyles((theme) => ({
     transition: "0.5s",
     opacity: "1",
     zIndex: "2",
+    zIndex: "2",
+    "& span": {
+      fontSize: "16px",
+      fontWeight:"600",
+      "@media (min-width:1921px)": {
+        fontSize: '0.83vw',
+      },
+    },
     "&:hover": {
       transition: "0.5s",
       // backgroundColor:"#F0F0F0",

@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
     '& p': {
       fontSize: '16px',
       '@media (min-width:1921px)': {
-        fontSize: '32px',
+        fontSize: '0.83vw',
       },
     },
     [theme.breakpoints.down('md')]: {
