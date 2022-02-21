@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
+    "@media (min-width:1921px)": {
+      gap: '2vw',
+    },
     
     [theme.breakpoints.down('md')]: {
       order: '3',
@@ -86,7 +89,7 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
             </Box>
           </Box>
 
-          <Box className={classes.formBox} style={paddingBottom? {paddingBottom: '230px',gap: '0',justifyContent: 'space-between',}:null}>
+          <Box className={classes.formBox} style={paddingBottom? {paddingBottom: breakpoints.xxl?'14.5vw':'230px',gap: '0',justifyContent: 'space-between',}:null}>
             <Typography
               variant='h2'
               className={classes.text}
