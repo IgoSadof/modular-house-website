@@ -192,7 +192,7 @@ abbr {
 }
 .fade-appear.fade-appear-active {
   opacity: 1;
-  transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms linear;
 }
 
 /* enter */
@@ -202,7 +202,7 @@ abbr {
 }
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms linear;
 }
 
 .fade-exit {
@@ -210,7 +210,7 @@ abbr {
 }
 .fade-exit.fade-exit-active {
   opacity: 0;
-  transition: opacity 1000ms linear;
+  transition: opacity 500ms linear;
 }
 .fade-exit-done {
   opacity: 0;
@@ -225,7 +225,7 @@ abbr {
 .slide-enter.slide-enter-active {
   opacity: 1;
   transform: scale(1) translateY(0);
-  transition: opacity 3000ms linear 1000ms, transform 3000ms ease-in-out 1000ms;
+  transition: opacity 3000ms linear 1000ms, transform 3000ms linear 1000ms;
 }
 
 /* slide exit */
