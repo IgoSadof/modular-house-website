@@ -37,10 +37,7 @@ const Footer = () => {
   return (
     <Box component="footer" className={classes.root}>
       <Typography className={classes.text}>
-        © ZROBYM architects. All rights reserved.
-      </Typography>
-      <Typography ml="100px" className={classes.text}>
-        2021, Minsk, Belarus
+      {`© ${new Date().getUTCFullYear()} | ООО "Арт-студия "Зробим" `}
       </Typography>
     </Box>
   );
