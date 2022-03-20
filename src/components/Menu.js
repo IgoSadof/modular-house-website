@@ -2,9 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Logo from './svg/Logo';
 
-import Facebook from '../assets/images/icons/facebook.svg';
-import Youtube from '../assets/images/icons/youtube.svg';
-import Instagram from '../assets/images/icons/instagram.svg';
+import Facebook from './svg/icons/Facebook';
+import Youtube from './svg/icons/Youtube';
+import Instagram from './svg/icons/Instagram';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby';
@@ -248,7 +248,10 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             className={classes.Link}
             href={'https://www.facebook.com/zrobimarchitects/'}
           >
-            <Facebook />
+            <Facebook
+              width={breakpoints.xxl ? '0.5vw' : 8}
+              height={breakpoints.xxl ? '1.2vw' : 18}
+            />
           </a>
           <a
             target='_blank'
@@ -256,7 +259,10 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             className={classes.Link}
             href={'https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ'}
           >
-            <Youtube />
+            <Youtube
+              width={breakpoints.xxl ? '1.2vw' : 17}
+              height={breakpoints.xxl ? '0.8vw' : 12}
+            />
           </a>
           <a
             target='_blank'
@@ -264,7 +270,10 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             className={classes.Link}
             href={'https://www.instagram.com/by___home/'}
           >
-            <Instagram />
+            <Instagram
+              width={breakpoints.xxl ? '0.9vw' : 14}
+              height={breakpoints.xxl ? '0.9vw' : 14}
+            />
           </a>
         </Box>
       </Box>
