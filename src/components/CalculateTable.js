@@ -78,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '28vw',
     flexShrink: '0',
+    [theme.breakpoints.down('md')]: {
+      width: '50vw',
+    },
   },
 
   tableResult: {
@@ -85,6 +88,16 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     padding: '40px 40px 40px 0',
     justifyContent: 'space-between',
+    [theme.breakpoints.down('md')]: {
+      flexDirection:'column',
+      '& p':{
+        textTransform: 'none',
+      },
+      '& span':{
+        fontSize:'18px',
+        lineHeight:'20px',
+      }
+    },
  
   },
   textPrice: {

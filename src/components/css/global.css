@@ -436,7 +436,7 @@ div[class*="MuiFormControl"] {
   }
 
   svg.MuiSvgIcon-root {
-    width: 2vw;
-    height:2vw;
+    width: 1.5vw;
+    height:1.5vw;
   }
 }

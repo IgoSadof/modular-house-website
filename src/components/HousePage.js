@@ -200,6 +200,9 @@ const useStyles = makeStyles((theme) => ({
   mainBlockItem: {
     fontSize: '12px',
     fontWeight: '400',
+    '& h6':{
+      textTransform: 'none',
+    },
     '@media (min-width:1920px)': {
       marginTop: '0.7vw',
     },
@@ -270,6 +273,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
+    '& p': {
+      overflowY: 'scroll',
+    },
     '@media (max-width:1919px)': {
       gap: '20px',
     },
@@ -295,8 +301,8 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '2.5vw',
       },
     },
-    '& p': {
-      overflowY: 'scroll',
+    '& p':{
+      textTransform: 'none',
     },
   },
   model: {
@@ -600,9 +606,16 @@ const useStyles = makeStyles((theme) => ({
   },
   calculationResult: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     gap: '100px',
     alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      '& span':{
+        fontSize:'18px',
+        lineHeight:'20px',
+      }
+    },
+
   },
   BlockForm: {
     // paddingLeft: "18vw",
@@ -631,6 +644,7 @@ const useStyles = makeStyles((theme) => ({
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
   const breakpoints = useBreakpoint();
+  console.log(breakpoints.md)
   const [houseNumber] = useState(house);
   const baseFolder = `houses/${dataHouses[house]['Код'].replace(
     ' ',
@@ -1178,7 +1192,7 @@ const HousePage = ({ house, data }) => {
                       }
                       labelPlacement='end'
                     />
-                    <Typography variant='h3'>
+                    <Typography variant='h6'>
                       $ {numberWithSpace(item['Стоимость'])}
                     </Typography>
                   </Box>
@@ -1201,7 +1215,7 @@ const HousePage = ({ house, data }) => {
                       name={item['Название модуля']}
                       labelPlacement='end'
                     />
-                    <Typography variant='h3'>
+                    <Typography variant='h6'>
                       $ {numberWithSpace(item['Стоимость'])}
                     </Typography>
                   </Box>
@@ -1233,7 +1247,7 @@ const HousePage = ({ house, data }) => {
             );
           })}
 
-          <Box className={classes.calculationResult}>
+          <Box className={classes.calculationResult} style={breakpoints.xxl?{marginLeft:"1.6vw"}:{marginLeft:"32px"}}>
             <Typography variant='h6'>Цена</Typography>
             <Typography variant='caption'>
               $ {numberWithSpace(modulePrice)}
