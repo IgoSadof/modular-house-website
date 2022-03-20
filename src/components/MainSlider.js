@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     width: '100%',
     height: '100vh',
+    minHeight:'768px',
     backgroundColor: '#D1D1D1',
     '@media (min-width:1921px)': {
       padding: '3.5vw 0px 7vw',
@@ -48,9 +49,11 @@ const useStyles = makeStyles((theme) => ({
     right: '-160px',
     width: '70%',
     height: '100vh',
+    minHeight:'768px',
     top: '0',
     zIndex: '0',
     [theme.breakpoints.down('md')]: {
+      minHeight:'0',
       '@media (min-width:600px)': {
         marginTop: '25vw',
         position: 'static',
@@ -144,6 +147,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     zIndex: 1,
     height: '55vh',
+    minHeight:'450px',
 
     [theme.breakpoints.down('md')]: {
       height: '50%',

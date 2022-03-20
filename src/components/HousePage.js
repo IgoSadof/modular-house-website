@@ -421,7 +421,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'space-between',
       padding: '0 40px',
       left: '0%',
-      bottom: '14%',
+      bottom: '18%',
       '@media (orientation: landscape)': {
         bottom: '25%',
       },
@@ -644,7 +644,6 @@ const useStyles = makeStyles((theme) => ({
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHousesData(data), [data]);
   const breakpoints = useBreakpoint();
-  console.log(breakpoints.md)
   const [houseNumber] = useState(house);
   const baseFolder = `houses/${dataHouses[house]['Код'].replace(
     ' ',
@@ -686,7 +685,7 @@ const HousePage = ({ house, data }) => {
     breakpoints,
   };
   const classes = useStyles(param);
-  console.log(dataHouses[houseNumber]['modules'][pillClick])
+  // console.log(dataHouses[houseNumber]['modules'][pillClick])
 
   const [model3d, setModel3d] = useState(
     getPublicPath(

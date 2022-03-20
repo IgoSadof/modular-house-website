@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: (param) => (param.inBurger ? '100%' : '10%'),
     height: (param) => (param.inBurger ? '80vh' : '100vh'),
+    minHeight:'768px',
     borderRight: '1px solid #4F4F4F',
     padding: '50px 0px 90px',
     transition: '0.5s',

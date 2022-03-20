@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tableCellLast: {
-   
     paddingRight: '40px',
     fontSize: '14px',
     '@media (min-width:1920px)': {
@@ -65,16 +64,16 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '0.97vw',
     },
   },
-  lastRow:{
+  lastRow: {
     display: 'flex',
     width: '100%',
-    gap:'60px',
+    gap: '60px',
     borderBottom: '1px solid',
     '@media (min-width:1921px)': {
-      gap:'4.2vw',
+      gap: '4.2vw',
     },
   },
-  downloadArea:{
+  downloadArea: {
     display: 'flex',
     width: '28vw',
     flexShrink: '0',
@@ -83,22 +82,27 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  tableResult: {
+  tableResultContent: {
     display: 'flex',
     width: '100%',
-    padding: '40px 40px 40px 0',
     justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
-      flexDirection:'column',
-      '& p':{
+      flexDirection: 'column',
+      '& p': {
         textTransform: 'none',
       },
-      '& span':{
-        fontSize:'18px',
-        lineHeight:'20px',
-      }
+      '& span': {
+        fontSize: '18px',
+        lineHeight: '20px',
+      },
     },
- 
+  },
+  tableResult:{
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    padding: '40px 40px 40px 0',
+
   },
   textPrice: {
     display: 'flex',
@@ -125,7 +129,6 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
       price: item.variants[0].price,
     };
   });
-  
 
   const [currentOption, setCheckboxesCheck] = useState(options);
   const [price, setPrice] = useState(
@@ -137,7 +140,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
         )
   );
   const handleChangeCheckbox = (event) => {
-    console.log(event.target.name)
+    console.log(event.target.name);
     setCheckboxesCheck({
       ...currentOption,
       [event.target.name]: {
@@ -192,9 +195,15 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       value={+item.variants[0].price}
                       control={<BpRadio color='primary' />}
                       label={
-                        <Typography style={currentOption[item.name].price ===
-                          item.variants[0].price
-                            ?{color:'#4f4f4f'}:{color:'#828282'}} variant='body1'>
+                        <Typography
+                          style={
+                            currentOption[item.name].price ===
+                            item.variants[0].price
+                              ? { color: '#4f4f4f' }
+                              : { color: '#828282' }
+                          }
+                          variant='body1'
+                        >
                           {item.variants[0].name}
                         </Typography>
                       }
@@ -213,11 +222,17 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       }
                       onChange={handleChangeCheckbox}
                       value={+item.variants[1].price}
-                      control={<BpRadio color='primary'/>}
+                      control={<BpRadio color='primary' />}
                       label={
-                        <Typography style={currentOption[item.name].price ===
-                          item.variants[1].price
-                            ?{color:'#4f4f4f'}:{color:'#828282'}}  variant='body1'>
+                        <Typography
+                          style={
+                            currentOption[item.name].price ===
+                            item.variants[1].price
+                              ? { color: '#4f4f4f' }
+                              : { color: '#828282' }
+                          }
+                          variant='body1'
+                        >
                           {item.variants[1].name}
                         </Typography>
                       }
@@ -262,9 +277,15 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         value={+item.variants[0].price}
                         control={<BpRadio color='primary' />}
                         label={
-                          <Typography style={currentOption[item.name].price ===
-                            item.variants[0].price
-                              ?{color:'#4f4f4f'}:{color:'#828282'}} variant='body1'>
+                          <Typography
+                            style={
+                              currentOption[item.name].price ===
+                              item.variants[0].price
+                                ? { color: '#4f4f4f' }
+                                : { color: '#828282' }
+                            }
+                            variant='body1'
+                          >
                             {item.variants[0].name}
                           </Typography>
                         }
@@ -284,9 +305,15 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         value={+item.variants[1].price}
                         control={<BpRadio color='primary' />}
                         label={
-                          <Typography style={currentOption[item.name].price ===
-                            item.variants[1].price
-                              ?{color:'#4f4f4f'}:{color:'#828282'}} variant='body1'>
+                          <Typography
+                            style={
+                              currentOption[item.name].price ===
+                              item.variants[1].price
+                                ? { color: '#4f4f4f' }
+                                : { color: '#828282' }
+                            }
+                            variant='body1'
+                          >
                             {item.variants[1].name}
                           </Typography>
                         }
@@ -302,12 +329,18 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
       <Box className={classes.lastRow}>
         <Box className={classes.downloadArea}></Box>
         <Box className={classes.tableResult}>
-          <Typography variant='h6' component='p' className={classes.textPrice}>
-            Цена
-          </Typography>
-          <Typography variant='caption' className={classes.textPriceValue}>
-            $ {numberWithSpace(price)}
-          </Typography>
+          <Box className={classes.tableResultContent}>
+            <Typography
+              variant='h6'
+              component='p'
+              className={classes.textPrice}
+            >
+              Цена
+            </Typography>
+            <Typography variant='caption' className={classes.textPriceValue}>
+              $ {numberWithSpace(price)}
+            </Typography>
+          </Box>
         </Box>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
       </Box>

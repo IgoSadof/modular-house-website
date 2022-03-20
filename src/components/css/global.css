@@ -358,6 +358,10 @@ abbr {
   justify-content: start;
 }
 
+.MuiAccordionSummary-expandIcon.Mui-expanded {
+  transform: rotate(45deg);
+}
+
 @media (max-width: 1200px) {
   .slick-list {
     height: auto ;
@@ -365,18 +369,19 @@ abbr {
   .swiper-slide {
     height: auto !important;
   }
+  .MuiDrawer-paper{
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  .MuiTab-root{
+    min-width: 160px !important;
+  }
 }
 /* Drawer */
 .MuiDrawer-paper{
   background-color: transparent !important;
   background: radial-gradient(100% 100% at 0% 0%, #E2E2E2 0%, rgba(232, 232, 232, 0.5) 100%) !important;
   backdrop-filter: blur(10px);
-}
-@media (max-width: 1200px) {
-  .MuiDrawer-paper{
-    width: 100% !important;
-    overflow: hidden !important;
-  }
 }
 
 .MuiFormLabel-asterisk{
@@ -439,4 +444,5 @@ div[class*="MuiFormControl"] {
     width: 1.5vw;
     height:1.5vw;
   }
+  
 }
