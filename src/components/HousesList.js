@@ -288,7 +288,7 @@ const useStyles = makeStyles((theme) => ({
 
   houseImg: {
     position: 'relative',
-    width: '44vw',
+    width: '48vw',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       height: '100%',
