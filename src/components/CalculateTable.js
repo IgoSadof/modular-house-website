@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
+      width: 'auto',
       flexDirection: 'column',
       '& p': {
         textTransform: 'none',

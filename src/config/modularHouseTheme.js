@@ -66,7 +66,7 @@ const modularHouseTheme = createTheme({
     },
     h2: {
       fontSize: customFontsSize.h2.regular,
-      lineHeight: 1,
+      lineHeight: 1.2,
       fontWeight: 600,
       textTransform: 'uppercase',
       letterSpacing: '0.015em',

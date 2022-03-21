@@ -358,9 +358,7 @@ abbr {
   justify-content: start;
 }
 
-.MuiAccordionSummary-expandIcon.Mui-expanded {
-  transform: rotate(45deg);
-}
+
 
 @media (max-width: 1200px) {
   .slick-list {
@@ -445,4 +443,7 @@ div[class*="MuiFormControl"] {
     height:1.5vw;
   }
   
+}
+.MuiAccordionSummary-expandIcon.Mui-expanded {
+  transform: rotate(45deg) !important;
 }

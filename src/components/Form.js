@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
    
     [theme.breakpoints.down('md')]: {
       alignSelf: 'center',
+      width:'100%',
       // padding: '0 10%',
     },
   },

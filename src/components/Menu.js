@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     height: (param) => (param.inBurger ? '80vh' : '100vh'),
     minHeight:'768px',
     borderRight: '1px solid #4F4F4F',
-    padding: '50px 0px 90px',
+    padding: '50px 0px 80px',
     transition: '0.5s',
     opacity: '1',
     zIndex: '2',
@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       display: (param) => (param.inBurger ? 'flex' : 'none'),
+      minHeight:'100px',
       borderRight: 'none',
       position: 'relative',
       padding: '0',

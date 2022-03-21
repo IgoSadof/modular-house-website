@@ -16,7 +16,7 @@ import Title3 from '../assets/images/icons/title3.svg';
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    padding: '50px 0px 100px',
+    padding: '50px 0px 90px',
     boxSizing: 'border-box',
     position: 'relative',
     display: 'flex',
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       minHeight:'0',
       '@media (min-width:600px)': {
-        marginTop: '25vw',
+        // marginTop: '25vw',
         position: 'static',
       },
       top: '50%',
@@ -156,6 +156,7 @@ const useStyles = makeStyles((theme) => ({
   },
   article: {
     minWidth: '300px',
+    // minHeight:'550px',
     display: 'flex',
     position: 'absolute',
     // top: "40%",
@@ -173,6 +174,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.down('md')]: {
+      minHeight:'100px',
       marginLeft: 'auto',
       marginRight: 'auto',
       marginBottom: 'auto',
@@ -201,6 +203,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '30px',
     position: 'relative',
     marginTop: 'auto',
+    zIndex:'2',
     '@media (min-width:1921px)': {
       gap: '2vw',
     },

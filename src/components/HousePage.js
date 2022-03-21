@@ -33,7 +33,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#D1D1D1',
     overflow: 'hidden',
     height: '100vh',
+    minHeight:'768px',
     [theme.breakpoints.down('md')]: {
+      // minHeight:'0',
       '& $titleBox': {
         marginTop: '100px',
         right: '0',
@@ -75,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainImgBox: {
     height: '72vh',
+    minHeight:'550px',
     position: 'relative',
     [theme.breakpoints.down('md')]: {
       '@media (orientation: landscape)': {
@@ -312,6 +315,7 @@ const useStyles = makeStyles((theme) => ({
     width: '56vw',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
+    minHeight:'550px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       height: (param) => (param.breakpoints.s ? '50vh' : '100vh'),
@@ -429,6 +433,7 @@ const useStyles = makeStyles((theme) => ({
   },
   blockGalary: {
     height: 'auto',
+    minHeight:'350px'
   },
   panel: {
     position: 'absolute',
@@ -1068,7 +1073,7 @@ const HousePage = ({ house, data }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          {breakpoints.md ? (
+          {breakpoints.sm ? (
             <Model3d
               srcPath={model3d}
               srcPathIos={model3d

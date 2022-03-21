@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       width: '100%',
       '& form': {
-        padding: '0 5%',
+        padding: '0 10%',
       },
     },
   },

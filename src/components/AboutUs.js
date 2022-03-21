@@ -19,15 +19,15 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
   },
   header: {
-    fontSize: "68px",
+    fontSize: "4.2vw",
     fontWeight: "600",
-    lineHeight: "1.15",
+    lineHeight: "1.2",
     letterSpacing: "0.03em",
     textTransform:"uppercase",
     color: "#4F4F4F",
-    '@media (min-width:1921px)': {
-      fontSize: "3.54vw",
-    },
+    // '@media (min-width:1921px)': {
+    //   fontSize: "3.54vw",
+    // },
     [theme.breakpoints.down("md")]: {
       width: "65%",
       fontSize: "24px",
@@ -36,17 +36,34 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     display: "flex",
     gap: "60px",
-    marginTop: "100px",
+    marginTop: "120px",
+    "&:first-child ":{
+      marginTop:'auto',
+      height:'86vh',
+      '@media (min-width:1921px)': {
+        // marginTop: "7vw",
+      },
+    },
     '@media (min-width:1921px)': {
       gap: "4.2vw",
+      marginTop: "8.3vw",
     },
     [theme.breakpoints.down("md")]: {
       flexDirection: "column-reverse",
       alignItems: "center",
-      marginTop: "40px",
-      gap: "30px",
-      
+      marginTop: "60px",
     },
+  },
+  BlockContent:{
+    "&:first-child ":{
+      marginTop:'auto',
+      marginBottom: 'auto',
+      height:'auto',
+      '@media (min-width:1921px)': {
+        // marginTop: "7vw",
+      },
+    },
+
   },
   titleBox: {
     gap: "20px",
@@ -65,6 +82,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
     [theme.breakpoints.down("md")]: {
       width: "100%",
+      gap: "30px",
+    },
+    '@media (min-width:1921px)': {
+      gap: "4.2vw",
     },
   },
   creatorsBox: {
@@ -85,13 +106,24 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   creatorTitle: {
-    // fontSize: "14px",
+    fontSize: "28px",
     textTransform: "uppercase",
     fontWeight: 600,
+    '@media (min-width:1921px)': {
+      fontSize: "1.45vw",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "18px",
+    },
   },
   creatorSubtitle: {
     marginTop: "10px",
-    // fontSize: "12px",
+    fontSize: "14px",
+    '@media (min-width:1921px)': {
+      fontSize: "0.73vw",
+      marginTop: "0.07vw",
+    },
+    
   },
   creatorMainText: {
     marginTop: "60px",
@@ -113,7 +145,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   BlockMt0: {
-    marginTop: "0px",
+    marginTop: "60px",
+    '@media (min-width:1921px)': {
+      marginTop: "4.2vw",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "30px",
+      gap:'20px',
+    },
   },
   lineInvis: {
     opacity: "0",
@@ -155,6 +194,7 @@ const AboutUs = ({data}) => {
         component="section"
         className={classes.Block}
       >
+        <Box className={`${classes.Block} ${classes.BlockContent}`}>
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
             <TitleWithLine title="Автор концепции MH - Андрусь Bezdar" />
@@ -165,6 +205,9 @@ const AboutUs = ({data}) => {
           Мы команда архитекторов, стремящаяся сделать жильё доступным и
           качественным!
         </Typography>
+
+        </Box>
+        
       </Box>
 
       <Box component="section" className={classes.Block}>
