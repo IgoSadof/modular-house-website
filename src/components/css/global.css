@@ -447,3 +447,6 @@ div[class*="MuiFormControl"] {
 .MuiAccordionSummary-expandIcon.Mui-expanded {
   transform: rotate(45deg) !important;
 }
+.MuiPaper-root {
+  background-color:  #D1D1D1 !important;
+}

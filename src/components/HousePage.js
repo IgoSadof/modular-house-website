@@ -297,6 +297,7 @@ const useStyles = makeStyles((theme) => ({
     // minHeight: '16vh',
 
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
+    minHeight:'70px',
     margin: '10px 0',
     '& h1': {
       fontSize: '48px',
