@@ -272,7 +272,7 @@ abbr {
 
 /* appear - on page load */
 .houseMoveMobile-enter {
-  opacity: 0;
+  opacity: 1;
   z-index: 1;
   top:20%;
   transform: scale(1);
