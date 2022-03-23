@@ -432,7 +432,7 @@ const useStyles = makeStyles((theme) => ({
         bottom: '25%',
       },
     },
-    '@media (min-width:40px)': {
+    '@media (max-width:400px)': {
       bottom: '18%',
     },
 
