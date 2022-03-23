@@ -121,23 +121,30 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListImg: {
     position: 'absolute',
-
     top: '15%',
     zIndex: '2',
     width: '100%',
     transition: '0.5s',
-    transform: 'scale(1.1)',
+    transform: 'scale(1)',
     [theme.breakpoints.down('md')]: {
+      transition: '0.5s',
       maxWidth: '150px',
       width: '80%',
       top: '10%',
     },
     [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
+      transition: '0.5s',
       top: '20%',
+      transform: 'scale(1.5)',
     },
   },
   houseListImgActive: {
     top: '0%',
+    [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
+      transition: '0.5s',
+      top: '0%',
+      transform: 'scale(1.5)',
+    },
   },
   houseListName: {
     position: 'relative',
@@ -309,7 +316,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       padding: '0',
       height: '95vh',
-      minHeight:'600px',
+      minHeight: '600px',
     },
   },
 }));
@@ -386,14 +393,14 @@ const HousesList = ({ data }) => {
             ) : null
           ) : (
             <>
-              <CSSTransition
-                key={item.id}
-                in={true}
-                appear={true}
-                timeout={500}
-                classNames='houseMoveMobile'
-              >
-                {item['Иконка дома'] ? (
+              {item['Иконка дома'] ? (
+                <CSSTransition
+                  key={item.id}
+                  in={activeSlide === index}
+                  appear={true}
+                  timeout={500}
+                  classNames='houseMoveMobile'
+                >
                   <GatsbyImage
                     className={
                       activeSlide === index
@@ -403,8 +410,8 @@ const HousesList = ({ data }) => {
                     image={getImg(data, `${item['Иконка дома']}`)}
                     alt='img'
                   ></GatsbyImage>
-                ) : null}
-              </CSSTransition>
+                </CSSTransition>
+              ) : null}
               {activeSlide === index ? (
                 <Box className={classes.button}>
                   <Link
