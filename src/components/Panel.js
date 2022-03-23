@@ -83,8 +83,8 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     minHeight: '100%',
     padding: '0',
-    paddingRight: '20px',
-    minWidth: '160px',
+    paddingRight: '40px',
+    // minWidth: '160px',
     '@media (min-width:1921px)': {
       paddingRight: '1.1vw',
     },

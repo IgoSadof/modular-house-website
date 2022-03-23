@@ -13,6 +13,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
   content: {
     // boxSizing: 'border-box',
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
     position: 'relative',
     width: '100%',
     height: '100%',

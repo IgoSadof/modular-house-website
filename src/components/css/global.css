@@ -371,9 +371,9 @@ abbr {
     width: 100% !important;
     overflow: hidden !important;
   }
-  .MuiTab-root{
+  /* .MuiTab-root{
     min-width: 160px !important;
-  }
+  } */
 }
 /* Drawer */
 .MuiDrawer-paper{
@@ -449,4 +449,10 @@ div[class*="MuiFormControl"] {
 }
 .MuiPaper-root {
   background-color:  #D1D1D1 !important;
+}
+
+@media (min-width: 600px){
+  .MuiTab-root {
+      min-width: auto !important;
+  }
 }

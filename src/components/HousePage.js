@@ -276,9 +276,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
-    '& p': {
-      overflowY: 'scroll',
-    },
+    // '& p': {
+    //   overflowY: 'scroll',
+    // },
     '@media (max-width:1919px)': {
       gap: '20px',
     },
@@ -294,7 +294,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 'auto',
-    // minHeight: '16vh',
+    // minHeight: '16vh1,
 
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
     minHeight:'70px',
@@ -684,7 +684,7 @@ const HousePage = ({ house, data }) => {
   const modulesCounts = dataHouses[houseNumber]['modules'].length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 10;
-  const heightModuleList = 50;
+  const heightModuleList = 60;
 
   const [pilldistance, setPilldistance] = useState(heightOneLine * 1.5);
   const [pillClick, setPillClick] = useState(0);
@@ -710,7 +710,7 @@ const HousePage = ({ house, data }) => {
       dataHouses[houseNumber]['modules'][pillClick]['3D Модель Видео']
     )
   );
-  console.log(dataHouses[houseNumber]['modules'][pillClick])
+  // console.log(dataHouses[houseNumber]['modules'][pillClick])
 
   const myRef = useRef(null);
   const categoryRef = React.createRef();
