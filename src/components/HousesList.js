@@ -140,11 +140,6 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListImgActive: {
     top: '0%',
-    [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
-      transition: '0.5s',
-      top: '0%',
-      transform: 'scale(1.5)',
-    },
   },
   houseListName: {
     position: 'relative',
