@@ -52,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column-reverse",
       alignItems: "center",
       marginTop: "60px",
+      "&:first-child ":{
+        marginTop:'60px',
+        height:'auto',
+      },
     },
   },
   BlockContent:{

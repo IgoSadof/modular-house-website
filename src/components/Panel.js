@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '34px',
     marginTop:'auto',
     marginBottom:'20px',
-    borderBottom: '1.5px solid #BDBDBD',
+    // borderBottom: '1.5px solid #BDBDBD',
     overflow: 'visible !important',
     '@media (min-width:1921px)': {
       height: '1.8vw',
@@ -76,7 +76,8 @@ const useStyles = makeStyles((theme) => ({
       overflow: 'visible',
     },
     '&>div>span': {
-      bottom: '-4%',
+      bottom: '-8%',
+      zIndex:'1',
     },
   },
   tab: {
@@ -95,6 +96,14 @@ const useStyles = makeStyles((theme) => ({
         alignSelf: 'flex-start',
       },
     },
+  },
+  tabsLine:{
+    position:'absolute',
+    bottom:'18px',
+    width: '100%',
+    height: '1.5px',
+    backgroundColor: '#BDBDBD',
+
   },
 }));
 
@@ -135,6 +144,7 @@ const Panel = React.forwardRef(({ change, arr }, ref) => {
         >
           {listItem}
         </Tabs>
+        <span  className={classes.tabsLine}></span>
       </Box>
     </Box>
   );

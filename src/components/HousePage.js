@@ -319,7 +319,8 @@ const useStyles = makeStyles((theme) => ({
     minHeight:'550px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: (param) => (param.breakpoints.s ? '50vh' : '100vh'),
+      height:'50vh',
+      // height: (param) => (param.breakpoints.s ? '50vh' : '100vh'),
     },
   },
   modelDescLine: {
@@ -426,11 +427,15 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'space-between',
       padding: '0 40px',
       left: '0%',
-      bottom: '18%',
+      bottom: '14%',
       '@media (orientation: landscape)': {
         bottom: '25%',
       },
     },
+    '@media (min-width:40px)': {
+      bottom: '18%',
+    },
+
   },
   blockGalary: {
     height: 'auto',
