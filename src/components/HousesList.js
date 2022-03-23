@@ -267,13 +267,21 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'normal',
     },
   },
-  houseDescSpec: style.flexColumn,
-  houseDescSpecOne: { ...style.flex, alignItems: 'end', "& p":{textTransform: 'none',} },
+  houseDescSpec: { ...style.flexColumn, gap: '10px', height: '100%' },
+  houseDescSpecOne: {
+    ...style.flex,
+    alignItems: 'end',
+    '& p': { textTransform: 'none' },
+    '& p:last-child': {
+      whiteSpace: 'nowrap',
+    },
+  },
   textTransform: 'none',
   '& p': {
     minWidth: '50px',
     lineHeight: '1.6',
   },
+
   houseDescMore: { ...style.flex, marginTop: '40px' },
   houseDescPrice: style.flexColumn,
   houseSpecPrice: {
@@ -561,7 +569,7 @@ const HousesList = ({ data }) => {
                   variant='body1'
                   className={classes.houseDescSpecName}
                 >
-                  Этажность:
+                  Количество этажей:
                 </Typography>
                 <Typography
                   variant='h6'
