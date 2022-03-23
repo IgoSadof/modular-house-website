@@ -40,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
       height: (param) =>
         param.page === 'houseList' && param.breakpoints.s ? '100vh' : '100%',
     },
+    '@media (max-height:600px)': {
+      height:'100% !important',
+    },
+   
   },
 
   Block: {

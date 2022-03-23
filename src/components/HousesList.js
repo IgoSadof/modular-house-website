@@ -309,6 +309,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       padding: '0',
       height: '95vh',
+      minHeight:'600px',
     },
   },
 }));
