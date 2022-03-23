@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     display: "flex",
     gap: "60px",
-    marginTop: "120px",
+    marginTop: "100px",
     "&:first-child ":{
       marginTop:'auto',
       height:'86vh',
@@ -82,11 +82,11 @@ const useStyles = makeStyles((theme) => ({
   textBox: {
     display: "flex",
     flexDirection: "column",
-    gap: "60px",
+    gap: "15px",
     marginLeft: "auto",
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      gap: "30px",
+      // gap: "30px",
     },
     '@media (min-width:1921px)': {
       gap: "4.2vw",
@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     // fontSize: "12px",
   },
   creatorFooterText: {
-    marginTop: "10px",
+    marginTop: "15px",
     // fontSize: "12px",
   },
   imgBox: {
@@ -163,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     height: "100%",
-    width:"100%",
+    // width:"100%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
