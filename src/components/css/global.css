@@ -271,6 +271,21 @@ abbr {
 } */
 
 /* appear - on page load */
+
+.houseMoveMobile-appear {
+  opacity: 1;
+  z-index: 1;
+  top:20%;
+  transform: scale(1);
+  transition: 500ms linear;
+}
+.houseMoveMobile-appear-active {
+  opacity: 1;
+  z-index: 1;
+  top:20%;
+  transform: scale(1);
+  transition: 500ms linear;
+}
 .houseMoveMobile-enter {
   opacity: 1;
   z-index: 1;

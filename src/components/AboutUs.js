@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
       // gap: "30px",
     },
     '@media (min-width:1921px)': {
-      gap: "4.2vw",
+      gap: "1.1vw",
     },
   },
   creatorsBox: {
