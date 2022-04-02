@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     border: "1px solid",
     cursor: "pointer",
+    marginLeft:'2px',
     "@media (min-width:1921px)": {
       width: "33.6vw",
     },

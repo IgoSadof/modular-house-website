@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
   },
   header: {
-    fontSize: "4.2vw",
+    fontSize: "3vw",
     fontWeight: "600",
     lineHeight: "1.2",
     letterSpacing: "0.03em",

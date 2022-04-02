@@ -5,6 +5,7 @@ import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
+import { makeStyles } from "@material-ui/core/styles";
 
 const Accordion = withStyles({
   root: {
@@ -48,9 +49,19 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles((theme) => ({
   root: {
     backgroundColor: '#D1D1D1',
-    padding: theme.spacing(2),
+    // padding: '40px',
   },
 }))(MuiAccordionDetails);
+
+const useStyles = makeStyles(() => ({
+  details: {
+    padding: '16px',
+  },
+  noDetails: {
+    padding: '0',
+  },
+}));
+
 
 export default function Accordions({
   arr,
@@ -61,6 +72,8 @@ export default function Accordions({
   uppercase,
 }) {
   const [expanded, setExpanded] = React.useState(false);
+
+  const classes = useStyles();
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -104,7 +117,7 @@ export default function Accordions({
                   : item[70].toUpperCase()}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails className={item?classes.details:classes.noDetails}>
               <Typography variant='body1' component='p'>
                 {houseRooms ? item['Описание комнаты'] : item[71]}
               </Typography>
