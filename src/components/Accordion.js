@@ -72,6 +72,7 @@ export default function Accordions({
   uppercase,
 }) {
   const [expanded, setExpanded] = React.useState(false);
+  arr[1]['Описание комнаты'] = null
 
   const classes = useStyles();
 
@@ -117,7 +118,7 @@ export default function Accordions({
                   : item[70].toUpperCase()}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails className={item?classes.details:classes.noDetails}>
+            <AccordionDetails className={(item['Описание комнаты']||item[71])?classes.details:classes.noDetails}>
               <Typography variant='body1' component='p'>
                 {houseRooms ? item['Описание комнаты'] : item[71]}
               </Typography>
