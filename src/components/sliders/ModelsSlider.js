@@ -17,7 +17,7 @@ const breakpoints = useBreakpoint();
       loop={true}
       mousewheel={mobile ? false : true}
       direction={mobile ? "horizontal" : "vertical"}
-      freeMode={breakpoints.s ? true : false}
+      // freeMode={breakpoints.s ? true : false}
       spaceBetween={20}
     >
       {listItem}
