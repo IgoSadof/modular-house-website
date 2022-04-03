@@ -38,31 +38,27 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
       padding: '0%',
+      // justifyContent:'flex-end'
     },
   },
   button: {
-    position: 'absolute',
-    top: '5%',
-    right: '10%',
+    marginTop: '-10px',
     zIndex: '2',
     transition: '0.5s',
     [theme.breakpoints.down('md')]: {
-      transform: 'scale(0.55)',
-      top: '55%',
       right: '0',
       opacity: '1',
-      left: '-15%',
     },
   },
   houseListBlock: {
     width: '10vw',
-    flexShrink: '0',
     borderRight: '1px solid',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       borderRight: 'none',
-      padding: '0',
-      marginBottom: '20px',
+      padding: '20px 10px',
+      marginTop: 'auto',
+      marginBottom: 'auto',
     },
   },
   houseList: {
@@ -89,14 +85,20 @@ const useStyles = makeStyles((theme) => ({
     border: 'none',
     background: 'none',
     [theme.breakpoints.down('md')]: {
-      transform: 'scale(0.7)',
-      top: '20px',
-      width: '120px',
+      transform: 'scale(0.9)',
+      width: '100%',
+    },
+    '@media (min-width:600px) and (max-width: 1000px)': {
+      minHeight: '160px',
+      transform: 'scale(1.2)',
     },
   },
   houseListItemActive: {
     [theme.breakpoints.down('md')]: {
-      transform: 'scale(1.2)',
+      transform: 'scale(0.9)',
+    },
+    '@media (min-width:600px) and (max-width: 1000px)': {
+      transform: 'scale(1)',
     },
   },
   houseListNumber: {
@@ -128,28 +130,34 @@ const useStyles = makeStyles((theme) => ({
     transform: 'scale(1)',
     [theme.breakpoints.down('md')]: {
       transition: '0.5s',
-      maxWidth: '150px',
-      width: '80%',
-      top: '10%',
+      maxWidth: '170px',
     },
     [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
       transition: '0.5s',
+      maxWidth: '150px',
       top: '20%',
-      transform: 'scale(1.5)',
+      transform: 'scale(1.2)',
     },
   },
   houseListImgActive: {
     top: '0%',
+    transform: 'scale(1.4)',
   },
   houseListName: {
     position: 'relative',
-    // left: "10%",
     top: '-0.7vw',
-    marginBottom: '10px',
+    marginBottom: '20px',
     zIndex: '2',
     '@media (min-width:1920px)': {
       marginBottom: '0.7vw',
       fontSize: '1vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      top: '0',
+      marginBottom: '10px',
+    },
+    '@media (min-width:600px) and (max-width: 1000px)': {
+      marginBottom: '20px',
     },
   },
   houseDesc: {
@@ -179,8 +187,6 @@ const useStyles = makeStyles((theme) => ({
       padding: '0',
       order: '2',
     },
-
-    // gap: "40px",
   },
   houseDescImgBox: {
     position: 'relative',
@@ -192,7 +198,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },
-    // height: "350px",
   },
   houseDescImg: {
     position: 'absolute',
@@ -301,7 +306,8 @@ const useStyles = makeStyles((theme) => ({
     width: '48vw',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: '100%',
+      height: '60vh',
+      minHeight: '600px',
     },
   },
   mainImg: {
@@ -310,7 +316,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     [theme.breakpoints.down('md')]: {
       padding: '0',
-      height: '95vh',
+      height: '60vh',
       minHeight: '600px',
     },
   },

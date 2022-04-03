@@ -72,7 +72,6 @@ export default function Accordions({
   uppercase,
 }) {
   const [expanded, setExpanded] = React.useState(false);
-  arr[1]['Описание комнаты'] = null
 
   const classes = useStyles();
 

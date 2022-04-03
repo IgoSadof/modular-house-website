@@ -12,7 +12,7 @@ const breakpoints = useBreakpoint();
   return (
     <Swiper
       ref={houseRef}
-      slidesPerView={breakpoints.s ? (breakpoints.xs ? "3" : "4") : "5"}
+      slidesPerView={breakpoints.m ? (breakpoints.xs ? "2" : "3") : "5"}
       grabCursor={true}
       loop={true}
       mousewheel={mobile ? false : true}
