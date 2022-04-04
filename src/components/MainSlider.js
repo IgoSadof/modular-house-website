@@ -313,11 +313,11 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   const [video, setVideo] = useState(false);
 
   if (breakpoints && breakpoints.sm) {
-    import('../assets/video/videoDesktop.mp4').then((video) => {
+    import('../assets/video/start-full.mp4').then((video) => {
       setVideo(video);
     });
   } else {
-    import('../assets/video/videoDesktop.mp4').then((video) => {
+    import('../assets/video/start-full.mp4').then((video) => {
       setVideo(video);
     });
   }
@@ -329,7 +329,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     0: 1.7,
     1: 4.41,
     2: 7,
-    3: 10.64,
+    3: 10.605,
   };
 
   const handleNumberClick = (e, numb = 0) => {
