@@ -232,7 +232,9 @@ const useStyles = makeStyles((theme) => ({
   number: {
     display: 'flex',
     justifyContent: 'center',
-    cursor: 'pointer',
+    '& span':{
+      cursor: 'pointer',
+    },
     width: '10vw',
     height: '20px',
     [theme.breakpoints.down('md')]: {

@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid",
     cursor: "pointer",
     marginLeft:'2px',
+    transformStyle: 'preserve-3d',
     "@media (min-width:1921px)": {
       width: "33.6vw",
     },
@@ -71,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "410px",
     overflow: "hidden",
+    
     "&:hover $img": {
       transform: "scale(1.1)",
     },

@@ -205,8 +205,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     marginLeft: 'auto',
     width: '100%',
-    // height: "70vh",
-    // maxHeight: "600px",
     [theme.breakpoints.down('md')]: {
       order: '2',
       marginRight: 'auto',
@@ -391,14 +389,9 @@ const MainPageContent = ({ data }) => {
   return (
     <Box className={classes.root}>
       <Box component='section' className={classes.sliderBlock}>
-        {/* <Box className={classes.titleBox}> */}
         {!breakpoints.md ? (
           <span className={`${classes.line} ${classes.firstLine}`}></span>
         ) : null}
-        {/* {breakpoints.md ? (
-            <Typography variant="h2" className={classes.text}></Typography>
-          ) : null} */}
-        {/* </Box> */}
         <Box className={classes.sliderBox}>
           <MainPageHouseSlider
             houseRef={houseSliderRef}
@@ -421,8 +414,6 @@ const MainPageContent = ({ data }) => {
         <Box className={classes.titleBox}>
           <Box className={classes.BlockColumn}>
             <TitleWithLine title='ПРЕИМУЩЕСТВА' />
-
-            {/* ) : null} */}
           </Box>
         </Box>
 
@@ -657,7 +648,6 @@ const MainPageContent = ({ data }) => {
         <Box component='section' className={classes.Block}>
           <Box
             className={classes.titleBox}
-            // style={{ marginTop: '100px' }}
           >
             <Box
               className={classes.BlockColumn}
