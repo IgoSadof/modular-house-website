@@ -329,7 +329,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     0: 1.7,
     1: 4.41,
     2: 7,
-    3: 10.605,
+    3: 9.7,
   };
 
   const handleNumberClick = (e, numb = 0) => {
