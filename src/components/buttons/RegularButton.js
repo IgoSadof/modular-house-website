@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     padding:"12px 30px",
     fontSize:"14px",
     borderRadius: "0",
-    lineHeight: "1em",
+    lineHeight: '1.4',
     letterSpacing:"0.015em",
     width:"152px",
     height:"38px",

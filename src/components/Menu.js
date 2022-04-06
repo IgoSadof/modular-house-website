@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     transition: '0.5s',
     position: 'absolute',
-    lineHeight: '1em',
+    lineHeight: '1.4',
     textTransform: 'uppercase',
     letterSpacing: '0.015em',
     top: '50%',

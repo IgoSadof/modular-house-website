@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     color: "#D1D1D1",
     fontSize: customFontsSize.h6.regular,
-    lineHeight:"14px",
+    lineHeight: '1.4',
     "@media (min-width:1921px)": {
       fontSize: customFontsSize.h6.adaptiv,
     },

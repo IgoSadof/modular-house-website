@@ -180,7 +180,7 @@ const useStyles = makeStyles((theme) => ({
   mainBlockTitle: {
     textAlign: 'left',
     marginLeft: '100px',
-    // width: '300px',
+    color:'#4F4F4F',
     width: '28vw',
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
@@ -623,7 +623,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       '& span':{
         fontSize:'18px',
-        lineHeight:'20px',
+        lineHeight: '1.4',
       }
     },
 

@@ -159,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "40px",
     alignItems: "end",
     "& p": {
-      lineHeight:"1",
+      lineHeight: '1.4',
     },
     "& img": { objectFit: "contain !important" },
     [theme.breakpoints.down("md")]: {

@@ -53,7 +53,7 @@ const modularHouseTheme = createTheme({
     h1: {
       fontSize: customFontsSize.h1.regular,
       color: 'white',
-      lineHeight: '1.1em',
+      lineHeight: 1.4,
       letterSpacing: '0.02em',
       fontWeight: 700,
       fontStyle: 'normal',
@@ -66,7 +66,7 @@ const modularHouseTheme = createTheme({
     },
     h2: {
       fontSize: customFontsSize.h2.regular,
-      lineHeight: 1.2,
+      lineHeight: 1.4,
       fontWeight: 600,
       textTransform: 'uppercase',
       letterSpacing: '0.015em',
@@ -82,7 +82,7 @@ const modularHouseTheme = createTheme({
     },
     h3: {
       fontSize: customFontsSize.h3.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 400,
       fontStyle: 'normal',
       color: '#4F4F4F',
@@ -92,7 +92,7 @@ const modularHouseTheme = createTheme({
     },
     h4: {
       fontSize: customFontsSize.h4.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 500,
       fontStyle: 'normal',
       textTransform: 'uppercase',
@@ -108,7 +108,7 @@ const modularHouseTheme = createTheme({
 
     h5: {
       fontSize: customFontsSize.h5.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 500,
       fontStyle: 'normal',
       textTransform: 'uppercase',
@@ -147,7 +147,7 @@ const modularHouseTheme = createTheme({
     },
     body2: {
       fontSize: customFontsSize.body2.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 400,
       fontStyle: 'normal',
       color: '#7C7C7C',
@@ -158,7 +158,7 @@ const modularHouseTheme = createTheme({
     },
     subtitle1: {
       fontSize: customFontsSize.subtitle1.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 600,
       fontStyle: 'normal',
       textTransform: 'uppercase',
@@ -170,7 +170,7 @@ const modularHouseTheme = createTheme({
     },
     subtitle2: {
       fontSize: customFontsSize.subtitle2.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 600,
       fontStyle: 'normal',
       textTransform: 'uppercase',
@@ -181,7 +181,7 @@ const modularHouseTheme = createTheme({
     },
     button: {
       fontSize: customFontsSize.button.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 500,
       fontStyle: 'normal',
       textTransform: 'uppercase',
@@ -193,7 +193,7 @@ const modularHouseTheme = createTheme({
     },
     caption: {
       fontSize: customFontsSize.caption.regular,
-      lineHeight: 1.15,
+      lineHeight: 1.4,
       fontWeight: 600,
       fontStyle: 'normal',
       textTransform: 'uppercase',

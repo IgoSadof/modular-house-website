@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
       },
       '& span': {
         fontSize: '18px',
-        lineHeight: '20px',
+        lineHeight: '1.4',
       },
     },
   },
