@@ -505,20 +505,6 @@ const HousesList = ({ data }) => {
               >
                 {dataHouses[house]['Код']}
               </Typography>
-              <Box className={classes.houseDescIconBox}>
-                <GatsbyImage
-                  className={classes.mainPlan}
-                  image={getImg(
-                    data,
-                    `${
-                      dataHouses[house]['Иконка планировки']
-                        ? dataHouses[house]['Иконка планировки']
-                        : 'images/plan.png'
-                    }`
-                  )}
-                  alt='img'
-                ></GatsbyImage>
-              </Box>
             </Box>
           ) : null}
 
@@ -652,26 +638,6 @@ const HousesList = ({ data }) => {
             >
               {dataHouses[house]['Код']}
             </Typography>
-            <Box className={classes.houseDescIconBox}>
-              <GatsbyImage
-                className={classes.mainPlan}
-                image={getImg(
-                  data,
-                  `${
-                    dataHouses[house]['Иконка планировки']
-                      ? dataHouses[house]['Иконка планировки']
-                      : 'images/plan.png'
-                  }`
-                )}
-                alt='img'
-              ></GatsbyImage>
-              <Typography variant='h5' className={classes.houseSpecPrice}>
-                {dataHouses[house].countArea(
-                  dataHouses[house].modules,
-                  'Стоимость'
-                ) ?? 100}
-              </Typography>
-            </Box>
           </Box>
         ) : null}
       </Box>
