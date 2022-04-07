@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     alignItems: 'flex-start',
-    paddingTop: '14vh',
+    paddingTop: '10vh',
 
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
@@ -146,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     position: 'relative',
     zIndex: 1,
-    height: '55vh',
+    height: '62vh',
     minHeight:'450px',
 
     [theme.breakpoints.down('md')]: {
@@ -159,7 +159,6 @@ const useStyles = makeStyles((theme) => ({
     // minHeight:'550px',
     display: 'flex',
     position: 'absolute',
-    // top: "40%",
     left: '0',
     right: '0',
     zIndex: 1,
@@ -167,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     // marginTop:"-20%",
     marginLeft: '100px',
-    width: '32vw',
+    width: '34vw',
     '@media (min-width:1921px)': {
       marginLeft: '6.9vw',
       gap: '2.1vw',
