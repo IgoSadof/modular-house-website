@@ -98,12 +98,11 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  tableResult:{
+  tableResult: {
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
     padding: '40px 40px 40px 0',
-
   },
   textPrice: {
     display: 'flex',
@@ -200,7 +199,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                           style={
                             currentOption[item.name].price ===
                             item.variants[0].price
-                              ? { color: '#4f4f4f' }
+                              ? null
                               : { color: '#828282' }
                           }
                           variant='body1'
@@ -229,7 +228,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                           style={
                             currentOption[item.name].price ===
                             item.variants[1].price
-                              ? { color: '#4f4f4f' }
+                              ? null
                               : { color: '#828282' }
                           }
                           variant='body1'
@@ -245,7 +244,9 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                     className={`${classes.tableCell} ${classes.tableCellLast}`}
                     align='right'
                   >
-                    + {currentOption[item.name].price}
+                    <Typography variant='h6' component='p'>
+                      $ {numberWithSpace(currentOption[item.name].price)}
+                    </Typography>
                   </td>
                 </tr>
               ))

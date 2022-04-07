@@ -1151,14 +1151,14 @@ const HousePage = ({ house, data }) => {
           <span className={classes.line}></span>
           {breakpoints.md ? (
             <Typography variant='h2' className={classes.text}>
-              Смета
+              Расчет стоимости
             </Typography>
           ) : null}
         </Box>
         <Box className={classes.calculationPlan}>
           {breakpoints.md ? null : (
             <Typography className={classes.text} variant='h2'>
-              Смета
+              Расчет стоимости
             </Typography>
           )}
           <Box className={classes.calculationPlanConteiner}>
