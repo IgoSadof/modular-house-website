@@ -152,7 +152,7 @@ const FormBlock = ({
             <Box
               className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
             >
-              {!staticImg ? (
+              {!staticImg && img ? (
                 <GatsbyImage
                   className={classes.expodom_img}
                   image={img}
@@ -171,7 +171,7 @@ const FormBlock = ({
             <Box
               className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
             >
-              {!staticImg ? (
+              {!staticImg && img ? (
                 <GatsbyImage
                   className={classes.expodom_img}
                   image={img}
