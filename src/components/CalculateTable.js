@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
-    padding: '40px 40px 40px 0',
+    padding: '40px 0',
   },
   textPrice: {
     display: 'flex',

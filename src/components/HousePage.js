@@ -617,9 +617,11 @@ const useStyles = makeStyles((theme) => ({
   },
   calculationResult: {
     display: 'flex',
-    justifyContent: 'space-between',
-    gap: '100px',
     alignItems: 'center',
+    '& p': {
+      marginLeft:'auto',
+      marginRight:'48px',
+    },
     [theme.breakpoints.down('md')]: {
       '& span':{
         fontSize:'18px',
@@ -1258,7 +1260,7 @@ const HousePage = ({ house, data }) => {
           })}
 
           <Box className={classes.calculationResult} style={breakpoints.xxl?{marginLeft:"1.6vw"}:{marginLeft:"32px"}}>
-            <Typography variant='h6'>Цена</Typography>
+            <Typography variant='h6' component='p'>Цена</Typography>
             <Typography variant='caption'>
               $ {numberWithSpace(modulePrice)}
             </Typography>
