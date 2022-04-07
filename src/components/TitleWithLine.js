@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     left: "-100px",
     "& span": {
       marginTop: "auto",
-      marginBottom: "8.5px",
+      marginBottom: "8.6px",
      
     },
     '@media (min-width:1921px)': {

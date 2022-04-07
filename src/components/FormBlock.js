@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row-reverse",
     [theme.breakpoints.down("md")]: {
       position: "relative",
-      right: "-12%",
+      right:  (param) => param.blockPadding? "-12%":null,
       width: "100%",
       marginLeft: "0",
     },
@@ -83,6 +83,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   Expodom: {
+    [theme.breakpoints.down("md")]: {
+      gap:'0',
+    },
+    
     "& .makeStyles-message-392": {
       color: "red",
     },
@@ -116,10 +120,11 @@ const FormBlock = ({
   formPosition,
   staticImg,
   padding,
+  blockPadding=false,
   endpoint,
   extraFormFields,
 }) => {
-  const param = { formPosition };
+  const param = { formPosition, blockPadding };
   const classes = useStyles(param);
  const breakpoints = useBreakpoint();
 

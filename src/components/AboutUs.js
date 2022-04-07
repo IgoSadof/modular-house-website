@@ -403,6 +403,7 @@ const AboutUs = ({data}) => {
           img={getPublicPath(data,"images/aboutus_office.png")}
           staticImg={true}
           header={"Приглашаем"}
+          blockPadding={true}
           title={`В офис студии ZROBYM architects, 
                     за кружкой хорошего кофе всегда можно получить необходимую информацию, выбрать 
                     готовый проект или заказать разработку модульного дома индивидуально.`}

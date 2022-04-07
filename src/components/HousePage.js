@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#D1D1D1',
     overflow: 'hidden',
     height: '100vh',
-    minHeight:'768px',
+    minHeight: '768px',
     [theme.breakpoints.down('md')]: {
       // minHeight:'0',
       '& $titleBox': {
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainImgBox: {
     height: '72vh',
-    minHeight:'550px',
+    minHeight: '550px',
     position: 'relative',
     [theme.breakpoints.down('md')]: {
       '@media (orientation: landscape)': {
@@ -180,7 +180,7 @@ const useStyles = makeStyles((theme) => ({
   mainBlockTitle: {
     textAlign: 'left',
     marginLeft: '100px',
-    color:'#4F4F4F',
+    color: '#4F4F4F',
     width: '28vw',
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
@@ -203,7 +203,7 @@ const useStyles = makeStyles((theme) => ({
   mainBlockItem: {
     fontSize: '12px',
     fontWeight: '400',
-    '& h6':{
+    '& h6': {
       textTransform: 'none',
     },
     '@media (min-width:1920px)': {
@@ -297,7 +297,7 @@ const useStyles = makeStyles((theme) => ({
     // minHeight: '16vh1,
 
     height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
-    minHeight:'70px',
+    minHeight: '70px',
     margin: '10px 0',
     '& h1': {
       fontSize: '48px',
@@ -305,7 +305,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '2.5vw',
       },
     },
-    '& p':{
+    '& p': {
       textTransform: 'none',
     },
   },
@@ -316,10 +316,10 @@ const useStyles = makeStyles((theme) => ({
     width: '56vw',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
-    minHeight:'550px',
+    minHeight: '550px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height:'50vh',
+      height: '50vh',
       // height: (param) => (param.breakpoints.s ? '50vh' : '100vh'),
     },
   },
@@ -435,11 +435,10 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width:400px)': {
       bottom: '18%',
     },
-
   },
   blockGalary: {
     height: 'auto',
-    minHeight:'350px'
+    minHeight: '350px',
   },
   panel: {
     position: 'absolute',
@@ -619,16 +618,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     '& p': {
-      marginLeft:'auto',
-      marginRight:'48px',
+      marginLeft: 'auto',
+      marginRight: '48px',
     },
     [theme.breakpoints.down('md')]: {
-      '& span':{
-        fontSize:'18px',
+      '& span': {
+        fontSize: '18px',
         lineHeight: '1.4',
-      }
+      },
     },
-
   },
   BlockForm: {
     // paddingLeft: "18vw",
@@ -1084,8 +1082,7 @@ const HousePage = ({ house, data }) => {
           {breakpoints.sm ? (
             <Model3d
               srcPath={model3d}
-              srcPathIos={model3d
-                .replace('glb', 'usdz')}
+              srcPathIos={model3d.replace('glb', 'usdz')}
             ></Model3d>
           ) : (
             <HouseModelPlayer video={modelVideo} />
@@ -1249,7 +1246,8 @@ const HousePage = ({ house, data }) => {
                         >
                           {item['Площадь комнаты']
                             ? `${item['Площадь комнаты']}`
-                            : null} м&#178;
+                            : null}{' '}
+                          м&#178;
                         </Typography>
                       </li>
                     );
@@ -1259,8 +1257,15 @@ const HousePage = ({ house, data }) => {
             );
           })}
 
-          <Box className={classes.calculationResult} style={breakpoints.xxl?{marginLeft:"1.6vw"}:{marginLeft:"32px"}}>
-            <Typography variant='h6' component='p'>Цена</Typography>
+          <Box
+            className={classes.calculationResult}
+            style={
+              breakpoints.xxl ? { marginLeft: '1.6vw' } : { marginLeft: '32px' }
+            }
+          >
+            <Typography variant='h6' component='p'>
+              Цена
+            </Typography>
             <Typography variant='caption'>
               $ {numberWithSpace(modulePrice)}
             </Typography>
@@ -1280,16 +1285,18 @@ const HousePage = ({ house, data }) => {
         <FormBlock
           endpoint='https://formspree.io/f/mgedeody'
           extraFormFields={extraFormFields}
+          header={'Мы на связи'}
           title={`
                       Можете отправить свой выбор нам, и мы начнем готовиться к встрече.
               `}
           subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
           email
           padding={true}
-          img={getImg(
-            data,
-            `${dataHouses[houseNumber]['Баннер']}`
-          )}
+          img={
+            !breakpoints.md
+              ? getImg(data, `${dataHouses[houseNumber]['Баннер']}`)
+              : null
+          }
           formPosition='center'
         />
       </Box>
