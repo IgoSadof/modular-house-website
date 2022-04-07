@@ -474,64 +474,11 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '1.5vw',
     },
   },
-
-  BlockRooms: {
-    height: 'auto',
-    gap: '20px',
-    marginTop: '100px',
-    '@media (min-width:1921px)': {
-      gap: '1.4vw',
-      marginTop: '6.9vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      '& $titleBox': {
-        right: '0%',
-      },
-      padding: '0',
-      justifyContent: 'center',
-    },
-  },
-  roomsList: {
-    width: '28vw',
-    display: 'flex',
-    flexShrink: '0',
-    flexDirection: 'column',
-    marginRight: '40px',
-    gap: '20px',
-    [theme.breakpoints.down('md')]: {
-      width: '100%',
-      marginRight: '0',
-      order: '2',
-    },
-  },
-  roomsImgBox: {
-    position: 'relative',
-    width: '44vw',
-    height: '85vh',
-    marginLeft: 'auto',
-    [theme.breakpoints.down('md')]: {
-      marginLeft: '0',
-      order: '1',
-      height: '50vh',
-      width: '100%',
-      '@media (orientation: landscape)': {
-        height: '100vh',
-        marginLeft: '20px',
-      },
-    },
-  },
-  roomImg: {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    objectFit: 'cover',
-    width: '100%',
-    height: '100%',
-  },
   BlockCalculation: {
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       minHeight: '100%',
+      marginTop:'100px',
     },
   },
   calculationPlan: {
@@ -1106,43 +1053,6 @@ const HousePage = ({ house, data }) => {
           <Panel ref={categoryRef} arr={panelTabs} change={handleChangePanel} />
           {/* )} */}
         </Box>
-      </Box>
-
-      <Box className={`${classes.Block} ${classes.BlockRooms}`}>
-        <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
-          {breakpoints.md ? (
-            <Typography variant='h2' className={classes.text}>
-              Экспликация
-            </Typography>
-          ) : null}
-        </Box>
-        {/* <span className={classes.line}></span> */}
-        <Box className={classes.roomsList}>
-          {breakpoints.md ? null : (
-            <Typography variant='h2'>Экспликация</Typography>
-          )}
-          <Box className={classes.accordionBox}>
-            <Accordions
-              arr={dataHouses[houseNumber].allRooms}
-              roomsImg={handleRoomsImgChange}
-              houseRooms={true}
-            />
-          </Box>
-        </Box>
-        <FadeAnimation
-          index={roomsImgIndex}
-          className={classes.roomsImgBox}
-          timeout={500}
-        >
-          {roomsImg ? (
-            <GatsbyImage
-              className={classes.roomImg}
-              image={getImg(data, roomsImg)}
-              alt='img'
-            ></GatsbyImage>
-          ) : null}
-        </FadeAnimation>
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
