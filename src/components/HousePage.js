@@ -440,17 +440,6 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     minHeight: '350px',
   },
-  panel: {
-    position: 'absolute',
-    right: '0',
-    bottom: '0',
-    width: '620px',
-    '@media (min-width:1920px)': {
-      width: '43vw',
-    },
-
-    backgroundColor: '#D1D1D1',
-  },
   titleBox: {
     display: 'flex',
     gap: '20px',
@@ -1049,9 +1038,9 @@ const HousePage = ({ house, data }) => {
               great
             />
           </Box>
-          {/* {breakpoints.md ? null : ( */}
+          {/* {breakpoints.md? null : (
           <Panel ref={categoryRef} arr={panelTabs} change={handleChangePanel} />
-          {/* )} */}
+          )} */}
         </Box>
       </Box>
 
