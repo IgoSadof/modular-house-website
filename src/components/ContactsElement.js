@@ -94,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
   },
   infoBox: {
     display: 'flex',
+    alignItems:'baseline',
     gap: '28px',
     '@media (min-width:1921px)': {
       gap: '1.9vw',
