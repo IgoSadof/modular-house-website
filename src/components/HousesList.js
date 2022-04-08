@@ -470,7 +470,6 @@ const HousesList = ({ data }) => {
         <ModelsSlider
           houseRef={houseSliderRef}
           listItem={listItem}
-          mobile={breakpoints.md}
         />
       </Box>
       <Box components='section' className={classes.houseDesc}>

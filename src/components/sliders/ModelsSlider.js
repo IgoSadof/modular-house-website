@@ -6,7 +6,7 @@ import SwiperCore, { Mousewheel, FreeMode } from "swiper";
 
 SwiperCore.use([Mousewheel, FreeMode]);
 
-const ModelsSlider = ({ listItem, houseRef, mobile }) => {
+const ModelsSlider = ({ listItem, houseRef }) => {
 const breakpoints = useBreakpoint();
 
   return (
@@ -15,8 +15,8 @@ const breakpoints = useBreakpoint();
       slidesPerView={breakpoints.m ? (breakpoints.xs ? "2" : "3") : "5"}
       grabCursor={true}
       loop={true}
-      mousewheel={mobile ? false : true}
-      direction={mobile ? "horizontal" : "vertical"}
+      mousewheel={breakpoints.md? false : true}
+      direction={breakpoints.md? "horizontal" : "vertical"}
       // freeMode={breakpoints.s ? true : false}
       spaceBetween={20}
     >

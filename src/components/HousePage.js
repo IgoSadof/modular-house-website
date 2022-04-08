@@ -9,9 +9,8 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CalculateTable from '../components/CalculateTable';
-import Panel from '../components/Panel';
+// import Panel from '../components/Panel';
 import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
-import Accordions from '../components/Accordion';
 import '@google/model-viewer';
 import Model3d from './Model3d';
 import getHousesData from '../utils/getHousesData';
@@ -23,6 +22,7 @@ import HouseModelPlayer from './HouseModelPlayer';
 import numberWithSpace from '../utils/numberWithSpace';
 import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
+import { SwiperSlide } from 'swiper/react';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     backgroundColor: '#D1D1D1',
     overflow: 'hidden',
-    height: '100vh',
-    minHeight: '768px',
+    // height: '100vh',
+    // minHeight: '768px',
     [theme.breakpoints.down('md')]: {
       // minHeight:'0',
       '& $titleBox': {
@@ -93,10 +93,9 @@ const useStyles = makeStyles((theme) => ({
   },
   mainImgSlider: {
     width: '100%',
-    height: '100vh',
     objectFit: 'cover',
-    [theme.breakpoints.down('md')]: {
-      height: '70vh',
+    '& img':{
+      aspectRatio: '4/3',
     },
   },
   mainImgItem: {
@@ -414,31 +413,24 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     position: 'absolute',
     display: 'flex',
-    gap: '20px',
+    gap: '12px',
     left: '14%',
     bottom: '20px',
     zIndex: '2',
     '@media (min-width:1921px)': {
       bottom: '1.1vw',
-      gap: '1.1vw',
+      gap: '0.06vw',
     },
     [theme.breakpoints.down('md')]: {
       width: '100%',
       justifyContent: 'space-between',
-      padding: '0 40px',
       left: '0%',
-      bottom: '14%',
-      '@media (orientation: landscape)': {
-        bottom: '25%',
-      },
-    },
-    '@media (max-width:400px)': {
-      bottom: '18%',
+      bottom: '50%',
+      transform: 'translate(0, 50%)',
     },
   },
   blockGalary: {
     height: 'auto',
-    minHeight: '350px',
   },
   titleBox: {
     display: 'flex',
@@ -467,7 +459,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       minHeight: '100%',
-      marginTop:'100px',
+      marginTop: '100px',
     },
   },
   calculationPlan: {
@@ -688,19 +680,21 @@ const HousePage = ({ house, data }) => {
     }
   };
   const handleClickLeft = () => {
-    myRef.current.slickPrev();
+    console.log(myRef.current);
+    myRef.current.swiper.slidePrev();
   };
   const handleClickRight = () => {
-    myRef.current.slickNext();
+    console.log(myRef.current);
+    myRef.current.swiper.slideNext();
   };
 
-  const handleChangePanel = (value) => {
-    if (value === '') {
-      setRelativeDirectory(baseFolder);
-    } else {
-      setRelativeDirectory(baseFolder + '/' + value);
-    }
-  };
+  // const handleChangePanel = (value) => {
+  //   if (value === '') {
+  //     setRelativeDirectory(baseFolder);
+  //   } else {
+  //     setRelativeDirectory(baseFolder + '/' + value);
+  //   }
+  // };
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
 
@@ -740,7 +734,7 @@ const HousePage = ({ house, data }) => {
     return getImagesFromDirectory(data, relativeDirectory).map(
       (item, index) => {
         return (
-          <li className={classes.mainImgItem} key={index}>
+          <SwiperSlide className={classes.mainImgItem} key={index}>
             {item ? (
               <GatsbyImage
                 className={classes.mainImgSlider}
@@ -748,7 +742,7 @@ const HousePage = ({ house, data }) => {
                 alt='img'
               ></GatsbyImage>
             ) : null}
-          </li>
+          </SwiperSlide>
         );
       }
     );
@@ -1028,14 +1022,24 @@ const HousePage = ({ house, data }) => {
 
       <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
         <Box className={classes.secondImgBox}>
-          <HouseFotosSlider myRef={myRef} listItem={images} />
+          <HouseFotosSlider houseRef={myRef} listItem={images} />
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
-            <SquareButton variant={'contained'} click={handleClickLeft} less />
+            <SquareButton
+              variant={'contained'}
+              click={handleClickLeft}
+              less
+              color='#4F4F4F'
+              bgColor='#D1D1D1'
+              smal={breakpoints.md}
+            />
             <SquareButton
               variant={'contained'}
               click={handleClickRight}
               great
+              color='#4F4F4F'
+              bgColor='#D1D1D1'
+              smal={breakpoints.md}
             />
           </Box>
           {/* {breakpoints.md? null : (
