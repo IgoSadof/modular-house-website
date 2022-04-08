@@ -1,108 +1,106 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import Box from "@material-ui/core/Box";
-import Form from "./Form";
-import { GatsbyImage } from "gatsby-plugin-image";
-import TitleWithLine from "../components/TitleWithLine";
+import Box from '@material-ui/core/Box';
+import Form from './Form';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import TitleWithLine from '../components/TitleWithLine';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
   },
 
   Block: {
-    display: "flex",
-    gap: "60px",
-    height:"100vh",
-    "@media (min-width:1921px)": {
-      gap: "4.2vw",
+    display: 'flex',
+    gap: '60px',
+    height: '100vh',
+    '@media (min-width:1921px)': {
+      gap: '4.2vw',
     },
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      alignItems: "center",
-      gap: "20px",
-      height:"auto",
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '20px',
+      height: 'auto',
     },
   },
   title: {
-    marginTop: "140px",
-    width: "165px",
+    marginTop: '140px',
+    width: '165px',
   },
   mediaBlock: {
-    display: "flex",
-    width: "100%",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      order: "1,",
+    display: 'flex',
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      order: '1,',
     },
   },
   mediaBlock_unborder: {
-    border: "none",
+    border: 'none',
     // border:"1px solid"
   },
   formBox: {
-    margin: "auto",
-    [theme.breakpoints.down("md")]: {
-      margin: "0",
-     
+    margin: 'auto',
+    [theme.breakpoints.down('md')]: {
+      margin: '0',
     },
   },
   titleBox: {
-    gap: "20px",
-    flexDirection: "row-reverse",
-    [theme.breakpoints.down("md")]: {
-      position: "relative",
-      right:  (param) => param.blockPadding? "-12%":null,
-      width: "100%",
-      marginLeft: "0",
+    gap: '20px',
+    flexDirection: 'row-reverse',
+    [theme.breakpoints.down('md')]: {
+      position: 'relative',
+      right: (param) => (param.blockPadding ? '-12%' : null),
+      width: '100%',
+      marginLeft: '0',
     },
   },
 
   button: {
-    width: "120px",
-    borderRadius: "0",
-    height: "36px",
-    marginTop: "96px",
-    border: "1px solid",
+    width: '120px',
+    borderRadius: '0',
+    height: '36px',
+    marginTop: '96px',
+    border: '1px solid',
   },
   text: {
-    width: "300px",
-    textTransform: "uppercase",
+    width: '300px',
+    textTransform: 'uppercase',
   },
   expodom_img: {
-    width: "100%",
-    objectFit: "cover",
-    marginLeft: "auto",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+    width: '100%',
+    objectFit: 'cover',
+    marginLeft: 'auto',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
     },
   },
   Expodom: {
-    [theme.breakpoints.down("md")]: {
-      gap:'0',
+    [theme.breakpoints.down('md')]: {
+      gap: '0',
     },
-    
-    "& .makeStyles-message-392": {
-      color: "red",
+
+    '& .makeStyles-message-392': {
+      color: 'red',
     },
   },
   BlockColumn: {
-    width: "28vw",
-    display: "flex",
-    gap: "20px",
-    marginLeft: "100px",
-    flexShrink: "0",
-    justifyContent: "space-between",
-    flexDirection: "column",
-    [theme.breakpoints.down("md")]: {
-      order: "3",
-      marginLeft: "0",
-      width: "100%",
+    width: '28vw',
+    display: 'flex',
+    gap: '20px',
+    marginLeft: '100px',
+    flexShrink: '0',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    [theme.breakpoints.down('md')]: {
+      order: '3',
+      marginLeft: '0',
+      width: '100%',
     },
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
@@ -120,13 +118,14 @@ const FormBlock = ({
   formPosition,
   staticImg,
   padding,
-  blockPadding=false,
+  blockPadding = false,
   endpoint,
   extraFormFields,
 }) => {
   const param = { formPosition, blockPadding };
   const classes = useStyles(param);
- const breakpoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
+  console.log(img);
 
   return (
     <div className={classes.root}>
@@ -137,7 +136,7 @@ const FormBlock = ({
               <Box className={classes.titleBox}>
                 {header ? <TitleWithLine title={header} /> : null}
               </Box>
-              <Box className={classes.formBox} >
+              <Box className={classes.formBox}>
                 <Form
                   extraFormFields={extraFormFields}
                   endpoint={endpoint}
@@ -145,44 +144,59 @@ const FormBlock = ({
                   subtitle={subtitle ? subtitle : null}
                   email={email ? email : null}
                   text={text ? text : null}
-                  id="formBlock"
+                  id='formBlock'
                 />
               </Box>
             </Box>
-            <Box
-              className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
-            >
-              {!staticImg && img ? (
-                <GatsbyImage
-                  className={classes.expodom_img}
-                  image={img}
-                  alt="img"
-                ></GatsbyImage>
-              ) : (
-                <img className={classes.expodom_img} src={img} alt="img"></img>
-              )}
-            </Box>
+            {staticImg || img ? (
+              <Box
+                className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
+              >
+                {!staticImg ? (
+                  <GatsbyImage
+                    className={classes.expodom_img}
+                    image={img}
+                    alt='img'
+                  ></GatsbyImage>
+                ) : (
+                  <img
+                    className={classes.expodom_img}
+                    src={img}
+                    alt='img'
+                  ></img>
+                )}
+              </Box>
+            ) : null}
           </>
         ) : (
           <>
-            <Box className={classes.titleBox} style={{marginBottom: "40px",}}>
+            <Box className={classes.titleBox} style={{ marginBottom: '40px' }}>
               {header ? <TitleWithLine title={header} /> : null}
             </Box>
-            <Box
-              className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
-            >
-              {!staticImg && img ? (
-                <GatsbyImage
-                  className={classes.expodom_img}
-                  image={img}
-                  alt="img"
-                ></GatsbyImage>
-              ) : (
-                <img className={classes.expodom_img} src={img} alt="img"></img>
-              )}
-            </Box>
+            {staticImg || img ? (
+              <Box
+                className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
+              >
+                {!staticImg ? (
+                  <GatsbyImage
+                    className={classes.expodom_img}
+                    image={img}
+                    alt='img'
+                  ></GatsbyImage>
+                ) : (
+                  <img
+                    className={classes.expodom_img}
+                    src={img}
+                    alt='img'
+                  ></img>
+                )}
+              </Box>
+            ) : null}
             <Box className={classes.BlockColumn}>
-              <Box className={classes.formBox} style={padding?{ padding: "0 10%"}:null}>
+              <Box
+                className={classes.formBox}
+                style={padding ? { padding: '0 10%' } : null}
+              >
                 <Form
                   endpoint={endpoint}
                   extraFormFields={extraFormFields}
@@ -190,7 +204,7 @@ const FormBlock = ({
                   subtitle={subtitle ? subtitle : null}
                   email={email ? email : null}
                   text={text ? text : null}
-                  id="formBlock"
+                  id='formBlock'
                 />
               </Box>
             </Box>
