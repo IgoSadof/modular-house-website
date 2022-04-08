@@ -70,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
     top: '5%',
     right: '10%',
     background:
-      // "radial-gradient(100% 100% at 0% 0%, #D1D1D1 0%, rgba(209, 209, 209, 0.12) 100%)",
       'radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)',
 
     zIndex: '2',
@@ -211,7 +210,6 @@ const useStyles = makeStyles((theme) => ({
   },
   modelBlock: {
     display: 'flex',
-    // justifyContent: "space-between",
     gap: '60px',
     padding: '0 0 100px 10%',
     backgroundColor: '#D1D1D1',
@@ -221,8 +219,8 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       padding: '100px 0',
-      gap: '20px',
-      flexDirection: 'column',
+      gap: '40px',
+      flexDirection: 'column-reverse',
       // padding: '10%',
       paddingTop: '20px',
       justifyContent: 'center',
