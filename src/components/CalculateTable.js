@@ -6,6 +6,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import numberWithSpace from '../utils/numberWithSpace';
 import BpRadio from './BpRadio';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 const useStyles = makeStyles((theme) => ({
   conteiner: {
@@ -51,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   tableCellFirst: {
     paddingLeft: '40px',
     [theme.breakpoints.down('md')]: {
-      padding: '20px 50px',
+      padding: '20px 10%',
     },
   },
   tableCellLast: {
@@ -84,16 +86,14 @@ const useStyles = makeStyles((theme) => ({
   tableResultContent: {
     display: 'flex',
     width: '100%',
-    justifyContent: 'space-between',
     alignItems: 'baseline',
+    '& p': {
+      marginRight: '48px',
+      marginLeft: 'auto',
+    },
     [theme.breakpoints.down('md')]: {
       width: '100%',
       marginRight: '10%',
-      '& p': {
-        textTransform: 'none',
-        marginLeft: 'auto',
-        marginRight: '48px',
-      },
       '& span': {
         fontSize: '30px',
         lineHeight: '1.4',
@@ -115,10 +115,18 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: '20px',
+    [theme.breakpoints.down('md')]: {
+      '&:last-of-type': {
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        gap:'0',
+        marginTop:'16px',
+      },
+    },
   },
   secondRadio: {
     marginRight: '0',
-    width: '100px',
+    // width: '100px',
   },
 }));
 
@@ -195,7 +203,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       }
                       onChange={handleChangeCheckbox}
                       value={+item.variants[0].price}
-                      control={<BpRadio color='primary' />}
+                      control={<Checkbox color='primary' />}
                       label={
                         <Typography
                           style={
@@ -224,7 +232,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       }
                       onChange={handleChangeCheckbox}
                       value={+item.variants[1].price}
-                      control={<BpRadio color='primary' />}
+                      control={<Checkbox color='primary' />}
                       label={
                         <Typography
                           style={
@@ -247,7 +255,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                     align='right'
                   >
                     <Typography variant='h6' component='p'>
-                      $ {numberWithSpace(currentOption[item.name].price)}
+                      + ${numberWithSpace(currentOption[item.name].price)}
                     </Typography>
                   </td>
                 </tr>
@@ -266,7 +274,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         className={classes.secondRadio}
                       >
                         <Typography variant='h6' component='p'>
-                          $ {numberWithSpace(currentOption[item.name].price)}
+                          + ${numberWithSpace(currentOption[item.name].price)}
                         </Typography>
                       </Box>
                     </Box>
@@ -281,7 +289,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         }
                         onChange={handleChangeCheckbox}
                         value={+item.variants[0].price}
-                        control={<BpRadio color='primary' />}
+                        control={<Checkbox color='primary' />}
                         label={
                           <Typography
                             style={
@@ -309,7 +317,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         }
                         onChange={handleChangeCheckbox}
                         value={+item.variants[1].price}
-                        control={<BpRadio color='primary' />}
+                        control={<Checkbox color='primary' />}
                         label={
                           <Typography
                             style={
@@ -342,10 +350,10 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
               component='p'
               className={classes.textPrice}
             >
-              Цена
+              ЦЕНА
             </Typography>
             <Typography variant='caption' className={classes.textPriceValue}>
-              $ {numberWithSpace(price)}
+              ${numberWithSpace(price)}
             </Typography>
           </Box>
         </Box>

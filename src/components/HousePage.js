@@ -23,6 +23,7 @@ import numberWithSpace from '../utils/numberWithSpace';
 import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
 import { SwiperSlide } from 'swiper/react';
+import TitleWithLine from '../components/TitleWithLine';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -75,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainBlock: {
     height: '100vh',
+    minHeight: '500px',
     [theme.breakpoints.down('md')]: {
       height: '100%',
     },
@@ -344,7 +346,7 @@ const useStyles = makeStyles((theme) => ({
     width: '56vw',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
-    minHeight: '550px',
+    minHeight: '400px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       height: '50vh',
@@ -894,7 +896,7 @@ const HousePage = ({ house, data }) => {
                       return (
                         <li className={classes.mainBlockItem} key={index}>
                           <Typography variant='subtitle1'>
-                            $ {numberWithSpace(item['Стоимость'])} /{' '}
+                            ${numberWithSpace(item['Стоимость'])} /{' '}
                             {item['Срок изготовления']} дней
                           </Typography>
                         </li>
@@ -1056,12 +1058,11 @@ const HousePage = ({ house, data }) => {
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <Box className={classes.titleBox}>
-          <span className={classes.line}></span>
           {breakpoints.md ? (
-            <Typography variant='h2' className={classes.text}>
-              Расчет стоимости
-            </Typography>
-          ) : null}
+            <TitleWithLine title={'Расчет стоимости'} />
+          ) : (
+            <span className={classes.line}></span>
+          )}
         </Box>
         <Box className={classes.calculationPlan}>
           {breakpoints.md ? null : (
@@ -1111,7 +1112,7 @@ const HousePage = ({ house, data }) => {
                       labelPlacement='end'
                     />
                     <Typography variant='h6'>
-                      $ {numberWithSpace(item['Стоимость'])}
+                      ${numberWithSpace(item['Стоимость'])}
                     </Typography>
                   </Box>
                 ) : (
@@ -1134,7 +1135,7 @@ const HousePage = ({ house, data }) => {
                       labelPlacement='end'
                     />
                     <Typography variant='h6'>
-                      $ {numberWithSpace(item['Стоимость'])}
+                      ${numberWithSpace(item['Стоимость'])}
                     </Typography>
                   </Box>
                 )}
@@ -1174,10 +1175,10 @@ const HousePage = ({ house, data }) => {
             }
           >
             <Typography variant='h6' component='p'>
-              Цена
+              ЦЕНА
             </Typography>
             <Typography variant='caption'>
-              $ {numberWithSpace(modulePrice)}
+              ${numberWithSpace(modulePrice)}
             </Typography>
           </Box>
         </Box>

@@ -125,7 +125,6 @@ const FormBlock = ({
   const param = { formPosition, blockPadding };
   const classes = useStyles(param);
   const breakpoints = useBreakpoint();
-  console.log(img);
 
   return (
     <div className={classes.root}>
@@ -134,7 +133,7 @@ const FormBlock = ({
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                {header ? <TitleWithLine title={header} /> : null}
+                {header ? <TitleWithLine title={header}/> : null}
               </Box>
               <Box className={classes.formBox}>
                 <Form
@@ -171,7 +170,7 @@ const FormBlock = ({
         ) : (
           <>
             <Box className={classes.titleBox} style={{ marginBottom: '40px' }}>
-              {header ? <TitleWithLine title={header} /> : null}
+              {header ? <TitleWithLine title={header} longLine={true} /> : null}
             </Box>
             {staticImg || img ? (
               <Box

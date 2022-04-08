@@ -671,7 +671,7 @@ const MainPageContent = ({ data }) => {
           className={`${classes.Block} ${classes.BlockFullscreen}`}
         >
           <Box className={classes.titleBox}>
-            <TitleWithLine title='Приглашаем' />
+            <TitleWithLine title='Приглашаем' longLine={true} />
           </Box>
           <Box className={classes.BlockColumn}>
             <OneImageAutoSlider slides={slides} />

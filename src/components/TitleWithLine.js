@@ -14,7 +14,10 @@ const useStyles = makeStyles((theme) => ({
     "& span": {
       marginTop: "auto",
       marginBottom: "8.6px",
-     
+    },
+    "& h2": {
+      whiteSpace: (param) => (param.longLine?"nowrap":null),
+      marginLeft:(param) => (param.longLine?"10%":'0'),
     },
     '@media (min-width:1921px)': {
       width: "34.7vw",
@@ -32,11 +35,15 @@ const useStyles = makeStyles((theme) => ({
     height: "1px",
     backgroundColor: "black",
     marginTop: "22px",
+    [theme.breakpoints.down("md")]: { 
+      width: (param) => (param.longLine?"100%":"80px"),
+    },
   },
 }));
 
-const TitleWithLine = ({ title, style }) => {
-  const classes = useStyles();
+const TitleWithLine = ({ title, style, longLine }) => {
+  const param = {longLine};
+  const classes = useStyles(param);
   return (
     <Box className={classes.sectionTitle} style={style}>
       <span className={classes.line}></span>

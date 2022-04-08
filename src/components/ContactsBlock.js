@@ -10,7 +10,7 @@ import ContactsElement from './ContactsElement';
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    justifyContent:"space-between",
+    justifyContent: 'space-between',
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
@@ -40,10 +40,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       gap: '2vw',
     },
-    
+
     [theme.breakpoints.down('md')]: {
       order: '3',
       marginLeft: '0',
@@ -55,9 +55,9 @@ const useStyles = makeStyles((theme) => ({
     width: '30vw',
     marginLeft: 'auto',
     display: 'flex',
-    gap:"3.4vw",
+    gap: '3.4vw',
     flexDirection: 'column',
-    "$block &":{
+    '$block &': {
       paddingBottom: '0',
     },
     [theme.breakpoints.down('md')]: {
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
       paddingBottom: '0',
     },
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       paddingBottom: '15.9vw',
     },
   },
@@ -89,7 +89,18 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
             </Box>
           </Box>
 
-          <Box className={classes.formBox} style={paddingBottom? {paddingBottom: breakpoints.xxl?'14.5vw':'230px',gap: '0',justifyContent: 'space-between',}:null}>
+          <Box
+            className={classes.formBox}
+            style={
+              paddingBottom
+                ? {
+                    paddingBottom: breakpoints.xxl ? '14.5vw' : '230px',
+                    gap: '0',
+                    justifyContent: 'space-between',
+                  }
+                : null
+            }
+          >
             <Typography
               variant='h2'
               className={classes.text}
@@ -103,19 +114,22 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
       ) : (
         <>
           <Box className={classes.titleBox}>
-          {title ? (
-                <TitleWithLine title={title} 
-                style={{ marginBottom: '40px' }} 
-                />
-              ) : null}
+            {title ? (
+              <TitleWithLine
+                title={title}
+                longLine={true}
+                style={{ marginBottom: '40px' }}
+              />
+            ) : null}
           </Box>
           <Box className={classes.BlockColumn}>
             <ContactsElement data={data} />
-            <Box className={classes.titleBox}
-             style={{ marginTop: '40px' }}
-             >
-            <TitleWithLine title={'Напишите нам'} style={{ marginBottom: '20px' }} />
-              
+            <Box className={classes.titleBox} style={{ marginTop: '40px' }}>
+              <TitleWithLine
+                title={'Напишите нам'}
+                style={{ marginBottom: '20px' }}
+                longLine={true}
+              />
             </Box>
             <Form email text main id='ContactsBlock' />
           </Box>
