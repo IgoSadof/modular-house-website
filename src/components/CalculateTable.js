@@ -68,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '100%',
     gap: '60px',
-    borderBottom: '1px solid',
     '@media (min-width:1921px)': {
       gap: '4.2vw',
     },
@@ -86,14 +85,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
+    alignItems: 'baseline',
     [theme.breakpoints.down('md')]: {
-      width: 'auto',
-      flexDirection: 'column',
+      width: '100%',
+      marginRight: '10%',
       '& p': {
         textTransform: 'none',
+        marginLeft: 'auto',
+        marginRight: '48px',
       },
       '& span': {
-        fontSize: '18px',
+        fontSize: '30px',
         lineHeight: '1.4',
       },
     },
@@ -102,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
-    padding: '40px 0',
+    paddingTop: '40px',
   },
   textPrice: {
     display: 'flex',
@@ -263,7 +265,9 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         style={{ paddingLeft: `20px` }}
                         className={classes.secondRadio}
                       >
-                        +{currentOption[item.name].price}
+                        <Typography variant='h6' component='p'>
+                          $ {numberWithSpace(currentOption[item.name].price)}
+                        </Typography>
                       </Box>
                     </Box>
                     <Box className={classes.innerRow}>
@@ -329,7 +333,8 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
       </table>
 
       <Box className={classes.lastRow}>
-        <Box className={classes.downloadArea}></Box>
+        {breakpoints.md ? null : <Box className={classes.downloadArea}></Box>}
+
         <Box className={classes.tableResult}>
           <Box className={classes.tableResultContent}>
             <Typography

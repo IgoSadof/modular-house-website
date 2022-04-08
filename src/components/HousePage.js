@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '6.9vw',
     },
     [theme.breakpoints.down('md')]: {
-      marginTop: '120px',
+      marginTop: '40px',
       flexDirection: 'column',
       padding: '0 10%',
       justifyContent: 'center',
@@ -115,17 +115,17 @@ const useStyles = makeStyles((theme) => ({
       height: 'auto',
     },
   },
-  mainDescWraper:{
-    width:'100%',
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'flex-end',
+  mainDescWraper: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
     position: 'absolute',
     bottom: '0',
     zIndex: '1',
-    '& $buttons':{
-      position:'relative',
-      zIndex:'4'
+    '& $buttons': {
+      position: 'relative',
+      zIndex: '4',
     },
     [theme.breakpoints.down('md')]: {
       position: 'relative',
@@ -249,7 +249,7 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 0 3.5vw 10%',
     },
     [theme.breakpoints.down('md')]: {
-      padding: '100px 0',
+      padding: '40px 0',
       gap: '40px',
       flexDirection: 'column-reverse',
       // padding: '10%',
@@ -488,7 +488,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       minHeight: '100%',
-      marginTop: '100px',
     },
   },
   calculationPlan: {
@@ -569,7 +568,7 @@ const useStyles = makeStyles((theme) => ({
   },
   calculationBodyItem: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'baseline',
   },
   calculationResult: {
     display: 'flex',
@@ -580,7 +579,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       '& span': {
-        fontSize: '18px',
+        fontSize: '30px',
         lineHeight: '1.4',
       },
     },
@@ -593,6 +592,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       padding: '0',
       paddingBottom: '40px',
+      marginTop: '80px',
     },
   },
   BlockTable: {
@@ -825,7 +825,11 @@ const HousePage = ({ house, data }) => {
         className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
       >
         <Box className={classes.mainImgBox}>
-          <HouseFotosSlider houseRef={firstSlider} listItem={images} pagination />
+          <HouseFotosSlider
+            houseRef={firstSlider}
+            listItem={images}
+            pagination
+          />
         </Box>
         <Box className={classes.mainDescWraper}>
           {!breakpoints.md ? (
@@ -1134,30 +1138,31 @@ const HousePage = ({ house, data }) => {
                     </Typography>
                   </Box>
                 )}
-
-                <Box className={classes.calculationBody}>
-                  {item.rooms.map((item, index) => {
-                    return (
-                      <li className={classes.calculationBodyItem} key={index}>
-                        <Typography
-                          variant='body1'
-                          className={classes.calculationBodyText}
-                        >
-                          {item['Экспликация']}
-                        </Typography>
-                        <Typography
-                          variant='body1'
-                          className={classes.calculationBodyText}
-                        >
-                          {item['Площадь комнаты']
-                            ? `${item['Площадь комнаты']}`
-                            : null}{' '}
-                          м&#178;
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </Box>
+                {item.rooms.length > 0 ? (
+                  <Box className={classes.calculationBody}>
+                    {item.rooms.map((item, index) => {
+                      return (
+                        <li className={classes.calculationBodyItem} key={index}>
+                          <Typography
+                            variant='body1'
+                            className={classes.calculationBodyText}
+                          >
+                            {item['Экспликация']}
+                          </Typography>
+                          <Typography
+                            variant='body1'
+                            className={classes.calculationBodyText}
+                          >
+                            {item['Площадь комнаты']
+                              ? `${item['Площадь комнаты']}`
+                              : null}{' '}
+                            м&#178;
+                          </Typography>
+                        </li>
+                      );
+                    })}
+                  </Box>
+                ) : null}
               </Box>
             );
           })}
