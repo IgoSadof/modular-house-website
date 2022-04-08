@@ -69,14 +69,19 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: '5%',
     right: '10%',
-    background:
-      'radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)',
+    background: 'radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)',
 
     zIndex: '2',
   },
+  mainBlock: {
+    height: '100vh',
+    [theme.breakpoints.down('md')]: {
+      height: '100%',
+    },
+  },
   mainImgBox: {
-    height: '72vh',
-    minHeight: '550px',
+    height: '100%',
+    zIndex: '1',
     position: 'relative',
     [theme.breakpoints.down('md')]: {
       '@media (orientation: landscape)': {
@@ -93,12 +98,14 @@ const useStyles = makeStyles((theme) => ({
   mainImgSlider: {
     width: '100%',
     objectFit: 'cover',
-    '& img':{
+    '& img': {
       aspectRatio: '4/3',
+      objectPosition: 'bottom',
     },
   },
   mainImgItem: {
     height: '100%',
+    position: 'relative',
   },
   secondImgBox: {
     position: 'relative',
@@ -108,21 +115,41 @@ const useStyles = makeStyles((theme) => ({
       height: 'auto',
     },
   },
+  mainDescWraper:{
+    width:'100%',
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'flex-end',
+    position: 'absolute',
+    bottom: '0',
+    zIndex: '1',
+    '& $buttons':{
+      position:'relative',
+      zIndex:'4'
+    },
+    [theme.breakpoints.down('md')]: {
+      position: 'relative',
+    },
+  },
   mainDescBox: {
+    backgroundColor: 'rgba(209,209,209,0.9)',
     width: '100%',
     display: 'flex',
     margin: 'auto',
     gap: '60px',
     // justifyContent: 'space-between',
-    padding: '50px 10%',
+    padding: '40px 10%',
     '@media (min-width:1921px)': {
       padding: '3.5vw 10%',
       gap: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
+      position: 'relative',
+      bottom: null,
+      backgroundColor: 'rgba(209,209,209)',
       flexDirection: 'column',
-      padding: '10%',
-      gap: '50px',
+      padding: '20px 10%',
+      gap: '20px',
       justifyContent: 'center',
       '@media (orientation: landscape)': {
         padding: '1%',
@@ -134,10 +161,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      position: 'absolute',
-      justifyContent: 'space-around',
-      bottom: '7%',
-      zIndex: '1',
+      '& h1': {
+        fontSize: '36px',
+      },
     },
   },
   houseDescIconBox: {
@@ -183,6 +209,10 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
     },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+      width: '100%',
+    },
   },
   mainBlockList: {
     listStyle: 'none',
@@ -210,6 +240,7 @@ const useStyles = makeStyles((theme) => ({
   },
   modelBlock: {
     display: 'flex',
+    marginTop: '100px',
     gap: '60px',
     padding: '0 0 100px 10%',
     backgroundColor: '#D1D1D1',
@@ -417,7 +448,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: '2',
     '@media (min-width:1921px)': {
       bottom: '1.1vw',
-      gap: '0.06vw',
+      gap: '0.6vw',
     },
     [theme.breakpoints.down('md')]: {
       width: '100%',
@@ -638,7 +669,8 @@ const HousePage = ({ house, data }) => {
   );
   // console.log(dataHouses[houseNumber]['modules'][pillClick])
 
-  const myRef = useRef(null);
+  const firstSlider = useRef(null);
+  const secondSlider = useRef(null);
   const categoryRef = React.createRef();
 
   const handlePlusClick = (e) => {
@@ -677,13 +709,17 @@ const HousePage = ({ house, data }) => {
       );
     }
   };
-  const handleClickLeft = () => {
-    console.log(myRef.current);
-    myRef.current.swiper.slidePrev();
+  const handleFirstSliderClickLeft = () => {
+    firstSlider.current.swiper.slidePrev();
   };
-  const handleClickRight = () => {
-    console.log(myRef.current);
-    myRef.current.swiper.slideNext();
+  const handleFirstSliderClickRight = () => {
+    firstSlider.current.swiper.slideNext();
+  };
+  const handleSeconSliderClickLeft = () => {
+    secondSlider.current.swiper.slidePrev();
+  };
+  const handleSeconSliderClickRight = () => {
+    secondSlider.current.swiper.slideNext();
   };
 
   // const handleChangePanel = (value) => {
@@ -789,42 +825,29 @@ const HousePage = ({ house, data }) => {
         className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
       >
         <Box className={classes.mainImgBox}>
-          {dataHouses[houseNumber]['Баннер'] ? (
-            <GatsbyImage
-              className={classes.mainImg}
-              image={getImg(data, `${dataHouses[houseNumber]['Баннер']}`)}
-              alt='img'
-            ></GatsbyImage>
-          ) : null}
-          {breakpoints.md ? (
-            <Box className={classes.mainBlockTitleBox}>
-              <Typography
-                variant='h1'
-                color='textSecondary'
-                className={classes.houseDescTitle}
-              >
-                {dataHouses[houseNumber]['Код']}
-              </Typography>
-              <Box className={classes.houseDescIconBox}>
-                {dataHouses[houseNumber]['Иконка планировки'] ? (
-                  <GatsbyImage
-                    className={classes.mainPlan}
-                    image={getImg(
-                      data,
-                      `${dataHouses[houseNumber]['Иконка планировки']}`
-                    )}
-                    alt='img'
-                  ></GatsbyImage>
-                ) : null}
-                <Typography variant='h5' className={classes.houseSpecPrice}>
-                  {/* {dataHouses[houseNumber].price} */}
-                </Typography>
-              </Box>
+          <HouseFotosSlider houseRef={firstSlider} listItem={images} pagination />
+        </Box>
+        <Box className={classes.mainDescWraper}>
+          {!breakpoints.md ? (
+            <Box className={classes.buttons}>
+              {/* <Button color="secondary">hello</Button> */}
+              <SquareButton
+                variant={'contained'}
+                click={handleFirstSliderClickLeft}
+                less
+                color='#4F4F4F'
+                bgColor='#D1D1D1'
+              />
+              <SquareButton
+                variant={'contained'}
+                click={handleFirstSliderClickRight}
+                great
+                color='#4F4F4F'
+                bgColor='#D1D1D1'
+              />
             </Box>
           ) : null}
-        </Box>
-        <Box className={classes.mainDescBox}>
-          {breakpoints.md ? null : (
+          <Box className={classes.mainDescBox}>
             <Box className={classes.mainBlockTitleBox}>
               <Typography
                 variant='h1'
@@ -834,71 +857,54 @@ const HousePage = ({ house, data }) => {
                 {dataHouses[houseNumber]['Код']}
               </Typography>
             </Box>
-          )}
-          <Box className={classes.mainBlockSubtitleBox}>
-            {/* <ul className={classes.mainBlockList}>
-                  {houses[houseNumber].modules.map((item, index) => {
-                    return (
-                      <li className={classes.mainBlockItem} key={index}>
-                        <Typography variant="body1">
-                          0{index + 1} Модуль
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul> */}
-            {!breakpoints.md ? (
-              <>
-                <ul className={classes.mainBlockList}>
-                  {dataHouses[houseNumber].modules.map((item, index) => {
-                    return (
-                      <li className={classes.mainBlockItem} key={index}>
-                        <Typography variant='body1'>
-                          0{index + 1} Модуль
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <ul className={classes.mainBlockList}>
-                  {dataHouses[houseNumber].modules.map((item, index) => {
-                    return (
-                      <li className={classes.mainBlockItem} key={index}>
-                        <Typography variant='body1'>
-                          {item['Название модуля']}
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </>
-            ) : (
-              <ul className={classes.mainBlockList}>
-                {dataHouses[houseNumber].modules.map((item, index) => {
-                  return (
-                    <li className={classes.mainBlockItem} key={index}>
-                      <Typography variant='body1'>
-                        0{index + 1} {item['Название модуля']}
-                      </Typography>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-            <ul
-              className={`${classes.mainBlockList} ${classes.mainBlockListRight}`}
-            >
-              {dataHouses[houseNumber].modules.map((item, index) => {
-                return (
-                  <li className={classes.mainBlockItem} key={index}>
-                    <Typography variant='subtitle1'>
-                      $ {numberWithSpace(item['Стоимость'])} /{' '}
-                      {item['Срок изготовления']} дней
-                    </Typography>
-                  </li>
-                );
-              })}
-            </ul>
+
+            <Box className={classes.mainBlockSubtitleBox}>
+              {!breakpoints.md ? (
+                <>
+                  <ul className={classes.mainBlockList}>
+                    {dataHouses[houseNumber].modules.map((item, index) => {
+                      return (
+                        <li className={classes.mainBlockItem} key={index}>
+                          <Typography variant='body1'>
+                            0{index + 1} Модуль
+                          </Typography>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <ul className={classes.mainBlockList}>
+                    {dataHouses[houseNumber].modules.map((item, index) => {
+                      return (
+                        <li className={classes.mainBlockItem} key={index}>
+                          <Typography variant='body1'>
+                            {item['Название модуля']}
+                          </Typography>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <ul
+                    className={`${classes.mainBlockList} ${classes.mainBlockListRight}`}
+                  >
+                    {dataHouses[houseNumber].modules.map((item, index) => {
+                      return (
+                        <li className={classes.mainBlockItem} key={index}>
+                          <Typography variant='subtitle1'>
+                            $ {numberWithSpace(item['Стоимость'])} /{' '}
+                            {item['Срок изготовления']} дней
+                          </Typography>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              ) : (
+                <Typography variant='body1'>
+                  {' '}
+                  {dataHouses[house]['Описание']}
+                </Typography>
+              )}
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -1020,24 +1026,22 @@ const HousePage = ({ house, data }) => {
 
       <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
         <Box className={classes.secondImgBox}>
-          <HouseFotosSlider houseRef={myRef} listItem={images} />
+          <HouseFotosSlider houseRef={secondSlider} listItem={images} />
           <Box className={classes.buttons}>
             {/* <Button color="secondary">hello</Button> */}
             <SquareButton
               variant={'contained'}
-              click={handleClickLeft}
+              click={handleSeconSliderClickLeft}
               less
               color='#4F4F4F'
               bgColor='#D1D1D1'
-              smal={breakpoints.md}
             />
             <SquareButton
               variant={'contained'}
-              click={handleClickRight}
+              click={handleSeconSliderClickRight}
               great
               color='#4F4F4F'
               bgColor='#D1D1D1'
-              smal={breakpoints.md}
             />
           </Box>
           {/* {breakpoints.md? null : (

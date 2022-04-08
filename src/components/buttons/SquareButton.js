@@ -4,8 +4,8 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    width: (param)=>param.smal?"44px":"56px",
-    height: (param)=>param.smal?"44px":"56px",
+    width: "56px",
+    height: "56px",
     minWidth: "10px",
     borderRadius: "0",
     background: (param)=>param.bgColor?param.bgColor:"#4F4F4F",
@@ -27,12 +27,16 @@ const useStyles = makeStyles((theme) => ({
       width: "2.91vw",
       height: "2.91vw",
     },
+    [theme.breakpoints.down('md')]: {
+      width: "44px",
+      height: "44px",
+    },
   },
   buttonLess: {
     position: "relative",
     left: '25%',
-    width: (param)=>param.smal?"12px":"20px",
-    height: (param)=>param.smal?"12px":"20px",
+    width: "20px",
+    height: "20px",
     transform: "rotate(-45deg)",
     border: '1px solid',
     borderWidth: '1px 0px 0px 1px',
@@ -41,12 +45,16 @@ const useStyles = makeStyles((theme) => ({
       height: "1.4vw",
       left: '15%',
     },
+    [theme.breakpoints.down('md')]: {
+      width: "12px",
+      height: "12px",
+    },
   },
   buttonGreat: {
     position: "relative",
     right: '20%',
-    width: (param)=>param.smal?"12px":"20px",
-    height: (param)=>param.smal?"12px":"20px",
+    width: "20px",
+    height: "20px",
     transform: "rotate(-45deg)",
     border: '1px solid ',
     borderWidth: '0 1px 1px 0',
@@ -55,11 +63,15 @@ const useStyles = makeStyles((theme) => ({
       height: "1.4vw",
       right: '15%',
     },
+    [theme.breakpoints.down('md')]: {
+      width: "12px",
+      height: "12px",
+    },
   },
 }));
 
-export default function SquareButton({ icon, great, less, click, variant, bgColor='#4F4F4F', color='#F2F2F2', smal }) {
-  const param = { bgColor, color, smal };
+export default function SquareButton({ icon, great, less, click, variant, bgColor='#4F4F4F', color='#F2F2F2' }) {
+  const param = { bgColor, color };
   const classes = useStyles(param);
   //   const [selected, setSelected] = React.useState(false);
   // let c = "str"

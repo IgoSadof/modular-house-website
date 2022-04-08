@@ -374,6 +374,7 @@ abbr {
   text-transform: lowercase !important;
 
 }
+/* swioer */
 
 .swiper {
   width: 100%;
@@ -384,6 +385,10 @@ abbr {
   /* Center slide text vertically */
   display: flex;
   justify-content: start;
+}
+
+.swiper-pagination-bullet{
+  background-color: #ADADAD;
 }
 
 
