@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: 'auto',
     gap: '60px',
-    // justifyContent: 'space-between',
+    minHeight:'232px',
     padding: '40px 10%',
     '@media (min-width:1921px)': {
       padding: '3.5vw 10%',
@@ -219,11 +219,12 @@ const useStyles = makeStyles((theme) => ({
   mainBlockList: {
     listStyle: 'none',
     padding: '0',
+    gap:'10px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    [theme.breakpoints.down('md')]: {
-      gap: '10px',
+    justifyContent: 'center',
+    '@media (min-width:1921px)': {
+      gap: '0.5vw',
     },
   },
   mainBlockListRight: {
