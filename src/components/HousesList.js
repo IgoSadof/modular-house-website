@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
   houseListBlock: {
     width: '10vw',
     borderRight: '1px solid',
+    flexShrink:'0',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       borderRight: 'none',
@@ -164,24 +165,35 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '42%',
     height: '100%',
+    // maxWidth:'600px',
+    minWidth:'490px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       marginTop: '20px',
       padding: '4% 10%',
       height: 'auto',
     },
+    '@media (min-width:1921px)': {
+      maxWidth:'30.7vw',
+    },
   },
   houseDescContent: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    margin: 'auto',
+    margin: '60px 0',
     width: '100%',
-    height: '90%',
+    // height: '100%',
     padding: '0 60px',
-    justifyContent: 'space-between',
+    gap:'40px',
+    justifyContent: 'flex-end',
+    '@media (max-width:1441px)': {
+      padding: '0 40px',
+    },
     '@media (min-width:1921px)': {
       padding: '0 4.2vw',
+      gap:'2.1vw',
+      margin: '3.1vw 0',
     },
     [theme.breakpoints.down('md')]: {
       padding: '0',
@@ -192,6 +204,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '100%',
     height: '28vh',
+    margin:'auto 0',
     '& picture img': {
       objectFit: 'contain !important',
     },
@@ -258,23 +271,27 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 'auto',
     },
   },
-  houseDescText: {
-    margin: '40px 0',
-    overflowY: 'auto',
-    maxHeight: '20vh',
-    lineHeight: '1.6',
+  houseDescText: {  
+    display: '-webkit-box',
+    lineClamp: '4',
+    boxOrient: 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },
   },
   houseDescSpecBox: {
     ...style.flex,
+    gap: '0',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
     [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
       flexDirection: 'column',
       alignItems: 'normal',
     },
   },
-  houseDescSpec: { ...style.flexColumn, gap: '10px', height: '100%' },
+  houseDescSpec: { ...style.flexColumn, width: '100%', height: '100%' },
   houseDescSpecOne: {
     ...style.flex,
     alignItems: 'end',
@@ -288,13 +305,21 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '50px',
     lineHeight: '1.6',
   },
+  houseDescSpecNumberBox: {
+    display: 'flex',
+    width: '152px',
+  },
 
-  houseDescMore: { ...style.flex, marginTop: '40px' },
+  houseDescMore: { ...style.flex},
   houseDescPrice: style.flexColumn,
   houseSpecPrice: {
+    fontSize: '26px',
+    fontWeight: '700',
+    '@media (min-width:1920px)': {
+      fontSize: '1.3vw',
+    },
     [theme.breakpoints.down('md')]: {
       fontSize: '20px',
-      color: 'white',
     },
   },
   Link: {
@@ -303,7 +328,7 @@ const useStyles = makeStyles((theme) => ({
 
   houseImg: {
     position: 'relative',
-    width: '48vw',
+    width: '50vw',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       height: '60vh',
@@ -467,10 +492,7 @@ const HousesList = ({ data }) => {
         onMouseOut={scrollOn}
         onClick={scrollOn}
       >
-        <ModelsSlider
-          houseRef={houseSliderRef}
-          listItem={listItem}
-        />
+        <ModelsSlider houseRef={houseSliderRef} listItem={listItem} />
       </Box>
       <Box components='section' className={classes.houseDesc}>
         <Box className={classes.houseDescContent}>
@@ -521,18 +543,20 @@ const HousesList = ({ data }) => {
                   {/* {houses[house].totalAreaText} */}
                   Общая площадь:
                 </Typography>
-                <Typography
-                  variant='h6'
-                  component='p'
-                  className={classes.houseSpecValue}
-                >
-                  {dataHouses[house].countArea(
-                    dataHouses[house].modules,
-                    'Площадь общая'
-                  )}{' '}
-                  м&#178;
-                  {/* {houses[house].totalArea} */}
-                </Typography>
+                <Box className={classes.houseDescSpecNumberBox}>
+                  <Typography
+                    variant='h6'
+                    component='p'
+                    className={classes.houseSpecValue}
+                  >
+                    {dataHouses[house].countArea(
+                      dataHouses[house].modules,
+                      'Площадь общая'
+                    )}{' '}
+                    м&#178;
+                    {/* {houses[house].totalArea} */}
+                  </Typography>
+                </Box>
               </Box>
               <Box className={classes.houseDescSpecOne}>
                 <Typography
@@ -542,18 +566,20 @@ const HousesList = ({ data }) => {
                   {/* {houses[house].effectiveAreaText} */}
                   Эффективная площадь:
                 </Typography>
-                <Typography
-                  variant='h6'
-                  component='p'
-                  className={classes.houseSpecValue}
-                >
-                  {/* {houses[house].effectiveArea} */}
-                  {dataHouses[house].countArea(
-                    dataHouses[house].modules,
-                    'Площадь полезная'
-                  )}{' '}
-                  м&#178;
-                </Typography>
+                <Box className={classes.houseDescSpecNumberBox}>
+                  <Typography
+                    variant='h6'
+                    component='p'
+                    className={classes.houseSpecValue}
+                  >
+                    {/* {houses[house].effectiveArea} */}
+                    {dataHouses[house].countArea(
+                      dataHouses[house].modules,
+                      'Площадь полезная'
+                    )}{' '}
+                    м&#178;
+                  </Typography>
+                </Box>
               </Box>
             </Box>
 
@@ -565,14 +591,17 @@ const HousesList = ({ data }) => {
                 >
                   Количество этажей:
                 </Typography>
-                <Typography
-                  variant='h6'
-                  component='p'
-                  className={classes.houseSpecValue}
-                >
-                  {dataHouses[house]['Этажность'] ?? 1}
-                </Typography>
+                <Box className={classes.houseDescSpecNumberBox}>
+                  <Typography
+                    variant='h6'
+                    component='p'
+                    className={classes.houseSpecValue}
+                  >
+                    {dataHouses[house]['Этажность'] ?? 1}
+                  </Typography>
+                </Box>
               </Box>
+
               <Box className={classes.houseDescSpecOne}>
                 <Typography
                   variant='body1'
@@ -580,13 +609,15 @@ const HousesList = ({ data }) => {
                 >
                   Cтадии роста:
                 </Typography>
-                <Typography
-                  variant='h6'
-                  component='p'
-                  className={classes.houseSpecValue}
-                >
-                  {dataHouses[house]['modules']?.length}
-                </Typography>
+                <Box className={classes.houseDescSpecNumberBox}>
+                  <Typography
+                    variant='h6'
+                    component='p'
+                    className={classes.houseSpecValue}
+                  >
+                    {dataHouses[house]['modules']?.length}
+                  </Typography>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -594,14 +625,14 @@ const HousesList = ({ data }) => {
             <>
               <Box className={classes.houseDescMore}>
                 <Box className={classes.houseDescPrice}>
-                  <Typography
+                  {/* <Typography
                     variant='body1'
                     className={classes.houseSpecValue}
                   >
                     Стоимость всех модулей:
-                  </Typography>
+                  </Typography> */}
                   <Typography variant='h5' className={classes.houseSpecPrice}>
-                    ${' '}
+                    $
                     {numberWithSpace(
                       dataHouses[house].countArea(
                         dataHouses[house].modules,
