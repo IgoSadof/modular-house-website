@@ -17,12 +17,14 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: (param) =>
       param.position === 'absolute' ||
       param.page === 'main' ||
+      param.page === 'houseList' ||
       param.page === 'contacts'
         ? '10%'
         : '0',
     paddingRight: (param) =>
       param.position === 'absolute' ||
       param.page === 'main' ||
+      param.page === 'houseList' ||
       param.page === 'contacts'
         ? '10%'
         : '0',

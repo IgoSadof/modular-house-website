@@ -36,9 +36,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     height: '100%',
     [theme.breakpoints.down('md')]: {
-      flexDirection: 'column-reverse',
-      padding: '0%',
-      // justifyContent:'flex-end'
+      flexDirection: 'column',
+      padding: '0 10%',
     },
   },
   button: {
@@ -53,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   houseListBlock: {
     width: '10vw',
     borderRight: '1px solid',
-    flexShrink:'0',
+    flexShrink: '0',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       borderRight: 'none',
@@ -166,7 +165,7 @@ const useStyles = makeStyles((theme) => ({
     width: '42%',
     height: '100%',
     // maxWidth:'600px',
-    minWidth:'490px',
+    minWidth: '490px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
       marginTop: '20px',
@@ -174,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
       height: 'auto',
     },
     '@media (min-width:1921px)': {
-      maxWidth:'30.7vw',
+      maxWidth: '30.7vw',
     },
   },
   houseDescContent: {
@@ -185,31 +184,36 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     // height: '100%',
     padding: '0 60px',
-    gap:'40px',
+    gap: '40px',
     justifyContent: 'flex-end',
     '@media (max-width:1441px)': {
       padding: '0 40px',
     },
     '@media (min-width:1921px)': {
       padding: '0 4.2vw',
-      gap:'2.1vw',
+      gap: '2.1vw',
       margin: '3.1vw 0',
     },
     [theme.breakpoints.down('md')]: {
+      '&:first-of-type':{
+        marginTop:'50px',
+      },
+      gap: '16px',
       padding: '0',
       order: '2',
+      margin: '0 0 50px 0',
     },
   },
   houseDescImgBox: {
     position: 'relative',
     width: '100%',
     height: '28vh',
-    margin:'auto 0',
+    margin: 'auto 0',
     '& picture img': {
       objectFit: 'contain !important',
     },
     [theme.breakpoints.down('md')]: {
-      display: 'none',
+      height: '50vw',
     },
   },
   houseDescImg: {
@@ -225,6 +229,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'center',
+    },
   },
   houseDescTitleBoxMobile: {
     position: 'absolute',
@@ -243,7 +250,6 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '3.3vw',
     },
     [theme.breakpoints.down('md')]: {
-      color: '#F2F2F2',
       fontSize: '44px',
     },
   },
@@ -271,7 +277,7 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 'auto',
     },
   },
-  houseDescText: {  
+  houseDescText: {
     display: '-webkit-box',
     lineClamp: '4',
     boxOrient: 'vertical',
@@ -308,9 +314,15 @@ const useStyles = makeStyles((theme) => ({
   houseDescSpecNumberBox: {
     display: 'flex',
     width: '152px',
+    '@media (min-width:1921px)': {
+      width: '10vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      width: 'auto',
+    },
   },
 
-  houseDescMore: { ...style.flex},
+  houseDescMore: { ...style.flex },
   houseDescPrice: style.flexColumn,
   houseSpecPrice: {
     fontSize: '26px',
@@ -362,12 +374,7 @@ const HousesList = ({ data }) => {
     myRef.current.slickGoTo(index);
     setActiveSlide(index);
   };
-  const scrollOff = (e) => {
-    document.body.style.overflow = 'hidden';
-  };
-  const scrollOn = (e) => {
-    document.body.style.overflow = 'inherit';
-  };
+
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
   const listItem = dataHouses.map((item, index) => {
@@ -477,168 +484,288 @@ const HousesList = ({ data }) => {
             alt='img'
           ></GatsbyImage>
         ) : null}
-        {/* <div className={classes.mainImg} style={{ backgroundImage: `url(${item.img.main})` }}></div> */}
       </li>
     );
   });
 
   return (
     <Box components='main' className={classes.Block}>
-      <Box
-        components='section'
-        className={classes.houseListBlock}
-        // onWheel={handleScrol}
-        onMouseOver={scrollOff}
-        onMouseOut={scrollOn}
-        onClick={scrollOn}
-      >
-        <ModelsSlider houseRef={houseSliderRef} listItem={listItem} />
-      </Box>
-      <Box components='section' className={classes.houseDesc}>
-        <Box className={classes.houseDescContent}>
-          <TransitionGroup className={classes.houseDescImgBox}>
-            <CSSTransition
-              in={animation}
-              key={activeSlide}
-              appear={true}
-              timeout={2000}
-              classNames='fadeHouse'
-            >
-              {/* <Fade inProp={animation}> */}
-              {dataHouses[house]['Иконка дома'] ? (
-                <GatsbyImage
-                  // ref={element}
-                  className={classes.houseDescImg}
-                  image={getImg(data, `${dataHouses[house]['Иконка дома']}`)}
-                  alt='img'
-                ></GatsbyImage>
-              ) : null}
-              {/* </Fade> */}
-            </CSSTransition>
-          </TransitionGroup>
-
-          {!breakpoints.md ? (
-            <Box className={classes.houseDescTitleBox}>
-              <Typography
-                variant='h1'
-                color='textSecondary'
-                className={classes.houseDescTitle}
-              >
-                {dataHouses[house]['Код']}
-              </Typography>
-            </Box>
-          ) : null}
-
-          <Typography variant='body1' className={classes.houseDescText}>
-            {dataHouses[house]['Описание']}
-          </Typography>
-
-          <Box className={classes.houseDescSpecBox}>
-            <Box className={classes.houseDescSpec}>
-              <Box className={classes.houseDescSpecOne}>
-                <Typography
-                  variant='body1'
-                  className={classes.houseDescSpecName}
-                >
-                  {/* {houses[house].totalAreaText} */}
-                  Общая площадь:
-                </Typography>
-                <Box className={classes.houseDescSpecNumberBox}>
+      {breakpoints.md ? (
+        <>
+          {dataHouses.map((item, index) => {
+            return (
+              <Box className={classes.houseDescContent}>
+                <Box className={classes.houseDescImgBox}>
+                  {item['Иконка дома'] ? (
+                    <GatsbyImage
+                      className={classes.houseDescImg}
+                      image={getImg(data, `${item['Иконка дома']}`)}
+                      alt='img'
+                    ></GatsbyImage>
+                  ) : null}
+                </Box>
+                <Box className={classes.houseDescTitleBox}>
                   <Typography
-                    variant='h6'
-                    component='p'
-                    className={classes.houseSpecValue}
+                    variant='h1'
+                    color='textSecondary'
+                    className={classes.houseDescTitle}
                   >
-                    {dataHouses[house].countArea(
-                      dataHouses[house].modules,
-                      'Площадь общая'
-                    )}{' '}
-                    м&#178;
-                    {/* {houses[house].totalArea} */}
+                    {item['Код']}
                   </Typography>
                 </Box>
-              </Box>
-              <Box className={classes.houseDescSpecOne}>
-                <Typography
-                  variant='body1'
-                  className={classes.houseDescSpecName}
-                >
-                  {/* {houses[house].effectiveAreaText} */}
-                  Эффективная площадь:
-                </Typography>
-                <Box className={classes.houseDescSpecNumberBox}>
-                  <Typography
-                    variant='h6'
-                    component='p'
-                    className={classes.houseSpecValue}
-                  >
-                    {/* {houses[house].effectiveArea} */}
-                    {dataHouses[house].countArea(
-                      dataHouses[house].modules,
-                      'Площадь полезная'
-                    )}{' '}
-                    м&#178;
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
 
-            <Box className={classes.houseDescSpec}>
-              <Box className={classes.houseDescSpecOne}>
-                <Typography
-                  variant='body1'
-                  className={classes.houseDescSpecName}
-                >
-                  Количество этажей:
+                <Typography variant='body1' className={classes.houseDescText}>
+                  {item['Описание']}
                 </Typography>
-                <Box className={classes.houseDescSpecNumberBox}>
-                  <Typography
-                    variant='h6'
-                    component='p'
-                    className={classes.houseSpecValue}
-                  >
-                    {dataHouses[house]['Этажность'] ?? 1}
-                  </Typography>
-                </Box>
-              </Box>
 
-              <Box className={classes.houseDescSpecOne}>
-                <Typography
-                  variant='body1'
-                  className={classes.houseDescSpecName}
-                >
-                  Cтадии роста:
-                </Typography>
-                <Box className={classes.houseDescSpecNumberBox}>
-                  <Typography
-                    variant='h6'
-                    component='p'
-                    className={classes.houseSpecValue}
+                <Box className={classes.houseDescSpecBox}>
+                  <Box className={classes.houseDescSpec}>
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Общая площадь:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item.countArea(item.modules, 'Площадь общая')}{' '}
+                          м&#178;
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Эффективная площадь:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item.countArea(item.modules, 'Площадь полезная')}{' '}
+                          м&#178;
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+
+                  <Box className={classes.houseDescSpec}>
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Количество этажей:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item['Этажность'] ?? 1}
+                        </Typography>
+                      </Box>
+                    </Box>
+
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Cтадии роста:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item['modules']?.length}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+
+                <Box className={classes.houseDescMore}>
+                  <Box className={classes.houseDescPrice}>
+                    <Typography variant='h5' className={classes.houseSpecPrice}>
+                      {item.countArea(item.modules, 'Стоимость')
+                        ? `
+                    $${numberWithSpace(
+                      item.countArea(item.modules, 'Стоимость')
+                    )}`
+                        : null}
+                    </Typography>
+                  </Box>
+                  <Link
+                    className={classes.Link}
+                    to={`model${item['URL'].toUpperCase()}`}
                   >
-                    {dataHouses[house]['modules']?.length}
-                  </Typography>
+                    <RegularButton variant='outlined' lowerCase='true'>
+                      Подробнее
+                    </RegularButton>
+                  </Link>
                 </Box>
               </Box>
-            </Box>
+            );
+          })}
+        </>
+      ) : (
+        <>
+          <Box components='section' className={classes.houseListBlock}>
+            <ModelsSlider houseRef={houseSliderRef} listItem={listItem} />
           </Box>
-          {breakpoints.md ? null : (
-            <>
+          <Box components='section' className={classes.houseDesc}>
+            <Box className={classes.houseDescContent}>
+              <TransitionGroup className={classes.houseDescImgBox}>
+                <CSSTransition
+                  in={animation}
+                  key={activeSlide}
+                  appear={true}
+                  timeout={2000}
+                  classNames='fadeHouse'
+                >
+                  {dataHouses[house]['Иконка дома'] ? (
+                    <GatsbyImage
+                      className={classes.houseDescImg}
+                      image={getImg(
+                        data,
+                        `${dataHouses[house]['Иконка дома']}`
+                      )}
+                      alt='img'
+                    ></GatsbyImage>
+                  ) : null}
+                </CSSTransition>
+              </TransitionGroup>
+              <Box className={classes.houseDescTitleBox}>
+                <Typography
+                  variant='h1'
+                  color='textSecondary'
+                  className={classes.houseDescTitle}
+                >
+                  {dataHouses[house]['Код']}
+                </Typography>
+              </Box>
+
+              <Typography variant='body1' className={classes.houseDescText}>
+                {dataHouses[house]['Описание']}
+              </Typography>
+
+              <Box className={classes.houseDescSpecBox}>
+                <Box className={classes.houseDescSpec}>
+                  <Box className={classes.houseDescSpecOne}>
+                    <Typography
+                      variant='body1'
+                      className={classes.houseDescSpecName}
+                    >
+                      {/* {houses[house].totalAreaText} */}
+                      Общая площадь:
+                    </Typography>
+                    <Box className={classes.houseDescSpecNumberBox}>
+                      <Typography
+                        variant='h6'
+                        component='p'
+                        className={classes.houseSpecValue}
+                      >
+                        {dataHouses[house].countArea(
+                          dataHouses[house].modules,
+                          'Площадь общая'
+                        )}{' '}
+                        м&#178;
+                        {/* {houses[house].totalArea} */}
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box className={classes.houseDescSpecOne}>
+                    <Typography
+                      variant='body1'
+                      className={classes.houseDescSpecName}
+                    >
+                      {/* {houses[house].effectiveAreaText} */}
+                      Эффективная площадь:
+                    </Typography>
+                    <Box className={classes.houseDescSpecNumberBox}>
+                      <Typography
+                        variant='h6'
+                        component='p'
+                        className={classes.houseSpecValue}
+                      >
+                        {/* {houses[house].effectiveArea} */}
+                        {dataHouses[house].countArea(
+                          dataHouses[house].modules,
+                          'Площадь полезная'
+                        )}{' '}
+                        м&#178;
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+
+                <Box className={classes.houseDescSpec}>
+                  <Box className={classes.houseDescSpecOne}>
+                    <Typography
+                      variant='body1'
+                      className={classes.houseDescSpecName}
+                    >
+                      Количество этажей:
+                    </Typography>
+                    <Box className={classes.houseDescSpecNumberBox}>
+                      <Typography
+                        variant='h6'
+                        component='p'
+                        className={classes.houseSpecValue}
+                      >
+                        {dataHouses[house]['Этажность'] ?? 1}
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  <Box className={classes.houseDescSpecOne}>
+                    <Typography
+                      variant='body1'
+                      className={classes.houseDescSpecName}
+                    >
+                      Cтадии роста:
+                    </Typography>
+                    <Box className={classes.houseDescSpecNumberBox}>
+                      <Typography
+                        variant='h6'
+                        component='p'
+                        className={classes.houseSpecValue}
+                      >
+                        {dataHouses[house]['modules']?.length}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+
               <Box className={classes.houseDescMore}>
                 <Box className={classes.houseDescPrice}>
-                  {/* <Typography
-                    variant='body1'
-                    className={classes.houseSpecValue}
-                  >
-                    Стоимость всех модулей:
-                  </Typography> */}
                   <Typography variant='h5' className={classes.houseSpecPrice}>
-                    $
-                    {numberWithSpace(
+                    {dataHouses[house].countArea(
+                      dataHouses[house].modules,
+                      'Стоимость'
+                    )
+                      ? `
+                    $${numberWithSpace(
                       dataHouses[house].countArea(
                         dataHouses[house].modules,
                         'Стоимость'
-                      ) ?? 100
-                    )}
+                      )
+                    )}`
+                      : null}
                   </Typography>
                 </Box>
                 <Link
@@ -650,27 +777,13 @@ const HousesList = ({ data }) => {
                   </RegularButton>
                 </Link>
               </Box>
-            </>
-          )}
-        </Box>
-      </Box>
-
-      <Box components='section' className={classes.houseImg}>
-        <HouseMainImgSlider myRef={myRef} listItem={listMainImages} />
-        {breakpoints.md ? (
-          <Box
-            className={`${classes.houseDescTitleBox} ${classes.houseDescTitleBoxMobile}`}
-          >
-            <Typography
-              variant='h1'
-              color='textSecondary'
-              className={classes.houseDescTitle}
-            >
-              {dataHouses[house]['Код']}
-            </Typography>
+            </Box>
           </Box>
-        ) : null}
-      </Box>
+          <Box components='section' className={classes.houseImg}>
+            <HouseMainImgSlider myRef={myRef} listItem={listMainImages} />
+          </Box>
+        </>
+      )}
     </Box>
   );
 };

@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         : '100vh',
     [theme.breakpoints.down('md')]: {
       height: (param) =>
-        param.page === 'houseList' && param.breakpoints.md ? '100vh' : '100%',
+        param.page === 'houseList' && param.breakpoints.md ? '100%' : '100%',
     },
     '@media (max-height:600px)': {
       height:'100% !important',
@@ -269,10 +269,9 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     <Burger
                       click={handleClickConnect}
                       page={page}
-                      position={page !== 'aboutUs' ? 'absolute' : 'relative'}
+                      position={page !== 'aboutUs' && page !== 'houseList'  ? 'absolute' : 'relative'}
                       color={
                         page === 'watch' ||
-                        page === 'houseList' ||
                         page === 'house'
                           ? 'white'
                           : null
