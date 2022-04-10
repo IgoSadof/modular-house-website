@@ -121,6 +121,7 @@ const FormBlock = ({
   blockPadding = false,
   endpoint,
   extraFormFields,
+  underLine,
 }) => {
   const param = { formPosition, blockPadding };
   const classes = useStyles(param);
@@ -133,7 +134,7 @@ const FormBlock = ({
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                {header ? <TitleWithLine title={header}/> : null}
+                {header ? <TitleWithLine title={header} /> : null}
               </Box>
               <Box className={classes.formBox}>
                 <Form
@@ -170,7 +171,7 @@ const FormBlock = ({
         ) : (
           <>
             <Box className={classes.titleBox} style={{ marginBottom: '40px' }}>
-              {header ? <TitleWithLine title={header} longLine={true} /> : null}
+              {header ? <TitleWithLine title={header} longLine={true} underLine={underLine} /> : null}
             </Box>
             {staticImg || img ? (
               <Box

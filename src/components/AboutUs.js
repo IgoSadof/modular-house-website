@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
   main:{
     [theme.breakpoints.down("md")]: {
       "& h2":{
-        fontSize:'18px',
+        fontSize:'20px',
+        textAlign:'end',
       }
     },
   },
@@ -29,8 +30,11 @@ const useStyles = makeStyles((theme) => ({
     //   fontSize: "3.54vw",
     // },
     [theme.breakpoints.down("md")]: {
-      width: "65%",
-      fontSize: "24px",
+      width: "75%",
+      fontSize: "26px",
+      fontWeight:'700',
+      textAlign:'start',
+      marginRight: 'auto',
     },
   },
   Block: {
@@ -40,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     "&:first-child ":{
       marginTop:'auto',
       height:'86vh',
+      width:'100%',
       '@media (min-width:1921px)': {
         // marginTop: "7vw",
       },
@@ -51,7 +56,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       flexDirection: "column-reverse",
       alignItems: "center",
-      marginTop: "60px",
+      marginTop: "40px",
+      "&:last-of-type":{
+        marginBottom: "40px",
+      },
+      gap: "40px",
       "&:first-child ":{
         marginTop:'60px',
         height:'auto',
@@ -74,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row-reverse",
     [theme.breakpoints.down("md")]: {
       position: "relative",
-      right: "-12%",
       width: "100%",
       marginLeft: "0",
     },
@@ -145,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "auto",
     width:"100%",
     [theme.breakpoints.down("md")]: {
-      marginTop: "40px",
+      marginTop: "20px",
     },
   },
   BlockMt0: {
@@ -154,7 +162,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "4.2vw",
     },
     [theme.breakpoints.down("md")]: {
-      marginTop: "30px",
+      marginTop: "0",
       gap:'20px',
     },
   },
@@ -201,7 +209,7 @@ const AboutUs = ({data}) => {
         <Box className={`${classes.Block} ${classes.BlockContent}`}>
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
-            <TitleWithLine title="Автор концепции MH - Андрусь Bezdar" />
+            <TitleWithLine underLine={true} title="Автор концепции MH - Андрусь Bezdar"/>
           </Box>
         </Box>
 
@@ -217,7 +225,7 @@ const AboutUs = ({data}) => {
       <Box component="section" className={classes.Block}>
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
-            <TitleWithLine
+            <TitleWithLine underLine={true}
               title="Разработка технологии MH - Андрусь Bezdar, Кораблёв Алексей,
               Амбражейчик Кирилл, Короленко Николай."
             />
@@ -246,7 +254,7 @@ const AboutUs = ({data}) => {
       <Box component="section" className={classes.Block}>
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
-            <TitleWithLine title="Модульная система" />
+            <TitleWithLine underLine={true} title="Модульная система" />
           </Box>
         </Box>
 
@@ -275,7 +283,7 @@ const AboutUs = ({data}) => {
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                <TitleWithLine title="Создатели" />
+                <TitleWithLine underLine={true} title="Создатели" />
               </Box>
               <Box className={classes.creatorsBox}>
                 <Box className={classes.creatorTextBox}>
@@ -317,7 +325,7 @@ const AboutUs = ({data}) => {
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                <TitleWithLine title="Создатели" />
+                <TitleWithLine underLine={true} title="Создатели" />
               </Box>
               <Box className={classes.imgBox}>
                 <img className={classes.img} src={getPublicPath(data,"images/aboutus_alexey.png")} alt="img"></img>
@@ -391,7 +399,7 @@ const AboutUs = ({data}) => {
       <Box component="section" className={classes.Block}>
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
-            <TitleWithLine title="Наш друг, В. Татаров." />
+            <TitleWithLine underLine={true} title="Наш друг, В. Татаров." />
           </Box>
         </Box>
         <Typography className={`${classes.header} ${classes.header2}`}>
@@ -403,11 +411,11 @@ const AboutUs = ({data}) => {
           img={getPublicPath(data,"images/aboutus_office.png")}
           staticImg={true}
           header={"Приглашаем"}
-          blockPadding={true}
           title={`В офис студии ZROBYM architects, 
                     за кружкой хорошего кофе всегда можно получить необходимую информацию, выбрать 
                     готовый проект или заказать разработку модульного дома индивидуально.`}
           email
+          underLine={true}
         />
       </Box>
     </Box>

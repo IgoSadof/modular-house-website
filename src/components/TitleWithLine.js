@@ -28,6 +28,23 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
+  sectionTitleUnderLine:{
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column-reverse",
+      // left:'-120px',
+      width: "100%",
+      gap:'5px',
+      '& $line':{
+        position:"relative",
+        width: "100vw",
+        left:'-20vw',
+      },
+      '& h2':{
+        position:'relative',
+        // left:'-80px',
+      },
+    },
+  },
   line: {
     display: "inline-block",
     width: "80px",
@@ -41,11 +58,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TitleWithLine = ({ title, style, longLine }) => {
+const TitleWithLine = ({ title, style, longLine, underLine }) => {
   const param = {longLine};
   const classes = useStyles(param);
   return (
-    <Box className={classes.sectionTitle} style={style}>
+    <Box className={!underLine? `${classes.sectionTitle}` : `${classes.sectionTitle} ${classes.sectionTitleUnderLine}`} style={style}>
       <span className={classes.line}></span>
       <Typography variant="h2" className={classes.text}>
         {title}

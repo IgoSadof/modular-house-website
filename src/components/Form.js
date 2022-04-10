@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    textTransform: 'uppercase',
+    textTransform: 'none',
   },
   subtitle: {
     width: '200px',
@@ -292,7 +292,7 @@ const Form = ({
           ) : (
             <Box className={main ? classes.titleBoxMain : classes.titleBox}>
               {main ? <span className={classes.line}></span> : null}
-              <Typography variant='h5' component='h3' className={classes.text}>
+              <Typography variant='body1' component='p' className={classes.title}>
                 {title}
               </Typography>
             </Box>

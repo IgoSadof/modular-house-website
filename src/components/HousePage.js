@@ -605,6 +605,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
+    textTransform: 'none',
     marginBottom: '40px',
     [theme.breakpoints.down('md')]: {
       marginBottom: '20px',
