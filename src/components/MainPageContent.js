@@ -41,11 +41,11 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.down('md')]: {
-      marginTop: '100px',
+      marginTop: '80px',
       flexDirection: 'column',
       width: '100%',
       padding: '0 10%',
-      gap: '30px',
+      gap: '50px',
       '& $titleBox': {
         right: '-12%',
         position: 'relative',
@@ -258,10 +258,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: '83px',
   },
-  ContactsBox: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
+
   ContactsBoxes: {
     display: 'flex',
     gap: '40px',
@@ -340,12 +337,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   ContactsBox:{
-    // display:"flex",
+    display: 'flex',
+    flexDirection: 'column',
     margin:"180px 0 120px 0",
     paddingRight:"10%",
     [theme.breakpoints.down('md')]: {
       paddingRight:"0",
-      margin:"40px 0 40px 0",
+      margin:"80px 0 80px 0",
     },
   }
 }));

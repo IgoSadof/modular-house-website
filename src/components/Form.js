@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '300px',
     "& form": {
       [theme.breakpoints.down('md')]: {
-        marginTop:"20px",
+        // marginTop:"20px",
       },
     },
     '& h3': {
@@ -367,7 +367,7 @@ const Form = ({
             <label htmlFor={`message-${id ? id : '0'}`}>
               <Box className={classes.messageLabelBox}>
                 <Typography variant='body2'>
-                  Оставьте заявку и наш менеджер свяжеться с вами
+                  Сообщение...
                 </Typography>
                 <div>*</div>
               </Box>

@@ -142,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight:'232px',
     padding: '40px 10%',
     '@media (min-width:1921px)': {
-      padding: '3.5vw 10%',
+      padding: '2.1vw 10%',
       gap: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
@@ -224,7 +224,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     '@media (min-width:1921px)': {
-      gap: '0.5vw',
+      gap: '0.05vw',
     },
   },
   mainBlockListRight: {

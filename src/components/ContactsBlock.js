@@ -118,13 +118,13 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
               <TitleWithLine
                 title={title}
                 longLine={true}
-                style={{ marginBottom: '40px' }}
+                style={{ marginBottom: '50px' }}
               />
             ) : null}
           </Box>
           <Box className={classes.BlockColumn}>
             <ContactsElement data={data} />
-            <Box className={classes.titleBox} style={{ marginTop: '40px' }}>
+            <Box className={classes.titleBox} style={{ marginTop: '60px' }}>
               <TitleWithLine
                 title={'Напишите нам'}
                 style={{ marginBottom: '20px' }}

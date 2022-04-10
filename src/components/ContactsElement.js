@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      gap: '60px',
+      gap: '40px',
     },
   },
   BlockColumn: {
@@ -63,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
     gap: '60px',
     '@media (min-width:1921px)': {
       gap: '4.2vw',
+    },
+    [theme.breakpoints.down('md')]: {
+
+      gap: '30px',
     },
   },
   ContactsBoxes: {
@@ -95,15 +99,21 @@ const useStyles = makeStyles((theme) => ({
   infoBox: {
     display: 'flex',
     alignItems:'baseline',
-    gap: '28px',
+    gap: '32px',
     '@media (min-width:1921px)': {
-      gap: '1.9vw',
+      gap: '1.8vw',
     },
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
       alignSelf: (param) => (param.breakpoints.s ? 'null' : 'center'),
     },
     // justifyContent: 'space-between',
+  },
+  infoBoxTel:{
+    gap: '28px',
+    '@media (min-width:1921px)': {
+      gap: '1.6vw',
+    },
   },
   infoBoxText: {
     display: 'flex',
@@ -114,11 +124,6 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '16px',
       '@media (min-width:1921px)': {
         fontSize: '0.83vw',
-      },
-    },
-    [theme.breakpoints.down('md')]: {
-      '& p': {
-        fontSize: '14px',
       },
     },
   },
@@ -242,7 +247,7 @@ const ContactsElement = ({ header, data }) => {
               </Box>
               {/* </a> */}
             </Box>
-            <Box className={classes.infoBox}>
+            <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
               <Typography
                 className={classes.ContactsSails}
                 variant='h4'
