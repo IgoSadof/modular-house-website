@@ -13,12 +13,13 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: "100%",
     height: "95vh",
+    aspectRatio:'1/1',
     "&>div":{
       height: "100%",
     },
 
     [theme.breakpoints.down("md")]: {
-      height: "250px",
+      height: "auto",
     },
   },
   img: {

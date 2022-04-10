@@ -14,10 +14,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
-    [theme.breakpoints.down('md')]: {
-      // padding: '0 5%',
-      // marginTop: '20px',
-    },
   },
   BlockMain: {
     display: 'flex',
@@ -25,9 +21,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '20px',
     width: '100%',
     height: '100%',
-    // paddingBottom: '120px',
     [theme.breakpoints.down('md')]: {
-      // paddingTop: '40px',
       paddingBottom: '0',
     },
   },
@@ -107,7 +101,6 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 10%',
       alignSelf: (param) => (param.breakpoints.s ? 'null' : 'center'),
     },
-    // justifyContent: 'space-between',
   },
   infoBoxTel:{
     gap: '28px',

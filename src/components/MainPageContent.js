@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       width: '100%',
       padding: '0 10%',
-      gap: '50px',
+      gap: '40px',
       '& $titleBox': {
         right: '-12%',
         position: 'relative',

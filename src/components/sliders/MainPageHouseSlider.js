@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgBox: {
     width: "100%",
-    height: "410px",
+    aspectRatio:'4/3',
     overflow: "hidden",
     
     "&:hover $img": {
@@ -78,12 +78,6 @@ const useStyles = makeStyles((theme) => ({
     },
     "&:focus $img": {
       transform: "scale(1.1)",
-    },
-    "@media (min-width:1921px)": {
-      height: "21.35vw",
-    },
-    [theme.breakpoints.down("md")]: {
-      height: "45vh",
     },
   },
   img: {
@@ -104,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     // },
     [theme.breakpoints.down("md")]: {
       padding: "15px",
-      paddingBottom: "40px",
+      paddingBottom: "30px",
       height:"auto",
     },
   },
@@ -115,7 +109,8 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "2.18vw",
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: "36px",
+      fontSize: "32px",
+      width: "100%",
     },
   },
   title: {
@@ -124,6 +119,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: "100%",
     fontSize: "42px",
+    [theme.breakpoints.down("md")]: {
+      flexDirection:'column',
+      justifyContent: "center",
+      alignItems:'flex-start',
+    },
   },
   properties: {
     display: "flex",
@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
     "& img": { objectFit: "contain !important" },
     [theme.breakpoints.down("md")]: {
       display: "flex",
-      marginTop: "25px",
+      marginTop: "15px",
       marginLeft: "0",
       justifyContent: "space-between",
       objectFit: "contain",
@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
-      marginTop: "25px",
+      marginTop: "15px",
     },
   },
   growStageIcon: {

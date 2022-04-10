@@ -118,7 +118,7 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
               <TitleWithLine
                 title={title}
                 longLine={true}
-                style={{ marginBottom: '50px' }}
+                style={{ marginBottom: '40px' }}
               />
             ) : null}
           </Box>
