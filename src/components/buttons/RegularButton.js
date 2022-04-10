@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#4F4F4F',
     },
     '@media (min-width:1921px)': {
-      width: '10.5vw',
-      height: '2.6vw',
+      width: '8vw',
+      height: '2vw',
       fontSize: '0.9vw',
       padding: '0.8vw 2.1vw',
     },

@@ -283,6 +283,10 @@ const useStyles = makeStyles((theme) => ({
     boxOrient: 'vertical',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    paddingBottom:'20px',
+    '@media (min-width:1921px)': {
+      paddingBottom:'0',
+    },
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },
@@ -315,7 +319,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '152px',
     '@media (min-width:1921px)': {
-      width: '10vw',
+      width: '8vw',
     },
     [theme.breakpoints.down('md')]: {
       width: 'auto',
