@@ -1,10 +1,10 @@
-const path = require("path")
-const fs = require("fs-extra")
+// const path = require("path")
+// const fs = require("fs-extra")
 
-exports.onPostBuild = () => {
-fs.copySync(path.join(__dirname, "public"), path.join(__dirname, "../"),{ overwrite: true })
-fs.rmdirSync(path.join(__dirname, 'public'), { recursive: true });
-}
+// exports.onPostBuild = () => {
+// fs.copySync(path.join(__dirname, "public"), path.join(__dirname, "../"),{ overwrite: true })
+// fs.rmdirSync(path.join(__dirname, 'public'), { recursive: true });
+// }
 
  exports.onCreateWebpackConfig = ({
     stage,
