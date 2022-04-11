@@ -494,137 +494,137 @@ const HousesList = ({ data }) => {
 
   return (
     <Box components='main' className={classes.Block}>
-      {breakpoints.md ? (null
-        // <>
-        //   {dataHouses.map((item, index) => {
-        //     return (
-        //       <Box className={classes.houseDescContent}>
-        //         <Box className={classes.houseDescImgBox}>
-        //           {item['Иконка дома'] ? (
-        //             <GatsbyImage
-        //               className={classes.houseDescImg}
-        //               image={getImg(data, `${item['Иконка дома']}`)}
-        //               alt='img'
-        //             ></GatsbyImage>
-        //           ) : null}
-        //         </Box>
-        //         <Box className={classes.houseDescTitleBox}>
-        //           <Typography
-        //             variant='h1'
-        //             color='textSecondary'
-        //             className={classes.houseDescTitle}
-        //           >
-        //             {item['Код']}
-        //           </Typography>
-        //         </Box>
+      {breakpoints.md ? (
+        <>
+          {dataHouses.map((item, index) => {
+            return (
+              <Box className={classes.houseDescContent}>
+                <Box className={classes.houseDescImgBox}>
+                  {item['Иконка дома'] ? (
+                    <GatsbyImage
+                      className={classes.houseDescImg}
+                      image={getImg(data, `${item['Иконка дома']}`)}
+                      alt='img'
+                    ></GatsbyImage>
+                  ) : null}
+                </Box>
+                <Box className={classes.houseDescTitleBox}>
+                  <Typography
+                    variant='h1'
+                    color='textSecondary'
+                    className={classes.houseDescTitle}
+                  >
+                    {item['Код']}
+                  </Typography>
+                </Box>
 
-        //         <Typography variant='body1' className={classes.houseDescText}>
-        //           {item['Описание']}
-        //         </Typography>
+                <Typography variant='body1' className={classes.houseDescText}>
+                  {item['Описание']}
+                </Typography>
 
-        //         <Box className={classes.houseDescSpecBox}>
-        //           <Box className={classes.houseDescSpec}>
-        //             <Box className={classes.houseDescSpecOne}>
-        //               <Typography
-        //                 variant='body1'
-        //                 className={classes.houseDescSpecName}
-        //               >
-        //                 Общая площадь:
-        //               </Typography>
-        //               <Box className={classes.houseDescSpecNumberBox}>
-        //                 <Typography
-        //                   variant='h6'
-        //                   component='p'
-        //                   className={classes.houseSpecValue}
-        //                 >
-        //                   {item.countArea(item.modules, 'Площадь общая')}{' '}
-        //                   м&#178;
-        //                 </Typography>
-        //               </Box>
-        //             </Box>
-        //             <Box className={classes.houseDescSpecOne}>
-        //               <Typography
-        //                 variant='body1'
-        //                 className={classes.houseDescSpecName}
-        //               >
-        //                 Эффективная площадь:
-        //               </Typography>
-        //               <Box className={classes.houseDescSpecNumberBox}>
-        //                 <Typography
-        //                   variant='h6'
-        //                   component='p'
-        //                   className={classes.houseSpecValue}
-        //                 >
-        //                   {item.countArea(item.modules, 'Площадь полезная')}{' '}
-        //                   м&#178;
-        //                 </Typography>
-        //               </Box>
-        //             </Box>
-        //           </Box>
+                <Box className={classes.houseDescSpecBox}>
+                  <Box className={classes.houseDescSpec}>
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Общая площадь:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item.countArea(item.modules, 'Площадь общая')}{' '}
+                          м&#178;
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Эффективная площадь:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item.countArea(item.modules, 'Площадь полезная')}{' '}
+                          м&#178;
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
 
-        //           <Box className={classes.houseDescSpec}>
-        //             <Box className={classes.houseDescSpecOne}>
-        //               <Typography
-        //                 variant='body1'
-        //                 className={classes.houseDescSpecName}
-        //               >
-        //                 Количество этажей:
-        //               </Typography>
-        //               <Box className={classes.houseDescSpecNumberBox}>
-        //                 <Typography
-        //                   variant='h6'
-        //                   component='p'
-        //                   className={classes.houseSpecValue}
-        //                 >
-        //                   {item['Этажность'] ?? 1}
-        //                 </Typography>
-        //               </Box>
-        //             </Box>
+                  <Box className={classes.houseDescSpec}>
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Количество этажей:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item['Этажность'] ?? 1}
+                        </Typography>
+                      </Box>
+                    </Box>
 
-        //             <Box className={classes.houseDescSpecOne}>
-        //               <Typography
-        //                 variant='body1'
-        //                 className={classes.houseDescSpecName}
-        //               >
-        //                 Cтадии роста:
-        //               </Typography>
-        //               <Box className={classes.houseDescSpecNumberBox}>
-        //                 <Typography
-        //                   variant='h6'
-        //                   component='p'
-        //                   className={classes.houseSpecValue}
-        //                 >
-        //                   {item['modules']?.length}
-        //                 </Typography>
-        //               </Box>
-        //             </Box>
-        //           </Box>
-        //         </Box>
+                    <Box className={classes.houseDescSpecOne}>
+                      <Typography
+                        variant='body1'
+                        className={classes.houseDescSpecName}
+                      >
+                        Cтадии роста:
+                      </Typography>
+                      <Box className={classes.houseDescSpecNumberBox}>
+                        <Typography
+                          variant='h6'
+                          component='p'
+                          className={classes.houseSpecValue}
+                        >
+                          {item['modules']?.length}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
 
-        //         <Box className={classes.houseDescMore}>
-        //           <Box className={classes.houseDescPrice}>
-        //             <Typography variant='h5' className={classes.houseSpecPrice}>
-        //               {item.countArea(item.modules, 'Стоимость')
-        //                 ? `
-        //             $${numberWithSpace(
-        //               item.countArea(item.modules, 'Стоимость')
-        //             )}`
-        //                 : null}
-        //             </Typography>
-        //           </Box>
-        //           <Link
-        //             className={classes.Link}
-        //             to={`model${item['URL'].toUpperCase()}`}
-        //           >
-        //             <RegularButton variant='outlined' lowerCase='true'>
-        //               Подробнее
-        //             </RegularButton>
-        //           </Link>
-        //         </Box>
-        //       </Box>
-        //     );
-        //   })}
-        // </>
+                <Box className={classes.houseDescMore}>
+                  <Box className={classes.houseDescPrice}>
+                    <Typography variant='h5' className={classes.houseSpecPrice}>
+                      {item.countArea(item.modules, 'Стоимость')
+                        ? `
+                    $${numberWithSpace(
+                      item.countArea(item.modules, 'Стоимость')
+                    )}`
+                        : null}
+                    </Typography>
+                  </Box>
+                  <Link
+                    className={classes.Link}
+                    to={`model${item['URL'].toUpperCase()}`}
+                  >
+                    <RegularButton variant='outlined' lowerCase='true'>
+                      Подробнее
+                    </RegularButton>
+                  </Link>
+                </Box>
+              </Box>
+            );
+          })}
+        </>
       ) : (
         <>
           <Box components='section' className={classes.houseListBlock}>
