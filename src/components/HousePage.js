@@ -10,7 +10,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CalculateTable from '../components/CalculateTable';
 // import Panel from '../components/Panel';
-import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
+import { SwiperSlide } from 'swiper/react';
+import TitleWithLine from '../components/TitleWithLine';
 import '@google/model-viewer';
 import Model3d from './Model3d';
 import getHousesData from '../utils/getHousesData';
@@ -22,8 +23,7 @@ import HouseModelPlayer from './HouseModelPlayer';
 import numberWithSpace from '../utils/numberWithSpace';
 import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
-import { SwiperSlide } from 'swiper/react';
-import TitleWithLine from '../components/TitleWithLine';
+import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
