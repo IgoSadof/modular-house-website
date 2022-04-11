@@ -3,7 +3,7 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { Swiper } from 'swiper/react';
 // import 'swiper/css';
 // import "swiper/css/pagination";
-// import { Pagination } from 'swiper';
+import { Pagination } from 'swiper';
 
 
 
@@ -12,10 +12,10 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination }) => {
 
   return (
     <Swiper
-      // pagination={pagination && breakpoints.md?{
-      //   dynamicBullets: true,
-      // }:false}
-      // modules={[Pagination]}
+      pagination={pagination && breakpoints.md?{
+        dynamicBullets: true,
+      }:false}
+      modules={[Pagination]}
       ref={houseRef}
       slidesPerView={'1'}
       grabCursor={true}
