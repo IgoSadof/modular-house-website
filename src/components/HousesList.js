@@ -498,7 +498,7 @@ const HousesList = ({ data }) => {
         <>
           {dataHouses.map((item, index) => {
             return (
-              <Box className={classes.houseDescContent}>
+              <Box className={classes.houseDescContent} key={index}>
                 <Box className={classes.houseDescImgBox}>
                   {item['Иконка дома'] ? (
                     <GatsbyImage
