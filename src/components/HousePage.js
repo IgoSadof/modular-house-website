@@ -636,12 +636,12 @@ const HousePage = ({ house, data }) => {
     ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение']
     : `${dataHouses[houseNumber]['Баннер']}`;
 
-  const [roomsImg, setRoomsImg] = useState(baseImg);
-  const [roomsImgIndex, setRoomsImgIndex] = useState(0);
-  const handleRoomsImgChange = (img, index) => {
-    setRoomsImg(img);
-    setRoomsImgIndex(index);
-  };
+  // const [roomsImg, setRoomsImg] = useState(baseImg);
+  // const [roomsImgIndex, setRoomsImgIndex] = useState(0);
+  // const handleRoomsImgChange = (img, index) => {
+  //   setRoomsImg(img);
+  //   setRoomsImgIndex(index);
+  // };
   const modulesCounts = dataHouses[houseNumber]['modules'].length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 10;
