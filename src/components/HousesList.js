@@ -184,7 +184,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     // height: '100%',
     padding: '0 60px',
-    gap: '40px',
+    gap: '20px',
     justifyContent: 'flex-end',
     '@media (max-width:1441px)': {
       padding: '0 40px',
