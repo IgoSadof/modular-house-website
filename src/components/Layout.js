@@ -305,7 +305,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                 />
                               </Box>
                               <Form
-                                title={'напишите нам'}
+                                title={'НАПИШИТЕ НАМ'}
                                 email
                                 text
                                 closeForm={handleClickConnect}

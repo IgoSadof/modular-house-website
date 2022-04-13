@@ -4,13 +4,14 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    padding: '12px 30px',
+    padding: '14px 30px',
     fontSize: '14px',
+    fontWeight:'400',
     borderRadius: '0',
-    lineHeight: '1.4',
+    lineHeight: '1',
     letterSpacing: '0.015em',
-    width: '152px',
-    height: '38px',
+    // width: '152px',
+    // height: '38px',
     textTransform: 'uppercase',
     color: '#F2F2F2',
     borderColor: '#4F4F4F',

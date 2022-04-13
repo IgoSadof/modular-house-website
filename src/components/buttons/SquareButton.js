@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
     boxShadow: "none",
     "&:hover": {
+      boxShadow: "none",
       filter: 'brightness(1.1)',
       background: (param)=>param.bgColor?param.bgColor:"#4F4F4F",
       "& div": {

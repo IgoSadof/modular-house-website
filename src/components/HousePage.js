@@ -237,9 +237,6 @@ const useStyles = makeStyles((theme) => ({
     '& h6': {
       textTransform: 'none',
     },
-    '@media (min-width:1920px)': {
-      marginTop: '0.7vw',
-    },
   },
   modelBlock: {
     display: 'flex',
@@ -327,7 +324,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     // minHeight: '16vh1,
 
-    height: (param) => `${param.heightModuleList / param.modulesCounts}vh`,
+    height: (param) => param.breakpoints.xxl? `${param.heightModuleList / param.modulesCounts}vh`:'100px',
     minHeight: '70px',
     margin: '10px 0',
     '& h1': {
@@ -571,7 +568,7 @@ const useStyles = makeStyles((theme) => ({
   },
   calculationBodyItem: {
     display: 'flex',
-    justifyContent: 'baseline',
+    justifyContent: 'space-between',
   },
   calculationResult: {
     display: 'flex',
@@ -589,6 +586,7 @@ const useStyles = makeStyles((theme) => ({
   },
   BlockForm: {
     // paddingLeft: "18vw",
+    height:'auto',
     justifyContent: 'center',
     paddingBottom: '100px',
 
@@ -605,7 +603,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    textTransform: 'none',
     marginBottom: '40px',
     [theme.breakpoints.down('md')]: {
       marginBottom: '20px',

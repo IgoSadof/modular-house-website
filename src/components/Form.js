@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     position: (param) => (param.button ? 'absolute' : 'relative'),
     bottom: (param) => (param.button ? '0' : null),
     left: (param) => (param.button ? '0' : null),
-    marginTop: '40px',
+    marginTop: (param) => (param.text ? '40px' : null),
     "@media (min-width:1921px)": {
       marginTop: '2.8vw',
     },
@@ -376,7 +376,7 @@ const Form = ({
                 id={`message-${id ? id : '0'}`}
                 name='message'
                 value={messageText}
-                rows='3'
+                rows='5'
                 onChange={handleChangeMessage}
                 style={{ width: '100%' }}
                 className={classes.messageField}

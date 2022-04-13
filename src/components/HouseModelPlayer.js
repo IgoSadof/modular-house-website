@@ -38,10 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
   videoBox:{
     overflow:"hidden",
-    "& video":{
-      objectFit: "cover",
-      transform:"scale(1.03)"
-    }
   },
   leftArrow:{
     width:"0.7vw",

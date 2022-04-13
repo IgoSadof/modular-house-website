@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     left: "-100px",
     "& span": {
       marginTop: "auto",
-      marginBottom: "8.6px",
+      marginBottom: "6.6px",
     },
     "& h2": {
       whiteSpace: (param) => (param.longLine?"nowrap":null),

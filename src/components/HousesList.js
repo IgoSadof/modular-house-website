@@ -74,8 +74,8 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListItem: {
     width: '100%',
-    height: '10vw',
-    minHeight: '140px',
+    height: '9vw',
+    minHeight: '135px',
     position: 'relative',
     cursor: 'pointer',
     display: 'flex !important',
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
   houseListNumber: {
     position: 'absolute',
     zIndex: '0',
-    top: '-7%',
+    top: '-15%',
     fontSize: (param) => (param.breakpoints.xl ? '72px' : '64px'),
     margin: 'auto',
     color: '#E0E0E0',
@@ -114,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseListActiveNumber: {
-    top: '15%',
+    top: '0%',
     color: '#FFFFFF',
     transition: '1s',
     [theme.breakpoints.down('md')]: {
@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
   },
   houseListImg: {
     position: 'absolute',
-    top: '15%',
+    top: '5%',
     zIndex: '2',
     width: '100%',
     transition: '0.5s',
@@ -188,6 +188,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     '@media (max-width:1441px)': {
       padding: '0 40px',
+    },
+    '@media (min-width:1441px)': {
+      gap: '40px',
     },
     '@media (min-width:1921px)': {
       padding: '0 4.2vw',
@@ -278,12 +281,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseDescText: {
-    display: '-webkit-box',
-    lineClamp: '4',
-    boxOrient: 'vertical',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    paddingBottom:'20px',
+    // display: '-webkit-box',
+    // lineClamp: '4',
+    // boxOrient: 'vertical',
+    // overflow: 'hidden',
+    // textOverflow: 'ellipsis',
+    // paddingBottom:'20px',
     '@media (min-width:1921px)': {
       paddingBottom:'0',
     },

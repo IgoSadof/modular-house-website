@@ -9,7 +9,7 @@ export const customFontsSize = {
   h3: { regular: 24, adaptiv: '1.25vw' },
   h4: { regular: 20, adaptiv: '1.04vw' },
   h5: { regular: 18, adaptiv: '0.94vw' },
-  h6: { regular: 16, adaptiv: '0.83vw' },
+  h6: { regular: 14, adaptiv: '0.73vw' },
   body1: { regular: 16, adaptiv: '0.83vw' },
   body2: { regular: 12, adaptiv: '0.63vw' },
   subtitle1: { regular: 14, adaptiv: '0.73vw' },
@@ -53,7 +53,7 @@ const modularHouseTheme = createTheme({
     h1: {
       fontSize: customFontsSize.h1.regular,
       color: 'white',
-      lineHeight: 1.4,
+      lineHeight: 1.1,
       letterSpacing: '0.02em',
       fontWeight: 700,
       fontStyle: 'normal',
@@ -66,12 +66,12 @@ const modularHouseTheme = createTheme({
     },
     h2: {
       fontSize: customFontsSize.h2.regular,
-      lineHeight: 1.4,
+      lineHeight: 1.2,
       fontWeight: 600,
       textTransform: 'uppercase',
       letterSpacing: '0.015em',
       fontStyle: 'normal',
-      color: '#4F4F4F',
+      color: '#333',
       '@media (min-width:1921px)': {
         fontSize: customFontsSize.h2.adaptiv,
       },
@@ -112,7 +112,7 @@ const modularHouseTheme = createTheme({
       fontWeight: 500,
       fontStyle: 'normal',
       textTransform: 'uppercase',
-      color: '#4F4F4F',
+      color: '#333',
       '@media (min-width:1921px)': {
         fontSize: customFontsSize.h5.adaptiv,
       },

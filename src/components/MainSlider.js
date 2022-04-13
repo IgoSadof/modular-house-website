@@ -13,7 +13,6 @@ import Title1 from '../assets/images/icons/title1.svg';
 import Title2 from '../assets/images/icons/title2.svg';
 import Title3 from '../assets/images/icons/title3.svg';
 
-
 const useStyles = makeStyles((theme) => ({
   content: {
     padding: '50px 0px 90px',
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     width: '100%',
     height: '100vh',
-    minHeight:'768px',
+    minHeight: '768px',
     backgroundColor: '#D1D1D1',
     '@media (min-width:1921px)': {
       padding: '3.5vw 0px 7vw',
@@ -49,11 +48,11 @@ const useStyles = makeStyles((theme) => ({
     right: '-160px',
     width: '70%',
     height: '100vh',
-    minHeight:'768px',
+    minHeight: '768px',
     top: '0',
     zIndex: '0',
     [theme.breakpoints.down('md')]: {
-      minHeight:'0',
+      minHeight: '0',
       '@media (min-width:600px)': {
         // marginTop: '25vw',
         position: 'static',
@@ -147,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     zIndex: 1,
     height: '62vh',
-    minHeight:'450px',
+    minHeight: '450px',
 
     [theme.breakpoints.down('md')]: {
       height: '50%',
@@ -173,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.down('md')]: {
-      minHeight:'100px',
+      minHeight: '100px',
       marginLeft: 'auto',
       marginRight: 'auto',
       marginBottom: 'auto',
@@ -202,7 +201,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '30px',
     position: 'relative',
     marginTop: 'auto',
-    zIndex:'2',
+    zIndex: '2',
     '@media (min-width:1921px)': {
       gap: '2vw',
     },
@@ -218,11 +217,14 @@ const useStyles = makeStyles((theme) => ({
   },
   numbers: {
     width: '100%',
-    marginLeft: '5vw',
+    marginLeft: '100px',
     display: 'flex',
     height: '20px',
     '& h5': {
       fontSize: '14px',
+    },
+    '@media (min-width:1921px)': {
+      marginLeft: '6.9vw',
     },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
@@ -230,14 +232,15 @@ const useStyles = makeStyles((theme) => ({
   },
   number: {
     display: 'flex',
-    justifyContent: 'center',
-    '& span':{
+    justifyContent: 'flex-start',
+    '& span': {
       cursor: 'pointer',
     },
     width: '10vw',
     height: '20px',
     [theme.breakpoints.down('md')]: {
       width: '24vw',
+      justifyContent: 'center',
     },
     // marginLeft:'auto',
   },
@@ -306,7 +309,7 @@ const useStyles = makeStyles((theme) => ({
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getMainPage(data), [data]);
   const breakpoints = useBreakpoint();
-  const baseLength = breakpoints.md ? 24 : 15;
+  const baseLength = breakpoints.md ? 24 : breakpoints.xxl ? 7.6 : 5.9;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
@@ -391,11 +394,18 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 >
                   {dataSlides[activeNumb].title.toUpperCase()}
                 </Typography>
-               
-                  <Box className={classes.icon}>
-                  {activeNumb===0? <Title0/>: activeNumb===1?<Title1/>:activeNumb===2? <Title2/>:activeNumb===3?<Title3/>:null}
-                  </Box>
-            
+
+                <Box className={classes.icon}>
+                  {activeNumb === 0 ? (
+                    <Title0 />
+                  ) : activeNumb === 1 ? (
+                    <Title1 />
+                  ) : activeNumb === 2 ? (
+                    <Title2 />
+                  ) : activeNumb === 3 ? (
+                    <Title3 />
+                  ) : null}
+                </Box>
 
                 <Typography
                   className={classes.text}
