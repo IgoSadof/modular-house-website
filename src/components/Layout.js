@@ -210,6 +210,11 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           parameterValue
         }
       }
+      allMysqlAboutUs {
+        nodes {
+          value
+        }
+      }
     }
   `);
 

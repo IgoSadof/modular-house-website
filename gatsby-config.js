@@ -33,7 +33,7 @@ module.exports = {
         connectionDetails: {
           host: 'localhost',
           user: 'modularh_user',
-          password: 'modularhouse',
+          password: 'admin',
           database: 'modularh_db',
         },
         queries: [
@@ -102,6 +102,12 @@ module.exports = {
             WHERE modx_categories.category = "Параметры Опции"`,
             idFieldName: 'id',
             name: 'Options',
+          },
+          // about us
+          {
+            statement: `SELECT modx_site_tmplvar_contentvalues.value FROM modx_site_tmplvar_contentvalues WHERE modx_site_tmplvar_contentvalues.tmplvarid= "98"`,
+            idFieldName: 'id',
+            name: 'AboutUs',
           },
         ],
       },

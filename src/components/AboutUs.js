@@ -200,6 +200,7 @@ const useStyles = makeStyles((theme) => ({
 const AboutUs = ({data}) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
+  console.log(JSON.parse(data.allMysqlAboutUs.nodes[0].value))
   return (
     <Box component="main" className={classes.main}>
       <Box
