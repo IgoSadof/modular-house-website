@@ -17,6 +17,7 @@ import getImg from '../utils/getImg';
 import TitleWithLine from '../components/TitleWithLine';
 import ContactsBlock from './ContactsBlock';
 import { customFontsSize } from '../config/modularHouseTheme'
+import Advantages from './Advantages';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -416,7 +417,8 @@ const MainPageContent = ({ data }) => {
         </Box>
 
         <Box className={classes.accordion}>
-          <Accordions arr={detail} title='advantages' />
+          <Advantages arr={detail} title='advantages' ></Advantages>
+          {/* <Accordions arr={detail} title='advantages' /> */}
         </Box>
       </Box>
 
