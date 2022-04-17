@@ -672,16 +672,6 @@ const HousePage = ({ house, data }) => {
       dataHouses[houseNumber]['modules'][pillClick]['3D Модель Видео']
     )
   );
-  console.log(
-    getPublicPath(
-      data,
-      dataHouses[houseNumber]['modules'][pillClick]['3D Модель'].replace(
-        'glb',
-        'usdz'
-      )
-    )
-  );
-
   const firstSlider = useRef(null);
   const secondSlider = useRef(null);
   const categoryRef = React.createRef();
@@ -1038,7 +1028,12 @@ const HousePage = ({ house, data }) => {
           {breakpoints.sm ? (
             <Model3d
               srcPath={model3d}
-              srcPathIos={model3d.replace('glb', 'usdz')}
+              srcPathIos={getPublicPath(
+                data,
+                dataHouses[houseNumber]['modules'][pillClick][
+                  '3D Модель'
+                ].replace('glb', 'usdz')
+              )}
             ></Model3d>
           ) : (
             // <HouseModelPlayer video={modelVideo} />
