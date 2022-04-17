@@ -5,3 +5,6 @@ public
 public.zip
 gatsby-config.js
 gatsby-node.js
+
+!.gitignore
+!node_modules/react-360-view/dist/index.js

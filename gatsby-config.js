@@ -22,7 +22,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${path.join(__dirname, "static/images")}`,
+        path: `${path.join(__dirname, "../images")}`,
       },
     },
     `gatsby-plugin-react-helmet`,
