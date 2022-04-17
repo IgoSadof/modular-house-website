@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '2.1vw',
     },
     [theme.breakpoints.down('md')]: {
+      '&:last-of-type': {
+        marginBottom: '0',
+      },
       paddingRight: '0',
       marginRight: '0',
     },
