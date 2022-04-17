@@ -65,6 +65,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 
     GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
     ```
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 
     FLUSH PRIVILEGES;
     ```
@@ -73,6 +74,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
     ```shell
     GRANT type_of_permission ON database_name.table_name TO 'username'@'localhost';
     ```
+    
 
     If you need to revoke a permission, the structure is almost identical to granting it:
 

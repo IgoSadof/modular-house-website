@@ -342,6 +342,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   model: {
+    position:'relative',
     display: 'flex',
     alignItems: 'center',
     backgroundPosition: 'center',
@@ -354,6 +355,18 @@ const useStyles = makeStyles((theme) => ({
       height: '50vh',
       // height: (param) => (param.breakpoints.s ? '50vh' : '100vh'),
     },
+  },
+  conteinerVRmodel: {
+    visibility: 'hidden',
+  },
+  modelButton:{
+    position:"absolute",
+    top:'0',
+    right:"10%",
+    width:'40px',
+    height:'40px',
+    border:'1px solid',
+
   },
   modelDescLine: {
     display: (param) => (param.modulesCounts > 1 ? 'block' : 'none'),
@@ -821,10 +834,15 @@ const HousePage = ({ house, data }) => {
     });
   }, [houseNumber]);
 
-  const preventScroll = (e) => {
-    e.stopPropagation();
-    console.log(e.target);
-  };
+  // const preventScroll = (e) => {
+  //   e.stopPropagation();
+  //   console.log(e.target);
+  // };
+
+  const modelViwerRef = useRef();
+  const vrButtonClick = ()=>{
+    modelViwerRef.current.activateAR()
+  }
 
   return (
     <Box components='main'>
@@ -1026,19 +1044,32 @@ const HousePage = ({ house, data }) => {
         </Box>
         <Box className={classes.model}>
           {breakpoints.sm ? (
-            <Model3d
-              srcPath={model3d}
-              srcPathIos={getPublicPath(
-                data,
-                dataHouses[houseNumber]['modules'][pillClick][
-                  '3D Модель'
-                ].replace('glb', 'usdz')
-              )}
-            ></Model3d>
+            <>
+              <Box className={classes.modelButton} onClick={vrButtonClick}></Box>
+              <Box className={classes.conteinerVRmodel}>
+                <Model3d
+                  newref={modelViwerRef}
+                  srcPath={model3d}
+                  srcPathIos={getPublicPath(
+                    data,
+                    dataHouses[houseNumber]['modules'][pillClick][
+                      '3D Модель'
+                    ].replace('glb', 'usdz')
+                  )}
+                ></Model3d>
+              </Box>
+
+              <ThreeSixty
+                // onWheel={preventScroll}
+                amount={52}
+                imagePath='../../images/car'
+                fileName='{index}.png'
+              />
+            </>
           ) : (
             // <HouseModelPlayer video={modelVideo} />
             <ThreeSixty
-              onWheel={preventScroll}
+              // onWheel={preventScroll}
               amount={52}
               imagePath='../../images/car'
               fileName='{index}.png'

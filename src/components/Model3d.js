@@ -1,10 +1,11 @@
 import React,{ Fragment} from "react";
 // import { jsonMock } from "../assets/model/mockData";
 
-const Model3d = ({srcPath,srcPathIos}) => {
+const Model3d = ({srcPath,srcPathIos,newref}) => {
   return (
     <Fragment>
       <model-viewer
+        ref={newref}
         ar
         ar-modes="scene-viewer quick-look webxr"
         src={srcPath} // AR Android/Web
