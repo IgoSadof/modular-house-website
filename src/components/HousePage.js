@@ -25,6 +25,7 @@ import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
 import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
 import ThreeSixty from 'react-360-view';
+import VRviwe from './svg/VRviwe';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -360,12 +361,12 @@ const useStyles = makeStyles((theme) => ({
     visibility: 'hidden',
   },
   modelButton:{
+    cursor:'pointer',
     position:"absolute",
     top:'0',
     right:"10%",
     width:'40px',
     height:'40px',
-    border:'1px solid',
 
   },
   modelDescLine: {
@@ -1045,7 +1046,8 @@ const HousePage = ({ house, data }) => {
         <Box className={classes.model}>
           {breakpoints.sm ? (
             <>
-              <Box className={classes.modelButton} onClick={vrButtonClick}></Box>
+            <Box className={classes.modelButton} onClick={vrButtonClick}><VRviwe/></Box>
+              
               <Box className={classes.conteinerVRmodel}>
                 <Model3d
                   newref={modelViwerRef}
