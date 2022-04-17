@@ -33,7 +33,7 @@ module.exports = {
         connectionDetails: {
           host: 'localhost',
           user: 'modularh_user',
-          password: 'modularhouse',
+          password: 'admin',
           database: 'modularh_db',
         },
         queries: [

@@ -6,10 +6,13 @@ const Model3d = ({srcPath,srcPathIos}) => {
     <Fragment>
       <model-viewer
         ar
-        modes="scene-viewer quick-look webxr"
+        ar-modes="scene-viewer quick-look webxr"
         src={srcPath} // AR Android/Web
         ios-src={srcPathIos} // AR iOS
-        auto-rotate
+        // reveal='manual'
+        // auto-rotate
+        modelIsVisible={true}
+        // poster={<div>dqwedqwdqw</div>} 
         camera-controls
         style={{ width: "100%", height: "100%"}}
       >

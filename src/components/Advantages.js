@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   conteiner: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(2, 50%)',
     width: '100%',
     '@media (min-width:1921px)': {},
     [theme.breakpoints.down('md')]: {

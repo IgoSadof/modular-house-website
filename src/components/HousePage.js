@@ -672,7 +672,15 @@ const HousePage = ({ house, data }) => {
       dataHouses[houseNumber]['modules'][pillClick]['3D Модель Видео']
     )
   );
-  // console.log(dataHouses[houseNumber]['modules'][pillClick])
+  console.log(
+    getPublicPath(
+      data,
+      dataHouses[houseNumber]['modules'][pillClick]['3D Модель'].replace(
+        'glb',
+        'usdz'
+      )
+    )
+  );
 
   const firstSlider = useRef(null);
   const secondSlider = useRef(null);
@@ -1026,7 +1034,7 @@ const HousePage = ({ house, data }) => {
             })}
           </Box>
         </Box>
-        <Box className={classes.model} >
+        <Box className={classes.model}>
           {breakpoints.sm ? (
             <Model3d
               srcPath={model3d}
