@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import FormBlock from '../components/FormBlock';
@@ -24,6 +24,7 @@ import numberWithSpace from '../utils/numberWithSpace';
 import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
 import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
+import ThreeSixty from 'react-360-view';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -139,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: 'auto',
     gap: '60px',
-    minHeight:'232px',
+    minHeight: '232px',
     padding: '40px 10%',
     '@media (min-width:1921px)': {
       padding: '2.1vw 10%',
@@ -219,7 +220,7 @@ const useStyles = makeStyles((theme) => ({
   mainBlockList: {
     listStyle: 'none',
     padding: '0',
-    gap:'10px',
+    gap: '10px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -324,7 +325,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     // minHeight: '16vh1,
 
-    height: (param) => param.breakpoints.xxl? `${param.heightModuleList / param.modulesCounts}vh`:'100px',
+    height: (param) =>
+      param.breakpoints.xxl
+        ? `${param.heightModuleList / param.modulesCounts}vh`
+        : '100px',
     minHeight: '70px',
     margin: '10px 0',
     '& h1': {
@@ -586,7 +590,7 @@ const useStyles = makeStyles((theme) => ({
   },
   BlockForm: {
     // paddingLeft: "18vw",
-    height:'auto',
+    height: 'auto',
     justifyContent: 'center',
     paddingBottom: '100px',
 
@@ -819,6 +823,11 @@ const HousePage = ({ house, data }) => {
     });
   }, [houseNumber]);
 
+  const preventScroll = (e) => {
+    e.stopPropagation();
+    console.log(e.target);
+  };
+
   return (
     <Box components='main'>
       <Box
@@ -1017,14 +1026,21 @@ const HousePage = ({ house, data }) => {
             })}
           </Box>
         </Box>
-        <Box className={classes.model}>
+        <Box className={classes.model} >
           {breakpoints.sm ? (
             <Model3d
               srcPath={model3d}
               srcPathIos={model3d.replace('glb', 'usdz')}
             ></Model3d>
           ) : (
-            <HouseModelPlayer video={modelVideo} />
+            // <HouseModelPlayer video={modelVideo} />
+            <ThreeSixty
+              onWheel={preventScroll}
+              amount={52}
+              imagePath='../../images/car'
+              fileName='{index}.png'
+              // autoplay={10}
+            />
           )}
         </Box>
       </Box>
