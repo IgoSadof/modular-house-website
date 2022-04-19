@@ -1,365 +1,338 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import FormBlock from "./FormBlock";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import { useBreakpoint } from "gatsby-plugin-breakpoints";
-import TitleWithLine from "../components/TitleWithLine";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import FormBlock from './FormBlock';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import TitleWithLine from '../components/TitleWithLine';
 import getPublicPath from '../utils/getPublicPath';
+import getAboutUsData from '../utils/getAboutUsData';
 
 const useStyles = makeStyles((theme) => ({
-  main:{
-    [theme.breakpoints.down("md")]: {
-      "& h2":{
-        fontSize:'20px',
-        textAlign:'end',
-      }
+  main: {
+    [theme.breakpoints.down('md')]: {
+      '& h2': {
+        fontSize: '20px',
+        textAlign: 'end',
+      },
     },
   },
   button: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
   header: {
-    fontSize: "3vw",
-    fontWeight: "600",
-    lineHeight: "1.2",
-    letterSpacing: "0.03em",
-    textTransform:"uppercase",
-    color: "#4F4F4F",
+    fontSize: '3vw',
+    fontWeight: '600',
+    lineHeight: '1.2',
+    letterSpacing: '0.03em',
+    textTransform: 'uppercase',
+    color: '#4F4F4F',
     // '@media (min-width:1921px)': {
     //   fontSize: "3.54vw",
     // },
-    [theme.breakpoints.down("md")]: {
-      width: "75%",
-      fontSize: "26px",
-      fontWeight:'700',
-      textAlign:'start',
+    [theme.breakpoints.down('md')]: {
+      width: '75%',
+      fontSize: '26px',
+      fontWeight: '700',
+      textAlign: 'start',
       marginRight: 'auto',
     },
   },
   Block: {
-    display: "flex",
-    gap: "60px",
-    marginTop: "100px",
-    "&:first-child ":{
-      marginTop:'auto',
-      height:'86vh',
-      width:'100%',
+    display: 'flex',
+    gap: '60px',
+    marginTop: '100px',
+    '&:first-child ': {
+      marginTop: 'auto',
+      height: '86vh',
+      width: '100%',
       '@media (min-width:1921px)': {
         // marginTop: "7vw",
       },
     },
     '@media (min-width:1921px)': {
-      gap: "4.2vw",
-      marginTop: "8.3vw",
+      gap: '4.2vw',
+      marginTop: '8.3vw',
     },
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column-reverse",
-      alignItems: "center",
-      marginTop: "40px",
-      "&:last-of-type":{
-        marginBottom: "40px",
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+      marginTop: '40px',
+      '&:last-of-type': {
+        marginBottom: '40px',
       },
-      gap: "40px",
-      "&:first-child ":{
-        marginTop:'60px',
-        height:'auto',
+      gap: '40px',
+      '&:first-child ': {
+        marginTop: '60px',
+        height: 'auto',
       },
     },
   },
-  BlockContent:{
-    "&:first-child ":{
-      marginTop:'auto',
+  BlockContent: {
+    '&:first-child ': {
+      marginTop: 'auto',
       marginBottom: 'auto',
-      height:'auto',
+      height: 'auto',
       '@media (min-width:1921px)': {
         // marginTop: "7vw",
       },
     },
-
   },
   titleBox: {
-    gap: "20px",
-    flexDirection: "row-reverse",
-    [theme.breakpoints.down("md")]: {
-      position: "relative",
-      width: "100%",
-      marginLeft: "0",
+    gap: '20px',
+    flexDirection: 'row-reverse',
+    [theme.breakpoints.down('md')]: {
+      position: 'relative',
+      width: '100%',
+      marginLeft: '0',
     },
   },
   textBox: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-    marginLeft: "auto",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+    marginLeft: 'auto',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
       // gap: "30px",
     },
     '@media (min-width:1921px)': {
-      gap: "1.1vw",
+      gap: '1.1vw',
     },
   },
   creatorsBox: {
     // width: "360px",
-    display: "flex",
-    marginTop: "auto",
-    flexDirection: "column",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      marginTop: "0",
+    display: 'flex',
+    marginTop: 'auto',
+    flexDirection: 'column',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      marginTop: '0',
     },
   },
   creatorTextBox: {
     // fontSize: "12px",
-    marginTop: "auto",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+    marginTop: 'auto',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
     },
   },
   creatorTitle: {
-    fontSize: "28px",
-    textTransform: "uppercase",
+    fontSize: '28px',
+    textTransform: 'uppercase',
     fontWeight: 600,
     '@media (min-width:1921px)': {
-      fontSize: "1.45vw",
+      fontSize: '1.45vw',
     },
-    [theme.breakpoints.down("md")]: {
-      fontSize: "18px",
+    [theme.breakpoints.down('md')]: {
+      fontSize: '18px',
     },
   },
   creatorSubtitle: {
-    marginTop: "10px",
-    fontSize: "14px",
+    marginTop: '10px',
+    fontSize: '14px',
     '@media (min-width:1921px)': {
-      fontSize: "0.73vw",
-      marginTop: "0.07vw",
+      fontSize: '0.73vw',
+      marginTop: '0.07vw',
     },
-    
   },
   creatorMainText: {
-    marginTop: "60px",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "20px",
+    marginTop: '60px',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '20px',
+    },
+    '@media (min-width:1921px)': {
+      marginTop: '3.1vw',
     },
     // fontSize: "12px",
   },
   creatorFooterText: {
-    marginTop: "15px",
+    marginTop: '15px',
     // fontSize: "12px",
+    '@media (min-width:1921px)': {
+      marginTop: '0.8vw',
+    },
   },
   imgBox: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    width:"100%",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "20px",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '20px',
     },
   },
   BlockMt0: {
-    marginTop: "60px",
+    marginTop: '60px',
     '@media (min-width:1921px)': {
-      marginTop: "4.2vw",
+      marginTop: '4.2vw',
     },
-    [theme.breakpoints.down("md")]: {
-      marginTop: "0",
-      gap:'20px',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '0',
+      gap: '20px',
     },
   },
   lineInvis: {
-    opacity: "0",
+    opacity: '0',
   },
   img: {
-    height: "100%",
+    height: '100%',
     // width:"100%",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
     },
   },
   header2: {
-    [theme.breakpoints.down("md")]: {
-      width: "65%",
+    [theme.breakpoints.down('md')]: {
+      width: '65%',
     },
   },
   BlockColumn: {
-    width: "28vw",
-    display: "flex",
-    gap: "20px",
-    marginLeft: "100px",
-    justifyContent: "space-between",
-    flexDirection: "column",
-    flexShrink: "0",  
-    [theme.breakpoints.down("md")]: {
-      order: "3",
-      marginLeft: "0",
-      width: "100%",
+    width: '28vw',
+    display: 'flex',
+    gap: '20px',
+    marginLeft: '100px',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    flexShrink: '0',
+    [theme.breakpoints.down('md')]: {
+      order: '3',
+      marginLeft: '0',
+      width: '100%',
     },
   },
 }));
 
-const AboutUs = ({data}) => {
+const AboutUs = ({ data }) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
-  console.log(JSON.parse(data.allMysqlAboutUs.nodes[0].value))
+  const dataObj = getAboutUsData(data);
+  // console.log(dataObj)
   return (
-    <Box component="main" className={classes.main}>
-      <Box
-        component="section"
-        className={classes.Block}
-      >
+    <Box component='main' className={classes.main}>
+      <Box component='section' className={classes.Block}>
         <Box className={`${classes.Block} ${classes.BlockContent}`}>
-        <Box className={classes.BlockColumn}>
-          <Box className={classes.titleBox}>
-            <TitleWithLine underLine={true} title="Автор концепции MH - Андрусь Bezdar"/>
+          <Box className={classes.BlockColumn}>
+            <Box className={classes.titleBox}>
+              <TitleWithLine underLine={true} title={dataObj.main_header} />
+            </Box>
           </Box>
-        </Box>
 
-        <Typography className={classes.header}>
-          Мы команда архитекторов, стремящаяся сделать жильё доступным и
-          качественным!
-        </Typography>
-
-        </Box>
-        
-      </Box>
-
-      <Box component="section" className={classes.Block}>
-        <Box className={classes.BlockColumn}>
-          <Box className={classes.titleBox}>
-            <TitleWithLine underLine={true}
-              title="Разработка технологии MH - Андрусь Bezdar, Кораблёв Алексей,
-              Амбражейчик Кирилл, Короленко Николай."
-            />
-          </Box>
-        </Box>
-
-        <Box component="section" className={classes.textBox}>
-          <Typography variant="body1" className={classes.text}>
-            Мы видим миссию нашей команды в изменении окружающего мира за счет
-            качественной концептуальной архитектуры. В каждом нашем проекте
-            заложен уникальный смысл и авторская идея.
-          </Typography>
-          <Typography variant="body1" className={classes.text}>
-            Технология модульного строительства MODULAR HOUSE родилась в умах
-            архитекторов студии ZROBYM architects и при сотрудничестве с
-            производителями каркасных домов выросла в modular house
-          </Typography>
-          <Typography variant="body1" className={classes.text}>
-            Технология создана на основе многолетнего изучения опыта
-            энергоэффективного строительства в климатических условиях Беларуси и
-            опробована на практике.
+          <Typography className={classes.header}>
+            {dataObj.main_text}
           </Typography>
         </Box>
       </Box>
 
-      <Box component="section" className={classes.Block}>
-        <Box className={classes.BlockColumn}>
-          <Box className={classes.titleBox}>
-            <TitleWithLine underLine={true} title="Модульная система" />
-          </Box>
-        </Box>
+      {dataObj.articles.map((item, index) => {
+        if (item.published) {
+          return (
+            <Box component='section' className={classes.Block} key={index}>
+              <Box className={classes.BlockColumn}>
+                <Box className={classes.titleBox}>
+                  <TitleWithLine underLine={true} title={item.title} />
+                </Box>
+              </Box>
+              <Box component='section' className={classes.textBox}>
+                {item.article_text.map((paragraph, art_index) => (
+                  <Typography
+                    variant='body1'
+                    className={classes.text}
+                    key={art_index}
+                  >
+                    {paragraph}
+                  </Typography>
+                ))}
+              </Box>
+            </Box>
+          );
+        }
+      })}
 
-        <Box component="section" className={classes.textBox}>
-          <Typography variant="body1" className={classes.text}>
-            Модульная система, являющаяся основой наших проектов, позволяет
-            людям с небольшим бюджетом начать с маленького домика и расширить
-            его в будущем. Мы унифицировали все элементы дома и создали
-            взаимозаменяемый технологичный конструктор, позволяющий легко
-            модернизировать и реконструировать жилое пространство. Дом растёт
-            вместе с ростом семьи во времени.
-          </Typography>
-          <Typography variant="body1" className={classes.text}>
-            Технология МН основана на принципах рацональности и оптимальности.
-            Это проявляется в соблюдении баланса между понятиями экологичности
-            материалов, энергоэффективности здания, эргономичности его
-            внутреннего пространства и общей стоимостью модульного дома. Главная
-            идея нашей технологии - предложить людям быстросборный дом из
-            готовых заводских элементов высокого качества.
-          </Typography>
-        </Box>
-      </Box>
-
-      <Box component="section" className={classes.Block}>
+      <Box component='section' className={classes.Block}>
         {!breakpoints.md ? (
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                <TitleWithLine underLine={true} title="Создатели" />
+                <TitleWithLine underLine={true} title='Создатели' />
               </Box>
               <Box className={classes.creatorsBox}>
                 <Box className={classes.creatorTextBox}>
                   <Typography
-                    variant="subtitle2"
+                    variant='subtitle2'
                     className={classes.creatorTitle}
                   >
-                    Алексей Кораблев
+                    {dataObj.Creators[0].name ? dataObj.Creators[0].name : null}
                   </Typography>
                   <Typography
-                    variant="body1"
+                    variant='body1'
                     className={classes.creatorSubtitle}
                   >
-                    CEO & FOUNDER
+                    {dataObj.Creators[0].role ? dataObj.Creators[0].role : null}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    className={classes.creatorMainText}
-                  >
-                    Окончил Белорусский национальный технический университет в
-                    2014 году по специальности «Архитектура». Занимается
-                    деятельностью в области архитектуры и дизайна с 2010 года. С
-                    2011 года учредитель и ведущий архитектор ZROBYM architects.
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    className={classes.creatorFooterText}
-                  >
-                    Участник международных конкурсов "Архстояние'2011"...
-                  </Typography>
+
+                  {dataObj.Creators[0].desc.map((paragraph, index) => (
+                    <Typography
+                      variant='body1'
+                      className={index === 0? classes.creatorMainText : classes.creatorFooterText}
+                      key={index}
+                    >
+                      {paragraph}
+                    </Typography>
+                  ))}
                 </Box>
               </Box>
             </Box>
             <Box className={classes.imgBox}>
-              <img className={classes.img} src={getPublicPath(data,"images/aboutus_alexey.png")} alt="img"></img>
+              <img
+                className={classes.img}
+                src={getPublicPath(
+                  data,
+                  dataObj.Creators[0].image ? dataObj.Creators[0].image : null
+                )}
+                alt='img'
+              ></img>
             </Box>
           </>
         ) : (
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                <TitleWithLine underLine={true} title="Создатели" />
+                <TitleWithLine underLine={true} title='Создатели' />
               </Box>
               <Box className={classes.imgBox}>
-                <img className={classes.img} src={getPublicPath(data,"images/aboutus_alexey.png")} alt="img"></img>
+                <img
+                  className={classes.img}
+                  src={getPublicPath(
+                    data,
+                    dataObj.Creators[0].image ? dataObj.Creators[0].image : null
+                  )}
+                  alt='img'
+                ></img>
               </Box>
               <Box className={classes.creatorsBox}>
                 <Box className={classes.creatorTextBox}>
                   <Typography
-                    variant="subtitle2"
+                    variant='subtitle2'
                     className={classes.creatorTitle}
                   >
-                    Алексей Кораблев
+                    {dataObj.Creators[0].name ? dataObj.Creators[0].name : null}
                   </Typography>
                   <Typography
-                    variant="body1"
+                    variant='body1'
                     className={classes.creatorSubtitle}
                   >
-                    CEO & FOUNDER
+                    {dataObj.Creators[0].role ? dataObj.Creators[0].role : null}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    className={classes.creatorMainText}
-                  >
-                    Окончил Белорусский национальный технический университет в
-                    2014 году по специальности «Архитектура». Занимается
-                    деятельностью в области архитектуры и дизайна с 2010 года. С
-                    2011 года учредитель и ведущий архитектор ZROBYM architects.
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    className={classes.creatorFooterText}
-                  >
-                    Участник международных конкурсов "Архстояние'2011"...
-                  </Typography>
+
+                  {dataObj.Creators[0].desc.map((paragraph, index) => (
+                    <Typography
+                      variant='body1'
+                      className={index === 0? classes.creatorMainText : classes.creatorFooterText}
+                      key={index}
+                    >
+                      {paragraph}
+                    </Typography>
+                  ))}
                 </Box>
               </Box>
             </Box>
@@ -368,57 +341,78 @@ const AboutUs = ({data}) => {
       </Box>
 
       <Box
-        component="section"
+        component='section'
         className={`${classes.Block} ${classes.BlockMt0}`}
-        style={breakpoints.md ? { flexDirection: "column" } : null}
+        style={breakpoints.md ? { flexDirection: 'column' } : null}
       >
         <Box className={classes.BlockColumn}>
           <Box className={classes.creatorsBox}>
             <Box className={classes.creatorTextBox}>
-              <Typography variant="subtitle2" className={classes.creatorTitle}>
-                Андрусь Bezdar
+              <Typography variant='subtitle2' className={classes.creatorTitle}>
+                {dataObj.Creators[1].name ? dataObj.Creators[1].name : null}
               </Typography>
-              <Typography variant="body1" className={classes.creatorSubtitle}>
-                CEO & FOUNDER
+              <Typography variant='body1' className={classes.creatorSubtitle}>
+                {dataObj.Creators[1].role ? dataObj.Creators[1].role : null}
               </Typography>
-              <Typography variant="body1" className={classes.creatorMainText}>
-                Окончил Белорусский национальный технический университет в 2014
-                году по специальности «Архитектура». Занимается деятельностью в
-                области архитектуры и дизайна с 2010 года. С 2011 года
-                учредитель и ведущий архитектор ZROBYM architects.
-              </Typography>
-              <Typography variant="body1" className={classes.creatorFooterText}>
-                Участник международных конкурсов "Архстояние'2011"...
-              </Typography>
+              {dataObj.Creators[1].desc.map((paragraph, index) => (
+                <Typography
+                  variant='body1'
+                  className={index === 0? classes.creatorMainText : classes.creatorFooterText}
+                  key={index}
+                >
+                  {paragraph}
+                </Typography>
+              ))}
             </Box>
           </Box>
         </Box>
         <Box className={classes.imgBox}>
-          <img className={classes.img} src={getPublicPath(data,"images/aboutus_andrey.png")} alt="img"></img>
+          <img
+            className={classes.img}
+            src={getPublicPath(
+              data,
+              dataObj.Creators[1].image ? dataObj.Creators[1].image : null
+            )}
+            alt='img'
+          ></img>
         </Box>
       </Box>
-      <Box component="section" className={classes.Block}>
+
+      <Box component='section' className={classes.Block}>
         <Box className={classes.BlockColumn}>
           <Box className={classes.titleBox}>
-            <TitleWithLine underLine={true} title="Наш друг, В. Татаров." />
+            <TitleWithLine underLine={true} title={dataObj.last_header} />
           </Box>
         </Box>
         <Typography className={`${classes.header} ${classes.header2}`}>
-          Модульные дома - экологичность, технологичность, оптимальность.
+          {dataObj.last_text}
         </Typography>
       </Box>
-      <Box component="section" className={classes.Block}>
-        <FormBlock
-          img={getPublicPath(data,"images/aboutus_office.png")}
-          staticImg={true}
-          header={"Приглашаем"}
-          title={`В офис студии ZROBYM architects, 
-                    за кружкой хорошего кофе всегда можно получить необходимую информацию, выбрать 
-                    готовый проект или заказать разработку модульного дома индивидуально.`}
-          email
-          underLine={true}
-        />
-      </Box>
+
+      {dataObj.aboutus_form.published ? (
+        <Box component='section' className={classes.Block}>
+          <FormBlock
+            img={getPublicPath(
+              data,
+              dataObj.aboutus_form.img ? dataObj.aboutus_form.img : null
+            )}
+            staticImg={true}
+            header={
+              dataObj.aboutus_form.header ? dataObj.aboutus_form.header : null
+            }
+            title={
+              dataObj.aboutus_form.title ? dataObj.aboutus_form.title : null
+            }
+            subtitle={
+              dataObj.aboutus_form.subtitle
+                ? dataObj.aboutus_form.subtitle
+                : null
+            }
+            email
+            underLine={true}
+          />
+        </Box>
+      ) : null}
     </Box>
   );
 };

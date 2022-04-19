@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require('path');
 const customQueries = {
   se: '(max-height: 670px)',
   xs: '(max-width: 500px)',
@@ -22,7 +22,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${path.join(__dirname, "../images")}`,
+        path: `${path.join(__dirname, '../images')}`,
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -105,7 +105,12 @@ module.exports = {
           },
           // about us
           {
-            statement: `SELECT modx_site_tmplvar_contentvalues.value FROM modx_site_tmplvar_contentvalues WHERE modx_site_tmplvar_contentvalues.tmplvarid= "98"`,
+            statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
+             modx_site_content.alias FROM modx_site_tmplvar_contentvalues 
+             JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid 
+             JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id 
+             JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id 
+             WHERE modx_site_content.alias = "whoweare"`,
             idFieldName: 'id',
             name: 'AboutUs',
           },
@@ -133,13 +138,13 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /icons/ // See below to configure properly
-        }
-      }
-    }
+          include: /icons/, // See below to configure properly
+        },
+      },
+    },
     // {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
     //   options: {
