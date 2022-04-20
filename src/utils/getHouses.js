@@ -67,5 +67,7 @@ export default function getHouses(data) {
       }
     };
   }
+  console.log(houseArr)
+
   return houseArr;
 }

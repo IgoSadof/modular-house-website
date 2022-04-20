@@ -636,6 +636,7 @@ const HousePage = ({ house, data }) => {
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
   const baseFolder = `houses/${dataHouses[house].code.replace(' ', '')}/модули`;
+  
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const baseModulePrice = dataHouses[houseNumber].modules[0].price
     ? +dataHouses[houseNumber].modules[0].price.replace(/[KК]/, '000')
@@ -683,6 +684,11 @@ const HousePage = ({ house, data }) => {
       dataHouses[houseNumber]['modules'][pillClick]['3D Модель Видео']
     )
   );
+  // const getImgPath = () =>{
+  //   dataHouses[houseNumber]['modules'][pillClick].img_path.
+  // }
+  const [pathToImages,setPathToImages] = useState(dataHouses[houseNumber]['modules'][pillClick].img_path.match(/images\/.*/g)[0]);
+  console.log(pathToImages)
   const firstSlider = useRef(null);
   const secondSlider = useRef(null);
   const categoryRef = React.createRef();
@@ -703,6 +709,7 @@ const HousePage = ({ house, data }) => {
           dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель Видео']
         )
       );
+      setPathToImages(dataHouses[houseNumber]['modules'][pillClick+1].img_path.match(/images\/.*/g)[0])
     }
   };
   const handleMinusClick = (e) => {
@@ -721,6 +728,7 @@ const HousePage = ({ house, data }) => {
           dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель Видео']
         )
       );
+      setPathToImages(dataHouses[houseNumber]['modules'][pillClick-1].img_path.match(/images\/.*/g)[0])
     }
   };
   const handleFirstSliderClickLeft = () => {
@@ -831,7 +839,6 @@ const HousePage = ({ house, data }) => {
 
   const plans = useMemo(() => {
     return dataHouses[houseNumber]['modules'].map((item) => {
-      console.log(item.plan);
       if (item.plan) {
         return (
           <GatsbyImage
@@ -855,6 +862,7 @@ const HousePage = ({ house, data }) => {
   const vrButtonClick = () => {
     modelViwerRef.current.activateAR();
   };
+  
 
   return (
     <Box components='main'>
@@ -1074,7 +1082,7 @@ const HousePage = ({ house, data }) => {
               <ThreeSixty
                 // onWheel={preventScroll}
                 amount={52}
-                imagePath='../../images/car'
+                imagePath={`../../${pathToImages}`}
                 fileName='{index}.png'
               />
             </>
