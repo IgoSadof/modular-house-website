@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
-import getHousesData from "../../utils/getHousesData";
+import getHouses from "../../utils/getHousesData";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
 import getImg from "../../utils/getImg";
@@ -203,7 +203,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
-  const dataHouses = useMemo(() => getHousesData(data), [data]);
+  const dataHouses = useMemo(() => getHouses(data), [data]);
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
   const classes = useStyles(param);
@@ -221,15 +221,15 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
             <Box className={classes.content}>
               <Link
                 className={classes.link}
-                to={`what-we-do/model${item["URL"].toUpperCase()}`}
+                to={`what-we-do/model${item.URL.toUpperCase()}`}
                 onClick={handleClick}
-                aria-label={`model ${item["URL"]}`}
+                aria-label={`model ${item.URL}`}
               >
                 <Box className={classes.imgBox}>
                   <BackgroundImage
                     className={classes.img}
                     Tag="div"
-                    {...convertToBgImage(getImg(data, `${item["Баннер"]}`))}
+                    {...convertToBgImage(getImg(data, `${item.baner}`))}
                   ></BackgroundImage>
                 </Box>
               </Link>
@@ -241,7 +241,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                     color="textSecondary"
                     className={classes.name}
                   >
-                    {item.Код}
+                    {item.code}
                   </Typography>
                   <Typography
                     variant="h4"
@@ -250,7 +250,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                   >
                     от{" "}
                     ${" "}
-                    {numberWithSpace((item.takeFromBaseModule(item.modules, "Стоимость") ??
+                    {numberWithSpace((item.takeFromBaseModule(item.modules, "price") ??
                       100000))}
                     
                   </Typography>
@@ -270,7 +270,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         component="p"
                         className={classes.propertyValue}
                       >
-                        {item.countArea(item.modules, "Площадь общая")} м&#178;
+                        {item.countArea(item.modules, "square")} м&#178;
                       </Typography>
                     </Box>
                     <Box className={classes.property}>
@@ -286,7 +286,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         component="p"
                         className={classes.propertyValue}
                       >
-                        {item.countArea(item.modules, "Площадь полезная")} м&#178;
+                        {item.countArea(item.modules, "square_effective")} м&#178;
                       </Typography>
                     </Box>
                     <Box className={classes.property}>
@@ -305,7 +305,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         {/* {item.baseModuleArea} */}
                         {item.takeFromBaseModule(
                           item.modules,
-                          "Площадь общая"
+                          "square_effective"
                         ) ?? 100}{" "}
                         м&#178;
                       </Typography>
@@ -324,7 +324,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         className={classes.mainPlan}
                         image={getImg(
                           data,
-                          "images/mainTitleIcons/stages/stage3.png"
+                          `${item.stages}`
                         )}
                         alt="Grow stage"
                       ></GatsbyImage>

@@ -243,13 +243,14 @@ const useStyles = makeStyles((theme) => ({
   },
   modelBlock: {
     display: 'flex',
-    marginTop: '100px',
+    marginTop: '60px',
     gap: '60px',
     padding: '0 0 100px 10%',
     backgroundColor: '#D1D1D1',
     '@media (min-width:1921px)': {
       gap: '4.2vw',
       padding: '0 0 3.5vw 10%',
+      marginTop: '3.1vw',
     },
     [theme.breakpoints.down('md')]: {
       padding: '40px 0',

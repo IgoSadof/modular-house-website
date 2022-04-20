@@ -8,7 +8,7 @@ import ModelsSlider from './sliders/ModelsSlider';
 import HouseMainImgSlider from './sliders/HouseMainImgSlider';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import getHousesData from '../utils/getHousesData';
+import getHouses from '../utils/getHouses';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { SwiperSlide } from 'swiper/react';
 import getImg from '../utils/getImg';
@@ -367,7 +367,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousesList = ({ data }) => {
-  const dataHouses = useMemo(() => getHousesData(data), [data]);
+  const dataHouses = useMemo(() => getHouses(data), [data]);
 
   const breakpoints = useBreakpoint();
   const [house, setHouse] = useState(0);
@@ -415,10 +415,10 @@ const HousesList = ({ data }) => {
                   timeout={500}
                   classNames='houseMove'
                 >
-                  {item['Иконка дома'] ? (
+                  {item.icon? (
                     <GatsbyImage
                       className={classes.houseListImg}
-                      image={getImg(data, `${item['Иконка дома']}`)}
+                      image={getImg(data, `${item.icon}`)}
                       alt='img'
                     ></GatsbyImage>
                   ) : null}
@@ -427,13 +427,13 @@ const HousesList = ({ data }) => {
                   variant='subtitle1'
                   className={classes.houseListName}
                 >
-                  {item['Код']}
+                  {item.code}
                 </Typography>
               </>
             ) : null
           ) : (
             <>
-              {item['Иконка дома'] ? (
+              {item.icon? (
                 <CSSTransition
                   key={item.id}
                   in={activeSlide === index}
@@ -447,7 +447,7 @@ const HousesList = ({ data }) => {
                         ? `${classes.houseListImg} ${classes.houseListImgActive}`
                         : classes.houseListImg
                     }
-                    image={getImg(data, `${item['Иконка дома']}`)}
+                    image={getImg(data, `${item.icon}`)}
                     alt='img'
                   ></GatsbyImage>
                 </CSSTransition>
@@ -471,7 +471,7 @@ const HousesList = ({ data }) => {
                   variant='subtitle1'
                   className={classes.houseListName}
                 >
-                  {item['Код']}
+                  {item.code}
                 </Typography>
               ) : null}
             </>
@@ -484,10 +484,10 @@ const HousesList = ({ data }) => {
   const listMainImages = dataHouses.map((item, index) => {
     return (
       <li className={classes.mainImg} key={index}>
-        {item['Баннер'] ? (
+        {item.baner ? (
           <GatsbyImage
             className={classes.mainImg}
-            image={getImg(data, `${item['Баннер']}`)}
+            image={getImg(data, `${item.baner}`)}
             alt='img'
           ></GatsbyImage>
         ) : null}
@@ -503,10 +503,10 @@ const HousesList = ({ data }) => {
             return (
               <Box className={classes.houseDescContent} key={index}>
                 <Box className={classes.houseDescImgBox}>
-                  {item['Иконка дома'] ? (
+                  {item.icon? (
                     <GatsbyImage
                       className={classes.houseDescImg}
-                      image={getImg(data, `${item['Иконка дома']}`)}
+                      image={getImg(data, `${item.icon}`)}
                       alt='img'
                     ></GatsbyImage>
                   ) : null}
@@ -517,12 +517,12 @@ const HousesList = ({ data }) => {
                     color='textSecondary'
                     className={classes.houseDescTitle}
                   >
-                    {item['Код']}
+                    {item.code}
                   </Typography>
                 </Box>
 
                 <Typography variant='body1' className={classes.houseDescText}>
-                  {item['Описание']}
+                  {item.desc}
                 </Typography>
 
                 <Box className={classes.houseDescSpecBox}>
@@ -540,7 +540,7 @@ const HousesList = ({ data }) => {
                           component='p'
                           className={classes.houseSpecValue}
                         >
-                          {item.countArea(item.modules, 'Площадь общая')}{' '}
+                          {item.countArea(item.modules, 'square')}{' '}
                           м&#178;
                         </Typography>
                       </Box>
@@ -558,7 +558,7 @@ const HousesList = ({ data }) => {
                           component='p'
                           className={classes.houseSpecValue}
                         >
-                          {item.countArea(item.modules, 'Площадь полезная')}{' '}
+                          {item.countArea(item.modules, 'square_effective')}{' '}
                           м&#178;
                         </Typography>
                       </Box>
@@ -579,7 +579,7 @@ const HousesList = ({ data }) => {
                           component='p'
                           className={classes.houseSpecValue}
                         >
-                          {item['Этажность'] ?? 1}
+                          {item.floors?? 1}
                         </Typography>
                       </Box>
                     </Box>
@@ -607,17 +607,17 @@ const HousesList = ({ data }) => {
                 <Box className={classes.houseDescMore}>
                   <Box className={classes.houseDescPrice}>
                     <Typography variant='h5' className={classes.houseSpecPrice}>
-                      {item.countArea(item.modules, 'Стоимость')
+                      {item.countArea(item.modules, 'price')
                         ? `
                     $${numberWithSpace(
-                      item.countArea(item.modules, 'Стоимость')
+                      item.countArea(item.modules, 'price')
                     )}`
                         : null}
                     </Typography>
                   </Box>
                   <Link
                     className={classes.Link}
-                    to={`model${item['URL'].toUpperCase()}`}
+                    to={`model${item.URL.toUpperCase()}`}
                   >
                     <RegularButton variant='outlined' lowerCase='true'>
                       Подробнее
@@ -643,12 +643,12 @@ const HousesList = ({ data }) => {
                   timeout={2000}
                   classNames='fadeHouse'
                 >
-                  {dataHouses[house]['Иконка дома'] ? (
+                  {dataHouses[house].icon? (
                     <GatsbyImage
                       className={classes.houseDescImg}
                       image={getImg(
                         data,
-                        `${dataHouses[house]['Иконка дома']}`
+                        `${dataHouses[house].icon}`
                       )}
                       alt='img'
                     ></GatsbyImage>
@@ -661,12 +661,12 @@ const HousesList = ({ data }) => {
                   color='textSecondary'
                   className={classes.houseDescTitle}
                 >
-                  {dataHouses[house]['Код']}
+                  {dataHouses[house].code}
                 </Typography>
               </Box>
 
               <Typography variant='body1' className={classes.houseDescText}>
-                {dataHouses[house]['Описание']}
+                {dataHouses[house].desc}
               </Typography>
 
               <Box className={classes.houseDescSpecBox}>
@@ -687,7 +687,7 @@ const HousesList = ({ data }) => {
                       >
                         {dataHouses[house].countArea(
                           dataHouses[house].modules,
-                          'Площадь общая'
+                          'square'
                         )}{' '}
                         м&#178;
                         {/* {houses[house].totalArea} */}
@@ -711,7 +711,7 @@ const HousesList = ({ data }) => {
                         {/* {houses[house].effectiveArea} */}
                         {dataHouses[house].countArea(
                           dataHouses[house].modules,
-                          'Площадь полезная'
+                          'square_effective'
                         )}{' '}
                         м&#178;
                       </Typography>
@@ -733,7 +733,7 @@ const HousesList = ({ data }) => {
                         component='p'
                         className={classes.houseSpecValue}
                       >
-                        {dataHouses[house]['Этажность'] ?? 1}
+                        {dataHouses[house].floors?? 1}
                       </Typography>
                     </Box>
                   </Box>
@@ -763,13 +763,13 @@ const HousesList = ({ data }) => {
                   <Typography variant='h5' className={classes.houseSpecPrice}>
                     {dataHouses[house].countArea(
                       dataHouses[house].modules,
-                      'Стоимость'
+                      'price'
                     )
                       ? `
                     $${numberWithSpace(
                       dataHouses[house].countArea(
                         dataHouses[house].modules,
-                        'Стоимость'
+                        'price'
                       )
                     )}`
                       : null}

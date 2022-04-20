@@ -47,7 +47,7 @@ export default function getHouses(data) {
     houseArr.push(houses[key]);
     houses[key]['countArea'] = (arr, field) => {
       let sum = 0;
-      if (arr.length > 0) {
+      if (arr?.length > 0) {
         arr.forEach(
           (item) =>
             (sum += +(item[field] ? item[field].replace('К', '000') : 0))
@@ -58,7 +58,7 @@ export default function getHouses(data) {
     houses[key]['takeFromBaseModule'] = (arr, field) => {
       if (arr.length > 0) {
         let value = arr.filter(
-          (module) => module['Название модуля'] === 'Базовый модуль'
+          (module) => module.name === 'Базовый модуль'
         )?.[0]?.[field];
         if (value) {
           value = value.replace('К', '000');
