@@ -135,8 +135,8 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
   const options = {};
   houseOptions.forEach((item) => {
     options[item.name] = {
-      name: item.variants[0].name,
-      price: item.variants[0].price,
+      name: item.option_poor_name,
+      price: item.option_poor_price,
     };
   });
 
@@ -197,24 +197,24 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       name={item.name}
                       checked={
                         currentOption[item.name].price ===
-                        item.variants[0].price
+                        item.option_poor_price
                           ? true
                           : false
                       }
                       onChange={handleChangeCheckbox}
-                      value={+item.variants[0].price}
+                      value={+item.option_poor_price}
                       control={<Checkbox color='primary' />}
                       label={
                         <Typography
                           style={
                             currentOption[item.name].price ===
-                            item.variants[0].price
+                            item.option_poor_price
                               ? null
                               : { color: '#828282' }
                           }
                           variant='body1'
                         >
-                          {item.variants[0].name}
+                          {item.option_poor_name}
                         </Typography>
                       }
                       labelPlacement='end'
@@ -226,24 +226,24 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                       name={item.name}
                       checked={
                         currentOption[item.name].price ===
-                        item.variants[1].price
+                        item.option_expensive_price
                           ? true
                           : false
                       }
                       onChange={handleChangeCheckbox}
-                      value={+item.variants[1].price}
+                      value={+item.option_expensive_price}
                       control={<Checkbox color='primary' />}
                       label={
                         <Typography
                           style={
                             currentOption[item.name].price ===
-                            item.variants[1].price
+                            item.option_expensive_price
                               ? null
                               : { color: '#828282' }
                           }
                           variant='body1'
                         >
-                          {item.variants[1].name}
+                          {item.option_expensive_name}
                         </Typography>
                       }
                       labelPlacement='end'
@@ -283,24 +283,24 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         name={item.name}
                         checked={
                           currentOption[item.name].price ===
-                          item.variants[0].price
+                          item.option_poor_price
                             ? true
                             : false
                         }
                         onChange={handleChangeCheckbox}
-                        value={+item.variants[0].price}
+                        value={+item.option_poor_price}
                         control={<Checkbox color='primary' />}
                         label={
                           <Typography
                             style={
                               currentOption[item.name].price ===
-                              item.variants[0].price
+                              item.option_poor_price
                                 ? { color: '#4f4f4f' }
                                 : { color: '#828282' }
                             }
                             variant='body1'
                           >
-                            {item.variants[0].name}
+                            {item.option_poor_name}
                           </Typography>
                         }
                         labelPlacement='end'
@@ -311,24 +311,24 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         name={item.name}
                         checked={
                           currentOption[item.name].price ===
-                          item.variants[1].price
+                          item.option_expencive_price
                             ? true
                             : false
                         }
                         onChange={handleChangeCheckbox}
-                        value={+item.variants[1].price}
+                        value={+item.option_expencive_price}
                         control={<Checkbox color='primary' />}
                         label={
                           <Typography
                             style={
                               currentOption[item.name].price ===
-                              item.variants[1].price
+                              item.option_expencive_price
                                 ? { color: '#4f4f4f' }
                                 : { color: '#828282' }
                             }
                             variant='body1'
                           >
-                            {item.variants[1].name}
+                            {item.option_expencive_name}
                           </Typography>
                         }
                         labelPlacement='end'

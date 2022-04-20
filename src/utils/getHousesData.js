@@ -66,8 +66,6 @@ function getHousesData(data) {
       houses[item.alias] = {};
       houses[item.alias][item.name] = item.value;
       houses[item.alias]["id"] = item.contentID;
-      houses[item.alias]["modules"] = [];
-      houses[item.alias]["options"] = [];
     }
   });
   
@@ -91,7 +89,7 @@ function getHousesData(data) {
       };
     };
   }
-  console.log(houseArr);
+  // console.log(houseArr);
 
   houseArr.forEach((house) => {
     let modules = {};
