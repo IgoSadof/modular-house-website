@@ -56,7 +56,7 @@ export default function getHouses(data) {
       return sum;
     };
     houses[key]['takeFromBaseModule'] = (arr, field) => {
-      if (arr.length > 0) {
+      if (arr?.length > 0) {
         let value = arr.filter(
           (module) => module.name === 'Базовый модуль'
         )?.[0]?.[field];

@@ -153,15 +153,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           }
         }
       }
-      allMysqlModules {
-        nodes {
-          moduleName
-          parameterValue
-          parameterName
-          parentId
-          contentId
-        }
-      }
       allMysqlHouses {
         nodes {
           alias
@@ -169,25 +160,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           name
           contentID
           value
-        }
-      }
-      allMysqlRooms {
-        nodes {
-          contentId
-          houseName
-          parameterName
-          parameterValue
-          mysqlId
-          parentId
-        }
-      }
-      allMysqlOptions {
-        nodes {
-          house
-          parameterName
-          parameterValue
-          mysqlId
-          contentId
         }
       }
       allMysqlValue {

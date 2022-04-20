@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
-import getHouses from "../../utils/getHousesData";
+import getHouses from "../../utils/getHouses";
 import BackgroundImage from "gatsby-background-image";
 import { convertToBgImage } from "gbimage-bridge";
 import getImg from "../../utils/getImg";
