@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Advantages({ arr, title }) {
-  console.log(arr);
   const classes = useStyles();
 
   return (
