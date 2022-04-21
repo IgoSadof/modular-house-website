@@ -309,7 +309,7 @@ const useStyles = makeStyles((theme) => ({
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getMainPage(data), [data]);
   const breakpoints = useBreakpoint();
-  const baseLength = breakpoints.md ? 24 : breakpoints.xxl ? 7.6 : 5.9;
+  const baseLength = breakpoints.md ? 24 : breakpoints.xxl ? 11.9 : 10.5;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
