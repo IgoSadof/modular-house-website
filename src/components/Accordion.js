@@ -30,6 +30,7 @@ const AccordionSummary = withStyles({
     borderBottom: '1px solid #333333',
     marginBottom: 0,
     minHeight: 56,
+    padding: 0,
     '& h4': {
       textTransform: 'inherit',
       letterSpacing: '0.03em',
@@ -55,7 +56,7 @@ const AccordionDetails = withStyles((theme) => ({
 
 const useStyles = makeStyles(() => ({
   details: {
-    padding: '16px',
+    padding: '16px 0',
   },
   noDetails: {
     padding: '0',
@@ -79,7 +80,7 @@ export default function Accordions({
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <div>
+    <div class="mt-15">
       {arr.map((item, index) => {
         return (
           <Accordion

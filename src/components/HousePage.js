@@ -290,6 +290,7 @@ const useStyles = makeStyles((theme) => ({
   modelDescFirstColumn: {
     display: 'flex',
     alignItems: 'center',
+    textAlign: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
     '@media (max-width:1919px)': {
@@ -308,6 +309,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginRight: 'auto',
+    textAlign: 'left',
     // '& p': {
     //   overflowY: 'scroll',
     // },
@@ -324,8 +327,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
     marginRight: 'auto',
+    marginLeft: 'auto',
+    width: '100%',
     // minHeight: '16vh1,
 
     height: (param) =>
@@ -415,11 +419,11 @@ const useStyles = makeStyles((theme) => ({
     // top: '-8%',
   },
   modelDescLineMinusCircle: {
-    width: '40px',
-    height: '40px',
+    width: '30px',
+    height: '30px',
     border: '1px solid',
     borderRadius: '50%',
-    fontSize: '40px',
+    fontSize: '30px',
     backgroundColor: '#D1D1D1',
     cursor: 'pointer',
     display: 'flex',
@@ -1081,7 +1085,7 @@ const HousePage = ({ house, data }) => {
 
               <ThreeSixty
                 // onWheel={preventScroll}
-                amount={52}
+                amount={90}
                 imagePath={`../../${pathToImages}`}
                 fileName='{index}.png'
               />
@@ -1090,10 +1094,9 @@ const HousePage = ({ house, data }) => {
             // <HouseModelPlayer video={modelVideo} />
             <ThreeSixty
               // onWheel={preventScroll}
-              amount={52}
-              imagePath='../../images/car'
+              amount={90}
+              imagePath={`../../${pathToImages}`}
               fileName='{index}.png'
-              // autoplay={10}
             />
           )}
         </Box>

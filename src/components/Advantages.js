@@ -9,7 +9,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 50%)',
     width: '100%',
-    '@media (min-width:1921px)': {},
+    gridColumnGap: '40px',
+    gridRowGap: '40px',
+    '@media (min-width:1921px)': {
+      gridColumnGap: '2.1vw',
+      gridRowGap: '2.1vw',
+    },
     [theme.breakpoints.down('md')]: {
       padding: ' 0 10%',
       gridTemplateColumns: 'repeat(1, 1fr)',
@@ -19,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: 'auto',
     paddingRight: '60px',
-    marginRight: '40px',
-    marginBottom: '40px',
     flexDirection: 'column',
     '& h4': {
       color: '#4F4F4F',
@@ -29,8 +32,6 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width: 1920px)': {
       width: '22vw',
       paddingRight: '3.1vw',
-      marginRight: '2.1vw',
-      marginBottom: '2.1vw',
     },
     [theme.breakpoints.down('md')]: {
       '&:last-of-type': {
