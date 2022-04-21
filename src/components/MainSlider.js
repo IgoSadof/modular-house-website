@@ -233,6 +233,7 @@ const useStyles = makeStyles((theme) => ({
   number: {
     display: 'flex',
     justifyContent: 'flex-start',
+    cursor: 'pointer',
     '& span': {
       cursor: 'pointer',
     },
@@ -246,6 +247,23 @@ const useStyles = makeStyles((theme) => ({
   },
   activeNumber: {
     color: '#828282',
+  },
+  linesBox: {
+    display: 'flex',
+    pointerEvents: 'none',
+  },
+  bottomFirstLine: {
+    pointerEvents: 'none',
+    display: 'flex',
+    height: '1px',
+    width: '100px',
+    backgroundColor: '#4F4F4F',
+    '@media (min-width:1921px)': {
+      width: '6.9vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      display:'none',
+    },
   },
   bottomLine: {
     position: 'relative',
@@ -309,7 +327,7 @@ const useStyles = makeStyles((theme) => ({
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getMainPage(data), [data]);
   const breakpoints = useBreakpoint();
-  const baseLength = breakpoints.md ? 24 : breakpoints.xxl ? 11.9 : 10.5;
+  const baseLength = breakpoints.md ? 24 : 5.5;
   const [lineLength, setLineLength] = useState(baseLength);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [activeNumb, setActiveNumb] = useState(0);
@@ -338,6 +356,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
 
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
+      
       numb = +e.target.textContent[1];
     }
     if (numb - 1 > currentSegment) {
@@ -467,25 +486,28 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   }
                   variant='h5'
                   component='p'
+                  onClick={handleNumberClick}
+                  onKeyDown={handleNumberClick}
                 >
                   <span
                     role='button'
                     tabIndex='0'
                     key={index}
-                    onClick={handleNumberClick}
-                    onKeyDown={handleNumberClick}
                   >
                     {item}
                   </span>
                 </Typography>
               ))}
             </div>
-            <span
-              className={classes.bottomLine}
-              style={{
-                width: `${lineLength}vw`,
-              }}
-            ></span>
+            <Box className={classes.linesBox}>
+              <span className={classes.bottomFirstLine}></span>
+              <span
+                className={classes.bottomLine}
+                style={{
+                  width: `${lineLength}vw`,
+                }}
+              ></span>
+            </Box>
           </Box>
         </Box>
       </Box>

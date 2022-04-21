@@ -80,7 +80,7 @@ export default function Accordions({
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <div class="mt-15">
+    <div className="mt-15">
       {arr.map((item, index) => {
         return (
           <Accordion
