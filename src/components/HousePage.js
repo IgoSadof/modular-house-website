@@ -27,6 +27,7 @@ import getPublicPath from '../utils/getPublicPath';
 import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
 import ThreeSixty from 'react-360-view';
 import VRviwe from './svg/VRviwe';
+import icon360 from '../assets/images/360_icon.png';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -374,6 +375,12 @@ const useStyles = makeStyles((theme) => ({
     width: '40px',
     height: '40px',
   },
+  conteiner360: {
+    position: 'absolute',
+    top: '10%',
+    left: '10%',
+    zIndex: '10',
+  },
   modelDescLine: {
     display: (param) => (param.modulesCounts > 1 ? 'block' : 'none'),
     position: 'relative',
@@ -640,7 +647,7 @@ const HousePage = ({ house, data }) => {
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
   const baseFolder = `houses/${dataHouses[house].code.replace(' ', '')}/модули`;
-  
+
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const baseModulePrice = dataHouses[houseNumber].modules[0].price
     ? +dataHouses[houseNumber].modules[0].price.replace(/[KК]/, '000')
@@ -691,8 +698,12 @@ const HousePage = ({ house, data }) => {
   // const getImgPath = () =>{
   //   dataHouses[houseNumber]['modules'][pillClick].img_path.
   // }
-  const [pathToImages,setPathToImages] = useState(dataHouses[houseNumber]['modules'][pillClick].img_path.match(/images\/.*/g)[0]);
-  console.log(pathToImages)
+  const [pathToImages, setPathToImages] = useState(
+    dataHouses[houseNumber]['modules'][pillClick].img_path.match(
+      /images\/.*/g
+    )[0]
+  );
+  console.log(pathToImages);
   const firstSlider = useRef(null);
   const secondSlider = useRef(null);
   const categoryRef = React.createRef();
@@ -713,7 +724,11 @@ const HousePage = ({ house, data }) => {
           dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель Видео']
         )
       );
-      setPathToImages(dataHouses[houseNumber]['modules'][pillClick+1].img_path.match(/images\/.*/g)[0])
+      setPathToImages(
+        dataHouses[houseNumber]['modules'][pillClick + 1].img_path.match(
+          /images\/.*/g
+        )[0]
+      );
     }
   };
   const handleMinusClick = (e) => {
@@ -732,7 +747,11 @@ const HousePage = ({ house, data }) => {
           dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель Видео']
         )
       );
-      setPathToImages(dataHouses[houseNumber]['modules'][pillClick-1].img_path.match(/images\/.*/g)[0])
+      setPathToImages(
+        dataHouses[houseNumber]['modules'][pillClick - 1].img_path.match(
+          /images\/.*/g
+        )[0]
+      );
     }
   };
   const handleFirstSliderClickLeft = () => {
@@ -789,37 +808,32 @@ const HousePage = ({ house, data }) => {
   };
 
   const ext_gallery = useMemo(() => {
-    return ( dataHouses[houseNumber].ext_gallery.map(
-      (item, index) => {
-        return (
-          <SwiperSlide className={classes.mainImgItem} key={index}>
-            <GatsbyImage
-              className={classes.mainImgSlider}
-              image={getImg(data, item.image)}
-              alt='img'
-            ></GatsbyImage>
-          </SwiperSlide>
-        );
-      }
-    ))
+    return dataHouses[houseNumber].ext_gallery.map((item, index) => {
+      return (
+        <SwiperSlide className={classes.mainImgItem} key={index}>
+          <GatsbyImage
+            className={classes.mainImgSlider}
+            image={getImg(data, item.image)}
+            alt='img'
+          ></GatsbyImage>
+        </SwiperSlide>
+      );
+    });
   }, [dataHouses[houseNumber].ext_gallery]);
 
   const int_gallery = useMemo(() => {
-    return ( dataHouses[houseNumber].int_gallery.map(
-      (item, index) => {
-        return (
-          <SwiperSlide className={classes.mainImgItem} key={index}>
-            <GatsbyImage
-              className={classes.mainImgSlider}
-              image={getImg(data, item.image)}
-              alt='img'
-            ></GatsbyImage>
-          </SwiperSlide>
-        );
-      }
-    ))
+    return dataHouses[houseNumber].int_gallery.map((item, index) => {
+      return (
+        <SwiperSlide className={classes.mainImgItem} key={index}>
+          <GatsbyImage
+            className={classes.mainImgSlider}
+            image={getImg(data, item.image)}
+            alt='img'
+          ></GatsbyImage>
+        </SwiperSlide>
+      );
+    });
   }, [dataHouses[houseNumber].int_gallery]);
- 
 
   let all = {};
   all.name = 'Все';
@@ -866,7 +880,26 @@ const HousePage = ({ house, data }) => {
   const vrButtonClick = () => {
     modelViwerRef.current.activateAR();
   };
-  
+
+  const arrImg360 = useMemo(() => {
+    return dataHouses[houseNumber]['modules'].map((item, index) => {
+      return (
+        <Box key={index}>
+          <ThreeSixty
+            amount={20}
+            imagePath={`../../${
+              dataHouses[houseNumber]['modules'][index].img_path.match(
+                /images\/.*/g
+              )[0]
+            }`}
+            fileName='{index}.png'
+          />
+        </Box>
+      );
+    });
+  }, [houseNumber]);
+
+  console.log(arrImg360);
 
   return (
     <Box components='main'>
@@ -877,7 +910,7 @@ const HousePage = ({ house, data }) => {
         <Box className={classes.mainImgBox}>
           <HouseFotosSlider
             houseRef={firstSlider}
-            listItem={ext_gallery }
+            listItem={ext_gallery}
             pagination
           />
         </Box>
@@ -1082,22 +1115,16 @@ const HousePage = ({ house, data }) => {
                   )}
                 ></Model3d>
               </Box>
-
-              <ThreeSixty
-                // onWheel={preventScroll}
-                amount={90}
-                imagePath={`../../${pathToImages}`}
-                fileName='{index}.png'
-              />
+              {arrImg360[pillClick]}
             </>
           ) : (
-            // <HouseModelPlayer video={modelVideo} />
-            <ThreeSixty
-              // onWheel={preventScroll}
-              amount={90}
-              imagePath={`../../${pathToImages}`}
-              fileName='{index}.png'
-            />
+            <>
+              <Box className={classes.conteiner360}>
+                <img src={icon360} />
+              </Box>
+              {/* <HouseModelPlayer video={modelVideo} /> */}
+              {arrImg360[pillClick]}
+            </>
           )}
         </Box>
       </Box>
