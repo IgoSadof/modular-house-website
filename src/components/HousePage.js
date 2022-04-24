@@ -891,7 +891,9 @@ const HousePage = ({ house, data }) => {
               />
             </Box>
           ) : (
-            <Box className={classes.mainBlockSubtitleBox}></Box>
+            <Box className={classes.mainBlockSubtitleBox}>
+              <Typography variant='body1'> {dataHouses[house].desc}</Typography>
+            </Box>
           )}
         </Box>
       </Box>
