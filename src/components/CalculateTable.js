@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import numberWithSpace from '../utils/numberWithSpace';
-import BpRadio from './BpRadio';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
@@ -171,10 +170,6 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
             0
           );
     setPrice(sum);
-  }, [currentOption]);
-
-  useEffect(() => {
-    getOptions(currentOption);
   }, [currentOption]);
 
   return (

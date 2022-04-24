@@ -20,7 +20,7 @@ import getImg from '../utils/getImg';
 import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
 import numberWithSpace from '../utils/numberWithSpace';
-import getImagesFromDirectory from '../utils/getImgsFromDirectory';
+// import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
 import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
 
@@ -654,9 +654,9 @@ const HousePage = ({ house, data }) => {
 
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
-  const baseFolder = `houses/${dataHouses[houseNumber].code?.replace(' ', '')}/модули`;
+  // const baseFolder = `houses/${dataHouses[houseNumber].code?.replace(' ', '')}/модули`;
 
-  const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
+  // const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
   const baseModulePrice = dataHouses[houseNumber].modules?.[0].price
     ? +dataHouses[houseNumber].modules[0].price.replace(/[KК]/, '000')
     : 0;
@@ -698,7 +698,7 @@ const HousePage = ({ house, data }) => {
   );
   const firstSlider = useRef(null);
   const secondSlider = useRef(null);
-  const categoryRef = React.createRef();
+  // const categoryRef = React.createcRef();
 
   const handlePlusClick = (e) => {
     if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
@@ -789,7 +789,13 @@ const HousePage = ({ house, data }) => {
         </SwiperSlide>
       );
     });
-  }, [dataHouses[houseNumber].ext_gallery]);
+  }, [
+    dataHouses,
+    houseNumber,
+    data,
+    classes.mainImgSlider,
+    classes.mainImgItem,
+  ]);
 
   const int_gallery = useMemo(() => {
     return dataHouses[houseNumber].int_gallery?.map((item, index) => {
@@ -803,7 +809,13 @@ const HousePage = ({ house, data }) => {
         </SwiperSlide>
       );
     });
-  }, [dataHouses[houseNumber].int_gallery]);
+  }, [
+    dataHouses,
+    houseNumber,
+    data,
+    classes.mainImgSlider,
+    classes.mainImgItem,
+  ]);
 
   let all = {};
   all.name = 'Все';
@@ -839,7 +851,7 @@ const HousePage = ({ house, data }) => {
         return <ImageSVG />;
       }
     });
-  }, [houseNumber]);
+  }, [dataHouses, houseNumber, data, classes.calculationPlanImg]);
 
   // const preventScroll = (e) => {
   //   e.stopPropagation();
@@ -891,7 +903,10 @@ const HousePage = ({ house, data }) => {
             </Box>
           ) : (
             <Box className={classes.mainBlockSubtitleBox}>
-              <Typography variant='body1'> {dataHouses[houseNumber].desc}</Typography>
+              <Typography variant='body1'>
+                {' '}
+                {dataHouses[houseNumber].desc}
+              </Typography>
             </Box>
           )}
         </Box>
