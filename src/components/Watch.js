@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useMemo } from 'react';
 import { makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import StaticPanel from "./StaticPanel";
+// import StaticPanel from "./StaticPanel";
 import Form from "./Form";
 import MyCalendar from "./MyCalendar";
-import { houses } from "../constant/houses";
-import HouseFotosSlider from "./HouseFotosSlider";
+import HouseFotosSlider from "./sliders/HouseFotosSlider";
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import getHouses from '../utils/getHouses';
+import getImg from '../utils/getImg';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { SwiperSlide } from 'swiper/react';
+import TitleWithLine from '../components/TitleWithLine';
+
 
 const useStyles = makeStyles((theme) => ({
   imageSlider: {
     position: "relative",
+    height:'50vh',
   },
   excursion: {
     display: "flex",
     justifyContent: "space-between",
     height: "50vh",
-    padding: "8vh 10% 8vh 18%",
+    padding: "6vh 10% 8vh 18%",
 
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
@@ -79,37 +85,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Watch = () => {
- const breakpoints = useBreakpoint();
-  const [category, setCategory] = React.useState("все");
+const Watch = ({data}) => {
+  const breakpoints = useBreakpoint();
   const param = {};
   const classes = useStyles(param);
+  const dataHouses = useMemo(() => getHouses(data), [data]);
+  const ext_gallery = useMemo(() => {
+    return dataHouses[0].ext_gallery.map((item, index) => {
+      return (
+        <SwiperSlide className={classes.mainImgItem} key={index}>
+          <GatsbyImage
+            className={classes.mainImgSlider}
+            image={getImg(data, item.image)}
+            alt='img'
+          ></GatsbyImage>
+        </SwiperSlide>
+      );
+    });
+  }, [dataHouses[0].ext_gallery]);
 
-  const handleChangePanel = (value) => {
-    setCategory(value);
-  };
-  const categoryRef = React.createRef();
-  const listItem = houses[0].img.fotosCategory[category].map((item, index) => {
-    return (
-      <li key={index}>
-        <img className={classes.mainImg} src={item} alt="img"></img>
-      </li>
-    );
-  });
+
+
+  // const handleChangePanel = (value) => {
+  //   setCategory(value);
+  // };
+  const sliderRef = React.createRef();
 
   return (
     <Box components="main"  className={classes.BlockFullscreen}>
       <Box components="section"  className={classes.imageSlider}>
-        <HouseFotosSlider listItem={listItem} />
-        {breakpoints.md ? null : (
+      <HouseFotosSlider
+            houseRef={sliderRef}
+            listItem={ext_gallery}
+            pagination
+          />
+        {/* {breakpoints.md ? null : (
           <StaticPanel ref={categoryRef} change={handleChangePanel} />
-        )}
+        )} */}
       </Box>
       <Box components="section"  className={classes.excursion}>
         {breakpoints.md ? (
-          <Typography className={classes.excursionText} variant="subtitle1">
-            Оставьте заявку и наш менеджер свяжеться с вами
-          </Typography>
+          <TitleWithLine title={'Оставьте заявку и наш менеджер свяжеться с вами'}></TitleWithLine>
+          // <Typography className={classes.excursionText} variant="subtitle1">
+          //   Оставьте заявку и наш менеджер свяжеться с вами
+          // </Typography>
         ) : null}
         <Box className={classes.excursionSend}>
           {breakpoints.md ? null : (

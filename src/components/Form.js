@@ -115,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
 
   button: {
     position: (param) => (param.button ? 'absolute' : 'relative'),
-    bottom: (param) => (param.button ? '0' : null),
+    bottom: (param) => (param.button ? '2vw' : null),
     left: (param) => (param.button ? '0' : null),
     marginTop: (param) => (param.text ? '40px' : null),
     "@media (min-width:1921px)": {

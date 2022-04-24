@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     transition: '0.5s',
     opacity: '1',
     zIndex: '2',
-    zIndex: '2',
     '& span': {
       fontSize: '16px',
       fontWeight: '600',
@@ -129,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   navItem: {
+    zIndex:"3",
     cursor: 'pointer',
     [theme.breakpoints.down('md')]: {
       opacity: '1',
@@ -203,13 +203,13 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             ) : (
               <>
                 <Typography variant='button'>ЧТО МЫ </Typography>
-                <br />
+                <br/>
                 <Typography variant='button'>ДЕЛАЕМ</Typography>
               </>
             )}
           </Link>
         </li>
-        {/* <li className={classes.navItem}>
+        <li className={classes.navItem}>
           <Link className={classes.Link} to={"/watch"}>
             {inBurger ? (
               <Typography variant="button">ГДЕ УВИДЕТЬ </Typography>
@@ -221,7 +221,7 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
               </>
             )}
           </Link>
-        </li> */}
+        </li>
         <li className={classes.navItem}>
           <Link className={classes.Link} to={'/contact-us'}>
             {inBurger ? (
