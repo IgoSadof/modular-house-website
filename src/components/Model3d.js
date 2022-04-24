@@ -5,6 +5,8 @@ const Model3d = ({srcPath,srcPathIos,newref}) => {
   return (
     <Fragment>
       <model-viewer
+        disable-zoom
+        max-camera-orbit="Infinity 85deg auto"
         ref={newref}
         ar
         ar-modes="scene-viewer quick-look webxr"
