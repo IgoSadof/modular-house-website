@@ -119,17 +119,29 @@ const useStyles = makeStyles((theme) => ({
   mainDescWraper: {
     width: '100%',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
     position: 'absolute',
-    bottom: '0',
+    left: '0',
+    paddingLeft: '10%',
+    bottom: '80px',
     zIndex: '1',
     '& $buttons': {
       position: 'relative',
       zIndex: '4',
+      bottom: '0',
+      left: '0',
+      marginLeft: 'auto',
+      marginRight: '10%',
+    },
+    '@media (min-width:1921px)': {
+      bottom: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
+      flexDirection:'column',
+      paddingLeft: '10%',
+      paddingRight: '10%',
+      paddingTop: '20px',
       position: 'relative',
+      bottom: '0',
     },
   },
   mainDescBox: {
@@ -196,6 +208,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
+      marginTop:'15px',
       gap: '10px',
       '@media (orientation: landscape)': {
         justifyContent: 'space-around',
@@ -204,13 +217,14 @@ const useStyles = makeStyles((theme) => ({
   },
   mainBlockTitle: {
     textAlign: 'left',
+    color: '#E2E2E2',
     marginLeft: '100px',
-    color: '#4F4F4F',
     width: '28vw',
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
     },
     [theme.breakpoints.down('md')]: {
+      color: '#4F4F4F',
       marginLeft: '0',
       width: '100%',
     },
@@ -834,11 +848,6 @@ const HousePage = ({ house, data }) => {
   // };
 
   const modelViwerRef = useRef();
-  const vrButtonClick = () => {
-    modelViwerRef.current.activateAR();
-  };
-
-
 
   return (
     <Box components='main'>
@@ -854,9 +863,18 @@ const HousePage = ({ house, data }) => {
           />
         </Box>
         <Box className={classes.mainDescWraper}>
+          <Box className={classes.mainBlockTitleBox}>
+            <Typography
+              variant='h1'
+              color='textSecondary'
+              className={classes.mainBlockTitle}
+            >
+              {dataHouses[houseNumber].code}
+            </Typography>
+          </Box>
+
           {!breakpoints.md ? (
             <Box className={classes.buttons}>
-              {/* <Button color="secondary">hello</Button> */}
               <SquareButton
                 variant={'contained'}
                 click={handleFirstSliderClickLeft}
@@ -873,61 +891,10 @@ const HousePage = ({ house, data }) => {
               />
             </Box>
           ) : null}
-          <Box className={classes.mainDescBox}>
-            <Box className={classes.mainBlockTitleBox}>
-              <Typography
-                variant='h1'
-                color='textSecondary'
-                className={classes.mainBlockTitle}
-              >
-                {dataHouses[houseNumber].code}
-              </Typography>
-            </Box>
-
-            <Box className={classes.mainBlockSubtitleBox}>
-              {!breakpoints.md ? (
-                <>
-                  <ul className={classes.mainBlockList}>
-                    {dataHouses[houseNumber].modules.map((item, index) => {
-                      return (
-                        <li className={classes.mainBlockItem} key={index}>
-                          <Typography variant='body1'>
-                            0{index + 1} Модуль
-                          </Typography>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <ul className={classes.mainBlockList}>
-                    {dataHouses[houseNumber].modules.map((item, index) => {
-                      return (
-                        <li className={classes.mainBlockItem} key={index}>
-                          <Typography variant='body1'>{item.name}</Typography>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <ul
-                    className={`${classes.mainBlockList} ${classes.mainBlockListRight}`}
-                  >
-                    {dataHouses[houseNumber].modules.map((item, index) => {
-                      return (
-                        <li className={classes.mainBlockItem} key={index}>
-                          <Typography variant='subtitle1'>
-                            ${numberWithSpace(item.price)} / {item.term} дней
-                          </Typography>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </>
-              ) : (
-                <Typography variant='body1'>
-                  {' '}
-                  {dataHouses[house].desc}
-                </Typography>
-              )}
-            </Box>
+          <Box className={classes.mainBlockSubtitleBox}>
+            {!breakpoints.md ? null : (
+              <Typography variant='body1'> {dataHouses[house].desc}</Typography>
+            )}
           </Box>
         </Box>
       </Box>
