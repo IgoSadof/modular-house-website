@@ -28,7 +28,6 @@ const ContactsPage = ({ data, title }) => {
     <Box
       component='section'
       className={classes.Block}
-      // style={{ marginTop: !breakpoints.md ? '180px' : '100px' }}
     >
      <ContactsBlock data={data} title={title} ></ContactsBlock>
     </Box>

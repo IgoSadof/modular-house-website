@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsElement = ({ header, data }) => {
+const ContactsElement = ({ header, data, dataContacts }) => {
   const breakpoints = useBreakpoint();
   const param = { breakpoints };
   const classes = useStyles(param);
@@ -190,7 +190,7 @@ const ContactsElement = ({ header, data }) => {
               >
                 <GatsbyImage
                   className={classes.mainPlan}
-                  image={getImg(data, 'images/andrey2.png')}
+                  image={getImg(data, dataContacts['contacts-ceo'][0].image)}
                   alt='img'
                 ></GatsbyImage>
                 <Typography
@@ -198,14 +198,14 @@ const ContactsElement = ({ header, data }) => {
                   variant='h4'
                   component='p'
                 >
-                  Андрусь Bezdar
+                  {dataContacts['contacts-ceo'][0].name}
                 </Typography>
                 <Typography
                   className={classes.ContactsPosition}
                   variant='body1'
                   component='p'
                 >
-                  CEO & FOUNDER
+                  {dataContacts['contacts-ceo'][0].role}
                 </Typography>
               </Box>
               <Box
@@ -220,7 +220,7 @@ const ContactsElement = ({ header, data }) => {
               >
                 <GatsbyImage
                   className={classes.mainPlan}
-                  image={getImg(data, 'images/alexey2.png')}
+                  image={getImg(data, dataContacts['contacts-ceo'][1].image)}
                   alt='img'
                 ></GatsbyImage>
 
@@ -229,13 +229,13 @@ const ContactsElement = ({ header, data }) => {
                   variant='h4'
                   component='p'
                 >
-                  Алексей Кораблев
+                 {dataContacts['contacts-ceo'][0].name}
                 </Typography>
                 <Typography
                   className={classes.ContactsPosition}
                   variant='body1'
                 >
-                  CEO & FOUNDER
+                  {dataContacts['contacts-ceo'][0].role}
                 </Typography>
               </Box>
               {/* </a> */}
@@ -253,7 +253,7 @@ const ContactsElement = ({ header, data }) => {
                 variant='h4'
                 component='p'
               >
-                +375 44 7702236
+                {dataContacts.phone}
               </Typography>
             </Box>
             {!breakpoints.md ? (
@@ -272,14 +272,12 @@ const ContactsElement = ({ header, data }) => {
                 <Box className={classes.infoBoxText}>
                   <a
                     className={classes.personalBoxLink}
-                    href='mailto:info@zrobym.by'
+                    href={`mailto:${dataContacts.email}`}
                   >
-                    <Typography variant='body1'>info@zrobym.by</Typography>
+                    <Typography variant='body1'>{dataContacts.email}</Typography>
                   </a>
                   <Typography variant='body1'>
-                    г. Минск
-                    <br />
-                    ул. Богдановича 11, 3 этаж
+                    {dataContacts.adres}
                   </Typography>
                 </Box>
               </Box>
@@ -301,14 +299,12 @@ const ContactsElement = ({ header, data }) => {
               <Box className={classes.infoBoxText}>
                 <a
                   className={classes.personalBoxLink}
-                  href='mailto:info@zrobym.by'
+                  href={`mailto:${dataContacts.email}`}
                 >
-                  <Typography variant='body1'>info@zrobym.by</Typography>
+                  <Typography variant='body1'>{dataContacts.email}</Typography>
                 </a>
                 <Typography variant='body1'>
-                  г. Минск
-                  <br />
-                  ул. Богдановича 11, 3 этаж
+                {dataContacts.adres}
                 </Typography>
               </Box>
             </Box>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -6,6 +6,7 @@ import Form from './Form';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import TitleWithLine from './TitleWithLine';
 import ContactsElement from './ContactsElement';
+import getData from '../utils/getData';
 
 const useStyles = makeStyles((theme) => ({
   Block: {
@@ -72,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactsBlock = ({ data, title, paddingBottom }) => {
+  const dataContacts = useMemo(
+    () => getData(data.allMysqlContacts.nodes),
+    [data]
+  );
   const breakpoints = useBreakpoint();
   const classes = useStyles();
 
@@ -85,7 +90,7 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
                 <TitleWithLine title={title} style={{ marginBottom: '60px' }} />
               ) : null}
 
-              <ContactsElement data={data} />
+              <ContactsElement dataContacts={dataContacts} data={data} />
             </Box>
           </Box>
 
@@ -123,7 +128,7 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
             ) : null}
           </Box>
           <Box className={classes.BlockColumn}>
-            <ContactsElement data={data} />
+            <ContactsElement dataContacts={dataContacts} data={data} />
             <Box className={classes.titleBox} style={{ marginTop: '60px' }}>
               <TitleWithLine
                 title={'Напишите нам'}

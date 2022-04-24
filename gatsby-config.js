@@ -37,16 +37,6 @@ module.exports = {
           database: 'modularh_db',
         },
         queries: [
-          {
-            statement: 'SELECT * FROM modx_site_tmplvar_contentvalues',
-            idFieldName: 'id',
-            name: 'value',
-          },
-          {
-            statement: 'SELECT * FROM modx_site_content',
-            idFieldName: 'id',
-            name: 'parent',
-          },
           // all houses
           {
             statement: `SELECT modx_site_tmplvar_contentvalues.id,modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value, modx_site_content.id AS contentID, modx_site_content.alias
@@ -58,18 +48,19 @@ module.exports = {
             idFieldName: 'id',
             name: 'Houses',
           },
-    
-          // main page slider
+
+          // main page
           {
-            statement: `SELECT modx_site_tmplvar_contentvalues.id AS id, modx_site_tmplvars.name AS parameterName, modx_site_tmplvar_contentvalues.value AS parameterValue
-            FROM modx_site_tmplvar_contentvalues
-            JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
-            JOIN modx_categories ON modx_categories.id = modx_site_tmplvars.category
-            WHERE modx_categories.category = "Параметры Главной"`,
+            statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
+            modx_site_content.alias FROM modx_site_tmplvar_contentvalues 
+            JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid 
+            JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id 
+            JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id 
+            WHERE modx_site_content.alias = "index"`,
             idFieldName: 'id',
             name: 'MainPage',
           },
-          
+
           // about us
           {
             statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
@@ -80,6 +71,17 @@ module.exports = {
              WHERE modx_site_content.alias = "whoweare"`,
             idFieldName: 'id',
             name: 'AboutUs',
+          },
+          // contacts
+          {
+            statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
+                 modx_site_content.alias FROM modx_site_tmplvar_contentvalues 
+                 JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid 
+                 JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id 
+                 JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id 
+                 WHERE modx_site_content.alias = "contacts"`,
+            idFieldName: 'id',
+            name: 'Contacts',
           },
         ],
       },

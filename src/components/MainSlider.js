@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player/lazy';
 import numbers from '../constant/numbers';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import getMainPage from '../utils/getMainPage';
+import getData from '../utils/getData';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Title0 from '../assets/images/icons/title0.svg';
 import Title1 from '../assets/images/icons/title1.svg';
@@ -325,7 +325,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
-  const dataSlides = useMemo(() => getMainPage(data), [data]);
+  const dataSlides = useMemo(() => getData(data.allMysqlMainPage.nodes), [data]);
   const breakpoints = useBreakpoint();
   const baseLength = breakpoints.md ? 24 : 5.5;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -399,7 +399,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>
             <CSSTransition
-              key={dataSlides[activeNumb].id}
+              key={dataSlides.intro[activeNumb].MIGX_id}
               in={opacity}
               appear={true}
               timeout={500}
@@ -411,7 +411,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   variant='h1'
                   component='h1'
                 >
-                  {dataSlides[activeNumb].title.toUpperCase()}
+                  {dataSlides.intro[activeNumb].title.toUpperCase()}
                 </Typography>
 
                 <Box className={classes.icon}>
@@ -431,7 +431,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   variant='body1'
                   component='p'
                 >
-                  {dataSlides[activeNumb].subtitle}
+                  {dataSlides.intro[activeNumb].text}
                 </Typography>
               </Box>
             </CSSTransition>

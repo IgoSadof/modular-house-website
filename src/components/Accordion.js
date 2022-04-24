@@ -50,7 +50,6 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles((theme) => ({
   root: {
     backgroundColor: '#D1D1D1',
-    // padding: '40px',
   },
 }))(MuiAccordionDetails);
 
@@ -84,7 +83,6 @@ export default function Accordions({
       {arr.map((item, index) => {
         return (
           <Accordion
-            // .substr(dataHouses[houseNumber].modules[0].rooms[0]["Главное изображение"]).search(/images\//)
             onClick={
               roomsImg
                 ? () =>
@@ -114,13 +112,13 @@ export default function Accordions({
                 {houseRooms
                   ? item['Экспликация']
                   : answers
-                  ? item[70]
-                  : item[70].toUpperCase()}
+                  ? item.question
+                  : item.question.toUpperCase()}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails className={(item['Описание комнаты']||item[71])?classes.details:classes.noDetails}>
+            <AccordionDetails className={(item['Описание комнаты']||item.question)?classes.details:classes.noDetails}>
               <Typography variant='body1' component='p'>
-                {houseRooms ? item['Описание комнаты'] : item[71]}
+                {houseRooms ? item['Описание комнаты'] : item.question}
               </Typography>
             </AccordionDetails>
           </Accordion>

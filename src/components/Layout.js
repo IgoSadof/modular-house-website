@@ -162,27 +162,20 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
-      allMysqlValue {
-        nodes {
-          contentid
-          value
-          tmplvarid
-        }
-      }
-      allMysqlParent {
-        nodes {
-          mysqlId
-          mysqlParent
-        }
-      }
+ 
       allMysqlMainPage {
         nodes {
-          mysqlId
-          parameterName
-          parameterValue
+          name
+          value
         }
       }
       allMysqlAboutUs {
+        nodes {
+          name
+          value
+        }
+      }
+      allMysqlContacts {
         nodes {
           name
           value

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Advantages({ arr, title }) {
+export default function Advantages({ arr }) {
   const classes = useStyles();
 
   return (
@@ -51,8 +51,8 @@ export default function Advantages({ arr, title }) {
       {arr.map((item, index) => {
         return (
           <Box className={classes.content} key={index}>
-            <Typography variant='h4'>{item[70]}</Typography>
-            <Typography variant='body1'>{item[71]}</Typography>
+            <Typography variant='h4'>{item.title}</Typography>
+            <Typography variant='body1'>{item.text}</Typography>
           </Box>
         );
       })}

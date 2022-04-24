@@ -16,7 +16,7 @@ import Quote from './svg/Quote';
 import getImg from '../utils/getImg';
 import TitleWithLine from '../components/TitleWithLine';
 import ContactsBlock from './ContactsBlock';
-import { customFontsSize } from '../config/modularHouseTheme'
+import { customFontsSize } from '../config/modularHouseTheme';
 import Advantages from './Advantages';
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '60px',
     marginTop: '120px',
     paddingRight: '10vw',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       gap: '4.2vw',
       marginTop: '8.3vw',
     },
@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     // flexDirection: "column",
     gap: '20px',
     overflow: 'hidden',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       gap: '1.4vw',
     },
 
@@ -168,19 +168,19 @@ const useStyles = makeStyles((theme) => ({
     fontSize: customFontsSize.h6.regular,
     lineHeight: 1.2,
     fontWeight: 600,
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       fontSize: customFontsSize.h6.adaptiv,
     },
   },
   place: {
     marginTop: '10px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       marginTop: '0.7vw',
     },
   },
   message: {
     marginTop: '20px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       marginTop: '1.4vw',
     },
     [theme.breakpoints.down('md')]: {
@@ -191,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: 'flex',
     gap: '12px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       gap: '0.8vw',
     },
     [theme.breakpoints.down('md')]: {
@@ -291,7 +291,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '500px',
     maxHeight: '500px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       height: '34.7vw',
       maxHeight: '34.7vw',
     },
@@ -322,7 +322,7 @@ const useStyles = makeStyles((theme) => ({
 
   imagesBoxes: {
     width: '360px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       width: '25vw',
     },
   },
@@ -337,23 +337,29 @@ const useStyles = makeStyles((theme) => ({
       color: 'red',
     },
   },
-  ContactsBox:{
+  ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    margin:"180px 0 120px 0",
-    paddingRight:"10%",
+    margin: '180px 0 120px 0',
+    paddingRight: '10%',
     [theme.breakpoints.down('md')]: {
-      paddingRight:"0",
-      margin:"80px 0 80px 0",
+      paddingRight: '0',
+      margin: '80px 0 80px 0',
     },
-  }
+  },
 }));
 
 const MainPageContent = ({ data }) => {
-  const detail = useMemo(() => getData(data, 4), [data]);
-  const dataAnswers = useMemo(() => getData(data, 18), [data]);
-  const reviews = useMemo(() => getData(data, 5), [data]);
-  const answers = [...dataAnswers];
+  // const detail = useMemo(() => getData(data, 4), [data]);
+  // const dataAnswers = useMemo(() => getData(data, 18), [data]);
+  // const reviews = useMemo(() => getData(data, 5), [data]);
+  // const answers = [...dataAnswers];
+  const dataMainPage = useMemo(
+    () => getData(data.allMysqlMainPage.nodes),
+    [data]
+  );
+  const reviews = dataMainPage.reviews;
+  const answers = dataMainPage.answers;
 
   const breakpoints = useBreakpoint();
   const classes = useStyles();
@@ -375,11 +381,9 @@ const MainPageContent = ({ data }) => {
   };
   const myRef = useRef(null);
   const houseSliderRef = useRef(null);
-  const slidesPath = [
-    'images/slide1.jpg',
-    'images/slide2.jpg',
-    'images/slide3.jpg',
-  ];
+  let slidesPath = [...dataMainPage['form-block-with-gallery'][0].gallery].map(
+    (item) => item.image
+  );
   const slides = [];
   slidesPath.forEach((item) => {
     slides.push(getImg(data, item));
@@ -417,14 +421,17 @@ const MainPageContent = ({ data }) => {
         </Box>
 
         <Box className={classes.accordion}>
-          <Advantages arr={detail} title='advantages' ></Advantages>
+          <Advantages
+            arr={dataMainPage.advantages}
+            title='advantages'
+          ></Advantages>
           {/* <Accordions arr={detail} title='advantages' /> */}
         </Box>
       </Box>
 
       {/* ОТЗЫВЫ */}
 
-      {/* <Box component='section' className={classes.Block}>
+       <Box component='section' className={classes.Block}>
         {!breakpoints.md ? (
           <>
             <Box className={classes.titleBox}>
@@ -444,17 +451,17 @@ const MainPageContent = ({ data }) => {
                         <Box>
                           <Typography
                             className={classes.name}
-                          >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
+                          >{`${reviews[review].name}`}</Typography>
                           <Typography className={classes.place}>
-                            {`${reviews[review][20]}, ${reviews[
+                            {`${reviews[review].place}, ${reviews[
                               review
-                            ][22].slice(6)}`}
+                            ].data.slice(6)}`}
                           </Typography>
                         </Box>
                         <Quote width={breakpoints.xxl? "3vw": 54} height={breakpoints.xxl? "3vw": 40} />
                       </Box>
                       <Typography variant='body1' className={classes.message}>
-                        {reviews[review][21]}
+                        {reviews[review].text}
                       </Typography>
                     </Box>
                   </CSSTransition>
@@ -494,8 +501,8 @@ const MainPageContent = ({ data }) => {
                     className={classes.reviewVideo}
                     image={getImg(
                       data,
-                      `${reviews[reviewVideo][23].substr(
-                        reviews[reviewVideo][23].search(/images\//g)
+                      `${reviews[reviewVideo].foto.substr(
+                        reviews[reviewVideo].foto.search(/images\//g)
                       )}`
                     )}
                     alt='img'
@@ -534,9 +541,9 @@ const MainPageContent = ({ data }) => {
                       <Box>
                         <Typography
                           className={classes.name}
-                        >{`${reviews[review][19]} ${reviews[review][20]}`}</Typography>
+                        >{`${reviews[review].name} ${reviews[review].place}`}</Typography>
                         <Typography className={classes.place}>
-                          {`${reviews[review][20]}, ${reviews[review][22].slice(
+                          {`${reviews[review].place}, ${reviews[review].data.slice(
                             6
                           )}`}
                         </Typography>
@@ -545,7 +552,7 @@ const MainPageContent = ({ data }) => {
                     </Box>
 
                     <Typography variant='body1' className={classes.message}>
-                      {reviews[review][21]}
+                      {reviews[review].text}
                     </Typography>
                   </Box>
                 </CSSTransition>
@@ -565,9 +572,9 @@ const MainPageContent = ({ data }) => {
                   />
                 </Box>
                 <Typography variant='h5' component='p'>
-                  {`${reviews[review][22].slice(0, 2)}/${reviews[
+                  {`${reviews[review].data.slice(0, 2)}/${reviews[
                     review
-                  ][22].slice(3, 5)} `}
+                  ].data.slice(3, 5)} `}
                 </Typography>
               </Box>
             </Box>
@@ -584,8 +591,8 @@ const MainPageContent = ({ data }) => {
                     className={classes.reviewVideo}
                     image={getImg(
                       data,
-                      `${reviews[reviewVideo][23].substr(
-                        reviews[reviewVideo][23].search(/images\//g)
+                      `${reviews[reviewVideo].foto.substr(
+                        reviews[reviewVideo].foto.search(/images\//g)
                       )}`
                     )}
                     alt='img'
@@ -606,7 +613,7 @@ const MainPageContent = ({ data }) => {
             </Box>
           </>
         )}
-      </Box> */}
+      </Box>
 
       {/* ОТВЕТЫ */}
 
@@ -646,18 +653,16 @@ const MainPageContent = ({ data }) => {
 
       {!breakpoints.md ? (
         <Box component='section' className={classes.Block}>
-          <Box
-            className={classes.titleBox}
-          >
+          <Box className={classes.titleBox}>
             <Box
               className={classes.BlockColumn}
               style={{ justifyContent: 'start' }}
             >
-              <TitleWithLine title='Приглашаем' />
+              <TitleWithLine title={dataMainPage['form-block-with-gallery'][0].header} />
               <Box m='auto'>
                 <Form
-                  title='В готовый модульный дом под Минском на ознакомительную экскурсиюшаем'
-                  subtitle='Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии'
+                  title={dataMainPage['form-block-with-gallery'][0].title}
+                  subtitle={dataMainPage['form-block-with-gallery'][0].subtitle}
                   buttonText='Записаться'
                 />
               </Box>
@@ -671,14 +676,14 @@ const MainPageContent = ({ data }) => {
           className={`${classes.Block} ${classes.BlockFullscreen}`}
         >
           <Box className={classes.titleBox}>
-            <TitleWithLine title='Приглашаем' longLine={true} />
+            <TitleWithLine title={dataMainPage['form-block-with-gallery'][0].header} longLine={true} />
           </Box>
           <Box className={classes.BlockColumn}>
             <OneImageAutoSlider slides={slides} />
             <Box className={classes.FormBox}>
               <Form
-                title='В готовый модульный дом под Минском на ознакомительную экскурсиюшаем'
-                subtitle='Оставьте заявку и наш менеджер свяжется с вами для уточнения даты и времени экскурсии'
+               title={dataMainPage['form-block-with-gallery'][0].title}
+               subtitle={dataMainPage['form-block-with-gallery'][0].subtitle}
               />
             </Box>
           </Box>

@@ -58,7 +58,7 @@ const ReviewsSlider = ({myRef,reviews,getImg,data}) => {
     swipe:false,
   };
   const listItems = reviews.map((item, index) => {
-    return <Slide key={index}  image={getImg(data,`${reviews[index][23].substr(reviews[index][23].search(/images\//g))}`)} />;
+    return <Slide key={index}  image={getImg(data,`${reviews[index].foto.substr(reviews[index].foto.search(/images\//g))}`)} />;
   });
 
   return (
