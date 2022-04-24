@@ -431,7 +431,7 @@ const MainPageContent = ({ data }) => {
 
       {/* ОТЗЫВЫ */}
 
-       <Box component='section' className={classes.Block}>
+       {/* <Box component='section' className={classes.Block}>
         {!breakpoints.md ? (
           <>
             <Box className={classes.titleBox}>
@@ -613,7 +613,7 @@ const MainPageContent = ({ data }) => {
             </Box>
           </>
         )}
-      </Box>
+      </Box> */}
 
       {/* ОТВЕТЫ */}
 
