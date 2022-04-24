@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
       bottom: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
-      flexDirection:'column',
+      flexDirection: 'column',
       paddingLeft: '10%',
       paddingRight: '10%',
       paddingTop: '20px',
@@ -208,7 +208,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
-      marginTop:'15px',
+      marginTop: '15px',
       gap: '10px',
       '@media (orientation: landscape)': {
         justifyContent: 'space-around',
@@ -890,12 +890,9 @@ const HousePage = ({ house, data }) => {
                 bgColor='#D1D1D1'
               />
             </Box>
-          ) : null}
-          <Box className={classes.mainBlockSubtitleBox}>
-            {!breakpoints.md ? null : (
-              <Typography variant='body1'> {dataHouses[house].desc}</Typography>
-            )}
-          </Box>
+          ) : (
+            <Box className={classes.mainBlockSubtitleBox}></Box>
+          )}
         </Box>
       </Box>
 
@@ -1168,11 +1165,9 @@ const HousePage = ({ house, data }) => {
         <FormBlock
           endpoint='https://formspree.io/f/mgedeody'
           extraFormFields={extraFormFields}
-          header={'Мы на связи'}
-          title={`
-                      Можете отправить свой выбор нам, и мы начнем готовиться к встрече.
-              `}
-          subtitle={`Наш менеджер свяжеться с вами для выяснения диталей.`}
+          header={dataHouses[houseNumber]['form-block'][0].header}
+          title={dataHouses[houseNumber]['form-block'][0].title}
+          subtitle={dataHouses[houseNumber]['form-block'][0].subtitle}
           email
           padding={true}
           img={
