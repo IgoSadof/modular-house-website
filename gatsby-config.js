@@ -99,7 +99,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`, // Needed for dynamic images
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        // The option defaults to true
+        checkSupportedExtensions: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-breakpoints',
       options: {
