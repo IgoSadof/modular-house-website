@@ -206,7 +206,7 @@ const AboutUs = ({ data }) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
   const dataObj = getAboutUsData(data);
-  // console.log(dataObj)
+  console.log(dataObj)
   return (
     <Box component='main' className={classes.main}>
       <Box component='section' className={classes.Block}>
@@ -389,23 +389,23 @@ const AboutUs = ({ data }) => {
         </Typography>
       </Box>
 
-      {dataObj.aboutus_form.published ? (
+      {dataObj['form-block'].published ? (
         <Box component='section' className={classes.Block}>
           <FormBlock
             img={getPublicPath(
               data,
-              dataObj.aboutus_form.img ? dataObj.aboutus_form.img : null
+              dataObj['form-block'].img ? dataObj['form-block'].img : null
             )}
             staticImg={true}
             header={
-              dataObj.aboutus_form.header ? dataObj.aboutus_form.header : null
+              dataObj['form-block'].header ? dataObj['form-block'].header : null
             }
             title={
-              dataObj.aboutus_form.title ? dataObj.aboutus_form.title : null
+              dataObj['form-block'].title ? dataObj['form-block'].title : null
             }
             subtitle={
-              dataObj.aboutus_form.subtitle
-                ? dataObj.aboutus_form.subtitle
+              dataObj['form-block'].subtitle
+                ? dataObj['form-block'].subtitle
                 : null
             }
             email

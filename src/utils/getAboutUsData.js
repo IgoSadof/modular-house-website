@@ -14,7 +14,8 @@ export default function getAboutUsData(data){
   dataObj.articles.forEach((item,index)=>{
     dataObj.articles[index].article_text = item.article_text.split('\n\n');
   })
-  dataObj.aboutus_form = dataObj.aboutus_form[0]
+  console.log(dataObj)
+  dataObj['form-block'] = dataObj['form-block'][0]
   
   return dataObj
 }

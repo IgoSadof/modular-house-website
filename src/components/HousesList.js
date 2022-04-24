@@ -308,7 +308,7 @@ const useStyles = makeStyles((theme) => ({
   houseDescSpecOne: {
     ...style.flex,
     alignItems: 'end',
-    '& p': { textTransform: 'none' },
+    '& p': { textTransform: 'none',whiteSpace: 'nowrap', },
     '& p:last-child': {
       whiteSpace: 'nowrap',
     },

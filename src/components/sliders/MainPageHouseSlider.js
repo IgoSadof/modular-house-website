@@ -193,9 +193,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "50px",
     height: "20px",
+    marginBottom:'2px',
     "@media (min-width:1921px)": {
       width: "3.5vw",
       height: "1.4vw",
+      marginBottom:'0.2vw',
     },
   },
   propertyValue:{
