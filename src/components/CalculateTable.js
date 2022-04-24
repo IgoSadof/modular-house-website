@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
 const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
   const breakpoints = useBreakpoint();
   const options = {};
-  houseOptions.forEach((item) => {
+  houseOptions?.forEach((item) => {
     options[item.name] = {
       name: item.option_poor_name,
       price: item.option_poor_price,
@@ -182,7 +182,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
       <table className={classes.table}>
         <tbody>
           {!breakpoints.md
-            ? houseOptions.map((item, index) => (
+            ? houseOptions?.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
                   <td
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}
@@ -260,7 +260,7 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                   </td>
                 </tr>
               ))
-            : houseOptions.map((item, index) => (
+            : houseOptions?.map((item, index) => (
                 <tr className={classes.tableRow} key={index}>
                   <td
                     className={`${classes.tableCell} ${classes.tableCellFirst}`}

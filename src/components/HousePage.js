@@ -651,26 +651,25 @@ const useStyles = makeStyles((theme) => ({
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
-  // const houses = useMemo(() => getHouses(data), [data]);
 
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
-  const baseFolder = `houses/${dataHouses[house].code.replace(' ', '')}/модули`;
+  const baseFolder = `houses/${dataHouses[houseNumber].code?.replace(' ', '')}/модули`;
 
   const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
-  const baseModulePrice = dataHouses[houseNumber].modules[0].price
+  const baseModulePrice = dataHouses[houseNumber].modules?.[0].price
     ? +dataHouses[houseNumber].modules[0].price.replace(/[KК]/, '000')
     : 0;
-  const baseModule = dataHouses[houseNumber].modules[0].name
+  const baseModule = dataHouses[houseNumber].modules?.[0].name
     ? dataHouses[houseNumber].modules[0].name
     : 'no-modules';
   const [modulePrice, setModulePrice] = useState(baseModulePrice);
   const [userModuleList, setUserModuleList] = useState([baseModule]);
   const [userOptions, setUserOptions] = useState({});
 
-  const baseImg = dataHouses[houseNumber].modules[0]?.rooms[0]
-    ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение']
-    : `${dataHouses[houseNumber].baner}`;
+  // const baseImg = dataHouses[houseNumber].modules?.[0]?.rooms[0]
+  //   ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение']
+  //   : `${dataHouses[houseNumber].baner}`;
 
   // const [roomsImg, setRoomsImg] = useState(baseImg);
   // const [roomsImgIndex, setRoomsImgIndex] = useState(0);
@@ -678,7 +677,7 @@ const HousePage = ({ house, data }) => {
   //   setRoomsImg(img);
   //   setRoomsImgIndex(index);
   // };
-  const modulesCounts = dataHouses[houseNumber]['modules'].length;
+  const modulesCounts = dataHouses[houseNumber].modules?.length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 10;
   const heightModuleList = 60;
@@ -695,7 +694,7 @@ const HousePage = ({ house, data }) => {
   const classes = useStyles(param);
 
   const [model3d, setModel3d] = useState(
-    getPublicPath(data, dataHouses[houseNumber]['modules'][pillClick].model3d)
+    getPublicPath(data, dataHouses[houseNumber].modules?.[pillClick].model3d)
   );
   const firstSlider = useRef(null);
   const secondSlider = useRef(null);
@@ -708,7 +707,7 @@ const HousePage = ({ house, data }) => {
       setModel3d(
         getPublicPath(
           data,
-          dataHouses[houseNumber]['modules'][pillClick + 1].model3d
+          dataHouses[houseNumber].modules?.[pillClick + 1].model3d
         )
       );
     }
@@ -720,7 +719,7 @@ const HousePage = ({ house, data }) => {
       setModel3d(
         getPublicPath(
           data,
-          dataHouses[houseNumber]['modules'][pillClick - 1].model3d
+          dataHouses[houseNumber].modules?.[pillClick - 1].model3d
         )
       );
     }
@@ -750,7 +749,7 @@ const HousePage = ({ house, data }) => {
 
   const handleClickCheckbox = (event, curentIndex) => {
     setCurrentCheckbox(curentIndex);
-    const chooseModules = dataHouses[houseNumber].modules.filter(
+    const chooseModules = dataHouses[houseNumber].modules?.filter(
       (item, index) => {
         if (event.target.checked) {
           if (index <= curentIndex) {
@@ -765,7 +764,7 @@ const HousePage = ({ house, data }) => {
     );
     let price = 0;
     let mudules = [];
-    chooseModules.forEach((item) => {
+    chooseModules?.forEach((item) => {
       price += item.price ? +item.price.replace(/[KК]/, '000') : 0;
       mudules.push(item.name);
     });
@@ -779,7 +778,7 @@ const HousePage = ({ house, data }) => {
   };
 
   const ext_gallery = useMemo(() => {
-    return dataHouses[houseNumber].ext_gallery.map((item, index) => {
+    return dataHouses[houseNumber].ext_gallery?.map((item, index) => {
       return (
         <SwiperSlide className={classes.mainImgItem} key={index}>
           <GatsbyImage
@@ -793,7 +792,7 @@ const HousePage = ({ house, data }) => {
   }, [dataHouses[houseNumber].ext_gallery]);
 
   const int_gallery = useMemo(() => {
-    return dataHouses[houseNumber].int_gallery.map((item, index) => {
+    return dataHouses[houseNumber].int_gallery?.map((item, index) => {
       return (
         <SwiperSlide className={classes.mainImgItem} key={index}>
           <GatsbyImage
@@ -810,12 +809,12 @@ const HousePage = ({ house, data }) => {
   all.name = 'Все';
   all.name = '';
 
-  const modulesWithImages = dataHouses[house].modules.filter(
-    (item, index) =>
-      getImagesFromDirectory(data, `${baseFolder}/модуль${index + 1}`).length
-  );
+  // const modulesWithImages = dataHouses[houseNumber]?.modules?.filter(
+  //   (item, index) =>
+  //     getImagesFromDirectory(data, `${baseFolder}/модуль${index + 1}`).length
+  // );
 
-  const panelTabs = [all, ...modulesWithImages];
+  // const panelTabs = [all, ...modulesWithImages];
   const getUserOptions = (options) => {
     setUserOptions(options);
   };
@@ -827,7 +826,7 @@ const HousePage = ({ house, data }) => {
   };
 
   const plans = useMemo(() => {
-    return dataHouses[houseNumber]['modules'].map((item) => {
+    return dataHouses[houseNumber].modules?.map((item) => {
       if (item.plan) {
         return (
           <GatsbyImage
@@ -892,7 +891,7 @@ const HousePage = ({ house, data }) => {
             </Box>
           ) : (
             <Box className={classes.mainBlockSubtitleBox}>
-              <Typography variant='body1'> {dataHouses[house].desc}</Typography>
+              <Typography variant='body1'> {dataHouses[houseNumber].desc}</Typography>
             </Box>
           )}
         </Box>
@@ -901,7 +900,7 @@ const HousePage = ({ house, data }) => {
       <Box components='section' className={classes.modelBlock}>
         <Box className={classes.modelDesc}>
           <Box className={classes.modelDescFirstColumn}>
-            {dataHouses[houseNumber].modules.map((item, index) => {
+            {dataHouses[houseNumber].modules?.map((item, index) => {
               return (
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
@@ -987,7 +986,7 @@ const HousePage = ({ house, data }) => {
           </div>
 
           <Box className={classes.modelDescSecondColumn}>
-            {dataHouses[houseNumber].modules.map((item, index) => {
+            {dataHouses[houseNumber].modules?.map((item, index) => {
               return (
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
@@ -1007,7 +1006,7 @@ const HousePage = ({ house, data }) => {
             srcPath={model3d}
             srcPathIos={getPublicPath(
               data,
-              dataHouses[houseNumber]['modules'][pillClick].model3d.replace(
+              dataHouses[houseNumber].modules?.[pillClick].model3d.replace(
                 'glb',
                 'usdz'
               )
@@ -1057,7 +1056,7 @@ const HousePage = ({ house, data }) => {
             </Typography>
           )}
           <Box className={classes.calculationPlanConteiner}>
-            {plans.map((plan, index) => {
+            {plans?.map((plan, index) => {
               if (index <= currentCheckbox) {
                 return (
                   <React.Fragment key={index}>
@@ -1076,7 +1075,7 @@ const HousePage = ({ house, data }) => {
           </Box>
         </Box>
         <Box className={classes.calculation}>
-          {dataHouses[houseNumber].modules.map((item, index) => {
+          {dataHouses[houseNumber].modules?.map((item, index) => {
             return (
               <Box className={classes.calculationItem} key={index}>
                 {index === 0 ? (
