@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useEffect } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import FormBlock from '../components/FormBlock';
@@ -15,19 +15,14 @@ import TitleWithLine from '../components/TitleWithLine';
 import '@google/model-viewer';
 import Model3d from './Model3d';
 import getHouses from '../utils/getHouses';
-import getHousesData from '../utils/getHousesData';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import getImg from '../utils/getImg';
 import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
-import HouseModelPlayer from './HouseModelPlayer';
 import numberWithSpace from '../utils/numberWithSpace';
 import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
 import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
-import ThreeSixty from 'react-360-view';
-import VRviwe from './svg/VRviwe';
-import icon360 from '../assets/images/360_icon.png';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -684,26 +679,10 @@ const HousePage = ({ house, data }) => {
     breakpoints,
   };
   const classes = useStyles(param);
-  // console.log(dataHouses[houseNumber]['modules'][pillClick])
 
   const [model3d, setModel3d] = useState(
     getPublicPath(data, dataHouses[houseNumber]['modules'][pillClick].model3d)
   );
-  const [modelVideo, setModelVideo] = useState(
-    getPublicPath(
-      data,
-      dataHouses[houseNumber]['modules'][pillClick]['3D Модель Видео']
-    )
-  );
-  // const getImgPath = () =>{
-  //   dataHouses[houseNumber]['modules'][pillClick].img_path.
-  // }
-  const [pathToImages, setPathToImages] = useState(
-    dataHouses[houseNumber]['modules'][pillClick].img_path.match(
-      /images\/.*/g
-    )[0]
-  );
-  console.log(pathToImages);
   const firstSlider = useRef(null);
   const secondSlider = useRef(null);
   const categoryRef = React.createRef();
@@ -718,17 +697,6 @@ const HousePage = ({ house, data }) => {
           dataHouses[houseNumber]['modules'][pillClick + 1].model3d
         )
       );
-      setModelVideo(
-        getPublicPath(
-          data,
-          dataHouses[houseNumber]['modules'][pillClick + 1]['3D Модель Видео']
-        )
-      );
-      setPathToImages(
-        dataHouses[houseNumber]['modules'][pillClick + 1].img_path.match(
-          /images\/.*/g
-        )[0]
-      );
     }
   };
   const handleMinusClick = (e) => {
@@ -740,17 +708,6 @@ const HousePage = ({ house, data }) => {
           data,
           dataHouses[houseNumber]['modules'][pillClick - 1].model3d
         )
-      );
-      setModelVideo(
-        getPublicPath(
-          data,
-          dataHouses[houseNumber]['modules'][pillClick - 1]['3D Модель Видео']
-        )
-      );
-      setPathToImages(
-        dataHouses[houseNumber]['modules'][pillClick - 1].img_path.match(
-          /images\/.*/g
-        )[0]
       );
     }
   };
@@ -881,25 +838,7 @@ const HousePage = ({ house, data }) => {
     modelViwerRef.current.activateAR();
   };
 
-  const arrImg360 = useMemo(() => {
-    return dataHouses[houseNumber]['modules'].map((item, index) => {
-      return (
-        <Box key={index}>
-          <ThreeSixty
-            amount={20}
-            imagePath={`../../${
-              dataHouses[houseNumber]['modules'][index].img_path.match(
-                /images\/.*/g
-              )[0]
-            }`}
-            fileName='{index}.png'
-          />
-        </Box>
-      );
-    });
-  }, [houseNumber]);
 
-  console.log(arrImg360);
 
   return (
     <Box components='main'>
@@ -1097,35 +1036,17 @@ const HousePage = ({ house, data }) => {
           </Box>
         </Box>
         <Box className={classes.model}>
-          {breakpoints.sm ? (
-            <>
-              <Box className={classes.modelButton} onClick={vrButtonClick}>
-                <VRviwe />
-              </Box>
-
-              <Box className={classes.conteinerVRmodel}>
-                <Model3d
-                  newref={modelViwerRef}
-                  srcPath={model3d}
-                  srcPathIos={getPublicPath(
-                    data,
-                    dataHouses[houseNumber]['modules'][
-                      pillClick
-                    ].model3d.replace('glb', 'usdz')
-                  )}
-                ></Model3d>
-              </Box>
-              {arrImg360[pillClick]}
-            </>
-          ) : (
-            <>
-              <Box className={classes.conteiner360}>
-                <img src={icon360} />
-              </Box>
-              {/* <HouseModelPlayer video={modelVideo} /> */}
-              {arrImg360[pillClick]}
-            </>
-          )}
+          <Model3d
+            newref={modelViwerRef}
+            srcPath={model3d}
+            srcPathIos={getPublicPath(
+              data,
+              dataHouses[houseNumber]['modules'][pillClick].model3d.replace(
+                'glb',
+                'usdz'
+              )
+            )}
+          ></Model3d>
         </Box>
       </Box>
 
