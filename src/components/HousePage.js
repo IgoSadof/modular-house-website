@@ -1188,7 +1188,7 @@ const HousePage = ({ house, data }) => {
           padding={true}
           img={
             !breakpoints.md
-              ? getImg(data, `${dataHouses[houseNumber].baner}`)
+              ? getImg(data, `${dataHouses[houseNumber]['form-block'][0].img}`)
               : null
           }
           formPosition='center'
