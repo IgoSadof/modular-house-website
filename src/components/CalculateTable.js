@@ -306,24 +306,24 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
                         name={item.name}
                         checked={
                           currentOption[item.name].price ===
-                          item.option_expencive_price
+                          item.option_expensive_price
                             ? true
                             : false
                         }
                         onChange={handleChangeCheckbox}
-                        value={+item.option_expencive_price}
+                        value={+item.option_expensive_price}
                         control={<Checkbox color='primary' />}
                         label={
                           <Typography
                             style={
                               currentOption[item.name].price ===
-                              item.option_expencive_price
+                              item.option_expensive_price
                                 ? { color: '#4f4f4f' }
                                 : { color: '#828282' }
                             }
                             variant='body1'
                           >
-                            {item.option_expencive_name}
+                            {item.option_expensive_name}
                           </Typography>
                         }
                         labelPlacement='end'
