@@ -31,19 +31,16 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: (param) =>
-      param.page === 'aboutUs' ||
-      param.page === 'main' ||
-      param.page === 'house'
-        ? '100%'
-        : '100vh',
+      param.page === 'contacts' || param.page === 'houseList'
+        ? '100vh'
+        : '100%',
     [theme.breakpoints.down('md')]: {
       height: (param) =>
         param.page === 'houseList' && param.breakpoints.md ? '100%' : '100%',
     },
     '@media (max-height:600px)': {
-      height:'100% !important',
+      height: '100% !important',
     },
-   
   },
 
   Block: {
@@ -162,7 +159,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
- 
+
       allMysqlMainPage {
         nodes {
           name
@@ -240,12 +237,13 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                     <Burger
                       click={handleClickConnect}
                       page={page}
-                      position={page !== 'aboutUs' && page !== 'houseList'  ? 'absolute' : 'relative'}
+                      position={
+                        page !== 'aboutUs' && page !== 'houseList'
+                          ? 'absolute'
+                          : 'relative'
+                      }
                       color={
-                        page === 'watch' ||
-                        page === 'house'
-                          ? 'white'
-                          : null
+                        page === 'watch' || page === 'house' ? 'white' : null
                       }
                     />
                   ) : null}
@@ -309,7 +307,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                       Позвонить
                                     </Typography>
                                     <a href='tel:+375447702236'>
-                                      <Call/>
+                                      <Call />
                                     </a>
                                   </Box>
                                   <Form

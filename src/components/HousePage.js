@@ -1,15 +1,12 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 import FormBlock from '../components/FormBlock';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import SquareButton from '../components/buttons/SquareButton';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CalculateTable from '../components/CalculateTable';
-// import Panel from '../components/Panel';
 import { SwiperSlide } from 'swiper/react';
 import TitleWithLine from '../components/TitleWithLine';
 import '@google/model-viewer';
@@ -20,9 +17,8 @@ import getImg from '../utils/getImg';
 import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
 import numberWithSpace from '../utils/numberWithSpace';
-// import getImagesFromDirectory from '../utils/getImgsFromDirectory';
 import getPublicPath from '../utils/getPublicPath';
-import HouseFotosSlider from '../components/sliders/HouseFotosSlider';
+import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -32,10 +28,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     backgroundColor: '#D1D1D1',
     overflow: 'hidden',
-    // height: '100vh',
-    // minHeight: '768px',
     [theme.breakpoints.down('md')]: {
-      // minHeight:'0',
       '& $titleBox': {
         marginTop: '100px',
         right: '0',
@@ -277,7 +270,6 @@ const useStyles = makeStyles((theme) => ({
     width: '28vw',
     marginLeft: '100px',
     flexShrink: '0',
-    // height: (param) => `${param.heightOneLine * param.modulesCounts}vh`,
     display: 'flex',
     minHeight: (param) => `${param.heightModuleList}vh`,
     gap: '40px',
@@ -306,10 +298,6 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width:1919px)': {
       gap: '20px',
     },
-    // gap:"20px",
-    // '@media (min-width:1921px)': {
-    //   gap: '1.4vw',
-    // },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
     },
@@ -321,16 +309,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     marginRight: 'auto',
     textAlign: 'left',
-    // '& p': {
-    //   overflowY: 'scroll',
-    // },
+
     '@media (max-width:1919px)': {
       gap: '20px',
     },
-    // gap:"20px",
-    // '@media (min-width:1921px)': {
-    //   gap: '1.4vw',
-    // },
   },
   modelDescItemTitle: {
     listStyle: 'none',
@@ -340,7 +322,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto',
     marginLeft: 'auto',
     width: '100%',
-    // minHeight: '16vh1,
 
     height: (param) =>
       param.breakpoints.xxl
@@ -370,7 +351,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '100%',
       height: '50vh',
-      // height: (param) => (param.breakpoints.s ? '50vh' : '100vh'),
     },
   },
   conteinerVRmodel: {
@@ -724,12 +704,6 @@ const HousePage = ({ house, data }) => {
       );
     }
   };
-  const handleFirstSliderClickLeft = () => {
-    firstSlider.current.swiper.slidePrev();
-  };
-  const handleFirstSliderClickRight = () => {
-    firstSlider.current.swiper.slideNext();
-  };
   const handleSeconSliderClickLeft = () => {
     secondSlider.current.swiper.slidePrev();
   };
@@ -862,55 +836,14 @@ const HousePage = ({ house, data }) => {
 
   return (
     <Box components='main'>
-      <Box
-        components='section'
-        className={` ${classes.BlockFullscreen} ${classes.mainBlock}`}
-      >
-        <Box className={classes.mainImgBox}>
-          <HouseFotosSlider
-            houseRef={firstSlider}
-            listItem={ext_gallery}
-            pagination
-          />
-        </Box>
-        <Box className={classes.mainDescWraper}>
-          <Box className={classes.mainBlockTitleBox}>
-            <Typography
-              variant='h1'
-              color='textSecondary'
-              className={classes.mainBlockTitle}
-            >
-              {dataHouses[houseNumber].code}
-            </Typography>
-          </Box>
-
-          {!breakpoints.md ? (
-            <Box className={classes.buttons}>
-              <SquareButton
-                variant={'contained'}
-                click={handleFirstSliderClickLeft}
-                less
-                color='#4F4F4F'
-                bgColor='#D1D1D1'
-              />
-              <SquareButton
-                variant={'contained'}
-                click={handleFirstSliderClickRight}
-                great
-                color='#4F4F4F'
-                bgColor='#D1D1D1'
-              />
-            </Box>
-          ) : (
-            <Box className={classes.mainBlockSubtitleBox}>
-              <Typography variant='body1'>
-                {' '}
-                {dataHouses[houseNumber].desc}
-              </Typography>
-            </Box>
-          )}
-        </Box>
-      </Box>
+      <FullScreenHouseSlider
+        title={dataHouses[houseNumber].code}
+        arr={dataHouses[houseNumber].ext_gallery}
+        desc={dataHouses[houseNumber].desc}
+        data={data}
+        pagination={true}
+        mouseIcon={true}
+      ></FullScreenHouseSlider>
 
       <Box components='section' className={classes.modelBlock}>
         <Box className={classes.modelDesc}>
@@ -1030,31 +963,11 @@ const HousePage = ({ house, data }) => {
         </Box>
       </Box>
 
-      <Box className={`${classes.BlockFullscreen} ${classes.blockGalary}`}>
-        <Box className={classes.secondImgBox}>
-          <HouseFotosSlider houseRef={secondSlider} listItem={int_gallery} />
-          <Box className={classes.buttons}>
-            {/* <Button color="secondary">hello</Button> */}
-            <SquareButton
-              variant={'contained'}
-              click={handleSeconSliderClickLeft}
-              less
-              color='#4F4F4F'
-              bgColor='#D1D1D1'
-            />
-            <SquareButton
-              variant={'contained'}
-              click={handleSeconSliderClickRight}
-              great
-              color='#4F4F4F'
-              bgColor='#D1D1D1'
-            />
-          </Box>
-          {/* {breakpoints.md? null : (
-          <Panel ref={categoryRef} arr={panelTabs} change={handleChangePanel} />
-          )} */}
-        </Box>
-      </Box>
+      <FullScreenHouseSlider
+        arr={dataHouses[houseNumber].int_gallery}
+        data={data}
+        mobileButtons={true}
+      ></FullScreenHouseSlider>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <Box className={classes.titleBox}>

@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
       'radial-gradient(rgba(232, 232, 232, 0.3) 100%, rgba(232, 232, 232, 0.12) 100%)',
     backdropFilter: 'blur(10px)',
     '@media (min-width:1921px)': {
-      padding: '3.5vw 0px 6.5vw',
+      padding: '3.5vw 0px 4.2vw',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -151,7 +151,13 @@ const useStyles = makeStyles((theme) => ({
     '& span': {
       fontWeight: '500',
     },
+    height:'56px',
+    '@media (min-width:1921px)': {
+
+      height:'2.91vw',
+    },
     [theme.breakpoints.down('md')]: {
+      height:'auto',
       justifyContent: 'space-between',
       '@media (orientation: landscape)': {
         marginBottom: '40px',

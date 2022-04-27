@@ -387,6 +387,9 @@ abbr {
   display: flex;
   justify-content: start;
 }
+.gatsby-image-wrapper{
+  width: 100%;
+}
 
 .swiper-pagination-bullet{
   background-color: #ADADAD;
