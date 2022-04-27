@@ -7,7 +7,6 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CalculateTable from '../components/CalculateTable';
-import { SwiperSlide } from 'swiper/react';
 import TitleWithLine from '../components/TitleWithLine';
 import '@google/model-viewer';
 import Model3d from './Model3d';
@@ -21,21 +20,7 @@ import getPublicPath from '../utils/getPublicPath';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 
 const useStyles = makeStyles((theme) => ({
-  BlockFullscreen: {
-    position: 'relative',
-    boxSizing: 'border-box',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#D1D1D1',
-    overflow: 'hidden',
-    [theme.breakpoints.down('md')]: {
-      '& $titleBox': {
-        marginTop: '100px',
-        right: '0',
-        position: 'relative',
-      },
-    },
-  },
+
   Block: {
     display: 'flex',
     gap: '20px',
@@ -58,192 +43,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  button: {
-    position: 'absolute',
-    top: '5%',
-    right: '10%',
-    background: 'radial-gradient(#D1D1D1 0%,rgba(209, 209, 209, 0.12) 100%)',
-
-    zIndex: '2',
-  },
-  mainBlock: {
-    height: '100vh',
-    minHeight: '500px',
-    [theme.breakpoints.down('md')]: {
-      height: '100%',
-    },
-  },
-  mainImgBox: {
-    height: '100%',
-    zIndex: '1',
-    position: 'relative',
-    [theme.breakpoints.down('md')]: {
-      '@media (orientation: landscape)': {
-        height: '65vh',
-      },
-    },
-  },
-  mainImg: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
-  mainImgSlider: {
-    width: '100%',
-    objectFit: 'cover',
-    '& img': {
-      aspectRatio: '4/3',
-      objectPosition: 'bottom',
-    },
-  },
-  mainImgItem: {
-    height: '100%',
-    position: 'relative',
-  },
-  secondImgBox: {
-    position: 'relative',
-    width: '100%',
-    height: '100vh',
-    [theme.breakpoints.down('md')]: {
-      height: 'auto',
-    },
-  },
-  mainDescWraper: {
-    width: '100%',
-    display: 'flex',
-    position: 'absolute',
-    left: '0',
-    paddingLeft: '10%',
-    bottom: '80px',
-    zIndex: '1',
-    '& $buttons': {
-      position: 'relative',
-      zIndex: '4',
-      bottom: '0',
-      left: '0',
-      marginLeft: 'auto',
-      marginRight: '10%',
-    },
-    '@media (min-width:1921px)': {
-      bottom: '4.2vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column',
-      paddingLeft: '10%',
-      paddingRight: '10%',
-      paddingTop: '20px',
-      position: 'relative',
-      bottom: '0',
-    },
-  },
-  mainDescBox: {
-    backgroundColor: 'rgba(209,209,209,0.9)',
-    width: '100%',
-    display: 'flex',
-    margin: 'auto',
-    gap: '60px',
-    minHeight: '232px',
-    padding: '40px 10%',
-    '@media (min-width:1921px)': {
-      padding: '2.1vw 10%',
-      gap: '4.2vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      position: 'relative',
-      bottom: null,
-      backgroundColor: 'rgba(209,209,209)',
-      flexDirection: 'column',
-      padding: '20px 10%',
-      gap: '20px',
-      justifyContent: 'center',
-      '@media (orientation: landscape)': {
-        padding: '1%',
-      },
-    },
-  },
-  mainBlockTitleBox: {
-    display: 'flex',
-    alignItems: 'center',
-    [theme.breakpoints.down('md')]: {
-      width: '100%',
-      '& h1': {
-        fontSize: '36px',
-      },
-    },
-  },
-  houseDescIconBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    width: '100px',
-    objectFit: 'contain',
-    height: '85px',
-  },
-  mainPlan: {
-    width: '40px',
-    height: '40px',
-    objectFit: 'contain',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  houseDescTitle: {
-    color: 'white',
-    width: '50%',
-  },
-  houseSpecPrice: {
-    fontSize: '20px',
-    color: 'white',
-  },
-  mainBlockSubtitleBox: {
-    display: 'flex',
-    // gap: '100px',
-    width: '100%',
-    justifyContent: 'space-between',
-    [theme.breakpoints.down('md')]: {
-      marginTop: '15px',
-      gap: '10px',
-      '@media (orientation: landscape)': {
-        justifyContent: 'space-around',
-      },
-    },
-  },
-  mainBlockTitle: {
-    textAlign: 'left',
-    color: '#E2E2E2',
-    marginLeft: '100px',
-    width: '28vw',
-    '@media (min-width:1921px)': {
-      marginLeft: '5.2vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      color: '#4F4F4F',
-      marginLeft: '0',
-      width: '100%',
-    },
-  },
-  mainBlockList: {
-    listStyle: 'none',
-    padding: '0',
-    gap: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    '@media (min-width:1921px)': {
-      gap: '0.05vw',
-    },
-  },
-  mainBlockListRight: {
-    // marginLeft: 'auto',
-    // marginRight: 'auto',
-  },
-  mainBlockItem: {
-    fontSize: '12px',
-    fontWeight: '400',
-    '& h6': {
-      textTransform: 'none',
-    },
-  },
   modelBlock: {
     display: 'flex',
     marginTop: '60px',
@@ -410,10 +209,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '1.5vw',
     },
   },
-  minus: {
-    // position: 'relative',
-    // top: '-8%',
-  },
+
   modelDescLineMinusCircle: {
     width: '30px',
     height: '30px',
@@ -451,35 +247,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '1.5vw',
     },
   },
-  plus: {
-    // position: "relative",
-    // bottom: "12%",
-  },
+
   disable: {
     color: '#BDBDBD',
   },
-  buttons: {
-    position: 'absolute',
-    display: 'flex',
-    gap: '12px',
-    left: '14%',
-    bottom: '20px',
-    zIndex: '2',
-    '@media (min-width:1921px)': {
-      bottom: '1.1vw',
-      gap: '0.6vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      width: '100%',
-      justifyContent: 'space-between',
-      left: '0%',
-      bottom: '50%',
-      transform: 'translate(0, 50%)',
-    },
-  },
-  blockGalary: {
-    height: 'auto',
-  },
+ 
   titleBox: {
     display: 'flex',
     gap: '20px',
@@ -704,12 +476,6 @@ const HousePage = ({ house, data }) => {
       );
     }
   };
-  const handleSeconSliderClickLeft = () => {
-    secondSlider.current.swiper.slidePrev();
-  };
-  const handleSeconSliderClickRight = () => {
-    secondSlider.current.swiper.slideNext();
-  };
 
   // const handleChangePanel = (value) => {
   //   if (value === '') {
@@ -751,45 +517,7 @@ const HousePage = ({ house, data }) => {
     }
   };
 
-  const ext_gallery = useMemo(() => {
-    return dataHouses[houseNumber].ext_gallery?.map((item, index) => {
-      return (
-        <SwiperSlide className={classes.mainImgItem} key={index}>
-          <GatsbyImage
-            className={classes.mainImgSlider}
-            image={getImg(data, item.image)}
-            alt='img'
-          ></GatsbyImage>
-        </SwiperSlide>
-      );
-    });
-  }, [
-    dataHouses,
-    houseNumber,
-    data,
-    classes.mainImgSlider,
-    classes.mainImgItem,
-  ]);
 
-  const int_gallery = useMemo(() => {
-    return dataHouses[houseNumber].int_gallery?.map((item, index) => {
-      return (
-        <SwiperSlide className={classes.mainImgItem} key={index}>
-          <GatsbyImage
-            className={classes.mainImgSlider}
-            image={getImg(data, item.image)}
-            alt='img'
-          ></GatsbyImage>
-        </SwiperSlide>
-      );
-    });
-  }, [
-    dataHouses,
-    houseNumber,
-    data,
-    classes.mainImgSlider,
-    classes.mainImgItem,
-  ]);
 
   let all = {};
   all.name = 'Все';
