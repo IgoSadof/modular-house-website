@@ -2,10 +2,8 @@ import React, { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-// import StaticPanel from "./StaticPanel";
 import Form from './Form';
 import MyCalendar from './MyCalendar';
-import HouseFotosSlider from './sliders/HouseFotosSlider';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import getHouses from '../utils/getHouses';
 import getImg from '../utils/getImg';
@@ -13,22 +11,12 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import { SwiperSlide } from 'swiper/react';
 import TitleWithLine from '../components/TitleWithLine';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
+import ContentBlock from './ContentBlock';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
-    boxSizing: 'border-box',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#D1D1D1',
-    overflow: 'hidden',
-    [theme.breakpoints.down('md')]: {
-      '& $titleBox': {
-        marginTop: '100px',
-        right: '0',
-        position: 'relative',
-      },
-    },
+    marginBottom: '120px',
   },
   imageSlider: {
     position: 'relative',
@@ -76,6 +64,13 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
     },
   },
+  titleBox: {
+    marginTop: '30px',
+  },
+  subtitleBox: {
+    width: '200px',
+    marginTop: '30px',
+  },
   calendar: {
     width: '260px',
     height: '240px',
@@ -89,6 +84,20 @@ const useStyles = makeStyles((theme) => ({
       order: '1',
     },
   },
+  calendarFormBox: {
+    marginTop: '90px',
+    display: 'flex',
+    gap: '150px',
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+      marginTop: '40px',
+      gap: '60px',
+      padding:'0 10%',
+
+    },
+  },
+
 }));
 
 const Watch = ({ data }) => {
@@ -99,7 +108,6 @@ const Watch = ({ data }) => {
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
-
       <FullScreenHouseSlider
         title={'ПРИГЛАШАЕМ'}
         arr={dataHouses[0].ext_gallery}
@@ -107,8 +115,49 @@ const Watch = ({ data }) => {
         mouseIcon={true}
         pagination={true}
       ></FullScreenHouseSlider>
+      <ContentBlock
+        title={'Tiny house'}
+        leftColumnContent={
+          <Box className={classes.textBlock}>
+            <Typography variant='body1'>
+              Tiny house - новый для Беларуси формат. Это крошечные домики,
+              площадью всего 12-16 м.кв, скомпанованные таким образом, что могут
+              вмещать в себя необходимый городским жителям уровень комфорта:
+            </Typography>
+          </Box>
+        }
+        // rightColumnContent={'some text'}
+      ></ContentBlock>
 
-      <Box components='section' className={classes.excursion}>
+      <ContentBlock
+        title={'Приглашаем'}
+        leftColumnContent={
+          <Box className={classes.textBlock}>
+            <Box className={classes.titleBox}>
+              <Typography variant='h4'>
+                <span>Живите сейчас, отдыхайте и<br/>получайте вдохновение!</span>
+              </Typography>
+            </Box>
+
+            <Box className={classes.subtitleBox}>
+              <Typography variant='body1'>
+                Выберите свободные удобные для заселения даты и отправьте заявку
+                нашим менеджерам
+              </Typography>
+            </Box>
+          </Box>
+        }
+        rightColumnContent={
+          <Box className={classes.calendarFormBox}>
+            <Box className={classes.calendar}>
+              <MyCalendar />
+            </Box>
+            <Form />
+          </Box>
+        }
+      ></ContentBlock>
+
+      {/* <Box components='section' className={classes.excursion}>
         {breakpoints.md ? (
           <TitleWithLine
             title={'Оставьте заявку и наш менеджер свяжеться с вами'}
@@ -133,7 +182,7 @@ const Watch = ({ data }) => {
         <Box className={classes.calendar}>
           <MyCalendar />
         </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
