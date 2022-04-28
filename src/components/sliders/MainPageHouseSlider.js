@@ -11,6 +11,7 @@ import getImg from "../../utils/getImg";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import numberWithSpace from '../../utils/numberWithSpace'
+import getPublicPath from '../../utils/getPublicPath';
 
 // import SwiperCore, { Mousewheel, FreeMode } from "swiper";
 
@@ -154,6 +155,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseDescIconBox: {
+    gap:'20px',
     display: "flex",
     marginTop: "auto",
     marginLeft: "40px",
@@ -171,9 +173,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainPlan: {
+    width:'100%',
     marginTop: "auto",
-    marginLeft: "20px",
-    marginBottom: "2px",
     objectFit: "contain",
     [theme.breakpoints.down("md")]: {
       objectFit: "contain",
@@ -191,13 +192,13 @@ const useStyles = makeStyles((theme) => ({
   },
   growStageIcon: {
     display: "flex",
-    width: "50px",
-    height: "20px",
-    marginBottom:'2px',
+    width: "60px",
+    height: "30px",
+    marginBottom:'6px',
     "@media (min-width:1921px)": {
       width: "3.5vw",
       height: "1.4vw",
-      marginBottom:'0.2vw',
+      marginBottom:'0.6vw',
     },
   },
   propertyValue:{
@@ -322,14 +323,15 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                     </Typography>
         
                     <Box className={classes.growStageIcon}>
-                      <GatsbyImage
+                      {/* <GatsbyImage
                         className={classes.mainPlan}
                         image={getImg(
                           data,
                           `${item.stages}`
                         )}
                         alt="Grow stage"
-                      ></GatsbyImage>
+                      ></GatsbyImage> */}
+                      <img className={classes.mainPlan} src={getPublicPath(data,item.stages)}/>
                     </Box>
                   </Box>
                 </Box>

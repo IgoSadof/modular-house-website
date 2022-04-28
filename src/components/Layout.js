@@ -131,7 +131,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         }
       }
       allFile(
-        filter: { extension: { regex: "/(jpg)|(png)|(glb)|(usdz)|(mp4)/" } }
+        filter: { extension: { regex: "/(jpg)|(png)|(glb)|(usdz)|(mp4)|(svg)/" } }
       ) {
         edges {
           node {

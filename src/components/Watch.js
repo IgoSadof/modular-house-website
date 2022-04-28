@@ -13,7 +13,6 @@ import TitleWithLine from '../components/TitleWithLine';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import houseplan from '../assets/images/icons/house_plan.svg';
-// import houseplanpng from '../assets/images/icons/housepng.png';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {

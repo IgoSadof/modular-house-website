@@ -12,6 +12,7 @@ import Title0 from '../assets/images/icons/title0.svg';
 import Title1 from '../assets/images/icons/title1.svg';
 import Title2 from '../assets/images/icons/title2.svg';
 import Title3 from '../assets/images/icons/title3.svg';
+import getPublicPath from '../utils/getPublicPath';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -326,6 +327,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getData(data.allMysqlMainPage.nodes), [data]);
+  console.log(dataSlides)
   const breakpoints = useBreakpoint();
   const baseLength = breakpoints.md ? 24 : 5.5;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -416,13 +418,13 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
 
                 <Box className={classes.icon}>
                   {activeNumb === 0 ? (
-                    <Title0 />
+                    <img src={getPublicPath(data,dataSlides.intro[0].icon)}/>
                   ) : activeNumb === 1 ? (
-                    <Title1 />
+                    <img src={getPublicPath(data,dataSlides.intro[1].icon)}/>
                   ) : activeNumb === 2 ? (
-                    <Title2 />
+                    <img src={getPublicPath(data,dataSlides.intro[2].icon)}/>
                   ) : activeNumb === 3 ? (
-                    <Title3 />
+                    <img src={getPublicPath(data,dataSlides.intro[3].icon)}/>
                   ) : null}
                 </Box>
 

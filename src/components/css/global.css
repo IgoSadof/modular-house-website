@@ -481,7 +481,7 @@ div[class*="MuiFormControl"] {
   }
   
 }
-.mt-15{margin-top: -15px;}
+.mt-15{margin-top: -15px; width:100%}
 .v360-viewport{background-color: transparent!important; flex-flow: column;align-items: flex-start!important;}
 /* .v360-viewer-container > .v360-viewport:before{
   content: '';

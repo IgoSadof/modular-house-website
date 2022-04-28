@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '4px',
   },
   formBox: {
+    width:'100%',
     // position: "relative",
     height: (param) => (param.buttonAbs ? '100%' : 'auto'),
     display: 'flex',

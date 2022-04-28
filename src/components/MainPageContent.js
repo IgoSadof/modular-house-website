@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid',
   },
   accordion: {
-    width: '60%',
+    width: '100%',
     display: 'flex',
     gap: '40px',
     marginLeft: 'auto',
