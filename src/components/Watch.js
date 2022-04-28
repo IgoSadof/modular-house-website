@@ -12,11 +12,16 @@ import { SwiperSlide } from 'swiper/react';
 import TitleWithLine from '../components/TitleWithLine';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
+import houseplan from '../assets/images/icons/house_plan.svg';
+// import houseplanpng from '../assets/images/icons/housepng.png';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
     marginBottom: '120px',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '40px',
+    },
   },
   imageSlider: {
     position: 'relative',
@@ -25,51 +30,78 @@ const useStyles = makeStyles((theme) => ({
       height: 'auto',
     },
   },
-  excursion: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    // height: "50vh",
-    padding: '6vh 10% 8vh 18%',
-
+  descBlock:{
+    width: '100%',
+    padding: '0 10%',
+    marginTop: '80px',
     [theme.breakpoints.down('md')]: {
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: '40px 10%',
-      height: 'auto',
-      gap: '30px',
-    },
-  },
-  excursionText: {
-    width: '90%',
-    marginRight: 'auto',
-  },
-
-  excursionSend: {
-    position: 'relative',
-    width: '60%',
-    display: 'flex',
-    gap: '30%',
-
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-      gap: '30px',
-      order: '2',
-    },
-  },
-  formBox: {
-    marginLeft: 'auto',
-    [theme.breakpoints.down('md')]: {
+      marginTop: '40px',
       marginLeft: '0',
     },
+    '@media (min-width:1921px)': {
+      marginTop: '4.2vw',
+      gap: '1.7vw',
+    },
   },
-  titleBox: {
+  descBlockContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    paddingLeft: '100px',
+    gap: '32px',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: '0',
+    },
+    '@media (min-width:1921px)': {
+      paddingLeft: '5.2vw',
+      gap: '1.7vw',
+    },
+  },
+  descTitle:{
+    fontSize:'38px',
+    fontWeight:'600',
+    '@media (min-width:1921px)': {
+      fontSize:'2vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      fontSize:'28px',
+    },
+
+  },
+
+  inviteTitleBox: {
     marginTop: '30px',
+    width:'70%',
+    [theme.breakpoints.down('md')]: {
+      width:'100%',
+    },
+
   },
   subtitleBox: {
     width: '200px',
     marginTop: '30px',
+    '@media (min-width:1921px)': {
+      width: '10.4vw',
+    },
+  },
+  iconsBlockConteiner:{
+    display: 'grid',
+    width:'100%',
+    gridTemplateColumns: 'repeat(3, 33%)',
+    rowGap: '28px',
+    columnGap: '20px',
+    [theme.breakpoints.down('md')]: {
+      gridTemplateColumns: 'repeat(2, 50%)',
+    },
+  },
+  iconBox:{
+    display: 'flex',
+    flexDirection:'column',
+    gap:'16px',
+  },
+  icon:{
+    width:'60px',
+    height:'60px',
   },
   calendar: {
     width: '260px',
@@ -93,11 +125,9 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
       marginTop: '40px',
       gap: '60px',
-      padding:'0 10%',
-
+      padding: '0 10%',
     },
   },
-
 }));
 
 const Watch = ({ data }) => {
@@ -115,6 +145,36 @@ const Watch = ({ data }) => {
         mouseIcon={true}
         pagination={true}
       ></FullScreenHouseSlider>
+
+      <Box className={classes.descBlock}>
+        <Box className={classes.descBlockContent}>
+          <Typography variant='h2' className={classes.descTitle}>
+            Эстетика скандинавского минимализма на Браславских озерах
+          </Typography>
+          <Typography variant='body1'>
+            Приглашаем гостей пожить/отдохнуть в наших арендных домиках формата
+            Tiny house. Отбросить все лишнее и сконцентрироваться на главном -
+            кроме знакомства с комфортом домиков разработаных нами по модульной
+            технологии, насладиться красотой озер, заповедных лесов и простым но
+            эстетическим образом жизни. Мы постарались собрать и передать нашим
+            гостям ценности Браславского края и минималистичный образ жизни,
+            который так любим. Наши домики расположены в национальном парке
+            «Браславские озера», у векового хвойного леса с дикими животными, на
+            берегу чистого озера, что очень дополняет эстетику нашей
+            архитектуры. Мы понимаем, что основное время гости будут проводить
+            вне дома, поэтому акцентировали внимание не на площади дома, а на
+            впечатлениях и эмоциях, которые получат наши гости. Наша локация
+            расположена всего в паре километров от города Браслав, тем не менее,
+            это тихое и уединенное место, без большого количества туристов, но с
+            удобной равноудаленностью от всех основных озер. Для разнообразия
+            Вашего отдыха, мы подготовили карту с персональными рекомендациями
+            уникальных для Беларуси мест в окрестностях Браславского района. А
+            чтобы Вы могли в полной мере ощутить красоту этих мест, для наших
+            гостей доступны велосипеды и лодки.
+          </Typography>
+        </Box>
+      </Box>
+
       <ContentBlock
         title={'Tiny house'}
         leftColumnContent={
@@ -126,16 +186,43 @@ const Watch = ({ data }) => {
             </Typography>
           </Box>
         }
-        // rightColumnContent={'some text'}
+        rightColumnContent={
+          <Box className={classes.iconsBlockConteiner}>
+            <Box className={classes.iconBox}>
+              <img  className={classes.icon} src={houseplan}/>
+              <Typography variant='body1'>Двуспальная кровать</Typography>
+            </Box>
+            <Box className={classes.iconBox}>
+              <img  className={classes.icon} src={houseplan}/>
+              <Typography variant='body1'>Двуспальная кровать</Typography>
+            </Box>
+            <Box className={classes.iconBox}>
+              <img  className={classes.icon} src={houseplan}/>
+              <Typography variant='body1'>Двуспальная кровать</Typography>
+            </Box>
+            <Box className={classes.iconBox}>
+              <img  className={classes.icon} src={houseplan}/>
+              <Typography variant='body1'>Двуспальная кровать</Typography>
+            </Box>
+            <Box className={classes.iconBox}>
+              <img  className={classes.icon} src={houseplan}/>
+              <Typography variant='body1'>Двуспальная кровать</Typography>
+            </Box>
+
+          </Box>
+        }
       ></ContentBlock>
 
       <ContentBlock
         title={'Приглашаем'}
         leftColumnContent={
           <Box className={classes.textBlock}>
-            <Box className={classes.titleBox}>
+            <Box className={classes.inviteTitleBox}>
               <Typography variant='h4'>
-                <span>Живите сейчас, отдыхайте и<br/>получайте вдохновение!</span>
+                <span>
+                  Живите сейчас, отдыхайте и
+                  получайте вдохновение!
+                </span>
               </Typography>
             </Box>
 
@@ -156,33 +243,6 @@ const Watch = ({ data }) => {
           </Box>
         }
       ></ContentBlock>
-
-      {/* <Box components='section' className={classes.excursion}>
-        {breakpoints.md ? (
-          <TitleWithLine
-            title={'Оставьте заявку и наш менеджер свяжеться с вами'}
-          ></TitleWithLine>
-        ) : null}
-        <Box className={classes.excursionSend}>
-          {breakpoints.md ? null : (
-            <Typography variant='h5'>На экскурсию</Typography>
-          )}
-          <Box className={classes.formBox}>
-            {!breakpoints.md ? (
-              <Form
-                title='Оставьте заявку и наш менеджер свяжеться с вами'
-                buttonAbs={true}
-              />
-            ) : (
-              <Form />
-            )}
-          </Box>
-        </Box>
-
-        <Box className={classes.calendar}>
-          <MyCalendar />
-        </Box>
-      </Box> */}
     </Box>
   );
 };

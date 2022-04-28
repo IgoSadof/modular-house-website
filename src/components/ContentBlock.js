@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 10%',
     '@media (min-width:1921px)': {
       gap: '4.2vw',
-      marginTop: '8.3vw',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -45,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       gap: '4.2vw',
       marginTop: '8.3vw',
-      marginLeft: '100px',
+      marginLeft: '5.2vw',
     },
     [theme.breakpoints.down('md')]: {
       width:'100%',
@@ -70,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
   leftColumnContent:{
     width:'100%',
     [theme.breakpoints.down('md')]: {
+      marginTop:'40px',
       padding:'0 10%'
     },
   },
@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
     gap: '40px',
     marginLeft: 'auto',
     [theme.breakpoints.down('md')]: {
+      padding:'0 10%',
       width: '100%',
       flexDirection: 'column-reverse',
     },
