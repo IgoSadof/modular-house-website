@@ -4,15 +4,10 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Form from './Form';
 import MyCalendar from './MyCalendar';
-import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import getHouses from '../utils/getHouses';
-import getImg from '../utils/getImg';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { SwiperSlide } from 'swiper/react';
-import TitleWithLine from '../components/TitleWithLine';
+import getData from '../utils/getData';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
-import houseplan from '../assets/images/icons/house_plan.svg';
+import getPublicPath from '../utils/getPublicPath';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -29,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
       height: 'auto',
     },
   },
-  descBlock:{
+  descBlock: {
     width: '100%',
     padding: '0 10%',
     marginTop: '80px',
@@ -56,25 +51,23 @@ const useStyles = makeStyles((theme) => ({
       gap: '1.7vw',
     },
   },
-  descTitle:{
-    fontSize:'38px',
-    fontWeight:'600',
+  descTitle: {
+    fontSize: '38px',
+    fontWeight: '600',
     '@media (min-width:1921px)': {
-      fontSize:'2vw',
+      fontSize: '2vw',
     },
     [theme.breakpoints.down('md')]: {
-      fontSize:'28px',
+      fontSize: '28px',
     },
-
   },
 
   inviteTitleBox: {
     marginTop: '30px',
-    width:'70%',
+    width: '70%',
     [theme.breakpoints.down('md')]: {
-      width:'100%',
+      width: '100%',
     },
-
   },
   subtitleBox: {
     width: '200px',
@@ -83,9 +76,9 @@ const useStyles = makeStyles((theme) => ({
       width: '10.4vw',
     },
   },
-  iconsBlockConteiner:{
+  iconsBlockConteiner: {
     display: 'grid',
-    width:'100%',
+    width: '100%',
     gridTemplateColumns: 'repeat(3, 33%)',
     rowGap: '28px',
     columnGap: '20px',
@@ -93,14 +86,14 @@ const useStyles = makeStyles((theme) => ({
       gridTemplateColumns: 'repeat(2, 50%)',
     },
   },
-  iconBox:{
+  iconBox: {
     display: 'flex',
-    flexDirection:'column',
-    gap:'16px',
+    flexDirection: 'column',
+    gap: '16px',
   },
-  icon:{
-    width:'60px',
-    height:'60px',
+  icon: {
+    width: '60px',
+    height: '60px',
   },
   calendar: {
     width: '260px',
@@ -130,16 +123,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Watch = ({ data }) => {
-  const breakpoints = useBreakpoint();
-  const param = {};
-  const classes = useStyles(param);
-  const dataHouses = useMemo(() => getHouses(data), [data]);
+  const classes = useStyles();
+  const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
+  const pageDataMainText =
+    pageData.arenda_text.split('\n\r\n')?.length > 0
+      ? pageData.arenda_text.split('\n\r\n')
+      : pageData.arenda_text;
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
       <FullScreenHouseSlider
-        title={'ПРИГЛАШАЕМ'}
-        arr={dataHouses[0].ext_gallery}
+        title={pageData.arenda_title}
+        arr={pageData.arenda_gallery}
         data={data}
         mouseIcon={true}
         pagination={true}
@@ -148,87 +143,56 @@ const Watch = ({ data }) => {
       <Box className={classes.descBlock}>
         <Box className={classes.descBlockContent}>
           <Typography variant='h2' className={classes.descTitle}>
-            Эстетика скандинавского минимализма на Браславских озерах
+            {pageData.arenda_subtitle}
           </Typography>
-          <Typography variant='body1'>
-            Приглашаем гостей пожить/отдохнуть в наших арендных домиках формата
-            Tiny house. Отбросить все лишнее и сконцентрироваться на главном -
-            кроме знакомства с комфортом домиков разработаных нами по модульной
-            технологии, насладиться красотой озер, заповедных лесов и простым но
-            эстетическим образом жизни. Мы постарались собрать и передать нашим
-            гостям ценности Браславского края и минималистичный образ жизни,
-            который так любим. Наши домики расположены в национальном парке
-            «Браславские озера», у векового хвойного леса с дикими животными, на
-            берегу чистого озера, что очень дополняет эстетику нашей
-            архитектуры. Мы понимаем, что основное время гости будут проводить
-            вне дома, поэтому акцентировали внимание не на площади дома, а на
-            впечатлениях и эмоциях, которые получат наши гости. Наша локация
-            расположена всего в паре километров от города Браслав, тем не менее,
-            это тихое и уединенное место, без большого количества туристов, но с
-            удобной равноудаленностью от всех основных озер. Для разнообразия
-            Вашего отдыха, мы подготовили карту с персональными рекомендациями
-            уникальных для Беларуси мест в окрестностях Браславского района. А
-            чтобы Вы могли в полной мере ощутить красоту этих мест, для наших
-            гостей доступны велосипеды и лодки.
-          </Typography>
+          {Array.isArray(pageDataMainText) ? (
+            pageDataMainText.map((article, index) => (
+              <Typography variant='body1' key={index}>
+                {article}
+              </Typography>
+            ))
+          ) : (
+            <Typography variant='body1'>{pageData.arenda_text}</Typography>
+          )}
         </Box>
       </Box>
 
       <ContentBlock
-        title={'Tiny house'}
+        title={pageData.arenda_icon_title}
         leftColumnContent={
           <Box className={classes.textBlock}>
-            <Typography variant='body1'>
-              Tiny house - новый для Беларуси формат. Это крошечные домики,
-              площадью всего 12-16 м.кв, скомпанованные таким образом, что могут
-              вмещать в себя необходимый городским жителям уровень комфорта:
-            </Typography>
+            <Typography variant='body1'>{pageData.arenda_icon_text}</Typography>
           </Box>
         }
         rightColumnContent={
           <Box className={classes.iconsBlockConteiner}>
-            <Box className={classes.iconBox}>
-              <img  className={classes.icon} src={houseplan}/>
-              <Typography variant='body1'>Двуспальная кровать</Typography>
-            </Box>
-            <Box className={classes.iconBox}>
-              <img  className={classes.icon} src={houseplan}/>
-              <Typography variant='body1'>Двуспальная кровать</Typography>
-            </Box>
-            <Box className={classes.iconBox}>
-              <img  className={classes.icon} src={houseplan}/>
-              <Typography variant='body1'>Двуспальная кровать</Typography>
-            </Box>
-            <Box className={classes.iconBox}>
-              <img  className={classes.icon} src={houseplan}/>
-              <Typography variant='body1'>Двуспальная кровать</Typography>
-            </Box>
-            <Box className={classes.iconBox}>
-              <img  className={classes.icon} src={houseplan}/>
-              <Typography variant='body1'>Двуспальная кровать</Typography>
-            </Box>
-
+            {pageData.arenda_icon_gallery.map((item, index) => (
+              <Box className={classes.iconBox} key={index}>
+                <img
+                  className={classes.icon}
+                  src={getPublicPath(data, item.image)}
+                  alt='icon'
+                />
+                <Typography variant='body1'>{item.name}</Typography>
+              </Box>
+            ))}
           </Box>
         }
       ></ContentBlock>
 
       <ContentBlock
-        title={'Приглашаем'}
+        title={pageData.arenda_invite_title}
         leftColumnContent={
           <Box className={classes.textBlock}>
             <Box className={classes.inviteTitleBox}>
               <Typography variant='h4'>
-                <span>
-                  Живите сейчас, отдыхайте и
-                  получайте вдохновение!
-                </span>
+                <span>{pageData.arenda_invite_subtitle}</span>
               </Typography>
             </Box>
 
             <Box className={classes.subtitleBox}>
               <Typography variant='body1'>
-                Выберите свободные удобные для заселения даты и отправьте заявку
-                нашим менеджерам
+                {pageData.arenda_invite_text}
               </Typography>
             </Box>
           </Box>

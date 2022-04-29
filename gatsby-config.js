@@ -83,6 +83,17 @@ module.exports = {
             idFieldName: 'id',
             name: 'Contacts',
           },
+          // arenda
+          {
+            statement: `SELECT modx_site_tmplvar_contentvalues.id as idname, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
+                     modx_site_content.alias FROM modx_site_tmplvar_contentvalues 
+                     JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid 
+                     JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id 
+                     JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id 
+                     WHERE modx_site_content.alias = "arenda"`,
+            idFieldName: 'idname',
+            name: 'Arenda',
+          },
         ],
       },
     },

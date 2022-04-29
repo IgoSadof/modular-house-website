@@ -178,6 +178,12 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
+      allMysqlArenda{
+        nodes {
+          name
+          value
+        }
+      }
     }
   `);
 
