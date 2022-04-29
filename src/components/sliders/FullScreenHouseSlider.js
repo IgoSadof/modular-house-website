@@ -5,8 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import SquareButton from '../buttons/SquareButton';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { SwiperSlide } from 'swiper/react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import getImg from '../../utils/getImg';
+import getPublicPath from '../../utils/getPublicPath';
 import HouseFotosSlider from '../sliders/HouseFotosSlider';
 import Mouse from '../svg/Mouse';
 
@@ -26,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     zIndex: '1',
     position: 'relative',
+    '& img':{
+      width:'100%',
+      objectFit: 'cover',
+    },
     [theme.breakpoints.down('md')]: {
       '@media (orientation: landscape)': {
         height: '65vh',
@@ -151,11 +154,11 @@ const FullScreenHouseSlider = ({
     return arr?.map((item, index) => {
       return (
         <SwiperSlide className={classes.mainImgItem} key={index}>
-          <GatsbyImage
+          <img
             className={classes.mainImgSlider}
-            image={getImg(data, item.image)}
+            src={getPublicPath(data, item.image)}
             alt='img'
-          ></GatsbyImage>
+          />
         </SwiperSlide>
       );
     });

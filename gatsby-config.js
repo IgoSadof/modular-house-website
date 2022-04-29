@@ -97,20 +97,7 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        // Defaults used for gatsbyImageData and StaticImage
-        defaults: {
-          quality: 70,
-          breakpoints: [750, 1366, 1920],
-        },
-        // Set to false to allow builds to continue on image errors
-        failOnError: true,
-      },
-    },
     `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: 'gatsby-plugin-breakpoints',
       options: {

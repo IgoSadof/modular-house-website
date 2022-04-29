@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import SwiperCore, { Autoplay, EffectFade } from "swiper";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 SwiperCore.use([Autoplay, EffectFade]);
 
@@ -39,11 +38,11 @@ const OneImageAutoSlider = ({ mobile, slides }) => {
         return (
           <SwiperSlide key={index}>
             <Box className={classes.imgBox}>
-              <GatsbyImage
+              <img
                 className={classes.houseListImg}
-                image={item}
+                src={item}
                 alt="img"
-              ></GatsbyImage>
+              />
             </Box>
           </SwiperSlide>
         );

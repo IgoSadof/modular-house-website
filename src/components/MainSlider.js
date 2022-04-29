@@ -8,11 +8,8 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import getData from '../utils/getData';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Title0 from '../assets/images/icons/title0.svg';
-import Title1 from '../assets/images/icons/title1.svg';
-import Title2 from '../assets/images/icons/title2.svg';
-import Title3 from '../assets/images/icons/title3.svg';
 import getPublicPath from '../utils/getPublicPath';
+import validateText from '../utils/validateText';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -307,6 +304,9 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     width: '75px',
+    '& img':{
+      width: '100%',
+    },
     // height:"42px",
     '@media (min-width:1921px)': {
       width: '5.2vw',
@@ -415,8 +415,8 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   className={classes.header}
                   variant='h1'
                   component='h1'
+                  dangerouslySetInnerHTML={{__html: `${validateText(dataSlides.intro[activeNumb].title)}`}}
                 >
-                  {dataSlides.intro[activeNumb].title.toUpperCase()}
                 </Typography>
 
                 <Box className={classes.icon}>

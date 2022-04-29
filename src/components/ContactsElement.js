@@ -4,8 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Logo from './svg/Logo';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import getImg from '../utils/getImg';
+import getPublicPath from '../utils/getPublicPath';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,6 +79,9 @@ const useStyles = makeStyles((theme) => ({
   },
   personalBox: {
     width: '225px',
+    '& img':{
+      width:'100%',
+    },
     '@media (min-width:1921px)': {
       width: '11.7vw',
     },
@@ -188,11 +190,11 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                     : null
                 }
               >
-                <GatsbyImage
+                <img
                   className={classes.mainPlan}
-                  image={getImg(data, dataContacts['contacts-ceo'][0].image)}
+                  src={getPublicPath(data, dataContacts['contacts-ceo'][0].image)}
                   alt='img'
-                ></GatsbyImage>
+                />
                 <Typography
                   className={classes.ContactsName}
                   variant='h4'
@@ -218,11 +220,11 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                     : null
                 }
               >
-                <GatsbyImage
+                <img
                   className={classes.mainPlan}
-                  image={getImg(data, dataContacts['contacts-ceo'][1].image)}
+                  src={getPublicPath(data, dataContacts['contacts-ceo'][1].image)}
                   alt='img'
-                ></GatsbyImage>
+                />
 
                 <Typography
                   className={classes.ContactsName}

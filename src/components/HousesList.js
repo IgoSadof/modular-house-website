@@ -9,9 +9,8 @@ import HouseMainImgSlider from './sliders/HouseMainImgSlider';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import getHouses from '../utils/getHouses';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import { SwiperSlide } from 'swiper/react';
-import getImg from '../utils/getImg';
+import getPublicPath from '../utils/getPublicPath';
 import numberWithSpace from '../utils/numberWithSpace';
 
 const style = {
@@ -198,8 +197,8 @@ const useStyles = makeStyles((theme) => ({
       margin: '3.1vw 0',
     },
     [theme.breakpoints.down('md')]: {
-      '&:first-of-type':{
-        marginTop:'50px',
+      '&:first-of-type': {
+        marginTop: '50px',
       },
       gap: '16px',
       padding: '0',
@@ -288,7 +287,7 @@ const useStyles = makeStyles((theme) => ({
     // textOverflow: 'ellipsis',
     // paddingBottom:'20px',
     '@media (min-width:1921px)': {
-      paddingBottom:'0',
+      paddingBottom: '0',
     },
     [theme.breakpoints.down('md')]: {
       display: 'none',
@@ -308,7 +307,7 @@ const useStyles = makeStyles((theme) => ({
   houseDescSpecOne: {
     ...style.flex,
     alignItems: 'end',
-    '& p': { textTransform: 'none',whiteSpace: 'nowrap', },
+    '& p': { textTransform: 'none', whiteSpace: 'nowrap' },
     '& p:last-child': {
       whiteSpace: 'nowrap',
     },
@@ -382,7 +381,7 @@ const HousesList = ({ data }) => {
 
   const handleItemclick = (index) => {
     setHouse((state) => index);
-    myRef.current.slickGoTo(index);
+    myRef.current.swiper.slideTo(index+1);
     setActiveSlide(index);
   };
 
@@ -419,12 +418,12 @@ const HousesList = ({ data }) => {
                   timeout={500}
                   classNames='houseMove'
                 >
-                  {item.icon? (
-                    <GatsbyImage
+                  {item.icon ? (
+                    <img
                       className={classes.houseListImg}
-                      image={getImg(data, `${item.icon}`)}
+                      src={getPublicPath(data, `${item.icon}`)}
                       alt='img'
-                    ></GatsbyImage>
+                    />
                   ) : null}
                 </CSSTransition>
                 <Typography
@@ -437,7 +436,7 @@ const HousesList = ({ data }) => {
             ) : null
           ) : (
             <>
-              {item.icon? (
+              {item.icon ? (
                 <CSSTransition
                   key={item.id}
                   in={activeSlide === index}
@@ -445,15 +444,15 @@ const HousesList = ({ data }) => {
                   timeout={500}
                   classNames='houseMoveMobile'
                 >
-                  <GatsbyImage
+                  <img
                     className={
                       activeSlide === index
                         ? `${classes.houseListImg} ${classes.houseListImgActive}`
                         : classes.houseListImg
                     }
-                    image={getImg(data, `${item.icon}`)}
+                    src={getPublicPath(data, `${item.icon}`)}
                     alt='img'
-                  ></GatsbyImage>
+                  />
                 </CSSTransition>
               ) : null}
               {activeSlide === index ? (
@@ -486,17 +485,15 @@ const HousesList = ({ data }) => {
   });
 
   const listMainImages = dataHouses.map((item, index) => {
-    return (
-      <li className={classes.mainImg} key={index}>
-        {item.baner ? (
-          <GatsbyImage
-            className={classes.mainImg}
-            image={getImg(data, `${item.baner}`)}
-            alt='img'
-          ></GatsbyImage>
-        ) : null}
-      </li>
-    );
+    return item.baner ? (
+      <SwiperSlide key={index}>
+        <img
+          className={classes.mainImg}
+          src={getPublicPath(data, `${item.baner}`)}
+          alt='img'
+        />
+      </SwiperSlide>
+    ) : null;
   });
 
   return (
@@ -507,12 +504,12 @@ const HousesList = ({ data }) => {
             return (
               <Box className={classes.houseDescContent} key={index}>
                 <Box className={classes.houseDescImgBox}>
-                  {item.icon? (
-                    <GatsbyImage
+                  {item.icon ? (
+                    <img
                       className={classes.houseDescImg}
-                      image={getImg(data, `${item.icon}`)}
+                      src={getPublicPath(data, `${item.icon}`)}
                       alt='img'
-                    ></GatsbyImage>
+                    />
                   ) : null}
                 </Box>
                 <Box className={classes.houseDescTitleBox}>
@@ -544,8 +541,7 @@ const HousesList = ({ data }) => {
                           component='p'
                           className={classes.houseSpecValue}
                         >
-                          {item.countArea(item.modules, 'square')}{' '}
-                          м&#178;
+                          {item.countArea(item.modules, 'square')} м&#178;
                         </Typography>
                       </Box>
                     </Box>
@@ -583,7 +579,7 @@ const HousesList = ({ data }) => {
                           component='p'
                           className={classes.houseSpecValue}
                         >
-                          {item.floors?? 1}
+                          {item.floors ?? 1}
                         </Typography>
                       </Box>
                     </Box>
@@ -613,9 +609,7 @@ const HousesList = ({ data }) => {
                     <Typography variant='h5' className={classes.houseSpecPrice}>
                       {item.countArea(item.modules, 'price')
                         ? `
-                    $${numberWithSpace(
-                      item.countArea(item.modules, 'price')
-                    )}`
+                    $${numberWithSpace(item.countArea(item.modules, 'price'))}`
                         : null}
                     </Typography>
                   </Box>
@@ -647,15 +641,12 @@ const HousesList = ({ data }) => {
                   timeout={2000}
                   classNames='fadeHouse'
                 >
-                  {dataHouses[house].icon? (
-                    <GatsbyImage
+                  {dataHouses[house].icon ? (
+                    <img
                       className={classes.houseDescImg}
-                      image={getImg(
-                        data,
-                        `${dataHouses[house].icon}`
-                      )}
+                      src={getPublicPath(data, `${dataHouses[house].icon}`)}
                       alt='img'
-                    ></GatsbyImage>
+                    />
                   ) : null}
                 </CSSTransition>
               </TransitionGroup>
@@ -737,7 +728,7 @@ const HousesList = ({ data }) => {
                         component='p'
                         className={classes.houseSpecValue}
                       >
-                        {dataHouses[house].floors?? 1}
+                        {dataHouses[house].floors ?? 1}
                       </Typography>
                     </Box>
                   </Box>

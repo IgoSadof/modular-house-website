@@ -140,13 +140,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
             relativeDirectory
             relativePath
             publicURL
-            childImageSharp {
-              gatsbyImageData(
-                width: 1600
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
           }
         }
       }
