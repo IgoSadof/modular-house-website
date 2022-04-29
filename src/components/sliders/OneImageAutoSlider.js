@@ -17,7 +17,11 @@ const useStyles = makeStyles((theme) => ({
     "&>div":{
       height: "100%",
     },
-
+    "& img":{
+      objectFit: "cover",
+      height: "100%",
+      width: "100%",
+    },
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },

@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 10%',
     backgroundColor: '#D1D1D1',
     marginTop: '100px',
+    //alignItems: 'center',
     '@media (min-width:1920px)': {
       gap: '1.4vw',
       marginTop: '6.9vw',
@@ -282,7 +283,7 @@ const useStyles = makeStyles((theme) => ({
   calculationPlan: {
     display: 'flex',
     flexDirection: 'column',
-    height: '95vh',
+    height: 'auto',
     width: '50%',
     [theme.breakpoints.down('md')]: {
       width: '100%',
@@ -301,7 +302,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    //height: '100%',
+    height: '100%',
     margin: 'auto',
     position: 'relative',
     overflow: 'hidden',
@@ -311,8 +312,12 @@ const useStyles = makeStyles((theme) => ({
   },
   calculationPlanImgInner: {
     position: 'absolute',
+    top: '0',
     width: '100%',
-    height: '85vh',
+    height: 'auto',
+    '&:first-child':{
+      position: 'relative',
+    },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       order: '1',
@@ -328,6 +333,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     marginLeft: 'auto',
     width: '32%',
+    alignSelf: 'center',
     '@media (min-width:1921px)': {
       gap: '2.1vw',
     },
@@ -340,9 +346,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
+    gap: '0',
     '@media (min-width:1921px)': {
-      gap: '1.1vw',
+      //gap: '1.1vw',
     },
   },
   calculationHeader: {
@@ -351,9 +357,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   calculationBody: {
+    marginLeft: '10px',
     paddingLeft: '20px',
     paddingRight: '30px',
-    borderLeft: '1px solid',
+    borderLeft: '1px solid #999',
   },
   calculationBodyItem: {
     display: 'flex',
@@ -378,7 +385,14 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     justifyContent: 'center',
     paddingBottom: '100px',
-
+    paddingRight: '0',
+    "& img":{
+      objectFit: 'cover',
+      height: '100%',
+      width: '100%',
+      filter: 'grayscale(100%) brightness(1.2)',
+      mixBlendMode: 'darken',
+    },
     [theme.breakpoints.down('md')]: {
       padding: '0',
       paddingBottom: '40px',

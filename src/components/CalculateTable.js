@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
   },
   tableRow: {
     height: '50px',
-    borderTop: '1px solid',
-    borderBottom: '1px solid',
+    borderTop: '1px solid #999',
+    borderBottom: '1px solid #999',
     '@media (min-width:1920px)': {
       height: '3.5vw',
     },

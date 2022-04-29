@@ -480,6 +480,9 @@ div[class*="MuiFormControl"] {
     height:1.5vw;
   }
   
+} 
+#default-poster {
+  background-color: transparent !important;
 }
 .mt-15{margin-top: -15px; width:100%}
 .v360-viewport{background-color: transparent!important; flex-flow: column;align-items: flex-start!important;}
