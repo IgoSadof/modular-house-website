@@ -4,7 +4,8 @@ import Slider from "react-slick";
 import Box from "@material-ui/core/Box";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { GatsbyImage } from "gatsby-plugin-image"
+import getPublicPath from '../../utils/getPublicPath';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     opacity:'0.5',
   },
 }));
-const ReviewsSlider = ({myRef,reviews,getImg,data}) => {
+const ReviewsSlider = ({myRef,reviews,getPublicPath,data}) => {
   const classes = useStyles();
   const settings = {
     infinite: true,
@@ -58,7 +59,7 @@ const ReviewsSlider = ({myRef,reviews,getImg,data}) => {
     swipe:false,
   };
   const listItems = reviews.map((item, index) => {
-    return <Slide key={index}  image={getImg(data,`${reviews[index].foto.substr(reviews[index].foto.search(/images\//g))}`)} />;
+    return <Slide key={index}  src={getPublicPath(data,`${reviews[index].foto.substr(reviews[index].foto.search(/images\//g))}`)} />;
   });
 
   return (
@@ -75,7 +76,7 @@ const Slide = ({ image,key }) => {
   return (
     <div className={classes.conteiner} key={key}>
       <Box className={classes.imgBox}>
-        <GatsbyImage className={classes.img} image={image} alt="img" />
+        <img className={classes.img} src={image} alt="img" />
       </Box>
     </div>
   );

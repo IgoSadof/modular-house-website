@@ -1,19 +1,13 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MainPageHouseSlider from './sliders/MainPageHouseSlider';
 import Accordions from './Accordion';
-import SquareButton from './buttons/SquareButton';
 import Form from '../components/Form';
-import ReviewsSlider from './sliders/ReviewsSlider';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import getData from '../utils/getData';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import OneImageAutoSlider from './sliders/OneImageAutoSlider';
-import Quote from './svg/Quote';
-import getImg from '../utils/getImg';
+import getPublicPath from '../utils/getPublicPath';
 import TitleWithLine from '../components/TitleWithLine';
 import ContactsBlock from './ContactsBlock';
 import { customFontsSize } from '../config/modularHouseTheme';
@@ -350,10 +344,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainPageContent = ({ data }) => {
-  // const detail = useMemo(() => getData(data, 4), [data]);
-  // const dataAnswers = useMemo(() => getData(data, 18), [data]);
-  // const reviews = useMemo(() => getData(data, 5), [data]);
-  // const answers = [...dataAnswers];
   const dataMainPage = useMemo(
     () => getData(data.allMysqlMainPage.nodes),
     [data]
@@ -386,7 +376,7 @@ const MainPageContent = ({ data }) => {
   );
   const slides = [];
   slidesPath.forEach((item) => {
-    slides.push(getImg(data, item));
+    slides.push(getPublicPath(data, item));
   });
 
   return (
@@ -497,16 +487,16 @@ const MainPageContent = ({ data }) => {
                   timeout={500}
                   classNames='fade'
                 >
-                  <GatsbyImage
+                  <img
                     className={classes.reviewVideo}
-                    image={getImg(
+                    src={getPublicPath(
                       data,
                       `${reviews[reviewVideo].foto.substr(
                         reviews[reviewVideo].foto.search(/images\//g)
                       )}`
                     )}
                     alt='img'
-                  ></GatsbyImage>
+                  />
                 </CSSTransition>
               </TransitionGroup>
 
@@ -587,16 +577,16 @@ const MainPageContent = ({ data }) => {
                   timeout={500}
                   classNames='fade'
                 >
-                  <GatsbyImage
+                  <img
                     className={classes.reviewVideo}
-                    image={getImg(
+                    src={getPublicPath(
                       data,
                       `${reviews[reviewVideo].foto.substr(
                         reviews[reviewVideo].foto.search(/images\//g)
                       )}`
                     )}
                     alt='img'
-                  ></GatsbyImage>
+                  />
                 </CSSTransition>
               </TransitionGroup>
 
@@ -605,7 +595,7 @@ const MainPageContent = ({ data }) => {
                   <ReviewsSlider
                     myRef={myRef}
                     reviews={reviews}
-                    getImg={getImg}
+                    getPublicPath={getImg}
                     data={data}
                   />
                 </Box>

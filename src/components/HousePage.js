@@ -543,11 +543,11 @@ const HousePage = ({ house, data }) => {
     return dataHouses[houseNumber].modules?.map((item) => {
       if (item.plan) {
         return (
-          <GatsbyImage
+          <img
             className={classes.calculationPlanImg}
-            image={getImg(data, `${item.plan}`)}
+            src={getPublicPath(data, `${item.plan}`)}
             alt='img'
-          ></GatsbyImage>
+          />
         );
       } else {
         return <ImageSVG />;
@@ -829,7 +829,7 @@ const HousePage = ({ house, data }) => {
           padding={true}
           img={
             !breakpoints.md
-              ? getImg(data, `${dataHouses[houseNumber]['form-block'][0].img}`)
+              ? getPublicPath(data, `${dataHouses[houseNumber]['form-block'][0].img}`)
               : null
           }
           formPosition='center'

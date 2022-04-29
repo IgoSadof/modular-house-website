@@ -5,10 +5,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import getHouses from "../../utils/getHouses";
-import BackgroundImage from "gatsby-background-image";
-import { convertToBgImage } from "gbimage-bridge";
-import getImg from "../../utils/getImg";
-import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import numberWithSpace from '../../utils/numberWithSpace'
 import getPublicPath from '../../utils/getPublicPath';
@@ -229,11 +225,11 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                 aria-label={`model ${item.URL}`}
               >
                 <Box className={classes.imgBox}>
-                  <BackgroundImage
+                  <img
                     className={classes.img}
-                    Tag="div"
-                    {...convertToBgImage(getImg(data, `${item.baner}`))}
-                  ></BackgroundImage>
+                    src ={getPublicPath(data, `${item.baner}`)}
+                    alt='house_img'
+                  />
                 </Box>
               </Link>
 
@@ -323,14 +319,14 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                     </Typography>
         
                     <Box className={classes.growStageIcon}>
-                      {/* <GatsbyImage
+                      {/* <img
                         className={classes.mainPlan}
-                        image={getImg(
+                        src={getPublicPath(
                           data,
                           `${item.stages}`
                         )}
                         alt="Grow stage"
-                      ></GatsbyImage> */}
+                      /> */}
                       <img className={classes.mainPlan} src={getPublicPath(data,item.stages)}/>
                     </Box>
                   </Box>
