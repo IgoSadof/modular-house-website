@@ -1,5 +1,4 @@
 import React from 'react';
-import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { Swiper } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/pagination";
@@ -10,8 +9,9 @@ const HouseMainImgSlider = ({listItem,myRef}) => {
     <Swiper
       ref={myRef}
       slidesPerView={'1'}
-      grabCursor={true}
+      grabCursor={false}
       loop={true}
+      allowTouchMove={false}
     >
       {listItem}
     </Swiper>
