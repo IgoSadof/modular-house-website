@@ -11,8 +11,6 @@ import TitleWithLine from '../components/TitleWithLine';
 import '@google/model-viewer';
 import Model3d from './Model3d';
 import getHouses from '../utils/getHouses';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import getImg from '../utils/getImg';
 import FadeAnimation from './animations/FadeAnimation';
 import ImageSVG from './svg/ImageSVG';
 import numberWithSpace from '../utils/numberWithSpace';
