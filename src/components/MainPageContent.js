@@ -652,7 +652,7 @@ const MainPageContent = ({ data }) => {
       {/* "ЭКСПОДОМ" */}
 
       {!breakpoints.md ? (
-        <Box component='section' className={classes.Block}>
+        <Box component='section' className={classes.Block} style={{ paddingRight: '0px' }}>
           <Box className={classes.titleBox}>
             <Box
               className={classes.BlockColumn}

@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '768px',
     top: '0',
     zIndex: '0',
+    '& video':{
+      mixBlendMode: 'darken',
+    },
     [theme.breakpoints.down('md')]: {
       minHeight: '0',
       '@media (min-width:600px)': {
