@@ -301,6 +301,9 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     width: '75px',
+    '& img':{
+      width: '100%',
+    },
     // height:"42px",
     '@media (min-width:1921px)': {
       width: '5.2vw',
