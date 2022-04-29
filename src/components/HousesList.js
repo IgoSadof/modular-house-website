@@ -605,7 +605,7 @@ const HousesList = ({ data }) => {
                     <Typography variant='h5' className={classes.houseSpecPrice}>
                       {item.countArea(item.modules, 'price')
                         ? `
-                    $${numberWithSpace(item.countArea(item.modules, 'price'))}`
+                    $${numberWithSpace(Math.round(+item.countArea(item.modules, 'price')))}`
                         : null}
                     </Typography>
                   </Box>
@@ -757,12 +757,12 @@ const HousesList = ({ data }) => {
                       'price'
                     )
                       ? `
-                    $${numberWithSpace(
-                      dataHouses[house].countArea(
+                    $${numberWithSpace(Math.round(
+                      +dataHouses[house].countArea(
                         dataHouses[house].modules,
                         'price'
                       )
-                    )}`
+                    ))}`
                       : null}
                   </Typography>
                 </Box>
