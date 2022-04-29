@@ -53,7 +53,7 @@ export default function getHouses(data) {
             (sum += +(item[field] ? item[field].replace('К', '000') : 0))
         );
       }
-      return sum;
+      return sum.toFixed(2);
     };
     houses[key]['takeFromBaseModule'] = (arr, field) => {
       if (arr?.length > 0) {

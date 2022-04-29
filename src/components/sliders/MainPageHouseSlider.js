@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
   properties: {
     display: "flex",
     flexDirection: "column",
-    width: "50%",
+    width: "55%",
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
