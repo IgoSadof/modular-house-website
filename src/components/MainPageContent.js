@@ -146,6 +146,7 @@ const MainPageContent = ({ data }) => {
     () => getData(data.allMysqlMainPage.nodes),
     [data]
   );
+  console.log(dataMainPage);
   const reviews = dataMainPage.reviews;
   const answers = dataMainPage.answers;
 
@@ -246,49 +247,54 @@ const MainPageContent = ({ data }) => {
 
       {/* "ЭКСПОДОМ" */}
 
-      {!breakpoints.md ? (
-        <Box component='section' className={classes.Block}>
-          <Box className={classes.titleBox}>
-            <Box
-              className={classes.BlockColumn}
-              style={{ justifyContent: 'start' }}
-            >
+      {dataMainPage['form-block-with-gallery'][0].published ? (
+        !breakpoints.md ? (
+          <Box component='section' className={classes.Block}>
+            <Box className={classes.titleBox}>
+              <Box
+                className={classes.BlockColumn}
+                style={{ justifyContent: 'start' }}
+              >
+                <TitleWithLine
+                  title={dataMainPage['form-block-with-gallery'][0].header}
+                />
+                <Box m='auto'>
+                  <Form
+                    title={dataMainPage['form-block-with-gallery'][0].title}
+                    subtitle={
+                      dataMainPage['form-block-with-gallery'][0].subtitle
+                    }
+                    buttonText='Записаться'
+                  />
+                </Box>
+              </Box>
+            </Box>
+            <OneImageAutoSlider slides={slides} />
+          </Box>
+        ) : (
+          <Box
+            component='section'
+            className={`${classes.Block} ${classes.BlockFullscreen}`}
+          >
+            <Box className={classes.titleBox}>
               <TitleWithLine
                 title={dataMainPage['form-block-with-gallery'][0].header}
+                longLine={true}
               />
-              <Box m='auto'>
+            </Box>
+            <Box className={classes.BlockColumn}>
+              <OneImageAutoSlider slides={slides} />
+              <Box className={classes.FormBox}>
                 <Form
                   title={dataMainPage['form-block-with-gallery'][0].title}
                   subtitle={dataMainPage['form-block-with-gallery'][0].subtitle}
-                  buttonText='Записаться'
                 />
               </Box>
             </Box>
           </Box>
-          <OneImageAutoSlider slides={slides} />
-        </Box>
-      ) : (
-        <Box
-          component='section'
-          className={`${classes.Block} ${classes.BlockFullscreen}`}
-        >
-          <Box className={classes.titleBox}>
-            <TitleWithLine
-              title={dataMainPage['form-block-with-gallery'][0].header}
-              longLine={true}
-            />
-          </Box>
-          <Box className={classes.BlockColumn}>
-            <OneImageAutoSlider slides={slides} />
-            <Box className={classes.FormBox}>
-              <Form
-                title={dataMainPage['form-block-with-gallery'][0].title}
-                subtitle={dataMainPage['form-block-with-gallery'][0].subtitle}
-              />
-            </Box>
-          </Box>
-        </Box>
-      )}
+        )
+      ) : null}
+
       <Box className={classes.ContactsBox}>
         <ContactsBlock data={data} title='Контакты' paddingBottom />
       </Box>
