@@ -50,10 +50,10 @@ export default function Advantages({ arr }) {
     <Box className={classes.conteiner}>
       {arr.map((item, index) => {
         return (
-          <Box className={classes.content} key={index}>
+          item.published?( <Box className={classes.content} key={index}>
             <Typography variant='h4'>{item.title}</Typography>
             <Typography variant='body1'>{item.text}</Typography>
-          </Box>
+          </Box>):null
         );
       })}
     </Box>
