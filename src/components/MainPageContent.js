@@ -146,9 +146,9 @@ const MainPageContent = ({ data }) => {
     () => getData(data.allMysqlMainPage.nodes),
     [data]
   );
-  console.log(dataMainPage);
-  const reviews = dataMainPage.reviews;
-  const answers = dataMainPage.answers;
+  const reviews = dataMainPage.reviews.filter(item=>item.published);
+  const answers = dataMainPage.answers.filter(item=>item.published);
+  console.log(dataMainPage.reviews);
 
   const breakpoints = useBreakpoint();
   const classes = useStyles();
@@ -233,7 +233,6 @@ const MainPageContent = ({ data }) => {
               </Box>
             </Box>
           )}
-
           <Box className={classes.accordion}>
             <Accordions
               answers={true}
