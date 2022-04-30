@@ -327,7 +327,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
   const dataSlides = useMemo(() => getData(data.allMysqlMainPage.nodes), [data]);
-  console.log(dataSlides)
   const breakpoints = useBreakpoint();
   const baseLength = breakpoints.md ? 24 : 5.5;
   const [lineLength, setLineLength] = useState(baseLength);

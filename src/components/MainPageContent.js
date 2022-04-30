@@ -177,66 +177,72 @@ const MainPageContent = ({ data }) => {
 
       {/* ПОДРОБНЕЕ */}
 
-      <Box
-        component='section'
-        className={
-          breakpoints.md
-            ? `${classes.Block} ${classes.BlockFullscreen}`
-            : classes.Block
-        }
-      >
-        <Box className={classes.titleBox}>
-          <Box className={classes.BlockColumn}>
-            <TitleWithLine title='ПРЕИМУЩЕСТВА' />
+      {dataMainPage.published_advantages ? (
+        <Box
+          component='section'
+          className={
+            breakpoints.md
+              ? `${classes.Block} ${classes.BlockFullscreen}`
+              : classes.Block
+          }
+        >
+          <Box className={classes.titleBox}>
+            <Box className={classes.BlockColumn}>
+              <TitleWithLine title='ПРЕИМУЩЕСТВА' />
+            </Box>
+          </Box>
+
+          <Box className={classes.accordion}>
+            <Advantages
+              arr={dataMainPage.advantages}
+              title='advantages'
+            ></Advantages>
+            {/* <Accordions arr={detail} title='advantages' /> */}
           </Box>
         </Box>
-
-        <Box className={classes.accordion}>
-          <Advantages
-            arr={dataMainPage.advantages}
-            title='advantages'
-          ></Advantages>
-          {/* <Accordions arr={detail} title='advantages' /> */}
-        </Box>
-      </Box>
+      ) : null}
 
       {/* ОТЗЫВЫ */}
 
-      {/* <ReviewsBlock data={data} reviews={reviews}></ReviewsBlock> */}
+      {dataMainPage.published_reviews ? (
+        <ReviewsBlock data={data} reviews={reviews}></ReviewsBlock>
+      ) : null}
 
       {/* ОТВЕТЫ */}
 
-      <Box
-        component='section'
-        className={
-          breakpoints.md
-            ? `${classes.Block} ${classes.BlockFullscreen}`
-            : classes.Block
-        }
-      >
-        {breakpoints.md ? (
-          <>
-            <Box className={classes.titleBox}>
-              <TitleWithLine title='ОТВЕТЫ НА ВОПРОСЫ' />
+      {dataMainPage.published_answers ? (
+        <Box
+          component='section'
+          className={
+            breakpoints.md
+              ? `${classes.Block} ${classes.BlockFullscreen}`
+              : classes.Block
+          }
+        >
+          {breakpoints.md ? (
+            <>
+              <Box className={classes.titleBox}>
+                <TitleWithLine title='ОТВЕТЫ НА ВОПРОСЫ' />
+              </Box>
+            </>
+          ) : (
+            <Box className={classes.titleBox} style={{ minHeight: '224px' }}>
+              <Box className={classes.BlockColumn}>
+                <TitleWithLine title='ОТВЕТЫ НА ВОПРОСЫ' />
+              </Box>
             </Box>
-          </>
-        ) : (
-          <Box className={classes.titleBox} style={{ minHeight: '224px' }}>
-            <Box className={classes.BlockColumn}>
-              <TitleWithLine title='ОТВЕТЫ НА ВОПРОСЫ' />
-            </Box>
-          </Box>
-        )}
+          )}
 
-        <Box className={classes.accordion}>
-          <Accordions
-            answers={true}
-            arr={answers}
-            title='answers'
-            uppercase={false}
-          />
+          <Box className={classes.accordion}>
+            <Accordions
+              answers={true}
+              arr={answers}
+              title='answers'
+              uppercase={false}
+            />
+          </Box>
         </Box>
-      </Box>
+      ) : null}
 
       {/* "ЭКСПОДОМ" */}
 
