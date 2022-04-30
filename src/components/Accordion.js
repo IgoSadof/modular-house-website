@@ -118,7 +118,7 @@ export default function Accordions({
             </AccordionSummary>
             <AccordionDetails className={(item['Описание комнаты']||item.question)?classes.details:classes.noDetails}>
               <Typography variant='body1' component='p'>
-                {houseRooms ? item['Описание комнаты'] : item.question}
+                {houseRooms ? item['Описание комнаты'] : item.answer}
               </Typography>
             </AccordionDetails>
           </Accordion>
