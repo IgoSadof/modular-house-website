@@ -38,7 +38,7 @@ const OneImageAutoSlider = ({ mobile, slides }) => {
           <SwiperSlide key={index}>
             <Box className={classes.imgBox}>
               <img
-                className={classes.houseListImg}
+                className={classes.img}
                 src={item}
                 alt="img"
               />

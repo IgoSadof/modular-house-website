@@ -20,6 +20,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination }) => {
       slidesPerView={'1'}
       grabCursor={true}
       loop={true}
+      allowTouchMove={true}
     >
       {listItem}
     </Swiper>
