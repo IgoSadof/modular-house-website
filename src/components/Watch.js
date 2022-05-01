@@ -114,10 +114,10 @@ const useStyles = makeStyles((theme) => ({
   calendarFormBox: {
     marginTop: '90px',
     display: 'flex',
-    gap: '150px',
+    gap: '100px',
     width:'100%',
     '@media (min-width:1921px)': {
-      gap: '8vw'
+      gap: '5.2vw'
     },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
