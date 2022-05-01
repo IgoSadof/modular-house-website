@@ -305,9 +305,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     position: 'relative',
     overflow: 'hidden',
-    '& img': {
-      objectFit: 'contain !important',
-    },
+    objectFit:'contain',
   },
   calculationPlanImgInner: {
     position: 'absolute',

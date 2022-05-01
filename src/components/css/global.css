@@ -399,7 +399,7 @@ abbr {
 }
 
 .swiper-pagination-bullet{
-  background-color: #ADADAD;
+  background-color: #ADADAD !important;
 }
 
 
