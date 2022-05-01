@@ -347,6 +347,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    '&>label>span:last-child':{
+      pointerEvents: 'none',
+      cursor: 'none',
+    },
+  },
+  calculationHeadertName:{
+    display:'flex',
+    alignItems:"center",
+    '& label':{
+      marginRight:'0',
+    }
   },
   calculationBody: {
     paddingLeft: '20px',
@@ -484,6 +495,7 @@ const HousePage = ({ house, data }) => {
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
 
   const handleClickCheckbox = (event, curentIndex) => {
+    console.log(event.target)
     setCurrentCheckbox(curentIndex);
     const chooseModules = dataHouses[houseNumber].modules?.filter(
       (item, index) => {
@@ -732,6 +744,7 @@ const HousePage = ({ house, data }) => {
               <Box className={classes.calculationItem} key={index}>
                 {index === 0 ? (
                   <Box className={classes.calculationHeader}>
+                    <Box className={classes.calculationHeadertName}>
                     <FormControlLabel
                       checked
                       disabled
@@ -739,15 +752,18 @@ const HousePage = ({ house, data }) => {
                         item.price ? +item.price.replace(/[KК]/, '000') : 0
                       }
                       control={<Checkbox color='primary' />}
-                      label={<Typography variant='h6'>{item.name}</Typography>}
+                      // label={<Typography variant='h6'>{item.name}</Typography>}
                       labelPlacement='end'
                     />
+                    <Typography variant='h6'>{item.name}</Typography>
+                    </Box>
                     <Typography variant='h6'>
                       ${numberWithSpace(item.price)}
                     </Typography>
                   </Box>
                 ) : (
                   <Box className={classes.calculationHeader}>
+                    <Box className={classes.calculationHeadertName}>
                     <FormControlLabel
                       checked={currentCheckbox >= index ? true : false}
                       onClick={(event) => handleClickCheckbox(event, index)}
@@ -755,10 +771,12 @@ const HousePage = ({ house, data }) => {
                         item.price ? +item.price.replace(/[KК]/, '000') : 0
                       }
                       control={<Checkbox color='primary' />}
-                      label={<Typography variant='h6'>{item.name}</Typography>}
+                      // label={<Typography variant='h6'>{item.name}</Typography>}
                       name={item.name}
                       labelPlacement='end'
                     />
+                    <Typography variant='h6'>{item.name}</Typography>
+                    </Box>
                     <Typography variant='h6'>
                       ${numberWithSpace(item.price)}
                     </Typography>
