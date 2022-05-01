@@ -187,7 +187,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ReviewsBlock = ({ data, reviews }) => {
+const ReviewsBlock = ({ data, reviews, title }) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
 
@@ -214,7 +214,7 @@ const ReviewsBlock = ({ data, reviews }) => {
         <>
           <Box className={classes.titleBox}>
             <Box className={classes.BlockColumn}>
-              <TitleWithLine title='РЕАЛЬНЫЕ ОТЗЫВЫ' />
+              <TitleWithLine title={title} />
 
               <TransitionGroup className={classes.commentBoxWrap}>
                 <CSSTransition
@@ -301,7 +301,7 @@ const ReviewsBlock = ({ data, reviews }) => {
       ) : (
         <>
           <Box className={classes.titleBox}>
-            <TitleWithLine title='РЕАЛЬНЫЕ ОТЗЫВЫ' />
+            <TitleWithLine title={title} />
           </Box>
           <Box className={classes.BlockColumn}>
             <TransitionGroup className={classes.commentBoxWrap}>

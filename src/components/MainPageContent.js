@@ -148,7 +148,7 @@ const MainPageContent = ({ data }) => {
   );
   const reviews = dataMainPage.reviews.filter(item=>item.published);
   const answers = dataMainPage.answers.filter(item=>item.published);
-  console.log(dataMainPage.reviews);
+  console.log(dataMainPage);
 
   const breakpoints = useBreakpoint();
   const classes = useStyles();
@@ -189,7 +189,7 @@ const MainPageContent = ({ data }) => {
         >
           <Box className={classes.titleBox}>
             <Box className={classes.BlockColumn}>
-              <TitleWithLine title='ПРЕИМУЩЕСТВА' />
+              <TitleWithLine title={dataMainPage.title_advantages} />
             </Box>
           </Box>
 
@@ -206,7 +206,7 @@ const MainPageContent = ({ data }) => {
       {/* ОТЗЫВЫ */}
 
       {dataMainPage.published_reviews ? (
-        <ReviewsBlock data={data} reviews={reviews}></ReviewsBlock>
+        <ReviewsBlock data={data} reviews={reviews} title={dataMainPage.title_reviews}></ReviewsBlock>
       ) : null}
 
       {/* ОТВЕТЫ */}
@@ -223,13 +223,13 @@ const MainPageContent = ({ data }) => {
           {breakpoints.md ? (
             <>
               <Box className={classes.titleBox}>
-                <TitleWithLine title='ОТВЕТЫ НА ВОПРОСЫ' />
+                <TitleWithLine title={dataMainPage.title_answers} />
               </Box>
             </>
           ) : (
             <Box className={classes.titleBox} style={{ minHeight: '224px' }}>
               <Box className={classes.BlockColumn}>
-                <TitleWithLine title='ОТВЕТЫ НА ВОПРОСЫ' />
+                <TitleWithLine title={dataMainPage.title_answers}  />
               </Box>
             </Box>
           )}

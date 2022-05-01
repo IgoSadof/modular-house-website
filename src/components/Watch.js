@@ -85,6 +85,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       gridTemplateColumns: 'repeat(2, 50%)',
     },
+    
+    
   },
   iconBox: {
     display: 'flex',
@@ -100,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
     height: '240px',
     marginTop: 'auto',
     marginBottom: 'auto',
+    flexShrink: '0',
     [theme.breakpoints.up('xl')]: {
       width: '18vw',
       height: 'fit-content',
@@ -112,6 +115,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '90px',
     display: 'flex',
     gap: '150px',
+    width:'100%',
+    '@media (min-width:1921px)': {
+      gap: '8vw'
+    },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
       alignItems: 'center',
