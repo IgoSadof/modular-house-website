@@ -153,7 +153,11 @@ const MainPageContent = ({ data }) => {
   const classes = useStyles();
   const houseSliderRef = useRef(null);
   let slidesPath = [...dataMainPage['form-block-with-gallery'][0].gallery].map(
-    (item) => item.image
+    (item) => {
+      if(item.published){
+        return item.image
+      }
+    }
   );
   const slides = [];
   slidesPath.forEach((item) => {

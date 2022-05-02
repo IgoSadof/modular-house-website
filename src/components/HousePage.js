@@ -330,12 +330,20 @@ const HousePage = ({ house, data }) => {
   };
 
   const modelViwerRef = useRef();
+  const modules = dataHouses[houseNumber].modules.filter(
+    (item) => item.published
+  );
+  const options = dataHouses[houseNumber].options.filter(
+    (item) => item.published
+  );
 
   return (
     <Box components='main'>
       <FullScreenHouseSlider
         title={dataHouses[houseNumber].code}
-        arr={dataHouses[houseNumber].ext_gallery}
+        arr={dataHouses[houseNumber].ext_gallery.filter(
+          (item) => item.published
+        )}
         desc={dataHouses[houseNumber].desc}
         data={data}
         pagination={true}
@@ -345,7 +353,7 @@ const HousePage = ({ house, data }) => {
       <Box components='section' className={classes.modelBlock}>
         <Box className={classes.modelDesc}>
           <Box className={classes.modelDescFirstColumn}>
-            {dataHouses[houseNumber].modules?.map((item, index) => {
+            {modules?.map((item, index) => {
               return (
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
@@ -425,7 +433,7 @@ const HousePage = ({ house, data }) => {
           </div>
 
           <Box className={classes.modelDescSecondColumn}>
-            {dataHouses[houseNumber].modules?.map((item, index) => {
+            {modules?.map((item, index) => {
               return (
                 <li className={classes.modelDescItemTitle} key={index}>
                   <Typography
@@ -445,24 +453,23 @@ const HousePage = ({ house, data }) => {
             srcPath={model3d}
             srcPathIos={getPublicPath(
               data,
-              dataHouses[houseNumber].modules?.[pillClick].model3d.replace(
-                'glb',
-                'usdz'
-              )
+              modules?.[pillClick].model3d.replace('glb', 'usdz')
             )}
           ></Model3d>
         </Box>
       </Box>
 
       <FullScreenHouseSlider
-        arr={dataHouses[houseNumber].int_gallery}
+        arr={dataHouses[houseNumber].int_gallery.filter(
+          (item) => item.published
+        )}
         data={data}
         mobileButtons={true}
       ></FullScreenHouseSlider>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <CalculationBlock
-          modules={dataHouses[houseNumber].modules}
+          modules={modules}
           getUserModules={getUserModules}
           data={data}
         ></CalculationBlock>
@@ -472,7 +479,7 @@ const HousePage = ({ house, data }) => {
         <OptionsTable
           getOptions={getUserOptions}
           houseNumber={houseNumber}
-          houseOptions={dataHouses[houseNumber].options}
+          houseOptions={options}
           options={userOptions}
         />
       </Box>

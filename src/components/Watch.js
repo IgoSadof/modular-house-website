@@ -137,11 +137,15 @@ const Watch = ({ data }) => {
       ? pageData.arenda_text.split('\n\r\n')
       : pageData.arenda_text;
 
+  const icons = pageData.arenda_icon_gallery.filter(item=>item.published)
+
   return (
     <Box components='main' className={classes.BlockFullscreen}>
       <FullScreenHouseSlider
         title={pageData.arenda_title}
-        arr={pageData.arenda_gallery}
+        arr={pageData.arenda_gallery.filter(
+          (item) => item.published
+        )}
         data={data}
         mouseIcon={true}
         pagination={true}
@@ -173,7 +177,7 @@ const Watch = ({ data }) => {
         }
         rightColumnContent={
           <Box className={classes.iconsBlockConteiner}>
-            {pageData.arenda_icon_gallery.map((item, index) => (
+            {icons.map((item, index) => (
               <Box className={classes.iconBox} key={index}>
                 <img
                   className={classes.icon}
