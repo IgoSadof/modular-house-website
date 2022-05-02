@@ -148,7 +148,6 @@ const MainPageContent = ({ data }) => {
   );
   const reviews = dataMainPage.reviews.filter(item=>item.published);
   const answers = dataMainPage.answers.filter(item=>item.published);
-  console.log(dataMainPage);
 
   const breakpoints = useBreakpoint();
   const classes = useStyles();

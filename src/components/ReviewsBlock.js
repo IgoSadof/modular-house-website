@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -378,12 +378,6 @@ const ReviewsBlock = ({ data, reviews, title }) => {
                 />
               </CSSTransition>
             </TransitionGroup>
-
-            {/* <Box className={classes.secondBlock}>
-              <Box className={classes.imagesBoxes}>
-                <ReviewsSlider myRef={myRef} reviews={reviews} data={data} />
-              </Box>
-            </Box> */}
           </Box>
         </>
       )}

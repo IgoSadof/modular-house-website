@@ -189,7 +189,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
         return <ImageSVG />;
       }
     });
-  }, [classes.calculationPlanImg]);
+  }, [classes.calculationPlanImg, data, modules]);
 
   return (
     <>
