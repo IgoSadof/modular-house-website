@@ -129,15 +129,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
+const OptionsTable = ({ houseOptions, houseNumber, options }) => {
   const breakpoints = useBreakpoint();
-  const options = {};
   houseOptions?.forEach((item) => {
     options[item.name] = {
       name: item.option_poor_name,
       price: item.option_poor_price,
     };
   });
+  
 
   const [currentOption, setCheckboxesCheck] = useState(options);
   const [price, setPrice] = useState(
@@ -358,4 +358,4 @@ const CalculateTable = ({ houseOptions, houseNumber, getOptions }) => {
   );
 };
 
-export default CalculateTable;
+export default OptionsTable;

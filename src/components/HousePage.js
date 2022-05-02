@@ -4,21 +4,15 @@ import FormBlock from '../components/FormBlock';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import CalculateTable from '../components/CalculateTable';
-import TitleWithLine from '../components/TitleWithLine';
+import OptionsTable from '../components/OptionsTable';
 import '@google/model-viewer';
 import Model3d from './Model3d';
 import getHouses from '../utils/getHouses';
-import FadeAnimation from './animations/FadeAnimation';
-import ImageSVG from './svg/ImageSVG';
-import numberWithSpace from '../utils/numberWithSpace';
 import getPublicPath from '../utils/getPublicPath';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
+import CalculationBlock from './CalculationBlock';
 
 const useStyles = makeStyles((theme) => ({
-
   Block: {
     display: 'flex',
     gap: '20px',
@@ -81,10 +75,6 @@ const useStyles = makeStyles((theme) => ({
       minheight: (param) =>
         `${param.heightOneLine * param.modulesCounts + 4}vh`,
     },
-  },
-  accordionBox: {
-    marginTop: 'auto',
-    marginBottom: 'auto',
   },
   modelDescFirstColumn: {
     display: 'flex',
@@ -149,23 +139,6 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
       height: '50vh',
     },
-  },
-  conteinerVRmodel: {
-    visibility: 'hidden',
-  },
-  modelButton: {
-    cursor: 'pointer',
-    position: 'absolute',
-    top: '0',
-    right: '10%',
-    width: '40px',
-    height: '40px',
-  },
-  conteiner360: {
-    position: 'absolute',
-    top: '10%',
-    left: '10%',
-    zIndex: '10',
   },
   modelDescLine: {
     display: (param) => (param.modulesCounts > 1 ? 'block' : 'none'),
@@ -249,7 +222,7 @@ const useStyles = makeStyles((theme) => ({
   disable: {
     color: '#BDBDBD',
   },
- 
+
   titleBox: {
     display: 'flex',
     gap: '20px',
@@ -262,124 +235,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 'auto',
     },
   },
-  line: {
-    display: 'inline-block',
-    width: '80px',
-    height: '1px',
-    backgroundColor: 'black',
-    marginTop: '22px',
-    '@media (min-width:1921px)': {
-      width: '5.2vw',
-      marginTop: '1.5vw',
-    },
-  },
   BlockCalculation: {
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       minHeight: '100%',
-    },
-  },
-  calculationPlan: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '95vh',
-    width: '50%',
-    [theme.breakpoints.down('md')]: {
-      width: '100%',
-      height: '50vh',
-      '@media (orientation: landscape)': {
-        height: '70vw',
-      },
-    },
-  },
-  calculationPlanConteiner: {
-    width: '100%',
-    position: 'relative',
-  },
-  calculationPlanImg: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    margin: 'auto',
-    position: 'relative',
-    overflow: 'hidden',
-    objectFit:'contain',
-  },
-  calculationPlanImgInner: {
-    position: 'absolute',
-    width: '100%',
-    height: '85vh',
-    [theme.breakpoints.down('md')]: {
-      marginLeft: '0',
-      order: '1',
-      height: '50vh',
-      '@media (orientation: landscape)': {
-        height: '70vw',
-      },
-    },
-  },
-  calculation: {
-    display: 'flex',
-    gap: '40px',
-    flexDirection: 'column',
-    marginLeft: 'auto',
-    width: '32%',
-    '@media (min-width:1921px)': {
-      gap: '2.1vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      marginLeft: '0',
-      width: '100%',
-    },
-  },
-  calculationItem: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-    '@media (min-width:1921px)': {
-      gap: '1.1vw',
-    },
-  },
-  calculationHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    '&>label>span:last-child':{
-      pointerEvents: 'none',
-      cursor: 'none',
-    },
-  },
-  calculationHeadertName:{
-    display:'flex',
-    alignItems:"center",
-    '& label':{
-      marginRight:'0',
-    }
-  },
-  calculationBody: {
-    paddingLeft: '20px',
-    paddingRight: '30px',
-    borderLeft: '1px solid',
-  },
-  calculationBodyItem: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  calculationResult: {
-    display: 'flex',
-    alignItems: 'center',
-    '& p': {
-      marginLeft: 'auto',
-      marginRight: '48px',
-    },
-    [theme.breakpoints.down('md')]: {
-      '& span': {
-        fontSize: '30px',
-        lineHeight: '1.4',
-      },
     },
   },
   BlockForm: {
@@ -400,12 +259,6 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
-  text: {
-    marginBottom: '40px',
-    [theme.breakpoints.down('md')]: {
-      marginBottom: '20px',
-    },
-  },
 }));
 
 const HousePage = ({ house, data }) => {
@@ -413,29 +266,12 @@ const HousePage = ({ house, data }) => {
 
   const breakpoints = useBreakpoint();
   const [houseNumber] = useState(house);
-  // const baseFolder = `houses/${dataHouses[houseNumber].code?.replace(' ', '')}/модули`;
-
-  // const [relativeDirectory, setRelativeDirectory] = React.useState(baseFolder);
-  const baseModulePrice = dataHouses[houseNumber].modules?.[0].price
-    ? +dataHouses[houseNumber].modules[0].price.replace(/[KК]/, '000')
-    : 0;
   const baseModule = dataHouses[houseNumber].modules?.[0].name
     ? dataHouses[houseNumber].modules[0].name
     : 'no-modules';
-  const [modulePrice, setModulePrice] = useState(baseModulePrice);
+
   const [userModuleList, setUserModuleList] = useState([baseModule]);
   const [userOptions, setUserOptions] = useState({});
-
-  // const baseImg = dataHouses[houseNumber].modules?.[0]?.rooms[0]
-  //   ? dataHouses[houseNumber].modules[0].rooms[0]['Главное изображение']
-  //   : `${dataHouses[houseNumber].baner}`;
-
-  // const [roomsImg, setRoomsImg] = useState(baseImg);
-  // const [roomsImgIndex, setRoomsImgIndex] = useState(0);
-  // const handleRoomsImgChange = (img, index) => {
-  //   setRoomsImg(img);
-  //   setRoomsImgIndex(index);
-  // };
   const modulesCounts = dataHouses[houseNumber].modules?.length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 10;
@@ -455,9 +291,6 @@ const HousePage = ({ house, data }) => {
   const [model3d, setModel3d] = useState(
     getPublicPath(data, dataHouses[houseNumber].modules?.[pillClick].model3d)
   );
-  const firstSlider = useRef(null);
-  const secondSlider = useRef(null);
-  // const categoryRef = React.createcRef();
 
   const handlePlusClick = (e) => {
     if (pilldistance + pillStep <= 120 && pillClick + 1 < modulesCounts) {
@@ -483,62 +316,11 @@ const HousePage = ({ house, data }) => {
       );
     }
   };
-
-  // const handleChangePanel = (value) => {
-  //   if (value === '') {
-  //     setRelativeDirectory(baseFolder);
-  //   } else {
-  //     setRelativeDirectory(baseFolder + '/' + value);
-  //   }
-  // };
-
-  const [currentCheckbox, setCurrentCheckbox] = useState(0);
-
-  const handleClickCheckbox = (event, curentIndex) => {
-    console.log(event.target)
-    setCurrentCheckbox(curentIndex);
-    const chooseModules = dataHouses[houseNumber].modules?.filter(
-      (item, index) => {
-        if (event.target.checked) {
-          if (index <= curentIndex) {
-            return item;
-          }
-        } else {
-          if (index < curentIndex) {
-            return item;
-          }
-        }
-      }
-    );
-    let price = 0;
-    let mudules = [];
-    chooseModules?.forEach((item) => {
-      price += item.price ? +item.price.replace(/[KК]/, '000') : 0;
-      mudules.push(item.name);
-    });
-
-    setModulePrice(price);
-    setUserModuleList(mudules);
-
-    if (currentCheckbox === curentIndex) {
-      setCurrentCheckbox(curentIndex - 1);
-    }
-  };
-
-
-
-  let all = {};
-  all.name = 'Все';
-  all.name = '';
-
-  // const modulesWithImages = dataHouses[houseNumber]?.modules?.filter(
-  //   (item, index) =>
-  //     getImagesFromDirectory(data, `${baseFolder}/модуль${index + 1}`).length
-  // );
-
-  // const panelTabs = [all, ...modulesWithImages];
   const getUserOptions = (options) => {
     setUserOptions(options);
+  };
+  const getUserModules = (modules) => {
+    setUserModuleList(modules);
   };
 
   const extraFormFields = {
@@ -546,27 +328,6 @@ const HousePage = ({ house, data }) => {
     userModuleList: userModuleList,
     options: userOptions,
   };
-
-  const plans = useMemo(() => {
-    return dataHouses[houseNumber].modules?.map((item) => {
-      if (item.plan) {
-        return (
-          <img
-            className={classes.calculationPlanImg}
-            src={getPublicPath(data, `${item.plan}`)}
-            alt='img'
-          />
-        );
-      } else {
-        return <ImageSVG />;
-      }
-    });
-  }, [dataHouses, houseNumber, data, classes.calculationPlanImg]);
-
-  // const preventScroll = (e) => {
-  //   e.stopPropagation();
-  //   console.log(e.target);
-  // };
 
   const modelViwerRef = useRef();
 
@@ -603,12 +364,6 @@ const HousePage = ({ house, data }) => {
                   >
                     {item.name}
                   </Typography>
-                  {/* <Typography
-                    className={pillClick >= index ? null : classes.disable}
-                    variant="h6"
-                  >
-                    {item.area} м2
-                  </Typography> */}
                 </li>
               );
             })}
@@ -706,129 +461,19 @@ const HousePage = ({ house, data }) => {
       ></FullScreenHouseSlider>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
-        <Box className={classes.titleBox}>
-          {breakpoints.md ? (
-            <TitleWithLine title={'Расчет стоимости'} />
-          ) : (
-            <span className={classes.line}></span>
-          )}
-        </Box>
-        <Box className={classes.calculationPlan}>
-          {breakpoints.md ? null : (
-            <Typography className={classes.text} variant='h2'>
-              Расчет стоимости
-            </Typography>
-          )}
-          <Box className={classes.calculationPlanConteiner}>
-            {plans?.map((plan, index) => {
-              if (index <= currentCheckbox) {
-                return (
-                  <React.Fragment key={index}>
-                    <FadeAnimation
-                      inProp={index <= currentCheckbox}
-                      index={index}
-                      className={classes.calculationPlanImgInner}
-                      timeout={1000}
-                    >
-                      {plan}
-                    </FadeAnimation>
-                  </React.Fragment>
-                );
-              }
-            })}
-          </Box>
-        </Box>
-        <Box className={classes.calculation}>
-          {dataHouses[houseNumber].modules?.map((item, index) => {
-            return (
-              <Box className={classes.calculationItem} key={index}>
-                {index === 0 ? (
-                  <Box className={classes.calculationHeader}>
-                    <Box className={classes.calculationHeadertName}>
-                    <FormControlLabel
-                      checked
-                      disabled
-                      value={
-                        item.price ? +item.price.replace(/[KК]/, '000') : 0
-                      }
-                      control={<Checkbox color='primary' />}
-                      // label={<Typography variant='h6'>{item.name}</Typography>}
-                      labelPlacement='end'
-                    />
-                    <Typography variant='h6'>{item.name}</Typography>
-                    </Box>
-                    <Typography variant='h6'>
-                      ${numberWithSpace(item.price)}
-                    </Typography>
-                  </Box>
-                ) : (
-                  <Box className={classes.calculationHeader}>
-                    <Box className={classes.calculationHeadertName}>
-                    <FormControlLabel
-                      checked={currentCheckbox >= index ? true : false}
-                      onClick={(event) => handleClickCheckbox(event, index)}
-                      value={
-                        item.price ? +item.price.replace(/[KК]/, '000') : 0
-                      }
-                      control={<Checkbox color='primary' />}
-                      // label={<Typography variant='h6'>{item.name}</Typography>}
-                      name={item.name}
-                      labelPlacement='end'
-                    />
-                    <Typography variant='h6'>{item.name}</Typography>
-                    </Box>
-                    <Typography variant='h6'>
-                      ${numberWithSpace(item.price)}
-                    </Typography>
-                  </Box>
-                )}
-                {item.rooms.length > 0 ? (
-                  <Box className={classes.calculationBody}>
-                    {item.rooms.map((item, index) => {
-                      return (
-                        <li className={classes.calculationBodyItem} key={index}>
-                          <Typography
-                            variant='body1'
-                            className={classes.calculationBodyText}
-                          >
-                            {item.name}
-                          </Typography>
-                          <Typography
-                            variant='body1'
-                            className={classes.calculationBodyText}
-                          >
-                            {item.square ? `${item.square}` : null} м&#178;
-                          </Typography>
-                        </li>
-                      );
-                    })}
-                  </Box>
-                ) : null}
-              </Box>
-            );
-          })}
-
-          <Box
-            className={classes.calculationResult}
-            style={
-              breakpoints.xxl ? { marginLeft: '1.6vw' } : { marginLeft: '32px' }
-            }
-          >
-            <Typography variant='h6' component='p'>
-              ЦЕНА
-            </Typography>
-            <Typography variant='caption'>
-              ${numberWithSpace(modulePrice)}
-            </Typography>
-          </Box>
-        </Box>
+        <CalculationBlock
+          modules={dataHouses[houseNumber].modules}
+          getUserModules={getUserModules}
+          data={data}
+        ></CalculationBlock>
       </Box>
 
       <Box className={`${classes.Block} ${classes.BlockTable}`}>
-        <CalculateTable
+        <OptionsTable
           getOptions={getUserOptions}
           houseNumber={houseNumber}
           houseOptions={dataHouses[houseNumber].options}
+          options={userOptions}
         />
       </Box>
 
@@ -843,7 +488,10 @@ const HousePage = ({ house, data }) => {
           padding={true}
           img={
             !breakpoints.md
-              ? getPublicPath(data, `${dataHouses[houseNumber]['form-block'][0].img}`)
+              ? getPublicPath(
+                  data,
+                  `${dataHouses[houseNumber]['form-block'][0].img}`
+                )
               : null
           }
           formPosition='center'
