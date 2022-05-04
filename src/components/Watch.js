@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo,useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -96,11 +96,15 @@ const useStyles = makeStyles((theme) => ({
     height: '60px',
   },
   calendar: {
-    width: '260px',
-    height: '240px',
+    width: '18vw',
+    minWidth: '240px',
     marginTop: 'auto',
     marginBottom: 'auto',
+    flexShrink: '0',
     [theme.breakpoints.up('xl')]: {
+      '& button':{
+        fontSize:'1.02vw',
+      },
       width: '18vw',
       height: 'fit-content',
     },
@@ -123,12 +127,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Watch = ({ data }) => {
+  const [selectDate, setSelectDate] = useState(null);
   const classes = useStyles();
   const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
   const pageDataMainText =
     pageData.arenda_text.split('\n\r\n')?.length > 0
       ? pageData.arenda_text.split('\n\r\n')
       : pageData.arenda_text;
+
+      console.log(JSON.stringify(selectDate))
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -200,9 +207,9 @@ const Watch = ({ data }) => {
         rightColumnContent={
           <Box className={classes.calendarFormBox}>
             <Box className={classes.calendar}>
-              <MyCalendar />
+              <MyCalendar selectDate={selectDate} setSelectDate={(date)=>{setSelectDate(date)}} />
             </Box>
-            <Form />
+            <Form endpoint={'https://formspree.io/f/mzbokwwy'} extraFormFields={{date:selectDate}} sendDate={selectDate}/>
           </Box>
         }
       ></ContentBlock>

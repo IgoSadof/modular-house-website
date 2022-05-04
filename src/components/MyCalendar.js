@@ -1,40 +1,49 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-import unavailableDates from "../constant/unavailableDates";
+// import unavailableDates from "../constant/unavailableDates";
 
-const MyCalendar = () => {
+const MyCalendar = ({ setSelectDate, selectDate }) => {
   const today = new Date();
   const [value, onChange] = useState(
     new Date(today.getFullYear(), today.getMonth(), today.getDate())
   );
-  const [selectDate, setSelectDate] = useState(null);
+
+  const [unavailableDates, setUnavailableDates] = useState(null);
   const handleClick = (value, e) => {
-    // setSelectDate(value);
+    if (e.target.tagName.toLowerCase() === 'button') {
+      setSelectDate({ "date": e.target.children[0].getAttribute("aria-label") })
+    } else {
+      setSelectDate({ "date": e.target.getAttribute("aria-label") })
+    }
   };
   useEffect(() => {
-    let days = document.getElementsByClassName("react-calendar__tile");
-    let daysArr = Array.from(days);
-    daysArr.forEach((item) => {
-      if (
-        unavailableDates.includes(item.children[0].getAttribute("aria-label"))
-      ) {
-        item.classList.add("unAnableDate");
-      }
-    });
-  }, []);
+    if (unavailableDates) {
+      console.log('unavailableDates=', unavailableDates)
+      let days = document.getElementsByClassName("react-calendar__tile");
+      let daysArr = Array.from(days);
+      daysArr.forEach((item) => {
+        if (
+          unavailableDates.includes(item.children[0].getAttribute("aria-label"))
+        ) {
+          item.classList.add("unAnableDate");
+        }
+      });
+
+    }
+
+  }, [unavailableDates]);
 
   let url = 'https://modhouse.herokuapp.com/dates';
-  const getDates = async(url)=>{
+  const getDates = async (url) => {
     let response = await fetch(url);
-    let dates = await response.json(); // читаем ответ в формате JSON
-    console.log(dates)
-
+    let dates = await response.json();
+    let datesList = dates.map(item => item.date)
+    setUnavailableDates(datesList)
   }
 
   useEffect(() => {
     getDates(url)
   }, [url]);
-  // console.log(selectDate)
 
   return (
     <div>
@@ -43,13 +52,6 @@ const MyCalendar = () => {
         onChange={onChange}
         tileClassName="calendar"
         onClickDay={(value, event) => handleClick(value, event)}
-
-      // tileClassName={({ activeStartDate, date, view }) => {
-      //   if (unavailableDates.includes(date.toString())) {
-      //     return "unAnableDate";
-      //   }
-      // }}
-      // tileDisabled={({activeStartDate, date, view }) => unavailableDates.includes(date.toString())}
       />
     </div>
   );
