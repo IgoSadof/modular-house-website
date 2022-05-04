@@ -7,7 +7,7 @@ const MyCalendar = () => {
   const [value, onChange] = useState(
     new Date(today.getFullYear(), today.getMonth(), today.getDate())
   );
-  // const [selectDate, setSelectDate] = useState(null);
+  const [selectDate, setSelectDate] = useState(null);
   const handleClick = (value, e) => {
     // setSelectDate(value);
   };
@@ -23,20 +23,33 @@ const MyCalendar = () => {
     });
   }, []);
 
+  let url = 'https://modhouse.herokuapp.com/dates';
+  const getDates = async(url)=>{
+    let response = await fetch(url);
+    let dates = await response.json(); // читаем ответ в формате JSON
+    console.log(dates)
+
+  }
+
+  useEffect(() => {
+    getDates(url)
+  }, [url]);
+  // console.log(selectDate)
+
   return (
     <div>
       <Calendar
-      value={value}
+        value={value}
         onChange={onChange}
         tileClassName="calendar"
         onClickDay={(value, event) => handleClick(value, event)}
 
-        // tileClassName={({ activeStartDate, date, view }) => {
-        //   if (unavailableDates.includes(date.toString())) {
-        //     return "unAnableDate";
-        //   }
-        // }}
-        // tileDisabled={({activeStartDate, date, view }) => unavailableDates.includes(date.toString())}
+      // tileClassName={({ activeStartDate, date, view }) => {
+      //   if (unavailableDates.includes(date.toString())) {
+      //     return "unAnableDate";
+      //   }
+      // }}
+      // tileDisabled={({activeStartDate, date, view }) => unavailableDates.includes(date.toString())}
       />
     </div>
   );
