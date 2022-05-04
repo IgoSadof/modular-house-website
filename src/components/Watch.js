@@ -1,4 +1,4 @@
-import React, { useMemo,useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
     marginBottom: '120px',
+    '@media (min-width:1921px)': {
+      marginBottom: '8.3vw',
+    },
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
     },
@@ -94,6 +97,10 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     width: '60px',
     height: '60px',
+    '@media (min-width:1921px)': {
+      width: '3.2vw',
+      height: '3.2vw',
+    },
   },
   calendar: {
     width: '18vw',
@@ -102,8 +109,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 'auto',
     flexShrink: '0',
     [theme.breakpoints.up('xl')]: {
-      '& button':{
-        fontSize:'1.02vw',
+      '& abbr': {
+        fontSize: '1.02vw',
       },
       width: '18vw',
       height: 'fit-content',
@@ -113,9 +120,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   calendarFormBox: {
+    width: '100%',
     marginTop: '90px',
     display: 'flex',
     gap: '150px',
+    '@media (min-width:1921px)': {
+      marginTop: '4.7vw',
+      gap: '7.8vw',
+    },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
       alignItems: 'center',
@@ -135,7 +147,7 @@ const Watch = ({ data }) => {
       ? pageData.arenda_text.split('\n\r\n')
       : pageData.arenda_text;
 
-      console.log(JSON.stringify(selectDate))
+  console.log(JSON.stringify(selectDate))
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -207,9 +219,9 @@ const Watch = ({ data }) => {
         rightColumnContent={
           <Box className={classes.calendarFormBox}>
             <Box className={classes.calendar}>
-              <MyCalendar selectDate={selectDate} setSelectDate={(date)=>{setSelectDate(date)}} />
+              <MyCalendar selectDate={selectDate} setSelectDate={(date) => { setSelectDate(date) }} />
             </Box>
-            <Form endpoint={'https://formspree.io/f/mzbokwwy'} extraFormFields={{date:selectDate}} sendDate={selectDate}/>
+            <Form endpoint={'https://formspree.io/f/mzbokwwy'} extraFormFields={{ date: selectDate }} arenda={true} sendDate={selectDate} />
           </Box>
         }
       ></ContentBlock>

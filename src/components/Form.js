@@ -53,8 +53,9 @@ const useStyles = makeStyles((theme) => ({
     height: (param) => (param.buttonAbs ? '100%' : 'auto'),
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: (param) => (param.arenda ? 'null' : 'space-between'),
     minWidth: '300px',
+    marginTop: (param) => (param.arenda ? '20px' : '0'),
     "& form": {
       [theme.breakpoints.down('md')]: {
         // marginTop:"20px",
@@ -98,12 +99,13 @@ const useStyles = makeStyles((theme) => ({
   },
 
   formFields: {
-    marginTop: '60px',
+    marginTop: (param) => (param.arenda ? '0' : '60px'),
+
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
     "@media (min-width:1921px)": {
-      marginTop: '4.2vw',
+      marginTop: (param) => (param.arenda ? '0' : '3.2vw'),
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '10px',
@@ -118,9 +120,9 @@ const useStyles = makeStyles((theme) => ({
     position: (param) => (param.button ? 'absolute' : 'relative'),
     bottom: (param) => (param.button ? '2vw' : null),
     left: (param) => (param.button ? '0' : null),
-    marginTop: (param) => (param.text ? '40px' : null),
+    marginTop: (param) => (param.text ? '40px' : param.text ? '20px' : null),
     "@media (min-width:1921px)": {
-      marginTop: '2.8vw',
+      mmarginTop: (param) => (param.text ? '2.1vw' : param.text ? '1.05vw' : null),
     },
     [theme.breakpoints.down('md')]: {
       marginTop: (param) => (param.text ? '40px' : '20px'),
@@ -212,6 +214,7 @@ const Form = ({
   endpoint,
   extraFormFields,
   sendDate,
+  arenda,
 }) => {
   const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
@@ -222,7 +225,7 @@ const Form = ({
   const [nameText, setNameText] = useState('');
   const [messageText, setMessageText] = useState('');
   const [formProcessing, setFormProcessing] = useState(true);
-  const param = { button, buttonAbs, text };
+  const param = { button, buttonAbs, text, arenda };
   const classes = useStyles(param);
   const formRef = useRef(null);
   const handleClose = () => {
@@ -279,7 +282,7 @@ const Form = ({
       .then(() => {
         if (sendDate) {
           fetch('https://modhouse.herokuapp.com/dates', {
-            
+
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'

@@ -106,8 +106,23 @@ body {
 }
 @media (min-width: 1900px) {
   .calendar {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+  }
+  .react-calendar__navigation span{
+    font-size: 1.02vw;
+  }
+  .react-calendar__navigation__label {
+    margin-top: 1.02vw;
+  }
+}
+@media (min-width: 2000px) {
+  .calendar  {
+    width: 3vw;
+    height: 3vw;
+  }
+  .react-calendar__month-view__weekdays__weekday div {
+    font-size: 2vw;
   }
 }
 .react-calendar {

@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 10%',
     '@media (min-width:1921px)': {
       gap: '4.2vw',
+      marginTop: '8.3vw',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -43,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: '0',
     '@media (min-width:1921px)': {
       gap: '4.2vw',
-      marginTop: '8.3vw',
       marginLeft: '5.2vw',
     },
     [theme.breakpoints.down('md')]: {
