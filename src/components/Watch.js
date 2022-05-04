@@ -103,16 +103,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   calendar: {
-    width: '18vw',
+    width: '14vw',
     minWidth: '240px',
     marginTop: 'auto',
     marginBottom: 'auto',
     flexShrink: '0',
-    [theme.breakpoints.up('xl')]: {
+    '@media (min-width:1921px)': {
+      width: '18vw',
       '& abbr': {
         fontSize: '1.02vw',
       },
-      width: '18vw',
       height: 'fit-content',
     },
     [theme.breakpoints.down('md')]: {

@@ -250,7 +250,7 @@ const useStyles = makeStyles((theme) => ({
   disable: {
     color: '#BDBDBD',
   },
- 
+
   titleBox: {
     display: 'flex',
     gap: '20px',
@@ -271,7 +271,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '22px',
     '@media (min-width:1921px)': {
       width: '5.2vw',
-      marginTop: '1.5vw',
+      marginTop: '1.2vw',
     },
   },
   BlockCalculation: {
@@ -315,7 +315,7 @@ const useStyles = makeStyles((theme) => ({
     top: '0',
     width: '100%',
     height: 'auto',
-    '&:first-child':{
+    '&:first-child': {
       position: 'relative',
     },
     [theme.breakpoints.down('md')]: {
@@ -386,32 +386,35 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     paddingBottom: '100px',
     paddingRight: '0',
-    "& img":{
+    "& img": {
       objectFit: 'cover',
       height: '100%',
       width: '100%',
       filter: 'grayscale(100%) brightness(1.2)',
       mixBlendMode: 'darken',
     },
-    [theme.breakpoints.down('md')]: {
-      padding: '0',
-      paddingBottom: '40px',
-      marginTop: '80px',
+    '@media (min-width:1921px)': {
+      paddingBottom: '5.2vw',
     },
-  },
-  BlockTable: {
-    [theme.breakpoints.down('md')]: {
-      padding: '0',
-      width: '100%',
+      [theme.breakpoints.down('md')]: {
+        padding: '0',
+        paddingBottom: '40px',
+        marginTop: '80px',
+      },
     },
-  },
-  text: {
-    marginBottom: '40px',
-    [theme.breakpoints.down('md')]: {
-      marginBottom: '20px',
+    BlockTable: {
+      [theme.breakpoints.down('md')]: {
+        padding: '0',
+        width: '100%',
+      },
     },
-  },
-}));
+    text: {
+      marginBottom: '40px',
+      [theme.breakpoints.down('md')]: {
+        marginBottom: '20px',
+      },
+    },
+  }));
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
