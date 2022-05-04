@@ -549,3 +549,6 @@ div[class*="MuiFormControl"] {
       min-width: auto !important;
   }
 }
+model-viewer#reveal {
+  --poster-color: transparent;
+}
