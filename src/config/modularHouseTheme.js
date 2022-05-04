@@ -8,8 +8,8 @@ export const customFontsSize = {
   h2: { regular: 24, adaptiv: '1.25vw' },
   h3: { regular: 24, adaptiv: '1.25vw' },
   h4: { regular: 20, adaptiv: '1.04vw' },
-  h5: { regular: 18, adaptiv: '0.94vw' },
-  h6: { regular: 14, adaptiv: '0.73vw' },
+  h5: { regular: 19, adaptiv: '0.94vw' },
+  h6: { regular: 17, adaptiv: '0.86vw' },
   body1: { regular: 16, adaptiv: '0.83vw' },
   body2: { regular: 12, adaptiv: '0.63vw' },
   subtitle1: { regular: 14, adaptiv: '0.73vw' },
@@ -22,7 +22,7 @@ const modularHouseTheme = createTheme({
   palette: {
     primary: {
       // main: 'purple[500]',
-      main: '#000000',
+      main: '#454545',
       fon: '#D1D1D1',
     },
     secondary: {
@@ -123,7 +123,7 @@ const modularHouseTheme = createTheme({
       fontWeight: 600,
       fontStyle: 'normal',
       textTransform: 'uppercase',
-      color: '#4F4F4F',
+      color: '#333333',
       scrollbarWidth: 'none',
       '@media (min-width:1921px)': {
         fontSize: customFontsSize.h6.adaptiv,

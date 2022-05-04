@@ -17,7 +17,17 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
     gap: '60px',
-    height: '100vh',
+    width: "100%",
+    maxHeight: "80vh",
+    minHeight: '600px',
+    "&>div":{
+      height: "100%",
+    },
+    "& img":{
+      objectFit: "cover",
+      height: "100%",
+      width: "100%",
+    },
     '@media (min-width:1921px)': {
       gap: '4.2vw',
     },

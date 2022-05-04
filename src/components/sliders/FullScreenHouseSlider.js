@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
   sliderConteiner: {
     position: 'relative',
     height: '100vh',
+    '&:first-child img':{
+      objectFit: 'cover',
+      objectPosition: '50% 76%',
+    },
     [theme.breakpoints.down('md')]: {
       height: '100%',
     },

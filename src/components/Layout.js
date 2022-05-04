@@ -171,7 +171,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
-      allMysqlArenda{
+      allMysqlArenda {
         nodes {
           name
           value
