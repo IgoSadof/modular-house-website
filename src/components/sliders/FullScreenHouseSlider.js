@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     left: '0',
     paddingLeft: '10%',
-    bottom: (param) => (param.title ? '80px' : '20px'),
+    bottom: '80px',
     zIndex: '1',
     '& $buttons': {
       position: 'relative',
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
       marginRight: '10%',
     },
     '@media (min-width:1921px)': {
-      bottom: (param) => (param.title ? '4.2vw' : '1.4vw'),
+      bottom: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
@@ -197,7 +197,7 @@ const FullScreenHouseSlider = ({
         {!breakpoints.md ? (
           <Box
             className={classes.buttons}
-            style={{ marginLeft: title ? 'auto' : '4%' }}
+            style={{ marginLeft: 'auto'}}
           >
             <SquareButton
               variant={'contained'}
