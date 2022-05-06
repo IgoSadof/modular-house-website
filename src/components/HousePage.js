@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 10%',
     backgroundColor: '#D1D1D1',
     marginTop: '100px',
+    //alignItems: 'center',
     '@media (min-width:1920px)': {
       gap: '1.4vw',
       marginTop: '6.9vw',
@@ -235,10 +236,121 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 'auto',
     },
   },
+  line: {
+    display: 'inline-block',
+    width: '80px',
+    height: '1px',
+    backgroundColor: 'black',
+    marginTop: '22px',
+    '@media (min-width:1921px)': {
+      width: '5.2vw',
+      marginTop: '1.2vw',
+    },
+  },
   BlockCalculation: {
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       minHeight: '100%',
+    },
+  },
+  calculationPlan: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 'auto',
+    width: '50%',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      height: '50vh',
+      '@media (orientation: landscape)': {
+        height: '70vw',
+      },
+    },
+  },
+  calculationPlanConteiner: {
+    width: '100%',
+    position: 'relative',
+  },
+  calculationPlanImg: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    margin: 'auto',
+    position: 'relative',
+    overflow: 'hidden',
+    '& img': {
+      objectFit: 'contain !important',
+    },
+  },
+  calculationPlanImgInner: {
+    position: 'absolute',
+    top: '0',
+    width: '100%',
+    height: 'auto',
+    '&:first-child': {
+      position: 'relative',
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+      order: '1',
+      height: '50vh',
+      '@media (orientation: landscape)': {
+        height: '70vw',
+      },
+    },
+  },
+  calculation: {
+    display: 'flex',
+    gap: '40px',
+    flexDirection: 'column',
+    marginLeft: 'auto',
+    width: '32%',
+    alignSelf: 'center',
+    '@media (min-width:1921px)': {
+      gap: '2.1vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+      width: '100%',
+    },
+  },
+  calculationItem: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0',
+    '@media (min-width:1921px)': {
+      //gap: '1.1vw',
+    },
+  },
+  calculationHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  calculationBody: {
+    marginLeft: '10px',
+    paddingLeft: '20px',
+    paddingRight: '30px',
+    borderLeft: '1px solid #999',
+  },
+  calculationBodyItem: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  calculationResult: {
+    display: 'flex',
+    alignItems: 'center',
+    '& p': {
+      marginLeft: 'auto',
+      marginRight: '48px',
+    },
+    [theme.breakpoints.down('md')]: {
+      '& span': {
+        fontSize: '30px',
+        lineHeight: '1.4',
+      },
     },
   },
   BlockForm: {
@@ -246,20 +358,36 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     justifyContent: 'center',
     paddingBottom: '100px',
-
-    [theme.breakpoints.down('md')]: {
-      padding: '0',
-      paddingBottom: '40px',
-      marginTop: '80px',
-    },
-  },
-  BlockTable: {
-    [theme.breakpoints.down('md')]: {
-      padding: '0',
+    paddingRight: '0',
+    "& img": {
+      objectFit: 'cover',
+      height: '100%',
       width: '100%',
+      filter: 'grayscale(100%) brightness(1.2)',
+      mixBlendMode: 'darken',
     },
-  },
-}));
+    '@media (min-width:1921px)': {
+      paddingBottom: '5.2vw',
+    },
+      [theme.breakpoints.down('md')]: {
+        padding: '0',
+        paddingBottom: '40px',
+        marginTop: '80px',
+      },
+    },
+    BlockTable: {
+      [theme.breakpoints.down('md')]: {
+        padding: '0',
+        width: '100%',
+      },
+    },
+    text: {
+      marginBottom: '40px',
+      [theme.breakpoints.down('md')]: {
+        marginBottom: '20px',
+      },
+    },
+  }));
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
@@ -449,6 +577,7 @@ const HousePage = ({ house, data }) => {
         </Box>
         <Box className={classes.model}>
           <Model3d
+            scaleUp={breakpoints.minxl}
             newref={modelViwerRef}
             srcPath={model3d}
             srcPathIos={getPublicPath(

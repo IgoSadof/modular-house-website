@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (min-width:1921px)': {
       width: "34.7vw",
+      marginBottom: "0.4vw",
     },
     [theme.breakpoints.down("md")]: {
       flexDirection: "row-reverse",

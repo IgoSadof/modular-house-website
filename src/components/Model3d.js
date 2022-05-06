@@ -1,7 +1,8 @@
-import React,{ Fragment} from "react";
+import React, { Fragment } from "react";
 // import { jsonMock } from "../assets/model/mockData";
 
-const Model3d = ({srcPath,srcPathIos,newref}) => {
+const Model3d = ({ srcPath, srcPathIos, newref, scaleUp }) => {
+  console.log(scaleUp)
   return (
     <Fragment>
       <model-viewer
@@ -17,7 +18,7 @@ const Model3d = ({srcPath,srcPathIos,newref}) => {
         modelIsVisible={true}
         // poster={<div>dqwedqwdqw</div>} 
         camera-controls
-        style={{ width: "100%", height: "100%"}}
+        style={scaleUp ? { width: "100%", height: "100%", transform: "scale(1.5)" } : { width: "100%", height: "100%", }}
       >
       </model-viewer>
     </Fragment>

@@ -85,12 +85,12 @@ export default function Accordions({
             onClick={
               roomsImg
                 ? () =>
-                    roomsImg(
-                      item['Главное изображение'].substr(
-                        item['Главное изображение'].search(/images\//)
-                      ),
-                      index
-                    )
+                  roomsImg(
+                    item['Главное изображение'].substr(
+                      item['Главное изображение'].search(/images\//)
+                    ),
+                    index
+                  )
                 : null
             }
             key={index}
@@ -98,34 +98,38 @@ export default function Accordions({
             expanded={expanded === `panel${index + 1}`}
             onChange={handleChange(`panel${index + 1}`)}
           >
-            <AccordionSummary
-              aria-controls={`${title ? title : '0'}-${index}`}
-              id={`${title ? title : '0'}-heading-${index}`}
-              expandIcon={<AddIcon />}
-            >
-              <Typography
-                style={!uppercase ? { textTransform: 'inherit' } : null}
-                variant='h4'
-                component='h3'
+            {item.published ? (
+              <AccordionSummary
+                aria-controls={`${title ? title : '0'}-${index}`}
+                id={`${title ? title : '0'}-heading-${index}`}
+                expandIcon={<AddIcon />}
               >
-                {houseRooms
-                  ? item['Экспликация']
-                  : answers
-                  ? item.question
-                  : item.question.toUpperCase()}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails
-              className={
-                item['Описание комнаты'] || item.question
-                  ? classes.details
-                  : classes.noDetails
-              }
-            >
-              <Typography variant='body1' component='p'>
-                {houseRooms ? item['Описание комнаты'] : item.answer}
-              </Typography>
-            </AccordionDetails>
+                <Typography
+                  style={!uppercase ? { textTransform: 'inherit' } : null}
+                  variant='h4'
+                  component='h3'
+                >
+                  {houseRooms
+                    ? item['Экспликация']
+                    : answers
+                      ? item.question
+                      : item.question.toUpperCase()}
+                </Typography>
+              </AccordionSummary>
+            ) : null}
+            {item.published ? (
+              <AccordionDetails
+                className={
+                  item['Описание комнаты'] || item.question
+                    ? classes.details
+                    : classes.noDetails
+                }
+              >
+                <Typography variant='body1' component='p'>
+                  {houseRooms ? item['Описание комнаты'] : item.answer}
+                </Typography>
+              </AccordionDetails>
+            ) : null}
           </Accordion>
         );
       })}

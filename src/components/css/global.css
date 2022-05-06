@@ -104,17 +104,41 @@ body {
   cursor: pointer;
   border-collapse: collapse;
 }
+
+.react-calendar__month-view__weekdays__weekday {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: transparent !important;
+}
+
 @media (min-width: 1900px) {
   .calendar {
-    font-size: 0.94vw;
-    width: 2.6vw;
-    height: 2.6vw;
+    width: 40px;
+    height: 40px;
   }
-  .react-calendar__month-view__weekdays__weekday {
-    font-size: 0.94vw;
+  .react-calendar__navigation span{
+    font-size: 1.02vw;
   }
   .react-calendar__navigation__label {
-    font-size: 0.94vw;
+    margin-top: 1.02vw;
+  }
+}
+@media (min-width: 2000px) {
+  .calendar  {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+  .react-calendar__month-view__weekdays__weekday div {
+    font-size: 2vw;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    width: 2vw !important;
+    height: 2vw !important;
+  
   }
 }
 .react-calendar {
@@ -136,15 +160,7 @@ body {
   display: none !important;
 }
 
-.react-calendar__month-view__weekdays__weekday {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  text-decoration: none;
-  width: 40px !important;
-  height: 40px !important;
-  background-color: transparent !important;
-}
+
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #747474 !important;
 }
@@ -487,6 +503,9 @@ div[class*="MuiFormControl"] {
     height:1.5vw;
   }
   
+} 
+#default-poster {
+  background-color: transparent !important;
 }
 .mt-15{margin-top: -15px; width:100%}
 .v360-viewport{background-color: transparent!important; flex-flow: column;align-items: flex-start!important;}
@@ -555,4 +574,14 @@ div[class*="MuiFormControl"] {
   .MuiTab-root {
       min-width: auto !important;
   }
+}
+model-viewer {
+  --poster-color: transparent !important;
+}
+model-viewer::part(default-progress-bar) {
+  display: none;
+}
+
+.swiper-pagination-bullet {
+  background-color: #ADADAD !important;
 }

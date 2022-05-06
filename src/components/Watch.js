@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -9,10 +9,14 @@ import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
 
+
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
     marginBottom: '120px',
+    '@media (min-width:1921px)': {
+      marginBottom: '8.3vw',
+    },
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
     },
@@ -96,15 +100,22 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     width: '60px',
     height: '60px',
+    '@media (min-width:1921px)': {
+      width: '3.2vw',
+      height: '3.2vw',
+    },
   },
   calendar: {
-    width: '260px',
-    height: '240px',
+    width: '14vw',
+    minWidth: '240px',
     marginTop: 'auto',
     marginBottom: 'auto',
     flexShrink: '0',
-    [theme.breakpoints.up('xl')]: {
+    '@media (min-width:1921px)': {
       width: '18vw',
+      '& abbr': {
+        fontSize: '1.02vw',
+      },
       height: 'fit-content',
     },
     [theme.breakpoints.down('md')]: {
@@ -112,12 +123,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   calendarFormBox: {
+    width: '100%',
     marginTop: '90px',
     display: 'flex',
-    gap: '100px',
-    width:'100%',
+    gap: '150px',
     '@media (min-width:1921px)': {
-      gap: '5.2vw'
+      marginTop: '4.7vw',
+      gap: '7.8vw',
     },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
@@ -130,6 +142,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Watch = ({ data }) => {
+  const [selectDate, setSelectDate] = useState(null);
+  const [unavailableDates, setUnavailableDates] = useState(null);
   const classes = useStyles();
   const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
   const pageDataMainText =
@@ -137,7 +151,10 @@ const Watch = ({ data }) => {
       ? pageData.arenda_text.split('\n\r\n')
       : pageData.arenda_text;
 
-  const icons = pageData.arenda_icon_gallery.filter(item=>item.published)
+  console.log(unavailableDates)
+  const getUnavailableDates = (dates) => {
+    setUnavailableDates(dates)
+  }
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -211,9 +228,10 @@ const Watch = ({ data }) => {
         rightColumnContent={
           <Box className={classes.calendarFormBox}>
             <Box className={classes.calendar}>
-              <MyCalendar />
+              <MyCalendar unavailableDates={unavailableDates} getUnavailableDates={getUnavailableDates} setSelectDate={(date) => { setSelectDate(date) }} />
+
             </Box>
-            <Form />
+            <Form endpoint={'https://formspree.io/f/mzbokwwy'} extraFormFields={{ date: selectDate }} arenda={true} sendDate={selectDate} />
           </Box>
         }
       ></ContentBlock>

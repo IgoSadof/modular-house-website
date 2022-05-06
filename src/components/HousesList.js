@@ -356,7 +356,11 @@ const useStyles = makeStyles((theme) => ({
   mainImg: {
     width: '100%',
     objectFit: 'cover',
+    objectPosition: '50% 80%',
     height: '100vh',
+    '& img':{
+      objectPosition: '50% 80%',
+    },
     [theme.breakpoints.down('md')]: {
       padding: '0',
       height: '60vh',

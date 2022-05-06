@@ -48,13 +48,14 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '4px',
   },
   formBox: {
-    width:'100%',
+    width: '100%',
     // position: "relative",
     height: (param) => (param.buttonAbs ? '100%' : 'auto'),
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: (param) => (param.arenda ? 'null' : 'space-between'),
     minWidth: '300px',
+    marginTop: (param) => (param.arenda ? '20px' : '0'),
     "& form": {
       [theme.breakpoints.down('md')]: {
         // marginTop:"20px",
@@ -67,10 +68,10 @@ const useStyles = makeStyles((theme) => ({
         fontSize: customFontsSize.h4.adaptiv,
       },
     },
-   
+
     [theme.breakpoints.down('md')]: {
       alignSelf: 'center',
-      width:'100%',
+      width: '100%',
       // padding: '0 10%',
     },
   },
@@ -98,12 +99,13 @@ const useStyles = makeStyles((theme) => ({
   },
 
   formFields: {
-    marginTop: '60px',
+    marginTop: (param) => (param.arenda ? '0' : '60px'),
+
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
     "@media (min-width:1921px)": {
-      marginTop: '4.2vw',
+      marginTop: (param) => (param.arenda ? '0' : '3.2vw'),
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '10px',
@@ -118,9 +120,9 @@ const useStyles = makeStyles((theme) => ({
     position: (param) => (param.button ? 'absolute' : 'relative'),
     bottom: (param) => (param.button ? '2vw' : null),
     left: (param) => (param.button ? '0' : null),
-    marginTop: (param) => (param.text ? '40px' : null),
+    marginTop: (param) => (param.text ? '40px' : param.arenda ? '20px' : null),
     "@media (min-width:1921px)": {
-      marginTop: '2.8vw',
+      marginTop: (param) => (param.arenda ? '3.1vw' : '3.1vw'),
     },
     [theme.breakpoints.down('md')]: {
       marginTop: (param) => (param.text ? '40px' : '20px'),
@@ -156,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.body1.fontSize,
     "@media (min-width:1921px)": {
-      fontSize: theme.typography.fontSize*customFontsSize.xl,
+      fontSize: theme.typography.fontSize * customFontsSize.xl,
     },
     '&:focus': {
       outline: 'none',
@@ -211,6 +213,8 @@ const Form = ({
   buttonText,
   endpoint,
   extraFormFields,
+  sendDate,
+  arenda,
 }) => {
   const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
@@ -221,7 +225,7 @@ const Form = ({
   const [nameText, setNameText] = useState('');
   const [messageText, setMessageText] = useState('');
   const [formProcessing, setFormProcessing] = useState(true);
-  const param = { button, buttonAbs, text };
+  const param = { button, buttonAbs, text, arenda };
   const classes = useStyles(param);
   const formRef = useRef(null);
   const handleClose = () => {
@@ -274,6 +278,18 @@ const Form = ({
         console.log(response);
         setFormProcessing(false);
         setOpenPopup(true);
+      })
+      .then(() => {
+        if (sendDate) {
+          fetch('https://modhouse.herokuapp.com/dates', {
+
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(sendDate),
+          });
+        }
       })
       .catch((error) => {
         setFormProcessing(false);
@@ -343,8 +359,8 @@ const Form = ({
             name='phone'
             type='tel'
             label={<Typography variant='body2'>Телефон</Typography>}
-            // validators={["isNumber"]}
-            // errorMessages={["telefon incorrect"]}
+          // validators={["isNumber"]}
+          // errorMessages={["telefon incorrect"]}
           />
           {email ? (
             <>
@@ -357,8 +373,8 @@ const Form = ({
                 label={<Typography variant='body2'>Email</Typography>}
                 onChange={handleChangeEmail}
                 value={emailText}
-                // validators={["required", "isEmail"]}
-                // errorMessages={["this field is required", "email is not valid"]}
+              // validators={["required", "isEmail"]}
+              // errorMessages={["this field is required", "email is not valid"]}
               />
             </>
           ) : null}

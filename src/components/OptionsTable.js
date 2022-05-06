@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import numberWithSpace from '../utils/numberWithSpace';
 import Checkbox from '@material-ui/core/Checkbox';
+import validateText from '../utils/validateText';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,17 +38,20 @@ const useStyles = makeStyles((theme) => ({
   },
   tableRow: {
     height: '50px',
-    borderTop: '1px solid',
-    borderBottom: '1px solid',
+    borderTop: '1px solid #999',
+    borderBottom: '1px solid #999',
     '@media (min-width:1920px)': {
       height: '3.5vw',
     },
   },
   tableCell: {
     width: '25%',
-    // '& p':{
-    //   color:"#828282"
-    // },
+    '& p>span':{
+      fontSize:'14px',
+      '@media (min-width:1921px)': {
+        fontSize:'0.73vw',
+      },
+    },
   },
   tableCellFirst: {
     paddingLeft: '40px',
@@ -208,8 +212,9 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                               : { color: '#828282' }
                           }
                           variant='body1'
+                          dangerouslySetInnerHTML={{__html: `${validateText(item.option_poor_name)}`}}
                         >
-                          {item.option_poor_name}
+                          {/* {item.option_poor_name} */}
                         </Typography>
                       }
                       labelPlacement='end'
@@ -229,6 +234,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                       value={+item.option_expensive_price}
                       control={<Checkbox color='primary' />}
                       label={
+
                         <Typography
                           style={
                             currentOption[item.name].price ===
@@ -237,8 +243,9 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                               : { color: '#828282' }
                           }
                           variant='body1'
+                          dangerouslySetInnerHTML={{__html: `${validateText(item.option_expensive_name)}`}}
                         >
-                          {item.option_expensive_name}
+                          {/* {item.option_expensive_name} */}
                         </Typography>
                       }
                       labelPlacement='end'
@@ -294,8 +301,9 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                                 : { color: '#828282' }
                             }
                             variant='body1'
+                            dangerouslySetInnerHTML={{__html: `${validateText(item.option_poor_name)}`}}
                           >
-                            {item.option_poor_name}
+                            {/* {item.option_poor_name} */}
                           </Typography>
                         }
                         labelPlacement='end'
@@ -322,8 +330,8 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                                 : { color: '#828282' }
                             }
                             variant='body1'
+                            dangerouslySetInnerHTML={{__html: `${validateText(item.option_expensive_name)}`}}
                           >
-                            {item.option_expensive_name}
                           </Typography>
                         }
                         labelPlacement='end'
