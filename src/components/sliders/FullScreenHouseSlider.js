@@ -7,13 +7,12 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { SwiperSlide } from 'swiper/react';
 import getPublicPath from '../../utils/getPublicPath';
 import HouseFotosSlider from '../sliders/HouseFotosSlider';
-import Mouse from '../svg/Mouse';
 
 const useStyles = makeStyles((theme) => ({
   sliderConteiner: {
     position: 'relative',
     height: '100vh',
-    '&:first-child img':{
+    '&:first-child img': {
       objectFit: 'cover',
       objectPosition: '50% 76%',
     },
@@ -25,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     zIndex: '1',
     position: 'relative',
-    '& img':{
-      width:'100%',
+    '& img': {
+      width: '100%',
       objectFit: 'cover',
     },
     [theme.breakpoints.down('md')]: {
@@ -78,7 +77,39 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mouseIconBox: {
-    margin:'auto',
+    margin: 'auto',
+  },
+  mouse: {
+    position: 'relative',
+    width: '30px',
+    height: '48px',
+    border: '0.2vw solid #E2E2E2',
+    borderRadius: '40px',
+    '@media (min-width:1921px)': {
+      width: '1.5vw',
+      height: '2.5vw',
+      borderRadius: '1.1vw',
+    },
+    '&::before': {
+      content: `' '`,
+      position: 'absolute',
+      left: '50%',
+      marginLeft: '-2px',
+      top: '20%',
+      width: '4px',
+      height: '6px',
+      borderRadius: '3px',
+      backgroundColor: '#E2E2E2',
+      animation: 'mouse  0.7s infinite ease-in-out alternate',
+      '@media (min-width:1921px)': {
+        width: '1.5vw',
+        height: '2.5vw',
+        borderRadius: '1.1vw',
+        width: '0.25vw',
+        height: '0.35vw',
+        marginLeft: '-0.1vw',
+      },
+    },
   },
 
   descBox: {
@@ -86,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     justifyContent: 'space-between',
     [theme.breakpoints.down('md')]: {
-      padding:'0 10%',
+      padding: '0 10%',
       marginTop: '15px',
       gap: '10px',
       '@media (orientation: landscape)': {
@@ -189,16 +220,13 @@ const FullScreenHouseSlider = ({
         ) : null}
 
         {mouseIcon && !breakpoints.md ? (
-          <Box className={classes.mouseIconBox}>
-            <Mouse />
+          <Box className={`${classes.mouseIconBox}`}>
+            <Box className={classes.mouse}></Box>
           </Box>
         ) : null}
 
         {!breakpoints.md ? (
-          <Box
-            className={classes.buttons}
-            style={{ marginLeft: 'auto'}}
-          >
+          <Box className={classes.buttons} style={{ marginLeft: 'auto' }}>
             <SquareButton
               variant={'contained'}
               click={handleClickLeft}
@@ -234,10 +262,10 @@ const FullScreenHouseSlider = ({
         ) : null}
       </Box>
       {breakpoints.md && desc ? (
-          <Box className={classes.descBox}>
-            <Typography variant='body1'> {desc}</Typography>
-          </Box>
-        ) : null}
+        <Box className={classes.descBox}>
+          <Typography variant='body1'> {desc}</Typography>
+        </Box>
+      ) : null}
     </Box>
   );
 };

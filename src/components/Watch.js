@@ -151,7 +151,6 @@ const Watch = ({ data }) => {
       ? pageData.arenda_text.split('\n\r\n')
       : pageData.arenda_text;
 
-  console.log(unavailableDates)
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates)
   }
@@ -194,7 +193,7 @@ const Watch = ({ data }) => {
         }
         rightColumnContent={
           <Box className={classes.iconsBlockConteiner}>
-            {icons.map((item, index) => (
+            {pageData.arenda_icon_gallery.map((item, index) => (
               <Box className={classes.iconBox} key={index}>
                 <img
                   className={classes.icon}
