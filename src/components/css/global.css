@@ -104,6 +104,17 @@ body {
   cursor: pointer;
   border-collapse: collapse;
 }
+
+.react-calendar__month-view__weekdays__weekday {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: transparent !important;
+}
+
 @media (min-width: 1900px) {
   .calendar {
     width: 40px;
@@ -118,11 +129,16 @@ body {
 }
 @media (min-width: 2000px) {
   .calendar  {
-    width: 3vw;
-    height: 3vw;
+    width: 2.5vw;
+    height: 2.5vw;
   }
   .react-calendar__month-view__weekdays__weekday div {
     font-size: 2vw;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    width: 2vw !important;
+    height: 2vw !important;
+  
   }
 }
 .react-calendar {
@@ -144,15 +160,7 @@ body {
   display: none !important;
 }
 
-.react-calendar__month-view__weekdays__weekday {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  text-decoration: none;
-  width: 40px !important;
-  height: 40px !important;
-  background-color: transparent !important;
-}
+
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #747474 !important;
 }
@@ -567,9 +575,13 @@ div[class*="MuiFormControl"] {
       min-width: auto !important;
   }
 }
-model-viewer#reveal {
+model-viewer {
   --poster-color: transparent !important;
 }
+model-viewer::part(default-progress-bar) {
+  display: none;
+}
+
 .swiper-pagination-bullet {
   background-color: #ADADAD !important;
 }

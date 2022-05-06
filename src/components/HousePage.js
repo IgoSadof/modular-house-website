@@ -693,6 +693,7 @@ const HousePage = ({ house, data }) => {
         </Box>
         <Box className={classes.model}>
           <Model3d
+            scaleUp={breakpoints.minxl}
             newref={modelViwerRef}
             srcPath={model3d}
             srcPathIos={getPublicPath(

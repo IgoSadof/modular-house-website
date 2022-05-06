@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-// import unavailableDates from "../constant/unavailableDates";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const MyCalendar = ({ setSelectDate, selectDate }) => {
+const MyCalendar = ({ setSelectDate, unavailableDates, getUnavailableDates }) => {
   const today = new Date();
   const [value, onChange] = useState(
     new Date(today.getFullYear(), today.getMonth(), today.getDate())
   );
 
-  const [unavailableDates, setUnavailableDates] = useState(null);
+
   const handleClick = (value, e) => {
     if (e.target.tagName.toLowerCase() === 'button') {
       setSelectDate({ "date": e.target.children[0].getAttribute("aria-label") })
@@ -38,7 +38,7 @@ const MyCalendar = ({ setSelectDate, selectDate }) => {
     let response = await fetch(url);
     let dates = await response.json();
     let datesList = dates.map(item => item.date)
-    setUnavailableDates(datesList)
+    getUnavailableDates(datesList)
   }
 
   useEffect(() => {
@@ -47,12 +47,13 @@ const MyCalendar = ({ setSelectDate, selectDate }) => {
 
   return (
     <div>
-      <Calendar
+      {!unavailableDates ? (<CircularProgress />) : (<Calendar
         value={value}
         onChange={onChange}
         tileClassName="calendar"
         onClickDay={(value, event) => handleClick(value, event)}
-      />
+      />)}
+
     </div>
   );
 };

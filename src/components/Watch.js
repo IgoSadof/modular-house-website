@@ -9,6 +9,7 @@ import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
 
+
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
@@ -140,6 +141,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Watch = ({ data }) => {
   const [selectDate, setSelectDate] = useState(null);
+  const [unavailableDates, setUnavailableDates] = useState(null);
   const classes = useStyles();
   const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
   const pageDataMainText =
@@ -147,7 +149,10 @@ const Watch = ({ data }) => {
       ? pageData.arenda_text.split('\n\r\n')
       : pageData.arenda_text;
 
-  console.log(JSON.stringify(selectDate))
+  console.log(unavailableDates)
+  const getUnavailableDates = (dates) => {
+    setUnavailableDates(dates)
+  }
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -219,7 +224,8 @@ const Watch = ({ data }) => {
         rightColumnContent={
           <Box className={classes.calendarFormBox}>
             <Box className={classes.calendar}>
-              <MyCalendar selectDate={selectDate} setSelectDate={(date) => { setSelectDate(date) }} />
+              <MyCalendar unavailableDates={unavailableDates} getUnavailableDates={getUnavailableDates} setSelectDate={(date) => { setSelectDate(date) }} />
+
             </Box>
             <Form endpoint={'https://formspree.io/f/mzbokwwy'} extraFormFields={{ date: selectDate }} arenda={true} sendDate={selectDate} />
           </Box>
