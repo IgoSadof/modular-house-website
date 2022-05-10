@@ -158,6 +158,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
   const breakpoints = useBreakpoint();
   const param = { breakpoints };
   const classes = useStyles(param);
+  console.log(dataContacts)
 
   return (
     <Box components='main' className={classes.root}>
@@ -231,13 +232,13 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                   variant='h4'
                   component='p'
                 >
-                 {dataContacts['contacts-ceo'][0].name}
+                 {dataContacts['contacts-ceo'][1].name}
                 </Typography>
                 <Typography
                   className={classes.ContactsPosition}
                   variant='body1'
                 >
-                  {dataContacts['contacts-ceo'][0].role}
+                  {dataContacts['contacts-ceo'][1].role}
                 </Typography>
               </Box>
               {/* </a> */}
