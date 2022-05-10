@@ -78,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mouseIconBox: {
     margin: 'auto',
+    cursor: 'pointer',
   },
   mouse: {
     position: 'relative',
@@ -194,6 +195,15 @@ const FullScreenHouseSlider = ({
       );
     });
   }, [data, classes.mainImgSlider, classes.mainImgItem]);
+
+  const handleMouseClick = () => {
+    if (window) {
+      window.scrollTo({
+        top: window.screen.availHeight,
+        behavior: 'smooth',
+      });
+    }
+  };
   return (
     <Box
       components='section'
@@ -221,7 +231,7 @@ const FullScreenHouseSlider = ({
 
         {mouseIcon && !breakpoints.md ? (
           <Box className={`${classes.mouseIconBox}`}>
-            <Box className={classes.mouse}></Box>
+            <Box className={classes.mouse} onClick={handleMouseClick}></Box>
           </Box>
         ) : null}
 
