@@ -468,11 +468,11 @@ const HousePage = ({ house, data }) => {
   return (
     <Box components='main'>
       <FullScreenHouseSlider
-        title={dataHouses[houseNumber].code}
-        arr={dataHouses[houseNumber].ext_gallery.filter(
+        title={dataHouses[houseNumber]?.code}
+        arr={dataHouses[houseNumber]?.ext_gallery?.filter(
           (item) => item.published
         )}
-        desc={dataHouses[houseNumber].desc}
+        desc={dataHouses[houseNumber]?.desc}
         data={data}
         pagination={true}
         mouseIcon={true}
@@ -589,7 +589,7 @@ const HousePage = ({ house, data }) => {
       </Box>
 
       <FullScreenHouseSlider
-        arr={dataHouses[houseNumber].int_gallery.filter(
+        arr={dataHouses[houseNumber]?.int_gallery?.filter(
           (item) => item.published
         )}
         data={data}
