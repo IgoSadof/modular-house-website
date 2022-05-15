@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Box from '@material-ui/core/Box';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player';
 
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     [theme.breakpoints.down('md')]: {
-      padding: '50px ',
+      padding: '50px 0 ',
     },
   },
   loaderBox:{
@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   videoBox:{
     overflow:"hidden",
+    '& video':{
+      transform:'scale(1.05)',
+    },
   },
   leftArrow:{
     width:"0.7vw",
@@ -45,6 +48,11 @@ const useStyles = makeStyles((theme) => ({
     borderLeft:"1px solid #4F4F4F",
     borderBottom:"1px solid #4F4F4F",
     transform: "rotate(45deg) translateY(-0.1vw)",
+    [theme.breakpoints.down('md')]: {
+      width:"10px",
+      height: "10px",
+      transform: "rotate(45deg) translateY(-0.1vw)",
+    },
   },
   rightArrow:{
     width:"0.7vw",
@@ -52,6 +60,11 @@ const useStyles = makeStyles((theme) => ({
     borderRight:"1px solid #4F4F4F",
     borderTop:"1px solid #4F4F4F",
     transform: "rotate(45deg) translateY(-0.1vw)",
+    [theme.breakpoints.down('md')]: {
+      width:"10px",
+      height: "10px",
+      transform: "rotate(45deg) translateY(-0.1vw)",
+    },
   }
 }));
 

@@ -11,6 +11,8 @@ import getHouses from '../utils/getHouses';
 import getPublicPath from '../utils/getPublicPath';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import CalculationBlock from './CalculationBlock';
+import HouseModelPlayer from './HouseModelPlayer';
+import VRviwe from './svg/VRviwe';
 
 const useStyles = makeStyles((theme) => ({
   Block: {
@@ -164,6 +166,17 @@ const useStyles = makeStyles((theme) => ({
       height: '50vh',
     },
   },
+  conteinerVRmodel: {
+    visibility: 'hidden',
+  },
+  modelButton: {
+    cursor:'pointer',
+    position: 'absolute',
+    top: '0',
+    right: '10%',
+    width: '40px',
+    height: '40px',
+  },
   modelDescLine: {
     display: (param) => (param.modulesCounts > 1 ? 'block' : 'none'),
     position: 'relative',
@@ -190,6 +203,7 @@ const useStyles = makeStyles((theme) => ({
     width: '30px',
     height: '30px',
     border: '1px solid',
+    outline:'none',
     borderRadius: '50% 50% 0 0',
     fontSize: '30px',
     backgroundColor: '#D1D1D1',
@@ -208,6 +222,7 @@ const useStyles = makeStyles((theme) => ({
   modelDescLineMinusCircle: {
     width: '30px',
     height: '30px',
+    outline:'none',
     border: '1px solid',
     borderRadius: '50%',
     fontSize: '30px',
@@ -226,6 +241,7 @@ const useStyles = makeStyles((theme) => ({
   modelDescLinePlus: {
     width: '30px',
     height: '30px',
+    outline:'none',
     border: '1px solid',
     borderRadius: '0 0 50% 50%',
     fontSize: '30px',
@@ -281,7 +297,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         right: '-12%',
       },
-      '&>h2':{
+      '&>h2': {
         whiteSpace: 'nowrap',
       },
       justifyContent: 'center',
@@ -366,6 +382,12 @@ const HousePage = ({ house, data }) => {
           dataHouses[houseNumber].modules?.[pillClick + 1].model3d
         )
       );
+      setModelVideo(
+        getPublicPath(
+          data,
+          dataHouses[houseNumber]['modules'][pillClick + 1].video
+        )
+      );
     }
   };
   const handleMinusClick = (e) => {
@@ -376,6 +398,12 @@ const HousePage = ({ house, data }) => {
         getPublicPath(
           data,
           dataHouses[houseNumber].modules?.[pillClick - 1].model3d
+        )
+      );
+      setModelVideo(
+        getPublicPath(
+          data,
+          dataHouses[houseNumber]['modules'][pillClick - 1].video
         )
       );
     }
@@ -400,6 +428,19 @@ const HousePage = ({ house, data }) => {
   const options = dataHouses[houseNumber].options.filter(
     (item) => item.published
   );
+
+  const [modelVideo, setModelVideo] = useState(
+    getPublicPath(
+      data,
+      dataHouses[houseNumber]['modules'][pillClick].video
+    )
+  );
+
+  const vrButtonClick = () => {
+    modelViwerRef.current.activateAR();
+  };
+
+  console.log(dataHouses[houseNumber]['modules'][pillClick]);
 
   return (
     <Box components='main'>
@@ -511,16 +552,29 @@ const HousePage = ({ house, data }) => {
             })}
           </Box>
         </Box>
+
         <Box className={classes.model}>
-          <Model3d
-            scaleUp={breakpoints.minxl}
-            newref={modelViwerRef}
-            srcPath={model3d}
-            srcPathIos={getPublicPath(
-              data,
-              modules?.[pillClick].model3d.replace('glb', 'usdz')
-            )}
-          ></Model3d>
+          {breakpoints.sm ? (
+            <>
+              <Box className={classes.modelButton} onClick={vrButtonClick}>
+                <VRviwe />
+              </Box>
+              <Box className={classes.conteinerVRmodel}>
+                <Model3d
+                  scaleUp={breakpoints.minxl}
+                  newref={modelViwerRef}
+                  srcPath={model3d}
+                  srcPathIos={getPublicPath(
+                    data,
+                    modules?.[pillClick].model3d.replace('glb', 'usdz')
+                  )}
+                ></Model3d>
+              </Box>
+              <HouseModelPlayer video={modelVideo} />
+            </>
+          ) : (
+            <HouseModelPlayer video={modelVideo} />
+          )}
         </Box>
       </Box>
 

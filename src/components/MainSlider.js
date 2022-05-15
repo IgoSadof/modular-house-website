@@ -246,8 +246,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-start',
     cursor: 'pointer',
+    
     '& span': {
       cursor: 'pointer',
+      outline:'none',
     },
     width: '10vw',
     height: '20px',
