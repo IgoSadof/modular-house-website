@@ -584,6 +584,7 @@ const HousePage = ({ house, data }) => {
         )}
         data={data}
         mobileButtons={true}
+        autoSlidesPerView={true}
       ></FullScreenHouseSlider>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>

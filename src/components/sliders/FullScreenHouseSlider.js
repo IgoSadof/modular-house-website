@@ -175,6 +175,7 @@ const FullScreenHouseSlider = ({
   pagination,
   mobileButtons,
   mouseIcon,
+  autoSlidesPerView,
 }) => {
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
@@ -220,6 +221,7 @@ const FullScreenHouseSlider = ({
           houseRef={sliderRef}
           listItem={gallery}
           pagination={pagination}
+          autoSlidesPerView={autoSlidesPerView}
         />
       </Box>
       <Box className={classes.descWraper}>

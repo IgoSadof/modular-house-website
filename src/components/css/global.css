@@ -418,6 +418,10 @@ abbr {
   background-color: #ADADAD !important;
 }
 
+.mySwiper .swiper-slide {
+  width:unset;
+}
+
 
 
 @media (max-width: 1200px) {
