@@ -50,12 +50,22 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles((theme) => ({
   root: {
     backgroundColor: '#D1D1D1',
+    color:'red'
   },
 }))(MuiAccordionDetails);
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   details: {
     padding: '16px 0',
+    [theme.breakpoints.down('md')]: {
+      padding: '16px 10%',
+    },
+  },
+  accordionTitle:{
+    [theme.breakpoints.down('md')]: {
+      padding: '0 10%',
+    },
+
   },
   noDetails: {
     padding: '0',
@@ -85,12 +95,12 @@ export default function Accordions({
             onClick={
               roomsImg
                 ? () =>
-                  roomsImg(
-                    item['Главное изображение'].substr(
-                      item['Главное изображение'].search(/images\//)
-                    ),
-                    index
-                  )
+                    roomsImg(
+                      item['Главное изображение'].substr(
+                        item['Главное изображение'].search(/images\//)
+                      ),
+                      index
+                    )
                 : null
             }
             key={index}
@@ -100,6 +110,7 @@ export default function Accordions({
           >
             {item.published ? (
               <AccordionSummary
+                className={classes.accordionTitle}
                 aria-controls={`${title ? title : '0'}-${index}`}
                 id={`${title ? title : '0'}-heading-${index}`}
                 expandIcon={<AddIcon />}
@@ -112,8 +123,8 @@ export default function Accordions({
                   {houseRooms
                     ? item['Экспликация']
                     : answers
-                      ? item.question
-                      : item.question.toUpperCase()}
+                    ? item.question
+                    : item.question.toUpperCase()}
                 </Typography>
               </AccordionSummary>
             ) : null}

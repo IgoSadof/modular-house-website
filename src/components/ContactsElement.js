@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
   BlockMain: {
     display: 'flex',
     justifyContent: 'space-between',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px'
+    },
     width: '100%',
     height: '100%',
     [theme.breakpoints.down('md')]: {
@@ -32,12 +34,17 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      gap: '40px',
+      '& > * + * ':{
+        marginLeft:'0',
+        marginTop:'40px',
+      },
     },
   },
   BlockColumn: {
     display: 'flex',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px'
+    },
     justifyContent: 'space-between',
     flexDirection: 'column',
   },
@@ -53,24 +60,36 @@ const useStyles = makeStyles((theme) => ({
   ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '60px',
+    '& > * + * ':{
+      marginTop:'60px'
+    },
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ':{
+        marginTop:'4.2vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
 
-      gap: '30px',
+      '& > * + * ':{
+        marginTop:'30px'
+      },
     },
   },
   ContactsBoxes: {
     display: 'flex',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px'
+    },
     justifyContent: 'space-between',
     '@media (min-width:1921px)': {
-      gap: '1.4vw',
+      '& > * + * ':{
+        marginLeft:'1.4vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
-      gap: '20px',
+      '& > * + * ':{
+        marginLeft:'20px'
+      },
       justifyContent: 'center',
     },
   },
@@ -95,9 +114,13 @@ const useStyles = makeStyles((theme) => ({
   infoBox: {
     display: 'flex',
     alignItems:'baseline',
-    gap: '32px',
+    '& > * + * ':{
+      marginLeft:'32px'
+    },
     '@media (min-width:1921px)': {
-      gap: '1.8vw',
+      '& > * + * ':{
+        marginLeft:'1.8vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
@@ -105,16 +128,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   infoBoxTel:{
-    gap: '28px',
+    '& > * + * ':{
+      marginLeft:'28px'
+    },
     '@media (min-width:1921px)': {
-      gap: '1.6vw',
+      '& > * + * ':{
+        marginLeft:'1.6vw'
+      },
     },
   },
   infoBoxText: {
     display: 'flex',
     flexDirection: 'column',
     marginTop: 'auto',
-    gap: '24px',
+    '& > * + * ':{
+      marginTop:'24px'
+    },
     '& p': {
       fontSize: '16px',
       '@media (min-width:1921px)': {

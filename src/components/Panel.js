@@ -11,11 +11,7 @@ const useStyles = makeStyles((theme) => ({
     left: '10vw',
     bottom: '0',
     display: 'flex',
-    gap: '60px',
     zIndex: '1',
-    '@media (min-width:1921px)': {
-      gap: '4.2vw',
-    },
     [theme.breakpoints.down('md')]: {
       left: '0',
       position: 'relative',

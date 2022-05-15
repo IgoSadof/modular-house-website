@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (min-width:1921px)': {
       marginTop: '4.2vw',
-      gap: '1.7vw',
     },
   },
   descBlockContent: {
@@ -46,13 +45,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     width: '100%',
     paddingLeft: '100px',
-    gap: '32px',
+    '& > * + * ':{
+      marginTop:'32px'
+    },
     [theme.breakpoints.down('md')]: {
       paddingLeft: '0',
     },
     '@media (min-width:1921px)': {
       paddingLeft: '5.2vw',
-      gap: '1.7vw',
+      '& > * + * ':{
+        marginTop:'32px'
+      },
     },
   },
   descTitle: {
@@ -95,7 +98,14 @@ const useStyles = makeStyles((theme) => ({
   iconBox: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px',
+    '& > * + * ':{
+      marginTop:'16px'
+    },
+    '@media (min-width:1921px)': {
+      '& > * + * ':{
+        marginTop:'0.83vw'
+      },
+    },
   },
   icon: {
     width: '60px',
@@ -126,16 +136,23 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: '90px',
     display: 'flex',
-    gap: '150px',
+    '& > * + * ':{
+      marginLeft:'150px'
+    },
     '@media (min-width:1921px)': {
       marginTop: '4.7vw',
-      gap: '7.8vw',
+      '& > * + * ':{
+        marginLeft:'7.8vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
       alignItems: 'center',
       marginTop: '40px',
-      gap: '60px',
+      '& > * + * ':{
+        marginLeft:'0',
+        marginTop:'60px',
+      },
       padding: '0 10%',
     },
   },

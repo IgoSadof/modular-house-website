@@ -151,8 +151,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   houseDescIconBox: {
-    gap:'20px',
     display: "flex",
+    '& > * + * ':{
+      marginLeft:'20px'
+    },
     marginTop: "auto",
     marginLeft: "40px",
     alignItems: "end",

@@ -15,18 +15,26 @@ import CalculationBlock from './CalculationBlock';
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px'
+    },
     padding: '0 10%',
     backgroundColor: '#D1D1D1',
     marginTop: '100px',
     //alignItems: 'center',
     '@media (min-width:1920px)': {
-      gap: '1.4vw',
+      '& > * + * ':{
+        marginLeft:'1.4vw'
+      },
       marginTop: '6.9vw',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '40px',
       flexDirection: 'column',
+      '& > * + * ':{
+        marginLeft:'0',
+        marginTop:'12px'
+      },
       padding: '0 10%',
       justifyContent: 'center',
       '& $titleBox': {
@@ -39,17 +47,24 @@ const useStyles = makeStyles((theme) => ({
   modelBlock: {
     display: 'flex',
     marginTop: '60px',
-    gap: '60px',
+    '& > * + * ':{
+      marginLeft:'60px'
+    },
     padding: '0 0 100px 10%',
     backgroundColor: '#D1D1D1',
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ':{
+        marginLeft:'4.2vw'
+      },
       padding: '0 0 3.5vw 10%',
       marginTop: '3.1vw',
     },
     [theme.breakpoints.down('md')]: {
       padding: '40px 0',
-      gap: '40px',
+      '& > * + * ':{
+        marginLeft:'0',
+        marginTop:'40px'
+      },
       flexDirection: 'column-reverse',
       // padding: '10%',
       paddingTop: '20px',
@@ -58,16 +73,20 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   modelDesc: {
+    display: 'flex',
     position: 'relative',
     width: '28vw',
     marginLeft: '100px',
     flexShrink: '0',
-    display: 'flex',
     minHeight: (param) => `${param.heightModuleList}vh`,
-    gap: '40px',
+    '& > * + * ':{
+      marginLeft:'40px'
+    },
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
-      gap: '2.1vw',
+      '& > * + * ':{
+        marginLeft:'2.1vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
       padding: '0 9%',
@@ -84,7 +103,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     '@media (max-width:1919px)': {
-      gap: '20px',
+      '& > * + * ':{
+        marginTop:'20px'
+      },
     },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
@@ -99,7 +120,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
 
     '@media (max-width:1919px)': {
-      gap: '20px',
+      '& > * + * ':{
+        marginTop:'20px'
+      },
     },
   },
   modelDescItemTitle: {
@@ -226,9 +249,13 @@ const useStyles = makeStyles((theme) => ({
 
   titleBox: {
     display: 'flex',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px'
+    },
     '@media (min-width:1920px)': {
-      gap: '1.4vw',
+      '& > * + * ':{
+        marginLeft:'1.4vw'
+      },
     },
 
     flexDirection: 'row-reverse',

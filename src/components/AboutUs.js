@@ -40,7 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
   Block: {
     display: 'flex',
-    gap: '60px',
+    '& > * + * ':{
+      marginLeft:'60px'
+    },
     marginTop: '100px',
     '&:first-child ': {
       marginTop: 'auto',
@@ -51,7 +53,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ':{
+        marginLeft:'4.2vw'
+      },
       marginTop: '8.3vw',
     },
     [theme.breakpoints.down('md')]: {
@@ -61,7 +65,10 @@ const useStyles = makeStyles((theme) => ({
       '&:last-of-type': {
         marginBottom: '40px',
       },
-      gap: '40px',
+      '& > * + * ':{
+        marginLeft:'0',
+        marginTop:'40px',
+      },
       '&:first-child ': {
         marginTop: '60px',
         height: 'auto',
@@ -79,7 +86,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   titleBox: {
-    gap: '20px',
     flexDirection: 'row-reverse',
     [theme.breakpoints.down('md')]: {
       position: 'relative',
@@ -90,14 +96,17 @@ const useStyles = makeStyles((theme) => ({
   textBox: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '15px',
-    marginLeft: 'auto',
+     '& > * + * ':{
+        marginTop:'15px'
+      },
+    // marginLeft: 'auto',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      // gap: "30px",
     },
     '@media (min-width:1921px)': {
-      gap: '1.1vw',
+      '& > * + * ':{
+        marginTop:'1.1vw'
+      },
     },
   },
   creatorsBox: {
@@ -154,11 +163,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   imgBox: {
-    marginLeft: 'auto',
     marginRight: 'auto',
     width: '100%',
     [theme.breakpoints.down('md')]: {
-      marginTop: '20px',
+      marginTop: '40px',
+      marginBottom: '20px',
     },
   },
   BlockMt0: {
@@ -168,7 +177,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '0',
-      gap: '20px',
     },
   },
   lineInvis: {
@@ -189,7 +197,6 @@ const useStyles = makeStyles((theme) => ({
   BlockColumn: {
     width: '28vw',
     display: 'flex',
-    gap: '20px',
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
@@ -232,7 +239,7 @@ const AboutUs = ({ data }) => {
                   <TitleWithLine underLine={true} title={item.title} />
                 </Box>
               </Box>
-              <Box component='section' className={classes.textBox}>
+              <Box className={classes.textBox}>
                 {item.article_text.map((paragraph, art_index) => (
                   <Typography
                     variant='body1'

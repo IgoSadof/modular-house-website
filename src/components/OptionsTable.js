@@ -72,9 +72,13 @@ const useStyles = makeStyles((theme) => ({
   lastRow: {
     display: 'flex',
     width: '100%',
-    gap: '60px',
+    '& > * + * ':{
+      marginLeft:'60px'
+    },
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ':{
+        marginLeft:'4.2vw'
+      },
     },
   },
   downloadArea: {
@@ -117,19 +121,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px'
+    },
     [theme.breakpoints.down('md')]: {
       '&:last-of-type': {
         flexDirection: 'column',
         alignItems: 'flex-start',
-        gap:'0',
         marginTop:'16px',
       },
     },
   },
   secondRadio: {
     marginRight: '0',
-    // width: '100px',
   },
 }));
 

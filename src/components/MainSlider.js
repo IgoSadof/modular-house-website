@@ -107,7 +107,9 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     zIndex: '2',
     display: 'flex',
-    gap: '6px',
+    '& > * + * ':{
+      marginLeft:'6px'
+    },
     cursor: 'pointer',
     marginLeft: 'auto',
   },
@@ -115,7 +117,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 'auto',
     marginBottom: 'auto',
     display: 'flex',
-    gap: '50px',
     width: '100%',
     height: '100%',
     alignItems: 'flex-start',
@@ -162,14 +163,18 @@ const useStyles = makeStyles((theme) => ({
     left: '0',
     right: '0',
     zIndex: 1,
-    gap: '30px',
+    '& > * + * ':{
+      marginTop:'30px'
+    },
     flexDirection: 'column',
     // marginTop:"-20%",
     marginLeft: '100px',
     width: '34vw',
     '@media (min-width:1921px)': {
       marginLeft: '6.9vw',
-      gap: '2.1vw',
+      '& > * + * ':{
+        marginTop:'2.1vw'
+      },
     },
 
     [theme.breakpoints.down('md')]: {
@@ -178,7 +183,9 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 'auto',
       marginBottom: 'auto',
       top: '130px',
-      gap: '20px',
+      '& > * + * ':{
+        marginTop:'20px'
+      },
       width: '70%',
       '& h1': {
         fontSize: (param) => (param.breakpoints.se ? '24px' : '32px'),
@@ -199,12 +206,16 @@ const useStyles = makeStyles((theme) => ({
   numbersBox: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '30px',
+    '& > * + * ':{
+      marginTop:'30px'
+    },
     position: 'relative',
     marginTop: 'auto',
     zIndex: '2',
     '@media (min-width:1921px)': {
-      gap: '2vw',
+      '& > * + * ':{
+        marginTop:'2vw',
+      },
     },
     [theme.breakpoints.down('md')]: {
       '@media (min-width:600px)': {

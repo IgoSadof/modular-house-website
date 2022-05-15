@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 
   titleBox: {
     display: 'flex',
-    // gap: "20px",
     flexDirection: 'row',
     flexShrink: '0',
     [theme.breakpoints.down('md')]: {
@@ -37,12 +36,16 @@ const useStyles = makeStyles((theme) => ({
   BlockColumn: {
     width: '28vw',
     display: 'flex',
-    gap: '20px',
+    '& > * + * ':{
+      marginTop:'20px'
+    },
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
     '@media (min-width:1921px)': {
-      gap: '2vw',
+      '& > * + * ':{
+        marginTop:'2vw'
+      },
     },
 
     [theme.breakpoints.down('md')]: {
@@ -56,7 +59,9 @@ const useStyles = makeStyles((theme) => ({
     width: '30vw',
     marginLeft: 'auto',
     display: 'flex',
-    gap: '3.4vw',
+    '& > * + * ':{
+      marginTop:'2vw'
+    },
     flexDirection: 'column',
     '$block &': {
       paddingBottom: '0',
@@ -100,7 +105,6 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
               paddingBottom
                 ? {
                     paddingBottom: breakpoints.xxl ? '14.5vw' : '230px',
-                    gap: '0',
                     justifyContent: 'space-between',
                   }
                 : null

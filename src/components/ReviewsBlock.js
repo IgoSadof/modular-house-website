@@ -14,11 +14,15 @@ import getPublicPath from '../utils/getPublicPath';
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    gap: '60px',
+    '& > * + * ':{
+      marginLeft:'60px'
+    },
     marginTop: '120px',
     paddingRight: '10vw',
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ':{
+        marginLeft:'4.2vw'
+      },
       marginTop: '8.3vw',
     },
 
@@ -27,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       width: '100%',
       padding: '0 10%',
-      gap: '40px',
+      '& > * + * ':{
+        marginLeft:'0',
+        marginTop:'40px'
+      },
       '& $titleBox': {
         right: '-12%',
         position: 'relative',
@@ -36,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
   titleBox: {
     display: 'flex',
-    // gap: "20px",
     flexDirection: 'row',
     flexShrink: '0',
     [theme.breakpoints.down('md')]: {
@@ -48,11 +54,16 @@ const useStyles = makeStyles((theme) => ({
   BlockColumn: {
     width: '28vw',
     display: 'flex',
-    gap: '20px',
+    '& > * + * ':{
+      marginTop:'20px'
+    },
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
     [theme.breakpoints.down('md')]: {
+      '& > * + * ':{
+        marginTop:'1.04vw'
+      },
       order: '3',
       marginLeft: '0',
       width: '100%',
@@ -62,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '100%',
     height: '30%',
-    gap: '20px',
     [theme.breakpoints.down('md')]: {
       height: '200px',
     },
@@ -104,9 +114,13 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     display: 'flex',
-    gap: '12px',
+    '& > * + * ':{
+      marginLeft:'12px'
+    },
     '@media (min-width:1921px)': {
-      gap: '0.8vw',
+      '& > * + * ':{
+        marginLeft:'0.8vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',

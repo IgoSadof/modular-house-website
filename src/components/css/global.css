@@ -459,14 +459,17 @@ div[class*="MuiFormControl"] {
     flex-shrink: 0;
   }
 
-  div[class*="sectionTitle"] {
+  div[class*="sectionTitle"]>*+* {
     left: -5.2vw;
-    gap: 1.4vw;
+    margin-left: 1.4vw;
     width: 34.7vw;
   }
+  /* div[class*="sectionTitle"]>*+* {
+    margin-left: 1.4vw;
+  } */
 
   div[class*="sectionTitle"] span {
-    width: 5.2vw;
+    width: 4vw;
     flex-shrink: 0;
   }
 

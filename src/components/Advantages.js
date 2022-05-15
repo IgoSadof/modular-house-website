@@ -28,7 +28,14 @@ const useStyles = makeStyles((theme) => ({
     '& h4': {
       color: '#4F4F4F',
     },
-    gap: '20px',
+    '& > * + * ':{
+      marginTop:'20px'
+    },
+    '@media (min-width:1921px)': {
+      '& > * + * ':{
+        marginTop:'1.04vw'
+      },
+    },
     '@media (min-width: 1920px)': {
       width: '22vw',
       paddingRight: '3.1vw',

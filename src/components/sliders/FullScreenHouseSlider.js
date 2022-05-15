@@ -120,7 +120,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
       marginTop: '15px',
-      gap: '10px',
+      '& > * + * ':{
+        marginLeft:'10px'
+      },
       '@media (orientation: landscape)': {
         justifyContent: 'space-around',
       },
@@ -143,13 +145,17 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     position: 'absolute',
     display: 'flex',
-    gap: '12px',
+    '& > * + * ':{
+      marginLeft:'12px'
+    },
     left: '14%',
     bottom: '20px',
     zIndex: '2',
     '@media (min-width:1921px)': {
       bottom: '1.1vw',
-      gap: '0.6vw',
+      '& > * + * ':{
+        marginLeft:'0.6vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
       width: '100%',

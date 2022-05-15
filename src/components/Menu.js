@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: (param) => (param.inBurger ? '100%' : '10%'),
     height: (param) => (param.inBurger ? '80vh' : '100vh'),
-    minHeight:'768px',
+    minHeight: '768px',
     borderRight: '1px solid #4F4F4F',
     padding: '50px 0px 80px',
     transition: '0.5s',
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       display: (param) => (param.inBurger ? 'flex' : 'none'),
-      minHeight:'100px',
+      minHeight: '100px',
       borderRight: 'none',
       position: 'relative',
       padding: '0',
@@ -76,10 +76,14 @@ const useStyles = makeStyles((theme) => ({
   },
   iconsBox: {
     display: 'flex',
-    gap: '30px',
+    '& > * + * ': {
+      marginLeft: '30px',
+    },
     alignItems: 'center',
     '@media (min-width:1921px)': {
-      gap: '1.6vw',
+      '& > * + * ': {
+        marginLeft: '1.6vw',
+      },
     },
   },
   icon: {
@@ -109,26 +113,39 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
-    gap: '30px',
+    '& > * + * ': {
+      marginTop: '30px',
+    },
     '@media (min-width:1921px)': {
-      gap: '2vw',
+      '& > * + * ': {
+        marginTop: '2vw',
+      },
     },
     [theme.breakpoints.down('md')]: {
       opacity: '1',
-      gap: '50px',
+      '& > * + * ': {
+        marginTop: '50px',
+      },
       marginTop: 'auto',
       marginBottom: 'auto',
       alignItems: 'flex-start',
-      '@media (orientation: landscape)': {
-        flexDirection: 'row',
+      '@media (max-width:1000px)': {
+        '@media (orientation: landscape)': {
+          flexDirection: 'row',
+          '& > * + * ': {
+            marginTop: '0',
+            marginLeft: '50px',
+          },
+          '& > li:last-of-type ': {
+            marginTop: '50px',
+            marginLeft: '0',
+          },
+        },
       },
-    },
-    [theme.breakpoints.down(theme.breakpoints.values.s)]: {
-      gap: '40px',
     },
   },
   navItem: {
-    zIndex:"3",
+    zIndex: '3',
     cursor: 'pointer',
     [theme.breakpoints.down('md')]: {
       opacity: '1',
@@ -151,13 +168,12 @@ const useStyles = makeStyles((theme) => ({
     '& span': {
       fontWeight: '500',
     },
-    height:'56px',
+    height: '56px',
     '@media (min-width:1921px)': {
-
-      height:'2.91vw',
+      height: '2.91vw',
     },
     [theme.breakpoints.down('md')]: {
-      height:'auto',
+      height: 'auto',
       justifyContent: 'space-between',
       '@media (orientation: landscape)': {
         marginBottom: '40px',
@@ -209,21 +225,21 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
             ) : (
               <>
                 <Typography variant='button'>ЧТО МЫ </Typography>
-                <br/>
+                <br />
                 <Typography variant='button'>ДЕЛАЕМ</Typography>
               </>
             )}
           </Link>
         </li>
         <li className={classes.navItem}>
-          <Link className={classes.Link} to={"/watch"}>
+          <Link className={classes.Link} to={'/watch'}>
             {inBurger ? (
-              <Typography variant="button">ГДЕ УВИДЕТЬ </Typography>
+              <Typography variant='button'>ГДЕ УВИДЕТЬ </Typography>
             ) : (
               <>
-                <Typography variant="button">ГДЕ</Typography>
+                <Typography variant='button'>ГДЕ</Typography>
                 <br />
-                <Typography variant="button">УВИДЕТЬ</Typography>
+                <Typography variant='button'>УВИДЕТЬ</Typography>
               </>
             )}
           </Link>

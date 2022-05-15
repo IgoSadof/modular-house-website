@@ -73,13 +73,17 @@ const useStyles = makeStyles((theme) => ({
   },
   calculation: {
     display: 'flex',
-    gap: '40px',
     flexDirection: 'column',
+    '& > * + * ':{
+      marginTop:'40px'
+    },
     marginLeft: 'auto',
     width: '32%',
     alignSelf: 'center',
     '@media (min-width:1921px)': {
-      gap: '2.1vw',
+      '& > * + * ':{
+        marginTop:'2.1vw'
+      },
     },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
@@ -90,10 +94,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    gap: '0',
-    '@media (min-width:1921px)': {
-      //gap: '1.1vw',
-    },
   },
   calculationHeader: {
     display: 'flex',

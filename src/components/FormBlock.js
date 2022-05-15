@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Box from '@material-ui/core/Box';
 import Form from './Form';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import TitleWithLine from '../components/TitleWithLine';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,25 +15,24 @@ const useStyles = makeStyles((theme) => ({
 
   Block: {
     display: 'flex',
-    gap: '60px',
-    width: "100%",
-    maxHeight: "80vh",
+
+    width: '100%',
+    maxHeight: '80vh',
     minHeight: '600px',
-    "&>div":{
-      height: "100%",
+    '&>div': {
+      height: '100%',
     },
-    "& img":{
-      objectFit: "cover",
-      height: "100%",
-      width: "100%",
+    '& img': {
+      objectFit: 'cover',
+      height: '100%',
+      width: '100%',
     },
-    '@media (min-width:1921px)': {
-      gap: '4.2vw',
-    },
+
     [theme.breakpoints.down('md')]: {
+      maxHeight: '100%',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '20px',
+
       height: 'auto',
     },
   },
@@ -45,7 +43,13 @@ const useStyles = makeStyles((theme) => ({
   mediaBlock: {
     display: 'flex',
     width: '100%',
+    marginLeft: '60px',
+    '@media (min-width:1921px)': {
+      marginLeft: '4.2vw',
+    },
     [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+      marginBottom: '20px',
       width: '100%',
       order: '1,',
     },
@@ -56,13 +60,16 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     margin: 'auto',
+    // marginLeft:'20px',
+    '@media (min-width:1921px)': {
+      // marginLeft: '1.4vw',
+    },
+
     [theme.breakpoints.down('md')]: {
       margin: '0',
     },
   },
   titleBox: {
-    gap: '20px',
-    flexDirection: 'row-reverse',
     [theme.breakpoints.down('md')]: {
       position: 'relative',
       right: (param) => (param.blockPadding ? '-12%' : null),
@@ -90,19 +97,10 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
-  Expodom: {
-    [theme.breakpoints.down('md')]: {
-      gap: '0',
-    },
-
-    '& .makeStyles-message-392': {
-      color: 'red',
-    },
-  },
   BlockColumn: {
     width: '28vw',
     display: 'flex',
-    gap: '20px',
+    marginTop:'20px',
     marginLeft: '100px',
     flexShrink: '0',
     justifyContent: 'space-between',
@@ -114,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
+      marginTop:'1.04vw',
     },
   },
 }));
@@ -139,7 +138,7 @@ const FormBlock = ({
 
   return (
     <div className={classes.root}>
-      <Box className={`${classes.Block} ${classes.Expodom}`}>
+      <Box className={`${classes.Block}`}>
         {!breakpoints.md ? (
           <>
             <Box className={classes.BlockColumn}>
@@ -163,11 +162,7 @@ const FormBlock = ({
                 className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
               >
                 {!staticImg ? (
-                  <img
-                    className={classes.expodom_img}
-                    src={img}
-                    alt='img'
-                  />
+                  <img className={classes.expodom_img} src={img} alt='img' />
                 ) : (
                   <img
                     className={classes.expodom_img}
@@ -181,18 +176,20 @@ const FormBlock = ({
         ) : (
           <>
             <Box className={classes.titleBox} style={{ marginBottom: '40px' }}>
-              {header ? <TitleWithLine title={header} longLine={true} underLine={underLine} /> : null}
+              {header ? (
+                <TitleWithLine
+                  title={header}
+                  longLine={true}
+                  underLine={underLine}
+                />
+              ) : null}
             </Box>
             {staticImg || img ? (
               <Box
                 className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
               >
                 {!staticImg ? (
-                  <img
-                    className={classes.expodom_img}
-                    src={img}
-                    alt='img'
-                  />
+                  <img className={classes.expodom_img} src={img} alt='img' />
                 ) : (
                   <img
                     className={classes.expodom_img}

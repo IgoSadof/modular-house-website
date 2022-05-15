@@ -18,18 +18,25 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px',
+    },
     marginTop: '145px',
     "@media (min-width:1920px)": {
-      gap: "1.4vw",
+      '& > * + * ':{
+        marginLeft:'1.4vw',
+      },
       marginTop: "10vw",
     },
   },
   titleBoxMain: {
     marginLeft: 'auto',
     display: 'flex',
-    gap: '20px',
     flexDirection: 'row-reverse',
+    '& > * + * ':{
+      marginLeft:'0',
+      marginRight:'20px',
+    },
   },
   titleBox: {
     width: '70%',

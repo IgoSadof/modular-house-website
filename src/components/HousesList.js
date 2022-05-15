@@ -18,7 +18,9 @@ const style = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: '20px',
+    '& > * + * ':{
+      marginLeft:'20px',
+    },
   },
   flexColumn: {
     display: 'flex',
@@ -69,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0',
     justifyContent: 'space-around',
     alignItems: 'center',
-    // gap: "40px",
   },
   houseListItem: {
     width: '100%',
@@ -181,26 +182,33 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     margin: '60px 0',
     width: '100%',
-    // height: '100%',
     padding: '0 60px',
-    gap: '20px',
+    '& > * + * ':{
+      marginTop:'20px',
+    },
     justifyContent: 'flex-end',
     '@media (max-width:1441px)': {
       padding: '0 40px',
     },
     '@media (min-width:1441px)': {
-      gap: '40px',
+      '& > * + * ':{
+        marginTop:'40px',
+      },
     },
     '@media (min-width:1921px)': {
       padding: '0 4.2vw',
-      gap: '2.1vw',
+      '& > * + * ':{
+        marginTop:'2.1vw',
+      },
       margin: '3.1vw 0',
     },
     [theme.breakpoints.down('md')]: {
       '&:first-of-type': {
         marginTop: '50px',
       },
-      gap: '16px',
+      '& > * + * ':{
+        marginTop:'16px',
+      },
       padding: '0',
       order: '2',
       margin: '0 0 50px 0',
@@ -295,7 +303,9 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescSpecBox: {
     ...style.flex,
-    gap: '0',
+    '& > * + * ':{
+      marginLeft:'0',
+    },
     flexDirection: 'column',
     alignItems: 'flex-start',
     [theme.breakpoints.down(theme.breakpoints.values.sm)]: {

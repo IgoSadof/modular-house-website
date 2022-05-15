@@ -85,7 +85,9 @@ const useStyles = makeStyles((theme) => ({
   connectBox: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '50px',
+    '& > * + * ':{
+      marginTop:'50px'
+    },
     height: '100vh',
     zIndex: '3',
     padding: '60px 100px 100px 100px',
@@ -98,7 +100,9 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '0',
       width: '100%',
       justifyContent: 'space-between',
-      gap: 'unset',
+      '& > * + * ':{
+        marginTop:'0'
+      },
     },
   },
   buttonBox: {

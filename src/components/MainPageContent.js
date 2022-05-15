@@ -27,11 +27,15 @@ const useStyles = makeStyles((theme) => ({
   },
   Block: {
     display: 'flex',
-    gap: '60px',
+    '& > * + * ': {
+      marginLeft: '60px',
+    },
     marginTop: '120px',
     paddingRight: '10vw',
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ': {
+        marginLeft: '4.2vw',
+      },
       marginTop: '8.3vw',
     },
     [theme.breakpoints.down('md')]: {
@@ -39,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       width: '100%',
       padding: '0 10%',
-      gap: '40px',
+      '& > * + * ': {
+        marginLeft: '0',
+        marginTop: '40px',
+      },
       '& $titleBox': {
         right: '-12%',
         position: 'relative',
@@ -72,11 +79,21 @@ const useStyles = makeStyles((theme) => ({
   BlockColumn: {
     width: '28vw',
     display: 'flex',
-    gap: '20px',
+    '& > * + * ': {
+      marginLeft: '20px',
+    },
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
+    '@media (min-width:1921px)': {
+      '& > * + * ': {
+        marginLeft: '1.4vw',
+      },
+    },
     [theme.breakpoints.down('md')]: {
+      '& > * + * ': {
+        marginLeft: '0',
+      },
       order: '3',
       marginLeft: '0',
       width: '100%',
@@ -85,10 +102,14 @@ const useStyles = makeStyles((theme) => ({
   sliderBlock: {
     display: 'flex',
     // flexDirection: "column",
-    gap: '20px',
+    '& > * + * ': {
+      marginLeft: '20px',
+    },
     overflow: 'hidden',
     '@media (min-width:1921px)': {
-      gap: '1.4vw',
+      '& > * + * ': {
+        marginLeft: '1.4vw',
+      },
     },
 
     [theme.breakpoints.down('md')]: {
@@ -117,8 +138,6 @@ const useStyles = makeStyles((theme) => ({
   accordion: {
     width: '100%',
     display: 'flex',
-    gap: '40px',
-    marginLeft: 'auto',
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
@@ -146,16 +165,16 @@ const MainPageContent = ({ data }) => {
     () => getData(data.allMysqlMainPage.nodes),
     [data]
   );
-  const reviews = dataMainPage.reviews.filter(item=>item.published);
-  const answers = dataMainPage.answers.filter(item=>item.published);
+  const reviews = dataMainPage.reviews.filter((item) => item.published);
+  const answers = dataMainPage.answers.filter((item) => item.published);
 
   const breakpoints = useBreakpoint();
   const classes = useStyles();
   const houseSliderRef = useRef(null);
   let slidesPath = [...dataMainPage['form-block-with-gallery'][0].gallery].map(
     (item) => {
-      if(item.published){
-        return item.image
+      if (item.published) {
+        return item.image;
       }
     }
   );
@@ -209,7 +228,11 @@ const MainPageContent = ({ data }) => {
       {/* ОТЗЫВЫ */}
 
       {dataMainPage.published_reviews ? (
-        <ReviewsBlock data={data} reviews={reviews} title={dataMainPage.title_reviews}></ReviewsBlock>
+        <ReviewsBlock
+          data={data}
+          reviews={reviews}
+          title={dataMainPage.title_reviews}
+        ></ReviewsBlock>
       ) : null}
 
       {/* ОТВЕТЫ */}
@@ -232,7 +255,7 @@ const MainPageContent = ({ data }) => {
           ) : (
             <Box className={classes.titleBox} style={{ minHeight: '224px' }}>
               <Box className={classes.BlockColumn}>
-                <TitleWithLine title={dataMainPage.title_answers}  />
+                <TitleWithLine title={dataMainPage.title_answers} />
               </Box>
             </Box>
           )}
@@ -279,10 +302,12 @@ const MainPageContent = ({ data }) => {
             className={`${classes.Block} ${classes.BlockFullscreen}`}
           >
             <Box className={classes.titleBox}>
-              <TitleWithLine
-                title={dataMainPage['form-block-with-gallery'][0].header}
-                longLine={true}
-              />
+              <Box className={classes.BlockColumn}>
+                <TitleWithLine
+                  title={dataMainPage['form-block-with-gallery'][0].header}
+                  longLine={true}
+                />
+              </Box>
             </Box>
             <Box className={classes.BlockColumn}>
               <OneImageAutoSlider slides={slides} />

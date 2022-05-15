@@ -7,11 +7,15 @@ import TitleWithLine from './TitleWithLine';
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    gap: '60px',
+    '& > * + * ':{
+      marginLeft:'60px'
+    },
     marginTop: '120px',
     padding: '0 10%',
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ':{
+        marginLeft:'4.2vw'
+      },
       marginTop: '8.3vw',
     },
 
@@ -20,7 +24,10 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       width: '100%',
       padding: '0 10%',
-      gap: '40px',
+      '& > * + * ':{
+        marginTop:'40px',
+        marginLeft:'0',
+      },
       // '& $titleBox': {
       //   right: '-12%',
       //   position: 'relative',
@@ -38,17 +45,23 @@ const useStyles = makeStyles((theme) => ({
   leftColumnBox: {
     display: 'flex',
     width: '28vw',
-    gap: "30px",
+    '& > * + * ':{
+      marginTop:'30px'
+    },
     marginLeft: '100px',
     flexDirection: 'column',
     flexShrink: '0',
     '@media (min-width:1921px)': {
-      gap: '4.2vw',
+      '& > * + * ':{
+        marginTop:'4.2'
+      },
       marginLeft: '5.2vw',
     },
     [theme.breakpoints.down('md')]: {
       width:'100%',
-      gap: "1.6vw",
+      '& > * + * ':{
+        marginTop:'1.6vw'
+      },
       marginLeft: '0',
       flexDirection: 'column-reverse',
     },
@@ -56,8 +69,14 @@ const useStyles = makeStyles((theme) => ({
   leftColumnTitleBox: {
     width: '28vw',
     display: 'flex',
-    gap: '20px',
-    
+    '& > * + * ':{
+      marginTop:'20px'
+    },
+    '@media (min-width:1921px)': {
+      '& > * + * ':{
+        marginTop:'1.04'
+      },
+    },
     justifyContent: 'space-between',
     flexDirection: 'column',
     [theme.breakpoints.down('md')]: {
@@ -77,8 +96,6 @@ const useStyles = makeStyles((theme) => ({
   RightColumnBox: {
     width: '60%',
     display: 'flex',
-    gap: '40px',
-    marginLeft: 'auto',
     [theme.breakpoints.down('md')]: {
       padding:'0 10%',
       width: '100%',
