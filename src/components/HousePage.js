@@ -15,25 +15,25 @@ import CalculationBlock from './CalculationBlock';
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'20px'
+    '& > * + * ': {
+      marginLeft: '20px',
     },
     padding: '0 10%',
     backgroundColor: '#D1D1D1',
     marginTop: '100px',
     //alignItems: 'center',
-    '@media (min-width:1920px)': {
-      '& > * + * ':{
-        marginLeft:'1.4vw'
+    '@media (min-width:1921px)': {
+      '& > * + * ': {
+        marginLeft: '1.4vw',
       },
       marginTop: '6.9vw',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '40px',
       flexDirection: 'column',
-      '& > * + * ':{
-        marginLeft:'0',
-        marginTop:'12px'
+      '& > * + * ': {
+        marginLeft: '0',
+        marginTop: '40px',
       },
       padding: '0 10%',
       justifyContent: 'center',
@@ -47,23 +47,23 @@ const useStyles = makeStyles((theme) => ({
   modelBlock: {
     display: 'flex',
     marginTop: '60px',
-    '& > * + * ':{
-      marginLeft:'60px'
+    '& > * + * ': {
+      marginLeft: '60px',
     },
     padding: '0 0 100px 10%',
     backgroundColor: '#D1D1D1',
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginLeft:'4.2vw'
+      '& > * + * ': {
+        marginLeft: '4.2vw',
       },
       padding: '0 0 3.5vw 10%',
       marginTop: '3.1vw',
     },
     [theme.breakpoints.down('md')]: {
       padding: '40px 0',
-      '& > * + * ':{
-        marginLeft:'0',
-        marginTop:'40px'
+      '& > * + * ': {
+        marginLeft: '0',
+        marginTop: '40px',
       },
       flexDirection: 'column-reverse',
       // padding: '10%',
@@ -79,13 +79,13 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '100px',
     flexShrink: '0',
     minHeight: (param) => `${param.heightModuleList}vh`,
-    '& > * + * ':{
-      marginLeft:'40px'
+    '& > * + * ': {
+      marginLeft: '40px',
     },
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
-      '& > * + * ':{
-        marginLeft:'2.1vw'
+      '& > * + * ': {
+        marginLeft: '2.1vw',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -103,8 +103,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     '@media (max-width:1919px)': {
-      '& > * + * ':{
-        marginTop:'20px'
+      '& > * + * ': {
+        marginTop: '20px',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -120,8 +120,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
 
     '@media (max-width:1919px)': {
-      '& > * + * ':{
-        marginTop:'20px'
+      '& > * + * ': {
+        marginTop: '20px',
       },
     },
   },
@@ -249,12 +249,12 @@ const useStyles = makeStyles((theme) => ({
 
   titleBox: {
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'20px'
+    '& > * + * ': {
+      marginLeft: '20px',
     },
     '@media (min-width:1920px)': {
-      '& > * + * ':{
-        marginLeft:'1.4vw'
+      '& > * + * ': {
+        marginLeft: '1.4vw',
       },
     },
 
@@ -275,7 +275,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   BlockCalculation: {
+    position: 'relative',
     [theme.breakpoints.down('md')]: {
+      '&:div:first-child': {
+        position: 'relative',
+        right: '-12%',
+      },
+      '&>h2':{
+        whiteSpace: 'nowrap',
+      },
       justifyContent: 'center',
       minHeight: '100%',
     },
@@ -287,7 +295,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     paddingBottom: '100px',
     paddingRight: '0',
-    "& img": {
+    '& img': {
       objectFit: 'cover',
       height: '100%',
       width: '100%',
@@ -297,25 +305,25 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       paddingBottom: '5.2vw',
     },
-      [theme.breakpoints.down('md')]: {
-        padding: '0',
-        paddingBottom: '40px',
-        marginTop: '80px',
-      },
+    [theme.breakpoints.down('md')]: {
+      padding: '0',
+      paddingBottom: '40px',
+      marginTop: '80px',
     },
-    BlockTable: {
-      [theme.breakpoints.down('md')]: {
-        padding: '0',
-        width: '100%',
-      },
+  },
+  BlockTable: {
+    [theme.breakpoints.down('md')]: {
+      padding: '0',
+      width: '100%',
     },
-    text: {
-      marginBottom: '40px',
-      [theme.breakpoints.down('md')]: {
-        marginBottom: '20px',
-      },
+  },
+  text: {
+    marginBottom: '40px',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '20px',
     },
-  }));
+  },
+}));
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);

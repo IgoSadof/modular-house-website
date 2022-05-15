@@ -125,6 +125,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft:'20px'
     },
     [theme.breakpoints.down('md')]: {
+      '& > * + * ':{
+        marginLeft:'-12px',
+      },
       '&:last-of-type': {
         flexDirection: 'column',
         alignItems: 'flex-start',

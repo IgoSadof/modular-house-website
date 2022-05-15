@@ -74,20 +74,23 @@ const useStyles = makeStyles((theme) => ({
   calculation: {
     display: 'flex',
     flexDirection: 'column',
+    marginLeft:'60px',
     '& > * + * ':{
       marginTop:'40px'
     },
-    marginLeft: 'auto',
+    // marginLeft: 'auto',
     width: '32%',
     alignSelf: 'center',
     '@media (min-width:1921px)': {
       '& > * + * ':{
-        marginTop:'2.1vw'
+        marginTop:'2.1vw',
       },
+      marginLeft:'3.2vw',
     },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       width: '100%',
+      marginLeft:'0',
     },
   },
   calculationItem: {
