@@ -286,18 +286,18 @@ const Form = ({
         setFormProcessing(false);
         setOpenPopup(true);
       })
-      .then(() => {
-        if (sendDate) {
-          fetch('https://modhouse.herokuapp.com/dates', {
+      // .then(() => {
+      //   if (sendDate) {
+      //     fetch('https://modhouse.herokuapp.com/dates', {
 
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(sendDate),
-          });
-        }
-      })
+      //       method: 'POST',
+      //       headers: {
+      //         'Content-Type': 'application/json;charset=utf-8'
+      //       },
+      //       body: JSON.stringify(sendDate),
+      //     });
+      //   }
+      // })
       .catch((error) => {
         setFormProcessing(false);
         setOpenModal(false);

@@ -170,26 +170,29 @@ abbr {
 }
 
 .react-calendar__tile--active {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: #4F4F4F;
+  color: #F2F2F2;
 }
 .react-calendar__tile--now {
-  background-color: black;
+  background-color: #F2F2F2;
   border-color: black;
-  color: white;
+  color: #4F4F4F;
+  ;
 }
 .react-calendar__tile--range {
-  background-color: rgb(255, 255, 255, 0.5);
-  color: black;
+  background-color: #4F4F4F;
+  color: #F2F2F2;
 }
 .react-calendar__tile--rangeStart,
 .react-calendar__tile--rangeEnd {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: #4F4F4F;
+  border-color: #4F4F4F;
+  color: #F2F2F2;
 }
 .react-calendar__tile:hover {
-  background-color: rgb(255, 255, 255, 0.5);
-  color: black;
+  background-color: #4F4F4F;
+  border-color: #4F4F4F;
+  color: #F2F2F2;
 }
 .unAnableDate {
   position: relative;
@@ -205,9 +208,10 @@ abbr {
   background-color: black;
   transform: rotate(45deg);
 }
-
-.slick-list {
-  /* height: 90vh; */
+.dataRange{
+  background-color: #4F4F4F;
+  border-color: #4F4F4F;
+  color: #F2F2F2;
 }
 
 /* appear - on page load */
