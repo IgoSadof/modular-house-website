@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     padding: '0 10%',
     marginTop: '80px',
+    pointerEvents: 'none',
     [theme.breakpoints.down('md')]: {
       marginTop: '40px',
       marginLeft: '0',

@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     width: "56px",
     height: "56px",
     minWidth: "10px",
+    pointerEvents: 'visible',
     borderRadius: "0",
     background: (param)=>param.bgColor?param.bgColor:"#4F4F4F",
     border:"none",
