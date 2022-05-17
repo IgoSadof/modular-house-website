@@ -217,12 +217,13 @@ const FullScreenHouseSlider = ({
       className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`}
     >
       <Box className={classes.sliderContent}>
-        <HouseFotosSlider
+        {arr?( <HouseFotosSlider
           houseRef={sliderRef}
           listItem={gallery}
           pagination={pagination}
           autoSlidesPerView={autoSlidesPerView}
-        />
+        />):(null)}
+       
       </Box>
       <Box className={classes.descWraper}>
         {title ? (

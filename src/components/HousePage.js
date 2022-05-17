@@ -441,7 +441,7 @@ const HousePage = ({ house, data }) => {
     modelViwerRef.current.activateAR();
   };
 
-  console.log(dataHouses[houseNumber]['modules'][pillClick]);
+  console.log(dataHouses[houseNumber]);
 
   return (
     <Box components='main'>
