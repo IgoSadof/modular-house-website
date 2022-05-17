@@ -103,6 +103,8 @@ body {
   border-radius: "none";
   cursor: pointer;
   border-collapse: collapse;
+  margin-left: -1px;
+  margin-top: -1px;
 }
 
 .react-calendar__month-view__weekdays__weekday {
@@ -121,7 +123,7 @@ body {
     height: 40px;
   }
   .react-calendar__navigation span{
-    font-size: 1.02vw;
+    font-size: 0.72vw;
   }
   .react-calendar__navigation__label {
     margin-top: 1.02vw;
@@ -154,7 +156,7 @@ body {
   margin-top: 10px;
   text-align: end;
   cursor: pointer;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .react-calendar__navigation__arrow {
   display: none !important;

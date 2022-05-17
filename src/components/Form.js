@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      marginTop: '20px',
+      marginTop: '40px',
     },
   },
   line: {

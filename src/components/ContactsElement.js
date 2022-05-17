@@ -164,9 +164,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   ContactsPosition: {
-    fontSize: '12px',
-    fontWeight: '300',
-    marginTop: '10px',
+    fontSize: '13px',
+    marginTop: '8px',
+    fontWeight: '400',
+    opacity: '0.6',
     '@media (min-width:1921px)': {
       fontSize: '24px',
     },

@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     margin: 'auto',
+    paddingTop:'40px',
     // marginLeft:'20px',
     '@media (min-width:1921px)': {
       // marginLeft: '1.4vw',

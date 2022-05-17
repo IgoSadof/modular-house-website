@@ -12,7 +12,12 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
     justifyContent: 'space-between',
-
+    padding: '60px 0',
+    '@media (max-width:1200px)': {
+      '&':{
+        padding: '20px 0',
+      },
+    },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
       width: '100%',

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     paddingLeft: '100px',
     '& > * + * ': {
-      marginTop: '32px',
+      marginTop: '1em',
     },
     [theme.breakpoints.down('md')]: {
       paddingLeft: '0',
@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   descTitle: {
     fontSize: '38px',
     fontWeight: '600',
+    textTransform: 'none',
     '@media (min-width:1921px)': {
       fontSize: '2vw',
     },
@@ -158,13 +159,13 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: '100%',
     objectFit: 'cover',
-    height: '330px',
+    height: '360px',
     '@media (min-width:1921px)': {
       height: '18vw',
     },
   },
   sliderBox: {
-    height: '330px',
+    height: '360px',
     '@media (min-width:1921px)': {
       height: '18vw',
     },
