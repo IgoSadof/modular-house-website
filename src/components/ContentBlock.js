@@ -7,14 +7,14 @@ import TitleWithLine from './TitleWithLine';
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'60px'
+    '& > * + * ': {
+      marginLeft: '60px',
     },
     marginTop: '120px',
     padding: '0 10%',
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginLeft:'4.2vw'
+      '& > * + * ': {
+        marginLeft: '4.2vw',
       },
       marginTop: '8.3vw',
     },
@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       width: '100%',
       padding: '0 10%',
-      '& > * + * ':{
-        marginTop:'40px',
-        marginLeft:'0',
+      '& > * + * ': {
+        marginTop: '40px',
+        marginLeft: '0',
       },
       // '& $titleBox': {
       //   right: '-12%',
@@ -44,37 +44,34 @@ const useStyles = makeStyles((theme) => ({
   },
   leftColumnBox: {
     display: 'flex',
-    width: '28vw',
-    '& > * + * ':{
-      marginTop:'30px'
+    width: (param) => (param.rightColumnContent ? '28vw' : '100%'),
+    '& > * + * ': {
+      marginTop: (param) => (param.title ? '30px' : '0'),
     },
-    marginLeft: '100px',
+    paddingLeft: '100px',
     flexDirection: 'column',
     flexShrink: '0',
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'4.2'
+      '& > * + * ': {
+        marginTop: (param) => (param.title ? '4.2vw' : '0'),
       },
-      marginLeft: '5.2vw',
+      paddingLeft: '5.2vw',
     },
     [theme.breakpoints.down('md')]: {
-      width:'100%',
-      '& > * + * ':{
-        marginTop:'1.6vw'
-      },
-      marginLeft: '0',
+      width: (param) => '100%',
+      paddingLeft: '0',
       flexDirection: 'column-reverse',
     },
   },
   leftColumnTitleBox: {
-    width: '28vw',
+    width: '100%',
     display: 'flex',
-    '& > * + * ':{
-      marginTop:'20px'
+    '& > * + * ': {
+      marginTop: '20px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'1.04'
+      '& > * + * ': {
+        marginTop: '1.04',
       },
     },
     justifyContent: 'space-between',
@@ -82,41 +79,36 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       order: '3',
       width: '100%',
-     
     },
   },
-  leftColumnContent:{
-    width:'100%',
+  leftColumnContent: {
+    width: '100%',
     [theme.breakpoints.down('md')]: {
-      marginTop:'40px',
-      padding:'0 10%'
+      marginTop: '40px',
+      padding: (param)=>param.mobileFullScreen? '0':'0 10%',
     },
   },
- 
+
   RightColumnBox: {
     width: '60%',
     display: 'flex',
     [theme.breakpoints.down('md')]: {
-      padding:'0 10%',
+      padding: '0 10%',
       width: '100%',
       flexDirection: 'column-reverse',
     },
   },
-  rightColumnContent:{
-    width:'100%',
+  rightColumnContent: {
+    width: '100%',
     [theme.breakpoints.down('md')]: {
-      padding:'0 10%'
+      padding: '0 10%',
     },
   },
 }));
 
-const ContentBlock = ({
-  title,
-  leftColumnContent,
-  rightColumnContent,
-}) => {
+const ContentBlock = ({ title, leftColumnContent, rightColumnContent, mobileFullScreen }) => {
   const breakpoints = useBreakpoint();
-  const param = { title };
+  const param = { title, rightColumnContent, mobileFullScreen };
   const classes = useStyles(param);
   return (
     <Box
@@ -129,12 +121,14 @@ const ContentBlock = ({
     >
       <Box className={classes.leftColumnBox}>
         <Box className={classes.leftColumnTitleBox}>
-          <TitleWithLine title={title} />
+          {title ? <TitleWithLine title={title} /> : null}
         </Box>
         <Box className={classes.leftColumnContent}>{leftColumnContent}</Box>
       </Box>
 
-      <Box className={classes.RightColumnBox}>{rightColumnContent}</Box>
+      {rightColumnContent ? (
+        <Box className={classes.RightColumnBox}>{rightColumnContent}</Box>
+      ) : null}
     </Box>
   );
 };

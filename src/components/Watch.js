@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +8,8 @@ import getData from '../utils/getData';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
-
+import HouseFotosSlider from './sliders/HouseFotosSlider';
+import { SwiperSlide } from 'swiper/react';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -45,16 +46,16 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     width: '100%',
     paddingLeft: '100px',
-    '& > * + * ':{
-      marginTop:'32px'
+    '& > * + * ': {
+      marginTop: '32px',
     },
     [theme.breakpoints.down('md')]: {
       paddingLeft: '0',
     },
     '@media (min-width:1921px)': {
       paddingLeft: '5.2vw',
-      '& > * + * ':{
-        marginTop:'32px'
+      '& > * + * ': {
+        marginTop: '32px',
       },
     },
   },
@@ -92,18 +93,16 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       gridTemplateColumns: 'repeat(2, 50%)',
     },
-    
-    
   },
   iconBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > * + * ':{
-      marginTop:'16px'
+    '& > * + * ': {
+      marginTop: '16px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'0.83vw'
+      '& > * + * ': {
+        marginTop: '0.83vw',
       },
     },
   },
@@ -136,24 +135,38 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: '90px',
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'150px'
+    '& > * + * ': {
+      marginLeft: '150px',
     },
     '@media (min-width:1921px)': {
       marginTop: '4.7vw',
-      '& > * + * ':{
-        marginLeft:'7.8vw'
+      '& > * + * ': {
+        marginLeft: '7.8vw',
       },
     },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
       alignItems: 'center',
       marginTop: '40px',
-      '& > * + * ':{
-        marginLeft:'0',
-        marginTop:'60px',
+      '& > * + * ': {
+        marginLeft: '0',
+        marginTop: '60px',
       },
       padding: '0 10%',
+    },
+  },
+  imgBox: {
+    width: '100%',
+    objectFit: 'cover',
+    height: '330px',
+    '@media (min-width:1921px)': {
+      height: '18vw',
+    },
+  },
+  sliderBox: {
+    height: '330px',
+    '@media (min-width:1921px)': {
+      height: '18vw',
     },
   },
 }));
@@ -169,16 +182,14 @@ const Watch = ({ data }) => {
       : pageData.arenda_text;
 
   const getUnavailableDates = (dates) => {
-    setUnavailableDates(dates)
-  }
+    setUnavailableDates(dates);
+  };
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
       <FullScreenHouseSlider
         title={pageData.arenda_title}
-        arr={pageData.arenda_gallery.filter(
-          (item) => item.published
-        )}
+        arr={pageData.arenda_gallery.filter((item) => item.published)}
         data={data}
         mouseIcon={true}
         pagination={true}
@@ -200,6 +211,22 @@ const Watch = ({ data }) => {
           )}
         </Box>
       </Box>
+
+      <ContentBlock
+        mobileFullScreen={true}
+        leftColumnContent={
+          <Box className={classes.sliderBox}>
+            <FullScreenHouseSlider
+              arr={pageData.arenda_gallery.filter((item) => item.published)}
+              data={data}
+              fullHeight={false}
+              autoSlidesPerView={true}
+              mobileButtons={true}
+              sidesDesctopButtons={true}
+            ></FullScreenHouseSlider>
+          </Box>
+        }
+      ></ContentBlock>
 
       <ContentBlock
         title={pageData.arenda_icon_title}
@@ -225,6 +252,23 @@ const Watch = ({ data }) => {
       ></ContentBlock>
 
       <ContentBlock
+        leftColumnContent={
+          <img
+            src={getPublicPath(data, pageData.arenda_gallery[0].image)}
+            className={classes.imgBox}
+            alt='image'
+          />
+        }
+        rightColumnContent={
+          <img
+            src={getPublicPath(data, pageData.arenda_gallery[0].image)}
+            className={classes.imgBox}
+            alt='image'
+          />
+        }
+      ></ContentBlock>
+
+      <ContentBlock
         title={pageData.arenda_invite_title}
         leftColumnContent={
           <Box className={classes.textBlock}>
@@ -244,10 +288,20 @@ const Watch = ({ data }) => {
         rightColumnContent={
           <Box className={classes.calendarFormBox}>
             <Box className={classes.calendar}>
-              <MyCalendar unavailableDates={unavailableDates} getUnavailableDates={getUnavailableDates} setSelectDate={(date) => { setSelectDate(date) }} />
-
+              <MyCalendar
+                unavailableDates={unavailableDates}
+                getUnavailableDates={getUnavailableDates}
+                setSelectDate={(date) => {
+                  setSelectDate(date);
+                }}
+              />
             </Box>
-            <Form endpoint={'https://formspree.io/f/mzbokwwy'} extraFormFields={{ date: selectDate }} arenda={true} sendDate={selectDate} />
+            <Form
+              endpoint={'https://formspree.io/f/mzbokwwy'}
+              extraFormFields={{ date: selectDate }}
+              arenda={true}
+              sendDate={selectDate}
+            />
           </Box>
         }
       ></ContentBlock>

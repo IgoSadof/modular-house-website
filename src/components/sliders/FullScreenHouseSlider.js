@@ -11,13 +11,13 @@ import HouseFotosSlider from '../sliders/HouseFotosSlider';
 const useStyles = makeStyles((theme) => ({
   sliderConteiner: {
     position: 'relative',
-    height: '100vh',
+    height: (param)=>param.fullHeight?'100vh':'100%',
     '&:first-child img': {
       objectFit: 'cover',
       objectPosition: '50% 76%',
     },
     [theme.breakpoints.down('md')]: {
-      height: '100%',
+      height: (param)=>'100%',
     },
   },
   sliderContent: {
@@ -56,10 +56,29 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      padding: (param) => (param.mobileButtons ? '0' : '20px 10% 0px 10%'),
-      position: (param) => (param.mobileButtons ? 'absolute' : 'relative'),
-      bottom: (param) => (param.mobileButtons ? '50%' : '0'),
+      padding: (param) => (param.mobileButtons || param.sidesDesctopButtons ? '0' : '20px 10% 0px 10%'),
+      position: (param) => (param.mobileButtons || param.sidesDesctopButtons ? 'absolute' : 'relative'),
+      bottom: (param) => (param.mobileButtons || param.sidesDesctopButtons  ? '50%' : '0'),
     },
+  },
+  sidesButtons: {
+    '& $buttons': {
+      width:'100%',
+      justifyContent: 'space-between',
+      transform: 'translate(0, 50%)',
+      '& $button:first-child':{
+        transform: 'translate(-101%, 0)',
+      },
+      '& $button:last-child':{
+        transform: 'translate(101%, 0)',
+      },
+
+    },
+
+    flexDirection: 'column',
+    padding: '0',
+    position: 'absolute',
+    bottom:'50%',
   },
   mainImgItem: {
     height: '100%',
@@ -176,10 +195,13 @@ const FullScreenHouseSlider = ({
   mobileButtons,
   mouseIcon,
   autoSlidesPerView,
+  fullHeight=true,
+  sidesDesctopButtons,
 }) => {
+  console.log(sidesDesctopButtons)
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
-  const param = { title, mobileButtons };
+  const param = { title, mobileButtons,fullHeight,sidesDesctopButtons };
   const classes = useStyles(param);
 
   const handleClickLeft = () => {
@@ -225,7 +247,7 @@ const FullScreenHouseSlider = ({
         />):(null)}
        
       </Box>
-      <Box className={classes.descWraper}>
+      <Box className={sidesDesctopButtons? ` ${classes.descWraper} ${classes.sidesButtons}`:classes.descWraper}>
         {title ? (
           <Box className={classes.titleBox}>
             <Typography
