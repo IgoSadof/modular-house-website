@@ -184,6 +184,7 @@ const Watch = ({ data }) => {
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
+  const miniSliderArr = pageData.arenda_gallery.slice()
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -217,7 +218,7 @@ const Watch = ({ data }) => {
         leftColumnContent={
           <Box className={classes.sliderBox}>
             <FullScreenHouseSlider
-              arr={pageData.arenda_gallery.filter((item) => item.published)}
+              arr={miniSliderArr}
               data={data}
               fullHeight={false}
               autoSlidesPerView={true}
