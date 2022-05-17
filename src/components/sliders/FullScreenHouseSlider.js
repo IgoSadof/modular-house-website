@@ -247,7 +247,7 @@ const FullScreenHouseSlider = ({
         />):(null)}
        
       </Box>
-      <Box className={sidesDesctopButtons? ` ${classes.descWraper} ${classes.sidesButtons}`:classes.descWraper}>
+      <Box className={sidesDesctopButtons && !breakpoints.md? ` ${classes.descWraper} ${classes.sidesButtons}`:classes.descWraper}>
         {title ? (
           <Box className={classes.titleBox}>
             <Typography
