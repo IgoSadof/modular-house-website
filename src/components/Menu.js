@@ -9,7 +9,6 @@ import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby';
 import RegularButton from './buttons/RegularButton';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import getData from '../utils/getData';
 
 const useStyles = makeStyles((theme) => ({
   menu: {
@@ -195,11 +194,11 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
   const menuData = useMemo(
     () =>
       data.allMysqlMenu.nodes
-        .filter((item) => item.menutitle && item.published)
+        .filter((item) => item.menutitle && item.link && item.published)
         .sort((a, b) => a.menutitle - b.menutitle),
     [data]
   );
-
+  // console.log(menuData);
   const breakpoints = useBreakpoint();
   const param = { inBurger };
   const classes = useStyles(param);
@@ -223,7 +222,7 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
       <ul className={classes.navList}>
         {menuData.map((item) => (
           <li className={classes.navItem} key={item.id}>
-            <Link className={classes.Link} to={item.Link}>
+            <Link className={classes.Link} to={item.link}>
               <Typography variant='button'>{item.name}</Typography>
             </Link>
           </li>
