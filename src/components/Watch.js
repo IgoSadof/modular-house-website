@@ -86,6 +86,19 @@ const useStyles = makeStyles((theme) => ({
       width: '10.4vw',
     },
   },
+  priceBlock:{
+    display:'flex',
+    marginTop:"40px",
+    '@media (min-width:1921px)': {
+      marginTop:"2.1vw",
+    },
+  },
+  priceBlockText:{
+    fontSize:"48px",
+    '@media (min-width:1921px)': {
+      marginTop:"2.5vw",
+    },
+  },
   iconsBlockConteiner: {
     display: 'grid',
     width: '100%',
@@ -186,7 +199,7 @@ const Watch = ({ data }) => {
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
-  const miniSliderArr = pageData.arenda_gallery.slice()
+  const miniSliderArr = pageData.arenda_gallery.slice();
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -234,9 +247,23 @@ const Watch = ({ data }) => {
       <ContentBlock
         title={pageData.arenda_icon_title}
         leftColumnContent={
-          <Box className={classes.textBlock}>
-            <Typography variant='body1'>{pageData.arenda_icon_text}</Typography>
-          </Box>
+          <>
+            <Box className={classes.textBlock}>
+              <Typography variant='body1'>
+                {pageData.arenda_icon_text}
+              </Typography>
+            </Box>
+
+            { !pageData?.arenda_price?(
+            <Box className={classes.priceBlock}>
+              <Typography className={classes.priceBlockText} variant='body1'>
+               {/* {pageData.arenda_price} */}
+                <strong>60$</strong> / 1 день
+              </Typography>
+            </Box>
+            ):null }
+            
+          </>
         }
         rightColumnContent={
           <Box className={classes.iconsBlockConteiner}>

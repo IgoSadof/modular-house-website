@@ -22,7 +22,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView })
       grabCursor={true}
       loop={true}
       allowTouchMove={true}
-      spaceBetween={autoSlidesPerView && !breakpoints.md? (breakpoints.xxl? '1.6%': 20) :0}
+      spaceBetween={autoSlidesPerView && !breakpoints.md? (breakpoints.xxl? '1%': 12) :0}
       className={autoSlidesPerView && !breakpoints.md?'mySwiper':'default'}
     >
       {listItem}
