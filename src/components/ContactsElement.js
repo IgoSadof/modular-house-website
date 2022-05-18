@@ -188,7 +188,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
   const breakpoints = useBreakpoint();
   const param = { breakpoints };
   const classes = useStyles(param);
-  console.log(dataContacts)
+  // console.log(dataContacts)
 
   return (
     <Box components='main' className={classes.root}>

@@ -168,7 +168,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
         )
   );
   const handleChangeCheckbox = (event) => {
-    console.log(event.target.name);
+    // console.log(event.target.name);
     setCheckboxesCheck({
       ...currentOption,
       [event.target.name]: {

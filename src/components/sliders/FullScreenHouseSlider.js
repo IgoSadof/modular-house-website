@@ -206,7 +206,7 @@ const FullScreenHouseSlider = ({
   fullHeight=true,
   sidesDesctopButtons,
 }) => {
-  console.log(sidesDesctopButtons)
+  // console.log(sidesDesctopButtons)
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
   const param = { title, mobileButtons,fullHeight,sidesDesctopButtons };

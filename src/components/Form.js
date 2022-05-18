@@ -282,7 +282,7 @@ const Form = ({
       },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setFormProcessing(false);
         setOpenPopup(true);
       })

@@ -213,7 +213,7 @@ const AboutUs = ({ data }) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
   const dataObj = getAboutUsData(data);
-  console.log(dataObj)
+  // console.log(dataObj)
   return (
     <Box component='main' className={classes.main}>
       <Box component='section' className={classes.Block}>

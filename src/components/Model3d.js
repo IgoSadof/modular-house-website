@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 // import { jsonMock } from "../assets/model/mockData";
 
 const Model3d = ({ srcPath, srcPathIos, newref, scaleUp }) => {
-  console.log(scaleUp)
+  // console.log(scaleUp)
   return (
     <Fragment>
       <model-viewer
