@@ -9,7 +9,6 @@ import { Pagination } from 'swiper';
 
 const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView }) => {
   const breakpoints = useBreakpoint();
-  if(autoSlidesPerView) console.log(autoSlidesPerView && breakpoints.md)
 
   return (
     <Swiper
