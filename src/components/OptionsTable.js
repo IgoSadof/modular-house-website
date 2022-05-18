@@ -7,6 +7,7 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import numberWithSpace from '../utils/numberWithSpace';
 import Checkbox from '@material-ui/core/Checkbox';
 import validateText from '../utils/validateText';
+import { Block } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,8 +47,15 @@ const useStyles = makeStyles((theme) => ({
   },
   tableCell: {
     width: '25%',
+    '@media (min-width:1920px)': {
+      width: '30%',
+    },
+    '& p':{
+      lineHeight:'1.2',
+    },
     '& p>span':{
       fontSize:'14px',
+      display:'block',
       '@media (min-width:1921px)': {
         fontSize:'0.73vw',
       },
@@ -64,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '14px',
     '@media (min-width:1920px)': {
       fontSize: '28px',
+      width: '10%',
     },
     '@media (min-width:1921px)': {
       fontSize: '0.97vw',

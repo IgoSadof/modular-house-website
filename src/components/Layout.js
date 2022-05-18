@@ -77,9 +77,9 @@ const useStyles = makeStyles((theme) => ({
       param.page === 'aboutUs' ||
       param.page === 'main' ||
       param.page === 'house'
-        ? '3.5vw'
-        : '5%',
-    right: '10%',
+        ? '50px'
+        : '50px',
+    right: '10vw',
     zIndex: '2',
   },
   connectBox: {

@@ -80,7 +80,8 @@ const useStyles = makeStyles((theme) => ({
     width: '28vw',
     display: 'flex',
     '& > * + * ': {
-      marginLeft: '20px',
+      marginRight: '60px',
+      paddingTop: '40px',
     },
     marginLeft: '100px',
     justifyContent: 'space-between',
@@ -151,8 +152,8 @@ const useStyles = makeStyles((theme) => ({
   ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '180px 0 120px 0',
-    paddingRight: '10%',
+    margin: '180px 0 60px 0',
+    paddingRight: '10vw',
     [theme.breakpoints.down('md')]: {
       paddingRight: '0',
       margin: '80px 0 80px 0',

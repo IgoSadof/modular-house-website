@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: "40px",
+    marginTop: '40px',
     position: (param) => (param.position ? param.position : 'relative'),
     width: '100%',
     // height: '40px',

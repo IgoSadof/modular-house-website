@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     position: 'absolute',
     left: '0',
-    paddingLeft: '10%',
+    paddingLeft: '10vw',
+    paddingRight: '10vw',
     bottom: '80px',
     zIndex: '1',
     '& $buttons': {
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
       bottom: '0',
       left: '0',
       // marginLeft: (param) => param.title? 'auto':'4%',
-      marginRight: '10%',
+      marginRight: '0',
     },
     '@media (min-width:1921px)': {
       bottom: '4.2vw',
@@ -98,6 +99,10 @@ const useStyles = makeStyles((theme) => ({
   mouseIconBox: {
     margin: 'auto',
     cursor: 'pointer',
+    position: 'absolute',
+    left: '50%',
+    right: '50%',
+    marginLeft: '24px',
   },
   mouse: {
     position: 'relative',
