@@ -147,7 +147,12 @@ const useStyles = makeStyles((theme) => ({
   navItem: {
     zIndex: '3',
     cursor: 'pointer',
+    width: '90px',
+    '@media (min-width:1921px)': {
+      width: '4.7vw',
+    },
     [theme.breakpoints.down('md')]: {
+      width: 'auto',
       opacity: '1',
       '& span': {
         fontSize: '18px',
@@ -194,8 +199,7 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
         .sort((a, b) => a.menutitle - b.menutitle),
     [data]
   );
-  // const menuItems = menuData.map(item=>{`${item.name}`:item.name.toUpperCase(), item.link})
-  console.log(menuData);
+
   const breakpoints = useBreakpoint();
   const param = { inBurger };
   const classes = useStyles(param);
@@ -217,13 +221,13 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
         </>
       )}
       <ul className={classes.navList}>
-        {menuData.map((item) => {
+        {menuData.map((item) => (
           <li className={classes.navItem} key={item.id}>
             <Link className={classes.Link} to={item.Link}>
               <Typography variant='button'>{item.name}</Typography>
             </Link>
-          </li>;
-        })}
+          </li>
+        ))}
       </ul>
 
       <Box className={classes.menuFooter}>
