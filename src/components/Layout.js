@@ -181,6 +181,15 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
+      allMysqlMenu {
+        nodes {
+          id
+          name
+          menutitle
+          published
+          link
+        }
+      }
     }
   `);
 
@@ -228,7 +237,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
       <Box position='relative' className='conteiner'>
         {breakpoints.isLoad ? (
           <>
-            <Menu />
+            <Menu data={data}/>
             <Box className='content'>
               <Box className={classes.page}>
                 <Box
@@ -301,6 +310,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                   <Menu
                                     inBurger={true}
                                     clickToOpenForm={handleOpenBurgerMenu}
+                                    data={data}
                                   />
                                 </Box>
                               ) : (

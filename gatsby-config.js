@@ -95,6 +95,13 @@ module.exports = {
             idFieldName: 'idname',
             name: 'Arenda',
           },
+             // menu
+             {
+              statement: `SELECT modx_site_content.id, modx_site_content.longtitle as name,modx_site_content.link_attributes as link, modx_site_content.published,modx_site_content.menutitle
+              FROM modx_site_content`,
+              idFieldName: 'id',
+              name: 'Menu',
+            },
         ],
       },
     },

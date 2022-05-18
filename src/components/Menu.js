@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Logo from './svg/Logo';
-
 import Facebook from './svg/icons/Facebook';
 import Youtube from './svg/icons/Youtube';
 import Instagram from './svg/icons/Instagram';
@@ -10,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby';
 import RegularButton from './buttons/RegularButton';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import getData from '../utils/getData';
 
 const useStyles = makeStyles((theme) => ({
   menu: {
@@ -186,7 +186,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Menu = ({ inBurger, clickToOpenForm }) => {
+const Menu = ({ data, inBurger, clickToOpenForm }) => {
+  const menuData = useMemo(
+    () =>
+      data.allMysqlMenu.nodes
+        .filter((item) => item.menutitle && item.published)
+        .sort((a, b) => a.menutitle - b.menutitle),
+    [data]
+  );
+  // const menuItems = menuData.map(item=>{`${item.name}`:item.name.toUpperCase(), item.link})
+  console.log(menuData);
   const breakpoints = useBreakpoint();
   const param = { inBurger };
   const classes = useStyles(param);
@@ -208,55 +217,13 @@ const Menu = ({ inBurger, clickToOpenForm }) => {
         </>
       )}
       <ul className={classes.navList}>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={'/'}>
-            <Typography variant='button'>О НАС</Typography>
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={'/who-we-are'}>
-            <Typography variant='button'>КТО МЫ </Typography>
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={'/what-we-do'}>
-            {inBurger ? (
-              <Typography variant='button'>ЧТО МЫ ДЕЛАЕМ </Typography>
-            ) : (
-              <>
-                <Typography variant='button'>ЧТО МЫ </Typography>
-                <br />
-                <Typography variant='button'>ДЕЛАЕМ</Typography>
-              </>
-            )}
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={'/watch'}>
-            {inBurger ? (
-              <Typography variant='button'>ГДЕ УВИДЕТЬ </Typography>
-            ) : (
-              <>
-                <Typography variant='button'>ГДЕ</Typography>
-                <br />
-                <Typography variant='button'>УВИДЕТЬ</Typography>
-              </>
-            )}
-          </Link>
-        </li>
-        <li className={classes.navItem}>
-          <Link className={classes.Link} to={'/contact-us'}>
-            {inBurger ? (
-              <Typography variant='button'>ДАВАЙТЕ СВЯЖЕМСЯ </Typography>
-            ) : (
-              <>
-                <Typography variant='button'>ДАВАЙТЕ</Typography>
-                <br />
-                <Typography variant='button'> СВЯЖЕМСЯ</Typography>
-              </>
-            )}
-          </Link>
-        </li>
+        {menuData.map((item) => {
+          <li className={classes.navItem} key={item.id}>
+            <Link className={classes.Link} to={item.Link}>
+              <Typography variant='button'>{item.name}</Typography>
+            </Link>
+          </li>;
+        })}
       </ul>
 
       <Box className={classes.menuFooter}>
