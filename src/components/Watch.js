@@ -8,8 +8,6 @@ import getData from '../utils/getData';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
-import HouseFotosSlider from './sliders/HouseFotosSlider';
-import { SwiperSlide } from 'swiper/react';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -199,7 +197,6 @@ const Watch = ({ data }) => {
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
-  const miniSliderArr = pageData.arenda_gallery.slice();
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -233,7 +230,7 @@ const Watch = ({ data }) => {
         leftColumnContent={
           <Box className={classes.sliderBox}>
             <FullScreenHouseSlider
-              arr={miniSliderArr}
+              arr={pageData.arenda_mini_gallery.filter((item) => item.published)}
               data={data}
               fullHeight={false}
               autoSlidesPerView={true}
@@ -254,11 +251,10 @@ const Watch = ({ data }) => {
               </Typography>
             </Box>
 
-            { !pageData?.arenda_price?(
+            { pageData?.arenda_price?(
             <Box className={classes.priceBlock}>
               <Typography className={classes.priceBlockText} variant='body1'>
-               {/* {pageData.arenda_price} */}
-                <strong>60$</strong> / 1 день
+                <strong>{pageData.arenda_price}</strong> / 1 день
               </Typography>
             </Box>
             ):null }
@@ -284,14 +280,14 @@ const Watch = ({ data }) => {
       <ContentBlock
         leftColumnContent={
           <img
-            src={getPublicPath(data, pageData.arenda_gallery[0].image)}
+            src={getPublicPath(data, pageData.arenda_img1)}
             className={classes.imgBox}
             alt='image'
           />
         }
         rightColumnContent={
           <img
-            src={getPublicPath(data, pageData.arenda_gallery[0].image)}
+            src={getPublicPath(data, pageData.arenda_img2)}
             className={classes.imgBox}
             alt='image'
           />
