@@ -7,7 +7,6 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import numberWithSpace from '../utils/numberWithSpace';
 import Checkbox from '@material-ui/core/Checkbox';
 import validateText from '../utils/validateText';
-import { Block } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({

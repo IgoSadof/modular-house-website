@@ -44,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: '10vw',
     bottom: '80px',
     zIndex: '1',
+    pointerEvents:'none',
+    cursor:'pointer',
     '& $buttons': {
       position: 'relative',
       zIndex: '4',
@@ -97,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mouseIconBox: {
+    pointerEvents:'visible',
     margin: 'auto',
     cursor: 'pointer',
     position: 'absolute',
@@ -233,7 +236,7 @@ const FullScreenHouseSlider = ({
   const handleMouseClick = () => {
     if (window) {
       window.scrollTo({
-        top: window.screen.availHeight,
+        top: window.screen.availHeight-100,
         behavior: 'smooth',
       });
     }
