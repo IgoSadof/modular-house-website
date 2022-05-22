@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
       '& > * + * ':{
         marginTop:'20px'
       },
-      width: '70%',
+      width: '80%',
       '& h1': {
         fontSize: (param) => (param.breakpoints.se ? '24px' : '32px'),
       },

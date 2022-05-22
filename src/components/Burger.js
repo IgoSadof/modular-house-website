@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '40px',
     position: (param) => (param.position ? param.position : 'relative'),
     width: '100%',
-    // height: '40px',
+    zIndex:'4',
     paddingLeft: (param) =>
       param.position === 'absolute' ||
       param.page === 'main' ||
