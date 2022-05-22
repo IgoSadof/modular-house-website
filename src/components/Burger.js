@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
         : '0',
     zIndex: '3',
     filter: (param) => (param.color === 'white' ? 'invert(1)' : null),
+    '& a':{
+      display: 'block',
+      position:'relative',
+    },
   },
   logo: {
     width: '50px',
