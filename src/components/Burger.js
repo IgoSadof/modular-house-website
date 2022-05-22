@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Logo from './svg/Logo';
 import Cross from './svg/Cross';
 import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby';
+import logo from '../assets/images/newlogo.png'
 
 const useStyles = makeStyles((theme) => ({
   logoBox: {
@@ -14,23 +14,6 @@ const useStyles = makeStyles((theme) => ({
     position: (param) => (param.position ? param.position : 'relative'),
     width: '100%',
     zIndex: '4',
-    '& a': {
-      [theme.breakpoints.down('md')]: {
-        position: 'relative',
-        display: 'block',
-        width: '40px',
-        height: '60px',
-      },
-    },
-    '& svg': {
-      [theme.breakpoints.down('md')]: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-        top: '0',
-        left: '0',
-      },
-    },
     paddingLeft: (param) =>
       param.position === 'absolute' ||
       param.page === 'main' ||
@@ -49,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
     filter: (param) => (param.color === 'white' ? 'invert(1)' : null),
   },
   logo: {
-    width: '50px',
-    height: '50px',
+    width: '40px',
+    height: '60px',
     objectFit: 'contain',
   },
   burgerBox: {
@@ -72,7 +55,8 @@ export default function Burger({ color, click, isOpen, position, page }) {
   return (
     <Box className={classes.logoBox}>
       <Link to={'/'}>
-        <Logo />
+        {/* <Logo /> */}
+        <img className={classes.logo} src={logo}></img>
       </Link>
       <Box className={classes.burgerBox} onClick={click}>
         {isOpen ? (
