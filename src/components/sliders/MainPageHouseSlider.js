@@ -68,13 +68,20 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: "100%",
     aspectRatio:'4/3',
+    height:'24vw',
+    minHeight:'460px',
     overflow: "hidden",
-    
     "&:hover $img": {
       transform: "scale(1.1)",
     },
     "&:focus $img": {
       transform: "scale(1.1)",
+    },
+    "@media (max-width:1180px)": {
+      minHeight:'420px',
+    },
+    "@media (max-width:600px)": {
+      minHeight:'260px',
     },
   },
   img: {
@@ -148,6 +155,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       textAlign: "right",
       paddingRight: "10px",
+      "@media (max-width:600px)": {
+        textAlign: "left",
+      },
     },
   },
   houseDescIconBox: {

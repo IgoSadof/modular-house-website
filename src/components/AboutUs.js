@@ -127,11 +127,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   creatorTitle: {
-    fontSize: '28px',
+    fontSize: '24px',
     textTransform: 'uppercase',
     fontWeight: 600,
     '@media (min-width:1921px)': {
-      fontSize: '1.45vw',
+      fontSize: '1.25vw',
     },
     [theme.breakpoints.down('md')]: {
       fontSize: '18px',
