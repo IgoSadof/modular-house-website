@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       minWidth: '140px',
-      height: '34px',
+      height: '38px',
     },
   },
 }));
