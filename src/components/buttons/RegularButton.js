@@ -4,14 +4,14 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    // padding: '14px 30px',
+    padding: '12px 30px',
     fontSize: '14px',
     fontWeight:'400',
     borderRadius: '0',
     lineHeight: '1',
     letterSpacing: '0.015em',
-    // width: '152px',
-    // height: '38px',
+    minWidth: '152px',
+    height: '38px',
     textTransform: 'uppercase',
     color: '#F2F2F2',
     borderColor: '#4F4F4F',
@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#4F4F4F',
     },
     '@media (min-width:1921px)': {
-      width: '8vw',
-      height: '2vw',
+      minWidth: '10vw',
+      height: '3vw',
       fontSize: '0.9vw',
       // padding: '0.8vw 2.1vw',
     },
     [theme.breakpoints.down('md')]: {
-      width: '136px',
+      minWidth: '140px',
       height: '34px',
     },
   },
