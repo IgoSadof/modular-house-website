@@ -5,7 +5,7 @@ export const customFontsSize = {
   xl: 2,
   widthMobile: 0.75,
   h1: { regular: 56, adaptiv: '2.91vw' },
-  h2: { regular: 24, adaptiv: '1.25vw' },
+  h2: { regular: 28, adaptiv: '1.4vw' },
   h3: { regular: 24, adaptiv: '1.25vw' },
   h4: { regular: 20, adaptiv: '1.04vw' },
   h5: { regular: 19, adaptiv: '0.94vw' },

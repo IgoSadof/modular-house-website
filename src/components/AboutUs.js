@@ -40,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
   },
   Block: {
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'60px'
+    '& > * + * ': {
+      marginLeft: '60px',
     },
     marginTop: '100px',
     '&:first-child ': {
@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginLeft:'4.2vw'
+      '& > * + * ': {
+        marginLeft: '4.2vw',
       },
       marginTop: '8.3vw',
     },
@@ -65,9 +65,9 @@ const useStyles = makeStyles((theme) => ({
       '&:last-of-type': {
         marginBottom: '40px',
       },
-      '& > * + * ':{
-        marginLeft:'0',
-        marginTop:'40px',
+      '& > * + * ': {
+        marginLeft: '0',
+        marginTop: '40px',
       },
       '&:first-child ': {
         marginTop: '60px',
@@ -96,16 +96,16 @@ const useStyles = makeStyles((theme) => ({
   textBox: {
     display: 'flex',
     flexDirection: 'column',
-     '& > * + * ':{
-        marginTop:'15px'
-      },
+    '& > * + * ': {
+      marginTop: '15px',
+    },
     // marginLeft: 'auto',
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'1.1vw'
+      '& > * + * ': {
+        marginTop: '1.1vw',
       },
     },
   },
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   creatorTitle: {
-    fontSize: '24px',
+    // fontSize: '28px',
     textTransform: 'uppercase',
     fontWeight: 600,
     '@media (min-width:1921px)': {
@@ -265,7 +265,8 @@ const AboutUs = ({ data }) => {
               <Box className={classes.creatorsBox}>
                 <Box className={classes.creatorTextBox}>
                   <Typography
-                    variant='subtitle2'
+                    variant='h2'
+                    component='h3'
                     className={classes.creatorTitle}
                   >
                     {dataObj.Creators[0].name ? dataObj.Creators[0].name : null}
@@ -280,7 +281,11 @@ const AboutUs = ({ data }) => {
                   {dataObj.Creators[0].desc.map((paragraph, index) => (
                     <Typography
                       variant='body1'
-                      className={index === 0? classes.creatorMainText : classes.creatorFooterText}
+                      className={
+                        index === 0
+                          ? classes.creatorMainText
+                          : classes.creatorFooterText
+                      }
                       key={index}
                     >
                       {paragraph}
@@ -319,7 +324,8 @@ const AboutUs = ({ data }) => {
               <Box className={classes.creatorsBox}>
                 <Box className={classes.creatorTextBox}>
                   <Typography
-                    variant='subtitle2'
+                    variant='h2'
+                    component='h3'
                     className={classes.creatorTitle}
                   >
                     {dataObj.Creators[0].name ? dataObj.Creators[0].name : null}
@@ -334,7 +340,11 @@ const AboutUs = ({ data }) => {
                   {dataObj.Creators[0].desc.map((paragraph, index) => (
                     <Typography
                       variant='body1'
-                      className={index === 0? classes.creatorMainText : classes.creatorFooterText}
+                      className={
+                        index === 0
+                          ? classes.creatorMainText
+                          : classes.creatorFooterText
+                      }
                       key={index}
                     >
                       {paragraph}
@@ -355,7 +365,11 @@ const AboutUs = ({ data }) => {
         <Box className={classes.BlockColumn}>
           <Box className={classes.creatorsBox}>
             <Box className={classes.creatorTextBox}>
-              <Typography variant='subtitle2' className={classes.creatorTitle}>
+              <Typography
+                variant='h2'
+                component='h3'
+                className={classes.creatorTitle}
+              >
                 {dataObj.Creators[1].name ? dataObj.Creators[1].name : null}
               </Typography>
               <Typography variant='body1' className={classes.creatorSubtitle}>
@@ -364,7 +378,11 @@ const AboutUs = ({ data }) => {
               {dataObj.Creators[1].desc.map((paragraph, index) => (
                 <Typography
                   variant='body1'
-                  className={index === 0? classes.creatorMainText : classes.creatorFooterText}
+                  className={
+                    index === 0
+                      ? classes.creatorMainText
+                      : classes.creatorFooterText
+                  }
                   key={index}
                 >
                   {paragraph}

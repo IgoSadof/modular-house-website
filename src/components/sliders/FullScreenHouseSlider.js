@@ -11,13 +11,13 @@ import HouseFotosSlider from '../sliders/HouseFotosSlider';
 const useStyles = makeStyles((theme) => ({
   sliderConteiner: {
     position: 'relative',
-    height: (param)=>param.fullHeight?'100vh':'100%',
+    height: (param) => (param.fullHeight ? '100vh' : '100%'),
     '&:first-child img': {
       objectFit: 'cover',
       objectPosition: '50% 76%',
     },
     [theme.breakpoints.down('md')]: {
-      height: (param)=>'100%',
+      height: (param) => '100%',
     },
   },
   sliderContent: {
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
       objectFit: 'cover',
     },
     [theme.breakpoints.down('md')]: {
+      height: (param) => (param.fullHeight ? '70vw' : '100%'),
       '@media (orientation: landscape)': {
         height: '65vh',
       },
@@ -44,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: '10vw',
     bottom: '80px',
     zIndex: '1',
-    pointerEvents:'none',
-    cursor:'pointer',
+    pointerEvents: 'none',
+    cursor: 'pointer',
     '& $buttons': {
       position: 'relative',
       zIndex: '4',
@@ -59,29 +60,35 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      padding: (param) => (param.mobileButtons || param.sidesDesctopButtons ? '0' : '20px 10% 0px 10%'),
-      position: (param) => (param.mobileButtons || param.sidesDesctopButtons ? 'absolute' : 'relative'),
-      bottom: (param) => (param.mobileButtons || param.sidesDesctopButtons  ? '50%' : '0'),
+      padding: (param) =>
+        param.mobileButtons || param.sidesDesctopButtons
+          ? '0'
+          : '20px 10% 0px 10%',
+      position: (param) =>
+        param.mobileButtons || param.sidesDesctopButtons
+          ? 'absolute'
+          : 'relative',
+      bottom: (param) =>
+        param.mobileButtons || param.sidesDesctopButtons ? '50%' : '0',
     },
   },
   sidesButtons: {
     '& $buttons': {
-      width:'100%',
+      width: '100%',
       justifyContent: 'space-between',
       transform: 'translate(0, 50%)',
-      '& $button:first-child':{
+      '& $button:first-child': {
         transform: 'translate(-101%, 0)',
       },
-      '& $button:last-child':{
+      '& $button:last-child': {
         transform: 'translate(101%, 0)',
       },
-
     },
 
     flexDirection: 'column',
     padding: '0',
     position: 'absolute',
-    bottom:'50%',
+    bottom: '50%',
   },
   mainImgItem: {
     height: '100%',
@@ -99,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mouseIconBox: {
-    pointerEvents:'visible',
+    pointerEvents: 'visible',
     margin: 'auto',
     cursor: 'pointer',
     position: 'absolute',
@@ -147,8 +154,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       padding: '0 10%',
       marginTop: '15px',
-      '& > * + * ':{
-        marginLeft:'10px'
+      '& > * + * ': {
+        marginLeft: '10px',
       },
       '@media (orientation: landscape)': {
         justifyContent: 'space-around',
@@ -172,16 +179,16 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     position: 'absolute',
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'12px'
+    '& > * + * ': {
+      marginLeft: '12px',
     },
     left: '14%',
     bottom: '20px',
     zIndex: '2',
     '@media (min-width:1921px)': {
       bottom: '1.1vw',
-      '& > * + * ':{
-        marginLeft:'0.6vw'
+      '& > * + * ': {
+        marginLeft: '0.6vw',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -203,13 +210,13 @@ const FullScreenHouseSlider = ({
   mobileButtons,
   mouseIcon,
   autoSlidesPerView,
-  fullHeight=true,
+  fullHeight = true,
   sidesDesctopButtons,
 }) => {
   // console.log(sidesDesctopButtons)
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
-  const param = { title, mobileButtons,fullHeight,sidesDesctopButtons };
+  const param = { title, mobileButtons, fullHeight, sidesDesctopButtons };
   const classes = useStyles(param);
 
   const handleClickLeft = () => {
@@ -236,7 +243,7 @@ const FullScreenHouseSlider = ({
   const handleMouseClick = () => {
     if (window) {
       window.scrollTo({
-        top: window.screen.availHeight-100,
+        top: window.screen.availHeight - 100,
         behavior: 'smooth',
       });
     }
@@ -247,15 +254,22 @@ const FullScreenHouseSlider = ({
       className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`}
     >
       <Box className={classes.sliderContent}>
-        {arr?( <HouseFotosSlider
-          houseRef={sliderRef}
-          listItem={gallery}
-          pagination={pagination}
-          autoSlidesPerView={autoSlidesPerView}
-        />):(null)}
-       
+        {arr ? (
+          <HouseFotosSlider
+            houseRef={sliderRef}
+            listItem={gallery}
+            pagination={pagination}
+            autoSlidesPerView={autoSlidesPerView}
+          />
+        ) : null}
       </Box>
-      <Box className={sidesDesctopButtons && !breakpoints.md? ` ${classes.descWraper} ${classes.sidesButtons}`:classes.descWraper}>
+      <Box
+        className={
+          sidesDesctopButtons && !breakpoints.md
+            ? ` ${classes.descWraper} ${classes.sidesButtons}`
+            : classes.descWraper
+        }
+      >
         {title ? (
           <Box className={classes.titleBox}>
             <Typography
