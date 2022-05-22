@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    padding: '14px 30px',
+    // padding: '14px 30px',
     fontSize: '14px',
     fontWeight:'400',
     borderRadius: '0',
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       width: '8vw',
       height: '2vw',
       fontSize: '0.9vw',
-      padding: '0.8vw 2.1vw',
+      // padding: '0.8vw 2.1vw',
     },
     [theme.breakpoints.down('md')]: {
       width: '136px',
