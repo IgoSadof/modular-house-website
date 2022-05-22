@@ -13,7 +13,24 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '40px',
     position: (param) => (param.position ? param.position : 'relative'),
     width: '100%',
-    zIndex:'4',
+    zIndex: '4',
+    '& a': {
+      [theme.breakpoints.down('md')]: {
+        position: 'relative',
+        display: 'block',
+        width: '40px',
+        height: '60px',
+      },
+    },
+    '& svg': {
+      [theme.breakpoints.down('md')]: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: '0',
+        left: '0',
+      },
+    },
     paddingLeft: (param) =>
       param.position === 'absolute' ||
       param.page === 'main' ||
@@ -55,11 +72,11 @@ export default function Burger({ color, click, isOpen, position, page }) {
   return (
     <Box className={classes.logoBox}>
       <Link to={'/'}>
-       <Logo/>
+        <Logo />
       </Link>
       <Box className={classes.burgerBox} onClick={click}>
         {isOpen ? (
-          <Cross/>
+          <Cross />
         ) : (
           <div className={classes.burger}>
             <div className={classes.bar}></div>
