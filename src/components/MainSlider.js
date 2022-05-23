@@ -415,17 +415,13 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   useEffect(() => {
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
-    console.log(numberArr);
-    let current = 1;
-
-    let intervalId = setInterval(() => {
-      numberArr[current].click();
-      current = current === 3 ? 0 : current + 1;
+    let intervalId = setTimeout(() => {
+      numberArr[currentSegment + 1 === 4 ? 0 : currentSegment + 1].click();
     }, 4000);
     return function cleanup() {
-      clearInterval(intervalId)
+      clearInterval(intervalId);
     };
-  }, []);
+  }, [currentSegment]);
 
   return (
     <Box component='section' className={classes.content}>
@@ -526,11 +522,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   onClick={handleNumberClick}
                   onKeyDown={handleNumberClick}
                 >
-                  <span
-                    role='button'
-                    tabIndex='0'
-                    key={index}
-                  >
+                  <span role='button' tabIndex='0' key={index}>
                     {item}
                   </span>
                 </Typography>
