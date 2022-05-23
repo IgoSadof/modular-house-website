@@ -60,8 +60,13 @@ const useStyles = makeStyles((theme) => ({
   ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > * + * ': {
-      marginTop: '60px',
+    '& > * + * ':{
+      marginTop:'40px'
+    },
+    '@media (min-width:1450px)': {
+      '& > * + * ':{
+        marginTop:'60px'
+      },
     },
     '@media (min-width:1921px)': {
       '& > * + * ': {
@@ -79,7 +84,12 @@ const useStyles = makeStyles((theme) => ({
     '& > * + * ': {
       marginLeft: '20px',
     },
-    // justifyContent: 'space-between',
+    '@media (min-width:1450px)': {
+      '& > * + * ':{
+        marginLeft:'1.4vw'
+      },
+      // justifyContent: 'space-between',
+    },
     '@media (min-width:1921px)': {
       '& > * + * ': {
         marginLeft: '1.4vw',
@@ -96,15 +106,15 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
   },
   personalBox: {
-    width: '225px',
-    '& img': {
-      width: '100%',
+    width: '150px',
+    '@media (min-width:1450px)': {
+      width: '180px',
+    },
+    '& img':{
+      width:'100%',
     },
     '@media (min-width:1921px)': {
       width: '11.7vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      width: '150px',
     },
   },
   ContactsFoto: {
@@ -212,13 +222,13 @@ const ContactsElement = ({ header, data, dataContacts }) => {
             <Box className={classes.ContactsBoxes}>
               <Box
                 className={classes.personalBox}
-                style={
-                  breakpoints.md
-                    ? { width: '150px' }
-                    : breakpoints.l
-                    ? { width: '180px' }
-                    : null
-                }
+                // style={
+                //   breakpoints.md
+                //     ? { width: '150px' }
+                //     : breakpoints.l
+                //     ? { width: '180px' }
+                //     : null
+                // }
               >
                 <img
                   className={classes.mainPlan}
@@ -245,13 +255,13 @@ const ContactsElement = ({ header, data, dataContacts }) => {
               </Box>
               <Box
                 className={classes.personalBox}
-                style={
-                  breakpoints.md
-                    ? { width: '150px' }
-                    : breakpoints.l
-                    ? { width: '180px' }
-                    : null
-                }
+                // style={
+                //   breakpoints.md
+                //     ? { width: '150px' }
+                //     : breakpoints.l
+                //     ? { width: '180px' }
+                //     : null
+                // }
               >
                 <img
                   className={classes.mainPlan}

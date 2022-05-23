@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '60px 0',
+    // transform: (param)=> `scale(${param.scale})`,
     '@media (max-width:1200px)': {
       '&':{
         padding: '20px 0',
@@ -88,7 +88,9 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
     [data]
   );
   const breakpoints = useBreakpoint();
-  const classes = useStyles();
+  let scale = 1/(window? window.devicePixelRatio:1);
+  const param = {scale};
+  const classes = useStyles(param);
 
   return (
     <Box className={classes.Block}>
