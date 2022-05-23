@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
   BlockMain: {
     display: 'flex',
     justifyContent: 'space-between',
-    '& > * + * ':{
-      marginLeft:'20px'
+    '& > * + * ': {
+      marginLeft: '20px',
     },
     width: '100%',
     height: '100%',
@@ -34,16 +34,16 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      '& > * + * ':{
-        marginLeft:'0',
-        marginTop:'40px',
+      '& > * + * ': {
+        marginLeft: '0',
+        marginTop: '40px',
       },
     },
   },
   BlockColumn: {
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'20px'
+    '& > * + * ': {
+      marginLeft: '20px',
     },
     justifyContent: 'space-between',
     flexDirection: 'column',
@@ -60,35 +60,34 @@ const useStyles = makeStyles((theme) => ({
   ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > * + * ':{
-      marginTop:'60px'
+    '& > * + * ': {
+      marginTop: '60px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'4.2vw'
+      '& > * + * ': {
+        marginTop: '4.2vw',
       },
     },
     [theme.breakpoints.down('md')]: {
-
-      '& > * + * ':{
-        marginTop:'30px'
+      '& > * + * ': {
+        marginTop: '30px',
       },
     },
   },
   ContactsBoxes: {
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'20px'
+    '& > * + * ': {
+      marginLeft: '20px',
     },
     justifyContent: 'space-between',
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginLeft:'1.4vw'
+      '& > * + * ': {
+        marginLeft: '1.4vw',
       },
     },
     [theme.breakpoints.down('md')]: {
-      '& > * + * ':{
-        marginLeft:'20px'
+      '& > * + * ': {
+        marginLeft: '20px',
       },
       justifyContent: 'center',
     },
@@ -98,8 +97,8 @@ const useStyles = makeStyles((theme) => ({
   },
   personalBox: {
     width: '225px',
-    '& img':{
-      width:'100%',
+    '& img': {
+      width: '100%',
     },
     '@media (min-width:1921px)': {
       width: '11.7vw',
@@ -113,13 +112,13 @@ const useStyles = makeStyles((theme) => ({
   },
   infoBox: {
     display: 'flex',
-    alignItems:'baseline',
-    '& > * + * ':{
-      marginLeft:'32px'
+    alignItems: 'baseline',
+    '& > * + * ': {
+      marginLeft: '32px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginLeft:'1.8vw'
+      '& > * + * ': {
+        marginLeft: '1.8vw',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -127,13 +126,13 @@ const useStyles = makeStyles((theme) => ({
       alignSelf: (param) => (param.breakpoints.s ? 'null' : 'center'),
     },
   },
-  infoBoxTel:{
-    '& > * + * ':{
-      marginLeft:'28px'
+  infoBoxTel: {
+    '& > * + * ': {
+      marginLeft: '28px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginLeft:'1.6vw'
+      '& > * + * ': {
+        marginLeft: '1.6vw',
       },
     },
   },
@@ -141,8 +140,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 'auto',
-    '& > * + * ':{
-      marginTop:'24px'
+    '& > * + * ': {
+      marginTop: '24px',
     },
     '& p': {
       fontSize: '16px',
@@ -173,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   ContactsSails: {
-    textTransform: "none",
+    textTransform: 'none',
     fontWeight: '400',
   },
   ContactsPhone: {
@@ -223,7 +222,10 @@ const ContactsElement = ({ header, data, dataContacts }) => {
               >
                 <img
                   className={classes.mainPlan}
-                  src={getPublicPath(data, dataContacts['contacts-ceo'][0].image)}
+                  src={getPublicPath(
+                    data,
+                    dataContacts['contacts-ceo'][0].image
+                  )}
                   alt='img'
                 />
                 <Typography
@@ -253,7 +255,10 @@ const ContactsElement = ({ header, data, dataContacts }) => {
               >
                 <img
                   className={classes.mainPlan}
-                  src={getPublicPath(data, dataContacts['contacts-ceo'][1].image)}
+                  src={getPublicPath(
+                    data,
+                    dataContacts['contacts-ceo'][1].image
+                  )}
                   alt='img'
                 />
 
@@ -262,7 +267,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                   variant='h4'
                   component='p'
                 >
-                 {dataContacts['contacts-ceo'][1].name}
+                  {dataContacts['contacts-ceo'][1].name}
                 </Typography>
                 <Typography
                   className={classes.ContactsPosition}
@@ -288,6 +293,16 @@ const ContactsElement = ({ header, data, dataContacts }) => {
               >
                 {dataContacts.phone}
               </Typography>
+              {/* {dataContacts.name ? ( */}
+                <Typography
+                  className={classes.ContactsSails}
+                  variant='h4'
+                  component='p'
+                >
+                  {/* {dataContacts.name} */}
+                  Инна
+                </Typography>
+              {/* ) : null} */}
             </Box>
             {!breakpoints.md ? (
               <Box className={classes.infoBox}>
@@ -307,11 +322,11 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                     className={classes.personalBoxLink}
                     href={`mailto:${dataContacts.email}`}
                   >
-                    <Typography variant='body1'>{dataContacts.email}</Typography>
+                    <Typography variant='body1'>
+                      {dataContacts.email}
+                    </Typography>
                   </a>
-                  <Typography variant='body1'>
-                    {dataContacts.adres}
-                  </Typography>
+                  <Typography variant='body1'>{dataContacts.adres}</Typography>
                 </Box>
               </Box>
             ) : null}
@@ -336,9 +351,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                 >
                   <Typography variant='body1'>{dataContacts.email}</Typography>
                 </a>
-                <Typography variant='body1'>
-                {dataContacts.adres}
-                </Typography>
+                <Typography variant='body1'>{dataContacts.adres}</Typography>
               </Box>
             </Box>
           ) : null}

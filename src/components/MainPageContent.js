@@ -220,6 +220,7 @@ const MainPageContent = ({ data }) => {
             <Advantages
               arr={dataMainPage.advantages}
               title='advantages'
+              data={data}
             ></Advantages>
             {/* <Accordions arr={detail} title='advantages' /> */}
           </Box>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import getPublicPath from '../utils/getPublicPath';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -28,12 +29,12 @@ const useStyles = makeStyles((theme) => ({
     '& h4': {
       color: '#4F4F4F',
     },
-    '& > * + * ':{
-      marginTop:'20px'
+    '& > * + * ': {
+      marginTop: '20px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'1.04vw'
+      '& > * + * ': {
+        marginTop: '1.04vw',
       },
     },
     '@media (min-width: 1920px)': {
@@ -48,20 +49,36 @@ const useStyles = makeStyles((theme) => ({
       marginRight: '0',
     },
   },
+  subtitleBox: {
+    display: 'flex',
+  },
+  image: {
+    marginRight: '24px',
+    '@media (min-width: 1921px)': {
+      marginRight: '1.2vw',
+    },
+  },
 }));
 
-export default function Advantages({ arr }) {
+export default function Advantages({ arr, data }) {
   const classes = useStyles();
 
   return (
     <Box className={classes.conteiner}>
       {arr.map((item, index) => {
-        return (
-          item.published?( <Box className={classes.content} key={index}>
+        return item.published ? (
+          <Box className={classes.content} key={index}>
             <Typography variant='h4'>{item.title}</Typography>
-            <Typography variant='body1'>{item.text}</Typography>
-          </Box>):null
-        );
+            <Box className={classes.subtitleBox}>
+              <img
+                className={classes.image}
+                src={getPublicPath(data, 'images/sun.svg')}
+                alt='img'
+              />
+              <Typography variant='body1'>{item.text}</Typography>
+            </Box>
+          </Box>
+        ) : null;
       })}
     </Box>
   );
