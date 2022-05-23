@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef,useLayoutEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -421,7 +421,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
 
   useEffect(() => {
     let videoNode = videoRef.current.children[0].children[0]
-    console.log( videoNode)
+    // console.log( videoNode)
     if (videoNode) {
       videoNode.autoplay = true;
       videoNode.setAttribute('muted', 'true')
@@ -437,6 +437,13 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
       clearInterval(intervalId);
     };
   }, [currentSegment,videoRef]);
+
+  useLayoutEffect(() => {
+    let videoNode = videoRef.current.children[0].children[0]
+    if (videoNode && playVideo ) {
+      videoNode.play()
+    }
+  }, [playVideo])
  
 
   return (
