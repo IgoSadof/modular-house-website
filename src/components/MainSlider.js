@@ -423,7 +423,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     let videoNode = videoRef.current.children[0].children[0]
     console.log( videoNode)
     if (videoNode) {
-      videoNode.muted = 'muted';
+      videoNode.muted = true;
       videoNode.setAttribute('key', video.default);
     }
     let numbers = document.getElementsByClassName(classes.number);
