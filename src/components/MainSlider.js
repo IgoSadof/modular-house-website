@@ -416,12 +416,15 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
     console.log(numberArr);
-    let current = 0;
+    let current = 1;
 
-    setInterval(() => {
+    let intervalId = setInterval(() => {
       numberArr[current].click();
       current = current === 3 ? 0 : current + 1;
     }, 4000);
+    return function cleanup() {
+      clearInterval(intervalId)
+    };
   }, []);
 
   return (
