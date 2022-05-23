@@ -421,8 +421,6 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     if (videoNode) {
       videoNode.setAttribute('muted', true);
       videoNode.setAttribute('key', video.default);
-      videoNode.setAttribute('autoplay', true);
-      videoNode.play()
     }
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
