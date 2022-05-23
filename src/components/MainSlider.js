@@ -424,7 +424,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     console.log( videoNode)
     if (videoNode) {
       videoNode.autoplay = true;
-      videoNode.muted = true;
+      videoNode.setAttribute('muted', 'true')
       videoNode.setAttribute('key', video.default);
       videoNode.setAttribute('playsinline', 'true');
     }
