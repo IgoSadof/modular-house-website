@@ -42,14 +42,14 @@ const useStyles = makeStyles((theme) => ({
     width: '28vw',
     display: 'flex',
     '& > * + * ':{
-      marginTop:'20px'
+      // marginTop:'20px'
     },
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
     '@media (min-width:1921px)': {
       '& > * + * ':{
-        marginTop:'2vw'
+        // marginTop:'2vw'
       },
     },
 

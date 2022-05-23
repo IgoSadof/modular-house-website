@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     '& > * + * ': {
       marginLeft: '20px',
     },
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     '@media (min-width:1921px)': {
       '& > * + * ': {
         marginLeft: '1.4vw',
@@ -281,14 +281,14 @@ const ContactsElement = ({ header, data, dataContacts }) => {
             <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
               <Typography
                 className={classes.ContactsSails}
-                variant='h4'
+                variant='body1'
                 component='p'
               >
                 Отдел продаж:
               </Typography>
               <Typography
                 className={classes.ContactsPhone}
-                variant='h4'
+                variant='body1'
                 component='p'
               >
                 {dataContacts.phone}
@@ -296,7 +296,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
               {/* {dataContacts.name ? ( */}
                 <Typography
                   className={classes.ContactsSails}
-                  variant='h4'
+                  variant='body1'
                   component='p'
                 >
                   {/* {dataContacts.name} */}
