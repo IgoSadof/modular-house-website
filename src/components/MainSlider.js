@@ -422,6 +422,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     if (videoNode) {
       videoNode.setAttribute('mutted', true);
       videoNode.setAttribute('key', video.default);
+      videoNode.play()
     }
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
