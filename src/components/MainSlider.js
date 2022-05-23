@@ -395,7 +395,6 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [activeNumb, currentSegment]);
 
   const videoRef = useRef(null)
-  console.log(video)
 
   useEffect(() => {
 
@@ -420,9 +419,9 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     let videoNode = videoRef.current.children[0].children[0]
     console.log( videoNode)
     if (videoNode) {
-      videoNode.setAttribute('mutted', true);
+      videoNode.setAttribute('muted', true);
       videoNode.setAttribute('key', video.default);
-      videoNode.play()
+      // videoNode.setAttribute('autoplay', true);
     }
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
