@@ -420,7 +420,6 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [scroll]);
 
   useEffect(() => {
-  
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
     let intervalId = setTimeout(() => {
@@ -433,15 +432,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
 
   useLayoutEffect(() => {
     let videoNode = videoRef.current.children[0].children[0]
-    // console.log( videoNode)
     if (videoNode) {
       videoNode.setAttribute('autoplay', `${playVideo}`)
       videoNode.setAttribute('muted', 'true')
       videoNode.setAttribute('key', video.default);
       videoNode.setAttribute('playsinline', 'true');
     }
-
-  
   }, [playVideo,videoRef])
  
 
