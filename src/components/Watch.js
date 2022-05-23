@@ -8,6 +8,7 @@ import getData from '../utils/getData';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
+import ModalScreen from '../components/ModalScreen';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -208,14 +209,17 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '20px',
     },
   },
-  mapCoordinates:{
-    '& p':{
-      fontWeight:'700',
-    }
+  mapCoordinates: {
+    '& p': {
+      fontWeight: '700',
+    },
   },
 }));
 
 const Watch = ({ data }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false);
+  const [activeImg, setActiveImg] = useState(true);
   const [selectDate, setSelectDate] = useState(null);
   const [unavailableDates, setUnavailableDates] = useState(null);
   const classes = useStyles();
@@ -227,6 +231,14 @@ const Watch = ({ data }) => {
 
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
+  };
+  const handleSliderClick = (e) => {
+    console.log(e.target)
+    if(e.target.dataset.path){
+      setActiveImg(e.target.dataset.path)
+      setOpenModal(true);
+      setOpenPopup(true)
+    }
   };
 
   return (
@@ -259,7 +271,14 @@ const Watch = ({ data }) => {
       <ContentBlock
         mobileFullScreen={true}
         leftColumnContent={
-          <Box className={classes.sliderBox}>
+          <Box className={classes.sliderBox} onClick={handleSliderClick}>
+            <ModalScreen
+              image={activeImg}
+              openModal={openModal}
+              openPopup={openPopup}
+              setOpenPopup={setOpenPopup}
+              setOpenModal={setOpenModal}
+            ></ModalScreen>
             <FullScreenHouseSlider
               arr={pageData.arenda_mini_gallery.filter(
                 (item) => item.published

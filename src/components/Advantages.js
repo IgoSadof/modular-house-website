@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Advantages({ arr, data }) {
   const classes = useStyles();
+  console.log(arr)
 
   return (
     <Box className={classes.conteiner}>
@@ -72,7 +73,7 @@ export default function Advantages({ arr, data }) {
             <Box className={classes.subtitleBox}>
               <img
                 className={classes.image}
-                src={getPublicPath(data, 'images/sun.svg')}
+                src={getPublicPath(data, item.image)}
                 alt='img'
               />
               <Typography variant='body1'>{item.text}</Typography>

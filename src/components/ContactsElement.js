@@ -123,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
   infoBox: {
     display: 'flex',
     alignItems: 'baseline',
+  
     '& > * + * ': {
       marginLeft: '32px',
     },
@@ -131,7 +132,10 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: '1.8vw',
       },
     },
-    [theme.breakpoints.down('md')]: {
+    '@media (max-width:600px)': {
+      '& p':{
+        fontSize:'14px'
+      },
       padding: '0 10%',
       alignSelf: (param) => (param.breakpoints.s ? 'null' : 'center'),
     },
@@ -145,6 +149,11 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: '1.6vw',
       },
     },
+    [theme.breakpoints.down('md')]: {
+      '& > * + * ': {
+        marginLeft: '20px',
+      }
+    },
   },
   infoBoxText: {
     display: 'flex',
@@ -157,6 +166,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '16px',
       '@media (min-width:1921px)': {
         fontSize: '0.83vw',
+      },
+    },
+    '@media (max-width:600px)': {
+      '& p': {
+        fontSize: '14px',
       },
     },
   },

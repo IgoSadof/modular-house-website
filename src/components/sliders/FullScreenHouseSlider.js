@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +7,7 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { SwiperSlide } from 'swiper/react';
 import getPublicPath from '../../utils/getPublicPath';
 import HouseFotosSlider from '../sliders/HouseFotosSlider';
+import arrow from '../../assets/images/icons/arrow.svg';
 
 const useStyles = makeStyles((theme) => ({
   sliderConteiner: {
@@ -107,45 +108,51 @@ const useStyles = makeStyles((theme) => ({
   },
   mouseIconBox: {
     pointerEvents: 'visible',
-    margin: 'auto',
-    cursor: 'pointer',
-    position: 'absolute',
-    left: '50%',
-    right: '50%',
-    marginLeft: '24px',
-  },
-  mouse: {
     position: 'relative',
-    width: '30px',
-    height: '48px',
-    border: '0.2vw solid #E2E2E2',
-    borderRadius: '40px',
-    '@media (min-width:1921px)': {
-      width: '1.5vw',
-      height: '2.5vw',
-      borderRadius: '1.1vw',
+    width: '44px',
+    height: '22px',
+    margin: 'auto',
+    '& img': {
+      width: '100%',
     },
-    '&::before': {
-      content: `' '`,
-      position: 'absolute',
-      left: '50%',
-      marginLeft: '-2px',
-      top: '20%',
-      width: '4px',
-      height: '6px',
-      borderRadius: '3px',
-      backgroundColor: '#E2E2E2',
-      animation: 'mouse  0.7s infinite ease-in-out alternate',
-      '@media (min-width:1921px)': {
-        width: '1.5vw',
-        height: '2.5vw',
-        borderRadius: '1.1vw',
-        width: '0.25vw',
-        height: '0.35vw',
-        marginLeft: '-0.1vw',
-      },
+    animation: 'arrow  0.7s infinite ease-in-out alternate',
+    '@media (min-width:1921px)': {
+      width: '2.3vw',
+      height: '1.2vw',
     },
   },
+  // mouse: {
+  //   position: 'relative',
+  //   width: '30px',
+  //   height: '48px',
+  //   border: '0.2vw solid #E2E2E2',
+  //   borderRadius: '40px',
+  //   '@media (min-width:1921px)': {
+  //     width: '1.5vw',
+  //     height: '2.5vw',
+  //     borderRadius: '1.1vw',
+  //   },
+  //   '&::before': {
+  //     content: `' '`,
+  //     position: 'absolute',
+  //     left: '50%',
+  //     marginLeft: '-2px',
+  //     top: '20%',
+  //     width: '4px',
+  //     height: '6px',
+  //     borderRadius: '3px',
+  //     backgroundColor: '#E2E2E2',
+  //     animation: 'mouse  0.7s infinite ease-in-out alternate',
+  //     '@media (min-width:1921px)': {
+  //       width: '1.5vw',
+  //       height: '2.5vw',
+  //       borderRadius: '1.1vw',
+  //       width: '0.25vw',
+  //       height: '0.35vw',
+  //       marginLeft: '-0.1vw',
+  //     },
+  //   },
+  // },
 
   descBox: {
     display: 'flex',
@@ -216,6 +223,7 @@ const FullScreenHouseSlider = ({
   sidesDesctopButtons,
 }) => {
   // console.log(sidesDesctopButtons)
+
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
   const param = { title, mobileButtons, fullHeight, sidesDesctopButtons };
@@ -227,6 +235,7 @@ const FullScreenHouseSlider = ({
   const handleClickRight = () => {
     sliderRef.current.swiper.slideNext();
   };
+ 
 
   const gallery = useMemo(() => {
     return arr?.map((item, index) => {
@@ -236,6 +245,7 @@ const FullScreenHouseSlider = ({
             className={classes.mainImgSlider}
             src={getPublicPath(data, item.image)}
             alt='img'
+            data-path={getPublicPath(data, item.image)}
           />
         </SwiperSlide>
       );
@@ -254,7 +264,9 @@ const FullScreenHouseSlider = ({
     <Box
       components='section'
       className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`}
+      
     >
+   
       <Box className={classes.sliderContent}>
         {arr ? (
           <HouseFotosSlider
@@ -285,8 +297,9 @@ const FullScreenHouseSlider = ({
         ) : null}
 
         {mouseIcon && !breakpoints.md ? (
-          <Box className={`${classes.mouseIconBox}`}>
-            <Box className={classes.mouse} onClick={handleMouseClick}></Box>
+          <Box className={`${classes.mouseIconBox}`} onClick={handleMouseClick}>
+            <img src={arrow} />
+            {/* <Box className={classes.mouse} onClick={handleMouseClick}></Box> */}
           </Box>
         ) : null}
 
