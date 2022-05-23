@@ -375,6 +375,10 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   };
 
   const handleNumberClick = (e, numb = 0) => {
+    let videoNode = videoRef.current.children[0].children[0]
+    if (videoNode) {
+      videoNode.play()
+    }
     if (numb === 0) {
       numb = +e.target.textContent[1];
     }
@@ -419,7 +423,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     let videoNode = videoRef.current.children[0].children[0]
     console.log( videoNode)
     if (videoNode) {
-      videoNode.setAttribute('muted', true);
+      videoNode.muted = 'muted';
       videoNode.setAttribute('key', video.default);
     }
     let numbers = document.getElementsByClassName(classes.number);
