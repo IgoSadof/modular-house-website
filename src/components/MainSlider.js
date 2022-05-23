@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '768px',
     top: '0',
     zIndex: '0',
-    '& video':{
+    '& video': {
       mixBlendMode: 'darken',
     },
     [theme.breakpoints.down('md')]: {
@@ -107,8 +107,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     zIndex: '2',
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'6px'
+    '& > * + * ': {
+      marginLeft: '6px',
     },
     cursor: 'pointer',
     marginLeft: 'auto',
@@ -163,8 +163,8 @@ const useStyles = makeStyles((theme) => ({
     left: '0',
     right: '0',
     zIndex: 1,
-    '& > * + * ':{
-      marginTop:'30px'
+    '& > * + * ': {
+      marginTop: '30px',
     },
     flexDirection: 'column',
     // marginTop:"-20%",
@@ -172,8 +172,8 @@ const useStyles = makeStyles((theme) => ({
     width: '34vw',
     '@media (min-width:1921px)': {
       marginLeft: '6.9vw',
-      '& > * + * ':{
-        marginTop:'2.1vw'
+      '& > * + * ': {
+        marginTop: '2.1vw',
       },
     },
 
@@ -183,8 +183,8 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 'auto',
       marginBottom: 'auto',
       top: '140px',
-      '& > * + * ':{
-        marginTop:'20px'
+      '& > * + * ': {
+        marginTop: '20px',
       },
       width: '80%',
       '& h1': {
@@ -206,15 +206,15 @@ const useStyles = makeStyles((theme) => ({
   numbersBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > * + * ':{
-      marginTop:'30px'
+    '& > * + * ': {
+      marginTop: '30px',
     },
     position: 'relative',
     marginTop: 'auto',
     zIndex: '2',
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'2vw',
+      '& > * + * ': {
+        marginTop: '2vw',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -246,10 +246,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-start',
     cursor: 'pointer',
-    
+
     '& span': {
       cursor: 'pointer',
-      outline:'none',
+      outline: 'none',
     },
     width: '10vw',
     height: '20px',
@@ -276,7 +276,7 @@ const useStyles = makeStyles((theme) => ({
       width: '6.9vw',
     },
     [theme.breakpoints.down('md')]: {
-      display:'none',
+      display: 'none',
     },
   },
   bottomLine: {
@@ -317,7 +317,7 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     width: '75px',
-    '& img':{
+    '& img': {
       width: '100%',
     },
     // height:"42px",
@@ -342,7 +342,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Slider = ({ scroll, isFirstEntry, data }) => {
-  const dataSlides = useMemo(() => getData(data.allMysqlMainPage.nodes), [data]);
+  const dataSlides = useMemo(
+    () => getData(data.allMysqlMainPage.nodes),
+    [data]
+  );
   const breakpoints = useBreakpoint();
   const baseLength = breakpoints.md ? 24 : 5.5;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -373,7 +376,6 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
 
   const handleNumberClick = (e, numb = 0) => {
     if (numb === 0) {
-      
       numb = +e.target.textContent[1];
     }
     if (numb - 1 > currentSegment) {
@@ -410,6 +412,18 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     }
   }, [scroll]);
 
+  useEffect(() => {
+    let numbers = document.getElementsByClassName(classes.number);
+    let numberArr = Array.from(numbers);
+    console.log(numberArr);
+    let current = 0;
+
+    setInterval(() => {
+      numberArr[current].click();
+      current = current === 3 ? 0 : current + 1;
+    }, 4000);
+  }, []);
+
   return (
     <Box component='section' className={classes.content}>
       <Box className={classes.midleBlock}>
@@ -427,19 +441,22 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   className={classes.header}
                   variant='h1'
                   component='h1'
-                  dangerouslySetInnerHTML={{__html: `${validateText(dataSlides.intro[activeNumb].title)}`}}
-                >
-                </Typography>
+                  dangerouslySetInnerHTML={{
+                    __html: `${validateText(
+                      dataSlides.intro[activeNumb].title
+                    )}`,
+                  }}
+                ></Typography>
 
                 <Box className={classes.icon}>
                   {activeNumb === 0 ? (
-                    <img src={getPublicPath(data,dataSlides.intro[0].icon)}/>
+                    <img src={getPublicPath(data, dataSlides.intro[0].icon)} />
                   ) : activeNumb === 1 ? (
-                    <img src={getPublicPath(data,dataSlides.intro[1].icon)}/>
+                    <img src={getPublicPath(data, dataSlides.intro[1].icon)} />
                   ) : activeNumb === 2 ? (
-                    <img src={getPublicPath(data,dataSlides.intro[2].icon)}/>
+                    <img src={getPublicPath(data, dataSlides.intro[2].icon)} />
                   ) : activeNumb === 3 ? (
-                    <img src={getPublicPath(data,dataSlides.intro[3].icon)}/>
+                    <img src={getPublicPath(data, dataSlides.intro[3].icon)} />
                   ) : null}
                 </Box>
 
@@ -499,7 +516,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   className={
                     index <= activeNumb
                       ? `${classes.number} ${classes.activeNumber}`
-                      : classes.number
+                      : `${classes.number}`
                   }
                   variant='h5'
                   component='p'
