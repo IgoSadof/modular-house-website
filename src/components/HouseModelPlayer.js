@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '3vw auto 0 auto',
   },
   videoBox:{
+    height:"52vh",
     overflow:"hidden",
     '& video':{
       transform:'scale(1.05)',

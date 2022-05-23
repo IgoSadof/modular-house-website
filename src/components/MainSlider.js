@@ -1,8 +1,8 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player';
 import numbers from '../constant/numbers';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
@@ -394,9 +394,17 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     }
   }, [activeNumb, currentSegment]);
 
+  const videoRef = useRef(null)
+
   useEffect(() => {
+    // console.log( videoRef.current)
+    let video = videoRef.current.children[0]?.children[0]
+    console.log( video)
+    if(video){video.setAttribute('mutted', true);}
+    
+    // videoRef.current?.setAttribute('mutted', true)
     setLineLength(baseLength);
-  }, [baseLength]);
+  }, [baseLength,videoRef]);
 
   useEffect(() => {
     if (isFirstEntry) {
@@ -422,6 +430,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
       clearInterval(intervalId);
     };
   }, [currentSegment]);
+ 
 
   return (
     <Box component='section' className={classes.content}>
@@ -470,14 +479,14 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
             </CSSTransition>
           </TransitionGroup>
 
-          <Box className={classes.mainVideoBox}>
-            {!video.default ? (
-              <div className={classes.loaderBox}>
+          <Box  ref={videoRef} className={classes.mainVideoBox}>
+            {/* {!video.default ? (
+              <div  className={classes.loaderBox}>
                 <CircularProgress />
               </div>
-            ) : null}
+            ) : null} */}
             {/* <div className={classes.fon}></div> */}
-            {!video.default ? null : (
+            {/* {!video.default ? null : ( */}
               <ReactPlayer
                 height='100%'
                 width='100%'
@@ -485,6 +494,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                 loop={true}
                 playing={playVideo}
                 progressInterval={10}
+                volume={0.5}
                 muted={true}
                 onProgress={({ playedSeconds }) => {
                   if (activeNumb >= currentSegment) {
@@ -504,7 +514,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   setPlayVideo(true);
                 }}
               />
-            )}
+            {/* )} */}
           </Box>
 
           <Box className={classes.numbersBox}>
