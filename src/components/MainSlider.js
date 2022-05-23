@@ -420,14 +420,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [scroll]);
 
   useEffect(() => {
-    let videoNode = videoRef.current.children[0].children[0]
-    // console.log( videoNode)
-    if (videoNode) {
-      videoNode.autoplay = true;
-      videoNode.setAttribute('muted', 'true')
-      videoNode.setAttribute('key', video.default);
-      videoNode.setAttribute('playsinline', 'true');
-    }
+  
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
     let intervalId = setTimeout(() => {
@@ -436,14 +429,20 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     return function cleanup() {
       clearInterval(intervalId);
     };
-  }, [currentSegment,videoRef]);
+  }, [currentSegment]);
 
   useLayoutEffect(() => {
     let videoNode = videoRef.current.children[0].children[0]
-    if (videoNode && playVideo ) {
-      videoNode.play()
+    // console.log( videoNode)
+    if (videoNode) {
+      videoNode.setAttribute('autoplay', `${playVideo}`)
+      videoNode.setAttribute('muted', 'true')
+      videoNode.setAttribute('key', video.default);
+      videoNode.setAttribute('playsinline', 'true');
     }
-  }, [playVideo])
+
+  
+  }, [playVideo,videoRef])
  
 
   return (
