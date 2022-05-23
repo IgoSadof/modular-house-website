@@ -437,6 +437,10 @@ const HousePage = ({ house, data }) => {
       dataHouses[houseNumber]['modules'][pillClick].video
     )
   );
+  // const videos = dataHouses[houseNumber]['modules'].map((item,index)=>(
+  //   <HouseModelPlayer video={item.video} key={index}/>
+  // ))
+
 
   const vrButtonClick = () => {
     modelViwerRef.current.activateAR();
@@ -572,10 +576,10 @@ const HousePage = ({ house, data }) => {
                   )}
                 ></Model3d>
               </Box>
-              <HouseModelPlayer video={modelVideo} />
+              <HouseModelPlayer video={modelVideo} keyId={modelVideo} />
             </>
           ) : (
-            <HouseModelPlayer video={modelVideo} />
+            <HouseModelPlayer video={modelVideo} keyId={modelVideo} />
           )}
         </Box>
       </Box>
