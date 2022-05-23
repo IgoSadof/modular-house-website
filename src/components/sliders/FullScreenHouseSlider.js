@@ -164,11 +164,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     textAlign: 'left',
+    fontSize: '48px',
     color: '#E2E2E2',
     marginLeft: '100px',
     width: '28vw',
     '@media (min-width:1921px)': {
       marginLeft: '5.2vw',
+      fontSize: '2.5vw',
     },
     [theme.breakpoints.down('md')]: {
       color: '#4F4F4F',

@@ -10,13 +10,13 @@ const useStyles = makeStyles((theme) => ({
     '& > * + * ': {
       marginLeft: '60px',
     },
-    marginTop: '120px',
+    marginTop: '80px',
     padding: '0 10%',
     '@media (min-width:1921px)': {
       '& > * + * ': {
         marginLeft: '4.2vw',
       },
-      marginTop: '8.3vw',
+      marginTop: '4.2vw',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -106,13 +106,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContentBlock = ({ title, leftColumnContent, rightColumnContent, mobileFullScreen }) => {
+const ContentBlock = ({ title, leftColumnContent, rightColumnContent, mobileFullScreen, component='section' }) => {
   const breakpoints = useBreakpoint();
   const param = { title, rightColumnContent, mobileFullScreen };
   const classes = useStyles(param);
   return (
     <Box
-      component='section'
+      component={component}
       className={
         breakpoints.md
           ? `${classes.Block} ${classes.BlockFullscreen}`

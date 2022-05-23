@@ -74,23 +74,23 @@ const useStyles = makeStyles((theme) => ({
   calculation: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft:'60px',
-    '& > * + * ':{
-      marginTop:'40px'
+    marginLeft: '60px',
+    '& > * + * ': {
+      marginTop: '40px',
     },
     // marginLeft: 'auto',
     width: '32%',
     alignSelf: 'center',
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginTop:'2.1vw',
+      '& > * + * ': {
+        marginTop: '2.1vw',
       },
-      marginLeft:'3.2vw',
+      marginLeft: '3.2vw',
     },
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       width: '100%',
-      marginLeft:'0',
+      marginLeft: '0',
     },
   },
   calculationItem: {
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
     },
     '&>div>label': {
-      marginRight:'0',
+      marginRight: '0',
     },
     '&>label>span:last-child': {
       pointerEvents: 'none',
@@ -143,6 +143,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '40px',
     [theme.breakpoints.down('md')]: {
       marginBottom: '20px',
+    },
+  },
+  titleBox: {
+    [theme.breakpoints.down('md')]: {
+      position: 'relative',
+      left: '10vw',
     },
   },
 }));

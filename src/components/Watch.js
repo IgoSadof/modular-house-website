@@ -84,17 +84,17 @@ const useStyles = makeStyles((theme) => ({
       width: '10.4vw',
     },
   },
-  priceBlock:{
-    display:'flex',
-    marginTop:"40px",
+  priceBlock: {
+    display: 'flex',
+    marginTop: '40px',
     '@media (min-width:1921px)': {
-      marginTop:"2.1vw",
+      marginTop: '2.1vw',
     },
   },
-  priceBlockText:{
-    fontSize:"48px",
+  priceBlockText: {
+    fontSize: '48px',
     '@media (min-width:1921px)': {
-      marginTop:"2.5vw",
+      marginTop: '2.5vw',
     },
   },
   iconsBlockConteiner: {
@@ -182,6 +182,37 @@ const useStyles = makeStyles((theme) => ({
       height: '18vw',
     },
   },
+  mapBox: {
+    width: '100%',
+    height: '560px',
+    marginTop: '80px',
+    '&>div': {
+      marginTop: '0',
+      paddingTop: '60px',
+      '@media (min-width:1921px)': {
+        paddingTop: '3.1vw',
+      },
+    },
+    '@media (min-width:1921px)': {
+      height: '29vw',
+      marginTop: '4.2vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      order: '1',
+    },
+  },
+  mapTextBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    '& > * + * ': {
+      marginTop: '20px',
+    },
+  },
+  mapCoordinates:{
+    '& p':{
+      fontWeight:'700',
+    }
+  },
 }));
 
 const Watch = ({ data }) => {
@@ -230,7 +261,9 @@ const Watch = ({ data }) => {
         leftColumnContent={
           <Box className={classes.sliderBox}>
             <FullScreenHouseSlider
-              arr={pageData.arenda_mini_gallery.filter((item) => item.published)}
+              arr={pageData.arenda_mini_gallery.filter(
+                (item) => item.published
+              )}
               data={data}
               fullHeight={false}
               autoSlidesPerView={true}
@@ -251,14 +284,13 @@ const Watch = ({ data }) => {
               </Typography>
             </Box>
 
-            { pageData?.arenda_price?(
-            <Box className={classes.priceBlock}>
-              <Typography className={classes.priceBlockText} variant='body1'>
-                <strong>{pageData.arenda_price}</strong> / 1 день
-              </Typography>
-            </Box>
-            ):null }
-            
+            {pageData?.arenda_price ? (
+              <Box className={classes.priceBlock}>
+                <Typography className={classes.priceBlockText} variant='body1'>
+                  <strong>{pageData.arenda_price}</strong> / 1 день
+                </Typography>
+              </Box>
+            ) : null}
           </>
         }
         rightColumnContent={
@@ -277,22 +309,47 @@ const Watch = ({ data }) => {
         }
       ></ContentBlock>
 
-      <ContentBlock
-        leftColumnContent={
-          <img
-            src={getPublicPath(data, pageData.arenda_img1)}
-            className={classes.imgBox}
-            alt='image'
-          />
-        }
-        rightColumnContent={
-          <img
-            src={getPublicPath(data, pageData.arenda_img2)}
-            className={classes.imgBox}
-            alt='image'
-          />
-        }
-      ></ContentBlock>
+      <Box
+        component='section'
+        className={classes.mapBox}
+        style={{
+          background: `no-repeat url(${getPublicPath(
+            data,
+            pageData.arenda_map
+          )})`,
+          backgroundSize: `cover`,
+        }}
+      >
+        <ContentBlock
+          component='div'
+          title={pageData.arenda_icon_title}
+          leftColumnContent={
+            <Box className={classes.mapTextBox}>
+              <Box className={classes.textBlock}>
+                <Typography variant='body1'>
+                  Наша локация расположена всего в паре километров от города
+                  Браслав. Тем не менее, это тихое и уединенное место, без
+                  большого количества туристов, но с удобной равноудаленностью
+                  от всех основных озер.
+                </Typography>
+              </Box>
+
+              <Box className={classes.mapCoordinates}>
+                <Typography variant='body1'> 55.650538, 26.995473</Typography>
+              </Box>
+
+              <Box className={classes.textBlock}>
+                <Typography variant='body1'>
+                  Для разнообразия Вашего отдыха, мы подготовили карту с
+                  персональными рекомендациями уникальных для Беларуси мест в
+                  окрестностях Браславского района.
+                </Typography>
+              </Box>
+            </Box>
+          }
+          rightColumnContent={<></>}
+        ></ContentBlock>
+      </Box>
 
       <ContentBlock
         title={pageData.arenda_invite_title}
