@@ -395,16 +395,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [activeNumb, currentSegment]);
 
   const videoRef = useRef(null)
+  console.log(video)
 
   useEffect(() => {
-    // console.log( videoRef.current)
-    let video = videoRef.current.children[0]?.children[0]
-    console.log( video)
-    if(video){video.setAttribute('mutted', true);}
-    
-    // videoRef.current?.setAttribute('mutted', true)
+
     setLineLength(baseLength);
-  }, [baseLength,videoRef]);
+  }, [baseLength]);
 
   useEffect(() => {
     if (isFirstEntry) {
@@ -421,6 +417,12 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
   }, [scroll]);
 
   useEffect(() => {
+    let videoNode = videoRef.current.children[0].children[0]
+    console.log( videoNode)
+    if (videoNode) {
+      videoNode.setAttribute('mutted', true);
+      videoNode.setAttribute('key', video.default);
+    }
     let numbers = document.getElementsByClassName(classes.number);
     let numberArr = Array.from(numbers);
     let intervalId = setTimeout(() => {
@@ -429,7 +431,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     return function cleanup() {
       clearInterval(intervalId);
     };
-  }, [currentSegment]);
+  }, [currentSegment,videoRef]);
  
 
   return (
