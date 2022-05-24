@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
   },
   personalBox: {
     width: '150px',
-    '@media (min-width:1450px)': {
+    '@media (min-width:767px)': {
       width: '180px',
     },
     '& img':{
@@ -131,6 +131,9 @@ const useStyles = makeStyles((theme) => ({
       '& > * + * ': {
         marginLeft: '1.8vw',
       },
+    },
+    [theme.breakpoints.down('md')]: {
+      justifyContent:'center',
     },
     '@media (max-width:600px)': {
       '& p':{
@@ -197,10 +200,12 @@ const useStyles = makeStyles((theme) => ({
   },
   ContactsSails: {
     textTransform: 'none',
+    whiteSpace: 'nowrap',
     fontWeight: '400',
   },
   ContactsPhone: {
     fontWeight: '600',
+    whiteSpace: 'nowrap',
     [theme.breakpoints.down('md')]: {
       fontSize: '16px',
     },
