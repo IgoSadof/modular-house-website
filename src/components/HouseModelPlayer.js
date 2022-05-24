@@ -82,7 +82,7 @@ const HouseModelPlayer = ({ video, keyId }) => {
   const playerRef = useRef(null);
   const playerBoxRef = useRef(null);
   useEffect(() => {
-    let video = playerBoxRef.current.children[0].children[0];
+    let video = playerBoxRef.current?.children[0]?.children[0];
     if (video) {
       video.setAttribute('mutted', true);
       video.setAttribute('key', keyId);
