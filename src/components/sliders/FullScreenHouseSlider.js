@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useState } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -250,7 +250,7 @@ const FullScreenHouseSlider = ({
         </SwiperSlide>
       );
     });
-  }, [data, classes.mainImgSlider, classes.mainImgItem]);
+  }, [data, classes.mainImgSlider,arr, classes.mainImgItem]);
 
   const handleMouseClick = () => {
     if (window) {
@@ -263,10 +263,8 @@ const FullScreenHouseSlider = ({
   return (
     <Box
       components='section'
-      className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`}
-      
+      className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`} 
     >
-   
       <Box className={classes.sliderContent}>
         {arr ? (
           <HouseFotosSlider
@@ -298,7 +296,7 @@ const FullScreenHouseSlider = ({
 
         {mouseIcon && !breakpoints.md ? (
           <Box className={`${classes.mouseIconBox}`} onClick={handleMouseClick}>
-            <img src={arrow} />
+            <img src={arrow} alt='arrow'/>
             {/* <Box className={classes.mouse} onClick={handleMouseClick}></Box> */}
           </Box>
         ) : null}

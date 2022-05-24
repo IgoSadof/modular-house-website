@@ -9,6 +9,8 @@ import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
 import ModalScreen from '../components/ModalScreen';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import location from '../assets/images/icons/location.svg'
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -214,9 +216,16 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: '700',
     },
   },
+  locationIcon:{
+    width:'14px',
+    '@media (min-width:1921px)': {
+      width:'0.7vw',
+    },
+  }
 }));
 
 const Watch = ({ data }) => {
+  const breakpoints = useBreakpoint();
   const [openModal, setOpenModal] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
   const [activeImg, setActiveImg] = useState(true);
@@ -233,8 +242,7 @@ const Watch = ({ data }) => {
     setUnavailableDates(dates);
   };
   const handleSliderClick = (e) => {
-    console.log(e.target)
-    if(e.target.dataset.path){
+    if(e.target.dataset.path && !breakpoints.s){
       setActiveImg(e.target.dataset.path)
       setOpenModal(true);
       setOpenPopup(true)
@@ -354,7 +362,7 @@ const Watch = ({ data }) => {
               </Box>
 
               <Box className={classes.mapCoordinates}>
-                <Typography variant='body1'> 55.650538, 26.995473</Typography>
+                <Typography variant='body1'><img className={classes.locationIcon} src={location} alt='location'></img> 55.650538, 26.995473</Typography>
               </Box>
 
               <Box className={classes.textBlock}>
