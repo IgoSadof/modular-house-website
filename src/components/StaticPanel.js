@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     right: "0",
     bottom: "0",
     width: "700px",
-    backgroundColor: "#D1D1D1",
+    backgroundColor: "rgb(209,209,209)",
     // borderBottom:'1px solid black'
   },
 }));

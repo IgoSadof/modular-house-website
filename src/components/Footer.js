@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     
   },
   text: {
-    color: "#D1D1D1",
+    color: "rgb(209,209,209)",
     fontSize: customFontsSize.h6.regular,
     lineHeight: '1.4',
     "@media (min-width:1921px)": {

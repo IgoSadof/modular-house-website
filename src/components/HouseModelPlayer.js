@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     height: '52vh',
     overflow: 'hidden',
     '& video': {
-      transform: 'scale(1.05)',
+      transform: 'scale(1.2)',
     },
   },
   leftArrow: {

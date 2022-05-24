@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100vh',
     minHeight: '768px',
-    backgroundColor: '#D1D1D1',
+    backgroundColor: 'rgb(209,209,209)',
     '@media (min-width:1921px)': {
       padding: '3.5vw 0px 7vw',
     },
@@ -68,14 +68,14 @@ const useStyles = makeStyles((theme) => ({
   fon: {
     position: 'absolute',
     background:
-      '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)',
+      '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, rgb(209,209,209) 50%)',
     height: '100%',
     width: '100%',
     [theme.breakpoints.down('md')]: {
       background: (param) =>
         param.breakpoints.s
-          ? '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)'
-          : '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, #D1D1D1 50%)',
+          ? '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, rgb(209,209,209) 50%)'
+          : '-webkit-radial-gradient(rgba(209,209,209,0.05) 30%, rgb(209,209,209) 50%)',
     },
   },
   fullImg: {

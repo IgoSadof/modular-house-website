@@ -308,14 +308,14 @@ const FullScreenHouseSlider = ({
               click={handleClickLeft}
               less
               color='#4F4F4F'
-              bgColor='#D1D1D1'
+              bgColor='rgb(209,209,209)'
             />
             <SquareButton
               variant={'contained'}
               click={handleClickRight}
               great
               color='#4F4F4F'
-              bgColor='#D1D1D1'
+              bgColor='rgb(209,209,209)'
             />
           </Box>
         ) : mobileButtons ? (
@@ -325,14 +325,14 @@ const FullScreenHouseSlider = ({
               click={handleClickLeft}
               less
               color='#4F4F4F'
-              bgColor='#D1D1D1'
+              bgColor='rgb(209,209,209)'
             />
             <SquareButton
               variant={'contained'}
               click={handleClickRight}
               great
               color='#4F4F4F'
-              bgColor='#D1D1D1'
+              bgColor='rgb(209,209,209)'
             />
           </Box>
         ) : null}

@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     padding: (param) =>
       param.page === 'main' ? '0 10% 100px 10%' : '14vh 10% 14vh 10%',
     // padding: "100px 10% 100px 11%",
-    backgroundColor: '#D1D1D1',
+    backgroundColor: 'rgb(209,209,209)',
     overflow: 'hidden',
     height: '100%',
     [theme.breakpoints.down('md')]: {
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#D1D1D1',
+    backgroundColor: 'rgb(209,209,209)',
     overflow: 'hidden',
     padding: (param) => (param.page === 'main' ? '0 0 0 10%' : null),
     [theme.breakpoints.down('md')]: {

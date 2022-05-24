@@ -23,7 +23,7 @@ const modularHouseTheme = createTheme({
     primary: {
       // main: 'purple[500]',
       main: '#454545',
-      fon: '#D1D1D1',
+      fon: 'rgb(209,209,209)',
     },
     secondary: {
       main: green[500],
