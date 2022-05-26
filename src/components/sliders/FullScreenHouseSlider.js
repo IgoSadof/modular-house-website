@@ -112,6 +112,10 @@ const useStyles = makeStyles((theme) => ({
     width: '44px',
     height: '22px',
     margin: 'auto',
+    position: 'absolute',
+    left: '0',
+    right: '0',
+    bottom: '26px',
     '& img': {
       width: '100%',
     },

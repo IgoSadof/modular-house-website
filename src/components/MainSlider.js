@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '768px',
     backgroundColor: 'rgb(209,209,209)',
     '@media (min-width:1921px)': {
-      padding: '3.5vw 0px 7vw',
+      padding: '3.5vw 0px 6.5vw',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -121,10 +121,12 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     alignItems: 'flex-start',
     paddingTop: '10vh',
-
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
       paddingTop: '0',
+    },
+    '@media (min-width: 1921px)': {
+        paddingTop: '5vh !important',
     },
   },
   textBlock: {

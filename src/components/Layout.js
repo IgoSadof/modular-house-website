@@ -82,6 +82,11 @@ const useStyles = makeStyles((theme) => ({
     right: '10vw',
     zIndex: '2',
   },
+  '@media (min-width: 1921px)': {
+    button: {
+      top: '3.5vw !important',
+    }
+  },
   connectBox: {
     display: 'flex',
     flexDirection: 'column',
