@@ -309,7 +309,12 @@ const Watch = ({ data }) => {
           <>
             {pageData.arenda_icon_text ? (
               <Box className={classes.textBlock}>
-               {pageData.arenda_icon_text? splitText(pageData.arenda_icon_text) : null}
+                <Typography
+                  variant='body1'
+                  dangerouslySetInnerHTML={{
+                    __html: `${validateText(pageData.arenda_icon_text)}`,
+                  }}
+                ></Typography>
               </Box>
             ) : null}
 
