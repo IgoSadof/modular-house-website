@@ -534,7 +534,7 @@ div[class*="MuiFormControl"] {
   } */
 
   div[class*="sectionTitle"] span {
-    width: 4vw;
+    width: 5vw;
     flex-shrink: 0;
   }
 

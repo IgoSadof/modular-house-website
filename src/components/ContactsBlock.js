@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   BlockColumn: {
-    width: '28vw',
+    width: '30vw',
     display: 'flex',
     '& > * + * ':{
       // marginTop:'20px'
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       '& > * + * ':{
         // marginTop:'2vw'
+        marginLeft:'1.4vw'
       },
     },
 

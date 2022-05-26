@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '0.015em',
     minWidth: '152px',
     height: '38px',
+    display: 'flex',
+    alignItems: 'center',
     textTransform: 'uppercase',
     color: '#F2F2F2',
     borderColor: '#4F4F4F',

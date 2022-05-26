@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     width: '100%',
     gridTemplateColumns: 'repeat(3, 33%)',
-    rowGap: '28px',
+    rowGap: '30px',
     columnGap: '20px',
     [theme.breakpoints.down('md')]: {
       gridTemplateColumns: 'repeat(2, 50%)',
@@ -123,7 +123,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '& > * + * ': {
-      marginTop: '16px',
+      marginTop: '10px',
+      lineHeight: '1.3',
+      fontWeight: '600',
+      '& > span': {
+        fontWeight: '400',
+      },
     },
     '@media (min-width:1921px)': {
       '& > * + * ': {
@@ -198,6 +203,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '560px',
     marginTop: '80px',
+    borderTop: '1px solid #bdbdbd',
+    borderBottom: '1px solid #bdbdbd',
     '&>div': {
       marginTop: '0',
       paddingTop: '60px',
@@ -226,7 +233,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   locationIcon: {
-    width: '14px',
+    width: '16px',
+    marginBottom: '-1px',
+    marginRight: '4px',
     '@media (min-width:1921px)': {
       width: '0.7vw',
     },
@@ -266,7 +275,7 @@ const Watch = ({ data }) => {
 
       <Box className={classes.descBlock}>
         <Box className={classes.descBlockContent}>
-          <Typography variant='h2' className={classes.descTitle}>
+          <Typography variant='h2'>
             {pageData.arenda_subtitle}
           </Typography>
           {pageData.arenda_text ? splitText(pageData.arenda_text) : null}

@@ -146,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
   navItem: {
     zIndex: '3',
     cursor: 'pointer',
-    width: '90px',
+    /*width: '90px',*/
     '@media (min-width:1921px)': {
       width: '4.7vw',
     },
@@ -240,7 +240,7 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
             target='_blank'
             rel='noreferrer'
             className={classes.Link}
-            href={'https://www.facebook.com/zrobimarchitects/'}
+            href={'https://www.facebook.com/BYhome.zrobim/'}
           >
             <Facebook
               width={breakpoints.xxl ? '0.5vw' : 8}

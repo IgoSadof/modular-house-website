@@ -195,7 +195,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '400',
     opacity: '0.6',
     '@media (min-width:1921px)': {
-      fontSize: '24px',
+      fontSize: '14px',
     },
   },
   ContactsSails: {

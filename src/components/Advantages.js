@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     '& h4': {
       color: '#4F4F4F',
     },
+    '& p': {
+      fontSize: '14px',
+    },
     '& > * + * ': {
       marginTop: '20px',
     },
@@ -38,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '@media (min-width: 1920px)': {
-      width: '22vw',
-      paddingRight: '3.1vw',
+      /*width: '22vw',*/
+      paddingRight: '0',
     },
     [theme.breakpoints.down('md')]: {
       '&:last-of-type': {
@@ -51,9 +54,11 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitleBox: {
     display: 'flex',
+    alignItems: 'flex-start',
   },
   image: {
     marginRight: '24px',
+    marginTop: '4px',
     '@media (min-width: 1921px)': {
       marginRight: '1.2vw',
     },
