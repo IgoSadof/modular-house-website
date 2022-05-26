@@ -80,7 +80,6 @@ const useStyles = makeStyles((theme) => ({
     width: '28vw',
     display: 'flex',
     '& > * + * ': {
-      marginRight: '60px',
       paddingTop: '40px',
     },
     marginLeft: '100px',
