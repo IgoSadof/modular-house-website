@@ -83,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
   leftColumnContent: {
     width: '100%',
+    height:'100%',
     [theme.breakpoints.down('md')]: {
       marginTop: '40px',
       padding: (param)=>param.mobileFullScreen? '0':'0 10%',

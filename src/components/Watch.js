@@ -13,6 +13,9 @@ import ModalScreen from '../components/ModalScreen';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import location from '../assets/images/icons/location.svg';
 import validateText from '../utils/validateText';
+import Instagram from './svg/icons/Instagram';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -77,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 
   inviteTitleBox: {
     marginTop: '30px',
-    width: '70%',
+    width: '100%',
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
@@ -161,17 +164,21 @@ const useStyles = makeStyles((theme) => ({
       order: '1',
     },
   },
+  calendarDesc: {
+    width: '100%',
+    marginTop: '10px',
+  },
   calendarFormBox: {
     width: '100%',
     marginTop: '90px',
     display: 'flex',
     '& > * + * ': {
-      marginLeft: '150px',
+      marginLeft: '100px',
     },
     '@media (min-width:1921px)': {
       marginTop: '4.7vw',
       '& > * + * ': {
-        marginLeft: '7.8vw',
+        marginLeft: '5.2vw',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -240,10 +247,66 @@ const useStyles = makeStyles((theme) => ({
       width: '0.7vw',
     },
   },
-  textBlock:{
+  textBlock: {
+    display:'flex',
+    flexDirection:'column',
+    height:'100%',
     '& > * + * ': {
       marginTop: '1em',
     },
+  },
+  instaBox: {
+    marginTop: 'auto',
+  },
+  instaContent: {
+    display: 'flex',
+    marginTop: '20px',
+    '& a': {
+      display: 'flex',
+      textDecoration: 'none',
+    },
+    '& svg': {
+      margin: 'auto',
+    },
+    '@media (min-width:1921px)': {
+      marginTop: '1.04vw',
+    },
+  },
+  instaText: {
+    marginTop: '20px',
+    '@media (min-width:1921px)': {
+      marginTop: '1.04vw',
+    },
+  },
+  instaName: {
+    marginLeft: '16px',
+    textTransform: 'uppercase',
+
+    '@media (min-width:1921px)': {
+      marginLeft: '0.8vw',
+    },
+  },
+  optionsBox: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 50%)',
+    width: '100%',
+    gridColumnGap: '40px',
+    gridRowGap: '20px',
+    '@media (min-width:1921px)': {
+      gridColumnGap: '2.1vw',
+      gridRowGap: '1.1vw',
+    },
+    [theme.breakpoints.down('md')]: {
+      padding: ' 0 10%',
+      gridTemplateColumns: 'repeat(1, 1fr)',
+    },
+  },
+  formBox: {
+    width: '100%',
+  },
+  optionsName: {
+    textTransform: 'none',
+    whiteSpace: 'nowrap',
   },
 }));
 
@@ -267,7 +330,7 @@ const Watch = ({ data }) => {
     }
   };
   const greteRef = useRef(null);
-  console.log(pageData.arenda_icon_text)
+  console.log(pageData.arenda_icon_text);
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -283,9 +346,7 @@ const Watch = ({ data }) => {
 
       <Box className={classes.descBlock}>
         <Box className={classes.descBlockContent}>
-          <Typography variant='h2'>
-            {pageData.arenda_subtitle}
-          </Typography>
+          <Typography variant='h2'>{pageData.arenda_subtitle}</Typography>
           {pageData.arenda_text ? splitText(pageData.arenda_text) : null}
         </Box>
       </Box>
@@ -326,7 +387,9 @@ const Watch = ({ data }) => {
           <>
             {pageData.arenda_icon_text ? (
               <Box className={classes.textBlock}>
-                {pageData.arenda_icon_text ? splitText(pageData.arenda_icon_text) : null}
+                {pageData.arenda_icon_text
+                  ? splitText(pageData.arenda_icon_text)
+                  : null}
               </Box>
             ) : null}
 
@@ -424,11 +487,40 @@ const Watch = ({ data }) => {
                 {pageData.arenda_invite_text}
               </Typography>
             </Box>
+
+            <Box className={classes.instaBox}>
+              <Typography variant='body1' className={classes.instaText}>
+                Больше про нашу локацию в сети Instagram:
+              </Typography>
+              <Box className={classes.instaContent}>
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  className={classes.Link}
+                  href={'https://www.instagram.com/by___home/'}
+                >
+                  <Instagram
+                    width={breakpoints.xxl ? '0.9vw' : 14}
+                    height={breakpoints.xxl ? '0.9vw' : 14}
+                  />
+                  <Typography variant='body1' className={classes.instaName}>
+                    HomandHouse
+                  </Typography>
+                </a>
+              </Box>
+            </Box>
           </Box>
         }
         rightColumnContent={
           <Box className={classes.calendarFormBox}>
             <Box className={classes.calendar}>
+              <Typography
+                className={classes.calendarDesc}
+                component='p'
+                variant='body1'
+              >
+                Выберите планируемые и свободные для проживания даты
+              </Typography>
               <MyCalendar
                 unavailableDates={unavailableDates}
                 getUnavailableDates={getUnavailableDates}
@@ -437,12 +529,61 @@ const Watch = ({ data }) => {
                 }}
               />
             </Box>
-            <Form
-              endpoint={'https://formspree.io/f/mzbokwwy'}
-              extraFormFields={{ date: selectDate }}
-              arenda={true}
-              sendDate={selectDate}
-            />
+            <Box className={classes.formBox}>
+              <Box className={classes.optionsBox}>
+                <FormControlLabel
+                  disabled
+                  value={1}
+                  control={<Checkbox color='primary' />}
+                  labelPlacement='end'
+                  label={
+                    <Typography
+                      className={classes.optionsName}
+                      component='p'
+                      variant='subtitle1'
+                    >
+                      + Купель на дровах
+                    </Typography>
+                  }
+                />
+                <FormControlLabel
+                  checked
+                  value={1}
+                  control={<Checkbox color='primary' />}
+                  labelPlacement='end'
+                  label={
+                    <Typography
+                      className={classes.optionsName}
+                      component='p'
+                      variant='subtitle1'
+                    >
+                      + Велосипеды
+                    </Typography>
+                  }
+                />
+                <FormControlLabel
+                  disabled
+                  value={1}
+                  control={<Checkbox color='primary' />}
+                  labelPlacement='end'
+                  label={
+                    <Typography
+                      className={classes.optionsName}
+                      component='p'
+                      variant='subtitle1'
+                    >
+                      + Лодка
+                    </Typography>
+                  }
+                />
+              </Box>
+              <Form
+                endpoint={'https://formspree.io/f/mzbokwwy'}
+                extraFormFields={{ date: selectDate }}
+                arenda={true}
+                sendDate={selectDate}
+              />
+            </Box>
           </Box>
         }
       ></ContentBlock>
