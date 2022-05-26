@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -10,7 +10,7 @@ import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
 import ModalScreen from '../components/ModalScreen';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import location from '../assets/images/icons/location.svg'
+import location from '../assets/images/icons/location.svg';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -216,12 +216,12 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: '700',
     },
   },
-  locationIcon:{
-    width:'14px',
+  locationIcon: {
+    width: '14px',
     '@media (min-width:1921px)': {
-      width:'0.7vw',
+      width: '0.7vw',
     },
-  }
+  },
 }));
 
 const Watch = ({ data }) => {
@@ -237,17 +237,17 @@ const Watch = ({ data }) => {
     pageData.arenda_text.split('\n\r\n')?.length > 0
       ? pageData.arenda_text.split('\n\r\n')
       : pageData.arenda_text;
-
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
   const handleSliderClick = (e) => {
-    if(e.target.dataset.path && !breakpoints.s){
-      setActiveImg(e.target.dataset.path)
+    if (e.target.dataset.path && !breakpoints.s) {
+      setActiveImg(e.target.key);
       setOpenModal(true);
-      setOpenPopup(true)
+      setOpenPopup(true);
     }
   };
+  const greteRef = useRef(null);
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -255,7 +255,7 @@ const Watch = ({ data }) => {
         title={pageData.arenda_title}
         arr={pageData.arenda_gallery.filter((item) => item.published)}
         data={data}
-        mouseIcon={true}
+        middleIcon={true}
         pagination={true}
       ></FullScreenHouseSlider>
 
@@ -286,6 +286,11 @@ const Watch = ({ data }) => {
               openPopup={openPopup}
               setOpenPopup={setOpenPopup}
               setOpenModal={setOpenModal}
+              arr={pageData.arenda_mini_gallery.filter(
+                (item) => item.published
+              )}
+              data={data}
+              sliderRef={greteRef}
             ></ModalScreen>
             <FullScreenHouseSlider
               arr={pageData.arenda_mini_gallery.filter(
@@ -362,7 +367,14 @@ const Watch = ({ data }) => {
               </Box>
 
               <Box className={classes.mapCoordinates}>
-                <Typography variant='body1'><img className={classes.locationIcon} src={location} alt='location'></img> 55.650538, 26.995473</Typography>
+                <Typography variant='body1'>
+                  <img
+                    className={classes.locationIcon}
+                    src={location}
+                    alt='location'
+                  ></img>{' '}
+                  55.650538, 26.995473
+                </Typography>
               </Box>
 
               <Box className={classes.textBlock}>

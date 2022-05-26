@@ -458,7 +458,7 @@ const HousePage = ({ house, data }) => {
         desc={dataHouses[houseNumber]?.desc}
         data={data}
         pagination={true}
-        mouseIcon={true}
+        middleIcon={true}
       ></FullScreenHouseSlider>
 
       <Box components='section' className={classes.modelBlock}>

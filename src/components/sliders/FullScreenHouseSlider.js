@@ -191,6 +191,7 @@ const useStyles = makeStyles((theme) => ({
     '& > * + * ': {
       marginLeft: '12px',
     },
+    marginTop:"auto",
     left: '14%',
     bottom: '20px',
     zIndex: '2',
@@ -217,7 +218,7 @@ const FullScreenHouseSlider = ({
   data,
   pagination,
   mobileButtons,
-  mouseIcon,
+  middleIcon,
   autoSlidesPerView,
   fullHeight = true,
   sidesDesctopButtons,
@@ -294,7 +295,7 @@ const FullScreenHouseSlider = ({
           </Box>
         ) : null}
 
-        {mouseIcon && !breakpoints.md ? (
+        {middleIcon && !breakpoints.md ? (
           <Box className={`${classes.mouseIconBox}`} onClick={handleMouseClick}>
             <img src={arrow} alt='arrow'/>
             {/* <Box className={classes.mouse} onClick={handleMouseClick}></Box> */}
