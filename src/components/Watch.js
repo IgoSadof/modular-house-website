@@ -8,9 +8,11 @@ import getData from '../utils/getData';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
 import getPublicPath from '../utils/getPublicPath';
+import splitText from '../utils/splitText';
 import ModalScreen from '../components/ModalScreen';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import location from '../assets/images/icons/location.svg';
+import validateText from '../utils/validateText';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -113,6 +115,13 @@ const useStyles = makeStyles((theme) => ({
   iconBox: {
     display: 'flex',
     flexDirection: 'column',
+    '& p>span': {
+      fontSize: '14px',
+      display: 'block',
+      '@media (min-width:1921px)': {
+        fontSize: '0.73vw',
+      },
+    },
     '& > * + * ': {
       marginTop: '16px',
     },
@@ -233,10 +242,6 @@ const Watch = ({ data }) => {
   const [unavailableDates, setUnavailableDates] = useState(null);
   const classes = useStyles();
   const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
-  const pageDataMainText =
-    pageData.arenda_text.split('\n\r\n')?.length > 0
-      ? pageData.arenda_text.split('\n\r\n')
-      : pageData.arenda_text;
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
@@ -264,15 +269,7 @@ const Watch = ({ data }) => {
           <Typography variant='h2' className={classes.descTitle}>
             {pageData.arenda_subtitle}
           </Typography>
-          {Array.isArray(pageDataMainText) ? (
-            pageDataMainText.map((article, index) => (
-              <Typography variant='body1' key={index}>
-                {article}
-              </Typography>
-            ))
-          ) : (
-            <Typography variant='body1'>{pageData.arenda_text}</Typography>
-          )}
+          {pageData.arenda_text ? splitText(pageData.arenda_text) : null}
         </Box>
       </Box>
 
@@ -310,11 +307,11 @@ const Watch = ({ data }) => {
         title={pageData.arenda_icon_title}
         leftColumnContent={
           <>
-            <Box className={classes.textBlock}>
-              <Typography variant='body1'>
-                {pageData.arenda_icon_text}
-              </Typography>
-            </Box>
+            {pageData.arenda_icon_text ? (
+              <Box className={classes.textBlock}>
+               {pageData.arenda_icon_text? splitText(pageData.arenda_icon_text) : null}
+              </Box>
+            ) : null}
 
             {pageData?.arenda_price ? (
               <Box className={classes.priceBlock}>
@@ -334,7 +331,12 @@ const Watch = ({ data }) => {
                   src={getPublicPath(data, item.image)}
                   alt='icon'
                 />
-                <Typography variant='body1'>{item.name}</Typography>
+                <Typography
+                  variant='body1'
+                  dangerouslySetInnerHTML={{
+                    __html: `${validateText(item.name)}`,
+                  }}
+                ></Typography>
               </Box>
             ))}
           </Box>
