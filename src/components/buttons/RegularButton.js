@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     padding: '12px 30px',
     fontSize: '14px',
-    fontWeight:'400',
+    fontWeight: '400',
     borderRadius: '0',
     lineHeight: '1',
     letterSpacing: '0.015em',
@@ -15,13 +15,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     textTransform: 'uppercase',
-    color: '#F2F2F2',
-    borderColor: '#4F4F4F',
-    backgroundColor: '#4F4F4F',
+    border:'1px solid',
+    color: (param)=>param.color,
+    borderColor: (param)=>param.bdColor,
+    backgroundColor: (param)=>param.bgColor,
     boxShadow: 'none',
     '&:hover': {
       filter: 'brightness(1.2)',
-      backgroundColor: '#4F4F4F',
+      backgroundColor: (param)=>param.bgColor,
     },
     '@media (min-width:1921px)': {
       minWidth: '10vw',
@@ -40,12 +41,14 @@ export default function RegularButton({
   children,
   click,
   variant,
-  color,
+  bgColor = '#4F4F4F',
+  bdColor = '#4F4F4F',
+  color = '#F2F2F2',
   leftNone,
   submit,
   lowerCase,
 }) {
-  const param = { color, leftNone, lowerCase };
+  const param = { color, leftNone, lowerCase, bgColor, bdColor };
   const classes = useStyles(param);
 
   return (

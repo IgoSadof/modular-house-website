@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import SquareButton from '../buttons/SquareButton';
+import RegularButton from '../buttons/RegularButton.js';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { SwiperSlide } from 'swiper/react';
 import getPublicPath from '../../utils/getPublicPath';
@@ -125,38 +126,6 @@ const useStyles = makeStyles((theme) => ({
       height: '1.2vw',
     },
   },
-  // mouse: {
-  //   position: 'relative',
-  //   width: '30px',
-  //   height: '48px',
-  //   border: '0.2vw solid #E2E2E2',
-  //   borderRadius: '40px',
-  //   '@media (min-width:1921px)': {
-  //     width: '1.5vw',
-  //     height: '2.5vw',
-  //     borderRadius: '1.1vw',
-  //   },
-  //   '&::before': {
-  //     content: `' '`,
-  //     position: 'absolute',
-  //     left: '50%',
-  //     marginLeft: '-2px',
-  //     top: '20%',
-  //     width: '4px',
-  //     height: '6px',
-  //     borderRadius: '3px',
-  //     backgroundColor: '#E2E2E2',
-  //     animation: 'mouse  0.7s infinite ease-in-out alternate',
-  //     '@media (min-width:1921px)': {
-  //       width: '1.5vw',
-  //       height: '2.5vw',
-  //       borderRadius: '1.1vw',
-  //       width: '0.25vw',
-  //       height: '0.35vw',
-  //       marginLeft: '-0.1vw',
-  //     },
-  //   },
-  // },
 
   descBox: {
     display: 'flex',
@@ -195,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
     '& > * + * ': {
       marginLeft: '12px',
     },
-    marginTop:"auto",
+    marginTop: 'auto',
     left: '14%',
     bottom: '20px',
     zIndex: '2',
@@ -226,6 +195,8 @@ const FullScreenHouseSlider = ({
   autoSlidesPerView,
   fullHeight = true,
   sidesDesctopButtons,
+  enabled,
+  oneButton,
 }) => {
   // console.log(sidesDesctopButtons)
 
@@ -240,7 +211,6 @@ const FullScreenHouseSlider = ({
   const handleClickRight = () => {
     sliderRef.current.swiper.slideNext();
   };
- 
 
   const gallery = useMemo(() => {
     return arr?.map((item, index) => {
@@ -255,7 +225,7 @@ const FullScreenHouseSlider = ({
         </SwiperSlide>
       );
     });
-  }, [data, classes.mainImgSlider,arr, classes.mainImgItem]);
+  }, [data, classes.mainImgSlider, arr, classes.mainImgItem]);
 
   const handleMouseClick = () => {
     if (window) {
@@ -268,7 +238,7 @@ const FullScreenHouseSlider = ({
   return (
     <Box
       components='section'
-      className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`} 
+      className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`}
     >
       <Box className={classes.sliderContent}>
         {arr ? (
@@ -277,6 +247,7 @@ const FullScreenHouseSlider = ({
             listItem={gallery}
             pagination={pagination}
             autoSlidesPerView={autoSlidesPerView}
+            enabled={enabled}
           />
         ) : null}
       </Box>
@@ -301,27 +272,39 @@ const FullScreenHouseSlider = ({
 
         {middleIcon && !breakpoints.md ? (
           <Box className={`${classes.mouseIconBox}`} onClick={handleMouseClick}>
-            <img src={arrow} alt='arrow'/>
+            <img src={arrow} alt='arrow' />
             {/* <Box className={classes.mouse} onClick={handleMouseClick}></Box> */}
           </Box>
         ) : null}
 
         {!breakpoints.md ? (
           <Box className={classes.buttons} style={{ marginLeft: 'auto' }}>
-            <SquareButton
-              variant={'contained'}
-              click={handleClickLeft}
-              less
-              color='#4F4F4F'
-              bgColor='rgb(209,209,209)'
-            />
-            <SquareButton
-              variant={'contained'}
-              click={handleClickRight}
-              great
-              color='#4F4F4F'
-              bgColor='rgb(209,209,209)'
-            />
+            {oneButton ? (
+              <RegularButton
+                bgColor='transparent'
+                bdColor='#F2F2F2'
+                color='#F2F2F2'
+              >
+                Узнать свободные даты
+              </RegularButton>
+            ) : (
+              <>
+                <SquareButton
+                  variant={'contained'}
+                  click={handleClickLeft}
+                  less
+                  color='#4F4F4F'
+                  bgColor='rgb(209,209,209)'
+                />
+                <SquareButton
+                  variant={'contained'}
+                  click={handleClickRight}
+                  great
+                  color='#4F4F4F'
+                  bgColor='rgb(209,209,209)'
+                />
+              </>
+            )}
           </Box>
         ) : mobileButtons ? (
           <Box className={classes.buttons} style={{ marginLeft: 'auto' }}>

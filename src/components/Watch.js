@@ -240,6 +240,11 @@ const useStyles = makeStyles((theme) => ({
       width: '0.7vw',
     },
   },
+  textBlock:{
+    '& > * + * ': {
+      marginTop: '1em',
+    },
+  },
 }));
 
 const Watch = ({ data }) => {
@@ -262,6 +267,7 @@ const Watch = ({ data }) => {
     }
   };
   const greteRef = useRef(null);
+  console.log(pageData.arenda_icon_text)
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -271,6 +277,8 @@ const Watch = ({ data }) => {
         data={data}
         middleIcon={true}
         pagination={true}
+        enabled={false}
+        oneButton={true}
       ></FullScreenHouseSlider>
 
       <Box className={classes.descBlock}>
@@ -318,12 +326,7 @@ const Watch = ({ data }) => {
           <>
             {pageData.arenda_icon_text ? (
               <Box className={classes.textBlock}>
-                <Typography
-                  variant='body1'
-                  dangerouslySetInnerHTML={{
-                    __html: `${validateText(pageData.arenda_icon_text)}`,
-                  }}
-                ></Typography>
+                {pageData.arenda_icon_text ? splitText(pageData.arenda_icon_text) : null}
               </Box>
             ) : null}
 
