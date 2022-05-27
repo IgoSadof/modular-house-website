@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
   leftColumnContent: {
     display:'flex',
-    flexDirection:'column',
+    flexDirection: (param) => (param.rightColumnContent ? 'column' : 'raw'),
     width: '100%',
     height:'100%',
     [theme.breakpoints.down('md')]: {
