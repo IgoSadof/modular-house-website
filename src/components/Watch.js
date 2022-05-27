@@ -166,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
   },
   calendarDesc: {
     width: '100%',
-    marginTop: '10px',
+    marginBottom: '10px',
   },
   calendarFormBox: {
     width: '100%',
@@ -583,6 +583,7 @@ const Watch = ({ data }) => {
                 extraFormFields={{ date: selectDate }}
                 arenda={true}
                 sendDate={selectDate}
+                buttonText='бронировать'
               />
             </Box>
           </Box>
