@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -314,7 +314,7 @@ const Watch = ({ data }) => {
   const breakpoints = useBreakpoint();
   const [openModal, setOpenModal] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
-  const [activeImg, setActiveImg] = useState(true);
+  const [activeImg, setActiveImg] = useState(0);
   const [selectDate, setSelectDate] = useState(null);
   const [unavailableDates, setUnavailableDates] = useState(null);
   const classes = useStyles();
@@ -323,14 +323,13 @@ const Watch = ({ data }) => {
     setUnavailableDates(dates);
   };
   const handleSliderClick = (e) => {
-    if (e.target.dataset.path && !breakpoints.s) {
+    if (e.target.dataset.number && !breakpoints.s) {
       setActiveImg(e.target.key);
       setOpenModal(true);
       setOpenPopup(true);
+      setActiveImg(+e.target.dataset.number)
     }
   };
-  const greteRef = useRef(null);
-  console.log(pageData.arenda_icon_text);
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -365,7 +364,6 @@ const Watch = ({ data }) => {
                 (item) => item.published
               )}
               data={data}
-              sliderRef={greteRef}
             ></ModalScreen>
             <FullScreenHouseSlider
               arr={pageData.arenda_mini_gallery.filter(

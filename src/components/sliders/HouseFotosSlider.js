@@ -7,7 +7,7 @@ import { Pagination } from 'swiper';
 
 
 
-const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, enabled=true }) => {
+const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, enabled=true,initialSlide=0 }) => {
   const breakpoints = useBreakpoint();
 
   return (
@@ -22,6 +22,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
       loop={true}
       allowTouchMove={true}
       enabled={enabled}
+      initialSlide={initialSlide}
       spaceBetween={autoSlidesPerView && !breakpoints.md? (breakpoints.xxl? '1%': 12) :0}
       className={autoSlidesPerView && !breakpoints.md?'mySwiper':'default'}
     >

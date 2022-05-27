@@ -1,4 +1,4 @@
-import React, { useEffect,useRef } from 'react';
+import React, {useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -56,7 +56,6 @@ const ModalScreen = ({
   setOpenPopup,
   data,
   arr,
-  // sliderRef,
 }) => {
   const slidRef = useRef(null);
   const param = { image };
@@ -77,9 +76,6 @@ const ModalScreen = ({
         />
       </SwiperSlide>
     );
-  });
-  console.log(slidRef);
-  useEffect(() => {
   });
 
   return (
@@ -104,6 +100,7 @@ const ModalScreen = ({
             houseRef={slidRef}
             listItem={gallery}
             navigation={true}
+            initialSlide={image}
           />
         {/* ) : null} */}
       </div>
