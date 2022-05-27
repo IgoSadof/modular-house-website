@@ -248,9 +248,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textBlock: {
-    display:'flex',
-    flexDirection:'column',
-    height:'100%',
+    display: 'flex',
+    flexDirection: 'column',
+    // height:'100%',
     '& > * + * ': {
       marginTop: '1em',
     },
@@ -475,19 +475,20 @@ const Watch = ({ data }) => {
       <ContentBlock
         title={pageData.arenda_invite_title}
         leftColumnContent={
-          <Box className={classes.textBlock}>
-            <Box className={classes.inviteTitleBox}>
-              <Typography variant='h4'>
-                <span>{pageData.arenda_invite_subtitle}</span>
-              </Typography>
-            </Box>
+          <>
+            <Box className={classes.textBlock}>
+              <Box className={classes.inviteTitleBox}>
+                <Typography variant='h4'>
+                  <span>{pageData.arenda_invite_subtitle}</span>
+                </Typography>
+              </Box>
 
-            <Box className={classes.subtitleBox}>
-              <Typography variant='body1'>
-                {pageData.arenda_invite_text}
-              </Typography>
+              <Box className={classes.subtitleBox}>
+                <Typography variant='body1'>
+                  {pageData.arenda_invite_text}
+                </Typography>
+              </Box>
             </Box>
-
             <Box className={classes.instaBox}>
               <Typography variant='body1' className={classes.instaText}>
                 Больше про нашу локацию в сети Instagram:
@@ -509,7 +510,7 @@ const Watch = ({ data }) => {
                 </a>
               </Box>
             </Box>
-          </Box>
+          </>
         }
         rightColumnContent={
           <Box className={classes.calendarFormBox}>
