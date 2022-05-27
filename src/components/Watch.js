@@ -66,6 +66,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  h2_gap:{
+    marginBottom: '40px',
+  },
   descTitle: {
     fontSize: '38px',
     fontWeight: '600',
@@ -195,13 +198,13 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: '100%',
     objectFit: 'cover',
-    height: '360px',
+    height: '440px',
     '@media (min-width:1921px)': {
       height: '18vw',
     },
   },
   sliderBox: {
-    height: '360px',
+    height: '440px',
     '@media (min-width:1921px)': {
       height: '18vw',
     },
@@ -345,7 +348,7 @@ const Watch = ({ data }) => {
 
       <Box className={classes.descBlock}>
         <Box className={classes.descBlockContent}>
-          <Typography variant='h2'>{pageData.arenda_subtitle}</Typography>
+          <Typography className={classes.h2_gap} variant='h2'>{pageData.arenda_subtitle}</Typography>
           {pageData.arenda_text ? splitText(pageData.arenda_text) : null}
         </Box>
       </Box>
@@ -394,7 +397,7 @@ const Watch = ({ data }) => {
             {pageData?.arenda_price ? (
               <Box className={classes.priceBlock}>
                 <Typography className={classes.priceBlockText} variant='body1'>
-                  <strong>{pageData.arenda_price}</strong> / 1 день
+                  <strong>{pageData.arenda_price}</strong> / 1 сутки
                 </Typography>
               </Box>
             ) : null}

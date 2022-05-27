@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   line: {
     display: 'inline-block',
-    width: '80px',
+    width: '3.8vw',
     height: '1px',
     backgroundColor: 'black',
     marginTop: 'auto',
