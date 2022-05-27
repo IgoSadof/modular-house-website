@@ -189,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: '0',
         marginTop: '60px',
       },
-      padding: '0 10%',
+      // padding: '0 10%',
     },
   },
   imgBox: {
@@ -296,7 +296,7 @@ const useStyles = makeStyles((theme) => ({
       gridColumnGap: '2.1vw',
       gridRowGap: '1.1vw',
     },
-    [theme.breakpoints.down('md')]: {
+    '@media (max-width:600px)': {
       padding: ' 0 10%',
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
