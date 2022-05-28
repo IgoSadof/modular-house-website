@@ -333,6 +333,7 @@ const Watch = ({ data }) => {
       setActiveImg(+e.target.dataset.number);
     }
   };
+  console.log(pageData);
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -450,33 +451,34 @@ const Watch = ({ data }) => {
           title={pageData.arenda_icon_title}
           leftColumnContent={
             <Box className={classes.mapTextBox}>
-              <Box className={classes.textBlock}>
-                <Typography variant='body1'>
-                  Наша локация расположена всего в паре километров от города
-                  Браслав. Тем не менее, это тихое и уединенное место, без
-                  большого количества туристов, но с удобной равноудаленностью
-                  от всех основных озер.
-                </Typography>
-              </Box>
+              {pageData.arenda_map_text1 ? (
+                <Box className={classes.textBlock}>
+                  <Typography variant='body1'>
+                    {pageData.arenda_map_text1}
+                  </Typography>
+                </Box>
+              ) : null}
 
-              <Box className={classes.mapCoordinates}>
-                <Typography variant='body1'>
-                  <img
-                    className={classes.locationIcon}
-                    src={location}
-                    alt='location'
-                  ></img>{' '}
-                  55.650538, 26.995473
-                </Typography>
-              </Box>
+              {pageData.arenda_map_coordinate ? (
+                <Box className={classes.mapCoordinates}>
+                  <Typography variant='body1'>
+                    <img
+                      className={classes.locationIcon}
+                      src={location}
+                      alt='location'
+                    ></img>{' '}
+                    55.650538, 26.995473
+                  </Typography>
+                </Box>
+              ) : null}
 
-              <Box className={classes.textBlock}>
-                <Typography variant='body1'>
-                  Для разнообразия Вашего отдыха, мы подготовили карту с
-                  персональными рекомендациями уникальных для Беларуси мест в
-                  окрестностях Браславского района.
-                </Typography>
-              </Box>
+              {pageData.arenda_map_text2 ? (
+                <Box className={classes.textBlock}>
+                  <Typography variant='body1'>
+                    {pageData.arenda_map_text2}
+                  </Typography>
+                </Box>
+              ) : null}
             </Box>
           }
           rightColumnContent={<></>}
@@ -509,14 +511,14 @@ const Watch = ({ data }) => {
                   target='_blank'
                   rel='noreferrer'
                   className={classes.Link}
-                  href={'https://www.instagram.com/by___home/'}
+                  href={pageData.arenda_insta_url}
                 >
                   <Instagram
                     width={breakpoints.xxl ? '0.9vw' : 14}
                     height={breakpoints.xxl ? '0.9vw' : 14}
                   />
                   <Typography variant='body1' className={classes.instaName}>
-                    HomandHouse
+                    {pageData.arenda_insta_title}
                   </Typography>
                 </a>
               </Box>
@@ -543,51 +545,45 @@ const Watch = ({ data }) => {
             </Box>
             <Box className={classes.formBox}>
               <Box className={classes.optionsBox}>
-                <FormControlLabel
-                  disabled
-                  value={1}
-                  control={<Checkbox color='primary' />}
-                  labelPlacement='end'
-                  label={
-                    <Typography
-                      className={classes.optionsName}
-                      component='p'
-                      variant='subtitle1'
-                    >
-                      + Купель на дровах
-                    </Typography>
-                  }
-                />
-                <FormControlLabel
-                  checked
-                  value={1}
-                  control={<Checkbox color='primary' />}
-                  labelPlacement='end'
-                  label={
-                    <Typography
-                      className={classes.optionsName}
-                      component='p'
-                      variant='subtitle1'
-                    >
-                      + Велосипеды
-                    </Typography>
-                  }
-                />
-                <FormControlLabel
-                  disabled
-                  value={1}
-                  control={<Checkbox color='primary' />}
-                  labelPlacement='end'
-                  label={
-                    <Typography
-                      className={classes.optionsName}
-                      component='p'
-                      variant='subtitle1'
-                    >
-                      + Лодка
-                    </Typography>
-                  }
-                />
+                {pageData.arenda_options
+                  .filter((item) => item.published)
+                  .map((item, index) =>
+                    item.active ? (
+                      <FormControlLabel
+                        key={index}
+                        value={1}
+                        checked
+                        control={<Checkbox color='primary' />}
+                        labelPlacement='end'
+                        label={
+                          <Typography
+                            className={classes.optionsName}
+                            component='p'
+                            variant='subtitle1'
+                          >
+                            + {item.name}
+                          </Typography>
+                        }
+                      />
+                    ) : (
+                      <FormControlLabel
+                        key={index}
+                        disabled
+                        value={1}
+                        control={<Checkbox color='primary' />}
+                        labelPlacement='end'
+                        label={
+                          <Typography
+                            className={classes.optionsName}
+                            component='p'
+                            variant='subtitle1'
+                          >
+                            + {item.name}
+                          </Typography>
+                        }
+                      />
+                    )
+                  )}
               </Box>
               <Form
                 endpoint={'https://formspree.io/f/mzbokwwy'}
