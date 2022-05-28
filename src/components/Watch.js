@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  h2_gap:{
+  h2_gap: {
     marginBottom: '40px',
   },
   descTitle: {
@@ -330,7 +330,7 @@ const Watch = ({ data }) => {
       setActiveImg(e.target.key);
       setOpenModal(true);
       setOpenPopup(true);
-      setActiveImg(+e.target.dataset.number)
+      setActiveImg(+e.target.dataset.number);
     }
   };
 
@@ -348,7 +348,9 @@ const Watch = ({ data }) => {
 
       <Box className={classes.descBlock}>
         <Box className={classes.descBlockContent}>
-          <Typography className={classes.h2_gap} variant='h2'>{pageData.arenda_subtitle}</Typography>
+          <Typography className={classes.h2_gap} variant='h2'>
+            {pageData.arenda_subtitle}
+          </Typography>
           {pageData.arenda_text ? splitText(pageData.arenda_text) : null}
         </Box>
       </Box>
@@ -358,16 +360,23 @@ const Watch = ({ data }) => {
         leftColumnContent={
           <Box className={classes.sliderBox} onClick={handleSliderClick}>
             <ModalScreen
-              image={activeImg}
               openModal={openModal}
               openPopup={openPopup}
               setOpenPopup={setOpenPopup}
               setOpenModal={setOpenModal}
-              arr={pageData.arenda_mini_gallery.filter(
-                (item) => item.published
-              )}
-              data={data}
-            ></ModalScreen>
+            >
+              <FullScreenHouseSlider
+                arr={pageData.arenda_mini_gallery.filter(
+                  (item) => item.published
+                )}
+                data={data}
+                fullHeight={false}
+                autoSlidesPerView={false}
+                mobileButtons={false}
+                sidesDesctopButtons={true}
+                initialSlide={activeImg}
+              ></FullScreenHouseSlider>
+            </ModalScreen>
             <FullScreenHouseSlider
               arr={pageData.arenda_mini_gallery.filter(
                 (item) => item.published
@@ -377,6 +386,7 @@ const Watch = ({ data }) => {
               autoSlidesPerView={true}
               mobileButtons={true}
               sidesDesctopButtons={true}
+              outSideButtons={true}
             ></FullScreenHouseSlider>
           </Box>
         }

@@ -1,12 +1,10 @@
-import React, {useRef } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import { SwiperSlide } from 'swiper/react';
-import getPublicPath from '../utils/getPublicPath';
-import HouseFotosSlider from './sliders/HouseFotosSlider';
 import Cross from '../components/svg/Cross';
 import Box from '@material-ui/core/Box';
+import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -54,29 +52,14 @@ const ModalScreen = ({
   openModal,
   setOpenModal,
   setOpenPopup,
-  data,
-  arr,
+  children,
 }) => {
-  const slidRef = useRef(null);
   const param = { image };
   const classes = useStyles(param);
   const handleClose = () => {
     setOpenModal(false);
     setOpenPopup(false);
   };
-
-  const gallery = arr?.map((item, index) => {
-    return (
-      <SwiperSlide className={classes.mainImgItem} key={index}>
-        <img
-          className={classes.mainImgSlider}
-          src={getPublicPath(data, item.image)}
-          alt='img'
-          data-path={getPublicPath(data, item.image)}
-        />
-      </SwiperSlide>
-    );
-  });
 
   return (
     <Modal
@@ -91,19 +74,14 @@ const ModalScreen = ({
         timeout: 500,
       }}
     >
-      <div className={classes.paper} onClick={handleClose}>
+      <Fade in={openModal}>
+      <div className={classes.paper}>
         <Box className={classes.crossBox} onClick={handleClose}>
           <Cross color='#d1d1d1' width='2.5vw' height='2.5vw' />
         </Box>
-        {/* {arr ? ( */}
-          <HouseFotosSlider
-            houseRef={slidRef}
-            listItem={gallery}
-            navigation={true}
-            initialSlide={image}
-          />
-        {/* ) : null} */}
+          {children}
       </div>
+      </Fade>
     </Modal>
   );
 };

@@ -79,12 +79,6 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
       justifyContent: 'space-between',
       transform: 'translate(0, 50%)',
-      '& $button:first-child': {
-        transform: 'translate(-101%, 0)',
-      },
-      '& $button:last-child': {
-        transform: 'translate(101%, 0)',
-      },
     },
 
     flexDirection: 'column',
@@ -195,14 +189,19 @@ const FullScreenHouseSlider = ({
   autoSlidesPerView,
   fullHeight = true,
   sidesDesctopButtons,
+  initialSlide,
   enabled,
   oneButton,
+  outSideButtons,
 }) => {
-  // console.log(sidesDesctopButtons)
-
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
-  const param = { title, mobileButtons, fullHeight, sidesDesctopButtons };
+  const param = {
+    title,
+    mobileButtons,
+    fullHeight,
+    sidesDesctopButtons,
+  };
   const classes = useStyles(param);
 
   const handleClickLeft = () => {
@@ -248,6 +247,7 @@ const FullScreenHouseSlider = ({
             pagination={pagination}
             autoSlidesPerView={autoSlidesPerView}
             enabled={enabled}
+            initialSlide={initialSlide}
           />
         ) : null}
       </Box>
@@ -289,20 +289,24 @@ const FullScreenHouseSlider = ({
               </RegularButton>
             ) : (
               <>
-                <SquareButton
-                  variant={'contained'}
-                  click={handleClickLeft}
-                  less
-                  color='#4F4F4F'
-                  bgColor='rgb(209,209,209)'
-                />
-                <SquareButton
-                  variant={'contained'}
-                  click={handleClickRight}
-                  great
-                  color='#4F4F4F'
-                  bgColor='rgb(209,209,209)'
-                />
+                <Box style={{ transform: outSideButtons? 'translate(-101%, 0)':'null'}}>
+                  <SquareButton
+                    variant={'contained'}
+                    click={handleClickLeft}
+                    less
+                    color='#4F4F4F'
+                    bgColor='rgb(209,209,209)'
+                  />
+                </Box>
+                <Box style={{ transform: outSideButtons? 'translate(101%, 0)': 'null'}}>
+                  <SquareButton
+                    variant={'contained'}
+                    click={handleClickRight}
+                    great
+                    color='#4F4F4F'
+                    bgColor='rgb(209,209,209)'
+                  />
+                </Box>
               </>
             )}
           </Box>
