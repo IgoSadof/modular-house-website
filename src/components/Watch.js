@@ -467,7 +467,7 @@ const Watch = ({ data }) => {
                       src={location}
                       alt='location'
                     ></img>{' '}
-                    55.650538, 26.995473
+                    {pageData.arenda_map_coordinate}
                   </Typography>
                 </Box>
               ) : null}
@@ -552,7 +552,6 @@ const Watch = ({ data }) => {
                       <FormControlLabel
                         key={index}
                         value={1}
-                        checked
                         control={<Checkbox color='primary' />}
                         labelPlacement='end'
                         label={
