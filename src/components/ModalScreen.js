@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '3%',
+    margin: '3% 10%',
   },
   paper: {
     position: 'relative',
@@ -23,8 +23,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     width: '100%',
     height: '100%',
+    padding:'3% 0',
     '& img': {
-      objectFit: 'cover',
+      objectFit: 'contain',
       width: '100%',
       height: '100%',
     },
