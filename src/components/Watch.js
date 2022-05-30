@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -16,13 +16,14 @@ import validateText from '../utils/validateText';
 import Instagram from './svg/icons/Instagram';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import playButton from '../assets/images/icons/playButton.svg';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
-    marginBottom: '120px',
+    // marginBottom: '120px',
     '@media (min-width:1921px)': {
-      marginBottom: '8.3vw',
+      // marginBottom: '8.3vw',
     },
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
@@ -311,12 +312,46 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     whiteSpace: 'nowrap',
   },
+  videoBox: {
+    marginTop: '80px',
+    position: 'relative',
+    cursor: 'pointer',
+    '@media (min-width:1921px)': {
+      marginLeft: '4.2vw',
+    },
+    '@media (max-width:600px)': {
+      marginTop: '40px',
+    },
+  },
+  playButton: {
+    width: '90px',
+    height: '90px',
+    cursor: 'pointer',
+    position: 'absolute',
+    zIndex: '2',
+    top: '50%',
+    left: '50%',
+    transform:'translate(-50%,-50%)',
+    '@media (min-width:1921px)': {
+      width: '4.7vw',
+      height: '4.7vw',
+    },
+  },
+  playButtonActive: {
+    transform:'translate(-50%,-50%)',
+    '& img':{
+      animation: 'play 0.3s ease-in-out',
+      opacity: '0',
+    },
+    pointerEvents: 'none',
+  },
 }));
 
 const Watch = ({ data }) => {
   const breakpoints = useBreakpoint();
   const [openModal, setOpenModal] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
+  const [isPlay, setIsPlay] = useState(false);
   const [activeImg, setActiveImg] = useState(0);
   const [selectDate, setSelectDate] = useState(null);
   const [unavailableDates, setUnavailableDates] = useState(null);
@@ -331,6 +366,16 @@ const Watch = ({ data }) => {
       setOpenModal(true);
       setOpenPopup(true);
       setActiveImg(+e.target.dataset.number);
+    }
+  };
+  const video = useRef(null);
+  const handlePlayButton = () => {
+    if (!isPlay) {
+      video.current.play();
+      setIsPlay(true);
+    } else {
+      video.current.pause();
+      setIsPlay(false);
     }
   };
   console.log(pageData);
@@ -595,6 +640,30 @@ const Watch = ({ data }) => {
           </Box>
         }
       ></ContentBlock>
+      {pageData.arenda_video ? (
+        <Box
+          component='section'
+          className={classes.videoBox}
+          onClick={handlePlayButton}
+        >
+          <Box
+            className={
+              isPlay
+                ? `${classes.playButton} ${classes.playButtonActive}`
+                : classes.playButton
+            }
+            onClick={handlePlayButton}
+          >
+            <img src={playButton} alt='play button' />
+          </Box>
+          <video width='100%' height='100%' muted loop ref={video}>
+            <source
+              src={getPublicPath(data, pageData.arenda_video)}
+              type='video/mp4'
+            />
+          </video>
+        </Box>
+      ) : null}
     </Box>
   );
 };
