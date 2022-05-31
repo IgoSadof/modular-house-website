@@ -519,7 +519,7 @@ div[class*="MuiFormControl"] {
 
 @media screen and (min-width: 1921px) {
   div[class*="BlockColumn"] {
-    margin-left: 5.2vw;
+    margin-left: 5.2vw !important;
     flex-shrink: 0;
   }
 
