@@ -103,7 +103,6 @@ const useStyles = makeStyles((theme) => ({
   },
   mouseIconBox: {
     pointerEvents: 'visible',
-    position: 'relative',
     width: '44px',
     height: '22px',
     margin: 'auto',

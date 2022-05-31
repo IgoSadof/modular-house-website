@@ -7,7 +7,7 @@ import numbers from '../constant/numbers';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import getData from '../utils/getData';
-import CircularProgress from '@material-ui/core/CircularProgress';
+// import CircularProgress from '@material-ui/core/CircularProgress';
 import getPublicPath from '../utils/getPublicPath';
 import validateText from '../utils/validateText';
 
@@ -430,7 +430,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
     return function cleanup() {
       clearInterval(intervalId);
     };
-  }, [currentSegment]);
+  }, [currentSegment,classes.number]);
 
   useLayoutEffect(() => {
     let videoNode = videoRef.current.children[0].children[0]

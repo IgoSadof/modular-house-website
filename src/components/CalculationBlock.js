@@ -90,7 +90,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       width: '100%',
-      marginLeft: '0',
     },
   },
   calculationItem: {

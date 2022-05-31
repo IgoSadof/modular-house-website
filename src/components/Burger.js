@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
       param.page === 'contacts'
         ? '10%'
         : '0',
-    zIndex: '3',
     filter: (param) => (param.color === 'white' ? 'invert(1)' : null),
   },
   logo: {

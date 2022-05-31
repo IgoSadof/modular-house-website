@@ -74,7 +74,7 @@ export default function Advantages({ arr, data }) {
       {arr.map((item, index) => {
         return item.published ? (
           <Box className={classes.content} key={index}>
-            <Typography variant='h4'>{item.title}</Typography>
+            <Typography component ='h3' variant='h4'>{item.title}</Typography>
             <Box className={classes.subtitleBox}>
               <img
                 className={classes.image}
