@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '0.4vw',
       '& h2': {
         whiteSpace: (param) => (param.longLine ? 'nowrap' : null),
-        marginLeft: (param) => (param.longLine ? '10%' : '1.4vw'),
+        marginLeft: (param) => (param.longLine ? '10%' : '1vw'),
       },
       left: '-5.2vw',
     },

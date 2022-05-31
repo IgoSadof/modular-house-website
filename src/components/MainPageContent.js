@@ -86,9 +86,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     flexDirection: 'column',
     '@media (min-width:1921px)': {
-      '& > * + * ': {
-        marginLeft: '1.4vw',
-      },
+      marginLeft: '5.2vw',
+      flexShrink: '0',
     },
     [theme.breakpoints.down('md')]: {
       '& > * + * ': {

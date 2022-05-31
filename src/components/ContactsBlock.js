@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     // transform: (param)=> `scale(${param.scale})`,
     '@media (max-width:1200px)': {
-      '&':{
+      '&': {
         padding: '20px 0',
       },
     },
@@ -41,17 +41,15 @@ const useStyles = makeStyles((theme) => ({
   BlockColumn: {
     width: '30vw',
     display: 'flex',
-    '& > * + * ':{
+    '& > * + * ': {
       // marginTop:'20px'
     },
     marginLeft: '100px',
     justifyContent: 'space-between',
     flexDirection: 'column',
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        // marginTop:'2vw'
-        marginLeft:'1.4vw'
-      },
+      marginLeft: '5.2vw',
+      flexShrink: '0',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -65,8 +63,8 @@ const useStyles = makeStyles((theme) => ({
     width: '30vw',
     marginLeft: 'auto',
     display: 'flex',
-    '& > * + * ':{
-      marginTop:'2vw'
+    '& > * + * ': {
+      marginTop: '2vw',
     },
     flexDirection: 'column',
     '$block &': {
@@ -89,8 +87,8 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
     [data]
   );
   const breakpoints = useBreakpoint();
-  let scale = 1/(window? window.devicePixelRatio:1);
-  const param = {scale};
+  let scale = 1 / (window ? window.devicePixelRatio : 1);
+  const param = { scale };
   const classes = useStyles(param);
 
   return (

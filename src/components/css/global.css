@@ -518,33 +518,15 @@ div[class*="MuiFormControl"] {
 }
 
 @media screen and (min-width: 1921px) {
-  div[class*="BlockColumn"] {
-    margin-left: 5.2vw !important;
-    flex-shrink: 0;
-  }
-
-  div[class*="sectionTitle"]>*+* {
-    left: -5.2vw;
-    margin-left: 1.4vw;
-    width: 34.7vw;
-  }
-
-  /* div[class*="sectionTitle"]>*+* {
-    margin-left: 1.4vw;
-  } */
-
   div[class*="sectionTitle"] span {
-    width: 5vw;
+    width: 4.2vw;
     flex-shrink: 0;
   }
 
   [class*="sliderBlock"] span {
     width: 5.5vw;
   }
-/* 
-  label[class*="MuiInputLabel"] {
-    font-size: 2.92vw;
-  } */
+  
   label + .MuiInput-formControl{
     margin-top: 1.5vw !important;
   }

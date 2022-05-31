@@ -209,6 +209,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
       width: '100%',
     },
+    '@media (min-width:1921px)': {
+      marginLeft: '5.2vw',
+      flexShrink: '0',
+    },
   },
 }));
 
