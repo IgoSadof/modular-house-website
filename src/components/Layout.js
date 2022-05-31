@@ -103,6 +103,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       padding: '10%',
       paddingTop: '0',
+      paddingBottom: '14vh',
       width: '100%',
       justifyContent: 'space-between',
       '& > * + * ':{

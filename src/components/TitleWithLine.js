@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
       '& h2': {
         marginLeft: () => '10%',
         marginRight: () => '20px',
+        textAlign: 'left', 
+      },
+      '& span': {
+        width: '100%',
       },
       flexDirection: 'row-reverse',
       left: '0',
@@ -59,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     width: '3.8vw',
     minWidth: '80px',
     height: '1px',
-    backgroundColor: 'black',
+    backgroundColor: '#4F4F4F',
     marginTop: '22px',
     [theme.breakpoints.down('md')]: {
       width: (param) => (param.longLine ? '100%' : '80px'),

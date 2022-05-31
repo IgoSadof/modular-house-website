@@ -14,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
       '& h2': {
         fontSize: '20px',
         textAlign: 'end',
+        marginRight: '0',
+        marginBottom: '10px',
       },
     },
   },
@@ -26,12 +28,12 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '1.2',
     letterSpacing: '0.03em',
     textTransform: 'uppercase',
-    color: '#4F4F4F',
+    color: '#333',
     // '@media (min-width:1921px)': {
     //   fontSize: "3.54vw",
     // },
     [theme.breakpoints.down('md')]: {
-      width: '75%',
+      width: '100%',
       fontSize: '26px',
       fontWeight: '700',
       textAlign: 'start',
@@ -130,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
     // fontSize: '28px',
     textTransform: 'uppercase',
     fontWeight: 600,
+    textAlign: 'left',
     '@media (min-width:1921px)': {
       fontSize: '1.25vw',
     },

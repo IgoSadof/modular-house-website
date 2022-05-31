@@ -99,14 +99,16 @@ const useStyles = makeStyles((theme) => ({
       '& > * + * ': {
         marginLeft: '20px',
       },
-      justifyContent: 'center',
+      justifyContent:'flex-start',
+      paddingLeft: '10%',
+      paddingRight: '10%',
     },
   },
   personalBoxLink: {
     textDecoration: 'none',
   },
   personalBox: {
-    width: '150px',
+    width: '45%',
     '@media (min-width:767px)': {
       width: '180px',
     },
@@ -133,7 +135,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     [theme.breakpoints.down('md')]: {
-      justifyContent:'center',
+      justifyContent:'flex-start',
+      paddingLeft: '10%',
+      paddingRight: '10%',
     },
     '@media (max-width:600px)': {
       '& p':{
@@ -195,7 +199,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '400',
     opacity: '0.6',
     '@media (min-width:1921px)': {
-      fontSize: '14px',
+      fontSize: '18px',
     },
   },
   ContactsSails: {
