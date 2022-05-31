@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Logo from './svg/Logo';
 import Facebook from './svg/icons/Facebook';
@@ -188,6 +188,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  hide: {
+    opacity: '0',
+  },
+  show: {
+    opacity: '1',
+  },
 }));
 
 const Menu = ({ data, inBurger, clickToOpenForm }) => {
@@ -198,31 +204,53 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
         .sort((a, b) => a.menutitle - b.menutitle),
     [data]
   );
+  const [isItemFocused, setIsItemFocused] = useState(false);
   // console.log(menuData);
   const breakpoints = useBreakpoint();
   const param = { inBurger };
   const classes = useStyles(param);
+  const handleItemFocus = () => {
+    setIsItemFocused(true);
+  };
+  const handleItemUnFocus = () => {
+    setIsItemFocused(false);
+  };
 
   return (
     <Box component='nav' className={classes.menu}>
       {inBurger ? null : (
         <>
-          <Link className={classes.logo} to={'/'}>
+          <Link tabIndex={1} className={classes.logo} to={'/'}>
             <Logo
               width={breakpoints.xxl ? '4.2vw' : 60}
               height={breakpoints.xxl ? '6.2vw' : 90}
               color={'#4F4F4F'}
             />
           </Link>
-          <Typography variant='button' className={classes.text}>
+          <Typography
+            variant='button'
+            className={
+              isItemFocused ? `${classes.text} ${classes.hide}` : classes.text
+            }
+          >
             Меню
           </Typography>
         </>
       )}
-      <ul className={classes.navList}>
+      <ul
+        className={
+          isItemFocused ? `${classes.navList} ${classes.show}` : classes.navList
+        }
+      >
         {menuData.map((item) => (
           <li className={classes.navItem} key={item.id}>
-            <Link className={classes.Link} to={item.link}>
+            <Link
+              tabIndex={1}
+              className={classes.Link}
+              to={item.link}
+              onFocus={handleItemFocus}
+              onBlur={handleItemUnFocus}
+            >
               <Typography variant='button'>{item.name}</Typography>
             </Link>
           </li>
