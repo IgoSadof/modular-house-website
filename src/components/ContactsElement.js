@@ -255,7 +255,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                     data,
                     dataContacts['contacts-ceo'][0].image
                   )}
-                  alt='img'
+                  alt='foto'
                 />
                 <Typography
                   className={classes.ContactsName}
@@ -288,7 +288,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                     data,
                     dataContacts['contacts-ceo'][1].image
                   )}
-                  alt='img'
+                  alt='foto'
                 />
 
                 <Typography

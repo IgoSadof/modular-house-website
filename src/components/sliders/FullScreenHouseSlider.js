@@ -218,7 +218,7 @@ const FullScreenHouseSlider = ({
           <img
             className={classes.mainImgSlider}
             src={getPublicPath(data, item.image)}
-            alt='img'
+            alt='house'
             data-number={index}
           />
         </SwiperSlide>

@@ -199,7 +199,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
           <img
             className={classes.calculationPlanImg}
             src={getPublicPath(data, `${item.plan}`)}
-            alt='img'
+            alt='plan'
           />
         );
       } else {

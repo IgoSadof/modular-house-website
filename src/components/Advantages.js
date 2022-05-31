@@ -79,7 +79,7 @@ export default function Advantages({ arr, data }) {
               <img
                 className={classes.image}
                 src={getPublicPath(data, item.image)}
-                alt='img'
+                alt='icon'
               />
               <Typography variant='body1'>{item.text}</Typography>
             </Box>

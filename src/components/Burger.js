@@ -56,7 +56,7 @@ export default function Burger({ color, click, isOpen, position, page }) {
     <Box className={classes.logoBox}>
       <Link to={'/'}>
         {/* <Logo /> */}
-        <img className={classes.logo} src={logo}></img>
+        <img className={classes.logo} src={logo} alt='logo'></img>
       </Link>
       <Box className={classes.burgerBox} onClick={click}>
         {isOpen ? (

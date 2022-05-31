@@ -300,7 +300,7 @@ const ReviewsBlock = ({ data, reviews, title }) => {
                       reviews[reviewVideo].foto.search(/images\//g)
                     )}`
                   )}
-                  alt='img'
+                  alt='foto'
                 />
               </CSSTransition>
             </TransitionGroup>
@@ -388,7 +388,7 @@ const ReviewsBlock = ({ data, reviews, title }) => {
                       reviews[reviewVideo].foto.search(/images\//g)
                     )}`
                   )}
-                  alt='img'
+                  alt='foto'
                 />
               </CSSTransition>
             </TransitionGroup>

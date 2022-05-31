@@ -301,7 +301,7 @@ const AboutUs = ({ data }) => {
                   data,
                   dataObj.Creators[0].image ? dataObj.Creators[0].image : null
                 )}
-                alt='img'
+                alt='foto'
               ></img>
             </Box>
           </>
@@ -318,7 +318,7 @@ const AboutUs = ({ data }) => {
                     data,
                     dataObj.Creators[0].image ? dataObj.Creators[0].image : null
                   )}
-                  alt='img'
+                  alt='foto'
                 ></img>
               </Box>
               <Box className={classes.creatorsBox}>
@@ -398,7 +398,7 @@ const AboutUs = ({ data }) => {
               data,
               dataObj.Creators[1].image ? dataObj.Creators[1].image : null
             )}
-            alt='img'
+            alt='foto'
           ></img>
         </Box>
       </Box>

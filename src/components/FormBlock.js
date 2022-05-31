@@ -163,12 +163,12 @@ const FormBlock = ({
                 className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
               >
                 {!staticImg ? (
-                  <img className={classes.expodom_img} src={img} alt='img' />
+                  <img className={classes.expodom_img} src={img} alt='house' />
                 ) : (
                   <img
                     className={classes.expodom_img}
                     src={img}
-                    alt='img'
+                    alt='house'
                   ></img>
                 )}
               </Box>
@@ -190,12 +190,12 @@ const FormBlock = ({
                 className={`${classes.mediaBlock} ${classes.mediaBlock_unborder}`}
               >
                 {!staticImg ? (
-                  <img className={classes.expodom_img} src={img} alt='img' />
+                  <img className={classes.expodom_img} src={img} alt='house' />
                 ) : (
                   <img
                     className={classes.expodom_img}
                     src={img}
-                    alt='img'
+                    alt='house'
                   ></img>
                 )}
               </Box>

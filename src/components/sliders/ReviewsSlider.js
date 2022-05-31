@@ -39,7 +39,7 @@ const ReviewsSlider = ({ data, reviews, myRef }) => {
           <img
             className={classes.img}
             src={getPublicPath(data, item.foto)}
-            alt='img'
+            alt='house'
           />
         </SwiperSlide>
       );

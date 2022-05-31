@@ -339,7 +339,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         )}
                         alt="Grow stage"
                       /> */}
-                      <img className={classes.mainPlan} src={getPublicPath(data,item.stages)}/>
+                      <img className={classes.mainPlan} src={getPublicPath(data,item.stages)} alt='stage'/>
                     </Box>
                   </Box>
                 </Box>

@@ -469,13 +469,13 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
 
                 <Box className={classes.icon}>
                   {activeNumb === 0 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[0].icon)} />
+                    <img src={getPublicPath(data, dataSlides.intro[0].icon)} alt='icon'/>
                   ) : activeNumb === 1 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[1].icon)} />
+                    <img src={getPublicPath(data, dataSlides.intro[1].icon)} alt='icon' />
                   ) : activeNumb === 2 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[2].icon)} />
+                    <img src={getPublicPath(data, dataSlides.intro[2].icon)} alt='icon' />
                   ) : activeNumb === 3 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[3].icon)} />
+                    <img src={getPublicPath(data, dataSlides.intro[3].icon)} alt='icon' />
                   ) : null}
                 </Box>
 

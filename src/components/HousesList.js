@@ -432,7 +432,7 @@ const HousesList = ({ data }) => {
                     <img
                       className={classes.houseListImg}
                       src={getPublicPath(data, `${item.icon}`)}
-                      alt='img'
+                      alt='house'
                     />
                   ) : null}
                 </CSSTransition>
@@ -461,7 +461,7 @@ const HousesList = ({ data }) => {
                         : classes.houseListImg
                     }
                     src={getPublicPath(data, `${item.icon}`)}
-                    alt='img'
+                    alt='house'
                   />
                 </CSSTransition>
               ) : null}
@@ -500,7 +500,7 @@ const HousesList = ({ data }) => {
         <img
           className={classes.mainImg}
           src={getPublicPath(data, `${item.baner}`)}
-          alt='img'
+          alt='house'
         />
       </SwiperSlide>
     ) : null;
@@ -518,7 +518,7 @@ const HousesList = ({ data }) => {
                     <img
                       className={classes.houseDescImg}
                       src={getPublicPath(data, `${item.icon}`)}
-                      alt='img'
+                      alt='house'
                     />
                   ) : null}
                 </Box>
@@ -655,7 +655,7 @@ const HousesList = ({ data }) => {
                     <img
                       className={classes.houseDescImg}
                       src={getPublicPath(data, `${dataHouses[house].icon}`)}
-                      alt='img'
+                      alt='house'
                     />
                   ) : null}
                 </CSSTransition>
