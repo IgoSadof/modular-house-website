@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
 const Main = ({data}) => {
  const breakpoints = useBreakpoint();
   const [scroll, setScrol] = useState(0);
-  let firsEntry
-  if (typeof window !== "undefined" && !breakpoints.md) {
-    firsEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
-  }
-  const [isFirstEntry, setIsFirstEntry] = useState(firsEntry);
+  // let firsEntry
+  // if (typeof window !== "undefined" && !breakpoints.md) {
+  //   firsEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
+  // }
+  const [isFirstEntry, setIsFirstEntry] = useState(false);
   if(isFirstEntry && !breakpoints.md){
     document.body.style.overflow = "hidden"
   }else if (breakpoints.md){
