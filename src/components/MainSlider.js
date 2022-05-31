@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     width: '100%',
     height: '100vh',
+    '@media (max-width:760px)': {
+      height: 'auto',
+    },
     minHeight: '768px',
     backgroundColor: 'rgb(209,209,209)',
     '@media (min-width:1921px)': {
@@ -58,11 +61,12 @@ const useStyles = makeStyles((theme) => ({
         // marginTop: '25vw',
         position: 'static',
       },
-      top: '50%',
+      top: '0',
       right: '0',
       width: '100%',
-      height: (param) => (param.breakpoints.s ? '85vw' : 'null'),
-      transform: ' scale(1.2)',
+      position: 'relative',
+      height: (param) => (param.breakpoints.s ? '76vw' : 'null'),
+      transform: ' scale(1.8)',
     },
   },
   fon: {
@@ -153,7 +157,8 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '450px',
 
     [theme.breakpoints.down('md')]: {
-      height: '50%',
+      height: 'auto',
+      minHeight: 'calc(600px - 20vw)',
       // marginTop: '40px',
     },
   },
@@ -184,17 +189,20 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       marginBottom: 'auto',
+      paddingLeft: '10%',
+      paddingRight: '10%',
       top: '140px',
       '& > * + * ': {
         marginTop: '20px',
       },
-      width: '80%',
+      width: '100%',
       '& h1': {
-        fontSize: (param) => (param.breakpoints.se ? '24px' : '32px'),
+        fontSize: (param) => (param.breakpoints.se ? '32px' : '32px'),
       },
       '& p': {
-        height: '16vh',
-        overflow: 'overlay',
+        /*height: '16vh',
+        overflow: 'overlay',*/
+        fontSize:'14px',
       },
     },
   },

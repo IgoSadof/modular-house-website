@@ -71,7 +71,7 @@ const modularHouseTheme = createTheme({
       textTransform: 'uppercase',
       letterSpacing: '0.015em',
       fontStyle: 'normal',
-      color: '#333',
+      color: '#4F4F4F',
       '@media (min-width:1921px)': {
         fontSize: customFontsSize.h2.adaptiv,
       },
