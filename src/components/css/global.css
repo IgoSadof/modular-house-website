@@ -541,13 +541,15 @@ div[class*="MuiFormControl"] {
   [class*="sliderBlock"] span {
     width: 5.5vw;
   }
-
-  div[class*="MuiFormControl"]>div {
-    height: 10vh;
-  }
-
+/* 
   label[class*="MuiInputLabel"] {
     font-size: 2.92vw;
+  } */
+  label + .MuiInput-formControl{
+    margin-top: 1.5vw !important;
+  }
+  .MuiInputBase-input {
+    padding:0.3vw 0 0.3vw !important ;
   }
 
   label.MuiInputLabel-formControl {
@@ -559,7 +561,7 @@ div[class*="MuiFormControl"] {
   }
 
   label[class*="MuiInputLabel"] p {
-    font-size: 24px;
+    /* font-size: 1.2vw; */
   }
 
   button.MuiTab-root {
