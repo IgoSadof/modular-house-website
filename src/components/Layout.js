@@ -235,7 +235,8 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
     }
     open ? setIsFormOpen(true) : setIsFormOpen(false);
   };
-  if(window){
+  const checkWindow = () => typeof window !== "undefined"
+  if(checkWindow()){
     if(getBrouser(window).isSafari){
       modularHouseTheme.palette.primary.fon =  modularHouseTheme.palette.primary.fonSafari
     }else if(getBrouser(window).isYandex){
