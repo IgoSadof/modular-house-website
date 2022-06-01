@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '20px',
     },
     padding: '0 10%',
-    backgroundColor: 'rgb(209,209,209)',
     marginTop: '100px',
     //alignItems: 'center',
     '@media (min-width:1921px)': {
@@ -53,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '60px',
     },
     padding: '0 0 100px 10%',
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     '@media (min-width:1921px)': {
       '& > * + * ': {
         marginLeft: '4.2vw',
@@ -207,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
     outline:'none',
     borderRadius: '50% 50% 0 0',
     fontSize: '30px',
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
@@ -227,7 +226,7 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid',
     borderRadius: '50%',
     fontSize: '30px',
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
@@ -246,7 +245,7 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid',
     borderRadius: '0 0 50% 50%',
     fontSize: '30px',
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'column',

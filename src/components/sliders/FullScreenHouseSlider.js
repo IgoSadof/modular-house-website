@@ -294,7 +294,7 @@ const FullScreenHouseSlider = ({
                     click={handleClickLeft}
                     less
                     color='#4F4F4F'
-                    bgColor='rgb(209,209,209)'
+                    bgColor='primary.fon'
                   />
                 </Box>
                 <Box style={{ transform: outSideButtons? 'translate(101%, 0)': 'null'}}>
@@ -303,7 +303,7 @@ const FullScreenHouseSlider = ({
                     click={handleClickRight}
                     great
                     color='#4F4F4F'
-                    bgColor='rgb(209,209,209)'
+                    bgColor='primary.fon'
                   />
                 </Box>
               </>
@@ -316,14 +316,14 @@ const FullScreenHouseSlider = ({
               click={handleClickLeft}
               less
               color='#4F4F4F'
-              bgColor='rgb(209,209,209)'
+              bgColor='primary.fon'
             />
             <SquareButton
               variant={'contained'}
               click={handleClickRight}
               great
               color='#4F4F4F'
-              bgColor='rgb(209,209,209)'
+              bgColor='primary.fon'
             />
           </Box>
         ) : null}

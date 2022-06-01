@@ -24,9 +24,9 @@ const Accordion = withStyles({
   expanded: {},
 })(MuiAccordion);
 
-const AccordionSummary = withStyles({
+const AccordionSummary = withStyles((theme)=>({
   root: {
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     borderBottom: '1px solid #333333',
     marginBottom: 0,
     minHeight: 56,
@@ -45,11 +45,11 @@ const AccordionSummary = withStyles({
     },
   },
   expanded: {},
-})(MuiAccordionSummary);
+}))(MuiAccordionSummary);
 
 const AccordionDetails = withStyles((theme) => ({
   root: {
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     color:'red'
   },
 }))(MuiAccordionDetails);

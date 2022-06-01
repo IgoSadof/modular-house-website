@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     paddingLeft: '10%',
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     overflow: 'hidden',
     height: '100%',
     [theme.breakpoints.down('md')]: {

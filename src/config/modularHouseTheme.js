@@ -21,9 +21,11 @@ export const customFontsSize = {
 const modularHouseTheme = createTheme({
   palette: {
     primary: {
-      // main: 'purple[500]',
       main: '#454545',
-      fon: 'rgb(209,209,209)',
+      fon: '#d1d1d1',
+      fonDefault: '#d1d1d1',
+      fonSafari: '#d6d6d6',
+      fonYandex: '#c4c4c4',
     },
     secondary: {
       main: green[500],

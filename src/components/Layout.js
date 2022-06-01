@@ -13,13 +13,12 @@ import { Helmet } from 'react-helmet';
 import Drawer from '@material-ui/core/Drawer';
 import ClearIcon from '@material-ui/icons/Clear';
 import Form from './Form';
-import call from '../assets/images/call.png';
 import Typography from '@material-ui/core/Typography';
 import SquareButton from './buttons/SquareButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import favicon from '../assets/images/favicon.ico';
-import Cross from './svg/Cross';
 import Call from './svg/Call';
+import getBrouser from '../utils/getBrouser';
 
 const dataToComponent = (WrappedComponent, currebtData, house) => {
   return <WrappedComponent data={currebtData} house={house} />;
@@ -42,6 +41,14 @@ const useStyles = makeStyles((theme) => ({
       height: '100% !important',
     },
   },
+  conteiner: {
+    position: 'relative',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
 
   Block: {
     position: 'relative',
@@ -49,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     padding: (param) =>
       param.page === 'main' ? '0 10% 100px 10%' : '14vh 10% 14vh 10%',
     // padding: "100px 10% 100px 11%",
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     overflow: 'hidden',
     height: '100%',
     [theme.breakpoints.down('md')]: {
@@ -63,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'rgb(209,209,209)',
+    backgroundColor: theme.palette.primary.fon,
     overflow: 'hidden',
     padding: (param) => (param.page === 'main' ? '0 0 0 10%' : null),
     [theme.breakpoints.down('md')]: {
@@ -85,13 +92,13 @@ const useStyles = makeStyles((theme) => ({
   '@media (min-width: 1921px)': {
     button: {
       top: '3.5vw !important',
-    }
+    },
   },
   connectBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > * + * ':{
-      marginTop:'50px'
+    '& > * + * ': {
+      marginTop: '50px',
     },
     height: '100vh',
     zIndex: '3',
@@ -106,8 +113,8 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: '14vh',
       width: '100%',
       justifyContent: 'space-between',
-      '& > * + * ':{
-        marginTop:'0'
+      '& > * + * ': {
+        marginTop: '0',
       },
     },
   },
@@ -141,7 +148,9 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         }
       }
       allFile(
-        filter: { extension: { regex: "/(jpg)|(png)|(glb)|(usdz)|(mp4)|(svg)/" } }
+        filter: {
+          extension: { regex: "/(jpg)|(png)|(glb)|(usdz)|(mp4)|(svg)/" }
+        }
       ) {
         edges {
           node {
@@ -226,6 +235,14 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
     }
     open ? setIsFormOpen(true) : setIsFormOpen(false);
   };
+  if(window){
+    if(getBrouser(window).isSafari){
+      modularHouseTheme.palette.primary.fon =  modularHouseTheme.palette.primary.fonSafari
+    }else if(getBrouser(window).isYandex){
+      modularHouseTheme.palette.primary.fon =  modularHouseTheme.palette.primary.fonYandex
+    }
+  }
+  console.log(modularHouseTheme.palette.primary.fon);
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
@@ -240,10 +257,14 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
         <link rel='shortcut icon' href={favicon} type='image/x-icon'></link>
       </Helmet>
-      <Box position='relative' className='conteiner'>
+      <Box
+        bgcolor='primary.fon'
+        position='relative'
+        className={classes.conteiner}
+      >
         {breakpoints.isLoad ? (
           <>
-            <Menu data={data}/>
+            <Menu data={data} />
             <Box className='content'>
               <Box className={classes.page}>
                 <Box
