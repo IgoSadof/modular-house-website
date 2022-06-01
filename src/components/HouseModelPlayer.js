@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     [theme.breakpoints.down('md')]: {
-      padding: '50px 0 ',
+      padding: '0',
     },
   },
   loaderBox: {
@@ -37,7 +37,12 @@ const useStyles = makeStyles((theme) => ({
     margin: '3vw auto 0 auto',
   },
   videoBox: {
-    height: '52vh',
+    height: '70vh',
+    '@media (max-width:1200px)': {
+      '&': {
+        height: '25vw',
+      },
+    },
     overflow: 'hidden',
     '& video': {
       transform: 'scale(1.2)',

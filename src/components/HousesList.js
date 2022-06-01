@@ -186,6 +186,15 @@ const useStyles = makeStyles((theme) => ({
     '& > * + * ':{
       marginTop:'20px',
     },
+    '& h1': {
+      color:'#4F4F4F',
+    },
+    '& p': {
+      color:'#4F4F4F',
+    },
+    '& h5': {
+      color:'#4F4F4F',
+    },
     justifyContent: 'flex-end',
     '@media (max-width:1441px)': {
       padding: '0 40px',

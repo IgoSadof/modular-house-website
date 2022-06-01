@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
     },
     '& p': {
       fontSize: '14px',
+      '@media (min-width:1921px)': {
+        fontSize: '0.7vw',
+      },
     },
     '& > * + * ': {
       marginTop: '20px',
@@ -61,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '4px',
     '@media (min-width: 1921px)': {
       marginRight: '1.2vw',
+      minWidth: '46px',
     },
   },
 }));

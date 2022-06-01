@@ -43,9 +43,8 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid',
     borderWidth: '1px 0px 0px 1px',
     "@media (min-width:1921px)": {
-      width: "1.4vw",
-      height: "1.4vw",
-      left: '15%',
+      width: "1.2vw",
+      height: "1.2vw",
     },
     [theme.breakpoints.down('md')]: {
       width: "12px",
@@ -61,9 +60,8 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid ',
     borderWidth: '0 1px 1px 0',
     "@media (min-width:1921px)": {
-      width: "1.4vw",
-      height: "1.4vw",
-      right: '15%',
+      width: "1.2vw",
+      height: "1.2vw",
     },
     [theme.breakpoints.down('md')]: {
       width: "12px",
