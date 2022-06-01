@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Cross from './svg/Cross';
 import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby';
-import logo from '../assets/images/newlogo.png'
+import logo from '../assets/images/newlogo.svg'
 
 const useStyles = makeStyles((theme) => ({
   logoBox: {

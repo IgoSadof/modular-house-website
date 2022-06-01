@@ -133,11 +133,12 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     fontWeight: 600,
     textAlign: 'left',
+    color: '#333333',
     '@media (min-width:1921px)': {
-      fontSize: '1.25vw',
+      fontSize: '1.4vw',
     },
     [theme.breakpoints.down('md')]: {
-      fontSize: '18px',
+      fontSize: '20px',
     },
   },
   creatorSubtitle: {

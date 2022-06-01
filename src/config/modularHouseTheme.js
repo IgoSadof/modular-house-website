@@ -125,7 +125,7 @@ const modularHouseTheme = createTheme({
       fontWeight: 600,
       fontStyle: 'normal',
       textTransform: 'uppercase',
-      color: '#333333',
+      color: '#4F4F4F',
       scrollbarWidth: 'none',
       '@media (min-width:1921px)': {
         fontSize: customFontsSize.h6.adaptiv,

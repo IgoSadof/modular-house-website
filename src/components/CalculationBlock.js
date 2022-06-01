@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: '50%',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: '50vh',
+      height: 'auto',
       '@media (orientation: landscape)': {
         height: '70vw',
       },
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginLeft: '0',
       order: '1',
-      height: '50vh',
+      height: 'auto',
       '@media (orientation: landscape)': {
         height: '70vw',
       },
@@ -147,7 +147,10 @@ const useStyles = makeStyles((theme) => ({
   titleBox: {
     [theme.breakpoints.down('md')]: {
       position: 'relative',
-      left: '10vw',
+      left: '0',
+      '& h2': {
+        marginLeft: '0',
+      },
     },
   },
 }));

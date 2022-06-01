@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       padding: '40px 0',
       '& > * + * ': {
         marginLeft: '0',
-        marginTop: '40px',
+        marginTop: '0',
       },
       flexDirection: 'column-reverse',
       // padding: '10%',
@@ -233,9 +233,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     transition: '0.5s',
     '@media (min-width:1921px)': {
-      width: '2.1vw',
-      height: '2.1vw',
-      fontSize: '2.1vw',
+      width: '1.5vw',
+      height: '1.5vw',
+      fontSize: '1.5vw',
     },
   },
   modelDescLinePlus: {
@@ -532,7 +532,7 @@ const HousePage = ({ house, data }) => {
                   className={classes.modelDescLineMinusCircle}
                 >
                   <div
-                    style={{ top: '-0.2vw', position: 'relative' }}
+                    style={{ top: '-0.1vw', position: 'relative' }}
                     className={classes.minus}
                   >
                     -

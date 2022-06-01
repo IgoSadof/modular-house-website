@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
       padding: (param) =>
         param.mobileButtons || param.sidesDesctopButtons
           ? '0'
-          : '20px 10% 0px 10%',
+          : '40px 10% 0px 10%',
       position: (param) =>
         param.mobileButtons || param.sidesDesctopButtons
           ? 'absolute'

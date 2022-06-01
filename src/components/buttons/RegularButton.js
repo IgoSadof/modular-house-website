@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: (param)=>param.bgColor,
     },
     '@media (min-width:1921px)': {
-      minWidth: '10vw',
-      height: '3vw',
-      fontSize: '0.9vw',
+      minWidth: '8.6vw',
+      height: '2.4vw',
+      fontSize: '0.8vw',
       // padding: '0.8vw 2.1vw',
     },
     [theme.breakpoints.down('md')]: {
