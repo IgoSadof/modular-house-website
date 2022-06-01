@@ -384,6 +384,7 @@ const HousesList = ({ data }) => {
 
   const breakpoints = useBreakpoint();
   const [house, setHouse] = useState(0);
+  console.log(dataHouses)
   const [activeSlide, setActiveSlide] = useState(0);
   const [animation] = useState(true);
   const param = { breakpoints };

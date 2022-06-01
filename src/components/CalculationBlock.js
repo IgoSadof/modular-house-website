@@ -15,7 +15,7 @@ import getPublicPath from '../utils/getPublicPath';
 const useStyles = makeStyles((theme) => ({
   line: {
     display: 'inline-block',
-    width: '3.8vw',
+    width: '4.2vw',
     height: '1px',
     backgroundColor: 'black',
     marginTop: '22px',

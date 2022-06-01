@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Advantages({ arr, data }) {
   const classes = useStyles();
-  console.log(arr)
+  // console.log(arr)
 
   return (
     <Box className={classes.conteiner}>

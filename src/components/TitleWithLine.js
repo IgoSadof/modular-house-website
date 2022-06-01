@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
   line: {
     display: 'inline-block',
-    width: '3.8vw',
+    width: '4.2vw',
     minWidth: '80px',
     height: '1px',
     backgroundColor: '#4F4F4F',
