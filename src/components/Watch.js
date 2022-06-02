@@ -218,9 +218,26 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '1px solid #bdbdbd',
     '&>div': {
       marginTop: '0',
+      height:'100%',
+      position:'relative',
+     
+    },
+    '&>div>div':{
       paddingTop: '60px',
+      position:'relative',
       '@media (min-width:1921px)': {
         paddingTop: '3.1vw',
+      },
+    },
+    '&>div:before':{
+      content: `''`,
+      position:'absolute',
+      width:'31vw',
+      height:'100%',
+      background: '#d1d1d1',
+      opacity: '0.6',
+      [theme.breakpoints.down('md')]: {
+        width:'100%',
       },
     },
     '@media (min-width:1921px)': {
@@ -234,6 +251,9 @@ const useStyles = makeStyles((theme) => ({
   mapTextBox: {
     display: 'flex',
     flexDirection: 'column',
+    '':{
+
+    },
     '& > * + * ': {
       marginTop: '20px',
     },

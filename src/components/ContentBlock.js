@@ -10,13 +10,15 @@ const useStyles = makeStyles((theme) => ({
     '& > * + * ': {
       marginLeft: '60px',
     },
-    marginTop: '80px',
+    marginTop: '100px',
     padding: '0 10%',
     '@media (min-width:1921px)': {
       '& > * + * ': {
         marginLeft: '4.2vw',
       },
-      marginTop: '4.2vw',
+      '@media (min-width:1925px)': {
+        marginTop: '4.2vw',
+      }
     },
 
     [theme.breakpoints.down('md')]: {
