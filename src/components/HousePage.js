@@ -103,6 +103,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
+    margin:'auto 0',
     '@media (max-width:1919px)': {
       '& > * + * ': {
         marginTop: '20px',
@@ -117,6 +118,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginTop:'auto',
+    marginBottom:'auto',
     marginRight: 'auto',
     textAlign: 'left',
 
@@ -179,10 +182,19 @@ const useStyles = makeStyles((theme) => ({
   },
   modelDescLine: {
     display: (param) => (param.modulesCounts > 1 ? 'block' : 'none'),
+    height: (param) =>
+      param.breakpoints.xxl
+        ? `${param.heightModuleList+5}vh`
+        : `${param.modulesCounts*120}px`,
+    marginTop:'auto',
+    marginBottom:'auto',
     position: 'relative',
     width: '1px',
     // height: '100%',
     backgroundColor: '#BDBDBD',
+    '@media (max-width:600px)': {
+      height: (param) => `${param.modulesCounts*130}px`,
+    }
   },
   modelDescLineButton: {
     position: 'absolute',
@@ -354,9 +366,9 @@ const HousePage = ({ house, data }) => {
   const modulesCounts = dataHouses[houseNumber].modules?.length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 10;
-  const heightModuleList = 60;
+  const heightModuleList = modulesCounts * 10;
 
-  const [pilldistance, setPilldistance] = useState(heightOneLine * 1.5);
+  const [pilldistance, setPilldistance] = useState(100/modulesCounts-(100/modulesCounts)*0.1);
   const [pillClick, setPillClick] = useState(0);
   const param = {
     pilldistance,
