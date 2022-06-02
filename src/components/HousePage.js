@@ -165,7 +165,9 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '400px',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      height: '50vh',
+      height: 'auto',
+      minHeight: 'auto',
+      padding: '40px 0',
     },
   },
   conteinerVRmodel: {
@@ -543,7 +545,7 @@ const HousePage = ({ house, data }) => {
                   className={classes.modelDescLineMinusCircle}
                 >
                   <div
-                    style={{ top: '-0.1vw', position: 'relative' }}
+                    style={{ top: '-3px', position: 'relative' }}
                     className={classes.minus}
                   >
                     -

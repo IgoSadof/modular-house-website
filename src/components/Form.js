@@ -43,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      marginTop: '40px',
+      marginTop: '0',
+      '& p': {
+        fontSize: '18px',
+      },
     },
   },
   line: {
@@ -98,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '60px',
     "@media (min-width:1921px)": {
       width: '13.9vw',
-      marginTop: '4.2vw',
+      //marginTop: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '30px',

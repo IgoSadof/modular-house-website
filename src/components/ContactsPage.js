@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactsPage = ({ data, title }) => {
-  let scale = 1 / (window ? window.devicePixelRatio : 1);
-  const param = { scale };
+  //let scale = 1 / (window ? window.devicePixelRatio : 1);
+  const param = { };
   const classes = useStyles(param);
 
   return (

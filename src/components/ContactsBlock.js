@@ -31,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     flexShrink: '0',
+    
+    paddingTop: '3.5vw',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'row-reverse',
       marginLeft: 'auto',
@@ -76,8 +78,10 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: '0',
     },
     '@media (min-width:1921px)': {
-      paddingBottom: '15.9vw',
+      
     },
+    paddingTop: '3.5vw',
+    paddingBottom: '90px',
   },
 }));
 

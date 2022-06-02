@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (min-width:1921px)': {
       '& > * + * ': {
-        marginTop: '4.2vw',
+        //marginTop: '4.2vw',
       },
     },
     [theme.breakpoints.down('md')]: {
