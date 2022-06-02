@@ -111,12 +111,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContentBlock = ({ title, leftColumnContent, rightColumnContent, mobileFullScreen, component='section' }) => {
+const ContentBlock = ({ title, leftColumnContent, rightColumnContent, mobileFullScreen, mb, component='section' }) => {
   const breakpoints = useBreakpoint();
   const param = { title, rightColumnContent, mobileFullScreen };
   const classes = useStyles(param);
   return (
     <Box
+      mb={mb}
       component={component}
       className={
         breakpoints.md

@@ -555,6 +555,7 @@ const Watch = ({ data }) => {
       </Box>
 
       <ContentBlock
+        mb={pageData.arenda_video?'0px':breakpoints.xxl?'4.2vw':'100px'}
         title={pageData.arenda_invite_title}
         leftColumnContent={
           <>
