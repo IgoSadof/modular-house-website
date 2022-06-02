@@ -12,7 +12,7 @@ const Accordion = withStyles({
     width: '100%',
     boxShadow: 'none',
     '&:not(:last-child)': {
-      borderBottom: 0,
+      borderBottom: '1px solid #454545',
     },
     '&:before': {
       display: 'none',
@@ -27,16 +27,15 @@ const Accordion = withStyles({
 const AccordionSummary = withStyles((theme)=>({
   root: {
     backgroundColor: theme.palette.primary.fon,
-    borderBottom: '1px solid #333333',
-    marginBottom: 0,
-    minHeight: 56,
-    padding: 0,
+    marginBottom: '0',
+    minHeight: '56px', 
+    padding: '0',
     '& h4': {
       textTransform: 'inherit',
       letterSpacing: '0.03em',
     },
     '&$expanded': {
-      minHeight: 56,
+      minHeight: '56px',
     },
   },
   content: {
@@ -56,7 +55,7 @@ const AccordionDetails = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
   details: {
-    padding: '16px 0',
+    padding: '0 0 16px 0',
     [theme.breakpoints.down('md')]: {
       padding: '16px 10%',
     },

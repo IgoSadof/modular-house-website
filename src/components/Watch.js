@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
     },
     '@media (min-width:1921px)': {
-      marginTop: '4.2vw',
+      //marginTop: '4.2vw',
     },
   },
   descBlockContent: {
@@ -199,21 +199,25 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: '100%',
     objectFit: 'cover',
-    height: '440px',
+    height: '460px',
     '@media (min-width:1921px)': {
-      height: '18vw',
+      height: '24vw',
     },
   },
   sliderBox: {
-    height: '440px',
+    height: '460px',
     '@media (min-width:1921px)': {
-      height: '18vw',
+      height: '24vw',
+    },
+    '& .swiper-slide':{
+      cursor:'pointer',
     },
   },
   mapBox: {
     width: '100%',
     height: '560px',
-    marginTop: '80px',
+    marginTop: '100px',
+    marginBottom: '100px',
     borderTop: '1px solid #bdbdbd',
     borderBottom: '1px solid #bdbdbd',
     '&>div': {
@@ -225,7 +229,7 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (min-width:1921px)': {
       height: '29vw',
-      marginTop: '4.2vw',
+      //marginTop: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
       order: '1',
@@ -313,7 +317,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   videoBox: {
-    marginTop: '80px',
+    marginTop: '100px',
     position: 'relative',
     cursor: 'pointer',
     '@media (min-width:1921px)': {

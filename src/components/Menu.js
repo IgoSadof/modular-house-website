@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     /*width: '90px',*/
     '@media (min-width:1921px)': {
-      width: '4.7vw',
+      width: '100%',
     },
     [theme.breakpoints.down('md')]: {
       width: 'auto',

@@ -175,6 +175,16 @@ const useStyles = makeStyles((theme) => ({
       transform: 'translate(0, 50%)',
     },
   },
+  butligt:{
+    '& > button': {
+      padding: '4px 46px',
+      boxSizing: 'content-box',
+      marginBottom: '6px',
+      '@media (min-width:1921px)': {
+          padding: '0.1vw 2.2vw',
+      },
+    },
+  },
 }));
 
 const FullScreenHouseSlider = ({
@@ -277,7 +287,7 @@ const FullScreenHouseSlider = ({
         ) : null}
 
         {!breakpoints.md ? (
-          <Box className={classes.buttons} style={{ marginLeft: 'auto' }}>
+          <Box className={`${classes.buttons} ${classes.butligt}`} style={{ marginLeft: 'auto' }}>
             {oneButton ? (
               <RegularButton
                 bgColor='transparent'

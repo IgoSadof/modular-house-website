@@ -177,7 +177,7 @@ const useStyles = makeStyles((theme) => ({
   BlockMt0: {
     marginTop: '60px',
     '@media (min-width:1921px)': {
-      marginTop: '4.2vw',
+      //marginTop: '4.2vw',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '0',
