@@ -5,7 +5,7 @@ import Layout from "../../components/Layout";
 
 const HousesPage = () => {
   return (
-    <Layout pageTitle="Model I220" page="house" component = {HousePage} house='i220'>
+    <Layout pageTitle="Model I" page="house" component = {HousePage} house='i220'>
     </Layout>
   );
 };
