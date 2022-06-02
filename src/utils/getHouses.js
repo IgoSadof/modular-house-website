@@ -1,7 +1,6 @@
 import isJsonObject from './isJsonObject';
 
 export default function getHouses(data) {
-
   const elements = data.allMysqlHouses.nodes;
   const houses = {};
 
@@ -10,6 +9,8 @@ export default function getHouses(data) {
       houses[item.alias][item.name] = isJsonObject(item.value)
         ? JSON.parse(item.value)
         : item.value;
+      houses[item.alias]['position'] = item.position;
+      houses[item.alias]['published'] = item.published;
 
       if (item.name === 'modules') {
         houses[item.alias][item.name].forEach((module, index) => {
@@ -40,7 +41,7 @@ export default function getHouses(data) {
     }
   });
 
-  const houseArr = [];
+  let houseArr = [];
 
   for (let key in houses) {
     houses[key]['alias'] = key;
@@ -67,7 +68,9 @@ export default function getHouses(data) {
       }
     };
   }
-  // console.log(houseArr)
+  houseArr.sort((a, b) => +a.position - +b.position);
+  houseArr = houseArr.filter((item) => +item.published>0);
+  console.log(houseArr);
 
   return houseArr;
 }

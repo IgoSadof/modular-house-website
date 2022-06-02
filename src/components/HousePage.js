@@ -343,9 +343,8 @@ const useStyles = makeStyles((theme) => ({
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
-
+  const houseNumber = dataHouses.findIndex((item=>item.alias===house))
   const breakpoints = useBreakpoint();
-  const [houseNumber] = useState(house);
   const baseModule = dataHouses[houseNumber].modules?.[0].name
     ? dataHouses[houseNumber].modules[0].name
     : 'no-modules';

@@ -165,6 +165,8 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
       allMysqlHouses {
         nodes {
           alias
+          position
+          published
           mysqlId
           name
           contentID

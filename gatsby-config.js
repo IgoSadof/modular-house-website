@@ -40,7 +40,7 @@ module.exports = {
         queries: [
           // all houses
           {
-            statement: `SELECT modx_site_tmplvar_contentvalues.id,modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value, modx_site_content.id AS contentID, modx_site_content.alias
+            statement: `SELECT modx_site_tmplvar_contentvalues.id,modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value, modx_site_content.published, modx_site_content.id AS contentID, modx_site_content.alias, modx_site_content.menutitle AS position
             FROM modx_site_tmplvar_contentvalues
             JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
             JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
