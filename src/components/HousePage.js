@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
-    margin:'auto 0',
+    margin: 'auto 0',
     '@media (max-width:1919px)': {
       '& > * + * ': {
         marginTop: '20px',
@@ -118,8 +118,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
-    marginTop:'auto',
-    marginBottom:'auto',
+    marginTop: 'auto',
+    marginBottom: 'auto',
     marginRight: 'auto',
     textAlign: 'left',
 
@@ -174,9 +174,9 @@ const useStyles = makeStyles((theme) => ({
     visibility: 'hidden',
   },
   modelButton: {
-    cursor:'pointer',
+    cursor: 'pointer',
     position: 'absolute',
-    zIndex:'10',
+    zIndex: '10',
     top: '0',
     right: '10%',
     width: '40px',
@@ -186,17 +186,17 @@ const useStyles = makeStyles((theme) => ({
     display: (param) => (param.modulesCounts > 1 ? 'block' : 'none'),
     height: (param) =>
       param.breakpoints.xxl
-        ? `${param.heightModuleList+5}vh`
-        : `${param.modulesCounts*120}px`,
-    marginTop:'auto',
-    marginBottom:'auto',
+        ? `${param.heightModuleList + 5}vh`
+        : `${param.modulesCounts * 120}px`,
+    marginTop: 'auto',
+    marginBottom: 'auto',
     position: 'relative',
     width: '1px',
     // height: '100%',
     backgroundColor: '#BDBDBD',
     '@media (max-width:600px)': {
-      height: (param) => `${param.modulesCounts*130}px`,
-    }
+      height: (param) => `${param.modulesCounts * 130}px`,
+    },
   },
   modelDescLineButton: {
     position: 'absolute',
@@ -217,7 +217,7 @@ const useStyles = makeStyles((theme) => ({
     width: '30px',
     height: '30px',
     border: '1px solid',
-    outline:'none',
+    outline: 'none',
     borderRadius: '50% 50% 0 0',
     fontSize: '30px',
     backgroundColor: theme.palette.primary.fon,
@@ -236,7 +236,7 @@ const useStyles = makeStyles((theme) => ({
   modelDescLineMinusCircle: {
     width: '30px',
     height: '30px',
-    outline:'none',
+    outline: 'none',
     border: '1px solid',
     borderRadius: '50%',
     fontSize: '30px',
@@ -255,7 +255,7 @@ const useStyles = makeStyles((theme) => ({
   modelDescLinePlus: {
     width: '30px',
     height: '30px',
-    outline:'none',
+    outline: 'none',
     border: '1px solid',
     borderRadius: '0 0 50% 50%',
     fontSize: '30px',
@@ -357,7 +357,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HousePage = ({ house, data }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
-  const houseNumber = dataHouses.findIndex((item=>item.alias===house))
+  const houseNumber = dataHouses.findIndex((item) => item.alias === house);
   const breakpoints = useBreakpoint();
   const baseModule = dataHouses[houseNumber].modules?.[0].name
     ? dataHouses[houseNumber].modules[0].name
@@ -370,7 +370,9 @@ const HousePage = ({ house, data }) => {
   const heightOneLine = 10;
   const heightModuleList = modulesCounts * 10;
 
-  const [pilldistance, setPilldistance] = useState(100/modulesCounts-(100/modulesCounts)*0.1);
+  const [pilldistance, setPilldistance] = useState(
+    100 / modulesCounts - (100 / modulesCounts) * 0.1
+  );
   const [pillClick, setPillClick] = useState(0);
   const param = {
     pilldistance,
@@ -438,21 +440,17 @@ const HousePage = ({ house, data }) => {
   const modules = dataHouses[houseNumber].modules.filter(
     (item) => item.published
   );
-  console.log(modules)
+  console.log(modules);
   const options = dataHouses[houseNumber].options.filter(
     (item) => item.published
   );
 
   const [modelVideo, setModelVideo] = useState(
-    getPublicPath(
-      data,
-      dataHouses[houseNumber]['modules'][pillClick].video
-    )
+    getPublicPath(data, dataHouses[houseNumber]['modules'][pillClick].video)
   );
   // const videos = dataHouses[houseNumber]['modules'].map((item,index)=>(
   //   <HouseModelPlayer video={item.video} key={index}/>
   // ))
-
 
   const vrButtonClick = () => {
     modelViwerRef.current.activateAR();
@@ -477,26 +475,30 @@ const HousePage = ({ house, data }) => {
         <Box className={classes.modelDesc}>
           <Box className={classes.modelDescFirstColumn}>
             {modules?.map((item, index) => {
-              return (
-                <li className={classes.modelDescItemTitle} key={index}>
-                  <Typography
-                    variant='h1'
-                    color='textSecondary'
-                    className={
-                      pillClick >= index ? classes.modelNumber : classes.disable
-                    }
-                  >
-                    0{index + 1}
-                  </Typography>
-                  <Typography
-                    className={pillClick >= index ? null : classes.disable}
-                    variant='h6'
-                    component='p'
-                  >
-                    {item.name}
-                  </Typography>
-                </li>
-              );
+              if (item.video) {
+                return (
+                  <li className={classes.modelDescItemTitle} key={index}>
+                    <Typography
+                      variant='h1'
+                      color='textSecondary'
+                      className={
+                        pillClick >= index
+                          ? classes.modelNumber
+                          : classes.disable
+                      }
+                    >
+                      0{index + 1}
+                    </Typography>
+                    <Typography
+                      className={pillClick >= index ? null : classes.disable}
+                      variant='h6'
+                      component='p'
+                    >
+                      {item.name}
+                    </Typography>
+                  </li>
+                );
+              }
             })}
           </Box>
 
@@ -557,16 +559,18 @@ const HousePage = ({ house, data }) => {
 
           <Box className={classes.modelDescSecondColumn}>
             {modules?.map((item, index) => {
-              return (
-                <li className={classes.modelDescItemTitle} key={index}>
-                  <Typography
-                    className={pillClick >= index ? null : classes.disable}
-                    variant='body1'
-                  >
-                    {item.desc}
-                  </Typography>
-                </li>
-              );
+              if (item.video) {
+                return (
+                  <li className={classes.modelDescItemTitle} key={index}>
+                    <Typography
+                      className={pillClick >= index ? null : classes.disable}
+                      variant='body1'
+                    >
+                      {item.desc}
+                    </Typography>
+                  </li>
+                );
+              }
             })}
           </Box>
         </Box>
