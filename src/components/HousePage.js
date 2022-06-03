@@ -365,7 +365,7 @@ const HousePage = ({ house, data }) => {
 
   const [userModuleList, setUserModuleList] = useState([baseModule]);
   const [userOptions, setUserOptions] = useState({});
-  const modulesCounts = dataHouses[houseNumber].modules?.length;
+  const modulesCounts = dataHouses[houseNumber].modules?.filter((item)=>item.video)?.length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 10;
   const heightModuleList = modulesCounts * 10;
