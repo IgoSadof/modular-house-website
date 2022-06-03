@@ -264,7 +264,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                     <Typography variant='h6'>{item.name}</Typography>
                   </Box>
                   <Typography variant='h6'>
-                    {`$ ${numberWithSpace(item.price)}`}
+                    {`$${numberWithSpace(item.price)}`}
                   </Typography>
                 </Box>
               ) : (
@@ -284,7 +284,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                     <Typography variant='h6'>{item.name}</Typography>
                   </Box>
                   <Typography variant='h6'>
-                  {`$ ${numberWithSpace(item.price)}`}
+                  {`$${numberWithSpace(item.price)}`}
                   </Typography>
                 </Box>
               )}
@@ -324,7 +324,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
             ЦЕНА
           </Typography>
           <Typography variant='caption'>
-          {`$ ${numberWithSpace(item.price)}`}
+            {`$${numberWithSpace(modulePrice)}`}
           </Typography>
         </Box>
       </Box>
