@@ -18,8 +18,8 @@ const style = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    '& > * + * ':{
-      marginLeft:'20px',
+    '& > * + * ': {
+      marginLeft: '20px',
     },
   },
   flexColumn: {
@@ -183,31 +183,31 @@ const useStyles = makeStyles((theme) => ({
     margin: '60px 0',
     width: '100%',
     padding: '0 60px',
-    '& > * + * ':{
-      marginTop:'20px',
+    '& > * + * ': {
+      marginTop: '20px',
     },
     '& h1': {
-      color:'#4F4F4F',
+      color: '#4F4F4F',
     },
     '& p': {
-      color:'#4F4F4F',
+      color: '#4F4F4F',
     },
     '& h5': {
-      color:'#4F4F4F',
+      color: '#4F4F4F',
     },
     justifyContent: 'flex-end',
     '@media (max-width:1441px)': {
       padding: '0 40px',
     },
     '@media (min-width:1441px)': {
-      '& > * + * ':{
-        marginTop:'40px',
+      '& > * + * ': {
+        marginTop: '40px',
       },
     },
     '@media (min-width:1921px)': {
       padding: '0 4.2vw',
-      '& > * + * ':{
-        marginTop:'2.1vw',
+      '& > * + * ': {
+        marginTop: '2.1vw',
       },
       margin: '3.1vw 0',
     },
@@ -215,8 +215,8 @@ const useStyles = makeStyles((theme) => ({
       '&:first-of-type': {
         marginTop: '50px',
       },
-      '& > * + * ':{
-        marginTop:'16px',
+      '& > * + * ': {
+        marginTop: '16px',
       },
       padding: '0',
       order: '2',
@@ -312,8 +312,8 @@ const useStyles = makeStyles((theme) => ({
   },
   houseDescSpecBox: {
     ...style.flex,
-    '& > * + * ':{
-      marginLeft:'0',
+    '& > * + * ': {
+      marginLeft: '0',
     },
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -377,7 +377,7 @@ const useStyles = makeStyles((theme) => ({
     objectFit: 'cover',
     objectPosition: '50% 80%',
     height: '100vh',
-    '& img':{
+    '& img': {
       objectPosition: '50% 80%',
     },
     [theme.breakpoints.down('md')]: {
@@ -401,7 +401,7 @@ const HousesList = ({ data }) => {
 
   const handleItemclick = (index) => {
     setHouse((state) => index);
-    myRef.current.swiper.slideTo(index+1);
+    myRef.current.swiper.slideTo(index + 1);
     setActiveSlide(index);
   };
 
@@ -603,24 +603,25 @@ const HousesList = ({ data }) => {
                         </Typography>
                       </Box>
                     </Box>
-
-                    <Box className={classes.houseDescSpecOne}>
-                      <Typography
-                        variant='body1'
-                        className={classes.houseDescSpecName}
-                      >
-                        Cтадии роста:
-                      </Typography>
-                      <Box className={classes.houseDescSpecNumberBox}>
+                    {item.stages_number ? (
+                      <Box className={classes.houseDescSpecOne}>
                         <Typography
-                          variant='h6'
-                          component='p'
-                          className={classes.houseSpecValue}
+                          variant='body1'
+                          className={classes.houseDescSpecName}
                         >
-                          {item['modules']?.length}
+                          Cтадии роста:
                         </Typography>
+                        <Box className={classes.houseDescSpecNumberBox}>
+                          <Typography
+                            variant='h6'
+                            component='p'
+                            className={classes.houseSpecValue}
+                          >
+                            {item.stages_number}
+                          </Typography>
+                        </Box>
                       </Box>
-                    </Box>
+                    ) : null}
                   </Box>
                 </Box>
 
@@ -629,7 +630,9 @@ const HousesList = ({ data }) => {
                     <Typography variant='h5' className={classes.houseSpecPrice}>
                       {item.countArea(item.modules, 'price')
                         ? `
-                    $${numberWithSpace(Math.round(+item.countArea(item.modules, 'price')))}`
+                    $${numberWithSpace(
+                      Math.round(+item.countArea(item.modules, 'price'))
+                    )}`
                         : null}
                     </Typography>
                   </Box>
@@ -781,12 +784,14 @@ const HousesList = ({ data }) => {
                       'price'
                     )
                       ? `
-                    $${numberWithSpace(Math.round(
-                      +dataHouses[house].countArea(
-                        dataHouses[house].modules,
-                        'price'
+                    $${numberWithSpace(
+                      Math.round(
+                        +dataHouses[house].countArea(
+                          dataHouses[house].modules,
+                          'price'
+                        )
                       )
-                    ))}`
+                    )}`
                       : null}
                   </Typography>
                 </Box>
