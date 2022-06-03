@@ -517,7 +517,7 @@ const Watch = ({ data }) => {
       >
         <ContentBlock
           component='div'
-          title={pageData.arenda_icon_title}
+          title={pageData.arenda_map_title}
           leftColumnContent={
             <Box className={classes.mapTextBox}>
               {pageData.arenda_map_text1 ? (
