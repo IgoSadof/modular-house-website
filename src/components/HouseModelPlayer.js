@@ -37,12 +37,16 @@ const useStyles = makeStyles((theme) => ({
     margin: '3vw auto 0 auto',
   },
   videoBox: {
-    height: 'auto',
+    height: '30vw',
     width: '100%',
+    marginTop: '-2vw',
+    marginBottom: '-2vw',
     '@media (max-width:1200px)': {
       '&': {
         height: 'auto',
         width: 'auto',
+        marginTop: '0',
+        marginBottom: '0',
       },
     },
     overflow: 'hidden',

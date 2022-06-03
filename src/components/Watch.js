@@ -88,12 +88,23 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
+    '& h4': {
+      marginBottom: '1em',
+      fontWeight: '600',
+      color: '#454545',
+    },
   },
   subtitleBox: {
-    width: '200px',
+    width: '250px',
     marginTop: '30px',
+    '& p': {
+      fontSize: '14px',
+    },
     '@media (min-width:1921px)': {
-      width: '10.4vw',
+      width: '14vw',
+      '& p': {
+        fontSize: '0.72vw',
+      },
     },
   },
   priceBlock: {
@@ -106,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
   priceBlockText: {
     fontSize: '48px',
     '@media (min-width:1921px)': {
-      marginTop: '2.5vw',
+      marginTop: '0',
     },
   },
   iconsBlockConteiner: {
@@ -139,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (min-width:1921px)': {
       '& > * + * ': {
-        marginTop: '0.83vw',
+        marginTop: '0.72vw',
       },
     },
   },
@@ -152,25 +163,34 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   calendar: {
-    width: '14vw',
-    minWidth: '240px',
-    marginTop: 'auto',
+    width: '16vw',
+    minWidth: '260px',
+    marginTop: '0',
     marginBottom: 'auto',
     flexShrink: '0',
     '@media (min-width:1921px)': {
-      width: '18vw',
+      width: '17vw',
       '& abbr': {
-        fontSize: '1.02vw',
+        fontSize: '0.72vw',
       },
       height: 'fit-content',
     },
     [theme.breakpoints.down('md')]: {
       order: '1',
+      minWidth: '100%',
     },
   },
   calendarDesc: {
     width: '100%',
     marginBottom: '10px',
+    fontSize:'14px',
+    marginTop: '5px',
+    '@media (min-width:1921px)': {
+      '&': {
+        fontSize: '0.72vw',
+      },
+      height: 'fit-content',
+    },
   },
   calendarFormBox: {
     width: '100%',
@@ -180,9 +200,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '100px',
     },
     '@media (min-width:1921px)': {
-      marginTop: '4.7vw',
+      marginTop: 'calc(90px + 1.4vw + 0.4vw)',
       '& > * + * ': {
-        marginLeft: '5.2vw',
+        marginLeft: '4.2vw',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -224,7 +244,9 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '0',
       height:'100%',
       position:'relative',
-     
+      [theme.breakpoints.down('md')]: {
+        top: 'calc(50vw - 150vh)',
+      },
     },
     '&>div>div':{
       paddingTop: '60px',
@@ -238,10 +260,10 @@ const useStyles = makeStyles((theme) => ({
       position:'absolute',
       width:'31vw',
       height:'100%',
-      background: '#d1d1d1',
+      background: '#E6E6E6',
       opacity: '0.6',
       [theme.breakpoints.down('md')]: {
-        width:'100%',
+        display:'none',
       },
     },
     '@media (min-width:1921px)': {
@@ -250,6 +272,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       order: '1',
+      backgroundPosition: '50%!important',
+      height:'100vw',
+      marginTop: 'calc(-50vw + 150vh)',
     },
   },
   mapTextBox: {
@@ -302,8 +327,12 @@ const useStyles = makeStyles((theme) => ({
   },
   instaText: {
     marginTop: '20px',
+    width:'250px',
+    fontSize: '14px',
     '@media (min-width:1921px)': {
       marginTop: '1.04vw',
+      width:'14vw',
+      fontSize: '0.72vw',
     },
   },
   instaName: {
@@ -319,25 +348,36 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: 'repeat(2, 50%)',
     width: '100%',
     gridColumnGap: '40px',
-    gridRowGap: '20px',
+    gridRowGap: '0',
     '@media (min-width:1921px)': {
       gridColumnGap: '2.1vw',
-      gridRowGap: '1.1vw',
     },
     '@media (max-width:600px)': {
-      padding: ' 0 10%',
+      padding: '0',
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
   },
   formBox: {
     width: '100%',
+    '& div[class*="MuiFormControl"]':{
+      height:'50px',
+      '@media (min-width:1921px)': {
+        height:'4.7vw',
+      },
+    },
+    '& div[class*="makeStyles-button"]':{
+      marginTop: '20px',
+      '@media (min-width:1921px)': {
+        marginTop: '1.1vw',
+      },
+    },
   },
   optionsName: {
     textTransform: 'none',
     whiteSpace: 'nowrap',
   },
   videoBox: {
-    marginTop: '100px',
+    marginTop: '0',
     position: 'relative',
     cursor: 'pointer',
     '@media (min-width:1921px)': {
@@ -555,7 +595,7 @@ const Watch = ({ data }) => {
       </Box>
 
       <ContentBlock
-        mb={pageData.arenda_video?'0px':breakpoints.xxl?'4.2vw':'100px'}
+        mb={pageData.arenda_video?'100px':breakpoints.xxl?'4.2vw':'100px'}
         title={pageData.arenda_invite_title}
         leftColumnContent={
           <>

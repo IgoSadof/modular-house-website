@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: '0',
     '@media (min-width:1921px)': {
       '& > * + * ': {
-        marginTop: (param) => (param.title ? '4.2vw' : '0'),
+        marginTop: (param) => (param.title ? '60px' : '0'),
       },
       paddingLeft: '5.2vw',
     },
