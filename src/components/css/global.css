@@ -133,6 +133,9 @@ body {
 
   .react-calendar__navigation__label {
     margin-top: 1.02vw;
+    font-style: normal;
+    font-family: Montserrat,sans-serif;
+    font-weight: 400;
   }
 }
 
@@ -140,6 +143,9 @@ body {
   .calendar {
     width: 2.72vw;
     height: 2.72vw;
+    font-style: normal;
+    font-family: Montserrat,sans-serif;
+    font-weight: 400;
   }
 
   .react-calendar__month-view__weekdays__weekday div {
@@ -169,6 +175,9 @@ body {
   text-align: end;
   cursor: pointer;
   text-transform: none;
+  font-style: normal;
+  font-family: Montserrat,sans-serif;
+  font-weight: 400;
 }
 
 .react-calendar__navigation__arrow {

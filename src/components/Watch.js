@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
   },
   calendar: {
     width: '16vw',
-    minWidth: '240px',
+    minWidth: '260px',
     marginTop: '0',
     marginBottom: 'auto',
     flexShrink: '0',
@@ -177,6 +177,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       order: '1',
+      minWidth: '100%',
     },
   },
   calendarDesc: {
@@ -243,7 +244,9 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '0',
       height:'100%',
       position:'relative',
-     
+      [theme.breakpoints.down('md')]: {
+        top: 'calc(50vw - 150vh)',
+      },
     },
     '&>div>div':{
       paddingTop: '60px',
@@ -260,7 +263,7 @@ const useStyles = makeStyles((theme) => ({
       background: '#E6E6E6',
       opacity: '0.6',
       [theme.breakpoints.down('md')]: {
-        width:'100%',
+        display:'none',
       },
     },
     '@media (min-width:1921px)': {
@@ -269,6 +272,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       order: '1',
+      backgroundPosition: '50%!important',
+      height:'100vw',
+      marginTop: 'calc(-50vw + 150vh)',
     },
   },
   mapTextBox: {
@@ -347,7 +353,7 @@ const useStyles = makeStyles((theme) => ({
       gridColumnGap: '2.1vw',
     },
     '@media (max-width:600px)': {
-      padding: ' 0 10%',
+      padding: '0',
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
   },
@@ -371,7 +377,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   videoBox: {
-    marginTop: '100px',
+    marginTop: '0',
     position: 'relative',
     cursor: 'pointer',
     '@media (min-width:1921px)': {
@@ -589,7 +595,7 @@ const Watch = ({ data }) => {
       </Box>
 
       <ContentBlock
-        mb={pageData.arenda_video?'0px':breakpoints.xxl?'4.2vw':'100px'}
+        mb={pageData.arenda_video?'100px':breakpoints.xxl?'4.2vw':'100px'}
         title={pageData.arenda_invite_title}
         leftColumnContent={
           <>
