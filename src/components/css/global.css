@@ -96,8 +96,8 @@ body {
 }
 
 .calendar {
-  width: 35px;
-  height: 35px;
+  width: 46px;
+  height: 46px;
   background-color: transparent;
   border: 1px solid;
   border-radius: "none";
@@ -112,19 +112,23 @@ body {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  width: 40px !important;
-  height: 40px !important;
+  width: 46px !important;
+  height: 46px !important;
+  margin-bottom: 2px;
   background-color: transparent !important;
 }
 
 @media (min-width: 1900px) {
   .calendar {
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
   }
 
   .react-calendar__navigation span {
     font-size: 0.72vw;
+    font-style: normal;
+    font-family: Montserrat,sans-serif;
+    font-weight: 400;
   }
 
   .react-calendar__navigation__label {
@@ -134,8 +138,8 @@ body {
 
 @media (min-width: 2000px) {
   .calendar {
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 2.72vw;
+    height: 2.72vw;
   }
 
   .react-calendar__month-view__weekdays__weekday div {
@@ -178,7 +182,10 @@ body {
 
 abbr {
   text-decoration: none !important;
-  border-color: black;
+  border-color: #454545;
+  font-style: normal;
+  font-family: Montserrat,sans-serif;
+  font-weight: 400;
 }
 
 .react-calendar__tile--active {
