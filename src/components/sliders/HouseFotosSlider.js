@@ -18,6 +18,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
       modules={[Pagination]}
       ref={houseRef}
       slidesPerView={autoSlidesPerView?'auto':'1'}
+      loopedSlides={autoSlidesPerView?'2':null}
       grabCursor={true}
       loop={true}
       allowTouchMove={true}
