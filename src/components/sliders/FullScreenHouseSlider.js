@@ -27,8 +27,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: '1',
     position: 'relative',
     '& img': {
-      width: 'unset',
-      objectFit: 'cover',
+      // objectFit: 'cover',
       height:'100%'
     },
     [theme.breakpoints.down('md')]: {
