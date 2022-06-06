@@ -23,8 +23,7 @@ const MyCalendar = ({
   };
 
   useEffect(() => {
-    getDates(url);
-    setSelectDate(date)
+    // getDates(url);
   }, [url]);
   useEffect(() => {
     setSelectDate(date)
@@ -34,9 +33,9 @@ const MyCalendar = ({
 
   return (
     <div>
-      {!unavailableDates ? (
-        <CircularProgress />
-      ) : (
+      {/* {!unavailableDates ? ( */}
+        {/* <CircularProgress /> */}
+      {/* ) : ( */}
         <Calendar
           ref={calendar}
           value={date}
@@ -45,7 +44,7 @@ const MyCalendar = ({
           selectRange={true}
           // onClickDay={(value, event) => handleClick(value, event)}
         />
-      )}
+      {/* )} */}
     </div>
   );
 };
