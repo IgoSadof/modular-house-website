@@ -362,7 +362,7 @@ const useStyles = makeStyles((theme) => ({
     '& div[class*="MuiFormControl"]':{
       height:'50px',
       '@media (min-width:1921px)': {
-        height:'4.7vw',
+        height:'4.6vw',
       },
     },
     '& div[class*="makeStyles-button"]':{
