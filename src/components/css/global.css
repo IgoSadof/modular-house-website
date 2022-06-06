@@ -118,6 +118,12 @@ body {
   background-color: transparent !important;
 }
 
+.react-calendar__tile--range {
+  background-color: #4F4F4F;
+  color: #F2F2F2;
+  border-color: #4F4F4F;
+}
+
 @media (min-width: 1900px) {
   .calendar {
     width: 46px;

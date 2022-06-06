@@ -7,107 +7,12 @@ const MyCalendar = ({
   unavailableDates,
   getUnavailableDates,
 }) => {
-  const today = new Date();
-  const [value, onChange] = useState(
-    new Date(today.getFullYear(), today.getMonth(), today.getDate())
-  );
-  const [startData, setStartData] = useState(null);
+  const [date, setDate] = useState(new Date());
   const [endData, setEndData] = useState(null);
 
-  // const handleClick = (value, e) => {
-  //   if (e.target.tagName.toLowerCase() === 'button') {
-  //     // console.log(value)
-  //     if (startData) {
-  //       setStartData({value:value,textDate: e.target.children[0].getAttribute('aria-label')});
-  //     } else {
-  //       fillRange(startData, {value:value,textDate: e.target.children[0].getAttribute('aria-label')});
-  //       setEndData({value:value,textDate: e.target.children[0].getAttribute('aria-label')});
-  //     }
-  //     setSelectDate({ date: e.target.children[0].getAttribute('aria-label') });
-  //   } else {
-  //     console.log(value.getDate())
-  //     setSelectDate({ date: e.target.getAttribute('aria-label') });
-  //   }
-  // };
-  // const chooseDataRange = (startData, endData = '') => {};
+  // console.log(date)
 
-  const handleClick = (value, e) => {
-    console.log(calendar.current);
-    if (!startData) {
-      setStartData({
-        value: value,
-        textDate: e.target.children[0]?.getAttribute('aria-label')
-          ? e.target.children[0].getAttribute('aria-label')
-          : e.target.getAttribute('aria-label'),
-      });
-    } else if ((startData && !endData) && value.getDay()!==startData.value.getDay()) {
-      fillRange(startData, {
-        value: value,
-        textDate: e.target.children[0]?.getAttribute('aria-label')
-          ? e.target.children[0].getAttribute('aria-label')
-          : e.target.getAttribute('aria-label'),
-      });
-      setEndData({
-        value: value,
-        textDate: e.target.children[0]?.getAttribute('aria-label')
-          ? e.target.children[0].getAttribute('aria-label')
-          : e.target.getAttribute('aria-label'),
-      });
-    } else if (startData && endData) {
-      resetDays();
-      setStartData({
-        value: value,
-        textDate: e.target.children[0]?.getAttribute('aria-label')
-          ? e.target.children[0].getAttribute('aria-label')
-          : e.target.getAttribute('aria-label'),
-      });
-      setEndData(null);
-    }
-  };
-
-  const fillRange = (startData, endData) => {
-    let days = document.getElementsByClassName('react-calendar__tile');
-    let daysArr = Array.from(days);
-    // let daysValueArr = Array.from(daysArr.map((item) => item.value));
-    // console.log(startData.value.getDate(), endData.value.getDate());
-    // console.log(daysValueArr);
-    let fill = false;
-    daysArr.forEach((item) => {
-      // console.log(item);
-      if (
-        startData.textDate === item.children[0].getAttribute('aria-label') ||
-        endData.textDate === item.children[0].getAttribute('aria-label')
-      ) {
-        fill = !fill;
-      }
-      if (fill) {
-        item.classList.add('dataRange');
-      }
-    });
-  };
-  const resetDays = () => {
-    let days = document.getElementsByClassName('react-calendar__tile');
-    let daysArr = Array.from(days);
-    daysArr.forEach((item) => {
-      if (item.classList.contains('dataRange')) {
-        item.classList.remove('dataRange');
-      }
-    });
-  };
-  useEffect(() => {
-    if (unavailableDates) {
-      console.log('unavailableDates=', unavailableDates);
-      let days = document.getElementsByClassName('react-calendar__tile');
-      let daysArr = Array.from(days);
-      daysArr.forEach((item) => {
-        if (
-          unavailableDates.includes(item.children[0].getAttribute('aria-label'))
-        ) {
-          item.classList.add('unAnableDate');
-        }
-      });
-    }
-  }, [unavailableDates]);
+  
 
   let url = 'https://modhouse.herokuapp.com/dates';
   const getDates = async (url) => {
@@ -119,7 +24,12 @@ const MyCalendar = ({
 
   useEffect(() => {
     getDates(url);
+    setSelectDate(date)
   }, [url]);
+  useEffect(() => {
+    setSelectDate(date)
+    // console.log(date)
+  });
   const calendar = useRef(null);
 
   return (
@@ -129,10 +39,11 @@ const MyCalendar = ({
       ) : (
         <Calendar
           ref={calendar}
-          value={value}
-          onChange={onChange}
+          value={date}
+          onChange={setDate}
           tileClassName='calendar'
-          onClickDay={(value, event) => handleClick(value, event)}
+          selectRange={true}
+          // onClickDay={(value, event) => handleClick(value, event)}
         />
       )}
     </div>
