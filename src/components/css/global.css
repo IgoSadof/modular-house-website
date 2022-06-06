@@ -472,6 +472,7 @@ abbr {
   height: 100%;
 }
 
+
 .swiper-slide {
   /* Center slide text vertically */
   display: flex;
@@ -487,7 +488,20 @@ abbr {
 }
 
 .mySwiper .swiper-slide {
-  width: unset;
+  width: fit-content;
+}
+
+.swiper-wrapper {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.swiper-wrapper:active { 
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
 
 
