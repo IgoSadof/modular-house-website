@@ -84,6 +84,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     border: 'none',
     background: 'none',
+    outline:'none',
+    '& *':{
+      outline:'none'
+    },
     [theme.breakpoints.down('md')]: {
       transform: 'scale(0.9)',
       width: '100%',

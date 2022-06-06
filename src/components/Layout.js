@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-height:600px)': {
       height: '100% !important',
     },
+    '& a':{
+      outline:'none',
+    }
   },
   conteiner: {
     position: 'relative',
