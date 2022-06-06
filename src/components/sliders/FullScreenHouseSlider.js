@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: '1',
     position: 'relative',
     '& img': {
-      width: '100%',
+      width: 'unset',
       objectFit: 'cover',
       height:'100%'
     },
