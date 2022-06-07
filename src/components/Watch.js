@@ -365,7 +365,7 @@ const useStyles = makeStyles((theme) => ({
         height:'4.6vw',
       },
     },
-    '& div[class*="makeStyles-button"]':{
+    '& div[class*="button"]':{
       marginTop: '20px',
       '@media (min-width:1921px)': {
         marginTop: '1.1vw',

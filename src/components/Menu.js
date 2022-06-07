@@ -54,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       padding: '3.5vw 0px 4.2vw',
     },
+    '$ a:focus-visible':{
+      outline:'none',
+      border:"1px solid"
+    },
 
     [theme.breakpoints.down('md')]: {
       display: (param) => (param.inBurger ? 'flex' : 'none'),
@@ -71,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     '& img': {
       width: '100%',
+    },
+    '&:focus-visible, &:visited, &:active':{
+      outline:'none',
     },
   },
   iconsBox: {
@@ -163,6 +170,9 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     '&:hover': {
       color: 'black',
+    },
+    '&:focus-visible, &:visited, &:active':{
+      outline:'none',
     },
   },
   menuFooter: {
