@@ -31,6 +31,11 @@ const useStyles = makeStyles((theme) => ({
       objectFit: 'cover',
       height:'100%',
       userDrag: 'none',
+      userSelect: 'none',
+      '-webkit-user-drag': 'none',
+      '-moz-user-select': 'none',
+      '-webkit-user-select': 'none',
+      '-ms-user-select': 'none',
     },
     [theme.breakpoints.down('md')]: {
       height: (param) => (param.fullHeight ? '70vw' : '100%'),
