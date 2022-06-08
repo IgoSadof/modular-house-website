@@ -495,13 +495,20 @@ abbr {
   cursor: move;
   cursor: grab;
   cursor: -moz-grab;
-  cursor: -webkit-grab;
+  cursor: -webkit-grab !important;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 
 .swiper-wrapper:active { 
   cursor: grabbing;
   cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
+  cursor: -webkit-grabbing !important;
 }
 
 
