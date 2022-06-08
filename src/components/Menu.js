@@ -168,6 +168,7 @@ const useStyles = makeStyles((theme) => ({
   Link: {
     color: 'black',
     textDecoration: 'none',
+    outline:'none',
     '&:hover': {
       color: 'black',
     },
