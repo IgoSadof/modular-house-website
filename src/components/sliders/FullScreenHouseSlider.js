@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       height:'100%',
     },
     '& img': {
-      width:'100%',
+      width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),
       objectFit: 'cover',
       height:'100%',
       userDrag: 'none',
@@ -39,8 +39,12 @@ const useStyles = makeStyles((theme) => ({
       '-moz-user-select': 'none',
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
+      [theme.breakpoints.down('md')]: {
+        width:(param) => '100%',
+      },
     },
     [theme.breakpoints.down('md')]: {
+      width:(param) => '100%',
       height: (param) => (param.fullHeight ? '70vw' : '100%'),
       '@media (orientation: landscape)': {
         height: '65vh',
@@ -244,7 +248,7 @@ const FullScreenHouseSlider = ({
   const gallery = useMemo(() => {
     return arr?.map((item, index) => {
       return (
-        <div className={classes.mainImgItem} key={index}>
+        <div className={classes.mainImgItem} key={index} >
           <img
             className={classes.mainImgSlider}
             src={getPublicPath(data, item.image)}

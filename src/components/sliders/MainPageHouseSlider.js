@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     marginLeft:'2px',
     transformStyle: 'preserve-3d',
+    marginBottom:'2px',
     "@media (min-width:1921px)": {
       width: "33.6vw",
     },

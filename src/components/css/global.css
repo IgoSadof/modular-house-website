@@ -528,6 +528,10 @@ abbr {
   height: 100%;
 }
 
+.slick-slider>div>div {
+  pointer-events: none;
+}
+
 .slick-list {
   height: 100%;
 }
@@ -536,10 +540,6 @@ abbr {
 }
 ul.slick-dots{
   bottom: 14px;
-  color: red;
-}
-ul.slick-dots button{
-  background-color: red;
 }
 ul.slick-dots li.slick-active button:before {
   color: #adadad;

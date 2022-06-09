@@ -233,6 +233,9 @@ const useStyles = makeStyles((theme) => ({
     '& .swiper-slide': {
       cursor: 'pointer',
     },
+    '& img':{
+      pointerEvents: 'visible',
+    }
   },
   mapBox: {
     width: '100%',
