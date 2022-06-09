@@ -447,7 +447,8 @@ const Watch = ({ data }) => {
       setIsPlay(false);
     }
   };
-  console.log(pageData);
+  const formBlock = useRef(null);
+  // console.log(pageData);
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -459,6 +460,7 @@ const Watch = ({ data }) => {
         pagination={true}
         enabled={false}
         oneButton={true}
+        formBlock={formBlock}
       ></FullScreenHouseSlider>
 
       <Box className={classes.descBlock}>
@@ -604,6 +606,7 @@ const Watch = ({ data }) => {
       </Box>
 
       <ContentBlock
+      blockRef={formBlock}
         mb={
           pageData.arenda_video ? '100px' : breakpoints.xxl ? '4.2vw' : '100px'
         }
@@ -716,6 +719,7 @@ const Watch = ({ data }) => {
           </Box>
         }
       ></ContentBlock>
+
       {pageData.arenda_video ? (
         <Box
           component='section'

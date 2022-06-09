@@ -27,7 +27,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
   const settings = {
     className: "slider variable-width",
     speed: 300,
-    // dots: true,
+    dots: !!pagination && breakpoints.md,
     infinite: true,
     // slidesToShow: 1,
     slidesToScroll: 1,
@@ -36,8 +36,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
     infinite: true,
     arrows: false,
     focusOnChange: true,
-    focusOnSelect: false,
-    initialSlide
+    initialSlide,
     // accessibility: false,
   };
 

@@ -219,6 +219,7 @@ const FullScreenHouseSlider = ({
   enabled,
   oneButton,
   outSideButtons,
+  formBlock,
 }) => {
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
@@ -233,10 +234,8 @@ const FullScreenHouseSlider = ({
 
   const handleClickLeft = () => {
     sliderRef.current.slickPrev();
-    console.log(sliderRef.current)
   };
   const handleClickRight = () => {
-    console.log(sliderRef.current)
     
     sliderRef.current.slickNext();
   };
@@ -258,6 +257,7 @@ const FullScreenHouseSlider = ({
   }, [data, classes.mainImgSlider, arr, classes.mainImgItem]);
 
   const handleMouseClick = () => {
+    console.log(formBlock.current)
     if (window) {
       window.scrollTo({
         top: window.screen.availHeight - 100,
@@ -265,6 +265,16 @@ const FullScreenHouseSlider = ({
       });
     }
   };
+  
+
+  const handleSingleButtonClick = () => {
+    if (window) {
+      window.scrollTo({
+        top: formBlock.current.getBoundingClientRect().top - 100,
+        behavior: 'smooth',
+      });
+    }
+  }
   return (
     <Box
       components='section'
@@ -312,6 +322,7 @@ const FullScreenHouseSlider = ({
           <Box className={`${classes.buttons} ${classes.butligt}`} style={{ marginLeft: 'auto' }}>
             {oneButton ? (
               <RegularButton
+                click={() => handleSingleButtonClick()}
                 bgColor='transparent'
                 bdColor='#F2F2F2'
                 color='#F2F2F2'

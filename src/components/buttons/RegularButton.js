@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     textTransform: 'uppercase',
     border:'1px solid',
+    cursor:'pointer',
+    pointerEvents:'visible',
     color: (param)=>param.color,
     borderColor: (param)=>param.bdColor,
     backgroundColor: (param)=>param.bgColor,

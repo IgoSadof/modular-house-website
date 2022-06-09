@@ -5,7 +5,7 @@ const customQueries = {
   s: '(max-width: 600px)',
   sm: '(max-width: 720px)',
   m: '(max-width: 821px)',
-  md: '(max-width: 1279.5px)',
+  md: '(max-width: 1279px)',
   l: '(max-width: 1536px)',
   minxl: '(min-width: 1920px)',
   xl: '(max-width: 1926px)',
