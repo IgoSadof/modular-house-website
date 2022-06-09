@@ -226,6 +226,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sliderBox: {
     height: '460px',
+    width:'100%',
     '@media (min-width:1921px)': {
       height: '24vw',
     },

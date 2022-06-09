@@ -510,12 +510,37 @@ abbr {
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing !important;
 }
+.sliderWrapper.slick-initialized {
+  visibility: visible;
+  opacity: 1;    
+}
+
+.slick-slider {
+  width: 100%;
+  height: 100%;
+  cursor:grab;
+}
+.slick-slider:active {
+  height: 100%;
+  cursor:grabbing;
+}
+.slick-slider>div {
+  height: 100%;
+}
+
+.slick-list {
+  height: 100%;
+}
+.slick-track{
+  height: 100%;
+}
+
 
 
 
 @media (max-width: 1200px) {
   .slick-list {
-    height: auto;
+    height: 100%;
   }
 
   .swiper-slide {

@@ -5,9 +5,13 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import getHouses from "../../utils/getHouses";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import numberWithSpace from '../../utils/numberWithSpace'
 import getPublicPath from '../../utils/getPublicPath';
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // import SwiperCore, { Mousewheel, FreeMode } from "swiper";
 
@@ -30,8 +34,10 @@ const useStyles = makeStyles((theme) => ({
   slide: {
     width: "645px",
     height: "auto",
+    paddingRight:'20px',
     "@media (min-width:1921px)": {
       width: "33.6vw",
+      paddingRight:'1vw',
     },
     "@media (max-width:768px)": {
       width: "70vw",
@@ -225,10 +231,24 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
     }
   };
 
+  const settings = {
+    className: "slider variable-width",
+    speed: 300,
+    // dots: true,
+    infinite: true,
+    // slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    swipeToSlide: true,
+    infinite: true,
+    arrows: false,
+    focusOnChange: true
+  };
+
   const listItems = dataHouses
     ? dataHouses.map((item, index) => {
         return (
-          <SwiperSlide className={classes.slide} key={index}>
+          <div className={classes.slide} key={index}>
             <Box className={classes.content}>
               <Link
                 className={classes.link}
@@ -345,20 +365,21 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                 </Box>
               </Box>
             </Box>
-          </SwiperSlide>
+          </div>
         );
       })
     : null;
 
   return (
-    <Swiper
-      slidesPerView={"auto"}
-      grabCursor={true}
-      loop={true}
-      spaceBetween= "1.6%"
-    >
-      {listItems}
-    </Swiper>
+    // <Swiper
+    //   slidesPerView={"auto"}
+    //   grabCursor={true}
+    //   loop={true}
+    //   spaceBetween= "1.6%"
+    // >
+    //   {listItems}
+    // </Swiper>
+    <Slider  {...settings}>{listItems}</Slider>
   );
 };
 

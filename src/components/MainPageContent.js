@@ -157,6 +157,15 @@ const useStyles = makeStyles((theme) => ({
       margin: '80px 0 80px 0',
     },
   },
+  OneImageAutoSliderBox:{
+    width:'100%',
+    minHeight: '600px',
+    maxHeight: '80vh',
+    overflow:'hidden',
+    '& div':{
+      height:'100%',
+    }
+  },
 }));
 
 const MainPageContent = ({ data }) => {
@@ -294,7 +303,8 @@ const MainPageContent = ({ data }) => {
                 </Box>
               </Box>
             </Box>
-            <OneImageAutoSlider slides={slides} />
+            
+            <Box className={classes.OneImageAutoSliderBox} ><OneImageAutoSlider slides={slides} /></Box>
           </Box>
         ) : (
           <Box

@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import SquareButton from '../buttons/SquareButton';
 import RegularButton from '../buttons/RegularButton.js';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import { SwiperSlide } from 'swiper/react';
+// import { SwiperSlide } from 'swiper/react';
 import getPublicPath from '../../utils/getPublicPath';
 import HouseFotosSlider from '../sliders/HouseFotosSlider';
 import arrow from '../../assets/images/icons/arrow.svg';
@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     zIndex: '1',
     position: 'relative',
+    '& div':{
+      height:'100%',
+    },
     '& img': {
       width:'100%',
       objectFit: 'cover',
@@ -96,6 +99,13 @@ const useStyles = makeStyles((theme) => ({
   mainImgItem: {
     height: '100%',
     position: 'relative',
+    paddingRight:(param) => (param.autoSlidesPerView ? '14px' : '0'),
+    '@media (min-width:1921px)': {
+      paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '0'),
+    },
+    [theme.breakpoints.down('md')]: {
+      paddingRight:(param) => '0',
+    },
   },
 
   titleBox: {
@@ -217,27 +227,32 @@ const FullScreenHouseSlider = ({
     mobileButtons,
     fullHeight,
     sidesDesctopButtons,
+    autoSlidesPerView
   };
   const classes = useStyles(param);
 
   const handleClickLeft = () => {
-    sliderRef.current.swiper.slidePrev();
+    sliderRef.current.slickPrev();
+    console.log(sliderRef.current)
   };
   const handleClickRight = () => {
-    sliderRef.current.swiper.slideNext();
+    console.log(sliderRef.current)
+    
+    sliderRef.current.slickNext();
   };
+  
 
   const gallery = useMemo(() => {
     return arr?.map((item, index) => {
       return (
-        <SwiperSlide className={classes.mainImgItem} key={index}>
+        <div className={classes.mainImgItem} key={index}>
           <img
             className={classes.mainImgSlider}
             src={getPublicPath(data, item.image)}
             alt='house'
             data-number={index}
           />
-        </SwiperSlide>
+        </div>
       );
     });
   }, [data, classes.mainImgSlider, arr, classes.mainImgItem]);
@@ -255,7 +270,7 @@ const FullScreenHouseSlider = ({
       components='section'
       className={` ${classes.BlockFullscreen} ${classes.sliderConteiner}`}
     >
-      <Box className={classes.sliderContent}>
+      <Box className={` ${classes.sliderContent} sliderWrapper`}>
         {arr ? (
           <HouseFotosSlider
             houseRef={sliderRef}
