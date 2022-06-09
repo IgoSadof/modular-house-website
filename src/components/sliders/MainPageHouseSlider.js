@@ -379,7 +379,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
     // >
     //   {listItems}
     // </Swiper>
-    <Slider  {...settings}>{listItems}</Slider>
+    <Slider onSwipe={() => setSwipe(true)}  {...settings}>{listItems}</Slider>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 // import { Swiper } from 'swiper/react';
 // import 'swiper/css';
@@ -16,6 +16,14 @@ import "slick-carousel/slick/slick-theme.css";
 const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, enabled=true, initialSlide=0, }) => {
   const breakpoints = useBreakpoint();
 
+  const [swipe, setSwipe] = useState(false);
+  const handleClick = (e) => {
+    houseRef.focus((e) => {
+      e.preventDefault();
+      e.target.focus({preventScroll: true});
+    })
+  };
+
   const settings = {
     className: "slider variable-width",
     speed: 300,
@@ -27,8 +35,9 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
     swipeToSlide: true,
     infinite: true,
     arrows: false,
-    focusOnChange: false,
+    focusOnChange: true,
     focusOnSelect: false,
+    initialSlide
     // accessibility: false,
   };
 
@@ -51,7 +60,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
     // >
     //   {listItem}
     // </Swiper>
-    <Slider ref={houseRef} {...settings}>{listItem}</Slider>
+    <Slider onClick={handleClick} ref={houseRef} {...settings}>{listItem}</Slider>
 
 
   );
