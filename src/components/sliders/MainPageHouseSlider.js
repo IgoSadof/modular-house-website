@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
       width: "90%",
       height: "auto",
     },
+    "@media (max-width:400px)": {
+      paddingRight:'10px',
+    },
   },
   conteiner: {
     // border: "1px solid",

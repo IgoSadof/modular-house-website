@@ -109,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
       '& > * + * ': {
         marginLeft: '1.4vw',
       },
+
     },
 
     [theme.breakpoints.down('md')]: {
@@ -120,6 +121,9 @@ const useStyles = makeStyles((theme) => ({
         right: '-12%',
         position: 'relative',
       },
+    },
+    "@media (max-width:400px)": {
+      paddingLeft: '10px',
     },
   },
   line: {
@@ -146,6 +150,9 @@ const useStyles = makeStyles((theme) => ({
   sliderBox: {
     width: '100%',
     overflowX: 'hidden',
+     "@media (max-width:400px)": {
+      width: "100%",
+    },
   },
 
   ContactsBox: {
