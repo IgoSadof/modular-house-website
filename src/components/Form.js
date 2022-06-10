@@ -87,10 +87,17 @@ const useStyles = makeStyles((theme) => ({
   },
   formHeader: {
     [theme.breakpoints.down('md')]: {
+      marginTop:'60px',
       '& $titleBoxMain': {
         right: '-12%',
         position: 'relative',
       },
+      '& span':{
+        width:'100px'
+      },
+      '& p':{
+        textTransform:'uppercase',
+      }
     },
   },
   title: {
@@ -316,7 +323,7 @@ const Form = ({
           ) : (
             <Box className={main ? classes.titleBoxMain : classes.titleBox}>
               {main ? <span className={classes.line}></span> : null}
-              <Typography variant='body1' component='p' className={classes.title}>
+              <Typography variant='h6' component='p' className={classes.title}>
                 {title}
               </Typography>
             </Box>
