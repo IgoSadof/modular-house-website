@@ -426,12 +426,27 @@ const Watch = ({ data }) => {
   const [isPlay, setIsPlay] = useState(false);
   const [activeImg, setActiveImg] = useState(0);
   const [selectDate, setSelectDate] = useState(null);
+  const [selectOptions, setSelectOptions] = useState({});
   const [unavailableDates, setUnavailableDates] = useState(null);
+
+  
   const classes = useStyles();
   const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
+
+  pageData.arenda_options?.forEach((item) => {
+    selectOptions[item.name] = false;
+  });
+  const [currentOption, setCurrentOption] = useState(selectOptions);
+  const handleChangeCheckbox = (event) => {
+    setCurrentOption({
+      ...currentOption,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
   const handleSliderClick = (e) => {
     if (e.target.dataset.number && !breakpoints.s) {
       setActiveImg(e.target.key);
@@ -678,6 +693,8 @@ const Watch = ({ data }) => {
                     item.active ? (
                       <FormControlLabel
                         key={index}
+                        onChange={handleChangeCheckbox}
+                        name={item.name}
                         value={1}
                         control={<Checkbox color='primary' />}
                         labelPlacement='end'
@@ -694,7 +711,9 @@ const Watch = ({ data }) => {
                     ) : (
                       <FormControlLabel
                         key={index}
+                        onChange={handleChangeCheckbox}
                         disabled
+                        name={item.name}
                         value={1}
                         control={<Checkbox color='primary' />}
                         labelPlacement='end'
@@ -713,7 +732,7 @@ const Watch = ({ data }) => {
               </Box>
               <Form
                 endpoint={'https://formspree.io/f/mzbokwwy'}
-                extraFormFields={{ date: selectDate }}
+                extraFormFields={{ date: selectDate, currentOption }}
                 arenda={true}
                 sendDate={selectDate}
                 buttonText='бронировать'
