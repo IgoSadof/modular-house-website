@@ -150,6 +150,9 @@ const useStyles = makeStyles((theme) => ({
   sliderBox: {
     width: '100%',
     overflowX: 'hidden',
+    '& img':{
+      pointerEvents:'visible',
+    },
      "@media (max-width:400px)": {
       width: "100%",
     },
