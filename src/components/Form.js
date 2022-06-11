@@ -308,7 +308,7 @@ const Form = ({
       .catch((error) => {
         setFormProcessing(false);
         setOpenModal(false);
-        console.log(error);
+        // console.log(error);
       });
   };
 

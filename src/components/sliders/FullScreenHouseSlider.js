@@ -261,7 +261,7 @@ const FullScreenHouseSlider = ({
   }, [data, classes.mainImgSlider, arr, classes.mainImgItem]);
 
   const handleMouseClick = () => {
-    console.log(formBlock.current)
+    // console.log(formBlock.current)
     if (window) {
       window.scrollTo({
         top: window.screen.availHeight - 100,

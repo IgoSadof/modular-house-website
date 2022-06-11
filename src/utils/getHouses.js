@@ -70,7 +70,7 @@ export default function getHouses(data) {
   }
   houseArr.sort((a, b) => +a.position - +b.position);
   houseArr = houseArr.filter((item) => +item.published>0);
-  console.log(houseArr);
+  // console.log(houseArr);
 
   return houseArr;
 }

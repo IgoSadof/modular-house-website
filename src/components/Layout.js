@@ -249,7 +249,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
       modularHouseTheme.palette.primary.fon =  modularHouseTheme.palette.primary.fonYandex
     }
   }
-  console.log(modularHouseTheme.palette.primary.fon);
+  // console.log(modularHouseTheme.palette.primary.fon);
 
   return (
     <ThemeProvider theme={modularHouseTheme}>
