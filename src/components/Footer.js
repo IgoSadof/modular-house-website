@@ -36,7 +36,7 @@ const Footer = () => {
   return (
     <Box component='footer' className={classes.root}>
       <Typography className={classes.text}>
-        {`© ${new Date().getUTCFullYear()} | ООО "Арт-студия "Зробим" `}
+        {`* Сайт в стадии тестирования. Приведенная стоимость проектов не актуальна на сегодня. © ${new Date().getUTCFullYear()} | ООО "Арт-студия "Зробим" `}
       </Typography>
     </Box>
   );

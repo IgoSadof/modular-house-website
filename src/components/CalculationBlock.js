@@ -255,7 +255,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                       checked
                       disabled
                       value={
-                        item.price ? +item.price.replace(/[KК]/, '000') : 0
+                        item.price ? `${+item.price.replace(/[KК]/, '000')}*` : 0
                       }
                       control={<Checkbox color='primary' />}
                       // label={<Typography variant='h6'>{item.name}</Typography>}
@@ -265,7 +265,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                   </Box>
                   {item.price ? (
                     <Typography variant='h6'>
-                      {`$${numberWithSpace(item.price)}`}
+                      {`$${numberWithSpace(item.price)} *`}
                     </Typography>
                   ) : null}
                 </Box>
@@ -276,7 +276,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                       checked={currentCheckbox >= index ? true : false}
                       onClick={(event) => handleClickCheckbox(event, index)}
                       value={
-                        item.price ? +item.price.replace(/[KК]/, '000') : 0
+                        item.price ? `${+item.price.replace(/[KК]/, '000')}*`: 0
                       }
                       control={<Checkbox color='primary' />}
                       // label={<Typography variant='h6'>{item.name}</Typography>}
@@ -287,7 +287,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                   </Box>
                   {item.price ? (
                     <Typography variant='h6'>
-                      {`$${numberWithSpace(item.price)}`}
+                      {`$${numberWithSpace(item.price)} *`}
                     </Typography>
                   ) : null}
                 </Box>
@@ -328,7 +328,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
             ЦЕНА
           </Typography>
           <Typography variant='caption'>
-            {`$${numberWithSpace(modulePrice)}`}
+            {`$${numberWithSpace(modulePrice)} *`}
           </Typography>
         </Box>
       </Box>
