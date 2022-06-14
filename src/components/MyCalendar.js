@@ -9,11 +9,14 @@ const MyCalendar = ({
 }) => {
   const [date, setDate] = useState(new Date());
   const [endData, setEndData] = useState(null);
-  const dates = unavailableDates.map((item)=>{
-    return new Date(item.date).toString().slice(4,15)
-  })
+  const dates = unavailableDates.map((item) => {
+    if (item.published) {
+      return new Date(item.date).toString().slice(4, 15);
+    }
+  });
+  
   useEffect(() => {
-    setSelectDate(date)
+    setSelectDate(date);
     // console.log(date)
   });
 
@@ -22,15 +25,19 @@ const MyCalendar = ({
   return (
     <div>
       {/* {!unavailableDates ? ( */}
-        {/* <CircularProgress /> */}
+      {/* <CircularProgress /> */}
       {/* ) : ( */}
-        <Calendar
-          ref={calendar}
-          value={date}
-          onChange={setDate}
-          selectRange={true}
-          tileClassName={({ activeStartDate, date, view }) => dates.includes(date.toString().slice(4,15))? 'calendar unAnableDate' : 'calendar'}
-        />
+      <Calendar
+        ref={calendar}
+        value={date}
+        onChange={setDate}
+        selectRange={true}
+        tileClassName={({ activeStartDate, date, view }) =>
+          dates.includes(date.toString().slice(4, 15))
+            ? 'calendar unAnableDate'
+            : 'calendar'
+        }
+      />
       {/* )} */}
     </div>
   );
