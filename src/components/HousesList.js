@@ -108,7 +108,8 @@ const useStyles = makeStyles((theme) => ({
   houseListNumber: {
     position: 'absolute',
     zIndex: '0',
-    top: '-15%',
+    top: '-20%',
+    fontWeight: '600',
     fontSize: (param) => (param.breakpoints.xl ? '72px' : '64px'),
     margin: 'auto',
     color: '#E0E0E0',
@@ -431,7 +432,7 @@ const HousesList = ({ data }) => {
                 ? `${classes.houseListNumber} ${classes.houseListActiveNumber}`
                 : classes.houseListNumber
             }
-          >{`0${index + 1}`}</Typography>
+          >{`${item.URL[0].toUpperCase()}`}</Typography>
           {!breakpoints.md ? (
             !(activeSlide === index) ? (
               <>
