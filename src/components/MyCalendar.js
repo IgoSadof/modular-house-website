@@ -9,26 +9,14 @@ const MyCalendar = ({
 }) => {
   const [date, setDate] = useState(new Date());
   const [endData, setEndData] = useState(null);
-
-  // console.log(date)
-
-  
-
-  let url = 'https://modhouse.herokuapp.com/dates';
-  const getDates = async (url) => {
-    let response = await fetch(url);
-    let dates = await response.json();
-    let datesList = dates.map((item) => item.date);
-    getUnavailableDates(datesList);
-  };
-
-  useEffect(() => {
-    // getDates(url);
-  }, [url]);
+  const dates = unavailableDates.map((item)=>{
+    return new Date(item.date).toString().slice(4,15)
+  })
   useEffect(() => {
     setSelectDate(date)
     // console.log(date)
   });
+
   const calendar = useRef(null);
 
   return (
@@ -40,9 +28,8 @@ const MyCalendar = ({
           ref={calendar}
           value={date}
           onChange={setDate}
-          tileClassName='calendar'
           selectRange={true}
-          // onClickDay={(value, event) => handleClick(value, event)}
+          tileClassName={({ activeStartDate, date, view }) => dates.includes(date.toString().slice(4,15))? 'calendar unAnableDate' : 'calendar'}
         />
       {/* )} */}
     </div>

@@ -427,7 +427,6 @@ const Watch = ({ data }) => {
   const [activeImg, setActiveImg] = useState(0);
   const [selectDate, setSelectDate] = useState(null);
   const [selectOptions, setSelectOptions] = useState({});
-  const [unavailableDates, setUnavailableDates] = useState(null);
 
   
   const classes = useStyles();
@@ -435,6 +434,8 @@ const Watch = ({ data }) => {
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
+  const [unavailableDates, setUnavailableDates] = useState(pageData.calendar_dates);
+
 
   pageData.arenda_options?.forEach((item) => {
     selectOptions[item.name] = false;
