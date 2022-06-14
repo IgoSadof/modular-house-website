@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
   },
   calendar: {
     width: '16vw',
-    minWidth: '260px',
+    minWidth: '315px',
     marginTop: '0',
     marginBottom: 'auto',
     flexShrink: '0',
