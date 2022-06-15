@@ -219,13 +219,13 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: '100%',
     objectFit: 'cover',
-    height: '460px',
+    height: '520px',
     '@media (min-width:1921px)': {
       height: '24vw',
     },
   },
   sliderBox: {
-    height: '460px',
+    height: '520px',
     width: '100%',
     '@media (min-width:1921px)': {
       height: '24vw',
