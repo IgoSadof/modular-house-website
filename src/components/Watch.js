@@ -467,8 +467,6 @@ const Watch = ({ data }) => {
     }
   };
   const formBlock = useRef(null);
-  // console.log(pageData);
-  console.log(selectDate)
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
