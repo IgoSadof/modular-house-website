@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Calendar from 'react-calendar';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 const MyCalendar = ({
-  setSelectDate,
   unavailableDates,
-  getUnavailableDates,
 }) => {
   const [date, setDate] = useState(new Date());
-  const [endData, setEndData] = useState(null);
 
   const dates = unavailableDates.map((item) => {
     if (item.published) {
@@ -34,32 +30,26 @@ const MyCalendar = ({
     })
     return result
   }
-
-  
-  useEffect(() => {
-    setSelectDate(date);
-    // console.log(date)
-  });
+  const handleChange = (value) =>{
+    setDate(value)
+  }
 
   const calendar = useRef(null);
 
   return (
     <div>
-      {/* {!unavailableDates ? ( */}
-      {/* <CircularProgress /> */}
-      {/* ) : ( */}
       <Calendar
         ref={calendar}
         value={date}
-        onChange={setDate}
+        onChange={(value) => handleChange(value)}
+        onClickDay={(value) => handleChange(value)}
         selectRange={true}
-        tileClassName={({ activeStartDate, date, view }) =>
+        tileClassName={({date}) =>
         checkDate(date.toString().slice(4, 15), dates)
             ? 'calendar unAnableDate'
             : 'calendar'
         }
       />
-      {/* )} */}
     </div>
   );
 };
