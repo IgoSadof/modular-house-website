@@ -628,6 +628,7 @@ const HousePage = ({ house, data }) => {
 
       <Box className={`${classes.Block} ${classes.BlockForm}`}>
         <FormBlock
+          data={data}
           endpoint='https://formspree.io/f/mgedeody'
           extraFormFields={extraFormFields}
           header={dataHouses[houseNumber]['form-block'][0].header}

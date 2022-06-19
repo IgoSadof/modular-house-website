@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -9,33 +9,33 @@ import SquareButton from './buttons/SquareButton';
 import RegularButton from './buttons/RegularButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-// import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import TextField from '@material-ui/core/TextField';
-import { customFontsSize } from '../config/modularHouseTheme'
+import { customFontsSize } from '../config/modularHouseTheme';
+import getData from '../utils/getData';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
   Block: {
     display: 'flex',
-    '& > * + * ':{
-      marginLeft:'20px',
+    '& > * + * ': {
+      marginLeft: '20px',
     },
     marginTop: '145px',
-    "@media (min-width:1920px)": {
-      '& > * + * ':{
-        marginLeft:'1.4vw',
+    '@media (min-width:1920px)': {
+      '& > * + * ': {
+        marginLeft: '1.4vw',
       },
-      marginTop: "10vw",
+      marginTop: '10vw',
     },
   },
   titleBoxMain: {
     marginLeft: 'auto',
     display: 'flex',
     flexDirection: 'row-reverse',
-    '& > * + * ':{
-      marginLeft:'0',
-      marginRight:'20px',
+    '& > * + * ': {
+      marginLeft: '0',
+      marginRight: '20px',
     },
   },
   titleBox: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: (param) => (param.arenda ? 'null' : 'space-between'),
     minWidth: '300px',
     marginTop: (param) => (param.arenda ? '20px' : '0'),
-    "& form": {
+    '& form': {
       [theme.breakpoints.down('md')]: {
         // marginTop:"20px",
       },
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     '& h3': {
       fontSize: customFontsSize.h4.regular,
       lineHeight: '1.4',
-      "@media (min-width:1921px)": {
+      '@media (min-width:1921px)': {
         fontSize: customFontsSize.h4.adaptiv,
       },
     },
@@ -87,17 +87,17 @@ const useStyles = makeStyles((theme) => ({
   },
   formHeader: {
     [theme.breakpoints.down('md')]: {
-      marginTop:'60px',
+      marginTop: '60px',
       '& $titleBoxMain': {
         right: '-12%',
         position: 'relative',
       },
-      '& span':{
-        width:'100px'
+      '& span': {
+        width: '100px',
       },
-      '& p':{
-        textTransform:'uppercase',
-      }
+      '& p': {
+        textTransform: 'uppercase',
+      },
     },
   },
   title: {
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     width: '200px',
     marginTop: '60px',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       width: '13.9vw',
       //marginTop: '4.2vw',
     },
@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       marginTop: (param) => (param.arenda ? '0' : '3.2vw'),
     },
     [theme.breakpoints.down('md')]: {
@@ -171,7 +171,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '10px',
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.body1.fontSize,
-    "@media (min-width:1921px)": {
+    '@media (min-width:1921px)': {
       fontSize: theme.typography.fontSize * customFontsSize.xl,
     },
     '&:focus': {
@@ -198,7 +198,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '100px 120px',
     width: '42vw',
     height: '35vw',
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down('md')]: {
       width: '90%',
       height: '54%',
       padding: '50px',
@@ -215,6 +215,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = ({
+  data,
   title,
   email,
   text,
@@ -312,6 +313,12 @@ const Form = ({
       });
   };
 
+  const dataContacts = useMemo(
+    () => getData(data.allMysqlContacts.nodes),
+    [data]
+  );
+  // console.log(dataContacts);
+
   return (
     <Box className={classes.formBox}>
       <Box className={classes.formHeader}>
@@ -373,8 +380,8 @@ const Form = ({
             name='phone'
             type='tel'
             label={<Typography variant='body2'>Телефон</Typography>}
-          // validators={["isNumber"]}
-          // errorMessages={["telefon incorrect"]}
+            // validators={["isNumber"]}
+            // errorMessages={["telefon incorrect"]}
           />
           {email ? (
             <>
@@ -387,8 +394,8 @@ const Form = ({
                 label={<Typography variant='body2'>Email</Typography>}
                 onChange={handleChangeEmail}
                 value={emailText}
-              // validators={["required", "isEmail"]}
-              // errorMessages={["this field is required", "email is not valid"]}
+                // validators={["required", "isEmail"]}
+                // errorMessages={["this field is required", "email is not valid"]}
               />
             </>
           ) : null}
@@ -397,9 +404,7 @@ const Form = ({
           <Box className={classes.messageBox}>
             <label htmlFor={`message-${id ? id : '0'}`}>
               <Box className={classes.messageLabelBox}>
-                <Typography variant='body2'>
-                  Сообщение...
-                </Typography>
+                <Typography variant='body2'>Сообщение...</Typography>
                 <div>*</div>
               </Box>
 
@@ -451,10 +456,14 @@ const Form = ({
                   />
                 </Box>
                 <Typography>
-                  СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ
+                  {dataContacts.popup_title
+                    ? dataContacts.popup_title
+                    : 'СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ'}
                 </Typography>
                 <Typography variant='body1'>
-                  Никто ни за что ответственность не несет
+                  {dataContacts.popup_text
+                    ? dataContacts.popup_text
+                    : 'Никто ни за что ответственность не несет'}
                 </Typography>
                 <Box className={classes.buttonBoxLeft}>
                   <RegularButton variant='outlined' click={handleClose}>
