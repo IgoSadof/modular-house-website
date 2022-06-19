@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 
 const MyCalendar = ({
   unavailableDates,
+  setSelectDate,
 }) => {
   const [date, setDate] = useState(new Date());
 
@@ -31,6 +32,7 @@ const MyCalendar = ({
     return result
   }
   const handleChange = (value) =>{
+    setSelectDate(value)
     setDate(value)
   }
 
