@@ -317,7 +317,11 @@ const Form = ({
     () => getData(data.allMysqlContacts.nodes),
     [data]
   );
+<<<<<<< HEAD
   // console.log(dataContacts);
+=======
+  console.log(dataContacts);
+>>>>>>> 88eb686a80936239540ad562d9d114a2afbc988c
 
   return (
     <Box className={classes.formBox}>
