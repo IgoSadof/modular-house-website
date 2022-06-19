@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     aspectRatio:'4/3',
     height:'24vw',
-    minHeight:'460px',
+    minHeight:'520px',
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
