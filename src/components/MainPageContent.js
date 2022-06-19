@@ -305,6 +305,7 @@ const MainPageContent = ({ data }) => {
                 />
                 <Box m='auto'>
                   <Form
+                    data={data}
                     endpoint={'https://formspree.io/f/xyyovdpy'}
                     title={dataMainPage['form-block-with-gallery'][0].title}
                     subtitle={
@@ -335,6 +336,7 @@ const MainPageContent = ({ data }) => {
               <OneImageAutoSlider slides={slides} />
               <Box className={classes.FormBox}>
                 <Form
+                  data={data}
                   title={dataMainPage['form-block-with-gallery'][0].title}
                   subtitle={dataMainPage['form-block-with-gallery'][0].subtitle}
                 />

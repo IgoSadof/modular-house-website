@@ -732,6 +732,7 @@ const Watch = ({ data }) => {
                   )}
               </Box>
               <Form
+                data={data}
                 endpoint={'https://formspree.io/f/mzbokwwy'}
                 extraFormFields={{ date: selectDate, currentOption }}
                 arenda={true}

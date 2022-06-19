@@ -425,6 +425,7 @@ const AboutUs = ({ data }) => {
       {dataObj['form-block'].published ? (
         <Box component='section' className={classes.Block}>
           <FormBlock
+            data={data}
             endpoint={'https://formspree.io/f/xdoyrjqy'}
             img={getPublicPath(
               data,

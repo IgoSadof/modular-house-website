@@ -127,7 +127,7 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
             >
               Напишите нам
             </Typography>
-            <Form email text main />
+            <Form email text main data={data} />
           </Box>
         </>
       ) : (
@@ -150,7 +150,7 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
                 longLine={true}
               />
             </Box>
-            <Form email text main id='ContactsBlock' />
+            <Form data={data} email text main id='ContactsBlock' />
           </Box>
         </>
       )}

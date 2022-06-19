@@ -119,6 +119,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FormBlock = ({
+  data,
   header,
   title,
   subtitle,
@@ -148,6 +149,7 @@ const FormBlock = ({
               </Box>
               <Box className={classes.formBox}>
                 <Form
+                  data={data}
                   extraFormFields={extraFormFields}
                   endpoint={endpoint}
                   title={title}
@@ -206,6 +208,7 @@ const FormBlock = ({
                 style={padding ? { padding: '0 10%' } : null}
               >
                 <Form
+                  data={data}
                   endpoint={endpoint}
                   extraFormFields={extraFormFields}
                   title={title}

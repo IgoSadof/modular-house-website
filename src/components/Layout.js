@@ -320,6 +320,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                 />
                               </Box>
                               <Form
+                                data={data}
                                 title={'НАПИШИТЕ НАМ'}
                                 email
                                 text
@@ -358,6 +359,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                     </a>
                                   </Box>
                                   <Form
+                                    data={data}
                                     title={'напишите нам'}
                                     email
                                     text
