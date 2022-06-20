@@ -440,7 +440,7 @@ const HousePage = ({ house, data }) => {
   const modules = dataHouses[houseNumber].modules.filter(
     (item) => item.published
   );
-  console.log(modules);
+  // console.log(modules);
   const options = dataHouses[houseNumber].options.filter(
     (item) => item.published
   );
