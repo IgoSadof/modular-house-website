@@ -173,7 +173,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
       ...currentOption,
       [event.target.name]: {
         name: event.target.name,
-        price: event.target.value,
+        price: event.target.value?event.target.value:0,
       },
     });
   };

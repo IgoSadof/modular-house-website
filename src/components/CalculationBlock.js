@@ -157,7 +157,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CalculationBlock = ({ modules, data, getUserModules }) => {
   const breakpoints = useBreakpoint();
-  console.log(modules)
   const baseModulePrice = modules?.[0].price
     ? +modules[0].price.replace(/[KК]/, '000')
     : 0;
