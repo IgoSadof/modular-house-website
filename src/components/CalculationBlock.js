@@ -328,8 +328,8 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
         })}
 
         <Box className={classes.calculationResultBox}>
-          <Typography variant='body1' className={classes.calculationBodyText}>
-          <strong>{`${moduleSquare.toFixed(2)} м²`}</strong>
+          <Typography variant='h6' className={classes.calculationBodyText}>
+          <span>{`${moduleSquare.toFixed(2)} м²`}</span>
           </Typography>
           <Box
             className={classes.calculationResult}
