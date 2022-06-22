@@ -288,7 +288,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                   </Box>
                   {item.price ? (
                     <Typography variant='h6'>
-                      {`$${numberWithSpace(item.price)} *`}
+                      {`$${numberWithSpace((+item.price).toFixed())} *`}
                     </Typography>
                   ) : null}
                 </Box>
