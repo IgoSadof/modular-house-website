@@ -365,7 +365,9 @@ const HousePage = ({ house, data }) => {
 
   const [userModuleList, setUserModuleList] = useState([baseModule]);
   const [userOptions, setUserOptions] = useState({});
-  const modulesCounts = dataHouses[houseNumber].modules?.filter((item)=>item.video)?.length;
+  const modulesCounts = dataHouses[houseNumber].modules?.filter(
+    (item) => item.video
+  )?.length;
   const pillStep = 100 / modulesCounts;
   const heightOneLine = 10;
   const heightModuleList = modulesCounts * 10;
@@ -456,7 +458,7 @@ const HousePage = ({ house, data }) => {
     modelViwerRef.current.activateAR();
   };
 
-  // console.log(dataHouses[houseNumber]);
+  // console.log(options);
 
   return (
     <Box components='main'>
@@ -617,14 +619,16 @@ const HousePage = ({ house, data }) => {
         ></CalculationBlock>
       </Box>
 
-      <Box className={`${classes.Block} ${classes.BlockTable}`}>
-        <OptionsTable
-          getOptions={getUserOptions}
-          houseNumber={houseNumber}
-          houseOptions={options}
-          options={userOptions}
-        />
-      </Box>
+      {options.length > 0 ? (
+        <Box className={`${classes.Block} ${classes.BlockTable}`}>
+          <OptionsTable
+            getOptions={getUserOptions}
+            houseNumber={houseNumber}
+            houseOptions={options}
+            options={userOptions}
+          />
+        </Box>
+      ) : null}
 
       <Box className={`${classes.Block} ${classes.BlockForm}`}>
         <FormBlock

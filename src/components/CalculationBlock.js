@@ -123,6 +123,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  calculationResultBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'end',
+  },
   calculationResult: {
     display: 'flex',
     alignItems: 'center',
@@ -160,7 +165,12 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
   const baseModulePrice = modules?.[0].price
     ? +modules[0].price.replace(/[KК]/, '000')
     : 0;
+  const baseModuleSquare = modules?.[0].square
+  ? +modules[0].square
+  : 0;
+
   const [modulePrice, setModulePrice] = useState(baseModulePrice);
+  const [moduleSquare, setModuleSquare] = useState(baseModuleSquare);
 
   const classes = useStyles();
 
@@ -180,13 +190,16 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
       }
     });
     let price = 0;
+    let squareSum = 0;
     let mudules = [];
     chooseModules?.forEach((item) => {
       price += item.price ? +item.price.replace(/[KК]/, '000') : 0;
+      squareSum += item.square ? +item.square: 0;
       mudules.push(item.name);
     });
 
     setModulePrice(price);
+    setModuleSquare(squareSum)
     getUserModules(mudules);
 
     if (currentCheckbox === curentIndex) {
@@ -254,9 +267,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                     <FormControlLabel
                       checked
                       disabled
-                      value={
-                        item.price ? `${(+item.price).toFixed()}*` : 0
-                      }
+                      value={item.price ? `${(+item.price).toFixed()}*` : 0}
                       control={<Checkbox color='primary' />}
                       // label={<Typography variant='h6'>{item.name}</Typography>}
                       labelPlacement='end'
@@ -275,9 +286,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                     <FormControlLabel
                       checked={currentCheckbox >= index ? true : false}
                       onClick={(event) => handleClickCheckbox(event, index)}
-                      value={
-                        item.price ? `${(+item.price).toFixed()}*`: 0
-                      }
+                      value={item.price ? `${(+item.price).toFixed()}*` : 0}
                       control={<Checkbox color='primary' />}
                       // label={<Typography variant='h6'>{item.name}</Typography>}
                       name={item.name}
@@ -318,18 +327,23 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
           );
         })}
 
-        <Box
-          className={classes.calculationResult}
-          style={
-            breakpoints.xxl ? { marginLeft: '1.6vw' } : { marginLeft: '32px' }
-          }
-        >
-          <Typography variant='h6' component='p'>
-            ЦЕНА
+        <Box className={classes.calculationResultBox}>
+          <Typography variant='body1' className={classes.calculationBodyText}>
+          <strong>{`${moduleSquare.toFixed(2)} м²`}</strong>
           </Typography>
-          <Typography variant='caption'>
-            {`$${numberWithSpace(modulePrice.toFixed())} *`}
-          </Typography>
+          <Box
+            className={classes.calculationResult}
+            style={
+              breakpoints.xxl ? { marginLeft: '1.6vw' } : { marginLeft: '32px' }
+            }
+          >
+            <Typography variant='h6' component='p'>
+              ЦЕНА
+            </Typography>
+            <Typography variant='caption'>
+              {`$${numberWithSpace(modulePrice.toFixed())} *`}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </>
