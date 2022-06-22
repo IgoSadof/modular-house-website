@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   calculation: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft: '60px',
+    marginLeft: 'auto !important',
     '& > * + * ': {
       marginTop: '40px',
     },
@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '3.2vw',
     },
     [theme.breakpoints.down('md')]: {
-      marginLeft: '0',
+      marginLeft: '0 !important',
       width: '100%',
     },
   },
