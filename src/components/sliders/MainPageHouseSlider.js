@@ -216,11 +216,11 @@ const useStyles = makeStyles((theme) => ({
   growStageIcon: {
     display: "flex",
     width: "auto",
-    heightMax: "72px",
-    height: '100%',
+    height: "72px",
     marginBottom:'0',
     '& img':{
-      height: "auto",
+      maxHeight: "72px",
+      height: "100%",
     },
     "@media (min-width:1921px)": {
       width: "auto",
