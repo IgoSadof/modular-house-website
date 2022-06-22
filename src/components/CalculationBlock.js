@@ -157,6 +157,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CalculationBlock = ({ modules, data, getUserModules }) => {
   const breakpoints = useBreakpoint();
+  console.log(modules)
   const baseModulePrice = modules?.[0].price
     ? +modules[0].price.replace(/[KК]/, '000')
     : 0;
@@ -255,7 +256,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                       checked
                       disabled
                       value={
-                        item.price ? `${+item.price.replace(/[KК]/, '000')}*` : 0
+                        item.price ? `${(+item.price).toFixed()}*` : 0
                       }
                       control={<Checkbox color='primary' />}
                       // label={<Typography variant='h6'>{item.name}</Typography>}
@@ -265,7 +266,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                   </Box>
                   {item.price ? (
                     <Typography variant='h6'>
-                      {`$${numberWithSpace(item.price)} *`}
+                      {`$${numberWithSpace((+item.price).toFixed())} *`}
                     </Typography>
                   ) : null}
                 </Box>
@@ -276,7 +277,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
                       checked={currentCheckbox >= index ? true : false}
                       onClick={(event) => handleClickCheckbox(event, index)}
                       value={
-                        item.price ? `${+item.price.replace(/[KК]/, '000')}*`: 0
+                        item.price ? `${(+item.price).toFixed()}*`: 0
                       }
                       control={<Checkbox color='primary' />}
                       // label={<Typography variant='h6'>{item.name}</Typography>}
@@ -328,7 +329,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
             ЦЕНА
           </Typography>
           <Typography variant='caption'>
-            {`$${numberWithSpace(modulePrice)} *`}
+            {`$${numberWithSpace(modulePrice.toFixed())} *`}
           </Typography>
         </Box>
       </Box>
