@@ -58,9 +58,7 @@ export default function getHouses(data) {
     };
     houses[key]['takeFromBaseModule'] = (arr, field) => {
       if (arr?.length > 0) {
-        let value = arr.filter(
-          (module) => module.name === 'Базовый модуль'
-        )?.[0]?.[field];
+        let value = arr[0]?.[field];
         if (value) {
           value = value.replace('К', '000');
         }

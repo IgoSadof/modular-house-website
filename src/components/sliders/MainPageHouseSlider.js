@@ -285,8 +285,8 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                   >
                     от{" "}
                     ${" "}
-                    {numberWithSpace((item.takeFromBaseModule(item.modules, "price") ??
-                      100000))}
+                    {numberWithSpace(Math.round((item.takeFromBaseModule(item.modules, "price") ??
+                      100000)))}
                     
                   </Typography>
                 </Box>
