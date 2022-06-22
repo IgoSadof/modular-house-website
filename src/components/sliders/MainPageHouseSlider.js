@@ -180,6 +180,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "end",
     "& p": {
       lineHeight: '1.4',
+      display:'none',
     },
     "& img": { objectFit: "contain !important" },
     [theme.breakpoints.down("md")]: {
@@ -210,8 +211,8 @@ const useStyles = makeStyles((theme) => ({
   },
   growStageIcon: {
     display: "flex",
-    width: "60px",
-    height: "30px",
+    width: "auto",
+    height: "64px",
     marginBottom:'6px',
     "@media (min-width:1921px)": {
       width: "3.5vw",
