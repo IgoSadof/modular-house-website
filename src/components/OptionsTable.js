@@ -216,7 +216,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                           : false
                       }
                       onChange={handleChangeCheckbox}
-                      value={+item.option_poor_price}
+                      value={+item.option_poor_price? item.option_poor_price:0}
                       control={<Checkbox color='primary' />}
                       label={
                         <Typography
@@ -246,7 +246,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                           : false
                       }
                       onChange={handleChangeCheckbox}
-                      value={+item.option_expensive_price}
+                      value={+item.option_expensive_price?item.option_expensive_price:0}
                       control={<Checkbox color='primary' />}
                       label={
 
@@ -305,7 +305,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                             : false
                         }
                         onChange={handleChangeCheckbox}
-                        value={+item.option_poor_price}
+                        value={+item.option_poor_price? item.option_poor_price:0}
                         control={<Checkbox color='primary' />}
                         label={
                           <Typography
@@ -334,7 +334,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                             : false
                         }
                         onChange={handleChangeCheckbox}
-                        value={+item.option_expensive_price}
+                        value={+item.option_expensive_price? item.option_expensive_price:0}
                         control={<Checkbox color='primary' />}
                         label={
                           <Typography
