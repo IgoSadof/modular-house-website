@@ -219,7 +219,6 @@ const useStyles = makeStyles((theme) => ({
     height: "72px",
     marginBottom:'0',
     '& img':{
-      maxHeight: "72px",
       height: "100%",
     },
     "@media (min-width:1921px)": {

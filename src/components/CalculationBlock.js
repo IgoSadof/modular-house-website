@@ -158,6 +158,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  squaresSum:{
+    textTransform:'none'
+  }
 }));
 
 const CalculationBlock = ({ modules, data, getUserModules }) => {
@@ -328,7 +331,7 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
         })}
 
         <Box className={classes.calculationResultBox}>
-          <Typography variant='h6' className={classes.calculationBodyText}>
+          <Typography variant='h6' className={classes.squaresSum}>
           <span>{`${moduleSquare.toFixed(2)} м²`}</span>
           </Typography>
           <Box
