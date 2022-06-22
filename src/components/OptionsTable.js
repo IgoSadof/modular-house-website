@@ -152,8 +152,9 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
   const breakpoints = useBreakpoint();
   houseOptions?.forEach((item) => {
     options[item.name] = {
-      name: item.option_poor_name,
+      name: item.name,
       price: item.option_poor_price,
+      option: item.option_poor_name,
     };
   });
   
@@ -167,13 +168,14 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
           0
         )
   );
-  const handleChangeCheckbox = (event) => {
-    // console.log(event.target.name);
+  const handleChangeCheckbox = (event, optionName) => {
+    
     setCheckboxesCheck({
       ...currentOption,
       [event.target.name]: {
         name: event.target.name,
         price: event.target.value?event.target.value:0,
+        option: optionName
       },
     });
   };
@@ -210,13 +212,13 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name].price ===
-                        item.option_poor_price
+                        currentOption[item.name].option ===
+                        item.option_poor_name
                           ? true
                           : false
                       }
-                      onChange={handleChangeCheckbox}
-                      value={+item.option_poor_price? item.option_poor_price:0}
+                      onChange={(event) => handleChangeCheckbox(event, item.option_poor_name)}
+                      alue={+item.option_poor_price? item.option_poor_price:0}
                       control={<Checkbox color='primary' />}
                       label={
                         <Typography
@@ -240,12 +242,13 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name].price ===
-                        item.option_expensive_price
+                        currentOption[item.name].option ===
+                        item.option_expensive_name
                           ? true
                           : false
                       }
-                      onChange={handleChangeCheckbox}
+                      option={item.option_expensive_name}
+                      onChange={(event) => handleChangeCheckbox(event, item.option_expensive_name)}
                       value={+item.option_expensive_price?item.option_expensive_price:0}
                       control={<Checkbox color='primary' />}
                       label={
@@ -299,12 +302,13 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                       <FormControlLabel
                         name={item.name}
                         checked={
-                          currentOption[item.name].price ===
-                          item.option_poor_price
+                          currentOption[item.name].option ===
+                          item.option_poor_name
                             ? true
                             : false
                         }
-                        onChange={handleChangeCheckbox}
+                        option={item.option_poor_name}
+                        onChange={(event) => handleChangeCheckbox(event, item.option_poor_name)}
                         value={+item.option_poor_price? item.option_poor_price:0}
                         control={<Checkbox color='primary' />}
                         label={
@@ -328,12 +332,13 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                         className={classes.secondRadio}
                         name={item.name}
                         checked={
-                          currentOption[item.name].price ===
+                          currentOption[item.name].option ===
                           item.option_expensive_price
                             ? true
                             : false
                         }
-                        onChange={handleChangeCheckbox}
+                        option={item.option_expensive_name}
+                        onChange={(event) => handleChangeCheckbox(event, item.option_expensive_name)}
                         value={+item.option_expensive_price? item.option_expensive_price:0}
                         control={<Checkbox color='primary' />}
                         label={
