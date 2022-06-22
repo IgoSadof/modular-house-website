@@ -189,6 +189,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "0",
       justifyContent: "space-between",
       objectFit: "contain",
+      '& > * + * ':{
+        marginLeft:'0',
+        marginBottom:'0'
+      },
     },
   },
   mainPlan: {
@@ -212,11 +216,15 @@ const useStyles = makeStyles((theme) => ({
   growStageIcon: {
     display: "flex",
     width: "auto",
-    height: "64px",
-    marginBottom:'6px',
+    heightMax: "72px",
+    height: '100%',
+    marginBottom:'0',
+    '& img':{
+      height: "auto",
+    },
     "@media (min-width:1921px)": {
-      width: "3.5vw",
-      height: "1.4vw",
+      width: "auto",
+      height: "3.5vw",
       marginBottom:'0.6vw',
     },
   },
