@@ -637,7 +637,7 @@ const HousesList = ({ data }) => {
                         ? `
                     $${numberWithSpace(
                       Math.round(+item.countArea(item.modules, 'price'))
-                    )} *`
+                    )}`
                         : null}
                     </Typography>
                   </Box>
@@ -796,7 +796,7 @@ const HousesList = ({ data }) => {
                           'price'
                         )
                       )
-                    )} *`
+                    )}`
                       : null}
                   </Typography>
                 </Box>

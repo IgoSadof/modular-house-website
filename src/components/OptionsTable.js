@@ -272,7 +272,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                     align='right'
                   >
                     <Typography variant='h6' component='p'>
-                      + ${numberWithSpace((+currentOption[item.name].price).toFixed())} *
+                      + ${numberWithSpace((+currentOption[item.name].price).toFixed())}
                     </Typography>
                   </td>
                 </tr>
@@ -371,7 +371,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
               ЦЕНА
             </Typography>
             <Typography variant='caption' className={classes.textPriceValue}>
-              ${numberWithSpace((+price).toFixed())} *
+              ${numberWithSpace((+price).toFixed())}
             </Typography>
           </Box>
         </Box>
