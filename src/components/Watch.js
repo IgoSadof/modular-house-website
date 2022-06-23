@@ -628,9 +628,7 @@ const Watch = ({ data }) => {
             {breakpoints.md ? (<img className={classes.mapImg} src={getPublicPath(data, pageData.arenda_map)} alt='map' />):null}
             </>
           }
-          rightColumnContent={<></>
-
-          }
+          rightColumnContent={breakpoints.md ? null : <></>}
         ></ContentBlock>
       </Box>
 
