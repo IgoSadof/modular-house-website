@@ -183,7 +183,7 @@ const useStyles = makeStyles((theme) => ({
   calendarDesc: {
     width: '100%',
     marginBottom: '10px',
-    fontSize:'14px',
+    fontSize: '14px',
     marginTop: '5px',
     '@media (min-width:1921px)': {
       '&': {
@@ -200,7 +200,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '100px',
     },
     '@media (min-width:1921px)': {
-      marginTop: 'calc(90px + 1.4vw + 0.4vw)',
+      // marginTop: 'calc(90px + 1.4vw + 0.4vw)',
       '& > * + * ': {
         marginLeft: '4.2vw',
       },
@@ -230,8 +230,8 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       height: '24vw',
     },
-    '& .swiper-slide':{
-      cursor:'pointer',
+    '& .swiper-slide': {
+      cursor: 'pointer',
     },
     '& img':{
       pointerEvents: 'visible',
@@ -246,47 +246,51 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '1px solid #bdbdbd',
     '&>div': {
       marginTop: '0',
-      height:'100%',
-      position:'relative',
+      height: '100%',
+      position: 'relative',
       [theme.breakpoints.down('md')]: {
-        top: 'calc(50vw - 150vh)',
+        backgroundImage: 'none',
+        // top: 'calc(50vw - 150vh)',
       },
     },
-    '&>div>div':{
+    '&>div>div': {
       paddingTop: '60px',
-      position:'relative',
+      position: 'relative',
       '@media (min-width:1921px)': {
         paddingTop: '3.1vw',
       },
     },
-    '&>div:before':{
+    '&>div:before': {
       content: `''`,
-      position:'absolute',
-      width:'31vw',
-      height:'100%',
+      position: 'absolute',
+      width: '31vw',
+      height: '100%',
       background: '#E6E6E6',
       opacity: '0.6',
       [theme.breakpoints.down('md')]: {
-        display:'none',
+        display: 'none',
       },
     },
     '@media (min-width:1921px)': {
       height: '29vw',
-      //marginTop: '4.2vw',
+      marginTop: '4.2vw',
     },
+    // marginTop: 'calc(-50vw + 150vh)',
     [theme.breakpoints.down('md')]: {
+      height:'auto',
+      marginTop: '50px',
+      marginBottom: '0',
       order: '1',
       backgroundPosition: '50%!important',
-      height:'100vw',
-      marginTop: 'calc(-50vw + 150vh)',
+      borderTop: 'none',
+      borderBottom: 'none',
+      // height:'100vw',
     },
   },
   mapTextBox: {
     display: 'flex',
     flexDirection: 'column',
-    '':{
-
-    },
+    '': {},
     '& > * + * ': {
       marginTop: '20px',
     },
@@ -331,11 +335,11 @@ const useStyles = makeStyles((theme) => ({
   },
   instaText: {
     marginTop: '20px',
-    width:'250px',
+    width: '250px',
     fontSize: '14px',
     '@media (min-width:1921px)': {
       marginTop: '1.04vw',
-      width:'14vw',
+      width: '14vw',
       fontSize: '0.72vw',
     },
   },
@@ -363,13 +367,13 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     width: '100%',
-    '& div[class*="MuiFormControl"]':{
-      height:'50px',
+    '& div[class*="MuiFormControl"]': {
+      height: '50px',
       '@media (min-width:1921px)': {
-        height:'4.6vw',
+        height: '4.6vw',
       },
     },
-    '& button':{
+    '& button': {
       marginTop: '20px',
       '@media (min-width:1921px)': {
         marginTop: '1.1vw',
@@ -399,15 +403,15 @@ const useStyles = makeStyles((theme) => ({
     zIndex: '2',
     top: '50%',
     left: '50%',
-    transform:'translate(-50%,-50%)',
+    transform: 'translate(-50%,-50%)',
     '@media (min-width:1921px)': {
       width: '4.7vw',
       height: '4.7vw',
     },
   },
   playButtonActive: {
-    transform:'translate(-50%,-50%)',
-    '& img':{
+    transform: 'translate(-50%,-50%)',
+    '& img': {
       animation: 'play 0.3s ease-in-out',
       opacity: '0',
     },
@@ -568,13 +572,17 @@ const Watch = ({ data }) => {
       <Box
         component='section'
         className={classes.mapBox}
-        style={{
-          background: `no-repeat url(${getPublicPath(
-            data,
-            pageData.arenda_map
-          )})`,
-          backgroundSize: `cover`,
-        }}
+        style={
+          breakpoints.md
+            ? null
+            : {
+                background: `no-repeat url(${getPublicPath(
+                  data,
+                  pageData.arenda_map
+                )})`,
+                backgroundSize: `cover`,
+              }
+        }
       >
         <ContentBlock
           component='div'
