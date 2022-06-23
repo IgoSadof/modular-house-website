@@ -258,6 +258,12 @@ const useStyles = makeStyles((theme) => ({
       position: 'relative',
       '@media (min-width:1921px)': {
         paddingTop: '3.1vw',
+      }
+    },
+    '&>div>div>div': {
+      [theme.breakpoints.down('md')]: {
+        display:'flex',
+        flexDirection:'column',
       },
     },
     '&>div:before': {
