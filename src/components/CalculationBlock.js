@@ -117,7 +117,18 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '10px',
     paddingLeft: '20px',
     paddingRight: '30px',
+    [theme.breakpoints.down('md')]: {
+      paddingRight: '0',
+    },
     borderLeft: '1px solid #999',
+    '& p': {
+      lineHeight: '1.2em',
+      marginBottom: '8px',
+    },
+    '& p + p': {
+      whiteSpace: 'nowrap',
+      lineHeight: '1.2em',
+    },
   },
   calculationBodyItem: {
     display: 'flex',
@@ -131,6 +142,9 @@ const useStyles = makeStyles((theme) => ({
   calculationResult: {
     display: 'flex',
     alignItems: 'center',
+    '& span': {
+      fontWeight: '700',
+    },
     '& p': {
       marginLeft: 'auto',
       marginRight: '48px',

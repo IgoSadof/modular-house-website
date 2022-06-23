@@ -102,6 +102,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '100%',
     alignItems: 'baseline',
+    '& span': {
+      fontWeight: '700',
+    },
     '& p': {
       marginRight: '48px',
       marginLeft: 'auto',
