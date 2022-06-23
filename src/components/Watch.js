@@ -233,9 +233,9 @@ const useStyles = makeStyles((theme) => ({
     '& .swiper-slide': {
       cursor: 'pointer',
     },
-    '& img':{
+    '& img': {
       pointerEvents: 'visible',
-    }
+    },
   },
   mapBox: {
     width: '100%',
@@ -277,7 +277,7 @@ const useStyles = makeStyles((theme) => ({
     },
     // marginTop: 'calc(-50vw + 150vh)',
     [theme.breakpoints.down('md')]: {
-      height:'auto',
+      height: 'auto',
       marginTop: '50px',
       marginBottom: '0',
       order: '1',
@@ -290,10 +290,16 @@ const useStyles = makeStyles((theme) => ({
   mapTextBox: {
     display: 'flex',
     flexDirection: 'column',
-    '': {},
     '& > * + * ': {
       marginTop: '20px',
     },
+  },
+  mapImg:{
+    height:'50vh',
+    margin:'0 -10vw',
+    marginTop:'40px',
+    objectFit:'cover',
+    objectPosition: '48%',
   },
   mapCoordinates: {
     '& p': {
@@ -417,6 +423,7 @@ const useStyles = makeStyles((theme) => ({
     },
     pointerEvents: 'none',
   },
+
 }));
 
 const Watch = ({ data }) => {
@@ -428,14 +435,14 @@ const Watch = ({ data }) => {
   const [selectDate, setSelectDate] = useState(null);
   const [selectOptions, setSelectOptions] = useState({});
 
-  
   const classes = useStyles();
   const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
-  const [unavailableDates, setUnavailableDates] = useState(pageData.calendar_dates);
-
+  const [unavailableDates, setUnavailableDates] = useState(
+    pageData.calendar_dates
+  );
 
   pageData.arenda_options?.forEach((item) => {
     selectOptions[item.name] = false;
@@ -587,7 +594,7 @@ const Watch = ({ data }) => {
         <ContentBlock
           component='div'
           title={pageData.arenda_map_title}
-          leftColumnContent={
+          leftColumnContent={<>
             <Box className={classes.mapTextBox}>
               {pageData.arenda_map_text1 ? (
                 <Box className={classes.textBlock}>
@@ -618,13 +625,17 @@ const Watch = ({ data }) => {
                 </Box>
               ) : null}
             </Box>
+            {breakpoints.md ? (<img className={classes.mapImg} src={getPublicPath(data, pageData.arenda_map)} alt='map' />):null}
+            </>
           }
-          rightColumnContent={<></>}
+          rightColumnContent={<></>
+
+          }
         ></ContentBlock>
       </Box>
 
       <ContentBlock
-      blockRef={formBlock}
+        blockRef={formBlock}
         mb={
           pageData.arenda_video ? '100px' : breakpoints.xxl ? '4.2vw' : '100px'
         }
