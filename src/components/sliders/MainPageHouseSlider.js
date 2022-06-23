@@ -78,8 +78,8 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: "100%",
     aspectRatio:'4/3',
-    height:'24vw',
-    minHeight:'520px',
+    height:'22vw',
+    minHeight:'420px',
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
@@ -100,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     transition: "all .5s",
+    objectFit: 'cover',
   },
   description: {
     display: "flex",
@@ -180,6 +181,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "end",
     "& p": {
       lineHeight: '1.4',
+      display:'none',
     },
     "& img": { objectFit: "contain !important" },
     [theme.breakpoints.down("md")]: {
@@ -188,6 +190,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "0",
       justifyContent: "space-between",
       objectFit: "contain",
+      '& > * + * ':{
+        marginLeft:'0',
+        marginBottom:'0'
+      },
     },
   },
   mainPlan: {
@@ -210,12 +216,15 @@ const useStyles = makeStyles((theme) => ({
   },
   growStageIcon: {
     display: "flex",
-    width: "60px",
-    height: "30px",
-    marginBottom:'6px',
+    width: "auto",
+    height: "72px",
+    marginBottom:'0',
+    '& img':{
+      height: "100%",
+    },
     "@media (min-width:1921px)": {
-      width: "3.5vw",
-      height: "1.4vw",
+      width: "auto",
+      height: "3.5vw",
       marginBottom:'0.6vw',
     },
   },

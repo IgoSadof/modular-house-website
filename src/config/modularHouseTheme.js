@@ -3,7 +3,7 @@ import green from '@material-ui/core/colors/green';
 
 export const customFontsSize = {
   xl: 2,
-  widthMobile: 0.75,
+  widthMobile: 0.875,
   h1: { regular: 56, adaptiv: '2.91vw' },
   h2: { regular: 28, adaptiv: '1.4vw' },
   h3: { regular: 24, adaptiv: '1.25vw' },
@@ -143,7 +143,7 @@ const modularHouseTheme = createTheme({
       '@media (min-width:1921px)': {
         fontSize: customFontsSize.body1.adaptiv,
       },
-      '@media (max-width:350px)': {
+      '@media (max-width:480px)': {
         fontSize: customFontsSize.body1.regular * customFontsSize.widthMobile,
       },
     },
