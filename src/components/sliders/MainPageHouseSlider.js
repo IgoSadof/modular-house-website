@@ -78,8 +78,8 @@ const useStyles = makeStyles((theme) => ({
   imgBox: {
     width: "100%",
     aspectRatio:'4/3',
-    height:'24vw',
-    minHeight:'520px',
+    height:'22vw',
+    minHeight:'420px',
     overflow: "hidden",
     "&:hover $img": {
       transform: "scale(1.1)",
@@ -100,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     transition: "all .5s",
+    objectFit: 'cover',
   },
   description: {
     display: "flex",
