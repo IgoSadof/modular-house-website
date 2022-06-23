@@ -237,7 +237,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
 
   const settings = {
     className: "slider variable-width",
-    speed: 300,
+    speed: 500,
     // dots: true,
     infinite: true,
     // slidesToShow: 1,
@@ -246,7 +246,9 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
     swipeToSlide: true,
     infinite: true,
     arrows: false,
-    focusOnChange: true
+    focusOnChange: true,
+    autoplay: true,
+    autoplaySpeed: 3000
   };
 
   const listItems = dataHouses
