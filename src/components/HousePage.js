@@ -578,7 +578,7 @@ const HousePage = ({ house, data }) => {
         </Box>
 
         <Box className={classes.model}>
-          {breakpoints.sm ? (
+          {breakpoints.m ? (
             <>
               <Box className={classes.modelButton} onClick={vrButtonClick}>
                 <VRviwe />
