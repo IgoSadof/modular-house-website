@@ -59,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
       '@media (min-width:600px)': {
         // marginTop: '25vw',
         position: 'static',
+        transform: 'scale(0.8)',
+        height: 'auto', 
+        marginTop: '-25vw',
+        marginBottom: '-15vw',
       },
       top: '0',
       right: '0',

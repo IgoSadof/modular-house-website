@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '80px',
     pointerEvents: 'none',
     [theme.breakpoints.down('md')]: {
-      marginTop: '40px',
+      marginTop: '30px',
       marginLeft: '0',
     },
     '@media (min-width:1921px)': {
@@ -69,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
   },
   h2_gap: {
     marginBottom: '40px',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '20px',
+    },
   },
   descTitle: {
     fontSize: '38px',
@@ -86,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '30px',
     width: '100%',
     [theme.breakpoints.down('md')]: {
-      width: '100%',
+      marginTop: '0',
     },
     '& h4': {
       marginBottom: '1em',
@@ -119,6 +122,9 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       marginTop: '0',
     },
+    [theme.breakpoints.down('md')]: {
+      fontSize: '42px',
+    },
   },
   iconsBlockConteiner: {
     display: 'grid',
@@ -128,6 +134,7 @@ const useStyles = makeStyles((theme) => ({
     columnGap: '20px',
     [theme.breakpoints.down('md')]: {
       gridTemplateColumns: 'repeat(2, 50%)',
+      marginTop: '40px',
     },
   },
   iconBox: {
@@ -208,7 +215,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
       alignItems: 'center',
-      marginTop: '40px',
+      marginTop: '0',
       '& > * + * ': {
         marginLeft: '0',
         marginTop: '60px',
@@ -284,7 +291,7 @@ const useStyles = makeStyles((theme) => ({
     // marginTop: 'calc(-50vw + 150vh)',
     [theme.breakpoints.down('md')]: {
       height: 'auto',
-      marginTop: '50px',
+      marginTop: '20px',
       marginBottom: '0',
       order: '1',
       backgroundPosition: '50%!important',
@@ -306,6 +313,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop:'40px',
     objectFit:'cover',
     objectPosition: '48%',
+    borderTop: '1px solid #bdbdbd',
+    borderBottom: '1px solid #bdbdbd',
   },
   mapCoordinates: {
     '& p': {
@@ -330,6 +339,9 @@ const useStyles = makeStyles((theme) => ({
   },
   instaBox: {
     marginTop: 'auto',
+    [theme.breakpoints.down('md')]: {
+        display:'none',
+    },
   },
   instaContent: {
     display: 'flex',
@@ -379,6 +391,11 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     width: '100%',
+    [theme.breakpoints.down('md')]: {  
+      '& div[class*="formHeader"]': {
+          marginTop: '0px',
+      },
+    },
     '& div[class*="MuiFormControl"]': {
       height: '50px',
       '@media (min-width:1921px)': {
@@ -429,7 +446,15 @@ const useStyles = makeStyles((theme) => ({
     },
     pointerEvents: 'none',
   },
-
+  instaBox2: {
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      padding: '0 10%',
+      '& > div': {
+        display: 'block',
+      },
+    },
+  }
 }));
 
 const Watch = ({ data }) => {
@@ -555,7 +580,7 @@ const Watch = ({ data }) => {
             {pageData?.arenda_price ? (
               <Box className={classes.priceBlock}>
                 <Typography className={classes.priceBlockText} variant='body1'>
-                  <strong>{pageData.arenda_price}</strong> / 1 сутки
+                  <strong>{pageData.arenda_price}</strong> /&#160;1&#160;сутки
                 </Typography>
               </Box>
             ) : null}
@@ -757,6 +782,32 @@ const Watch = ({ data }) => {
           </Box>
         }
       ></ContentBlock>
+
+      <Box
+      component='div'
+      className={classes.instaBox2}>
+        <Box className={classes.instaBox}>
+          <Typography variant='body1' className={classes.instaText}>
+            Больше про нашу локацию в сети Instagram:
+          </Typography>
+          <Box className={classes.instaContent}>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className={classes.Link}
+              href={pageData.arenda_insta_url}
+            >
+              <Instagram
+                width={breakpoints.xxl ? '0.9vw' : 14}
+                height={breakpoints.xxl ? '0.9vw' : 14}
+              />
+              <Typography variant='body1' className={classes.instaName}>
+                {pageData.arenda_insta_title}
+              </Typography>
+            </a>
+          </Box>
+        </Box>
+      </Box>
 
       {pageData.arenda_video ? (
         <Box
