@@ -19,7 +19,13 @@ export default function getHouses(data) {
               houses[item.alias][item.name][index].rooms
             );
           }
+          if (module.module_options) {
+            houses[item.alias][item.name][index].module_options = JSON.parse(
+              houses[item.alias][item.name][index].module_options
+            );
+          }
         });
+        
       }
     } else {
       houses[item.alias] = {};

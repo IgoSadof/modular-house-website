@@ -362,9 +362,15 @@ const HousePage = ({ house, data }) => {
   const baseModule = dataHouses[houseNumber].modules?.[0].name
     ? dataHouses[houseNumber].modules[0].name
     : 'no-modules';
-
+  const baseModuleOptions = dataHouses[houseNumber].modules?.[0].module_options
+  ? dataHouses[houseNumber].modules?.[0].module_options
+  : [];
   const [userModuleList, setUserModuleList] = useState([baseModule]);
-  const [userOptions, setUserOptions] = useState({});
+
+
+
+  const [userOptions, setUserOptions] = useState([]);
+  const [modulesOptions, setModulesOptions] = useState(baseModuleOptions);
   const modulesCounts = dataHouses[houseNumber].modules?.filter(
     (item) => item.video
   )?.length;
@@ -425,9 +431,14 @@ const HousePage = ({ house, data }) => {
       );
     }
   };
+  const getModulesOptions = (options) => {
+    setModulesOptions(options);
+  };
+
   const getUserOptions = (options) => {
     setUserOptions(options);
   };
+
   const getUserModules = (modules) => {
     setUserModuleList(modules);
   };
@@ -437,12 +448,12 @@ const HousePage = ({ house, data }) => {
     userModuleList: userModuleList,
     options: userOptions,
   };
+  console.log(userOptions)
 
   const modelViwerRef = useRef();
   const modules = dataHouses[houseNumber].modules.filter(
     (item) => item.published
   );
-  // console.log(modules);
   const options = dataHouses[houseNumber].options.filter(
     (item) => item.published
   );
@@ -450,15 +461,10 @@ const HousePage = ({ house, data }) => {
   const [modelVideo, setModelVideo] = useState(
     getPublicPath(data, dataHouses[houseNumber]['modules'][pillClick].video)
   );
-  // const videos = dataHouses[houseNumber]['modules'].map((item,index)=>(
-  //   <HouseModelPlayer video={item.video} key={index}/>
-  // ))
 
   const vrButtonClick = () => {
     modelViwerRef.current.activateAR();
   };
-
-  // console.log(options);
 
   return (
     <Box components='main'>
@@ -615,17 +621,17 @@ const HousePage = ({ house, data }) => {
         <CalculationBlock
           modules={modules}
           getUserModules={getUserModules}
+          getUserOptions={getModulesOptions}
           data={data}
         ></CalculationBlock>
       </Box>
 
-      {options.length > 0 ? (
+      {modulesOptions.length > 0 ? (
         <Box className={`${classes.Block} ${classes.BlockTable}`}>
           <OptionsTable
             getOptions={getUserOptions}
             houseNumber={houseNumber}
-            houseOptions={options}
-            options={userOptions}
+            houseOptions={modulesOptions}
           />
         </Box>
       ) : null}

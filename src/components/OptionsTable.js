@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -151,17 +151,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OptionsTable = ({ houseOptions, houseNumber, options }) => {
+const OptionsTable = ({ houseOptions, houseNumber, getOptions }) => {
   const breakpoints = useBreakpoint();
-  houseOptions?.forEach((item) => {
-    options[item.name] = {
-      name: item.option_poor_name,
-      price: item.option_poor_price,
-    };
-  });
-  
+  const [currentOption, setCheckboxesCheck] = useState({});
 
-  const [currentOption, setCheckboxesCheck] = useState(options);
+  const options = useMemo(() => {
+    let options = {};
+    houseOptions?.forEach((item) => {
+      options[item.name] = {
+        name: item.option_poor_name,
+        price: item.option_poor_price,
+      };
+    })
+    return options
+  }, [houseOptions]);
+  
   const [price, setPrice] = useState(
     Object.keys(currentOption).length === 0
       ? '0'
@@ -170,8 +174,8 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
           0
         )
   );
+
   const handleChangeCheckbox = (event) => {
-    // console.log(event.target.name);
     setCheckboxesCheck({
       ...currentOption,
       [event.target.name]: {
@@ -184,6 +188,12 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
   const classes = useStyles(param);
 
   useEffect(() => {
+    setCheckboxesCheck(options)
+    
+   
+  }, [houseOptions]);
+
+  useEffect(() => {
     let sum =
       Object.keys(currentOption).length === 0
         ? 0
@@ -192,6 +202,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
             0
           );
     setPrice(sum);
+    getOptions(options)
   }, [currentOption]);
 
   return (
@@ -213,7 +224,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name].price ===
+                        currentOption[item.name]?.price ==
                         item.option_poor_price
                           ? true
                           : false
@@ -224,7 +235,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                       label={
                         <Typography
                           style={
-                            currentOption[item.name].price ===
+                            currentOption[item.name]?.price ==
                             item.option_poor_price
                               ? null
                               : { color: '#828282' }
@@ -243,7 +254,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name].price ===
+                        currentOption[item.name]?.price ==
                         item.option_expensive_price
                           ? true
                           : false
@@ -255,7 +266,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
 
                         <Typography
                           style={
-                            currentOption[item.name].price ===
+                            currentOption[item.name]?.price ==
                             item.option_expensive_price
                               ? null
                               : { color: '#828282' }
@@ -275,7 +286,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                     align='right'
                   >
                     <Typography variant='h6' component='p'>
-                      + ${numberWithSpace((+currentOption[item.name].price).toFixed())}
+                      + ${numberWithSpace((+currentOption[item.name]?.price).toFixed())}
                     </Typography>
                   </td>
                 </tr>
@@ -294,7 +305,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                         className={classes.secondRadio}
                       >
                         <Typography variant='h6' component='p'>
-                          + ${numberWithSpace((+currentOption[item.name].price).toFixed())}
+                          + ${numberWithSpace((+currentOption[item.name]?.price).toFixed())}
                         </Typography>
                       </Box>
                     </Box>
@@ -302,7 +313,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                       <FormControlLabel
                         name={item.name}
                         checked={
-                          currentOption[item.name].price ===
+                          currentOption[item.name]?.price ==
                           item.option_poor_price
                             ? true
                             : false
@@ -313,7 +324,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                         label={
                           <Typography
                             style={
-                              currentOption[item.name].price ===
+                              currentOption[item.name]?.price ==
                               item.option_poor_price
                                 ? { color: '#4f4f4f' }
                                 : { color: '#828282' }
@@ -331,7 +342,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                         className={classes.secondRadio}
                         name={item.name}
                         checked={
-                          currentOption[item.name].price ===
+                          currentOption[item.name]?.price ==
                           item.option_expensive_price
                             ? true
                             : false
@@ -342,7 +353,7 @@ const OptionsTable = ({ houseOptions, houseNumber, options }) => {
                         label={
                           <Typography
                             style={
-                              currentOption[item.name].price ===
+                              currentOption[item.name]?.price ==
                               item.option_expensive_price
                                 ? { color: '#4f4f4f' }
                                 : { color: '#828282' }

@@ -177,7 +177,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CalculationBlock = ({ modules, data, getUserModules }) => {
+const CalculationBlock = ({ modules, data, getUserModules, getUserOptions }) => {
   const breakpoints = useBreakpoint();
   const baseModulePrice = modules?.[0].price
     ? +modules[0].price.replace(/[KК]/, '000')
@@ -185,6 +185,9 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
   const baseModuleSquare = modules?.[0].square
   ? +modules[0].square
   : 0;
+  const baseModuleOptions = modules?.[0].module_options
+  ? modules[0].module_options
+  : 'no options';
 
   const [modulePrice, setModulePrice] = useState(baseModulePrice);
   const [moduleSquare, setModuleSquare] = useState(baseModuleSquare);
@@ -192,7 +195,6 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
   const classes = useStyles();
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
-
   const handleClickCheckbox = (event, curentIndex) => {
     setCurrentCheckbox(curentIndex);
     const chooseModules = modules?.filter((item, index) => {
@@ -209,15 +211,43 @@ const CalculationBlock = ({ modules, data, getUserModules }) => {
     let price = 0;
     let squareSum = 0;
     let mudules = [];
+    let optionsList = []
+    
+    // console.log(optionsList)
     chooseModules?.forEach((item) => {
       price += item.price ? +item.price.replace(/[KК]/, '000') : 0;
       squareSum += item.square ? +item.square: 0;
       mudules.push(item.name);
+      if(item.module_options){
+        item.module_options.forEach(option=>{
+          optionsList.push(Object.assign({}, option))
+        })
+      }
     });
+    
+    // console.log(optionsList)
+
+    let modulesOptions = [];
+
+    // console.log('modulesOptions',modulesOptions)
+
+    optionsList.forEach(item=>{
+      if(modulesOptions.find(option=>option.name === item.name)){
+        let currentOption = modulesOptions.find(option=>option.name === item.name)
+        // console.log(currentOption)
+        currentOption.option_expensive_price = parseInt(currentOption.option_expensive_price) + +item.option_expensive_price;
+        currentOption.option_poor_price = parseInt(currentOption.option_poor_price) + +item.option_poor_price;
+      }else{
+        modulesOptions.push(item)
+      }
+    })
+    console.log('modulesOptions',modulesOptions)
 
     setModulePrice(price);
     setModuleSquare(squareSum)
     getUserModules(mudules);
+    getUserOptions(modulesOptions);
+    
 
     if (currentCheckbox === curentIndex) {
       setCurrentCheckbox(curentIndex - 1);
