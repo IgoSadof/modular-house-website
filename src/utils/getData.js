@@ -12,5 +12,10 @@ export default function getData(data) {
       dataObj['form-block-with-gallery'][0].gallery
     );
   }
+  if (dataObj['arenda_houses']) {
+    dataObj['arenda_houses'].forEach((item,index)=>{
+      item.house_calendar = JSON.parse(item.house_calendar)
+    }) ;
+  }
   return dataObj;
 }

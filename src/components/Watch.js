@@ -18,6 +18,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import playButton from '../assets/images/icons/playButton.svg';
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
     position: 'relative',
@@ -265,12 +270,12 @@ const useStyles = makeStyles((theme) => ({
       position: 'relative',
       '@media (min-width:1921px)': {
         paddingTop: '3.1vw',
-      }
+      },
     },
     '&>div>div>div': {
       [theme.breakpoints.down('md')]: {
-        display:'flex',
-        flexDirection:'column',
+        display: 'flex',
+        flexDirection: 'column',
       },
     },
     '&>div:before': {
@@ -307,11 +312,11 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '20px',
     },
   },
-  mapImg:{
-    height:'50vh',
-    margin:'0 -10vw',
-    marginTop:'40px',
-    objectFit:'cover',
+  mapImg: {
+    height: '50vh',
+    margin: '0 -10vw',
+    marginTop: '40px',
+    objectFit: 'cover',
     objectPosition: '48%',
     borderTop: '1px solid #bdbdbd',
     borderBottom: '1px solid #bdbdbd',
@@ -340,7 +345,7 @@ const useStyles = makeStyles((theme) => ({
   instaBox: {
     marginTop: 'auto',
     [theme.breakpoints.down('md')]: {
-        display:'none',
+      display: 'none',
     },
   },
   instaContent: {
@@ -391,9 +396,9 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     width: '100%',
-    [theme.breakpoints.down('md')]: {  
+    [theme.breakpoints.down('md')]: {
       '& div[class*="formHeader"]': {
-          marginTop: '0px',
+        marginTop: '0px',
       },
     },
     '& div[class*="MuiFormControl"]': {
@@ -454,7 +459,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'block',
       },
     },
-  }
+  },
+  housesBox: {
+    width: '100%',
+    '&>div>div':{
+      margin:'auto 0'
+      
+    }
+  },
 }));
 
 const Watch = ({ data }) => {
@@ -471,13 +483,21 @@ const Watch = ({ data }) => {
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
+  const [selectHouse, setSelectHouse] = useState(0);
+  const handleRadioChange = (event) => {
+    setSelectHouse(event.target.value);
+  };
+  console.log(selectHouse)
+
   const [unavailableDates, setUnavailableDates] = useState(
-    pageData.calendar_dates
+    pageData.arenda_houses[selectHouse].name
   );
 
   pageData.arenda_options?.forEach((item) => {
     selectOptions[item.name] = false;
   });
+
+  console.log(pageData);
   const [currentOption, setCurrentOption] = useState(selectOptions);
   const handleChangeCheckbox = (event) => {
     setCurrentOption({
@@ -625,38 +645,45 @@ const Watch = ({ data }) => {
         <ContentBlock
           component='div'
           title={pageData.arenda_map_title}
-          leftColumnContent={<>
-            <Box className={classes.mapTextBox}>
-              {pageData.arenda_map_text1 ? (
-                <Box className={classes.textBlock}>
-                  <Typography variant='body1'>
-                    {pageData.arenda_map_text1}
-                  </Typography>
-                </Box>
-              ) : null}
+          leftColumnContent={
+            <>
+              <Box className={classes.mapTextBox}>
+                {pageData.arenda_map_text1 ? (
+                  <Box className={classes.textBlock}>
+                    <Typography variant='body1'>
+                      {pageData.arenda_map_text1}
+                    </Typography>
+                  </Box>
+                ) : null}
 
-              {pageData.arenda_map_coordinate ? (
-                <Box className={classes.mapCoordinates}>
-                  <Typography variant='body1'>
-                    <img
-                      className={classes.locationIcon}
-                      src={location}
-                      alt='location'
-                    ></img>{' '}
-                    {pageData.arenda_map_coordinate}
-                  </Typography>
-                </Box>
-              ) : null}
+                {pageData.arenda_map_coordinate ? (
+                  <Box className={classes.mapCoordinates}>
+                    <Typography variant='body1'>
+                      <img
+                        className={classes.locationIcon}
+                        src={location}
+                        alt='location'
+                      ></img>{' '}
+                      {pageData.arenda_map_coordinate}
+                    </Typography>
+                  </Box>
+                ) : null}
 
-              {pageData.arenda_map_text2 ? (
-                <Box className={classes.textBlock}>
-                  <Typography variant='body1'>
-                    {pageData.arenda_map_text2}
-                  </Typography>
-                </Box>
+                {pageData.arenda_map_text2 ? (
+                  <Box className={classes.textBlock}>
+                    <Typography variant='body1'>
+                      {pageData.arenda_map_text2}
+                    </Typography>
+                  </Box>
+                ) : null}
+              </Box>
+              {breakpoints.md ? (
+                <img
+                  className={classes.mapImg}
+                  src={getPublicPath(data, pageData.arenda_map)}
+                  alt='map'
+                />
               ) : null}
-            </Box>
-            {breakpoints.md ? (<img className={classes.mapImg} src={getPublicPath(data, pageData.arenda_map)} alt='map' />):null}
             </>
           }
           rightColumnContent={breakpoints.md ? null : <></>}
@@ -682,6 +709,32 @@ const Watch = ({ data }) => {
                 <Typography variant='body1'>
                   {pageData.arenda_invite_text}
                 </Typography>
+              </Box>
+              <Box className={classes.housesBox}>
+                <FormControl>
+                  {/* <FormLabel id='demo-row-radio-buttons-group-label'>
+                    Gender
+                  </FormLabel> */}
+                  <RadioGroup
+                    row
+                    aria-labelledby='demo-row-radio-buttons-group-label'
+                    name='row-radio-buttons-group'
+                    defaultValue='0'
+                    onChange={handleRadioChange}
+                  >
+                    {pageData.arenda_houses
+                      .filter((item) => item.published)
+                      .map((house, index) => {
+                        return (
+                          <FormControlLabel
+                            value={`${index}`}
+                            control={<Radio color="default" />}
+                            label={house.name}
+                          />
+                        );
+                      })}
+                  </RadioGroup>
+                </FormControl>
               </Box>
             </Box>
             <Box className={classes.instaBox}>
@@ -718,7 +771,7 @@ const Watch = ({ data }) => {
                 Выберите планируемые и свободные для проживания даты
               </Typography>
               <MyCalendar
-                unavailableDates={unavailableDates}
+                unavailableDates={pageData.arenda_houses[selectHouse].house_calendar}
                 getUnavailableDates={getUnavailableDates}
                 setSelectDate={(date) => {
                   setSelectDate(date);
@@ -773,7 +826,7 @@ const Watch = ({ data }) => {
               <Form
                 data={data}
                 endpoint={'https://formspree.io/f/mzbokwwy'}
-                extraFormFields={{ date: selectDate, currentOption }}
+                extraFormFields={{ date: selectDate, currentOption,house: pageData.arenda_houses[selectHouse].name }}
                 arenda={true}
                 sendDate={selectDate}
                 buttonText='бронировать'
@@ -783,9 +836,7 @@ const Watch = ({ data }) => {
         }
       ></ContentBlock>
 
-      <Box
-      component='div'
-      className={classes.instaBox2}>
+      <Box component='div' className={classes.instaBox2}>
         <Box className={classes.instaBox}>
           <Typography variant='body1' className={classes.instaText}>
             Больше про нашу локацию в сети Instagram:
