@@ -479,7 +479,7 @@ const useStyles = makeStyles((theme) => ({
   housesBox: {
     width: '100%',
     '&>div>div':{
-      marginTop:'20px'
+      marginTop:'15px'
     }
   },
 }));
