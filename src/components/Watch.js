@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '14px',
     },
     '@media (min-width:1921px)': {
-      width: '14vw',
+      width: '100%',
       '& p': {
         fontSize: '0.72vw',
       },
@@ -479,7 +479,10 @@ const useStyles = makeStyles((theme) => ({
   housesBox: {
     width: '100%',
     '&>div>div':{
-      marginTop:'15px'
+      marginTop:'15px',
+      '@media (min-width:1921px)': {
+        marginTop:'1vw'
+      },
     }
   },
 }));
