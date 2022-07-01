@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subtitleBox: {
-    width: '250px',
+    width: '100%',
     marginTop: '30px',
     '& p': {
       fontSize: '14px',
@@ -344,8 +344,15 @@ const useStyles = makeStyles((theme) => ({
   },
   instaBox: {
     marginTop: 'auto',
-    [theme.breakpoints.down('md')]: {
-      display: 'none',
+    '& > *': {
+      [theme.breakpoints.down('md')]: {
+        display: 'none',
+      },
+    },
+    '& > div': {
+      [theme.breakpoints.down('md')]: {
+        display: 'none',
+      },
     },
   },
   instaContent: {
@@ -452,11 +459,20 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none',
   },
   instaBox2: {
+    '@media (min-width:1280px)': {
+      display: 'none!important',
+    },
     [theme.breakpoints.down('md')]: {
       width: '100%',
       padding: '0 10%',
-      '& > div': {
-        display: 'block',
+      '& > div > *': {
+        display: 'block!important',
+      },
+      '& > div > div': {
+        display: 'block!important',
+      },
+      '& svg': {
+        margin: '4px 0',
       },
     },
   },
@@ -464,7 +480,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     '&>div>div':{
       margin:'auto 0'
-      
     }
   },
 }));

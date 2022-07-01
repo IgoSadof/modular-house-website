@@ -249,6 +249,11 @@ abbr {
   transform: rotate(45deg);
 }
 
+@media  (min-width: 540px) and (max-width: 1279px) {
+  .unAnableDate::after {
+    left: calc(14% + -138%);
+  }
+}
 .dataRange {
   background-color: #4F4F4F;
   border-color: #4F4F4F;
