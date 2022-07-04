@@ -174,6 +174,10 @@ const useStyles = makeStyles((theme) => ({
   },
   squaresSum:{
     textTransform:'none'
+  },
+  calculationResultDigit:{
+    textTransform: 'inherit',
+    marginRight:'30px'
   }
 }));
 
@@ -387,7 +391,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
             <Typography variant='h6' component='p'>
               Площадь
             </Typography>
-            <Typography variant='h6'>
+            <Typography variant='h6' className={classes.calculationResultDigit}>
               {/* {`$${numberWithSpace(modulePrice.toFixed())}`} */}
               {`${moduleSquare.toFixed(2)} м²`}
             </Typography>
