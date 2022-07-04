@@ -103,13 +103,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subtitleBox: {
-    width: '250px',
+    width: '100%',
     marginTop: '30px',
     '& p': {
       fontSize: '14px',
     },
     '@media (min-width:1921px)': {
-      width: '14vw',
+      width: '100%',
       '& p': {
         fontSize: '0.72vw',
       },
@@ -344,8 +344,15 @@ const useStyles = makeStyles((theme) => ({
   },
   instaBox: {
     marginTop: 'auto',
-    [theme.breakpoints.down('md')]: {
-      display: 'none',
+    '& > *': {
+      [theme.breakpoints.down('md')]: {
+        display: 'none',
+      },
+    },
+    '& > div': {
+      [theme.breakpoints.down('md')]: {
+        display: 'none',
+      },
     },
   },
   instaContent: {
@@ -452,19 +459,30 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none',
   },
   instaBox2: {
+    '@media (min-width:1280px)': {
+      display: 'none!important',
+    },
     [theme.breakpoints.down('md')]: {
       width: '100%',
       padding: '0 10%',
-      '& > div': {
-        display: 'block',
+      '& > div > *': {
+        display: 'block!important',
+      },
+      '& > div > div': {
+        display: 'block!important',
+      },
+      '& svg': {
+        margin: '4px 0',
       },
     },
   },
   housesBox: {
     width: '100%',
     '&>div>div':{
-      margin:'auto 0'
-      
+      marginTop:'15px',
+      '@media (min-width:1921px)': {
+        marginTop:'1vw'
+      },
     }
   },
 }));
