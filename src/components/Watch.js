@@ -487,7 +487,7 @@ const Watch = ({ data }) => {
   const handleRadioChange = (event) => {
     setSelectHouse(event.target.value);
   };
-  console.log(selectHouse)
+  // console.log(selectHouse)
 
   const [unavailableDates, setUnavailableDates] = useState(
     pageData.arenda_houses[selectHouse].name
@@ -497,7 +497,7 @@ const Watch = ({ data }) => {
     selectOptions[item.name] = false;
   });
 
-  console.log(pageData);
+  // console.log(pageData);
   const [currentOption, setCurrentOption] = useState(selectOptions);
   const handleChangeCheckbox = (event) => {
     setCurrentOption({

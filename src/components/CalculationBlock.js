@@ -177,7 +177,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CalculationBlock = ({ modules, data, getUserModules, getUserOptions }) => {
+const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setModulesPrice }) => {
   const breakpoints = useBreakpoint();
   const baseModulePrice = modules?.[0].price
     ? +modules[0].price.replace(/[KК]/, '000')
@@ -185,11 +185,11 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions }) => 
   const baseModuleSquare = modules?.[0].square
   ? +modules[0].square
   : 0;
-  const baseModuleOptions = modules?.[0].module_options
-  ? modules[0].module_options
-  : 'no options';
+  // const baseModuleOptions = modules?.[0].module_options
+  // ? modules[0].module_options
+  // : 'no options';
 
-  const [modulePrice, setModulePrice] = useState(baseModulePrice);
+  // const [modulePrice, setModulePrice] = useState(baseModulePrice);
   const [moduleSquare, setModuleSquare] = useState(baseModuleSquare);
 
   const classes = useStyles();
@@ -243,7 +243,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions }) => 
     })
     console.log('modulesOptions',modulesOptions)
 
-    setModulePrice(price);
+    setModulesPrice(price);
     setModuleSquare(squareSum)
     getUserModules(mudules);
     getUserOptions(modulesOptions);
@@ -375,9 +375,9 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions }) => 
         })}
 
         <Box className={classes.calculationResultBox}>
-          <Typography variant='h6' className={classes.squaresSum}>
+          {/* <Typography variant='h6' className={classes.squaresSum}>
           <span>{`${moduleSquare.toFixed(2)} м²`}</span>
-          </Typography>
+          </Typography> */}
           <Box
             className={classes.calculationResult}
             style={
@@ -385,10 +385,11 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions }) => 
             }
           >
             <Typography variant='h6' component='p'>
-              ЦЕНА
+              Площадь
             </Typography>
-            <Typography variant='caption'>
-              {`$${numberWithSpace(modulePrice.toFixed())}`}
+            <Typography variant='h6'>
+              {/* {`$${numberWithSpace(modulePrice.toFixed())}`} */}
+              {`${moduleSquare.toFixed(2)} м²`}
             </Typography>
           </Box>
         </Box>
