@@ -477,6 +477,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   housesBox: {
+    display:'none',
     width: '100%',
     '&>div>div':{
       marginTop:'15px',

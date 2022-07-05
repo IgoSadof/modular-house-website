@@ -95,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   RightColumnBox: {
+    display:'none',
     width: '60%',
     display: 'flex',
     [theme.breakpoints.down('md')]: {
