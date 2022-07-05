@@ -208,9 +208,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: '90px',
     display: 'flex',
+    display: 'none',
     '& > * + * ': {
       marginLeft: '100px',
-      display: 'none',
     },
     '@media (min-width:1921px)': {
       // marginTop: 'calc(90px + 1.4vw + 0.4vw)',
