@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OptionsTable = ({ houseOptions, houseNumber, getOptions }) => {
+const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) => {
   const breakpoints = useBreakpoint();
   const [currentOption, setCheckboxesCheck] = useState({});
 
@@ -385,7 +385,7 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions }) => {
               ЦЕНА
             </Typography>
             <Typography variant='caption' className={classes.textPriceValue}>
-              ${numberWithSpace((+price).toFixed())}
+              ${numberWithSpace(((+price)+ +modulesPrice).toFixed())}
             </Typography>
           </Box>
         </Box>

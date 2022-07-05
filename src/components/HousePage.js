@@ -366,10 +366,15 @@ const HousePage = ({ house, data }) => {
   ? dataHouses[houseNumber].modules?.[0].module_options
   : [];
   const [userModuleList, setUserModuleList] = useState([baseModule]);
-
-
+  const modules = dataHouses[houseNumber].modules.filter(
+    (item) => item.published
+  );
+  const baseModulePrice = modules?.[0].price
+    ? +modules[0].price.replace(/[KК]/, '000')
+    : 0;
 
   const [userOptions, setUserOptions] = useState([]);
+  const [modulesPrice, setModulesPrice] = useState(baseModulePrice);
   const [modulesOptions, setModulesOptions] = useState(baseModuleOptions);
   const modulesCounts = dataHouses[houseNumber].modules?.filter(
     (item) => item.video
@@ -448,12 +453,8 @@ const HousePage = ({ house, data }) => {
     userModuleList: userModuleList,
     options: userOptions,
   };
-  console.log(userOptions)
 
   const modelViwerRef = useRef();
-  const modules = dataHouses[houseNumber].modules.filter(
-    (item) => item.published
-  );
   const options = dataHouses[houseNumber].options.filter(
     (item) => item.published
   );
@@ -623,6 +624,7 @@ const HousePage = ({ house, data }) => {
           getUserModules={getUserModules}
           getUserOptions={getModulesOptions}
           data={data}
+          setModulesPrice={setModulesPrice}
         ></CalculationBlock>
       </Box>
 
@@ -632,6 +634,7 @@ const HousePage = ({ house, data }) => {
             getOptions={getUserOptions}
             houseNumber={houseNumber}
             houseOptions={modulesOptions}
+            modulesPrice={modulesPrice}
           />
         </Box>
       ) : null}
