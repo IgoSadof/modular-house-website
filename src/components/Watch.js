@@ -205,10 +205,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   calendarFormBox: {
-    display:'none!important',
     width: '100%',
     marginTop: '90px',
     display: 'flex',
+    display: 'none',
     '& > * + * ': {
       marginLeft: '100px',
     },
