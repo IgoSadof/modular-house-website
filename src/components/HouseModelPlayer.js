@@ -101,7 +101,6 @@ const HouseModelPlayer = ({ video, keyId }) => {
     let video = playerBoxRef.current?.children[0]?.children[0];
     if (video) {
       video.setAttribute('mutted', true);
-      video.setAttribute('autoplay', autoplay);
       video.setAttribute('key', keyId);
     }
   }, [keyId, playerRef]);
@@ -126,6 +125,7 @@ const HouseModelPlayer = ({ video, keyId }) => {
               playing={false}
               progressInterval={10}
               muted={true}
+              autoplay={autoplay}
             />
           </Box>
           <Box className={classes.SliderBox}>
