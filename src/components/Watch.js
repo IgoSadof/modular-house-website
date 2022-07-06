@@ -487,6 +487,9 @@ const useStyles = makeStyles((theme) => ({
       },
     }
   },
+  formBlock: {
+    width: '100%',
+  },
 }));
 
 const Watch = ({ data }) => {
