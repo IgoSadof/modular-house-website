@@ -488,7 +488,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   formBlock: {
-    width: '100%',
+    '& > div': {
+      width: '100%',
+    },
   },
 }));
 
