@@ -487,10 +487,10 @@ const useStyles = makeStyles((theme) => ({
       },
     }
   },
-  formBlock: {
+  formSection: {
     '& > div > div': {
       width: '100%',
-    },
+    }
   },
 
 }));
@@ -715,7 +715,7 @@ const Watch = ({ data }) => {
           rightColumnContent={breakpoints.md ? null : <></>}
         ></ContentBlock>
       </Box>
-      <Box className={classes.formBlock}>
+      <Box className={classes.formSection}>
         <ContentBlock
           blockRef={formBlock}
           mb={
