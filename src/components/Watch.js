@@ -725,6 +725,8 @@ const Watch = ({ data }) => {
                 </Typography>
               </Box>
 
+              <a target="_blank" class="btn" href="https://docs.google.com/forms/d/1UotUJofh3sYbDDQdI8MeIdQL28Uq0WfPY4uoieq26M4/viewform?edit_requested=true">ПРЕДЗАПИСЬ</a><br/>
+
               <Box className={classes.subtitleBox}>
                 <Typography variant='body1'>
                   {pageData.arenda_invite_text}

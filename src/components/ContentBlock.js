@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '100px',
     flexDirection: 'column',
     flexShrink: '0',
+    width: '100%!important',
     '@media (min-width:1921px)': {
       '& > * + * ': {
         marginTop: (param) => (param.title ? '60px' : '0'),

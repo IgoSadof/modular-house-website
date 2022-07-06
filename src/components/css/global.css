@@ -233,6 +233,27 @@ abbr {
   color: #F2F2F2;
 }
 
+.btn{
+  color: rgb(242, 242, 242);
+  border-color: rgb(79, 79, 79);
+  background-color: rgb(79, 79, 79);
+  cursor: pointer;
+  height: 38px;
+  padding: 12px 30px;
+  font-size: 14px;
+  min-width: 152px;
+  box-shadow: none;
+  font-weight: 400;
+  line-height: 1;
+  border-radius: 0;
+  letter-spacing: 0.015em;
+  pointer-events: visible;
+  text-transform: uppercase;
+}
+.btn:hover{
+  filter: brightness(1.2);
+}
+
 .unAnableDate {
   position: relative;
   pointer-events: none;
