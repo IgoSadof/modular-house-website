@@ -488,7 +488,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   formSection: {
-    '& > div > div': {
+    '& > section > div': {
       width: '100%',
     }
   },
