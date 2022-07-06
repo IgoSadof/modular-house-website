@@ -487,11 +487,12 @@ const useStyles = makeStyles((theme) => ({
       },
     }
   },
-  Block: {
+  formBlock: {
     '& > div': {
       width: '100%',
     },
   },
+
 }));
 
 const Watch = ({ data }) => {
@@ -714,156 +715,156 @@ const Watch = ({ data }) => {
           rightColumnContent={breakpoints.md ? null : <></>}
         ></ContentBlock>
       </Box>
-
-      <ContentBlock
-        blockRef={formBlock}
-        mb={
-          pageData.arenda_video ? '100px' : breakpoints.xxl ? '4.2vw' : '100px'
-        }
-        title={pageData.arenda_invite_title}
-        leftColumnContent={
-          <>
-            <Box className={classes.textBlock}>
-              <Box className={classes.inviteTitleBox}>
-                <Typography variant='h4'>
-                  <span>{pageData.arenda_invite_subtitle}</span>
-                </Typography>
-              </Box>
-              
-              <Box className={classes.subtitleBox}>
-                <Typography variant='body1'>
-                  {pageData.arenda_invite_text}
-                </Typography>
-              </Box>
-              <br/>
-              <a target="_blank" class="btn" href="https://docs.google.com/forms/d/1UotUJofh3sYbDDQdI8MeIdQL28Uq0WfPY4uoieq26M4/viewform?edit_requested=true">ПРЕДЗАПИСЬ</a>
-              <br/>
-              <Box className={classes.housesBox}>
-                <FormControl>
-                  {/* <FormLabel id='demo-row-radio-buttons-group-label'>
-                    Gender
-                  </FormLabel> */}
-                  <RadioGroup
-                    row
-                    aria-labelledby='demo-row-radio-buttons-group-label'
-                    name='row-radio-buttons-group'
-                    defaultValue='0'
-                    onChange={handleRadioChange}
-                  >
-                    {pageData.arenda_houses
-                      .filter((item) => item.published)
-                      .map((house, index) => {
-                        return (
-                          <FormControlLabel
-                            value={`${index}`}
-                            control={<Radio color="default" />}
-                            label={house.name}
-                          />
-                        );
-                      })}
-                  </RadioGroup>
-                </FormControl>
-              </Box>
-            </Box>
-            <Box className={classes.instaBox}>
-              <Typography variant='body1' className={classes.instaText}>
-                Больше про нашу локацию в сети Instagram:
-              </Typography>
-              <Box className={classes.instaContent}>
-                <a
-                  target='_blank'
-                  rel='noreferrer'
-                  className={classes.Link}
-                  href={pageData.arenda_insta_url}
-                >
-                  <Instagram
-                    width={breakpoints.xxl ? '0.9vw' : 14}
-                    height={breakpoints.xxl ? '0.9vw' : 14}
-                  />
-                  <Typography variant='body1' className={classes.instaName}>
-                    {pageData.arenda_insta_title}
+      <Box className={classes.formBlock}>
+        <ContentBlock
+          blockRef={formBlock}
+          mb={
+            pageData.arenda_video ? '100px' : breakpoints.xxl ? '4.2vw' : '100px'
+          }
+          title={pageData.arenda_invite_title}
+          leftColumnContent={
+            <>
+              <Box className={classes.textBlock}>
+                <Box className={classes.inviteTitleBox}>
+                  <Typography variant='h4'>
+                    <span>{pageData.arenda_invite_subtitle}</span>
                   </Typography>
-                </a>
+                </Box>
+                
+                <Box className={classes.subtitleBox}>
+                  <Typography variant='body1'>
+                    {pageData.arenda_invite_text}
+                  </Typography>
+                </Box>
+                <br/>
+                <a target="_blank" class="btn" href="https://docs.google.com/forms/d/1UotUJofh3sYbDDQdI8MeIdQL28Uq0WfPY4uoieq26M4/viewform?edit_requested=true">ПРЕДЗАПИСЬ</a>
+                <br/>
+                <Box className={classes.housesBox}>
+                  <FormControl>
+                    {/* <FormLabel id='demo-row-radio-buttons-group-label'>
+                      Gender
+                    </FormLabel> */}
+                    <RadioGroup
+                      row
+                      aria-labelledby='demo-row-radio-buttons-group-label'
+                      name='row-radio-buttons-group'
+                      defaultValue='0'
+                      onChange={handleRadioChange}
+                    >
+                      {pageData.arenda_houses
+                        .filter((item) => item.published)
+                        .map((house, index) => {
+                          return (
+                            <FormControlLabel
+                              value={`${index}`}
+                              control={<Radio color="default" />}
+                              label={house.name}
+                            />
+                          );
+                        })}
+                    </RadioGroup>
+                  </FormControl>
+                </Box>
+              </Box>
+              <Box className={classes.instaBox}>
+                <Typography variant='body1' className={classes.instaText}>
+                  Больше про нашу локацию в сети Instagram:
+                </Typography>
+                <Box className={classes.instaContent}>
+                  <a
+                    target='_blank'
+                    rel='noreferrer'
+                    className={classes.Link}
+                    href={pageData.arenda_insta_url}
+                  >
+                    <Instagram
+                      width={breakpoints.xxl ? '0.9vw' : 14}
+                      height={breakpoints.xxl ? '0.9vw' : 14}
+                    />
+                    <Typography variant='body1' className={classes.instaName}>
+                      {pageData.arenda_insta_title}
+                    </Typography>
+                  </a>
+                </Box>
+              </Box>
+            </>
+          }
+          rightColumnContent={
+            <Box className={classes.calendarFormBox}>
+              <Box className={classes.calendar}>
+                <Typography
+                  className={classes.calendarDesc}
+                  component='p'
+                  variant='body1'
+                >
+                  Выберите планируемые и свободные для проживания даты
+                </Typography>
+                <MyCalendar
+                  unavailableDates={pageData.arenda_houses[selectHouse].house_calendar}
+                  getUnavailableDates={getUnavailableDates}
+                  setSelectDate={(date) => {
+                    setSelectDate(date);
+                  }}
+                />
+              </Box>
+              <Box className={classes.formBox}>
+                <Box className={classes.optionsBox}>
+                  {pageData.arenda_options
+                    .filter((item) => item.published)
+                    .map((item, index) =>
+                      item.active ? (
+                        <FormControlLabel
+                          key={index}
+                          onChange={handleChangeCheckbox}
+                          name={item.name}
+                          value={1}
+                          control={<Checkbox color='primary' />}
+                          labelPlacement='end'
+                          label={
+                            <Typography
+                              className={classes.optionsName}
+                              component='p'
+                              variant='subtitle1'
+                            >
+                              + {item.name}
+                            </Typography>
+                          }
+                        />
+                      ) : (
+                        <FormControlLabel
+                          key={index}
+                          onChange={handleChangeCheckbox}
+                          disabled
+                          name={item.name}
+                          value={1}
+                          control={<Checkbox color='primary' />}
+                          labelPlacement='end'
+                          label={
+                            <Typography
+                              className={classes.optionsName}
+                              component='p'
+                              variant='subtitle1'
+                            >
+                              + {item.name}
+                            </Typography>
+                          }
+                        />
+                      )
+                    )}
+                </Box>
+                <Form
+                  data={data}
+                  endpoint={'https://formspree.io/f/mzbokwwy'}
+                  extraFormFields={{ date: selectDate, currentOption,house: pageData.arenda_houses[selectHouse].name }}
+                  arenda={true}
+                  sendDate={selectDate}
+                  buttonText='бронировать'
+                />
               </Box>
             </Box>
-          </>
-        }
-        rightColumnContent={
-          <Box className={classes.calendarFormBox}>
-            <Box className={classes.calendar}>
-              <Typography
-                className={classes.calendarDesc}
-                component='p'
-                variant='body1'
-              >
-                Выберите планируемые и свободные для проживания даты
-              </Typography>
-              <MyCalendar
-                unavailableDates={pageData.arenda_houses[selectHouse].house_calendar}
-                getUnavailableDates={getUnavailableDates}
-                setSelectDate={(date) => {
-                  setSelectDate(date);
-                }}
-              />
-            </Box>
-            <Box className={classes.formBox}>
-              <Box className={classes.optionsBox}>
-                {pageData.arenda_options
-                  .filter((item) => item.published)
-                  .map((item, index) =>
-                    item.active ? (
-                      <FormControlLabel
-                        key={index}
-                        onChange={handleChangeCheckbox}
-                        name={item.name}
-                        value={1}
-                        control={<Checkbox color='primary' />}
-                        labelPlacement='end'
-                        label={
-                          <Typography
-                            className={classes.optionsName}
-                            component='p'
-                            variant='subtitle1'
-                          >
-                            + {item.name}
-                          </Typography>
-                        }
-                      />
-                    ) : (
-                      <FormControlLabel
-                        key={index}
-                        onChange={handleChangeCheckbox}
-                        disabled
-                        name={item.name}
-                        value={1}
-                        control={<Checkbox color='primary' />}
-                        labelPlacement='end'
-                        label={
-                          <Typography
-                            className={classes.optionsName}
-                            component='p'
-                            variant='subtitle1'
-                          >
-                            + {item.name}
-                          </Typography>
-                        }
-                      />
-                    )
-                  )}
-              </Box>
-              <Form
-                data={data}
-                endpoint={'https://formspree.io/f/mzbokwwy'}
-                extraFormFields={{ date: selectDate, currentOption,house: pageData.arenda_houses[selectHouse].name }}
-                arenda={true}
-                sendDate={selectDate}
-                buttonText='бронировать'
-              />
-            </Box>
-          </Box>
-        }
-      ></ContentBlock>
-
+          }
+        ></ContentBlock>
+      </Box>
       <Box component='div' className={classes.instaBox2}>
         <Box className={classes.instaBox}>
           <Typography variant='body1' className={classes.instaText}>
