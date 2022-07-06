@@ -8,7 +8,6 @@ import numberWithSpace from '../utils/numberWithSpace';
 import Checkbox from '@material-ui/core/Checkbox';
 import validateText from '../utils/validateText';
 
-
 const useStyles = makeStyles((theme) => ({
   conteiner: {
     display: 'flex',
@@ -49,14 +48,14 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1920px)': {
       width: '30%',
     },
-    '& p':{
-      lineHeight:'1.2',
+    '& p': {
+      lineHeight: '1.2',
     },
-    '& p>span':{
-      fontSize:'14px',
-      display:'block',
+    '& p>span': {
+      fontSize: '14px',
+      display: 'block',
       '@media (min-width:1921px)': {
-        fontSize:'0.73vw',
+        fontSize: '0.73vw',
       },
     },
   },
@@ -80,12 +79,12 @@ const useStyles = makeStyles((theme) => ({
   lastRow: {
     display: 'flex',
     width: '100%',
-    '& > * + * ':{
-      marginLeft:'60px'
+    '& > * + * ': {
+      marginLeft: '60px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ':{
-        marginLeft:'4.2vw'
+      '& > * + * ': {
+        marginLeft: '4.2vw',
       },
     },
   },
@@ -132,17 +131,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    '& > * + * ':{
-      marginLeft:'20px'
+    '& > * + * ': {
+      marginLeft: '20px',
     },
     [theme.breakpoints.down('md')]: {
-      '& > * + * ':{
-        marginLeft:'-12px',
+      '& > * + * ': {
+        marginLeft: '-12px',
       },
       '&:last-of-type': {
         flexDirection: 'column',
         alignItems: 'flex-start',
-        marginTop:'16px',
+        marginTop: '16px',
       },
     },
   },
@@ -151,7 +150,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) => {
+const OptionsTable = ({
+  houseOptions,
+  houseNumber,
+  getOptions,
+  modulesPrice,
+}) => {
   const breakpoints = useBreakpoint();
   const [currentOption, setCheckboxesCheck] = useState({});
 
@@ -160,12 +164,12 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
     houseOptions?.forEach((item) => {
       options[item.name] = {
         name: item.option_poor_name,
-        price: item.option_poor_price,
+        price: 0,
       };
-    })
-    return options
+    });
+    return options;
   }, [houseOptions]);
-  
+
   const [price, setPrice] = useState(
     Object.keys(currentOption).length === 0
       ? '0'
@@ -176,21 +180,29 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
   );
 
   const handleChangeCheckbox = (event) => {
-    setCheckboxesCheck({
-      ...currentOption,
-      [event.target.name]: {
-        name: event.target.name,
-        price: event.target.value,
-      },
-    });
+    if (!event.target.checked) {
+      setCheckboxesCheck({
+        ...currentOption,
+        [event.target.name]: {
+          name: event.target.name,
+          price: 0,
+        },
+      });
+    } else {
+      setCheckboxesCheck({
+        ...currentOption,
+        [event.target.name]: {
+          name: event.target.name,
+          price: +event.target.value,
+        },
+      });
+    }
   };
   const param = { breakpoints, houseNumber };
   const classes = useStyles(param);
 
   useEffect(() => {
-    setCheckboxesCheck(options)
-    
-   
+    setCheckboxesCheck(options);
   }, [houseOptions]);
 
   useEffect(() => {
@@ -202,7 +214,7 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
             0
           );
     setPrice(sum);
-    getOptions(options)
+    getOptions(options);
   }, [currentOption]);
 
   return (
@@ -224,8 +236,8 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name]?.price ==
-                        item.option_poor_price
+                        +currentOption[item.name]?.price ===
+                        +item.option_poor_price
                           ? true
                           : false
                       }
@@ -235,13 +247,15 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                       label={
                         <Typography
                           style={
-                            currentOption[item.name]?.price ==
+                            +currentOption[item.name]?.price ===
                             item.option_poor_price
                               ? null
                               : { color: '#828282' }
                           }
                           variant='body1'
-                          dangerouslySetInnerHTML={{__html: `${validateText(item.option_poor_name)}`}}
+                          dangerouslySetInnerHTML={{
+                            __html: `${validateText(item.option_poor_name)}`,
+                          }}
                         >
                           {/* {item.option_poor_name} */}
                         </Typography>
@@ -254,8 +268,8 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                     <FormControlLabel
                       name={item.name}
                       checked={
-                        currentOption[item.name]?.price ==
-                        item.option_expensive_price
+                        +currentOption[item.name]?.price ===
+                        +item.option_expensive_price
                           ? true
                           : false
                       }
@@ -263,16 +277,19 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                       value={+item.option_expensive_price}
                       control={<Checkbox color='primary' />}
                       label={
-
                         <Typography
                           style={
-                            currentOption[item.name]?.price ==
-                            item.option_expensive_price
+                            +currentOption[item.name]?.price ===
+                            +item.option_expensive_price
                               ? null
                               : { color: '#828282' }
                           }
                           variant='body1'
-                          dangerouslySetInnerHTML={{__html: `${validateText(item.option_expensive_name)}`}}
+                          dangerouslySetInnerHTML={{
+                            __html: `${validateText(
+                              item.option_expensive_name
+                            )}`,
+                          }}
                         >
                           {/* {item.option_expensive_name} */}
                         </Typography>
@@ -286,7 +303,10 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                     align='right'
                   >
                     <Typography variant='h6' component='p'>
-                      + ${numberWithSpace((+currentOption[item.name]?.price).toFixed())}
+                      + $
+                      {numberWithSpace(
+                        (+currentOption[item.name]?.price).toFixed()
+                      )}
                     </Typography>
                   </td>
                 </tr>
@@ -305,7 +325,10 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                         className={classes.secondRadio}
                       >
                         <Typography variant='h6' component='p'>
-                          + ${numberWithSpace((+currentOption[item.name]?.price).toFixed())}
+                          + $
+                          {numberWithSpace(
+                            (+currentOption[item.name]?.price).toFixed()
+                          )}
                         </Typography>
                       </Box>
                     </Box>
@@ -313,8 +336,8 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                       <FormControlLabel
                         name={item.name}
                         checked={
-                          currentOption[item.name]?.price ==
-                          item.option_poor_price
+                          currentOption[item.name]?.price ===
+                          +item.option_poor_price
                             ? true
                             : false
                         }
@@ -324,13 +347,15 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                         label={
                           <Typography
                             style={
-                              currentOption[item.name]?.price ==
-                              item.option_poor_price
+                              currentOption[item.name]?.price ===
+                              +item.option_poor_price
                                 ? { color: '#4f4f4f' }
                                 : { color: '#828282' }
                             }
                             variant='body1'
-                            dangerouslySetInnerHTML={{__html: `${validateText(item.option_poor_name)}`}}
+                            dangerouslySetInnerHTML={{
+                              __html: `${validateText(item.option_poor_name)}`,
+                            }}
                           >
                             {/* {item.option_poor_name} */}
                           </Typography>
@@ -342,8 +367,8 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                         className={classes.secondRadio}
                         name={item.name}
                         checked={
-                          currentOption[item.name]?.price ==
-                          item.option_expensive_price
+                          currentOption[item.name]?.price ===
+                          +item.option_expensive_price
                             ? true
                             : false
                         }
@@ -353,15 +378,18 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
                         label={
                           <Typography
                             style={
-                              currentOption[item.name]?.price ==
-                              item.option_expensive_price
+                              currentOption[item.name]?.price ===
+                              +item.option_expensive_price
                                 ? { color: '#4f4f4f' }
                                 : { color: '#828282' }
                             }
                             variant='body1'
-                            dangerouslySetInnerHTML={{__html: `${validateText(item.option_expensive_name)}`}}
-                          >
-                          </Typography>
+                            dangerouslySetInnerHTML={{
+                              __html: `${validateText(
+                                item.option_expensive_name
+                              )}`,
+                            }}
+                          ></Typography>
                         }
                         labelPlacement='end'
                       />
@@ -385,7 +413,7 @@ const OptionsTable = ({ houseOptions, houseNumber, getOptions,modulesPrice }) =>
               ЦЕНА
             </Typography>
             <Typography variant='caption' className={classes.textPriceValue}>
-              ${numberWithSpace(((+price)+ +modulesPrice).toFixed())}
+              ${numberWithSpace((+price + +modulesPrice).toFixed())}
             </Typography>
           </Box>
         </Box>

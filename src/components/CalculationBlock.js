@@ -232,28 +232,37 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
       }
     });
     
-    // console.log(optionsList)
-
     let modulesOptions = [];
-
-    // console.log('modulesOptions',modulesOptions)
 
     optionsList.forEach(item=>{
       if(modulesOptions.find(option=>option.name === item.name)){
         let currentOption = modulesOptions.find(option=>option.name === item.name)
-        // console.log(currentOption)
+  
         currentOption.option_expensive_price = parseInt(currentOption.option_expensive_price) + +item.option_expensive_price;
         currentOption.option_poor_price = parseInt(currentOption.option_poor_price) + +item.option_poor_price;
       }else{
         modulesOptions.push(item)
       }
     })
-    console.log('modulesOptions',modulesOptions)
+    modulesOptions.forEach(item=>item.name = item.name.trim().toLowerCase())
+    let unicOpthions = [];
+    modulesOptions?.forEach((option) => {
+      if (unicOpthions.find((unicOption) => (unicOption.name === option.name))) {
+        let currentOption = unicOpthions.find((unicOption,index) => (unicOption.name = option.name))
+        currentOption.option_poor_price =
+          +currentOption.option_poor_price + +option.option_poor_price;
+          currentOption.option_expensive_price =
+          +currentOption.option_expensive_price + +option.option_expensive_price;
+      } else {
+        unicOpthions.push(option);
+      }
+    });
+
 
     setModulesPrice(price);
     setModuleSquare(squareSum)
     getUserModules(mudules);
-    getUserOptions(modulesOptions);
+    getUserOptions(unicOpthions);
     
 
     if (currentCheckbox === curentIndex) {
