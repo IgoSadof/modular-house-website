@@ -716,6 +716,7 @@ const Watch = ({ data }) => {
       </Box>
 
       <ContentBlock
+        className={classes.formBlock}
         blockRef={formBlock}
         mb={
           pageData.arenda_video ? '100px' : breakpoints.xxl ? '4.2vw' : '100px'
