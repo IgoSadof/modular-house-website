@@ -105,10 +105,6 @@ const HouseModelPlayer = ({ video, keyId }) => {
     }
   }, [keyId, playerRef]);
 
-  const onReady = React.useCallback(() => {
-    playerRef.current.seekTo(rangeValue,'fraction')
-  }, [playerRef.current,rangeValue]);
-
   return (
     <Box className={classes.content}>
       {!video ? (
@@ -125,10 +121,10 @@ const HouseModelPlayer = ({ video, keyId }) => {
               width='100%'
               url={video}
               fraction='true'
+              played={rangeValue}
               playing={false}
               progressInterval={10}
               muted={true}
-              onReady={onReady}
             />
           </Box>
           <Box className={classes.SliderBox}>
