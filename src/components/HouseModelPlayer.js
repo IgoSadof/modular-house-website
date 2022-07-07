@@ -129,6 +129,8 @@ const HouseModelPlayer = ({ video, keyId }) => {
               progressInterval={10}
               muted={true}
               onReady={onReady}
+              autoplay={true}
+              autoplaySpeed={3000}
             />
           </Box>
           <Box className={classes.SliderBox}>
