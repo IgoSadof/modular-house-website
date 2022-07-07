@@ -122,7 +122,7 @@ const HouseModelPlayer = ({ video, keyId }) => {
               url={video}
               fraction='true'
               played={rangeValue}
-              playing={false}
+              playing={true}
               progressInterval={10}
               muted={true}
             />
