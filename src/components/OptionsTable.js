@@ -153,6 +153,10 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'right',
       justifyContent: 'flex-end',
       color: 'rgb(130, 130, 130)',
+      [theme.breakpoints.down('md')]: {
+        width: '100%',
+        marginRight: '10%',
+      },
     },
   },
 }));
