@@ -415,6 +415,13 @@ const OptionsTable = ({
             <Typography variant='caption' className={classes.textPriceValue}>
               ${numberWithSpace((+price + +modulesPrice).toFixed())}
             </Typography>
+            <Typography
+              variant='body1'
+              component='p'
+              className={classes.textPrice}
+            >
+              * В стоимость не входит доставка и монтаж систем отопления.
+            </Typography>
           </Box>
         </Box>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}

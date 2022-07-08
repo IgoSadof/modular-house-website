@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
   calculationResultBox: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'end',
+    alignItems: 'flex-end',
   },
   calculationResult: {
     display: 'flex',
