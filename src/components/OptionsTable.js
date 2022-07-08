@@ -149,7 +149,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '0',
   },
   tableResultContentDop: {
-    textAlign: 'right',
+    '& p':{
+      textAlign: 'right',
+      justifyContent: 'flex-end',
+    },
   },
 }));
 
