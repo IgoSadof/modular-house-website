@@ -152,6 +152,7 @@ const useStyles = makeStyles((theme) => ({
     '& p':{
       textAlign: 'right',
       justifyContent: 'flex-end',
+      color: 'rgb(130, 130, 130)',
     },
   },
 }));
