@@ -415,6 +415,8 @@ const OptionsTable = ({
             <Typography variant='caption' className={classes.textPriceValue}>
               ${numberWithSpace((+price + +modulesPrice).toFixed())}
             </Typography>
+          </Box>
+          <Box className={classes.tableResultContentDop}>
             <Typography
               variant='body1'
               component='p'
