@@ -420,16 +420,16 @@ const OptionsTable = ({
             </Typography>
           </Box>
         </Box>
-        <Box className={classes.tableResultContentDop}>
-          <Typography
-            variant='body1'
-            component='p'
-            className={classes.textPrice}
-          >
-            * В стоимость не входит доставка и монтаж систем отопления.
-          </Typography>
-        </Box>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
+      </Box>
+      <Box className={classes.tableResultContentDop}>
+        <Typography
+          variant='body1'
+          component='p'
+          className={classes.textPrice}
+        >
+          * В стоимость не входит доставка и монтаж систем отопления.
+        </Typography>
       </Box>
     </div>
   );
