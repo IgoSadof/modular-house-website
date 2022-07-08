@@ -148,6 +148,9 @@ const useStyles = makeStyles((theme) => ({
   secondRadio: {
     marginRight: '0',
   },
+  tableResultContentDop: {
+    textAlign: 'right',
+  },
 }));
 
 const OptionsTable = ({
@@ -416,15 +419,15 @@ const OptionsTable = ({
               ${numberWithSpace((+price + +modulesPrice).toFixed())}
             </Typography>
           </Box>
-          <Box className={classes.tableResultContentDop}>
-            <Typography
-              variant='body1'
-              component='p'
-              className={classes.textPrice}
-            >
-              * В стоимость не входит доставка и монтаж систем отопления.
-            </Typography>
-          </Box>
+        </Box>
+        <Box className={classes.tableResultContentDop}>
+          <Typography
+            variant='body1'
+            component='p'
+            className={classes.textPrice}
+          >
+            * В стоимость не входит доставка и монтаж систем отопления.
+          </Typography>
         </Box>
         {/* <RegularButton variant="outlined">Скачать смету</RegularButton> */}
       </Box>
