@@ -151,13 +151,14 @@ const useStyles = makeStyles((theme) => ({
   tableResultContentDop: {
     width: '100%',
     justifyContent: 'flex-end',
-    [theme.breakpoints.down('md')]: {
-      width: '100%',
-      marginRight: '10%',
-    },
     '& p':{
       textAlign: 'right',
       color: 'rgb(130, 130, 130)',
+      justifyContent: 'flex-end',
+      [theme.breakpoints.down('md')]: {
+        marginLeft: '10%',
+        marginRight: '10%',
+      },
     },
   },
 }));
