@@ -175,7 +175,7 @@ const useStyles = makeStyles((theme) => ({
   },
   modelButton: {
     '&::before': {
-      content: '"Демонстрация в VR"',
+      content: '"Демонстрация в AR"',
       textTransform: 'uppercase',
       top: '-2px',
       display: 'inline-block',
