@@ -492,7 +492,7 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     }
   },
-  h1_watch: {
+  title: {
     '@media (min-width:1280px) and (max-width:1600px)': {
       width: '34vw',
     },
@@ -568,7 +568,6 @@ const Watch = ({ data }) => {
         enabled={false}
         oneButton={true}
         formBlock={formBlock}
-        className={classes.h1_watch}
       ></FullScreenHouseSlider>
 
       <Box className={classes.descBlock}>
