@@ -33,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
     },
+    '& h1': {
+      '@media (min-width:1280px) and (max-width:1600px)': {
+        width: '34vw',
+      },
+    },
   },
   imageSlider: {
     position: 'relative',
@@ -492,11 +497,6 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     }
   },
-  title: {
-    '@media (min-width:1280px) and (max-width:1600px)': {
-      width: '34vw',
-    },
-  }
 
 }));
 
