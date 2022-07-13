@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '40px',
     },
     '& h1': {
-      '@media (min-width:1280px) and (max-width:1600px)': {
+      '@media (min-width:1280px) and (max-width:1564px)': {
         width: '34vw',
       },
     },
