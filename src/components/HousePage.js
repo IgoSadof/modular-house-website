@@ -489,7 +489,7 @@ const HousePage = ({ house, data }) => {
   };
 
   const modelViwerRef = useRef();
-  const options = dataHouses[houseNumber].options.filter(
+  const options = dataHouses[houseNumber]?.options?.filter(
     (item) => item.published
   );
 
