@@ -484,7 +484,7 @@ const HousesList = ({ data }) => {
                 <Box className={classes.button}>
                   <Link
                     className={classes.Link}
-                    to={`model${dataHouses[house]['URL'].toUpperCase()}`}
+                    to={`model-${dataHouses[house]['URL']}`}
                     aria-label={`model ${item['URL']}`}
                   >
                     <RegularButton variant='outlined' lowerCase='true'>
@@ -643,7 +643,7 @@ const HousesList = ({ data }) => {
                   </Box>
                   <Link
                     className={classes.Link}
-                    to={`model${item.URL.toUpperCase()}`}
+                    to={`model${item.URL}`}
                   >
                     <RegularButton variant='outlined' lowerCase='true'>
                       Подробнее
