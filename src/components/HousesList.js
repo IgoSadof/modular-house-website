@@ -432,7 +432,7 @@ const HousesList = ({ data }) => {
                 ? `${classes.houseListNumber} ${classes.houseListActiveNumber}`
                 : classes.houseListNumber
             }
-          >{`${item.URL[0].toUpperCase()}`}</Typography>
+          >{`${item.code[6]}`}</Typography>
           {!breakpoints.md ? (
             !(activeSlide === index) ? (
               <>
@@ -802,7 +802,7 @@ const HousesList = ({ data }) => {
                 </Box>
                 <Link
                   className={classes.Link}
-                  to={`model${dataHouses[house]['URL'].toUpperCase()}`}
+                  to={`model${dataHouses[house]['URL']}`}
                 >
                   <RegularButton variant='outlined' lowerCase='true'>
                     Подробнее
