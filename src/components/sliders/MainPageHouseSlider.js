@@ -267,7 +267,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
             <Box className={classes.content}>
               <Link
                 className={classes.link}
-                to={`what-we-do/model${item.URL.toUpperCase()}`}
+                to={`what-we-do/model${item.URL}`}
                 onClick={handleClick}
                 aria-label={`model ${item.URL}`}
               >
