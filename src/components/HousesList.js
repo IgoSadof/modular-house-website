@@ -484,7 +484,7 @@ const HousesList = ({ data }) => {
                 <Box className={classes.button}>
                   <Link
                     className={classes.Link}
-                    to={`model-${dataHouses[house]['URL']}`}
+                    to={`model${dataHouses[house]['URL']}`}
                     aria-label={`model ${item['URL']}`}
                   >
                     <RegularButton variant='outlined' lowerCase='true'>
