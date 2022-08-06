@@ -57,7 +57,7 @@ export default function getHouses(data) {
       if (arr?.length > 0) {
         arr.forEach(
           (item) =>
-            (sum += +(item[field] ? item[field].replace('К', '000') : 0))
+            (sum += +(item[field] ? item[field].replace(',', '.') : 0))
         );
       }
       return sum.toFixed(2);
@@ -66,7 +66,7 @@ export default function getHouses(data) {
       if (arr?.length > 0) {
         let value = arr[0]?.[field];
         if (value) {
-          value = value.replace('К', '000');
+          value = value.replace(',', '.');
         }
         return value;
       }
