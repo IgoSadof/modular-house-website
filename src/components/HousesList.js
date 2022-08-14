@@ -84,9 +84,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     border: 'none',
     background: 'none',
-    outline:'none',
-    '& *':{
-      outline:'none'
+    outline: 'none',
+    '& *': {
+      outline: 'none',
     },
     [theme.breakpoints.down('md')]: {
       transform: 'scale(0.9)',
@@ -393,7 +393,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HousesList = ({ data }) => {
+const HousesList = ({ data, lang }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
 
   const breakpoints = useBreakpoint();
@@ -488,7 +488,7 @@ const HousesList = ({ data }) => {
                     aria-label={`model ${item['URL']}`}
                   >
                     <RegularButton variant='outlined' lowerCase='true'>
-                      Подробнее
+                      {lang === 'EN' ? 'More' : 'Подробнее'}
                     </RegularButton>
                   </Link>
                 </Box>
@@ -558,7 +558,7 @@ const HousesList = ({ data }) => {
                         variant='body1'
                         className={classes.houseDescSpecName}
                       >
-                        Общая площадь:
+                        {lang === 'EN' ? 'Total Area:' : 'Общая площадь:'}
                       </Typography>
                       <Box className={classes.houseDescSpecNumberBox}>
                         <Typography
@@ -575,7 +575,9 @@ const HousesList = ({ data }) => {
                         variant='body1'
                         className={classes.houseDescSpecName}
                       >
-                        Эффективная площадь:
+                        {lang === 'EN'
+                          ? 'Effective Area:'
+                          : 'Эффективная площадь:'}
                       </Typography>
                       <Box className={classes.houseDescSpecNumberBox}>
                         <Typography
@@ -596,7 +598,9 @@ const HousesList = ({ data }) => {
                         variant='body1'
                         className={classes.houseDescSpecName}
                       >
-                        Количество этажей:
+                        {lang === 'EN'
+                          ? 'Number of floors:'
+                          : 'Количество этажей:'}
                       </Typography>
                       <Box className={classes.houseDescSpecNumberBox}>
                         <Typography
@@ -641,12 +645,9 @@ const HousesList = ({ data }) => {
                         : null}
                     </Typography>
                   </Box>
-                  <Link
-                    className={classes.Link}
-                    to={`model${item.URL}`}
-                  >
+                  <Link className={classes.Link} to={`model${item.URL}`}>
                     <RegularButton variant='outlined' lowerCase='true'>
-                      Подробнее
+                      {lang === 'EN' ? 'More' : 'Подробнее'}
                     </RegularButton>
                   </Link>
                 </Box>
@@ -805,7 +806,7 @@ const HousesList = ({ data }) => {
                   to={`model${dataHouses[house]['URL']}`}
                 >
                   <RegularButton variant='outlined' lowerCase='true'>
-                    Подробнее
+                    {lang === 'EN' ? 'More' : 'Подробнее'}
                   </RegularButton>
                 </Link>
               </Box>

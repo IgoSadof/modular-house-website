@@ -389,7 +389,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HousePage = ({ house, data }) => {
+const HousePage = ({ house, data, lang }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
   const houseNumber = dataHouses.findIndex((item) => item.alias === house);
   const breakpoints = useBreakpoint();
@@ -512,6 +512,7 @@ const HousePage = ({ house, data }) => {
         data={data}
         pagination={true}
         middleIcon={true}
+        lang={lang}
       ></FullScreenHouseSlider>
 
       <Box components='section' className={classes.modelBlock}>
@@ -650,6 +651,7 @@ const HousePage = ({ house, data }) => {
         data={data}
         mobileButtons={true}
         autoSlidesPerView={true}
+        lang={lang}
       ></FullScreenHouseSlider>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
@@ -659,6 +661,7 @@ const HousePage = ({ house, data }) => {
           getUserOptions={getModulesOptions}
           data={data}
           setModulesPrice={setModulesPrice}
+          lang={lang}
         ></CalculationBlock>
       </Box>
 
@@ -669,6 +672,7 @@ const HousePage = ({ house, data }) => {
             houseNumber={houseNumber}
             houseOptions={modulesOptions}
             modulesPrice={modulesPrice}
+            lang={lang}
           />
         </Box>
       ) : null}
@@ -692,6 +696,7 @@ const HousePage = ({ house, data }) => {
               : null
           }
           formPosition='center'
+          lang={lang}
         />
       </Box>
     </Box>

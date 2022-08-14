@@ -133,6 +133,7 @@ const FormBlock = ({
   endpoint,
   extraFormFields,
   underLine,
+  lang,
 }) => {
   const param = { formPosition, blockPadding };
   const classes = useStyles(param);
@@ -157,6 +158,7 @@ const FormBlock = ({
                   email={email ? email : null}
                   text={text ? text : null}
                   id='formBlock'
+                  lang={lang} 
                 />
               </Box>
             </Box>
@@ -216,6 +218,7 @@ const FormBlock = ({
                   email={email ? email : null}
                   text={text ? text : null}
                   id='formBlock'
+                  lang={lang} 
                 />
               </Box>
             </Box>

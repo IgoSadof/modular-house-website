@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsBlock = ({ data, title, paddingBottom }) => {
+const ContactsBlock = ({ data, title, paddingBottom, lang }) => {
   const dataContacts = useMemo(
     () => getData(data.allMysqlContacts.nodes),
     [data]
@@ -105,7 +105,7 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
                 <TitleWithLine title={title} style={{ marginBottom: '60px' }} />
               ) : null}
 
-              <ContactsElement dataContacts={dataContacts} data={data} />
+              <ContactsElement dataContacts={dataContacts} data={data} lang={lang} />
             </Box>
           </Box>
 
@@ -125,9 +125,9 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
               className={classes.text}
               // style={{ marginBottom: '100px' }}
             >
-              Напишите нам
+              {lang === 'EN' ? 'Write to us' : 'Напишите нам'} 
             </Typography>
-            <Form email text main data={data} />
+            <Form email text main data={data} lang={lang} />
           </Box>
         </>
       ) : (
@@ -142,15 +142,15 @@ const ContactsBlock = ({ data, title, paddingBottom }) => {
             ) : null}
           </Box>
           <Box className={classes.BlockColumn}>
-            <ContactsElement dataContacts={dataContacts} data={data} />
+            <ContactsElement dataContacts={dataContacts} data={data} lang={lang}/>
             <Box className={classes.titleBox} style={{ marginTop: '60px' }}>
               <TitleWithLine
-                title={'Напишите нам'}
+                title={lang === 'EN' ? 'Write to us' : 'Напишите нам'} 
                 style={{ marginBottom: '20px' }}
                 longLine={true}
               />
             </Box>
-            <Form data={data} email text main id='ContactsBlock' />
+            <Form data={data} email text main lang={lang}  id='ContactsBlock' />
           </Box>
         </>
       )}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef,useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef,useLayoutEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -6,7 +6,6 @@ import ReactPlayer from 'react-player';
 import numbers from '../constant/numbers';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import getData from '../utils/getData';
 // import CircularProgress from '@material-ui/core/CircularProgress';
 import getPublicPath from '../utils/getPublicPath';
 import validateText from '../utils/validateText';
@@ -354,11 +353,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Slider = ({ scroll, isFirstEntry, data }) => {
-  const dataSlides = useMemo(
-    () => getData(data.allMysqlMainPage.nodes),
-    [data]
-  );
+const Slider = ({ scroll, isFirstEntry, data, mainPageData,}) => {
+
   const breakpoints = useBreakpoint();
   const baseLength = breakpoints.md ? 24 : 5.5;
   const [lineLength, setLineLength] = useState(baseLength);
@@ -460,7 +456,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
         <Box className={classes.textBlock}>
           <TransitionGroup className={classes.articleBox}>
             <CSSTransition
-              key={dataSlides.intro[activeNumb].MIGX_id}
+              key={mainPageData.intro[activeNumb].MIGX_id}
               in={opacity}
               appear={true}
               timeout={500}
@@ -473,20 +469,20 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   component='h1'
                   dangerouslySetInnerHTML={{
                     __html: `${validateText(
-                      dataSlides.intro[activeNumb].title
+                      mainPageData.intro[activeNumb].title
                     )}`,
                   }}
                 ></Typography>
 
                 <Box className={classes.icon}>
                   {activeNumb === 0 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[0].icon)} alt='icon'/>
+                    <img src={getPublicPath(data, mainPageData.intro[0].icon)} alt='icon'/>
                   ) : activeNumb === 1 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[1].icon)} alt='icon' />
+                    <img src={getPublicPath(data, mainPageData.intro[1].icon)} alt='icon' />
                   ) : activeNumb === 2 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[2].icon)} alt='icon' />
+                    <img src={getPublicPath(data, mainPageData.intro[2].icon)} alt='icon' />
                   ) : activeNumb === 3 ? (
-                    <img src={getPublicPath(data, dataSlides.intro[3].icon)} alt='icon' />
+                    <img src={getPublicPath(data, mainPageData.intro[3].icon)} alt='icon' />
                   ) : null}
                 </Box>
 
@@ -495,7 +491,7 @@ const Slider = ({ scroll, isFirstEntry, data }) => {
                   variant='body1'
                   component='p'
                 >
-                  {dataSlides.intro[activeNumb].text}
+                  {mainPageData.intro[activeNumb].text}
                 </Typography>
               </Box>
             </CSSTransition>

@@ -224,6 +224,7 @@ const FullScreenHouseSlider = ({
   oneButton,
   outSideButtons,
   formBlock,
+  lang
 }) => {
   const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
@@ -331,7 +332,7 @@ const FullScreenHouseSlider = ({
                 bdColor='#F2F2F2'
                 color='#F2F2F2'
               >
-                Узнать свободные даты
+                {lang === 'EN' ? 'Check available dates' : 'Узнать свободные даты'} 
               </RegularButton>
             ) : (
               <>

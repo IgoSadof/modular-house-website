@@ -220,7 +220,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsElement = ({ header, data, dataContacts }) => {
+const ContactsElement = ({ header, data, dataContacts, lang }) => {
   const breakpoints = useBreakpoint();
   const param = { breakpoints };
   const classes = useStyles(param);
@@ -321,7 +321,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                 variant='body1'
                 component='p'
               >
-                Отдел продаж:
+                {lang === 'EN' ? 'Sales department:' : 'Отдел продаж:'}
               </Typography>
               <Typography
                 className={classes.ContactsPhone}
@@ -337,7 +337,7 @@ const ContactsElement = ({ header, data, dataContacts }) => {
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  Инна
+                  {lang === 'EN' ? 'Inna' : 'Инна'}
                 </Typography>
               {/* ) : null} */}
             </Box>

@@ -54,9 +54,9 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1921px)': {
       padding: '3.5vw 0px 4.2vw',
     },
-    '$ a:focus-visible':{
-      outline:'none',
-      border:"1px solid"
+    '$ a:focus-visible': {
+      outline: 'none',
+      border: '1px solid',
     },
 
     [theme.breakpoints.down('md')]: {
@@ -73,12 +73,12 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     alignItems: 'center',
     cursor: 'pointer',
-    outline:'none',
+    outline: 'none',
     '& img': {
       width: '100%',
     },
-    '&:focus-visible, &:visited, &:active':{
-      outline:'none',
+    '&:focus-visible, &:visited, &:active': {
+      outline: 'none',
     },
   },
   iconsBox: {
@@ -169,27 +169,22 @@ const useStyles = makeStyles((theme) => ({
   Link: {
     color: 'black',
     textDecoration: 'none',
-    outline:'none',
+    outline: 'none',
     '&:hover': {
       color: 'black',
     },
-    '&:focus-visible, &:visited, &:active':{
-      outline:'none',
+    '&:focus-visible, &:visited, &:active': {
+      outline: 'none',
     },
   },
   menuFooter: {
     width: '100%',
     display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
     '& span': {
       fontWeight: '500',
-    },
-    height: '56px',
-    '@media (min-width:1921px)': {
-      height: '2.91vw',
-    },
-    [theme.breakpoints.down('md')]: {
-      height: 'auto',
       justifyContent: 'space-between',
       '@media (orientation: landscape)': {
         marginBottom: '40px',
@@ -206,9 +201,26 @@ const useStyles = makeStyles((theme) => ({
   show: {
     opacity: '1',
   },
+  lang: {
+    display: 'flex',
+    marginTop:'10px',
+    top: '85vh',
+    right: '10%',
+    zIndex: '3',
+    '& > * + * ': {
+      marginLeft: '10px',
+    },
+  },
+  langText: {
+    cursor: 'pointer',
+    color: '#828282',
+  },
+  langTextActive: {
+    color: '#333',
+  },
 }));
 
-const Menu = ({ data, inBurger, clickToOpenForm }) => {
+const Menu = ({ data, inBurger, clickToOpenForm, lang, toggleLang }) => {
   const menuData = useMemo(
     () =>
       data.allMysqlMenu.nodes
@@ -217,7 +229,6 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
     [data]
   );
   const [isItemFocused, setIsItemFocused] = useState(false);
-  // console.log(menuData);
   const breakpoints = useBreakpoint();
   const param = { inBurger };
   const classes = useStyles(param);
@@ -227,6 +238,9 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
   const handleItemUnFocus = () => {
     setIsItemFocused(false);
   };
+  const handleLangClick = (e, lang) =>{
+    toggleLang(lang)
+  }
 
   return (
     <Box component='nav' className={classes.menu}>
@@ -245,7 +259,7 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
               isItemFocused ? `${classes.text} ${classes.hide}` : classes.text
             }
           >
-            Меню
+            {lang === 'EN' ? 'Menu' : 'Меню'}
           </Typography>
         </>
       )}
@@ -272,7 +286,7 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
       <Box className={classes.menuFooter}>
         {inBurger ? (
           <RegularButton variant='outlined' click={clickToOpenForm}>
-            СВЯЗАТЬСЯ
+            {lang === 'EN' ? 'CONNECT' : 'СВЯЗАТЬСЯ'}
           </RegularButton>
         ) : null}
         <Box className={classes.iconsBox}>
@@ -309,6 +323,32 @@ const Menu = ({ data, inBurger, clickToOpenForm }) => {
               height={breakpoints.xxl ? '0.9vw' : 14}
             />
           </a>
+        </Box>
+        <Box className={classes.lang}>
+          <Typography
+            onClick={(e)=>handleLangClick(e,'RU')}
+            className={
+              lang === 'RU'
+                ? `${classes.langText} ${classes.langTextActive}`
+                : `${classes.langText}`
+            }
+            variant='h3'
+            component='p'
+          >
+            RU
+          </Typography>
+          <Typography
+            onClick={(e)=>handleLangClick(e,'EN')}
+            className={
+              lang === 'EN'
+                ? `${classes.langText} ${classes.langTextActive}`
+                : `${classes.langText}`
+            }
+            variant='h3'
+            component='p'
+          >
+            EN
+          </Typography>
         </Box>
       </Box>
     </Box>

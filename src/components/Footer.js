@@ -30,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Footer = () => {
+const Footer = ({lang}) => {
   const classes = useStyles();
 
   return (
     <Box component='footer' className={classes.root}>
       <Typography className={classes.text}>
-      {`© ${new Date().getUTCFullYear()} | ООО "Арт-студия "Зробим" `}
+      {`© ${new Date().getUTCFullYear()} | ${lang === 'EN' ? 'LLC "Art-studio "Zrobim"' : 'ООО "Арт-студия "Зробим"'} `}
       </Typography>
     </Box>
   );

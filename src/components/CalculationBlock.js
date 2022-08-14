@@ -184,7 +184,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setModulesPrice }) => {
+const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setModulesPrice, lang }) => {
   const breakpoints = useBreakpoint();
   const baseModulePrice = modules?.[0].price
     ? +modules[0].price.replace(/[KК]/, '000')
@@ -290,7 +290,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
     <>
       <Box className={classes.titleBox}>
         {breakpoints.md ? (
-          <TitleWithLine title={'Расчет стоимости'} />
+          <TitleWithLine title={lang === 'EN' ? 'Cost calculation' : 'Расчет стоимости'} />
         ) : (
           <span className={classes.line}></span>
         )}
@@ -298,7 +298,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
       <Box className={classes.calculationPlan}>
         {breakpoints.md ? null : (
           <Typography className={classes.text} variant='h2'>
-            Расчет стоимости
+            {lang === 'EN' ? 'Cost calculation' : 'Расчет стоимости'}
           </Typography>
         )}
         <Box className={classes.calculationPlanConteiner}>
@@ -401,7 +401,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
             }
           >
             <Typography variant='h6' component='p'>
-              Площадь
+            {lang === 'EN' ? 'SQUARE' : 'Площадь'}
             </Typography>
             <Typography variant='h6' className={classes.calculationResultDigit}>
               {/* {`$${numberWithSpace(modulePrice.toFixed())}`} */}

@@ -500,7 +500,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Watch = ({ data }) => {
+const Watch = ({ data, lang }) => {
   const breakpoints = useBreakpoint();
   const [openModal, setOpenModal] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
@@ -568,6 +568,7 @@ const Watch = ({ data }) => {
         enabled={false}
         oneButton={true}
         formBlock={formBlock}
+        lang={lang}
       ></FullScreenHouseSlider>
 
       <Box className={classes.descBlock}>
@@ -599,6 +600,7 @@ const Watch = ({ data }) => {
                 mobileButtons={false}
                 sidesDesctopButtons={true}
                 initialSlide={activeImg}
+                lang={lang}
               ></FullScreenHouseSlider>
             </ModalScreen>
             <FullScreenHouseSlider
@@ -611,6 +613,7 @@ const Watch = ({ data }) => {
               mobileButtons={true}
               sidesDesctopButtons={true}
               outSideButtons={true}
+              lang={lang}
             ></FullScreenHouseSlider>
           </Box>
         }
@@ -773,7 +776,7 @@ const Watch = ({ data }) => {
               </Box>
               <Box className={classes.instaBox}>
                 <Typography variant='body1' className={classes.instaText}>
-                  Больше про нашу локацию в сети Instagram:
+                {lang === 'EN' ? 'More about our location on Instagram:' : 'Больше про нашу локацию в сети Instagram:'}
                 </Typography>
                 <Box className={classes.instaContent}>
                   <a
@@ -802,7 +805,7 @@ const Watch = ({ data }) => {
                   component='p'
                   variant='body1'
                 >
-                  Выберите планируемые и свободные для проживания даты
+                  {lang === 'EN' ? 'Select planned and available dates for your stay' : 'Выберите планируемые и свободные для проживания даты'}
                 </Typography>
                 <MyCalendar
                   unavailableDates={pageData.arenda_houses[selectHouse].house_calendar}
@@ -864,6 +867,7 @@ const Watch = ({ data }) => {
                   arenda={true}
                   sendDate={selectDate}
                   buttonText='бронировать'
+                  lang={lang} 
                 />
               </Box>
             </Box>
@@ -873,7 +877,7 @@ const Watch = ({ data }) => {
       <Box component='div' className={classes.instaBox2}>
         <Box className={classes.instaBox}>
           <Typography variant='body1' className={classes.instaText}>
-            Больше про нашу локацию в сети Instagram:
+          {lang === 'EN' ? 'More about our location on Instagram:' : 'Больше про нашу локацию в сети Instagram:'}
           </Typography>
           <Box className={classes.instaContent}>
             <a

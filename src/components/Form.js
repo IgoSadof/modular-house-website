@@ -230,6 +230,7 @@ const Form = ({
   extraFormFields,
   sendDate,
   arenda,
+  lang,
 }) => {
   const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
@@ -340,7 +341,7 @@ const Form = ({
           <Typography variant='body1' className={classes.subtitle}>
             {typeof subtitle === 'string'
               ? subtitle
-              : 'Оставьте заявку и наш менеджер свяжеться с вами'}
+              : lang === 'EN' ? 'Leave a request and our manager will contact you' : 'Оставьте заявку и наш менеджер свяжеться с вами'}
           </Typography>
         ) : null}
       </Box>
@@ -362,7 +363,7 @@ const Form = ({
             required
             id={`name-${id ? id : '0'}`}
             name='name'
-            label={<Typography variant='body2'>Имя</Typography>}
+            label={<Typography variant='body2'>{lang === 'EN' ? 'Name' : 'Имя'}</Typography>}
           />
 
           {/* For ditection of bots */}
@@ -379,7 +380,7 @@ const Form = ({
             id={`phone-${id ? id : '0'}`}
             name='phone'
             type='tel'
-            label={<Typography variant='body2'>Телефон</Typography>}
+            label={<Typography variant='body2'>{lang === 'EN' ? 'Phone number' : 'Телефон'} </Typography>}
             // validators={["isNumber"]}
             // errorMessages={["telefon incorrect"]}
           />
@@ -404,7 +405,7 @@ const Form = ({
           <Box className={classes.messageBox}>
             <label htmlFor={`message-${id ? id : '0'}`}>
               <Box className={classes.messageLabelBox}>
-                <Typography variant='body2'>Сообщение...</Typography>
+                <Typography variant='body2'>{lang === 'EN' ? 'Message...' : 'Сообщение...'}</Typography>
                 <div>*</div>
               </Box>
 
@@ -423,7 +424,7 @@ const Form = ({
 
         <Box className={classes.button}>
           <RegularButton submit={true} variant='outlined' lowerCase={true}>
-            {buttonText ? buttonText : 'Отправить'}
+            {buttonText ? buttonText : lang === 'EN' ? 'Send' : 'Отправить'}
           </RegularButton>
           {inBurger ? (
             <RegularButton variant='outlined' click={closeForm}>
@@ -458,12 +459,12 @@ const Form = ({
                 <Typography>
                   {dataContacts.popup_title
                     ? dataContacts.popup_title
-                    : 'СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ'}
+                    : lang === 'EN' ? 'THANK YOU FOR USING OUR COMPANY SERVICES' : 'СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ'}
                 </Typography>
                 <Typography variant='body1'>
                   {dataContacts.popup_text
                     ? dataContacts.popup_text
-                    : 'Никто ни за что ответственность не несет'}
+                    : lang === 'EN' ? 'Nobody is responsible for anything' : 'Никто ни за что ответственность не несет'}
                 </Typography>
                 <Box className={classes.buttonBoxLeft}>
                   <RegularButton variant='outlined' click={handleClose}>

@@ -168,6 +168,7 @@ const OptionsTable = ({
   houseNumber,
   getOptions,
   modulesPrice,
+  lang
 }) => {
   const breakpoints = useBreakpoint();
   const [currentOption, setCheckboxesCheck] = useState({});
@@ -423,7 +424,7 @@ const OptionsTable = ({
               component='p'
               className={classes.textPrice}
             >
-              ЦЕНА
+              {lang === 'EN' ? 'Price' : 'ЦЕНА'}
             </Typography>
             <Typography variant='caption' className={classes.textPriceValue}>
               ${numberWithSpace((+price + +modulesPrice).toFixed())}

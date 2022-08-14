@@ -232,7 +232,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
   },
 }));
-const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
+const MainPageHouseSlider = ({ mobile, lang, data }) => {
   const dataHouses = useMemo(() => getHouses(data), [data]);
   const [swipe, setSwipe] = useState(false);
   const param = { mobile };
@@ -294,7 +294,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                     component="p"
                     className={classes.price}
                   >
-                    от{" "}
+                    {lang === 'EN' ? 'from': 'от' }{" "}
                     ${" "}
                     {numberWithSpace(Math.round((item.takeFromBaseModule(item.modules, "price") ??
                       100000)))}
@@ -309,7 +309,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         className={classes.propertyName}
                       >
                         {/* {item.totalAreaText} */}
-                        Общая площадь:
+                        {lang === 'EN' ? 'Total Area:': 'Общая площадь:' }
                       </Typography>
                       <Typography
                         variant="h6"
@@ -325,7 +325,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         className={classes.propertyName}
                       >
                         {/* {item.effectiveAreaText} */}
-                        Эффективная площадь:
+                        {lang === 'EN' ? 'Effective Area:': 'Эффективная площадь:' }
                       </Typography>
                       <Typography
                         variant="h6"
@@ -341,7 +341,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                         className={classes.propertyName}
                       >
                         {/* {item.baseModuleAreaText} */}
-                        Площадь базового дома:
+                        {lang === 'EN' ? 'Base house area:': 'Площадь базового дома:' }
                       </Typography>
                       <Typography
                         variant="h6"
@@ -362,7 +362,7 @@ const MainPageHouseSlider = ({ mobile, houseRef, data }) => {
                       variant="body1"
                       className={classes.propertyValue}
                     >
-                      Стадии роста:
+                      {lang === 'EN' ? 'Grow stage:': 'Стадии роста:' }
                     </Typography>
         
                     <Box className={classes.growStageIcon}>

@@ -1,11 +1,10 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import MainPageHouseSlider from './sliders/MainPageHouseSlider';
 import Accordions from './Accordion';
 import Form from '../components/Form';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import getData from '../utils/getData';
 import OneImageAutoSlider from './sliders/OneImageAutoSlider';
 import getPublicPath from '../utils/getPublicPath';
 import TitleWithLine from '../components/TitleWithLine';
@@ -109,7 +108,6 @@ const useStyles = makeStyles((theme) => ({
       '& > * + * ': {
         marginLeft: '1.4vw',
       },
-
     },
 
     [theme.breakpoints.down('md')]: {
@@ -122,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
       },
     },
-    "@media (max-width:400px)": {
+    '@media (max-width:400px)': {
       paddingLeft: '10px',
     },
   },
@@ -150,11 +148,11 @@ const useStyles = makeStyles((theme) => ({
   sliderBox: {
     width: '100%',
     overflowX: 'hidden',
-    '& img':{
-      pointerEvents:'visible',
+    '& img': {
+      pointerEvents: 'visible',
     },
-     "@media (max-width:400px)": {
-      width: "100%",
+    '@media (max-width:400px)': {
+      width: '100%',
     },
   },
 
@@ -168,29 +166,24 @@ const useStyles = makeStyles((theme) => ({
       margin: '80px 0 80px 0',
     },
   },
-  OneImageAutoSliderBox:{
-    width:'100%',
+  OneImageAutoSliderBox: {
+    width: '100%',
     minHeight: '600px',
     maxHeight: '80vh',
-    overflow:'hidden',
-    '& div':{
-      height:'100%',
-    }
+    overflow: 'hidden',
+    '& div': {
+      height: '100%',
+    },
   },
 }));
 
-const MainPageContent = ({ data }) => {
-  const dataMainPage = useMemo(
-    () => getData(data.allMysqlMainPage.nodes),
-    [data]
-  );
-  const reviews = dataMainPage.reviews.filter((item) => item.published);
-  const answers = dataMainPage.answers.filter((item) => item.published);
-
+const MainPageContent = ({ data, mainPageData, lang }) => {
+  const reviews = mainPageData.reviews.filter((item) => item.published);
+  const answers = mainPageData.answers.filter((item) => item.published);
   const breakpoints = useBreakpoint();
   const classes = useStyles();
   const houseSliderRef = useRef(null);
-  let slidesPath = [...dataMainPage['form-block-with-gallery'][0].gallery].map(
+  let slidesPath = [...mainPageData['form-block-with-gallery'][0].gallery].map(
     (item) => {
       if (item.published) {
         return item.image;
@@ -213,13 +206,14 @@ const MainPageContent = ({ data }) => {
             houseRef={houseSliderRef}
             mobile={breakpoints.md}
             data={data}
+            lang={lang}
           />
         </Box>
       </Box>
 
       {/* ПОДРОБНЕЕ */}
 
-      {dataMainPage.published_advantages ? (
+      {mainPageData.published_advantages ? (
         <Box
           component='section'
           className={
@@ -230,13 +224,13 @@ const MainPageContent = ({ data }) => {
         >
           <Box className={classes.titleBox}>
             <Box className={classes.BlockColumn}>
-              <TitleWithLine title={dataMainPage.title_advantages} />
+              <TitleWithLine title={mainPageData.title_advantages} />
             </Box>
           </Box>
 
           <Box className={classes.accordion}>
             <Advantages
-              arr={dataMainPage.advantages}
+              arr={mainPageData.advantages}
               title='advantages'
               data={data}
             ></Advantages>
@@ -247,17 +241,17 @@ const MainPageContent = ({ data }) => {
 
       {/* ОТЗЫВЫ */}
 
-      {dataMainPage.published_reviews ? (
+      {mainPageData.published_reviews ? (
         <ReviewsBlock
           data={data}
           reviews={reviews}
-          title={dataMainPage.title_reviews}
+          title={mainPageData.title_reviews}
         ></ReviewsBlock>
       ) : null}
 
       {/* ОТВЕТЫ */}
 
-      {dataMainPage.published_answers ? (
+      {mainPageData.published_answers ? (
         <Box
           component='section'
           className={
@@ -269,13 +263,13 @@ const MainPageContent = ({ data }) => {
           {breakpoints.md ? (
             <>
               <Box className={classes.titleBox}>
-                <TitleWithLine title={dataMainPage.title_answers} />
+                <TitleWithLine title={mainPageData.title_answers} />
               </Box>
             </>
           ) : (
             <Box className={classes.titleBox} style={{ minHeight: '224px' }}>
               <Box className={classes.BlockColumn}>
-                <TitleWithLine title={dataMainPage.title_answers} />
+                <TitleWithLine title={mainPageData.title_answers} />
               </Box>
             </Box>
           )}
@@ -292,7 +286,7 @@ const MainPageContent = ({ data }) => {
 
       {/* "ЭКСПОДОМ" */}
 
-      {dataMainPage['form-block-with-gallery'][0].published ? (
+      {mainPageData['form-block-with-gallery'][0].published ? (
         !breakpoints.md ? (
           <Box component='section' className={classes.Block}>
             <Box className={classes.titleBox}>
@@ -301,23 +295,26 @@ const MainPageContent = ({ data }) => {
                 style={{ justifyContent: 'start' }}
               >
                 <TitleWithLine
-                  title={dataMainPage['form-block-with-gallery'][0].header}
+                  title={mainPageData['form-block-with-gallery'][0].header}
                 />
                 <Box m='auto'>
                   <Form
                     data={data}
                     endpoint={'https://formspree.io/f/xyyovdpy'}
-                    title={dataMainPage['form-block-with-gallery'][0].title}
+                    title={mainPageData['form-block-with-gallery'][0].title}
                     subtitle={
-                      dataMainPage['form-block-with-gallery'][0].subtitle
+                      mainPageData['form-block-with-gallery'][0].subtitle
                     }
-                    buttonText='Записаться'
+                    buttonText={lang === 'EN' ? 'Enroll' : 'Записаться'}
+                    lang={lang} 
                   />
                 </Box>
               </Box>
             </Box>
-            
-            <Box className={classes.OneImageAutoSliderBox} ><OneImageAutoSlider slides={slides} /></Box>
+
+            <Box className={classes.OneImageAutoSliderBox}>
+              <OneImageAutoSlider slides={slides} />
+            </Box>
           </Box>
         ) : (
           <Box
@@ -327,7 +324,7 @@ const MainPageContent = ({ data }) => {
             <Box className={classes.titleBox}>
               <Box className={classes.BlockColumn}>
                 <TitleWithLine
-                  title={dataMainPage['form-block-with-gallery'][0].header}
+                  title={mainPageData['form-block-with-gallery'][0].header}
                   longLine={true}
                 />
               </Box>
@@ -337,8 +334,9 @@ const MainPageContent = ({ data }) => {
               <Box className={classes.FormBox}>
                 <Form
                   data={data}
-                  title={dataMainPage['form-block-with-gallery'][0].title}
-                  subtitle={dataMainPage['form-block-with-gallery'][0].subtitle}
+                  title={mainPageData['form-block-with-gallery'][0].title}
+                  subtitle={mainPageData['form-block-with-gallery'][0].subtitle}
+                  lang={lang} 
                 />
               </Box>
             </Box>
@@ -347,7 +345,7 @@ const MainPageContent = ({ data }) => {
       ) : null}
 
       <Box className={classes.ContactsBox}>
-        <ContactsBlock data={data} title='Контакты' paddingBottom />
+        <ContactsBlock data={data} title={lang === 'EN' ? 'Contacts' : 'Контакты'} paddingBottom lang={lang} />
       </Box>
     </Box>
   );

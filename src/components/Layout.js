@@ -19,9 +19,10 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import favicon from '../assets/images/favicon.ico';
 import Call from './svg/Call';
 import getBrouser from '../utils/getBrouser';
+import LangContext from '../context/LangContext';
 
-const dataToComponent = (WrappedComponent, currebtData, house) => {
-  return <WrappedComponent data={currebtData} house={house} />;
+const dataToComponent = (WrappedComponent, currebtData, house, lang) => {
+  return <WrappedComponent data={currebtData} house={house} lang={lang} />;
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -41,9 +42,9 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-height:600px)': {
       height: '100% !important',
     },
-    '& a':{
-      outline:'none',
-    }
+    '& a': {
+      outline: 'none',
+    },
   },
   conteiner: {
     position: 'relative',
@@ -184,6 +185,12 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
+      allMysqlMainPageEn {
+        nodes {
+          name
+          value
+        }
+      }
       allMysqlAboutUs {
         nodes {
           name
@@ -215,6 +222,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   `);
 
   const breakpoints = useBreakpoint();
+  // const [lang, setLang] = useState('RU');
 
   const param = { page, breakpoints };
   const classes = useStyles(param);
@@ -241,168 +249,206 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
     }
     open ? setIsFormOpen(true) : setIsFormOpen(false);
   };
-  const checkWindow = () => typeof window !== "undefined"
-  if(checkWindow()){
-    if(getBrouser(window).isSafari){
-      modularHouseTheme.palette.primary.fon =  modularHouseTheme.palette.primary.fonSafari
-    }else if(getBrouser(window).isYandex){
-      modularHouseTheme.palette.primary.fon =  modularHouseTheme.palette.primary.fonYandex
+  const checkWindow = () => typeof window !== 'undefined';
+  if (checkWindow()) {
+    if (getBrouser(window).isSafari) {
+      modularHouseTheme.palette.primary.fon =
+        modularHouseTheme.palette.primary.fonSafari;
+    } else if (getBrouser(window).isYandex) {
+      modularHouseTheme.palette.primary.fon =
+        modularHouseTheme.palette.primary.fonYandex;
     }
   }
   // console.log(modularHouseTheme.palette.primary.fon);
-
+  // const handleLangClick = (e, lang) => {
+  //   // setLang(lang);
+  // };
   return (
     <ThemeProvider theme={modularHouseTheme}>
-      <Helmet>
-        <html lang='ru' />
-        <title>
-          {pageTitle} | {data.site.siteMetadata.title}
-        </title>
-        <meta charSet='utf-8' />
-        <meta name='description' content='Moduls houses for living' />
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-        <link rel='shortcut icon' href={favicon} type='image/x-icon'></link>
-      </Helmet>
-      <Box
-        bgcolor='primary.fon'
-        position='relative'
-        className={classes.conteiner}
-      >
-        {breakpoints.isLoad ? (
+      <LangContext.Consumer>
+        {(lang) => (
           <>
-            <Menu data={data} />
-            <Box className='content'>
-              <Box className={classes.page}>
-                <Box
-                  className={
-                    page !== 'aboutUs' ? classes.BlockFullscreen : classes.Block
-                  }
-                >
-                  {breakpoints.md ? (
-                    <Burger
-                      click={handleClickConnect}
-                      page={page}
-                      position={
-                        page !== 'aboutUs' && page !== 'houseList'
-                          ? 'absolute'
-                          : 'relative'
-                      }
-                      color={
-                        page === 'watch' || page === 'house' ? 'white' : null
-                      }
-                    />
-                  ) : null}
-                  <div
-                    role='link'
-                    aria-label="Form's block"
-                    tabIndex='0'
-                    className={classes.ConnectBox}
-                    name='form'
-                    onClick={toggleDrawer(false)}
-                    onKeyDown={toggleDrawer(false)}
-                  >
-                    <React.Fragment>
-                      <Drawer
-                        hideBackdrop={true}
-                        anchor={'right'}
-                        open={isFormOpen}
-                        onClose={toggleDrawer(false)}
+            <Helmet>
+              <html lang={lang.lang === 'EN' ? 'en' : 'ru'} />
+              <title>
+                {pageTitle} | {data.site.siteMetadata.title}
+              </title>
+              <meta charSet='utf-8' />
+              <meta name='description' content='Moduls houses for living' />
+              <link rel='preconnect' href='https://fonts.googleapis.com' />
+              <link
+                rel='preconnect'
+                href='https://fonts.gstatic.com'
+                crossorigin
+              />
+              <link
+                rel='shortcut icon'
+                href={favicon}
+                type='image/x-icon'
+              ></link>
+            </Helmet>
+            <Box
+              bgcolor='primary.fon'
+              position='relative'
+              className={classes.conteiner}
+            >
+              {breakpoints.isLoad ? (
+                <>
+                  <Menu
+                    data={data}
+                    lang={lang.lang}
+                    toggleLang={lang.toggleLang}
+                  />
+                  <Box className='content'>
+                    <Box className={classes.page}>
+                      <Box
+                        className={
+                          page !== 'aboutUs'
+                            ? classes.BlockFullscreen
+                            : classes.Block
+                        }
                       >
-                        <Box className={classes.connectBox}>
-                          {!breakpoints.md ? (
-                            <>
-                              <Box className={classes.buttonBox}>
-                                <SquareButton
-                                  variant='outlined'
-                                  click={handleClickConnect}
-                                  icon={<ClearIcon />}
-                                />
+                        {breakpoints.md ? (
+                          <Burger
+                            click={handleClickConnect}
+                            page={page}
+                            position={
+                              page !== 'aboutUs' && page !== 'houseList'
+                                ? 'absolute'
+                                : 'relative'
+                            }
+                            color={
+                              page === 'watch' || page === 'house'
+                                ? 'white'
+                                : null
+                            }
+                          />
+                        ) : null}
+                        <div
+                          role='link'
+                          aria-label="Form's block"
+                          tabIndex='0'
+                          className={classes.ConnectBox}
+                          name='form'
+                          onClick={toggleDrawer(false)}
+                          onKeyDown={toggleDrawer(false)}
+                        >
+                          <React.Fragment>
+                            <Drawer
+                              hideBackdrop={true}
+                              anchor={'right'}
+                              open={isFormOpen}
+                              onClose={toggleDrawer(false)}
+                            >
+                              <Box className={classes.connectBox}>
+                                {!breakpoints.md ? (
+                                  <>
+                                    <Box className={classes.buttonBox}>
+                                      <SquareButton
+                                        variant='outlined'
+                                        click={handleClickConnect}
+                                        icon={<ClearIcon />}
+                                      />
+                                    </Box>
+                                    <Form
+                                      data={data}
+                                      title={
+                                        lang === 'EN'
+                                          ? 'WRITE TO US'
+                                          : ' НАПИШИТЕ НАМ'
+                                      }
+                                      email
+                                      text
+                                      closeForm={handleClickConnect}
+                                      inBurger={breakpoints.md ? true : false}
+                                      main
+                                      id='burgerForm'
+                                      lang={lang.lang}
+                                    />
+                                  </>
+                                ) : (
+                                  <>
+                                    <Burger
+                                      isOpen={true}
+                                      lang={lang.lang}
+                                      click={
+                                        breakpoints.md
+                                          ? () => handleClickConnect()
+                                          : null
+                                      }
+                                    />
+                                    {!isBurgerMenuOpen ? (
+                                      <Box className={classes.menuBox}>
+                                        <Menu
+                                          inBurger={true}
+                                          clickToOpenForm={handleOpenBurgerMenu}
+                                          data={data}
+                                          toggleLang={lang.toggleLang}
+                                          lang={lang.lang}
+                                        />
+                                      </Box>
+                                    ) : (
+                                      <>
+                                        <Box className={classes.callBox}>
+                                          <Typography
+                                            variant='h6'
+                                            component='p'
+                                          >
+                                            Позвонить
+                                          </Typography>
+                                          <a href='tel:+375447702236'>
+                                            <Call />
+                                          </a>
+                                        </Box>
+                                        <Form
+                                          data={data}
+                                          title={'напишите нам'}
+                                          email
+                                          text
+                                          closeForm={handleOpenBurgerMenu}
+                                          inBurger={true}
+                                          main
+                                          id='burgerForm'
+                                          lang={lang.lang}
+                                        />
+                                      </>
+                                    )}
+                                  </>
+                                )}
                               </Box>
-                              <Form
-                                data={data}
-                                title={'НАПИШИТЕ НАМ'}
-                                email
-                                text
-                                closeForm={handleClickConnect}
-                                inBurger={breakpoints.md ? true : false}
-                                main
-                                id='burgerForm'
-                              />
-                            </>
-                          ) : (
-                            <>
-                              <Burger
-                                isOpen={true}
-                                click={
-                                  breakpoints.md
-                                    ? () => handleClickConnect()
-                                    : null
-                                }
-                              />
-                              {!isBurgerMenuOpen ? (
-                                <Box className={classes.menuBox}>
-                                  <Menu
-                                    inBurger={true}
-                                    clickToOpenForm={handleOpenBurgerMenu}
-                                    data={data}
-                                  />
-                                </Box>
-                              ) : (
-                                <>
-                                  <Box className={classes.callBox}>
-                                    <Typography variant='h6' component='p'>
-                                      Позвонить
-                                    </Typography>
-                                    <a href='tel:+375447702236'>
-                                      <Call />
-                                    </a>
-                                  </Box>
-                                  <Form
-                                    data={data}
-                                    title={'напишите нам'}
-                                    email
-                                    text
-                                    closeForm={handleOpenBurgerMenu}
-                                    inBurger={true}
-                                    main
-                                    id='burgerForm'
-                                  />
-                                </>
-                              )}
-                            </>
+                            </Drawer>
+                          </React.Fragment>
+                        </div>
+
+                        <Box className={classes.button}>
+                          {breakpoints.md || page === 'contacts' ? null : (
+                            <RegularButton
+                              variant='outlined'
+                              click={handleClickConnect}
+                            >
+                              {lang.lang === 'EN' ? 'CONNECT' : 'СВЯЗАТЬСЯ'}
+                            </RegularButton>
                           )}
                         </Box>
-                      </Drawer>
-                    </React.Fragment>
-                  </div>
-
-                  <Box className={classes.button}>
-                    {breakpoints.md || page === 'contacts' ? null : (
-                      <RegularButton
-                        variant='outlined'
-                        click={handleClickConnect}
-                      >
-                        СВЯЗАТЬСЯ
-                      </RegularButton>
-                    )}
+                        {component
+                          ? dataToComponent(component, data, house, lang.lang)
+                          : children}
+                      </Box>
+                      <Footer lang={lang.lang}/>
+                    </Box>
                   </Box>
-                  {component
-                    ? dataToComponent(component, data, house)
-                    : children}
+                </>
+              ) : (
+                <Box className='loaderConteiner'>
+                  <div className={classes.loaderBox}>
+                    <CircularProgress />
+                  </div>
                 </Box>
-                <Footer />
-              </Box>
+              )}
             </Box>
           </>
-        ) : (
-          <Box className='loaderConteiner'>
-            <div className={classes.loaderBox}>
-              <CircularProgress />
-            </div>
-          </Box>
         )}
-      </Box>
+      </LangContext.Consumer>
     </ThemeProvider>
   );
 };

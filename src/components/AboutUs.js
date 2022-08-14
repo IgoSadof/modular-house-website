@@ -217,7 +217,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AboutUs = ({ data }) => {
+const AboutUs = ({ data, lang }) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
   const dataObj = getAboutUsData(data);
@@ -445,6 +445,7 @@ const AboutUs = ({ data }) => {
             }
             email
             underLine={true}
+            lang={lang}
           />
         </Box>
       ) : null}

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Burger({ color, click, isOpen, position, page }) {
+export default function Burger({ color, click, isOpen, position, page, lang }) {
   const param = { color, isOpen, position, page };
   const classes = useStyles(param);
 

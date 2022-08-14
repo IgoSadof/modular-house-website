@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { makeStyles} from "@material-ui/core/styles";
 import MainSlider from "../components/MainSlider";
 import MainPageContent from "../components/MainPageContent";
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Box from "@material-ui/core/Box";
+import getData from '../utils/getData';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -19,13 +20,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Main = ({data}) => {
+const Main = ({data, lang}) => {
  const breakpoints = useBreakpoint();
   const [scroll, setScrol] = useState(0);
   // let firsEntry
   // if (typeof window !== "undefined" && !breakpoints.md) {
   //   firsEntry = window.localStorage.getItem("isFirstEntry") ? false : true;
   // }
+
+  let mainPageDataObj = useMemo(
+    () => ({'EN': getData(data.allMysqlMainPageEn.nodes),'RU': getData(data.allMysqlMainPage.nodes)}),
+    [data]
+  );
+  const mainPageData = lang === 'EN' ? mainPageDataObj['EN'] : mainPageDataObj['RU'];
   const [isFirstEntry, setIsFirstEntry] = useState(false);
   if(isFirstEntry && !breakpoints.md){
     document.body.style.overflow = "hidden"
@@ -57,8 +64,8 @@ const Main = ({data}) => {
       className={classes.componets}
       onWheel={isFirstEntry? ((e) => handleScroll(e)):null}
     >
-      <MainSlider scroll={scroll} isFirstEntry={isFirstEntry} data={data} />
-      <MainPageContent data={data} />
+      <MainSlider scroll={scroll} isFirstEntry={isFirstEntry} data={data} mainPageData={mainPageData}/>
+      <MainPageContent data={data} mainPageData={mainPageData} lang={lang}/>
     </Box>
   );
 };

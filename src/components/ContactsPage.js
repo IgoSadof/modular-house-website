@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsPage = ({ data, title }) => {
+const ContactsPage = ({ data, title, lang }) => {
   //let scale = 1 / (window ? window.devicePixelRatio : 1);
   const param = { };
   const classes = useStyles(param);
 
   return (
     <Box component='section' className={classes.Block}>
-      <ContactsBlock data={data} title={title}></ContactsBlock>
+      <ContactsBlock data={data} title={title} lang={lang}></ContactsBlock>
     </Box>
   );
 };
