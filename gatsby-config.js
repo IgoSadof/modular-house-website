@@ -50,6 +50,18 @@ module.exports = {
             name: 'Houses',
           },
 
+            // all houses english
+            {
+              statement: `SELECT modx_site_tmplvar_contentvalues.id,modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value, modx_site_content.published, modx_site_content.id AS contentID, modx_site_content.alias, modx_site_content.menutitle AS position
+              FROM modx_site_tmplvar_contentvalues
+              JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid
+              JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id
+              JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id
+              WHERE modx_site_templates.templatename = "Дом-en"`,
+              idFieldName: 'id',
+              name: 'HousesEn',
+            },
+
           // main page
           {
             statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
@@ -85,6 +97,17 @@ module.exports = {
             idFieldName: 'id',
             name: 'AboutUs',
           },
+             // about us english
+             {
+              statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
+               modx_site_content.alias FROM modx_site_tmplvar_contentvalues 
+               JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid 
+               JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id 
+               JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id 
+               WHERE modx_site_content.alias = "whoweare-en"`,
+              idFieldName: 'id',
+              name: 'AboutUsEn',
+            },
           // contacts
           {
             statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
@@ -96,6 +119,17 @@ module.exports = {
             idFieldName: 'id',
             name: 'Contacts',
           },
+             // contacts english
+             {
+              statement: `SELECT modx_site_tmplvar_contentvalues.id, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
+                   modx_site_content.alias FROM modx_site_tmplvar_contentvalues 
+                   JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid 
+                   JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id 
+                   JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id 
+                   WHERE modx_site_content.alias = "contacts-en"`,
+              idFieldName: 'id',
+              name: 'ContactsEn',
+            },
           // arenda
           {
             statement: `SELECT modx_site_tmplvar_contentvalues.id as idname, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
@@ -107,10 +141,30 @@ module.exports = {
             idFieldName: 'idname',
             name: 'Arenda',
           },
+             // arenda english
+             {
+              statement: `SELECT modx_site_tmplvar_contentvalues.id as idname, modx_site_tmplvars.name, modx_site_tmplvar_contentvalues.value,
+                       modx_site_content.alias FROM modx_site_tmplvar_contentvalues 
+                       JOIN modx_site_tmplvars ON modx_site_tmplvars.id = modx_site_tmplvar_contentvalues.tmplvarid 
+                       JOIN modx_site_content ON modx_site_tmplvar_contentvalues.contentid = modx_site_content.id 
+                       JOIN modx_site_templates ON modx_site_content.template = modx_site_templates.id 
+                       WHERE modx_site_content.alias = "arenda-en"`,
+              idFieldName: 'idname',
+              name: 'ArendaEn',
+            },
              // menu
              {
               statement: `SELECT modx_site_content.id, modx_site_content.longtitle as name,modx_site_content.link_attributes as link, modx_site_content.published,modx_site_content.menutitle
-              FROM modx_site_content`,
+              FROM modx_site_content
+              WHERE modx_site_content.introtext = "EN"`,
+              idFieldName: 'id',
+              name: 'Menu',
+            },
+            // menu english
+            {
+              statement: `SELECT modx_site_content.id, modx_site_content.longtitle as name,modx_site_content.link_attributes as link, modx_site_content.published,modx_site_content.menutitle
+              FROM modx_site_content
+              WHERE modx_site_content.introtext = "EN"`,
               idFieldName: 'id',
               name: 'Menu',
             },
