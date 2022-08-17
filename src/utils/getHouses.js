@@ -1,7 +1,8 @@
 import isJsonObject from './isJsonObject';
 
-export default function getHouses(data) {
-  const elements = data.allMysqlHouses.nodes;
+export default function getHouses(data, lang) {
+  const housesData = lang === 'EN' && data.allMysqlHousesEn?.nodes  ? data.allMysqlHousesEn.nodes : data.allMysqlHouses.nodes;
+  const elements = housesData;
   const houses = {};
 
   elements.forEach((item) => {

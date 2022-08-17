@@ -5,7 +5,7 @@ import isJsonObject from './isJsonObject';
 
 export default function getAboutUsData(data, lang){
   const dataObj = {};
-  const currentDataObj = lang === 'EN' ? data.allMysqlAboutUsEn.nodes :  data.allMysqlAboutUs.nodes;
+  const currentDataObj = lang === 'EN' &&  data.allMysqlAboutUsEn?.nodes ? data.allMysqlAboutUsEn.nodes :  data.allMysqlAboutUs.nodes;
   currentDataObj.forEach(item => {
     dataObj[item.name] = isJsonObject(item.value)?JSON.parse(item.value):item.value;
   })

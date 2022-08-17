@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: (param) => (param.inBurger ? '100%' : '10%'),
-    height: (param) => (param.inBurger ? '70vh' : '100vh'),
+    height: (param) => (param.inBurger ? '84vh' : '100vh'),
     minHeight: '768px',
     borderRight: '1px solid #4F4F4F',
     padding: '50px 0px 80px',
@@ -83,6 +83,8 @@ const useStyles = makeStyles((theme) => ({
   },
   iconsBox: {
     display: 'flex',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     '& > * + * ': {
       marginLeft: '30px',
     },
@@ -91,6 +93,10 @@ const useStyles = makeStyles((theme) => ({
       '& > * + * ': {
         marginLeft: '1.6vw',
       },
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 'auto',
+      marginRight: '0',
     },
   },
   icon: {
@@ -203,12 +209,15 @@ const useStyles = makeStyles((theme) => ({
   },
   lang: {
     display: 'flex',
-    marginTop:'10px',
+    marginTop: '10px',
     top: '85vh',
     right: '10%',
     zIndex: '3',
     '& > * + * ': {
       marginLeft: '10px',
+    },
+    [theme.breakpoints.down('md')]: {
+      marginTop: '30px',
     },
   },
   langText: {
@@ -218,16 +227,33 @@ const useStyles = makeStyles((theme) => ({
   langTextActive: {
     color: '#333',
   },
+  menuFooterFirstLine:{
+    width:'100%',
+    display:'flex',
+  }
 }));
 
 const Menu = ({ data, inBurger, clickToOpenForm, lang, toggleLang }) => {
-  const menuData = useMemo(
-    () =>
-      data.allMysqlMenu.nodes
+  // const menuData = useMemo(
+  //   () =>
+  //     data.allMysqlMenu.nodes
+  //       .filter((item) => item.menutitle && item.link && item.published)
+  //       .sort((a, b) => a.menutitle - b.menutitle),
+  //   [data]
+  // );
+  let menuDataObj = useMemo(
+    () => ({
+      EN: data.allMysqlMenuEn?.nodes
         .filter((item) => item.menutitle && item.link && item.published)
         .sort((a, b) => a.menutitle - b.menutitle),
+      RU: data.allMysqlMenu.nodes
+        .filter((item) => item.menutitle && item.link && item.published)
+        .sort((a, b) => a.menutitle - b.menutitle),
+    }),
     [data]
   );
+  const menuData =
+    lang === 'EN' && menuDataObj['EN'] ? menuDataObj['EN'] : menuDataObj['RU'];
   const [isItemFocused, setIsItemFocused] = useState(false);
   const breakpoints = useBreakpoint();
   const param = { inBurger };
@@ -238,9 +264,9 @@ const Menu = ({ data, inBurger, clickToOpenForm, lang, toggleLang }) => {
   const handleItemUnFocus = () => {
     setIsItemFocused(false);
   };
-  const handleLangClick = (e, lang) =>{
-    toggleLang(lang)
-  }
+  const handleLangClick = (e, lang) => {
+    toggleLang(lang);
+  };
 
   return (
     <Box component='nav' className={classes.menu}>
@@ -284,49 +310,53 @@ const Menu = ({ data, inBurger, clickToOpenForm, lang, toggleLang }) => {
       </ul>
 
       <Box className={classes.menuFooter}>
-        {inBurger ? (
-          <RegularButton variant='outlined' click={clickToOpenForm}>
-            {lang === 'EN' ? 'CONNECT' : 'СВЯЗАТЬСЯ'}
-          </RegularButton>
-        ) : null}
-        <Box className={classes.iconsBox}>
-          <a
-            target='_blank'
-            rel='noreferrer'
-            className={classes.Link}
-            href={'https://www.facebook.com/BYhome.zrobim/'}
-          >
-            <Facebook
-              width={breakpoints.xxl ? '0.5vw' : 8}
-              height={breakpoints.xxl ? '1.2vw' : 18}
-            />
-          </a>
-          <a
-            target='_blank'
-            rel='noreferrer'
-            className={classes.Link}
-            href={'https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ'}
-          >
-            <Youtube
-              width={breakpoints.xxl ? '1.2vw' : 17}
-              height={breakpoints.xxl ? '0.8vw' : 12}
-            />
-          </a>
-          <a
-            target='_blank'
-            rel='noreferrer'
-            className={classes.Link}
-            href={'https://www.instagram.com/by___home/'}
-          >
-            <Instagram
-              width={breakpoints.xxl ? '0.9vw' : 14}
-              height={breakpoints.xxl ? '0.9vw' : 14}
-            />
-          </a>
+        <Box className={classes.menuFooterFirstLine}>
+          {' '}
+          {inBurger ? (
+            <RegularButton variant='outlined' click={clickToOpenForm}>
+              {lang === 'EN' ? 'CONNECT' : 'СВЯЗАТЬСЯ'}
+            </RegularButton>
+          ) : null}
+          <Box className={classes.iconsBox}>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className={classes.Link}
+              href={'https://www.facebook.com/BYhome.zrobim/'}
+            >
+              <Facebook
+                width={breakpoints.xxl ? '0.5vw' : 8}
+                height={breakpoints.xxl ? '1.2vw' : 18}
+              />
+            </a>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className={classes.Link}
+              href={'https://www.youtube.com/channel/UCxc3agJ3TIg4H0dilD-yBlQ'}
+            >
+              <Youtube
+                width={breakpoints.xxl ? '1.2vw' : 17}
+                height={breakpoints.xxl ? '0.8vw' : 12}
+              />
+            </a>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className={classes.Link}
+              href={'https://www.instagram.com/by___home/'}
+            >
+              <Instagram
+                width={breakpoints.xxl ? '0.9vw' : 14}
+                height={breakpoints.xxl ? '0.9vw' : 14}
+              />
+            </a>
+          </Box>
         </Box>
+
         <Box className={classes.lang}>
           <Typography
-            onClick={(e)=>handleLangClick(e,'RU')}
+            onClick={(e) => handleLangClick(e, 'RU')}
             className={
               lang === 'RU'
                 ? `${classes.langText} ${classes.langTextActive}`
@@ -338,7 +368,7 @@ const Menu = ({ data, inBurger, clickToOpenForm, lang, toggleLang }) => {
             RU
           </Typography>
           <Typography
-            onClick={(e)=>handleLangClick(e,'EN')}
+            onClick={(e) => handleLangClick(e, 'EN')}
             className={
               lang === 'EN'
                 ? `${classes.langText} ${classes.langTextActive}`

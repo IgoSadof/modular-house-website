@@ -178,6 +178,17 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
+      allMysqlHousesEn {
+        nodes {
+          alias
+          position
+          published
+          mysqlId
+          name
+          contentID
+          value
+        }
+      }
 
       allMysqlMainPage {
         nodes {
@@ -197,7 +208,19 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
+      allMysqlAboutUsEn {
+        nodes {
+          name
+          value
+        }
+      }
       allMysqlContacts {
+        nodes {
+          name
+          value
+        }
+      }
+        allMysqlContactsEn {
         nodes {
           name
           value
@@ -209,7 +232,22 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
           value
         }
       }
+       allMysqlArendaEn {
+        nodes {
+          name
+          value
+        }
+      }
       allMysqlMenu {
+        nodes {
+          id
+          name
+          menutitle
+          published
+          link
+        }
+      }
+       allMysqlMenuEn {
         nodes {
           id
           name
@@ -353,7 +391,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                     <Form
                                       data={data}
                                       title={
-                                        lang === 'EN'
+                                        lang.lang === 'EN'
                                           ? 'WRITE TO US'
                                           : ' НАПИШИТЕ НАМ'
                                       }
@@ -394,7 +432,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                             variant='h6'
                                             component='p'
                                           >
-                                            Позвонить
+                                            {lang.lang === 'EN' ? 'Call' : 'Позвонить'} 
                                           </Typography>
                                           <a href='tel:+375447702236'>
                                             <Call />
@@ -402,7 +440,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                         </Box>
                                         <Form
                                           data={data}
-                                          title={'напишите нам'}
+                                          title={lang.lang === 'EN' ? 'Write to us' : 'Напишите нам'} 
                                           email
                                           text
                                           closeForm={handleOpenBurgerMenu}

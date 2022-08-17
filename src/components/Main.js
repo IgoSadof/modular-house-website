@@ -29,10 +29,10 @@ const Main = ({data, lang}) => {
   // }
 
   let mainPageDataObj = useMemo(
-    () => ({'EN': getData(data.allMysqlMainPageEn.nodes),'RU': getData(data.allMysqlMainPage.nodes)}),
+    () => ({'EN': getData(data.allMysqlMainPageEn?.nodes),'RU': getData(data.allMysqlMainPage.nodes)}),
     [data]
   );
-  const mainPageData = lang === 'EN' ? mainPageDataObj['EN'] : mainPageDataObj['RU'];
+  const mainPageData = lang === 'EN' && mainPageDataObj['EN'] ? mainPageDataObj['EN'] : mainPageDataObj['RU'];
   const [isFirstEntry, setIsFirstEntry] = useState(false);
   if(isFirstEntry && !breakpoints.md){
     document.body.style.overflow = "hidden"

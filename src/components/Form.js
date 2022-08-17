@@ -428,7 +428,7 @@ const Form = ({
           </RegularButton>
           {inBurger ? (
             <RegularButton variant='outlined' click={closeForm}>
-              Назад
+              {lang === 'EN' ? 'Back' : 'Назад'}
             </RegularButton>
           ) : null}
         </Box>

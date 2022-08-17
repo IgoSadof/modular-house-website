@@ -618,7 +618,7 @@ const HousesList = ({ data, lang }) => {
                           variant='body1'
                           className={classes.houseDescSpecName}
                         >
-                          Cтадии роста:
+                           {lang === 'EN' ? 'Grow stage:': 'Стадии роста:' }
                         </Typography>
                         <Box className={classes.houseDescSpecNumberBox}>
                           <Typography
@@ -701,7 +701,7 @@ const HousesList = ({ data, lang }) => {
                       className={classes.houseDescSpecName}
                     >
                       {/* {houses[house].totalAreaText} */}
-                      Общая площадь:
+                      {lang === 'EN' ? 'Total Area:' : 'Общая площадь:'}
                     </Typography>
                     <Box className={classes.houseDescSpecNumberBox}>
                       <Typography
@@ -724,7 +724,9 @@ const HousesList = ({ data, lang }) => {
                       className={classes.houseDescSpecName}
                     >
                       {/* {houses[house].effectiveAreaText} */}
-                      Эффективная площадь:
+                      {lang === 'EN'
+                          ? 'Effective Area:'
+                          : 'Эффективная площадь:'}
                     </Typography>
                     <Box className={classes.houseDescSpecNumberBox}>
                       <Typography
@@ -749,7 +751,9 @@ const HousesList = ({ data, lang }) => {
                       variant='body1'
                       className={classes.houseDescSpecName}
                     >
-                      Количество этажей:
+                      {lang === 'EN'
+                          ? 'Number of floors:'
+                          : 'Количество этажей:'}
                     </Typography>
                     <Box className={classes.houseDescSpecNumberBox}>
                       <Typography
@@ -767,7 +771,7 @@ const HousesList = ({ data, lang }) => {
                       variant='body1'
                       className={classes.houseDescSpecName}
                     >
-                      Cтадии роста:
+                       {lang === 'EN' ? 'Grow stage:': 'Стадии роста:' }
                     </Typography>
                     <Box className={classes.houseDescSpecNumberBox}>
                       <Typography

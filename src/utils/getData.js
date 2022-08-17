@@ -1,6 +1,9 @@
 import isJsonObject from './isJsonObject';
 
 export default function getData(data) {
+  if(!data){
+    return null
+  }
   const dataObj = {};
   data.forEach((item) => {
     dataObj[item.name] = isJsonObject(item.value)
