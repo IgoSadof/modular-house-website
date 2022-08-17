@@ -7,7 +7,7 @@ const LangContext = React.createContext(defaultState)
 
 class LangProvider extends React.Component {
   state = {
-    lang: 'RU',
+    lang: (navigator?.language || navigator?.userLanguage)?.slice(0,2).toUpperCase()||'RU',
   }
   toggleLang = (lang) => {
     localStorage.setItem("lang", JSON.stringify(lang))
