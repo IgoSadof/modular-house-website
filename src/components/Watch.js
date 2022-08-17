@@ -510,7 +510,11 @@ const Watch = ({ data, lang }) => {
   const [selectOptions, setSelectOptions] = useState({});
 
   const classes = useStyles();
-  const pageData = useMemo(() => getData(data.allMysqlArenda.nodes), [data]);
+  let pageDataObj = useMemo(
+    () => ({'EN': getData(data.allMysqlArenda.nodes),'RU': getData(data.allMysqlArendaEn.nodes)}),
+    [data]
+  );
+  const pageData = lang === 'EN' ? pageDataObj['EN'] : pageDataObj['RU'];
   const getUnavailableDates = (dates) => {
     setUnavailableDates(dates);
   };
