@@ -86,10 +86,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactsBlock = ({ data, title, paddingBottom, lang }) => {
-  const dataContacts = useMemo(
-    () => getData(data.allMysqlContacts.nodes),
+  let dataContactsObj = useMemo(
+    () => ({'EN': getData(data.allMysqlContactsEn.nodes),'RU': getData(data.allMysqlContacts.nodes)}),
     [data]
   );
+  const dataContacts = lang === 'EN' ? dataContactsObj['EN'] : dataContactsObj['RU'];
   const breakpoints = useBreakpoint();
   let scale = 1 / (window ? window.devicePixelRatio : 1);
   const param = { scale };
