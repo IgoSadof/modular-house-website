@@ -3,9 +3,10 @@ import isJsonObject from './isJsonObject';
 
 
 
-export default function getAboutUsData(data){
+export default function getAboutUsData(data, lang){
   const dataObj = {};
-  data.allMysqlAboutUs.nodes.forEach(item => {
+  const currentDataObj = lang === 'EN' ? data.allMysqlAboutUsEn.nodes :  data.allMysqlAboutUs.nodes;
+  currentDataObj.forEach(item => {
     dataObj[item.name] = isJsonObject(item.value)?JSON.parse(item.value):item.value;
   })
   dataObj.Creators.forEach((item,index)=>{

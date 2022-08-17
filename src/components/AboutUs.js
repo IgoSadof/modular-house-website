@@ -220,7 +220,7 @@ const useStyles = makeStyles((theme) => ({
 const AboutUs = ({ data, lang }) => {
   const breakpoints = useBreakpoint();
   const classes = useStyles();
-  const dataObj = getAboutUsData(data);
+  const dataObj = getAboutUsData(data, lang);
   // console.log(dataObj)
   return (
     <Box component='main' className={classes.main}>
