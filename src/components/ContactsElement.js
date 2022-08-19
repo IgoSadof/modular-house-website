@@ -337,7 +337,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Inna' : 'Инна'}
+                  {lang === 'EN' ? 'Ina' : 'Инна'}
                 </Typography>
               {/* ) : null} */}
             </Box>
