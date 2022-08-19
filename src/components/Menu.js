@@ -221,7 +221,7 @@ const useStyles = makeStyles((theme) => ({
     borderTop: '1px solid #4F4F4F',
     width: '100%',
     '& > * ': {
-      fontSize: '1.2rem',
+      fontSize: '1.1rem',
     },
     '& > * + * ': {
       marginLeft: '9%',
@@ -230,6 +230,12 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '30px',
       position: 'relative',
     },
+    '@media (min-width:1921px)': {
+      height: '3.5vw',
+      '& > * ': {
+        fontSize: '1vw',
+      },
+    }
   },
   langText: {
     cursor: 'pointer',
