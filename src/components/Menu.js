@@ -331,7 +331,7 @@ const Menu = ({ data, inBurger, clickToOpenForm, lang, toggleLang }) => {
           {' '}
           {inBurger ? (
             <RegularButton variant='outlined' click={clickToOpenForm}>
-              {lang === 'EN' ? 'CONNECT' : 'СВЯЗАТЬСЯ'}
+              {lang === 'EN' ? 'CONTACT' : 'СВЯЗАТЬСЯ'}
             </RegularButton>
           ) : null}
           <Box className={classes.iconsBox}>
