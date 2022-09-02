@@ -6,7 +6,7 @@ const defaultState = {
 const LangContext = React.createContext(defaultState)
 
 const userLangEN = ['AF', 'SQ', 'AR', 'EU', 'BG', 'BE', 'CA', 'ZH', 'HR', 'CS', 'DA', 'NL', 'NL', 'EN', 'ET', 'FO', 'FA', 'FI', 'FR', 'GD', 'DE', 'EL', 'HE', 'HI', 'HU', 'IS', 'ID', 'IT', 'JA', 'KO', 'LV', 'LT', 'MK', 'MT', 'NO', 'PL', 'PT', 'RM', 'RO', 'SZ', 'SR', 'SK', 'SL', 'SB', 'ES', 'SX', 'SV', 'TH', 'TS', 'TN', 'TR', 'UR', 'VE', 'VI', 'XH', 'JI', 'ZU']
-const userLangRU = ['RU', 'UK', 'BY', 'BE', 'UK', 'TT', 'UZ']
+const userLangRU = ['RU', 'UK', 'BY', 'BE', 'UK', 'TT', 'UZ', 'KZ']
 const currentBrowserLang = typeof window !== 'undefined'? (navigator?.language || navigator?.userLanguage)?.slice(0,2).toUpperCase() : 'RU';
 
 class LangProvider extends React.Component {
