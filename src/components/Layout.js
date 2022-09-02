@@ -464,7 +464,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                               variant='outlined'
                               click={handleClickConnect}
                             >
-                              {lang.lang === 'EN' ? 'CONNECT' : 'СВЯЗАТЬСЯ'}
+                              {lang.lang === 'EN' ? 'CONTACT' : 'СВЯЗАТЬСЯ'}
                             </RegularButton>
                           )}
                         </Box>

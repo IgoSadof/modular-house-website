@@ -268,7 +268,7 @@ const AboutUs = ({ data, lang }) => {
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                <TitleWithLine underLine={true} title='Создатели' />
+                <TitleWithLine underLine={true} title={lang === 'EN' ? 'Creators' : 'Создатели'} />
               </Box>
               <Box className={classes.creatorsBox}>
                 <Box className={classes.creatorTextBox}>
@@ -317,7 +317,7 @@ const AboutUs = ({ data, lang }) => {
           <>
             <Box className={classes.BlockColumn}>
               <Box className={classes.titleBox}>
-                <TitleWithLine underLine={true} title='Создатели' />
+                <TitleWithLine underLine={true} title={lang === 'EN' ? 'Creators' : 'Создатели'} />
               </Box>
               <Box className={classes.imgBox}>
                 <img

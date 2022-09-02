@@ -208,24 +208,41 @@ const useStyles = makeStyles((theme) => ({
     opacity: '1',
   },
   lang: {
+    bottom: '0',
+    position: 'absolute',
+    right: 'auto',
+    left: 'auto',
     display: 'flex',
-    marginTop: '10px',
-    top: '85vh',
-    right: '10%',
+    height: '50px',
     zIndex: '3',
+    marginTop: '10px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTop: '1px solid #4F4F4F',
+    width: '100%',
+    '& > * ': {
+      fontSize: '1.1rem',
+    },
     '& > * + * ': {
-      marginLeft: '10px',
+      marginLeft: '9%',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '30px',
+      position: 'relative',
     },
+    '@media (min-width:1921px)': {
+      height: '3.5vw',
+      '& > * ': {
+        fontSize: '1vw',
+      },
+    }
   },
   langText: {
     cursor: 'pointer',
-    color: '#828282',
+    color: '#a9a9a9',
   },
   langTextActive: {
-    color: '#333',
+    color: '#333333',
   },
   menuFooterFirstLine:{
     width:'100%',
@@ -314,7 +331,7 @@ const Menu = ({ data, inBurger, clickToOpenForm, lang, toggleLang }) => {
           {' '}
           {inBurger ? (
             <RegularButton variant='outlined' click={clickToOpenForm}>
-              {lang === 'EN' ? 'CONNECT' : 'СВЯЗАТЬСЯ'}
+              {lang === 'EN' ? 'CONTACT' : 'СВЯЗАТЬСЯ'}
             </RegularButton>
           ) : null}
           <Box className={classes.iconsBox}>
