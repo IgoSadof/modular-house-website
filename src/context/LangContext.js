@@ -5,9 +5,13 @@ const defaultState = {
 }
 const LangContext = React.createContext(defaultState)
 
+const userLangEN = ['EN']
+const userLangRU = ['RU']
+const currentBrowserLang = (navigator?.language || navigator?.userLanguage)?.slice(0,2).toUpperCase()
+
 class LangProvider extends React.Component {
   state = {
-    lang: (navigator?.language || navigator?.userLanguage)?.slice(0,2).toUpperCase()||'RU',
+    lang: (userLangEN.includes(currentBrowserLang)&&'EN')||(userLangRU.includes(currentBrowserLang)&&'RU')||'RU',
   }
   toggleLang = (lang) => {
     localStorage.setItem("lang", JSON.stringify(lang))
