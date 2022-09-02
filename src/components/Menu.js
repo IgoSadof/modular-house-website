@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: (param) => (param.inBurger ? '100%' : '10%'),
     height: (param) => (param.inBurger ? '84vh' : '100vh'),
-    minHeight: '768px',
+    minHeight: '100vh',
     borderRight: '1px solid #4F4F4F',
     padding: '50px 0px 80px',
     transition: '0.5s',
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     textAlign: 'center',
     '& > * + * ': {
-      marginTop: '30px',
+      marginTop: '3vh',
     },
     '@media (min-width:1921px)': {
       '& > * + * ': {
