@@ -390,8 +390,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousePage = ({ house, data, lang }) => {
-  const dataHouses = useMemo(() => getHouses(data), [data]);
+  const dataHouses = useMemo(() => getHouses(data,lang), [data, lang]);
   const houseNumber = dataHouses.findIndex((item) => item.alias === house);
+  console.log(dataHouses)
   const breakpoints = useBreakpoint();
   const baseModule = dataHouses[houseNumber].modules?.[0].name
     ? dataHouses[houseNumber].modules[0].name
@@ -483,9 +484,9 @@ const HousePage = ({ house, data, lang }) => {
   };
 
   const extraFormFields = {
-    house: dataHouses[houseNumber].code,
-    userModuleList: userModuleList,
-    options: userOptions,
+    'Дом': dataHouses[houseNumber].code,
+    'Список модулей': userModuleList,
+    'Опции': userOptions,
   };
 
   const modelViwerRef = useRef();

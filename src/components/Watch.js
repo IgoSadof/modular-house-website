@@ -511,7 +511,7 @@ const Watch = ({ data, lang }) => {
 
   const classes = useStyles();
   let pageDataObj = useMemo(
-    () => ({'EN': getData(data.allMysqlArenda.nodes),'RU': getData(data.allMysqlArendaEn.nodes)}),
+    () => ({'EN': getData(data.allMysqlArendaEn.nodes),'RU': getData(data.allMysqlArenda.nodes)}),
     [data]
   );
   const pageData = lang === 'EN' ? pageDataObj['EN'] : pageDataObj['RU'];
@@ -749,7 +749,7 @@ const Watch = ({ data, lang }) => {
                   </Typography>
                 </Box>
                 <br/>
-                <a target="_blank" class="btn" href="https://docs.google.com/forms/d/1UotUJofh3sYbDDQdI8MeIdQL28Uq0WfPY4uoieq26M4/viewform?edit_requested=true">ПРЕДЗАПИСЬ</a>
+                <a target="_blank" className="btn" href="https://docs.google.com/forms/d/1UotUJofh3sYbDDQdI8MeIdQL28Uq0WfPY4uoieq26M4/viewform?edit_requested=true">ПРЕДЗАПИСЬ</a>
                 <br/>
                 <Box className={classes.housesBox}>
                   <FormControl>
@@ -768,6 +768,7 @@ const Watch = ({ data, lang }) => {
                         .map((house, index) => {
                           return (
                             <FormControlLabel
+                              key={index}
                               value={`${index}`}
                               control={<Radio color="default" />}
                               label={house.name}

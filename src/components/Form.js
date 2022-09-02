@@ -277,10 +277,11 @@ const Form = ({
 
     let data = {
       ...extraFormFields,
-      name: nameText,
-      phone: telText,
+      'Имя': nameText,
+      'Телефон': telText,
       email: emailText,
-      message: messageText,
+      'Сообщение': messageText,
+      // 'Таблица': '<h1>Hello world</h1>'
     };
 
     fetch(event.target.action, {

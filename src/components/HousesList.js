@@ -394,7 +394,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousesList = ({ data, lang }) => {
-  const dataHouses = useMemo(() => getHouses(data), [data]);
+  const dataHouses = useMemo(() => getHouses(data,lang), [data,lang]);
 
   const breakpoints = useBreakpoint();
   const [house, setHouse] = useState(0);
