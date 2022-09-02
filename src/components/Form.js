@@ -315,9 +315,13 @@ const Form = ({
       });
   };
 
-  const dataContacts = useMemo(
-    () => getData(data.allMysqlContacts.nodes),
-    [data]
+  // const dataContacts = useMemo(
+  //   () => getData(data.allMysqlContacts.nodes),
+  //   [data]
+  // );
+  let dataContacts = useMemo(
+    () => ({'EN': getData(data.allMysqlContactsEn.nodes),'RU': getData(data.allMysqlContacts.nodes)}),
+    [data,lang]
   );
   // console.log(dataContacts);
 
