@@ -7,7 +7,7 @@ const LangContext = React.createContext(defaultState)
 
 const userLangEN = ['EN']
 const userLangRU = ['RU']
-const currentBrowserLang = window? (navigator?.language || navigator?.userLanguage)?.slice(0,2).toUpperCase() : 'RU';
+const currentBrowserLang = typeof window !== 'undefined'? (navigator?.language || navigator?.userLanguage)?.slice(0,2).toUpperCase() : 'RU';
 
 class LangProvider extends React.Component {
   state = {
