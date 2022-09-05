@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FormBlock from '../components/FormBlock';
 import Box from '@material-ui/core/Box';
@@ -500,6 +500,10 @@ const HousePage = ({ house, data, lang }) => {
   const vrButtonClick = () => {
     modelViwerRef.current.activateAR();
   };
+  
+  useEffect(() => {
+    setModulesOptions(baseModuleOptions)
+  }, [baseModuleOptions, lang]);
 
   return (
     <Box components='main'>
