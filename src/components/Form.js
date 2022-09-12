@@ -464,12 +464,12 @@ const Form = ({
                 <Typography>
                   {dataContacts.popup_title
                     ? dataContacts.popup_title
-                    : lang === 'EN' ? 'THANK YOU FOR USING OUR COMPANY SERVICES' : 'СПАСИБО, ЧТО ВОСПОЛЬЗОВАЛИСЬ УСЛУГАМИ НАШЕЙ КОМПАНИИ'}
+                    : lang === 'EN' ? 'THANK YOU FOR CONTACTING US!' : 'СПАСИБО, ЗА ОБРАЩЕНИЕ!'}
                 </Typography>
                 <Typography variant='body1'>
                   {dataContacts.popup_text
                     ? dataContacts.popup_text
-                    : lang === 'EN' ? 'Nobody is responsible for anything' : 'Никто ни за что ответственность не несет'}
+                    : lang === 'EN' ? 'Our specialist will contact you shortly' : 'Наш специалист свяжется с Вами в ближайшее время'}
                 </Typography>
                 <Box className={classes.buttonBoxLeft}>
                   <RegularButton variant='outlined' click={handleClose}>
