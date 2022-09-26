@@ -638,7 +638,7 @@ const Watch = ({ data, lang }) => {
             {pageData?.arenda_price ? (
               <Box className={classes.priceBlock}>
                 <Typography className={classes.priceBlockText} variant='body1'>
-                  <strong>{pageData.arenda_price}</strong> / {lang === 'EN' ? '1 night' : '1 ночь'}
+                  <strong>{pageData.arenda_price}</strong> / {lang === 'EN' ? '1&#8239;night' : '1&#8239;ночь'}
                 </Typography>
               </Box>
             ) : null}
