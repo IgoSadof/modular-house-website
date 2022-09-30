@@ -394,6 +394,7 @@ const useStyles = makeStyles((theme) => ({
   },
   optionsBox: {
     display: 'grid',
+    display: 'none!important',
     gridTemplateColumns: 'repeat(2, 50%)',
     width: '100%',
     gridColumnGap: '40px',
