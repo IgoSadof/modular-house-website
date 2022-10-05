@@ -514,12 +514,10 @@ const Watch = ({ data, lang }) => {
     [data]
   );
   const pageData = lang === 'EN' ? pageDataObj['EN'] : pageDataObj['RU'];
-  const getUnavailableDates = (dates) => {
-    setUnavailableDates(dates);
-  };
   const [selectHouse, setSelectHouse] = useState(0);
   const handleRadioChange = (event) => {
     setSelectHouse(event.target.value);
+    setUnavailableDates(pageData.arenda_houses[event.target.value].house_calendar);
   };
   
   const [unavailableDates, setUnavailableDates] = useState(
@@ -810,7 +808,6 @@ const Watch = ({ data, lang }) => {
                 </Typography>
                 <MyCalendar
                   unavailableDates={unavailableDates}
-                  getUnavailableDates={getUnavailableDates}
                   setSelectDate={(date) => {
                     setSelectDate(date);
                   }}
