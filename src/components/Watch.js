@@ -522,11 +522,10 @@ const Watch = ({ data, lang }) => {
   const handleRadioChange = (event) => {
     setSelectHouse(event.target.value);
   };
-  // console.log(selectHouse)
-
+  
   const [unavailableDates, setUnavailableDates] = useState(
-    pageData.arenda_houses[selectHouse].name
-  );
+    pageData.arenda_houses[selectHouse].house_calendar
+    );
 
   pageData.arenda_options?.forEach((item) => {
     selectOptions[item.name] = false;
@@ -813,7 +812,7 @@ const Watch = ({ data, lang }) => {
                   {lang === 'EN' ? 'Select planned and available dates for your stay' : 'Выберите планируемые и свободные для проживания даты'}
                 </Typography>
                 <MyCalendar
-                  unavailableDates={pageData.arenda_houses[selectHouse].house_calendar}
+                  unavailableDates={unavailableDates}
                   getUnavailableDates={getUnavailableDates}
                   setSelectDate={(date) => {
                     setSelectDate(date);

@@ -22,10 +22,10 @@ const MyCalendar = ({
     }
   });
 
-  const checkDate = (date,dates) =>{
+  const checkDate = (date, dates) =>{
     let result =false;
     dates.forEach(arr => {
-      if(arr.find(element => element===date)){
+      if(arr?.find(element => element===date)){
         result =true
       }
     })
