@@ -213,7 +213,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: '90px',
     display: 'flex',
-    display: 'none',
     '& > * + * ': {
       marginLeft: '100px',
     },
@@ -395,6 +394,7 @@ const useStyles = makeStyles((theme) => ({
   },
   optionsBox: {
     display: 'grid',
+    display: 'none!important',
     gridTemplateColumns: 'repeat(2, 50%)',
     width: '100%',
     gridColumnGap: '40px',
@@ -483,7 +483,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   housesBox: {
-    display:'none',
     width: '100%',
     '&>div>div':{
       marginTop:'15px',
@@ -494,7 +493,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formSection: {
     '& > section > div': {
-      width: '100%',
+      
     }
   },
 
@@ -637,7 +636,7 @@ const Watch = ({ data, lang }) => {
             {pageData?.arenda_price ? (
               <Box className={classes.priceBlock}>
                 <Typography className={classes.priceBlockText} variant='body1'>
-                  <strong>{pageData.arenda_price}</strong> / {lang === 'EN' ? '24 hours' : '&#160;1&#160;сутки'}
+                  <strong>{pageData.arenda_price}</strong> / {lang === 'EN' ? '1 night' : '1 ночь'}
                 </Typography>
               </Box>
             ) : null}
@@ -747,9 +746,7 @@ const Watch = ({ data, lang }) => {
                     {pageData.arenda_invite_text}
                   </Typography>
                 </Box>
-                <br/>
-                <a target="_blank" className="btn" href="https://docs.google.com/forms/d/1UotUJofh3sYbDDQdI8MeIdQL28Uq0WfPY4uoieq26M4/viewform?edit_requested=true">ПРЕДЗАПИСЬ</a>
-                <br/>
+                
                 <Box className={classes.housesBox}>
                   <FormControl>
                     {/* <FormLabel id='demo-row-radio-buttons-group-label'>
