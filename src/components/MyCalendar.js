@@ -8,13 +8,13 @@ const MyCalendar = ({
   const [date, setDate] = useState(new Date());
   
   const dates = unavailableDates.map((item) => {
-    console.log(item.date_start,'-',item.date_end)
-    console.log(new Date(item.date_start),'-',new Date(item.date_end))
-    console.log(new Date(item.date_start)<new Date(item.date_end))
+    console.log(item.date_start.slice(0, 10),'-',item.date_end.slice(0, 10))
+    console.log(new Date(item.date_start.slice(0, 10)),'-',new Date(item.date_end.slice(0, 10)))
+    console.log(new Date(item.date_start.slice(0, 10))<new Date(item.date_end.slice(0, 10)))
     if (item.published) {
       let dateArr = []
-      let start = new Date(item.date_start);
-      let end = new Date(item.date_end);
+      let start = new Date(item.date_start.slice(0, 10));
+      let end = new Date(item.date_end.slice(0, 10));
 
       while(start<=end){
         let copiedDate = new Date(start.getTime());
