@@ -6,8 +6,11 @@ const MyCalendar = ({
   setSelectDate,
 }) => {
   const [date, setDate] = useState(new Date());
-
+  
   const dates = unavailableDates.map((item) => {
+    console.log(item.date_start,'-',item.date_end)
+    console.log(new Date(item.date_start),'-',new Date(item.date_end))
+    console.log(new Date(item.date_start)<new Date(item.date_end))
     if (item.published) {
       let dateArr = []
       let start = new Date(item.date_start);
@@ -23,7 +26,7 @@ const MyCalendar = ({
   });
 
   const checkDate = (date, dates) =>{
-    console.log(date, dates)
+    // console.log(date, dates)
     let result =false;
     dates.forEach(arr => {
       if(arr?.find(element => element===date)){
