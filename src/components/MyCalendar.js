@@ -23,6 +23,7 @@ const MyCalendar = ({
   });
 
   const checkDate = (date, dates) =>{
+    console.log(date, dates)
     let result =false;
     dates.forEach(arr => {
       if(arr?.find(element => element===date)){
