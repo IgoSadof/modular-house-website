@@ -108,6 +108,7 @@ body {
   border-collapse: collapse;
   margin-left: -1px;
   margin-top: -1px;
+  color: black
 }
 
 .react-calendar__month-view__weekdays__weekday {
