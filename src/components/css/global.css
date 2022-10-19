@@ -39,6 +39,9 @@ body {
   border-radius: 10px;
 }
 
+:root {
+  --swiper-theme-color: black !important;
+}
 
 .loaderConteiner {
   position: relative;
