@@ -439,7 +439,7 @@ const OptionsTable = ({
           component='p'
           className={classes.textPrice}
         >
-          {lang === 'EN' ? '* The price does not include delivery and installation of heating systems.' : '* В стоимость не входит доставка и монтаж систем отопления.'}
+          {lang === 'EN' ? '* The price does not include delivery of the house, installation of finishing utilities and communications to the plot.' : '* В стоимость не входит доставка дома, монтаж чистовых инженерных сетей и подводка коммуникаций на участок.'}
         </Typography>
       </Box>
     </div>
