@@ -39,6 +39,9 @@ body {
   border-radius: 10px;
 }
 
+:root {
+  --swiper-theme-color: black !important;
+}
 
 .loaderConteiner {
   position: relative;
@@ -105,6 +108,7 @@ body {
   border-collapse: collapse;
   margin-left: -1px;
   margin-top: -1px;
+  color: black
 }
 
 .react-calendar__month-view__weekdays__weekday {
@@ -142,6 +146,7 @@ body {
     font-style: normal;
     font-family: Montserrat,sans-serif;
     font-weight: 400;
+    color: black
   }
 }
 
@@ -184,6 +189,10 @@ body {
   font-style: normal;
   font-family: Montserrat,sans-serif;
   font-weight: 400;
+  color: black
+}
+.react-calendar__navigation__label__labelText {
+  color: black
 }
 
 .react-calendar__navigation__arrow {
@@ -263,7 +272,7 @@ abbr {
   pointer-events: none;
 }
 
-.unAnableDate::after {
+.unAnableDate:after {
   content: "";
   position: absolute;
   top: 0;
@@ -275,7 +284,7 @@ abbr {
 }
 
 @media  (min-width: 540px) and (max-width: 1279px) {
-  .unAnableDate::after {
+  .unAnableDate:after {
     left: calc(14% + -138%);
   }
 }

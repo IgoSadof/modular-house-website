@@ -6,12 +6,12 @@ const MyCalendar = ({
   setSelectDate,
 }) => {
   const [date, setDate] = useState(new Date());
-
+  
   const dates = unavailableDates.map((item) => {
     if (item.published) {
       let dateArr = []
-      let start = new Date(item.date_start);
-      let end = new Date(item.date_end);
+      let start = new Date(item.date_start.slice(0, 10));
+      let end = new Date(item.date_end.slice(0, 10));
 
       while(start<=end){
         let copiedDate = new Date(start.getTime());
@@ -23,6 +23,7 @@ const MyCalendar = ({
   });
 
   const checkDate = (date, dates) =>{
+    // console.log(date, dates)
     let result =false;
     dates.forEach(arr => {
       if(arr?.find(element => element===date)){
