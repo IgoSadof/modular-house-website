@@ -36,7 +36,7 @@ const Footer = ({lang}) => {
   return (
     <Box component='footer' className={classes.root}>
       <Typography className={classes.text}>
-      {`© ${new Date().getUTCFullYear()} | ${lang === 'EN' ? 'LLC "Art-studio "Zrobim"' : 'ООО "Арт-студия "Зробим"'} `}
+      {`© ${new Date().getUTCFullYear()} | ${lang === 'EN' ? 'LLC "Art-studio "Zrobim"' : 'ООО "Арт-студия "Зробим"'}`}
       </Typography>
     </Box>
   );
