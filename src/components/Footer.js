@@ -36,21 +36,7 @@ const Footer = ({lang}) => {
   return (
     <Box component='footer' className={classes.root}>
       <Typography className={classes.text}>
-      {`© ${new Date().getUTCFullYear()} | ${lang === 'EN' ? 'LLC "Art-studio "Zrobim"' : 'ООО "Арт-студия "Зробим"'} ` 
-      `<script type="text/javascript" >
-      (function(m,e,t,r,i,k,a){m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-   
-      ym(57371404, "init", {
-           clickmap:true,
-           trackLinks:true,
-           accurateTrackBounce:true
-      });
-   </script>
-   <noscript><div><img src="https://mc.yandex.ru/watch/57371404" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`}
+      {`© ${new Date().getUTCFullYear()} | ${lang === 'EN' ? 'LLC "Art-studio "Zrobim"' : 'ООО "Арт-студия "Зробим"'}`}
       </Typography>
     </Box>
   );
