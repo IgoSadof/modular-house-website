@@ -484,19 +484,16 @@ const useStyles = makeStyles((theme) => ({
   },
   housesBox: {
     width: '100%',
-    '&>div>div':{
-      marginTop:'15px',
+    '&>div>div': {
+      marginTop: '15px',
       '@media (min-width:1921px)': {
-        marginTop:'1vw'
+        marginTop: '1vw',
       },
-    }
+    },
   },
   formSection: {
-    '& > section > div': {
-      
-    }
+    '& > section > div': {},
   },
-
 }));
 
 const Watch = ({ data, lang }) => {
@@ -510,19 +507,24 @@ const Watch = ({ data, lang }) => {
 
   const classes = useStyles();
   let pageDataObj = useMemo(
-    () => ({'EN': getData(data.allMysqlArendaEn.nodes),'RU': getData(data.allMysqlArenda.nodes)}),
+    () => ({
+      EN: getData(data.allMysqlArendaEn.nodes),
+      RU: getData(data.allMysqlArenda.nodes),
+    }),
     [data]
   );
   const pageData = lang === 'EN' ? pageDataObj['EN'] : pageDataObj['RU'];
   const [selectHouse, setSelectHouse] = useState(0);
   const handleRadioChange = (event) => {
     setSelectHouse(event.target.value);
-    setUnavailableDates(pageData.arenda_houses[event.target.value].house_calendar);
+    setUnavailableDates(
+      pageData.arenda_houses[event.target.value].house_calendar
+    );
   };
-  
+
   const [unavailableDates, setUnavailableDates] = useState(
     pageData.arenda_houses[selectHouse].house_calendar
-    );
+  );
 
   pageData.arenda_options?.forEach((item) => {
     selectOptions[item.name] = false;
@@ -634,7 +636,34 @@ const Watch = ({ data, lang }) => {
             {pageData?.arenda_price ? (
               <Box className={classes.priceBlock}>
                 <Typography className={classes.priceBlockText} variant='body1'>
-                  <strong>{pageData.arenda_price}</strong> / {lang === 'EN' ? '1 night <span style="display: block;font-size: 1rem;margin-top: 1rem;">(since November - 180 BYN)</span>' : '1 ночь <span style="display: block;font-size: 1rem;margin-top: 1rem;">(с ноября - 180 BYN)</span>'}
+                  <strong>{pageData.arenda_price}</strong> /
+                  {lang === 'EN' ? (
+                    <>
+                      <span>1 night</span>
+                      <span
+                        style={{
+                          display: 'block',
+                          fontSize: '1rem',
+                          marginTop: '1rem',
+                        }}
+                      >
+                        (since November - 180 BYN)
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span>1 ночь</span>
+                      <span
+                        style={{
+                          display: 'block',
+                          fontSize: '1rem',
+                          marginTop: '1rem',
+                        }}
+                      >
+                        (с ноября - 180 BYN)
+                      </span>
+                    </>
+                  )}
                 </Typography>
               </Box>
             ) : null}
@@ -727,7 +756,11 @@ const Watch = ({ data, lang }) => {
         <ContentBlock
           blockRef={formBlock}
           mb={
-            pageData.arenda_video ? '100px' : breakpoints.xxl ? '4.2vw' : '100px'
+            pageData.arenda_video
+              ? '100px'
+              : breakpoints.xxl
+              ? '4.2vw'
+              : '100px'
           }
           title={pageData.arenda_invite_title}
           leftColumnContent={
@@ -738,13 +771,13 @@ const Watch = ({ data, lang }) => {
                     <span>{pageData.arenda_invite_subtitle}</span>
                   </Typography>
                 </Box>
-                
+
                 <Box className={classes.subtitleBox}>
                   <Typography variant='body1'>
                     {pageData.arenda_invite_text}
                   </Typography>
                 </Box>
-                
+
                 <Box className={classes.housesBox}>
                   <FormControl>
                     {/* <FormLabel id='demo-row-radio-buttons-group-label'>
@@ -764,7 +797,7 @@ const Watch = ({ data, lang }) => {
                             <FormControlLabel
                               key={index}
                               value={`${index}`}
-                              control={<Radio color="default" />}
+                              control={<Radio color='default' />}
                               label={house.name}
                             />
                           );
@@ -775,7 +808,9 @@ const Watch = ({ data, lang }) => {
               </Box>
               <Box className={classes.instaBox}>
                 <Typography variant='body1' className={classes.instaText}>
-                {lang === 'EN' ? 'More about our location on Instagram:' : 'Больше про нашу локацию в сети Instagram:'}
+                  {lang === 'EN'
+                    ? 'More about our location on Instagram:'
+                    : 'Больше про нашу локацию в сети Instagram:'}
                 </Typography>
                 <Box className={classes.instaContent}>
                   <a
@@ -804,7 +839,9 @@ const Watch = ({ data, lang }) => {
                   component='p'
                   variant='body1'
                 >
-                  {lang === 'EN' ? 'Select planned and available dates for your stay' : 'Выберите планируемые и свободные для проживания даты'}
+                  {lang === 'EN'
+                    ? 'Select planned and available dates for your stay'
+                    : 'Выберите планируемые и свободные для проживания даты'}
                 </Typography>
                 <MyCalendar
                   unavailableDates={unavailableDates}
@@ -861,11 +898,15 @@ const Watch = ({ data, lang }) => {
                 <Form
                   data={data}
                   endpoint={'https://formspree.io/f/mzbokwwy'}
-                  extraFormFields={{ date: selectDate, currentOption,house: pageData.arenda_houses[selectHouse].name }}
+                  extraFormFields={{
+                    date: selectDate,
+                    currentOption,
+                    house: pageData.arenda_houses[selectHouse].name,
+                  }}
                   arenda={true}
                   sendDate={selectDate}
                   buttonText='бронировать'
-                  lang={lang} 
+                  lang={lang}
                 />
               </Box>
             </Box>
@@ -875,7 +916,9 @@ const Watch = ({ data, lang }) => {
       <Box component='div' className={classes.instaBox2}>
         <Box className={classes.instaBox}>
           <Typography variant='body1' className={classes.instaText}>
-          {lang === 'EN' ? 'More about our location on Instagram:' : 'Больше про нашу локацию в сети Instagram:'}
+            {lang === 'EN'
+              ? 'More about our location on Instagram:'
+              : 'Больше про нашу локацию в сети Instagram:'}
           </Typography>
           <Box className={classes.instaContent}>
             <a
