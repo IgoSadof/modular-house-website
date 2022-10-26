@@ -190,7 +190,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
     ? +modules[0].price.replace(/[KК]/, '000')
     : 0;
   const baseModuleSquare = modules?.[0].square_effective
-  ? +modules[0].square
+  ? +modules[0].square_effective
   : 0;
 
   const [moduleSquare, setModuleSquare] = useState(baseModuleSquare);
