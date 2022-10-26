@@ -216,7 +216,6 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
     let mudules = [];
     let optionsList = []
     
-    // console.log(optionsList)
     chooseModules?.forEach((item) => {
       price += item.price ? +item.price.replace(/[KК]/, '000') : 0;
       squareSum += item.square_effective ? +item.square_effective: 0;
