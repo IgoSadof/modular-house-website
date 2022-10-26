@@ -200,7 +200,6 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
   const [moduleSquare, setModuleSquare] = useState(baseModuleSquare);
 
   const classes = useStyles();
-  console.log(modules)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
   const handleClickCheckbox = (event, curentIndex) => {
