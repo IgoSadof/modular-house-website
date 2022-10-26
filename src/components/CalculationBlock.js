@@ -393,7 +393,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
             }
           >
             <Typography variant='h6' component='p'>
-            {lang === 'EN' ? 'SQUARE' : 'Жилая площадь'}
+            {lang === 'EN' ? 'Living area' : 'Жилая площадь'}
             </Typography>
             <Typography variant='h6' className={classes.calculationResultDigit}>
               {/* {`$${numberWithSpace(modulePrice.toFixed())}`} */}
