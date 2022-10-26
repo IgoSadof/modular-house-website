@@ -189,7 +189,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
   const baseModulePrice = modules?.[0].price
     ? +modules[0].price.replace(/[KК]/, '000')
     : 0;
-  const baseModuleSquare = modules?.[0].square
+  const baseModuleSquare = modules?.[0].square_effective
   ? +modules[0].square
   : 0;
   // const baseModuleOptions = modules?.[0].module_options
@@ -200,6 +200,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
   const [moduleSquare, setModuleSquare] = useState(baseModuleSquare);
 
   const classes = useStyles();
+  console.log(modules)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(0);
   const handleClickCheckbox = (event, curentIndex) => {
@@ -223,7 +224,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
     // console.log(optionsList)
     chooseModules?.forEach((item) => {
       price += item.price ? +item.price.replace(/[KК]/, '000') : 0;
-      squareSum += item.square ? +item.square: 0;
+      squareSum += item.square_effective ? +item.square_effective: 0;
       mudules.push(item.name);
       if(item.module_options){
         item.module_options.forEach(option=>{
