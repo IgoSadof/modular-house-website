@@ -386,9 +386,6 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
         })}
 
         <Box className={classes.calculationResultBox}>
-          {/* <Typography variant='h6' className={classes.squaresSum}>
-          <span>{`${moduleSquare.toFixed(2)} м²`}</span>
-          </Typography> */}
           <Box
             className={classes.calculationResult}
             style={
