@@ -192,11 +192,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
   const baseModuleSquare = modules?.[0].square_effective
   ? +modules[0].square
   : 0;
-  // const baseModuleOptions = modules?.[0].module_options
-  // ? modules[0].module_options
-  // : 'no options';
 
-  // const [modulePrice, setModulePrice] = useState(baseModulePrice);
   const [moduleSquare, setModuleSquare] = useState(baseModuleSquare);
 
   const classes = useStyles();
