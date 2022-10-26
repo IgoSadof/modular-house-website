@@ -406,7 +406,6 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
             <Typography variant='h6' className={classes.calculationResultDigit}>
               {/* {`$${numberWithSpace(modulePrice.toFixed())}`} */}
               {`${moduleSquare.toFixed(2)} м²`}
-              {'square_effective'}
             </Typography>
           </Box>
         </Box>
