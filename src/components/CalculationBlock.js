@@ -404,7 +404,7 @@ const CalculationBlock = ({ modules, data, getUserModules, getUserOptions,setMod
             {lang === 'EN' ? 'SQUARE' : 'Площадь'}
             </Typography>
             <Typography variant='h6' className={classes.calculationResultDigit}>
-              {/* {`$${numberWithSpace(modulePrice.toFixed())}`} */}
+              {{`$${numberWithSpace(modulePrice.toFixed())}`}}
               {`${moduleSquare.toFixed(2)} м²`}
             </Typography>
           </Box>
