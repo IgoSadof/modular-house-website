@@ -905,9 +905,17 @@ const Watch = ({ data, lang }) => {
                   }}
                   arenda={true}
                   sendDate={selectDate}
-                  buttonText='бронировать'
+                  buttonText='Бронировать'
                   lang={lang}
                 />
+                <Typography 
+                variant='body1'
+                component='p'
+                >
+                  {lang === 'EN'
+                    ? 'More about our location on Instagram:'
+                    : 'Больше про нашу локацию в сети Instagram:'}
+                </Typography>
               </Box>
             </Box>
           }
@@ -917,8 +925,8 @@ const Watch = ({ data, lang }) => {
         <Box className={classes.instaBox}>
           <Typography variant='body1' className={classes.instaText}>
             {lang === 'EN'
-              ? 'More about our location on Instagram:'
-              : 'Больше про нашу локацию в сети Instagram:'}
+              ? 'Phone number for contacting the manager: <br>+375 33 914 79 48'
+              : 'Телефон для связи с менеджером: <br>+375 33 914 79 48'}
           </Typography>
           <Box className={classes.instaContent}>
             <a
