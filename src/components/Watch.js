@@ -427,11 +427,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contactText: {
-    marginTop: '20px',
+    marginTop: '40px',
     width: '250px',
     fontSize: '14px',
     '@media (min-width:1921px)': {
-      marginTop: '1.04vw',
+      marginTop: '1.64vw',
       width: '14vw',
       fontSize: '0.72vw',
     }, 
@@ -923,8 +923,8 @@ const Watch = ({ data, lang }) => {
                 component='p'
                 >
                   {lang === 'EN'
-                  ? 'Phone number for contacting the manager: <br>+375 33 914 79 48'
-                  : 'Телефон для связи с менеджером: <br>+375 33 914 79 48'}
+                  ? 'Consultation: +375 33 914 79 48'
+                  : 'Связь с менеджером: +375 33 914 79 48'}
                 </Typography>
               </Box>
             </Box>
