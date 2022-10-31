@@ -434,7 +434,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '1.04vw',
       width: '14vw',
       fontSize: '0.72vw',
-    },
+    }, 
   },
   optionsName: {
     textTransform: 'none',
