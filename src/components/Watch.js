@@ -393,7 +393,7 @@ const useStyles = makeStyles((theme) => ({
       width: '14vw',
       fontSize: '0.72vw',
     },
-  }
+  },
   instaName: {
     marginLeft: '16px',
     textTransform: 'uppercase',
