@@ -384,6 +384,16 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '0.72vw',
     },
   },
+  contactText: {
+    marginTop: '20px',
+    width: '250px',
+    fontSize: '14px',
+    '@media (min-width:1921px)': {
+      marginTop: '1.04vw',
+      width: '14vw',
+      fontSize: '0.72vw',
+    },
+  }
   instaName: {
     marginLeft: '16px',
     textTransform: 'uppercase',
@@ -905,16 +915,17 @@ const Watch = ({ data, lang }) => {
                   }}
                   arenda={true}
                   sendDate={selectDate}
-                  buttonText='Бронировать'
+                  buttonText='бронировать'
                   lang={lang}
                 />
                 <Typography 
+                className={classes.contactText}
                 variant='body1'
                 component='p'
                 >
                   {lang === 'EN'
-                    ? 'More about our location on Instagram:'
-                    : 'Больше про нашу локацию в сети Instagram:'}
+                  ? 'Phone number for contacting the manager: <br>+375 33 914 79 48'
+                  : 'Телефон для связи с менеджером: <br>+375 33 914 79 48'}
                 </Typography>
               </Box>
             </Box>
@@ -925,8 +936,8 @@ const Watch = ({ data, lang }) => {
         <Box className={classes.instaBox}>
           <Typography variant='body1' className={classes.instaText}>
             {lang === 'EN'
-              ? 'Phone number for contacting the manager: <br>+375 33 914 79 48'
-              : 'Телефон для связи с менеджером: <br>+375 33 914 79 48'}
+              ? 'More about our location on Instagram:'
+              : 'Больше про нашу локацию в сети Instagram:'}
           </Typography>
           <Box className={classes.instaContent}>
             <a
