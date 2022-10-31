@@ -514,6 +514,7 @@ const Watch = ({ data, lang }) => {
   const [selectDate, setSelectDate] = useState(null);
   const [selectOptions, setSelectOptions] = useState({});
 
+
   const classes = useStyles();
   let pageDataObj = useMemo(
     () => ({
@@ -539,7 +540,7 @@ const Watch = ({ data, lang }) => {
     selectOptions[item.name] = false;
   });
 
-  // console.log(pageData);
+  console.log(pageData);
   const [currentOption, setCurrentOption] = useState(selectOptions);
   const handleChangeCheckbox = (event) => {
     setCurrentOption({
