@@ -384,20 +384,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '0.72vw',
     },
   },
-  contactText: {
-    marginTop: '20px',
-    width: '250px',
-    fontSize: '14px',
-    '@media (min-width:1921px)': {
-      marginTop: '1.04vw',
-      width: '14vw',
-      fontSize: '0.72vw',
-    },
-  },
   instaName: {
     marginLeft: '16px',
     textTransform: 'uppercase',
-
     '@media (min-width:1921px)': {
       marginLeft: '0.8vw',
     },
@@ -435,6 +424,16 @@ const useStyles = makeStyles((theme) => ({
       '@media (min-width:1921px)': {
         marginTop: '1.1vw',
       },
+    },
+  },
+  contactText: {
+    marginTop: '20px',
+    width: '250px',
+    fontSize: '14px',
+    '@media (min-width:1921px)': {
+      marginTop: '1.04vw',
+      width: '14vw',
+      fontSize: '0.72vw',
     },
   },
   optionsName: {
