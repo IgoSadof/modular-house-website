@@ -112,6 +112,12 @@ const useStyles = makeStyles((theme) => ({
       pointerEvents: 'none',
       cursor: 'none',
     },
+    '& h6': {
+      whiteSpace: 'nowrap',
+    },
+    '&>div>label+h6': {
+      whiteSpace: 'normal',
+    },
   },
   calculationBody: {
     marginLeft: '10px',
