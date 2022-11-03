@@ -184,6 +184,7 @@ const useStyles = makeStyles((theme) => ({
   calculationResultDigit:{
     textTransform: 'inherit',
     marginRight:'30px',
+    whiteSpace:'nowrap',
     [theme.breakpoints.down('md')]: {
       marginRight:'0',
     },
