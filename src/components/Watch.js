@@ -931,6 +931,8 @@ const Watch = ({ data, lang }) => {
                           display: 'block',
                           fontSize: '1.45em',
                           fontWeight: '600',
+                          lineHeight: '1.4',
+                          color: '#454545',
                         }}
                       >
                         +375 33 914 79 48
@@ -944,6 +946,8 @@ const Watch = ({ data, lang }) => {
                           display: 'block',
                           fontSize: '1.45em',
                           fontWeight: '600',
+                          lineHeight: '1.4',
+                          color: '#454545',
                         }}
                       >
                         +375 33 914 79 48
