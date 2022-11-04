@@ -929,7 +929,8 @@ const Watch = ({ data, lang }) => {
                       <span
                         style={{
                           display: 'block',
-                          fontSize: '1.6rem',
+                          fontSize: '1.45em',
+                          fontWeight: '600',
                         }}
                       >
                         +375 33 914 79 48
@@ -941,7 +942,8 @@ const Watch = ({ data, lang }) => {
                       <span
                         style={{
                           display: 'block',
-                          fontSize: '1.6rem',
+                          fontSize: '1.45em',
+                          fontWeight: '600',
                         }}
                       >
                         +375 33 914 79 48
