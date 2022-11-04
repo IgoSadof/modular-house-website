@@ -657,7 +657,7 @@ const Watch = ({ data, lang }) => {
                           marginTop: '1rem',
                         }}
                       >
-                        (since November - 180 BYN)
+                        (since December - more expensive)
                       </span>
                     </>
                   ) : (
@@ -670,7 +670,7 @@ const Watch = ({ data, lang }) => {
                           marginTop: '1rem',
                         }}
                       >
-                        (с ноября - 180 BYN)
+                        (с декабря - дороже)
                       </span>
                     </>
                   )}
@@ -923,9 +923,31 @@ const Watch = ({ data, lang }) => {
                 variant='body1'
                 component='p'
                 >
-                  {lang === 'EN'
-                  ? 'Consultation: +375 33 914 79 48'
-                  : 'Связь с менеджером: +375 33 914 79 48'}
+                  {lang === 'EN' ? (
+                    <>
+                      <span>Consultation: </span>
+                      <span
+                        style={{
+                          display: 'block',
+                          fontSize: '1.6rem',
+                        }}
+                      >
+                        +375 33 914 79 48
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Связь с менеджером: </span>
+                      <span
+                        style={{
+                          display: 'block',
+                          fontSize: '1.6rem',
+                        }}
+                      >
+                        +375 33 914 79 48
+                      </span>
+                    </>
+                  )}
                 </Typography>
               </Box>
             </Box>
