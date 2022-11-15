@@ -283,6 +283,10 @@ abbr {
   transform: rotate(45deg);
 }
 
+.react-calendar__year-view__months__month{
+  pointer-events: visible !important;
+}
+
 @media  (min-width: 540px) and (max-width: 1279px) {
   .unAnableDate:after {
     left: calc(14% + -138%);
