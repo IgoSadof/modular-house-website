@@ -794,8 +794,17 @@ const Watch = ({ data, lang }) => {
                   variant='body1'
                 >
                   {lang === 'EN'
-                    ? '2. Select planned and available dates for your stay'
-                    : '2. Выберите планируемые и свободные для проживания даты'}
+                    ? '2. Select suitable dates available for accommodation (by clicking on the first and then on the last planned day)'
+                    : '2. Выберите подходящие свободные для проживания даты (нажав на первый, а затем на последний планируемый день)'}
+                </Typography>
+                <Typography
+                  className={classes.calendarDesc}
+                  component='p'
+                  variant='body1'
+                >
+                  {lang === 'EN'
+                    ? '3. Provide your contact information and wait for the manager to call to confirm your reservation'
+                    : '3. Укажите данные для связи и ожидайте звонка менеджера для подтверждения брони'}
                 </Typography>
               </Box>
               <Box className={classes.instaBox}>

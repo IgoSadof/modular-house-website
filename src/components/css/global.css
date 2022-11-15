@@ -632,7 +632,7 @@ ul.slick-dots li button:before{
 }
 
 div[class*="MuiFormControl"] {
-  height: 5.7vw;
+  /*height: 5.7vw;*/
 }
 
 @media screen and (min-width: 1921px) {
