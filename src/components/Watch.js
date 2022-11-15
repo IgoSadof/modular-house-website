@@ -794,8 +794,8 @@ const Watch = ({ data, lang }) => {
                   variant='body1'
                 >
                   {lang === 'EN'
-                    ? 'Select planned and available dates for your stay'
-                    : 'Выберите планируемые и свободные для проживания даты'}
+                    ? '2. Select planned and available dates for your stay'
+                    : '2. Выберите планируемые и свободные для проживания даты'}
                 </Typography>
               </Box>
               <Box className={classes.instaBox}>
@@ -825,35 +825,34 @@ const Watch = ({ data, lang }) => {
           }
           rightColumnContent={
             <Box className={classes.calendarFormBox}>
-              <Box className={classes.housesBox}>
-                <FormControl>
-                  {/* <FormLabel id='demo-row-radio-buttons-group-label'>
-                    Gender
-                  </FormLabel> */}
-                  <RadioGroup
-                    row
-                    aria-labelledby='demo-row-radio-buttons-group-label'
-                    name='row-radio-buttons-group'
-                    defaultValue='0'
-                    onChange={handleRadioChange}
-                  >
-                    {pageData.arenda_houses
-                      .filter((item) => item.published)
-                      .map((house, index) => {
-                        return (
-                          <FormControlLabel
-                            key={index}
-                            value={`${index}`}
-                            control={<Radio color='default' />}
-                            label={house.name}
-                          />
-                        );
-                      })}
-                  </RadioGroup>
-                </FormControl>
-              </Box>
               <Box className={classes.calendar}>
-                
+                <Box className={classes.housesBox}>
+                  <FormControl>
+                    {/* <FormLabel id='demo-row-radio-buttons-group-label'>
+                      Gender
+                    </FormLabel> */}
+                    <RadioGroup
+                      row
+                      aria-labelledby='demo-row-radio-buttons-group-label'
+                      name='row-radio-buttons-group'
+                      defaultValue='0'
+                      onChange={handleRadioChange}
+                    >
+                      {pageData.arenda_houses
+                        .filter((item) => item.published)
+                        .map((house, index) => {
+                          return (
+                            <FormControlLabel
+                              key={index}
+                              value={`${index}`}
+                              control={<Radio color='default' />}
+                              label={house.name}
+                            />
+                          );
+                        })}
+                    </RadioGroup>
+                  </FormControl>
+                </Box>
                 <MyCalendar
                   unavailableDates={unavailableDates}
                   setSelectDate={(date) => {
