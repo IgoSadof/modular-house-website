@@ -286,6 +286,10 @@ abbr {
 .react-calendar__decade-view__years__year.unAnableDate:after{
   display: none;
 }
+.react-calendar__year-view__months__month{
+  pointer-events: visible !important;
+}
+
 @media  (min-width: 540px) and (max-width: 1279px) {
   .unAnableDate:after {
     left: calc(14% + -138%);
