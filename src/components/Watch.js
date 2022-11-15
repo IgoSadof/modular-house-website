@@ -199,7 +199,7 @@ const useStyles = makeStyles((theme) => ({
   },
   calendarDesc: {
     width: '100%',
-    marginBottom: '10px',
+    /*marginBottom: '10px',*/
     fontSize: '14px',
     marginTop: '5px',
     '@media (min-width:1921px)': {
