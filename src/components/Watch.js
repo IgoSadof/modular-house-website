@@ -788,33 +788,15 @@ const Watch = ({ data, lang }) => {
                   </Typography>
                 </Box>
 
-                <Box className={classes.housesBox}>
-                  <FormControl>
-                    {/* <FormLabel id='demo-row-radio-buttons-group-label'>
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      row
-                      aria-labelledby='demo-row-radio-buttons-group-label'
-                      name='row-radio-buttons-group'
-                      defaultValue='0'
-                      onChange={handleRadioChange}
-                    >
-                      {pageData.arenda_houses
-                        .filter((item) => item.published)
-                        .map((house, index) => {
-                          return (
-                            <FormControlLabel
-                              key={index}
-                              value={`${index}`}
-                              control={<Radio color='default' />}
-                              label={house.name}
-                            />
-                          );
-                        })}
-                    </RadioGroup>
-                  </FormControl>
-                </Box>
+                <Typography
+                  className={classes.calendarDesc}
+                  component='p'
+                  variant='body1'
+                >
+                  {lang === 'EN'
+                    ? 'Select planned and available dates for your stay'
+                    : 'Выберите планируемые и свободные для проживания даты'}
+                </Typography>
               </Box>
               <Box className={classes.instaBox}>
                 <Typography variant='body1' className={classes.instaText}>
@@ -843,16 +825,35 @@ const Watch = ({ data, lang }) => {
           }
           rightColumnContent={
             <Box className={classes.calendarFormBox}>
+              <Box className={classes.housesBox}>
+                <FormControl>
+                  {/* <FormLabel id='demo-row-radio-buttons-group-label'>
+                    Gender
+                  </FormLabel> */}
+                  <RadioGroup
+                    row
+                    aria-labelledby='demo-row-radio-buttons-group-label'
+                    name='row-radio-buttons-group'
+                    defaultValue='0'
+                    onChange={handleRadioChange}
+                  >
+                    {pageData.arenda_houses
+                      .filter((item) => item.published)
+                      .map((house, index) => {
+                        return (
+                          <FormControlLabel
+                            key={index}
+                            value={`${index}`}
+                            control={<Radio color='default' />}
+                            label={house.name}
+                          />
+                        );
+                      })}
+                  </RadioGroup>
+                </FormControl>
+              </Box>
               <Box className={classes.calendar}>
-                <Typography
-                  className={classes.calendarDesc}
-                  component='p'
-                  variant='body1'
-                >
-                  {lang === 'EN'
-                    ? 'Select planned and available dates for your stay'
-                    : 'Выберите планируемые и свободные для проживания даты'}
-                </Typography>
+                
                 <MyCalendar
                   unavailableDates={unavailableDates}
                   setSelectDate={(date) => {
