@@ -290,6 +290,12 @@ abbr {
 .react-calendar__decade-view__years__year.unAnableDate{
   background: transparent;
 }
+.react-calendar__year-view__months__month.unAnableDate.react-calendar__tile:hover, 
+.react-calendar__decade-view__years__year.unAnableDate.react-calendar__tile:hover {
+  background-color: #4f4f4f;
+  border-color: #4f4f4f;
+  color: #f2f2f2;
+}
 .react-calendar__year-view__months__month.unAnableDate:after,
 .react-calendar__decade-view__years__year.unAnableDate:after{
   display: none;
