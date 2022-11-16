@@ -284,13 +284,18 @@ abbr {
   transform: rotate(45deg);
 }
 .unAnableDate:hover:after {
-  opacity: 0.6;
+  opacity: 1;
+}
+.react-calendar__year-view__months__month.unAnableDate,
+.react-calendar__decade-view__years__year.unAnableDate{
+  background: transparent;
 }
 .react-calendar__year-view__months__month.unAnableDate:after,
 .react-calendar__decade-view__years__year.unAnableDate:after{
   display: none;
 }
-.react-calendar__year-view__months__month{
+.react-calendar__year-view__months__month,
+.react-calendar__year-view__years__year{
   pointer-events: visible !important;
 }
 
