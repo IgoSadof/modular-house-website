@@ -221,12 +221,12 @@ const FullScreenHouseSlider = ({
   sidesDesctopButtons,
   initialSlide,
   enabled,
-  oneButton,
+  oneButton, 
   outSideButtons,
   formBlock,
   lang
 }) => {
-  const breakpoints = useBreakpoint();
+  //const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
   const param = {
     title,
