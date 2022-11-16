@@ -459,7 +459,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                         </div>
 
                         <Box className={classes.button}>
-                          {breakpoints.md || page === 'contacts' ? null : (
+                          {breakpoints.md || page === 'contacts' || page === 'watch' ? null : (
                             <RegularButton
                               variant='outlined'
                               click={handleClickConnect}
