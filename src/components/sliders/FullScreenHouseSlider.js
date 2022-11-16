@@ -226,7 +226,7 @@ const FullScreenHouseSlider = ({
   formBlock,
   lang
 }) => {
-  //const breakpoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
   const sliderRef = useRef(null);
   const param = {
     title,
