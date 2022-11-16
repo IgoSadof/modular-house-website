@@ -232,7 +232,7 @@ const FullScreenHouseSlider = ({
     title,
     mobileButtons,
     fullHeight,
-    //sidesDesctopButtons,
+    sidesDesctopButtons,
     autoSlidesPerView
   };
   const classes = useStyles(param);

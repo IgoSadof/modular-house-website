@@ -578,7 +578,7 @@ const Watch = ({ data, lang }) => {
         middleIcon={true}
         pagination={true}
         enabled={false}
-        oneButton={true}
+        //oneButton={true}
         formBlock={formBlock}
         lang={lang}
       ></FullScreenHouseSlider>
