@@ -188,12 +188,12 @@ body {
   border: 0 none;
   font-size: 1.4rem;
   color: #434343;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 0;
   line-height: 1;
   cursor: pointer;
   opacity: 0.6;
   text-indent: -9999px;
+  position: relative;
 }
 .react-calendar__navigation__arrow:hover{
   opacity: 1;
@@ -207,8 +207,8 @@ body {
   content: '';
   position: absolute;
   transform: rotate(45deg);
-  height: 1rem;
-  width: 1rem;
+  height: 0.5rem;
+  width: 0.5rem;
   border: 1px solid #111;
   top: 0;
   bottom: 0;
@@ -232,12 +232,12 @@ body {
 .react-calendar__navigation__prev2-button:before{
   border-right: 0 none;
   border-top: 0 none;
-  right: 0;
+  right: -0.5em;
 }
 .react-calendar__navigation__next2-button:before{
   border-left: 0 none;
   border-bottom: 0 none;
-  left: 0;
+  left: -0.5em;
 }
 
 .react-calendar__month-view__days{
