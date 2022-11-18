@@ -177,13 +177,81 @@ body {
 
 .react-calendar__navigation {
   /* display: none !important; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
 }
 
+.react-calendar__navigation__arrow{
+  background: transparent;
+  border: 0 none;
+  font-size: 1.4rem;
+  color: #434343;
+  padding-left: 3px;
+  padding-right: 3px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.6;
+  text-indent: -9999px;
+}
+.react-calendar__navigation__arrow:hover{
+  opacity: 1;
+}
+.react-calendar__navigation__prev-button:after,
+.react-calendar__navigation__next-button:after,
+.react-calendar__navigation__prev2-button:before,
+.react-calendar__navigation__next2-button:before,
+.react-calendar__navigation__prev2-button:after,
+.react-calendar__navigation__next2-button:after{
+  content: '';
+  position: absolute;
+  transform: rotate(45deg);
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid #111;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.react-calendar__navigation__prev2-button:after,
+.react-calendar__navigation__prev-button:after{
+  border-right: 0 none;
+  border-top: 0 none;
+  right: -0.25em;
+}
+.react-calendar__navigation__next2-button:after,
+.react-calendar__navigation__next-button:after{
+  border-left: 0 none;
+  border-bottom: 0 none;
+  left: -0.25em;
+}
+.react-calendar__navigation__prev2-button:before{
+  border-right: 0 none;
+  border-top: 0 none;
+  right: 0;
+}
+.react-calendar__navigation__next2-button:before{
+  border-left: 0 none;
+  border-bottom: 0 none;
+  left: 0;
+}
+
+.react-calendar__month-view__days{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
 .react-calendar__navigation__label {
   background: transparent;
   border: none;
   margin-top: 10px;
-  text-align: end;
+  margin-bottom: 10px;
+  /*text-align: end;*/
   cursor: pointer;
   text-transform: none;
   font-style: normal;
@@ -270,12 +338,12 @@ abbr {
 .unAnableDate {
   position: relative;
   pointer-events: none;
-  background: #aaa;
+  background: #b9b9b9;
 }
 .unAnableDate:after {
   content: "";
   position: absolute;
-  opacity: 0;
+  opacity: 0.4;
   top: 0;
   left: -150%;
   width: 300%;
