@@ -207,7 +207,7 @@ const useStyles = makeStyles((theme) => ({
       color: '#f2f2f2',
       '&:hover': {
         background: '#f2f2f2',
-        color: '#454545',
+        color: '#121212',
       },
       '@media (min-width:1921px)': {
           padding: '0.1vw 2.2vw',
