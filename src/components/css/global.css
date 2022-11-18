@@ -189,6 +189,7 @@ body {
   font-size: 1.4rem;
   color: #434343;
   padding: 0;
+  width: 1em;
   line-height: 1;
   cursor: pointer;
   opacity: 0.6;
@@ -217,13 +218,11 @@ body {
   margin: auto;
 }
 
-.react-calendar__navigation__prev2-button:after,
 .react-calendar__navigation__prev-button:after{
   border-right: 0 none;
   border-top: 0 none;
   right: -0.25em;
 }
-.react-calendar__navigation__next2-button:after,
 .react-calendar__navigation__next-button:after{
   border-left: 0 none;
   border-bottom: 0 none;
@@ -232,12 +231,20 @@ body {
 .react-calendar__navigation__prev2-button:before{
   border-right: 0 none;
   border-top: 0 none;
-  right: -0.5em;
 }
 .react-calendar__navigation__next2-button:before{
   border-left: 0 none;
   border-bottom: 0 none;
-  left: -0.5em;
+}
+.react-calendar__navigation__prev2-button:after{
+  border-right: 0 none;
+  border-top: 0 none;
+  right: 0.25em;
+}
+.react-calendar__navigation__next2-button:after{
+  border-left: 0 none;
+  border-bottom: 0 none;
+  left: 0.25em;
 }
 
 .react-calendar__month-view__days{
@@ -264,9 +271,8 @@ body {
 }
 
 .react-calendar__navigation__arrow {
-  display: none !important;
+  /*display: none !important;*/
 }
-
 
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #747474 !important;
