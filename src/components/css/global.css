@@ -182,7 +182,9 @@ body {
   justify-content: space-between;
   margin-top: 0.5rem;
 }
-
+.react-calendar__navigation__label::first-letter {
+  text-transform: capitalize;
+}
 .react-calendar__navigation__arrow{
   background: transparent;
   border: 0 none;
