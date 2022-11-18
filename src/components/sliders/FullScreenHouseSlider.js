@@ -22,6 +22,15 @@ const useStyles = makeStyles((theme) => ({
       height: (param) => '100%',
     },
   },
+  ButtonWhite:{
+    background: 'transparent',
+    borderColor: '#f2f2f2',
+    color: '#f2f2f2',
+    '&:hover': {
+      background: '#f2f2f2',
+      color: '#4f4f4f',
+    },
+  },
   sliderContent: {
     height: '100%',
     zIndex: '1',
@@ -327,10 +336,8 @@ const FullScreenHouseSlider = ({
           <Box className={`${classes.buttons} ${classes.butligt}`} style={{ marginLeft: 'auto' }}>
             {oneButton ? (
               <RegularButton
+                className={`${classes.ButtonWhite}`}
                 click={() => handleSingleButtonClick()}
-                bgColor='transparent'
-                bdColor='#F2F2F2'
-                color='#F2F2F2'
               >
                 {lang === 'EN' ? 'Check available dates' : 'Узнать свободные даты'} 
               </RegularButton>
