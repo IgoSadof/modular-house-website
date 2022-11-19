@@ -50,8 +50,13 @@ const useStyles = makeStyles((theme) => ({
           top: '100%',
           right: '10vw',
           float: 'right',
+          fontSize: '2.6vw',
+          width: '27vw',
         },
       },
+      '@media (min-width:1921px)': {
+        top: 'calc(-100vh + 3.5vw + 4.2vw + 2.6vw)',
+      }
     },
     '& h1': {
       '@media (min-width:1280px) and (max-width:1564px)': {
