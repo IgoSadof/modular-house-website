@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
       },
       '@media (min-width:1921px)': {
         top: 'calc(-100vh + 3.5vw + 4.2vw + 2.6vw)',
-      }
+      },
     },
   },
   imageSlider: {

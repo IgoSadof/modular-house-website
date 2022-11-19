@@ -231,12 +231,12 @@ body {
 .react-calendar__navigation__prev2-button:before{
   border-right: 0 none;
   border-top: 0 none;
-  left: -0.5em;
+  left: 0.5em;
 }
 .react-calendar__navigation__next2-button:before{
   border-left: 0 none;
   border-bottom: 0 none;
-  right: -0.5em;
+  right: 0.5em;
 }
 .react-calendar__navigation__prev2-button:after{
   border-right: 0 none;
