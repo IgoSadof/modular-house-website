@@ -34,7 +34,24 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '40px',
     },
     '& .sliderWrapper + div > div:first-child': {
-      position: 'absolute',
+      '@media (min-width:1280px)': {
+        position: 'absolute',
+        top: 'calc(-100vh + 80px + 54px + 50px)',
+        bottom: '0',
+        right: '0',
+        textAlign: 'right',
+        paddingRight: '10vw',
+        paddingTop: '0!important',
+        margin: '0!important',
+        height: '1px',
+        '& h1': {
+          textAlign: 'right',
+          position: 'absolute',
+          top: '100%',
+          right: '10vw',
+          float: 'right',
+        },
+      },
     },
     '& h1': {
       '@media (min-width:1280px) and (max-width:1564px)': {
