@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
     },
-    '& .sliderWrapper + div > div:first-child': {
+    '& .undefined .sliderWrapper + div > div:first-child': {
       '@media (min-width:1280px)': {
         position: 'absolute',
         top: 'calc(-100vh + 80px + 54px + 50px)',
