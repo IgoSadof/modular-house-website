@@ -33,7 +33,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
     },
-    '& .undefined .sliderWrapper + div > div:first-child': {
+    '& h1': {
+      '@media (min-width:1280px) and (max-width:1564px)': {
+        width: '34vw',
+      },
+    },
+  },
+  herobox{
+    '& .sliderWrapper + div > div:first-child': {
       '@media (min-width:1280px)': {
         position: 'absolute',
         top: 'calc(-100vh + 80px + 54px + 50px)',
@@ -57,11 +64,6 @@ const useStyles = makeStyles((theme) => ({
       '@media (min-width:1921px)': {
         top: 'calc(-100vh + 3.5vw + 4.2vw + 2.6vw)',
       }
-    },
-    '& h1': {
-      '@media (min-width:1280px) and (max-width:1564px)': {
-        width: '34vw',
-      },
     },
   },
   imageSlider: {
@@ -596,18 +598,19 @@ const Watch = ({ data, lang }) => {
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
-      <FullScreenHouseSlider
-        className={classes.titleboxarenda}
-        title={pageData.arenda_title}
-        arr={pageData.arenda_gallery.filter((item) => item.published)}
-        data={data}
-        middleIcon={true}
-        pagination={true}
-        enabled={false}
-        oneButton={true}
-        formBlock={formBlock}
-        lang={lang}
-      ></FullScreenHouseSlider>
+      <Box className={classes.herobox}>
+        <FullScreenHouseSlider
+          title={pageData.arenda_title}
+          arr={pageData.arenda_gallery.filter((item) => item.published)}
+          data={data}
+          middleIcon={true}
+          pagination={true}
+          enabled={false}
+          oneButton={true}
+          formBlock={formBlock}
+          lang={lang}
+        ></FullScreenHouseSlider>
+      </Box>
 
       <Box className={classes.descBlock}>
         <Box className={classes.descBlockContent}>
