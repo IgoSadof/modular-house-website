@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  herobox{
+  herobox: {
     '& .sliderWrapper + div > div:first-child': {
       '@media (min-width:1280px)': {
         position: 'absolute',
