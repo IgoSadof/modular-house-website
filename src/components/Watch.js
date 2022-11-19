@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
     },
+    '& .sliderWrapper + div > div': {
+      position: 'absolute',
+    },
     '& h1': {
       '@media (min-width:1280px) and (max-width:1564px)': {
         width: '34vw',
       },
     },
-  },
-  titleboxarenda: {
-    position: 'absolute',
   },
   imageSlider: {
     position: 'relative',
