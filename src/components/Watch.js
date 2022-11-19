@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       marginBottom: '40px',
     },
-    '& title': {
-      position: 'absolute',
-    },
     '& h1': {
       '@media (min-width:1280px) and (max-width:1564px)': {
         width: '34vw',
       },
     },
+  },
+  titleboxarenda: {
+    position: 'absolute',
   },
   imageSlider: {
     position: 'relative',
@@ -575,6 +575,7 @@ const Watch = ({ data, lang }) => {
   return (
     <Box components='main' className={classes.BlockFullscreen}>
       <FullScreenHouseSlider
+        className={classes.titleboxarenda}
         title={pageData.arenda_title}
         arr={pageData.arenda_gallery.filter((item) => item.published)}
         data={data}
