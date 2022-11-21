@@ -434,7 +434,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                           >
                                             {lang.lang === 'EN' ? 'Call' : 'Позвонить'} 
                                           </Typography>
-                                          <a href='tel:+375447702236'>
+                                          <a href='tel:+375447106735'>
                                             <Call />
                                           </a>
                                         </Box>
