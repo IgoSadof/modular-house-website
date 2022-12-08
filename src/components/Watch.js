@@ -288,6 +288,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '100px',
     borderTop: '1px solid #bdbdbd',
     borderBottom: '1px solid #bdbdbd',
+    backgroundPosition: '50% 0%!important',
     '&>div': {
       marginTop: '0',
       height: '100%',
