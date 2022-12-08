@@ -288,7 +288,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '100px',
     borderTop: '1px solid #bdbdbd',
     borderBottom: '1px solid #bdbdbd',
-    backgroundPosition: '50% 0%!important',
+    backgroundPosition: '40% 0%!important',
     '&>div': {
       marginTop: '0',
       height: '100%',
@@ -350,7 +350,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 -10vw',
     marginTop: '40px',
     objectFit: 'cover',
-    objectPosition: '48%',
+    objectPosition: '62%',
     borderTop: '1px solid #bdbdbd',
     borderBottom: '1px solid #bdbdbd',
   },
