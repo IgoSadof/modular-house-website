@@ -346,7 +346,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mapImg: {
-    height: '50vh',
+    height: '40vh',
     margin: '0 -10vw',
     marginTop: '40px',
     objectFit: 'cover',
