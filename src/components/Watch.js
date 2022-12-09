@@ -350,7 +350,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 -10vw',
     marginTop: '40px',
     objectFit: 'cover',
-    objectPosition: '62%',
+    objectPosition: '64%',
     borderTop: '1px solid #bdbdbd',
     borderBottom: '1px solid #bdbdbd',
   },
