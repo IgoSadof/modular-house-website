@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
       mixBlendMode: 'darken',
     },
     '&:before':{
-      content:'""',
+      //content:'""',
       background: 'rgb(209,209,209)',
       background: 'radial-gradient(circle, rgba(209,209,209,0) 0%, rgba(209,209,209,0) 35%, rgba(209,209,209,1) 75%, rgba(209,209,209,1) 100%)',
       position:'absolute',
