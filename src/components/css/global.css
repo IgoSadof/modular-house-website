@@ -672,6 +672,7 @@ abbr {
 }
 .slick-track{
   height: 100%;
+  display: flex!important;
 }
 ul.slick-dots{
   bottom: 14px;
