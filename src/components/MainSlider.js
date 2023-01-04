@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
       width:'100%',
       height:'100%',
       zIndex:'1',
-    }
+    },
     [theme.breakpoints.down('md')]: {
       minHeight: '0',
       '@media (min-width:600px)': {
