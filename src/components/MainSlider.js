@@ -53,6 +53,19 @@ const useStyles = makeStyles((theme) => ({
     '& video': {
       mixBlendMode: 'darken',
     },
+    '&:before':{
+      content:'""',
+      background: 'rgb(209,209,209)',
+      background: 'radial-gradient(circle, rgba(209,209,209,0) 0%, rgba(209,209,209,0) 35%, rgba(209,209,209,1) 75%, rgba(209,209,209,1) 100%)',
+      position:'absolute',
+      top:'0',
+      bottom:'0',
+      left:'0',
+      right:'0',
+      width:'100%',
+      height:'100%',
+      zIndex:'1',
+    }
     [theme.breakpoints.down('md')]: {
       minHeight: '0',
       '@media (min-width:600px)': {
