@@ -17,6 +17,7 @@ export default function getData(data) {
   }
   if (dataObj['arenda_houses']) {
     dataObj['arenda_houses'].forEach((item,index)=>{
+      console.log(item)
       item.house_calendar = JSON.parse(item.house_calendar)
     }) ;
   }
