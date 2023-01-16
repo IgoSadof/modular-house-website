@@ -541,6 +541,7 @@ const Watch = ({ data, lang }) => {
   const [activeImg, setActiveImg] = useState(0);
   const [selectDate, setSelectDate] = useState(null);
   const [selectOptions, setSelectOptions] = useState({});
+  console.log('test')
 
 
   const classes = useStyles();
