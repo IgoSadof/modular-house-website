@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Facebook({ width = '14', height = '14' }) {
+export default function Facebook({ width = '20', height = '20' }) {
   return (
     <svg
       width={width}

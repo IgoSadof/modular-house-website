@@ -231,6 +231,7 @@ const Form = ({
   sendDate,
   arenda,
   lang,
+  priceBlock = false,
 }) => {
   const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
@@ -277,10 +278,10 @@ const Form = ({
 
     let data = {
       ...extraFormFields,
-      'Имя': nameText,
-      'Телефон': telText,
+      Имя: nameText,
+      Телефон: telText,
       email: emailText,
-      'Сообщение': messageText,
+      Сообщение: messageText,
       // 'Таблица': '<h1>Hello world</h1>'
     };
 
@@ -320,8 +321,11 @@ const Form = ({
   //   [data]
   // );
   let dataContacts = useMemo(
-    () => ({'EN': getData(data.allMysqlContactsEn.nodes),'RU': getData(data.allMysqlContacts.nodes)}),
-    [data,lang]
+    () => ({
+      EN: getData(data.allMysqlContactsEn.nodes),
+      RU: getData(data.allMysqlContacts.nodes),
+    }),
+    [data, lang]
   );
   // console.log(dataContacts);
 
@@ -346,7 +350,9 @@ const Form = ({
           <Typography variant='body1' className={classes.subtitle}>
             {typeof subtitle === 'string'
               ? subtitle
-              : lang === 'EN' ? 'Leave a request and our manager will contact you' : 'Оставьте заявку и наш менеджер свяжеться с вами'}
+              : lang === 'EN'
+              ? 'Leave a request and our manager will contact you'
+              : 'Оставьте заявку и наш менеджер свяжеться с вами'}
           </Typography>
         ) : null}
       </Box>
@@ -368,7 +374,11 @@ const Form = ({
             required
             id={`name-${id ? id : '0'}`}
             name='name'
-            label={<Typography variant='body2'>{lang === 'EN' ? 'Name' : 'Имя'}</Typography>}
+            label={
+              <Typography variant='body2'>
+                {lang === 'EN' ? 'Name' : 'Имя'}
+              </Typography>
+            }
           />
 
           {/* For ditection of bots */}
@@ -385,7 +395,11 @@ const Form = ({
             id={`phone-${id ? id : '0'}`}
             name='phone'
             type='tel'
-            label={<Typography variant='body2'>{lang === 'EN' ? 'Phone number' : 'Телефон'} </Typography>}
+            label={
+              <Typography variant='body2'>
+                {lang === 'EN' ? 'Phone number' : 'Телефон'}{' '}
+              </Typography>
+            }
             // validators={["isNumber"]}
             // errorMessages={["telefon incorrect"]}
           />
@@ -410,7 +424,9 @@ const Form = ({
           <Box className={classes.messageBox}>
             <label htmlFor={`message-${id ? id : '0'}`}>
               <Box className={classes.messageLabelBox}>
-                <Typography variant='body2'>{lang === 'EN' ? 'Message...' : 'Сообщение...'}</Typography>
+                <Typography variant='body2'>
+                  {lang === 'EN' ? 'Message...' : 'Сообщение...'}
+                </Typography>
                 <div>*</div>
               </Box>
 
@@ -428,9 +444,19 @@ const Form = ({
         ) : null}
 
         <Box className={classes.button}>
-          <RegularButton submit={true} variant='outlined' lowerCase={true}>
-            {buttonText ? buttonText : lang === 'EN' ? 'Send' : 'Отправить'}
-          </RegularButton>
+          {arenda ? (
+            <Box style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+              {priceBlock}
+              <RegularButton submit={true} variant='outlined' lowerCase={true}>
+                {buttonText ? buttonText : lang === 'EN' ? 'Send' : 'Отправить'}
+              </RegularButton>
+            </Box>
+          ) : (
+            <RegularButton submit={true} variant='outlined' lowerCase={true}>
+              {buttonText ? buttonText : lang === 'EN' ? 'Send' : 'Отправить'}
+            </RegularButton>
+          )}
+
           {inBurger ? (
             <RegularButton variant='outlined' click={closeForm}>
               {lang === 'EN' ? 'Back' : 'Назад'}
@@ -464,12 +490,16 @@ const Form = ({
                 <Typography>
                   {dataContacts.popup_title
                     ? dataContacts.popup_title
-                    : lang === 'EN' ? 'THANK YOU FOR CONTACTING US!' : 'СПАСИБО, ЗА ОБРАЩЕНИЕ!'}
+                    : lang === 'EN'
+                    ? 'THANK YOU FOR CONTACTING US!'
+                    : 'СПАСИБО, ЗА ОБРАЩЕНИЕ!'}
                 </Typography>
                 <Typography variant='body1'>
                   {dataContacts.popup_text
                     ? dataContacts.popup_text
-                    : lang === 'EN' ? 'Our specialist will contact you shortly' : 'Наш специалист свяжется с Вами в ближайшее время'}
+                    : lang === 'EN'
+                    ? 'Our specialist will contact you shortly'
+                    : 'Наш специалист свяжется с Вами в ближайшее время'}
                 </Typography>
                 <Box className={classes.buttonBoxLeft}>
                   <RegularButton variant='outlined' click={handleClose}>

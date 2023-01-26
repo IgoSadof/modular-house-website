@@ -2,8 +2,8 @@ import React, { useMemo, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Form from './Form';
-import MyCalendar from './MyCalendar';
+
+import HousesGroup from './HousesGroup';
 import getData from '../utils/getData';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import ContentBlock from './ContentBlock';
@@ -13,15 +13,10 @@ import ModalScreen from '../components/ModalScreen';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import location from '../assets/images/icons/location.svg';
 import validateText from '../utils/validateText';
-import Instagram from './svg/icons/Instagram';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import playButton from '../assets/images/icons/playButton.svg';
-
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import { Fragment } from 'react';
+import Instagram from './svg/icons/Instagram';
+import Phone from './svg/icons/Phone';
 
 const useStyles = makeStyles((theme) => ({
   BlockFullscreen: {
@@ -206,60 +201,7 @@ const useStyles = makeStyles((theme) => ({
       height: '3.2vw',
     },
   },
-  calendar: {
-    width: '16vw',
-    minWidth: '315px',
-    marginTop: '0',
-    marginBottom: 'auto',
-    flexShrink: '0',
-    '@media (min-width:1921px)': {
-      width: '17vw',
-      '& abbr': {
-        fontSize: '0.72vw',
-      },
-      height: 'fit-content',
-    },
-    [theme.breakpoints.down('md')]: {
-      order: '1',
-      minWidth: '100%',
-    },
-  },
-  calendarDesc: {
-    width: '100%',
-    /*marginBottom: '10px',*/
-    fontSize: '14px',
-    marginTop: '5px',
-    '@media (min-width:1921px)': {
-      '&': {
-        fontSize: '0.72vw',
-      },
-      height: 'fit-content',
-    },
-  },
-  calendarFormBox: {
-    width: '100%',
-    marginTop: '90px',
-    display: 'flex',
-    '& > * + * ': {
-      marginLeft: '100px',
-    },
-    '@media (min-width:1921px)': {
-      // marginTop: 'calc(90px + 1.4vw + 0.4vw)',
-      '& > * + * ': {
-        marginLeft: '4.2vw',
-      },
-    },
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column-reverse',
-      alignItems: 'center',
-      marginTop: '0',
-      '& > * + * ': {
-        marginLeft: '0',
-        marginTop: '60px',
-      },
-      // padding: '0 10%',
-    },
-  },
+
   imgBox: {
     width: '100%',
     objectFit: 'cover',
@@ -285,7 +227,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '560px',
     marginTop: '100px',
-    marginBottom: '100px',
     borderTop: '1px solid #bdbdbd',
     borderBottom: '1px solid #bdbdbd',
     backgroundPosition: '40% 0%!important',
@@ -340,7 +281,9 @@ const useStyles = makeStyles((theme) => ({
   },
   mapTextBox: {
     display: 'flex',
+    height: '100%',
     flexDirection: 'column',
+    alignItems: 'flex-start',
     '& > * + * ': {
       marginTop: '20px',
     },
@@ -414,60 +357,13 @@ const useStyles = makeStyles((theme) => ({
   },
   instaName: {
     marginLeft: '16px',
+    fontWeight: '700',
     textTransform: 'uppercase',
     '@media (min-width:1921px)': {
       marginLeft: '0.8vw',
     },
   },
-  optionsBox: {
-    display: 'grid',
-    display: 'none!important',
-    gridTemplateColumns: 'repeat(2, 50%)',
-    width: '100%',
-    gridColumnGap: '40px',
-    gridRowGap: '0',
-    '@media (min-width:1921px)': {
-      gridColumnGap: '2.1vw',
-    },
-    '@media (max-width:600px)': {
-      padding: '0',
-      gridTemplateColumns: 'repeat(1, 1fr)',
-    },
-  },
-  formBox: {
-    width: '100%',
-    [theme.breakpoints.down('md')]: {
-      '& div[class*="formHeader"]': {
-        marginTop: '0px',
-      },
-    },
-    '& div[class*="MuiFormControl"]': {
-      height: '50px',
-      '@media (min-width:1921px)': {
-        height: '4.6vw',
-      },
-    },
-    '& button': {
-      marginTop: '20px',
-      '@media (min-width:1921px)': {
-        marginTop: '1.1vw',
-      },
-    },
-  },
-  contactText: {
-    marginTop: '40px',
-    width: '250px',
-    fontSize: '14px',
-    '@media (min-width:1921px)': {
-      marginTop: '1.64vw',
-      width: '14vw',
-      fontSize: '0.72vw',
-    }, 
-  },
-  optionsName: {
-    textTransform: 'none',
-    whiteSpace: 'nowrap',
-  },
+
   videoBox: {
     marginTop: '0',
     position: 'relative',
@@ -502,17 +398,19 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none',
   },
   instaBox2: {
+    marginBottom: '60px',
+    marginTop: 'auto',
     '@media (min-width:1280px)': {
-      display: 'none!important',
+      // display: 'none',
     },
     [theme.breakpoints.down('md')]: {
       width: '100%',
       padding: '0 10%',
       '& > div > *': {
-        display: 'block!important',
+        // display: 'block!important',
       },
       '& > div > div': {
-        display: 'block!important',
+        // display: 'block!important',
       },
       '& svg': {
         margin: '4px 0',
@@ -531,6 +429,25 @@ const useStyles = makeStyles((theme) => ({
   formSection: {
     '& > section > div': {},
   },
+  houeseGroupsConteiner: {
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    columnGap: 'max(50px,0.2vw)',
+    [theme.breakpoints.down('md')]: {
+      gridTemplateColumns: '1fr',
+      rowGap: 'max(50px,0.2vw)',
+    },
+  },
+  contactConteiner: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: 'max(40px,0.2vw)',
+  },
+  contactText: {
+    fontWeight: '600',
+    marginLeft: 'max(10px,0.1vw)',
+  },
 }));
 
 const Watch = ({ data, lang }) => {
@@ -539,10 +456,6 @@ const Watch = ({ data, lang }) => {
   const [openPopup, setOpenPopup] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [activeImg, setActiveImg] = useState(0);
-  const [selectDate, setSelectDate] = useState(null);
-  const [selectOptions, setSelectOptions] = useState({});
-  console.log('test')
-
 
   const classes = useStyles();
   let pageDataObj = useMemo(
@@ -553,31 +466,7 @@ const Watch = ({ data, lang }) => {
     [data]
   );
   const pageData = lang === 'EN' ? pageDataObj['EN'] : pageDataObj['RU'];
-  const [selectHouse, setSelectHouse] = useState(0);
-  const handleRadioChange = (event) => {
-    setSelectHouse(event.target.value);
-    setUnavailableDates(
-      pageData.arenda_houses[event.target.value].house_calendar
-    );
-  };
-
-  const [unavailableDates, setUnavailableDates] = useState(
-    pageData.arenda_houses[selectHouse].house_calendar
-  );
-
-  pageData.arenda_options?.forEach((item) => {
-    selectOptions[item.name] = false;
-  });
-
   console.log(pageData);
-  const [currentOption, setCurrentOption] = useState(selectOptions);
-  const handleChangeCheckbox = (event) => {
-    setCurrentOption({
-      ...currentOption,
-      [event.target.name]: event.target.checked,
-    });
-  };
-
   const handleSliderClick = (e) => {
     if (e.target.dataset.number && !breakpoints.s) {
       setActiveImg(e.target.key);
@@ -663,6 +552,31 @@ const Watch = ({ data, lang }) => {
       ></ContentBlock>
 
       <ContentBlock
+        onlyLine={true}
+        mobileFullScreen={true}
+        leftColumnContent={
+          <Box className={classes.houeseGroupsConteiner}>
+            {pageData?.arenda_houses_group?.map((group) => {
+              return (
+                <Fragment key={group.MIGX_id}>
+                  <HousesGroup
+                    lang={lang}
+                    data={data}
+                    groupName={group?.houses_group_name}
+                    groupImage={group?.houses_group_image}
+                    houses={group?.houses_group_list.filter(
+                      (house) => house.published
+                    )}
+                    calendar={pageData.arenda_houses}
+                  ></HousesGroup>
+                </Fragment>
+              );
+            })}
+          </Box>
+        }
+      ></ContentBlock>
+
+      <ContentBlock
         title={pageData.arenda_icon_title}
         leftColumnContent={
           <>
@@ -674,40 +588,16 @@ const Watch = ({ data, lang }) => {
               </Box>
             ) : null}
 
-            {pageData?.arenda_price ? (
-              <Box className={classes.priceBlock}>
-                <Typography className={classes.priceBlockText} variant='body1'>
-                  <strong>{pageData.arenda_price}</strong> /
-                  {lang === 'EN' ? (
-                    <>
-                      <span>1 night</span>
-                      <span
-                        style={{
-                          display: 'block',
-                          fontSize: '1rem',
-                          marginTop: '1rem',
-                        }}
-                      >
-                        (since December - more expensive)
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <span>1 ночь</span>
-                      <span
-                        style={{
-                          display: 'block',
-                          fontSize: '1rem',
-                          marginTop: '1rem',
-                        }}
-                      >
-                        (с декабря - дороже)
-                      </span>
-                    </>
-                  )}
-                </Typography>
-              </Box>
-            ) : null}
+            <Box className={classes.contactConteiner}>
+              <Phone />
+              <Typography
+                className={classes.contactText}
+                variant='h4'
+                component='p'
+              >
+                +375 33 914 79 48
+              </Typography>
+            </Box>
           </>
         }
         rightColumnContent={
@@ -773,13 +663,34 @@ const Watch = ({ data, lang }) => {
                   </Box>
                 ) : null}
 
-                {pageData.arenda_map_text2 ? (
-                  <Box className={classes.textBlock}>
-                    <Typography variant='body1'>
-                      {pageData.arenda_map_text2}
+                <Box component='div' className={classes.instaBox2}>
+                  <Box className={classes.instaBox}>
+                    <Typography variant='body1' className={classes.instaText}>
+                      {lang === 'EN'
+                        ? 'More about our location on Instagram:'
+                        : 'Больше про нашу локацию в сети Instagram:'}
                     </Typography>
+                    <Box className={classes.instaContent}>
+                      <a
+                        target='_blank'
+                        rel='noreferrer'
+                        className={classes.Link}
+                        href={pageData.arenda_insta_url}
+                      >
+                        <Instagram
+                          width={breakpoints.xxl ? '0.9vw' : 14}
+                          height={breakpoints.xxl ? '0.9vw' : 14}
+                        />
+                        <Typography
+                          variant='body1'
+                          className={classes.instaName}
+                        >
+                          {pageData.arenda_insta_title}
+                        </Typography>
+                      </a>
+                    </Box>
                   </Box>
-                ) : null}
+                </Box>
               </Box>
               {breakpoints.md ? (
                 <img
@@ -792,238 +703,6 @@ const Watch = ({ data, lang }) => {
           }
           rightColumnContent={breakpoints.md ? null : <></>}
         ></ContentBlock>
-      </Box>
-      <Box className={classes.formSection}>
-        <ContentBlock
-          blockRef={formBlock}
-          mb={
-            pageData.arenda_video
-              ? '100px'
-              : breakpoints.xxl
-              ? '4.2vw'
-              : '100px'
-          }
-          title={pageData.arenda_invite_title}
-          leftColumnContent={
-            <>
-              <Box className={classes.textBlock}>
-                <Box className={classes.inviteTitleBox}>
-                  <Typography variant='h4'>
-                    <span>{pageData.arenda_invite_subtitle}</span>
-                  </Typography>
-                </Box>
-
-                <Box className={classes.subtitleBox}>
-                  <Typography variant='body1'>
-                    {pageData.arenda_invite_text}
-                  </Typography>
-                </Box>
-
-                <Typography
-                  className={classes.calendarDesc}
-                  component='p'
-                  variant='body1'
-                >
-                  {lang === 'EN'
-                    ? '2. Select suitable dates available for accommodation (by clicking on the first and then on the last planned day)'
-                    : '2. Выберите подходящие свободные для проживания даты (нажав на первый, а затем на последний планируемый день)'}
-                </Typography>
-                <Typography
-                  className={classes.calendarDesc}
-                  component='p'
-                  variant='body1'
-                >
-                  {lang === 'EN'
-                    ? '3. Provide your contact information and wait for the manager to call to confirm your reservation'
-                    : '3. Укажите данные для связи и ожидайте звонка менеджера для подтверждения брони'}
-                </Typography>
-              </Box>
-              <Box className={classes.instaBox}>
-                <Typography variant='body1' className={classes.instaText}>
-                  {lang === 'EN'
-                    ? 'More about our location on Instagram:'
-                    : 'Больше про нашу локацию в сети Instagram:'}
-                </Typography>
-                <Box className={classes.instaContent}>
-                  <a
-                    target='_blank'
-                    rel='noreferrer'
-                    className={classes.Link}
-                    href={pageData.arenda_insta_url}
-                  >
-                    <Instagram
-                      width={breakpoints.xxl ? '0.9vw' : 14}
-                      height={breakpoints.xxl ? '0.9vw' : 14}
-                    />
-                    <Typography variant='body1' className={classes.instaName}>
-                      {pageData.arenda_insta_title}
-                    </Typography>
-                  </a>
-                </Box>
-              </Box>
-            </>
-          }
-          rightColumnContent={
-            <Box className={classes.calendarFormBox}>
-              <Box className={classes.calendar}>
-                <Box className={classes.housesBox}>
-                  <FormControl>
-                    {/* <FormLabel id='demo-row-radio-buttons-group-label'>
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      row
-                      aria-labelledby='demo-row-radio-buttons-group-label'
-                      name='row-radio-buttons-group'
-                      defaultValue='0'
-                      onChange={handleRadioChange}
-                    >
-                      {pageData.arenda_houses
-                        .filter((item) => item.published)
-                        .map((house, index) => {
-                          return (
-                            <FormControlLabel
-                              key={index}
-                              value={`${index}`}
-                              control={<Radio color='default' />}
-                              label={house.name}
-                            />
-                          );
-                        })}
-                    </RadioGroup>
-                  </FormControl>
-                </Box>
-                <MyCalendar
-                  unavailableDates={unavailableDates}
-                  setSelectDate={(date) => {
-                    setSelectDate(date);
-                  }}
-                />
-              </Box>
-              <Box className={classes.formBox}>
-                <Box className={classes.optionsBox}>
-                  {pageData.arenda_options
-                    .filter((item) => item.published)
-                    .map((item, index) =>
-                      item.active ? (
-                        <FormControlLabel
-                          key={index}
-                          onChange={handleChangeCheckbox}
-                          name={item.name}
-                          value={1}
-                          control={<Checkbox color='primary' />}
-                          labelPlacement='end'
-                          label={
-                            <Typography
-                              className={classes.optionsName}
-                              component='p'
-                              variant='subtitle1'
-                            >
-                              + {item.name}
-                            </Typography>
-                          }
-                        />
-                      ) : (
-                        <FormControlLabel
-                          key={index}
-                          onChange={handleChangeCheckbox}
-                          disabled
-                          name={item.name}
-                          value={1}
-                          control={<Checkbox color='primary' />}
-                          labelPlacement='end'
-                          label={
-                            <Typography
-                              className={classes.optionsName}
-                              component='p'
-                              variant='subtitle1'
-                            >
-                              + {item.name}
-                            </Typography>
-                          }
-                        />
-                      )
-                    )}
-                </Box>
-                <Form
-                  data={data}
-                  endpoint={'https://formspree.io/f/mzbokwwy'}
-                  extraFormFields={{
-                    date: selectDate,
-                    currentOption,
-                    house: pageData.arenda_houses[selectHouse].name,
-                  }}
-                  arenda={true}
-                  sendDate={selectDate}
-                  buttonText='бронировать'
-                  lang={lang}
-                />
-                <Typography 
-                className={classes.contactText}
-                variant='body1'
-                component='p'
-                >
-                  {lang === 'EN' ? (
-                    <>
-                      <span>Consultation: </span>
-                      <span
-                        style={{
-                          display: 'block',
-                          fontSize: '1.45em',
-                          fontWeight: '600',
-                          lineHeight: '1.4',
-                          color: '#454545',
-                        }}
-                      >
-                        +375 33 914 79 48
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Связь с менеджером: </span>
-                      <span
-                        style={{
-                          display: 'block',
-                          fontSize: '1.45em',
-                          fontWeight: '600',
-                          lineHeight: '1.4',
-                          color: '#454545',
-                        }}
-                      >
-                        +375 33 914 79 48
-                      </span>
-                    </>
-                  )}
-                </Typography>
-              </Box>
-            </Box>
-          }
-        ></ContentBlock>
-      </Box>
-      <Box component='div' className={classes.instaBox2}>
-        <Box className={classes.instaBox}>
-          <Typography variant='body1' className={classes.instaText}>
-            {lang === 'EN'
-              ? 'More about our location on Instagram:'
-              : 'Больше про нашу локацию в сети Instagram:'}
-          </Typography>
-          <Box className={classes.instaContent}>
-            <a
-              target='_blank'
-              rel='noreferrer'
-              className={classes.Link}
-              href={pageData.arenda_insta_url}
-            >
-              <Instagram
-                width={breakpoints.xxl ? '0.9vw' : 14}
-                height={breakpoints.xxl ? '0.9vw' : 14}
-              />
-              <Typography variant='body1' className={classes.instaName}>
-                {pageData.arenda_insta_title}
-              </Typography>
-            </a>
-          </Box>
-        </Box>
       </Box>
 
       {pageData.arenda_video ? (

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       '& h2': {
         marginLeft: () => '10%',
         marginRight: () => '20px',
-        textAlign: 'left', 
+        textAlign: 'left',
       },
       '& span': {
         width: '100%',
@@ -84,9 +84,11 @@ const TitleWithLine = ({ title, style, longLine, underLine }) => {
       style={style}
     >
       <span className={classes.line}></span>
-      <Typography variant='h2' className={classes.text}>
-        {title}
-      </Typography>
+      {title ? (
+        <Typography variant='h2' className={classes.text}>
+          {title}
+        </Typography>
+      ) : null}
     </Box>
   );
 };

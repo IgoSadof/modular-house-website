@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
       },
       '@media (min-width:1925px)': {
         marginTop: '4.2vw',
-      }
+      },
     },
 
     [theme.breakpoints.down('md')]: {
@@ -84,13 +84,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   leftColumnContent: {
-    display:'flex',
+    display: 'flex',
     flexDirection: (param) => (param.rightColumnContent ? 'column' : 'raw'),
     width: '100%',
-    height:'100%',
+    height: '100%',
     [theme.breakpoints.down('md')]: {
       marginTop: '40px',
-      padding: (param)=>param.mobileFullScreen? '0':'0 10%',
+      padding: (param) => (param.mobileFullScreen ? '0' : '0 10%'),
     },
   },
 
@@ -109,9 +109,33 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 10%',
     },
   },
+  line: {
+    position:'relative',
+    display: 'inline-block',
+    width: '4.2vw',
+    left: 'min(-100px,-5.2vw)',
+    top:'max(28px,1.45vw)',
+    minWidth: '80px',
+    height: '1px',
+    backgroundColor: '#4F4F4F',
+    marginTop: '22px',
+    [theme.breakpoints.down('md')]: {
+      display:'none',
+      width: (param) => (param.longLine ? '100%' : '80px'),
+    },
+  },
 }));
 
-const ContentBlock = ({ title, leftColumnContent, rightColumnContent, mobileFullScreen, mb, component='section', blockRef }) => {
+const ContentBlock = ({
+  title,
+  leftColumnContent,
+  rightColumnContent,
+  mobileFullScreen,
+  mb,
+  component = 'section',
+  blockRef,
+  onlyLine=false
+}) => {
   const breakpoints = useBreakpoint();
   const param = { title, rightColumnContent, mobileFullScreen };
   const classes = useStyles(param);
@@ -127,9 +151,14 @@ const ContentBlock = ({ title, leftColumnContent, rightColumnContent, mobileFull
       }
     >
       <Box className={classes.leftColumnBox}>
-        <Box className={classes.leftColumnTitleBox}>
-          {title ? <TitleWithLine title={title} /> : null}
-        </Box>
+        {title ? (
+          <Box className={classes.leftColumnTitleBox}>
+            <TitleWithLine title={title} />
+          </Box>
+        ) : null}
+        {onlyLine ? (
+          <span className={classes.line}></span>
+        ) : null}
         <Box className={classes.leftColumnContent}>{leftColumnContent}</Box>
       </Box>
 
