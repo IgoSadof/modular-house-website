@@ -179,6 +179,7 @@ export default function HousesGroup({
         {groupName}:
       </Typography>
       <img
+        style={{ margin: 'max(40px,2vw) 0' }}
         className={classes.groupImage}
         src={getPublicPath(data, groupImage)}
         alt='icon'

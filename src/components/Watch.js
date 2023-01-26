@@ -466,7 +466,6 @@ const Watch = ({ data, lang }) => {
     [data]
   );
   const pageData = lang === 'EN' ? pageDataObj['EN'] : pageDataObj['RU'];
-  console.log(pageData);
   const handleSliderClick = (e) => {
     if (e.target.dataset.number && !breakpoints.s) {
       setActiveImg(e.target.key);
