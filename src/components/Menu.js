@@ -239,10 +239,10 @@ const useStyles = makeStyles((theme) => ({
   },
   langText: {
     cursor: 'pointer',
-    color: '#333333',
+    color: '#a9a9a9',
   },
   langTextActive: {
-    color: '#a9a9a9',
+    color: '#333333',
   },
   menuFooterFirstLine:{
     width:'100%',
