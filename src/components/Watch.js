@@ -419,9 +419,6 @@ const useStyles = makeStyles((theme) => ({
   },
   housesBox: {
     width: '100%',
-    [theme.breakpoints.down('md')]: {
-      padding:'0 10%',
-    },
     '&>div>div': {
       marginTop: '15px',
       '@media (min-width:1921px)': {
@@ -440,6 +437,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       gridTemplateColumns: '1fr',
       rowGap: 'max(50px,0.2vw)',
+    },
+    '&>div>div': {
+      [theme.breakpoints.down('md')]: {
+        padding:'0 10%',
+      },
     },
   },
   contactConteiner: {
