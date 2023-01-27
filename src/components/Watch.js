@@ -443,6 +443,14 @@ const useStyles = makeStyles((theme) => ({
         padding:'0 10%',
       },
     },
+    '&>div>div>h2+img': {
+      '@media (max-width:960px)': {
+        maxWidth: '120%',
+        marginLeft: '-10%',
+        marginRight: '-10%',
+        width: '120%',
+      },
+    },
   },
   contactConteiner: {
     display: 'flex',
