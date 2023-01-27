@@ -178,7 +178,13 @@ export default function HousesGroup({
         {groupName}:
       </Typography>
       <img
-        style={{ margin: 'max(20px,1vw) auto',  width: '322px'}}
+        style={{     
+        maxWidth: '100%',
+        marginTop: 'max(20px, 1vw)',
+        marginBottom: 'max(30px, 1.5vw)',
+        marginLeft: 'auto',
+        marginLight: 'auto',
+      }}
         className={classes.groupImage}
         src={getPublicPath(data, groupImage)}
         alt='icon'
@@ -232,8 +238,8 @@ export default function HousesGroup({
                             color: 'inherit',
                             fontWeight: '500',
                             textTransform: 'uppercase',
-                            marginTop: 'max(12px,0.08vw)',
-                            marginBottom: 'min(-18px,-0.12vw)', 
+                            marginTop: 'max(12px,0.6vw)',
+                            marginBottom: 'min(-8px,-0.4vw)', 
                           }}
                         >
                           {house.house_name.replace('Дом ', '')}

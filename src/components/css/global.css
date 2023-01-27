@@ -322,7 +322,7 @@ abbr {
   color: #111;
 }
 .react-calendar__tile--now abbr {
-  font-weight: 700;
+  font-weight: 600;
 }
 .react-calendar__tile--range {
   background-color: #4F4F4F;
