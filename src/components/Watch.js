@@ -460,6 +460,7 @@ const useStyles = makeStyles((theme) => ({
   contactText: {
     fontWeight: '600',
     marginLeft: 'max(10px,0.1vw)',
+    color: '#4f4f4f',
   },
 }));
 
