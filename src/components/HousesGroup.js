@@ -116,8 +116,8 @@ const useStyles = makeStyles((theme) => ({
   },
   calendarConteiner: {
     margin: 'max(20px,1vw) auto',
-    width: 'max(350px,21vw)',
-    height: 'max(450px,23vw)',
+    width: 'max(400px,21vw)',
+    height: 'max(400px,21vw)',
   },
   priceBox: {
     '@media (min-width:1537px)': {
