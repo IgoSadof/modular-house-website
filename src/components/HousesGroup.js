@@ -217,7 +217,7 @@ export default function HousesGroup({
                       house.house_name &&
                       !handleHouses(houses)[index + 1].house_name
                         ? '1px solid #4F4F4F'
-                        : '1px solid #d1d1d1',
+                        : '1px solid #4F4F4F',
                   }}
                   key={index}
                   label={
