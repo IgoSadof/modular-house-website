@@ -97,8 +97,8 @@ body {
 }
 
 .calendar {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   background-color: transparent;
   border: 1px solid #747474!important;
   border-radius: "none";
@@ -114,8 +114,8 @@ body {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  width: 50px !important;
-  height: 50px !important;
+  width: 56px !important;
+  height: 56px !important;
   margin-bottom: 2px;
   background-color: transparent !important;
 }
