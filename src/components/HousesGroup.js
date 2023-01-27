@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
   },
   calendarConteiner: {
     margin: 'max(20px,1vw) auto',
-    width: '322px',
+    width: '350px',
   },
   priceBox: {
     '@media (min-width:1537px)': {
@@ -180,7 +180,7 @@ export default function HousesGroup({
       <img
         style={{     
         maxWidth: '100%',
-        marginTop: 'max(20px, 1vw)',
+        marginTop: 'max(20px, 1.5vw)',
         marginBottom: 'max(30px, 1.5vw)',
         marginLeft: 'auto',
         marginLight: 'auto',
@@ -239,7 +239,7 @@ export default function HousesGroup({
                             fontWeight: '500',
                             textTransform: 'uppercase',
                             marginTop: 'max(12px,0.6vw)',
-                            marginBottom: 'min(-8px,-0.4vw)', 
+                            marginBottom: 'min(-12px,-0.6vw)', 
                           }}
                         >
                           {house.house_name.replace('Дом ', '')}
