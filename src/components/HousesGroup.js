@@ -27,16 +27,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    '&>div h3': {
+  },
+  houseIcon: {
+    width: 'auto',
+    marginTop: 'auto',
+    '&+h3': {
       '@media (max-width:960px)': {
         fontWeight: '600',
         fontSize: '18px',
       },
     },
-  },
-  houseIcon: {
-    width: 'auto',
-    marginTop: 'auto',
   },
   tab: {
     width: 'calc(100% / 6)',
