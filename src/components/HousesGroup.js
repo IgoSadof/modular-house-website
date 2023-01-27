@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
       borderLeft: 'none !important',
     },
     '&:first-child': {
-      borderLeft: '1px solid #4F4F4F',
+      borderLeft: '1px solid #4F4F4F!important',
     },
   },
   activeTab: {
@@ -168,9 +168,9 @@ export default function HousesGroup({
 
   const handleHouses = (houses) => {
     const newHowses = [...houses];
-    newHowses.length = 5;
+    newHowses.length = 6;
 
-    return newHowses.fill({}, houses.length, 6);
+    return newHowses.fill({}, houses.length, 7);
   };
 
   return (
