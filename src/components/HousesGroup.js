@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
       height: '20vw',
       borderLeft: 'none !important',
     },
+    '&first-child': {
+      borderLeft: '1px solid #4F4F4F',
+    },
   },
   activeTab: {
     border: '1px solid #4F4F4F',
