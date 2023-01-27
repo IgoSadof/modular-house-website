@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     marginTop: 'auto',
     '&+h3': {
-      '@media (max-width:960px)': {
+      '@media (max-width:1537px)': {
         fontWeight: '600',
         fontSize: '18px!important',
         paddingBottom: '7px',
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
       height: '20vw',
       borderLeft: 'none !important',
     },
-    '@media (max-width:960px)': {
+    '@media (max-width:1279px)': {
       height: 'auto',
       padding: '0 10%',
     },
@@ -129,6 +129,9 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 'max(400px,21vw)',
     height: 'max(400px,21vw)',
     margin: 'max(20px,1vw) auto',
+    '@media (max-width:960px)': {
+      height: '360px',
+    },
   },
   priceBox: {
     '@media (min-width:1537px)': {
