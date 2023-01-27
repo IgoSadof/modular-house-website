@@ -253,7 +253,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '&>div:before': {
-      content: `''`,
+      /*content: `''`,
       position: 'absolute',
       width: '31vw',
       height: '100%',
@@ -261,7 +261,7 @@ const useStyles = makeStyles((theme) => ({
       opacity: '0.6',
       [theme.breakpoints.down('md')]: {
         display: 'none',
-      },
+      },*/
     },
     '@media (min-width:1921px)': {
       height: '29vw',
