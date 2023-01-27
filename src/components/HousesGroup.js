@@ -212,12 +212,12 @@ export default function HousesGroup({
                   `}
                   style={{
                     borderLeft:
-                      index === 0 ? '1px solid #4F4F4F' : '1px solid #d1d1d1',
+                      index === 0 ? '0px solid #4F4F4F' : '0px solid #d1d1d1',
                     borderRight:
                       house.house_name &&
                       !handleHouses(houses)[index + 1].house_name
                         ? '1px solid #4F4F4F'
-                        : '1px solid #4F4F4F',
+                        : '1px solid #d1d1d1',
                   }}
                   key={index}
                   label={
