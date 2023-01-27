@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     '&+h3': {
       '@media (max-width:960px)': {
         fontWeight: '600',
-        fontSize: '18px',
+        fontSize: '18px!important',
+        paddingBottom: '7px',
       },
     },
   },
@@ -125,9 +126,9 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   calendarConteiner: {
-    margin: 'max(20px,1vw) auto',
-    width: 'max(400px,21vw)',
+    maxWidth: 'max(400px,21vw)',
     height: 'max(400px,21vw)',
+    margin: 'max(20px,1vw) auto',
   },
   priceBox: {
     '@media (min-width:1537px)': {
