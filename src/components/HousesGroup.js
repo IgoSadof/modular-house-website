@@ -27,6 +27,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    '& div > h3': {
+      '@media (max-width:960px)': {
+        fontWeight: '600',
+        fontSize: '18px',
+      },
+    },
   },
   houseIcon: {
     width: 'auto',
@@ -45,6 +51,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       height: '20vw',
       borderLeft: 'none !important',
+    },
+    '@media (max-width:960px)': {
+      height: 'auto',
+    },
+    '@media (max-width: 1279.95px)': {
+      padding: '0 10%',
     },
     '&:first-child': {
       borderLeft: '1px solid #4F4F4F!important',
@@ -68,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     borderTop: 'none',
     padding: '40px',
     [theme.breakpoints.down('md')]: {
-      border: 'none',
+      
       padding: '5%',
     },
     '@media (min-width:1537px)': {
