@@ -797,7 +797,7 @@ div[class*="MuiFormControl"] {
   }
 
   button.MuiTab-root {
-    width: 14vw;
+    /*width: 14vw;*/
   }
 
   svg.MuiSvgIcon-root {

@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
       height: '20vw',
       borderLeft: 'none !important',
     },
-    '&first-child': {
+    '&:first-child': {
       borderLeft: '1px solid #4F4F4F',
     },
   },
@@ -116,7 +116,8 @@ const useStyles = makeStyles((theme) => ({
   },
   calendarConteiner: {
     margin: 'max(20px,1vw) auto',
-    width: '350px',
+    width: 'max(350px,21vw)',
+    height: 'max(390px,22vw)',
   },
   priceBox: {
     '@media (min-width:1537px)': {
