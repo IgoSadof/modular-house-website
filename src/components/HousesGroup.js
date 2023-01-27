@@ -114,7 +114,8 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   calendarConteiner: {
-    margin: 'max(40px,2vw) 0',
+    margin: 'max(20px,1vw) auto',
+    width: '322px',
   },
   priceBox: {
     '@media (min-width:1537px)': {
@@ -179,7 +180,7 @@ export default function HousesGroup({
         {groupName}:
       </Typography>
       <img
-        style={{ margin: 'max(40px,2vw) 0' }}
+        style={{ margin: 'max(20px,1vw) auto',  width: '322px'}}
         className={classes.groupImage}
         src={getPublicPath(data, groupImage)}
         alt='icon'
