@@ -126,11 +126,14 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   calendarConteiner: {
+    height: '440px',
     maxWidth: 'max(400px,21vw)',
-    height: 'max(400px,21vw)',
     margin: 'max(20px,1vw) auto',
     '@media (max-width:960px)': {
       height: '360px',
+    },
+    '@media (min-width:1900px)': {
+      height: 'max(400px,21vw)',
     },
   },
   priceBox: {
