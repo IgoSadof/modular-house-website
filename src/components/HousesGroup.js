@@ -29,17 +29,15 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   houseIcon: {
-    width: '25px',
-    marginTop: 'max(10px,0.05vw)',
-    '@media (min-width:1537px)': {
-      width: '2.5vw',
-    },
+    width: 'auto',
+    marginTop: 'auto',
   },
   tab: {
-    width: '20%',
+    width: 'calc(100% / 6)',
+    aspectRatio: '1 / 1',
     height: '6vw',
     padding: '10px',
-    border: '1px solid #4F4F4F',
+    /*border: '1px solid #4F4F4F',*/
 
     color: '#d1d1d1',
     backgroundColor: '#4F4F4F',
@@ -234,7 +232,8 @@ export default function HousesGroup({
                             color: 'inherit',
                             fontWeight: '500',
                             textTransform: 'uppercase',
-                            marginTop: 'max(4px,0.03vw)',
+                            marginTop: 'max(12px,0.08vw)',
+                            marginBottom: 'min(-18px,-0.12vw)', 
                           }}
                         >
                           {house.house_name.replace('Дом ', '')}
@@ -255,7 +254,7 @@ export default function HousesGroup({
               key={index}
               value={`${index}`}
             >
-              <Typography variant='body2'>
+              <Typography variant='body1'>
                 {lang === 'EN'
                   ? `Choose a house number, suitable free dates for living, send an application and wait for the manager's response`
                   : `Выберите номер домика, подходящие свободные даты для проживания,
