@@ -419,6 +419,9 @@ const useStyles = makeStyles((theme) => ({
   },
   housesBox: {
     width: '100%',
+    [theme.breakpoints.down('md')]: {
+      padding:'0 10%',
+    },
     '&>div>div': {
       marginTop: '15px',
       '@media (min-width:1921px)': {
