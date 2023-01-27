@@ -33,11 +33,6 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '18px',
       },
     },
-    '& > div': {
-      '@media (max-width: 1279.95px)': {
-        padding: '0 10%',
-      },
-    },
   },
   houseIcon: {
     width: 'auto',
