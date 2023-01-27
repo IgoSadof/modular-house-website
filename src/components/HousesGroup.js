@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '18px',
       },
     },
+    '@media (max-width: 1279.95px)': {
+      padding: '0 10%',
+    },
   },
   houseIcon: {
     width: 'auto',
@@ -54,8 +57,6 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (max-width:960px)': {
       height: 'auto',
-    },
-    '@media (max-width: 1279.95px)': {
       padding: '0 10%',
     },
     '&:first-child': {
