@@ -484,7 +484,7 @@ const Watch = ({ data, lang }) => {
       setIsPlay(false);
     }
   };
-  const formBlock = useRef(null);
+  const ancorLink = useRef(null);
 
   return (
     <Box components='main' className={classes.BlockFullscreen}>
@@ -497,7 +497,7 @@ const Watch = ({ data, lang }) => {
           pagination={true}
           enabled={false}
           oneButton={true}
-          formBlock={formBlock}
+          ancorLink={ancorLink}
           lang={lang}
         ></FullScreenHouseSlider>
       </Box>
@@ -557,7 +557,7 @@ const Watch = ({ data, lang }) => {
           <Box className={classes.houeseGroupsConteiner}>
             {pageData?.arenda_houses_group?.map((group) => {
               return (
-                <Fragment key={group.MIGX_id}>
+                <Box ref={ancorLink} key={group.MIGX_id}>
                   <HousesGroup
                     lang={lang}
                     data={data}
@@ -568,7 +568,7 @@ const Watch = ({ data, lang }) => {
                     )}
                     calendar={pageData.arenda_houses}
                   ></HousesGroup>
-                </Fragment>
+                </Box>
               );
             })}
           </Box>

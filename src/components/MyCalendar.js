@@ -5,7 +5,7 @@ const MyCalendar = ({
   unavailableDates,
   setSelectDate,
 }) => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState();
 
   let dates;
   
@@ -29,7 +29,6 @@ const MyCalendar = ({
 
 
   const checkDate = (date, dates) =>{
-    // console.log(date, dates)
     let result =false;
     dates?.forEach(arr => {
       if(arr?.find(element => element===date)){

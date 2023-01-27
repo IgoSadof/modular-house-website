@@ -231,7 +231,7 @@ const FullScreenHouseSlider = ({
   enabled,
   oneButton, 
   outSideButtons,
-  formBlock,
+  ancorLink,
   lang
 }) => {
   const breakpoints = useBreakpoint();
@@ -270,7 +270,7 @@ const FullScreenHouseSlider = ({
   }, [data, classes.mainImgSlider, arr, classes.mainImgItem]);
 
   const handleMouseClick = () => {
-    // console.log(formBlock.current)
+    // console.log(ancorLink.current)
     if (window) {
       window.scrollTo({
         top: window.screen.availHeight - 100,
@@ -283,7 +283,7 @@ const FullScreenHouseSlider = ({
   const handleSingleButtonClick = () => {
     if (window) {
       window.scrollTo({
-        top: formBlock.current.getBoundingClientRect().top - 100,
+        top: ancorLink.current.getBoundingClientRect().top,
         behavior: 'smooth',
       });
     }
