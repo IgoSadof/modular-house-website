@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
     height: '6vw',
     padding: '10px',
     /*border: '1px solid #4F4F4F',*/
-
     color: '#d1d1d1',
     backgroundColor: '#4F4F4F',
     opacity: '1',
@@ -79,7 +78,6 @@ const useStyles = makeStyles((theme) => ({
     borderTop: 'none',
     padding: '40px',
     [theme.breakpoints.down('md')]: {
-      
       padding: '5%',
     },
     '@media (min-width:1537px)': {
