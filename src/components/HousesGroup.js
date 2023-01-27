@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
       padding: '5%',
     },
     '@media (min-width:1537px)': {
-      width: '4vw',
+      // width: '4vw',
     },
   },
   formBox: {

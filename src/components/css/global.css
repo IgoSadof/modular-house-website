@@ -344,26 +344,15 @@ abbr {
 .unAnableDate {
   position: relative;
   pointer-events: none;
-  /* background: #b9b9b9; */
+  background: #b9b9b9;
 }
 .unAnableDate:after {
   content: "";
   position: absolute;
   opacity: 0.4;
-  top: 50%;
-    left: 25%;
-    width: 50%;
-  height: 1px;
-  background-color: #111;
-  transform: rotate(135deg);
-}
-.unAnableDate:before {
-  content: "";
-  position: absolute;
-  opacity: 0.4;
-  top: 50%;
-    left: 25%;
-    width: 50%;
+  top: 0;
+  left: -150%;
+  width: 300%;
   height: 1px;
   background-color: #111;
   transform: rotate(45deg);
