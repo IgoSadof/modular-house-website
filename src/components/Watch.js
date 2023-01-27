@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       // marginBottom: '8.3vw',
     },
     [theme.breakpoints.down('md')]: {
-      marginBottom: '40px',
+      marginBottom: '0',
     },
     '& h1': {
       '@media (min-width:1280px) and (max-width:1564px)': {
@@ -322,12 +322,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 'auto',
     '& > *': {
       [theme.breakpoints.down('md')]: {
-        display: 'none',
+        /*display: 'none',*/
       },
     },
     '& > div': {
       [theme.breakpoints.down('md')]: {
-        display: 'none',
+        /*display: 'none',*/
       },
     },
   },
@@ -405,7 +405,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      padding: '0 10%',
+      padding: '0',
       '& > div > *': {
         // display: 'block!important',
       },
