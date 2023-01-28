@@ -38,9 +38,13 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: '7px',
       },
     },
+    '@media (max-width:400px)': {
+      transform: 'scale(0.6)',
+    },
   },
   tab: {
-    width: 'calc(100% / 6)',
+    width: `${100 / 6}%`,
+    minWidth: 'auto',
     aspectRatio: '1 / 1',
     height: '6vw',
     padding: '10px',
@@ -82,6 +86,16 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (min-width:1537px)': {
       // width: '4vw',
+    },
+  },
+  tabTitle: {
+    color: 'inherit',
+    fontWeight: '500',
+    textTransform: 'uppercase',
+    marginTop: 'max(12px,0.6vw)',
+    marginBottom: 'min(-12px,-0.6vw)',
+    '@media (max-width:400px)': {
+      marginTop: '0 !important',
     },
   },
   formBox: {
@@ -197,13 +211,13 @@ export default function HousesGroup({
         {groupName}:
       </Typography>
       <img
-        style={{     
-        maxWidth: '100%',
-        marginTop: 'max(20px,1.5vw)',
-        marginBottom: 'max(40px,2vw)',
-        marginLeft: 'auto',
-        marginLight: 'auto',
-      }}
+        style={{
+          maxWidth: '100%',
+          marginTop: 'max(20px,1.5vw)',
+          marginBottom: 'max(40px,2vw)',
+          marginLeft: 'auto',
+          marginLight: 'auto',
+        }}
         className={classes.groupImage}
         src={getPublicPath(data, groupImage)}
         alt='icon'
@@ -251,16 +265,7 @@ export default function HousesGroup({
                           src={getPublicPath(data, house.house_icon)}
                           alt='icon'
                         />
-                        <Typography
-                          variant='h3'
-                          style={{
-                            color: 'inherit',
-                            fontWeight: '500',
-                            textTransform: 'uppercase',
-                            marginTop: 'max(12px,0.6vw)',
-                            marginBottom: 'min(-12px,-0.6vw)', 
-                          }}
-                        >
+                        <Typography variant='h3' className={classes.tabTitle}>
                           {house.house_name.replace('Дом ', '')}
                         </Typography>
                       </Box>
@@ -345,6 +350,7 @@ export default function HousesGroup({
                 </Box>
                 <Form
                   data={data}
+                  minWidthOff={true}
                   endpoint={'https://formspree.io/f/mzbokwwy'}
                   extraFormFields={{
                     date: selectDate,

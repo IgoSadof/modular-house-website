@@ -64,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: (param) => (param.arenda ? 'null' : 'space-between'),
-    minWidth: '300px',
     marginTop: (param) => (param.arenda ? '20px' : '0'),
     '& form': {
       [theme.breakpoints.down('md')]: {
@@ -232,6 +231,7 @@ const Form = ({
   arenda,
   lang,
   priceBlock = false,
+  minWidthOff=false,
 }) => {
   const breakpoints = useBreakpoint();
   const [button] = useState(buttonAbs);
@@ -330,7 +330,7 @@ const Form = ({
   // console.log(dataContacts);
 
   return (
-    <Box className={classes.formBox}>
+    <Box className={classes.formBox} style={{minWidth: minWidthOff?'auto':'300px'}}>
       <Box className={classes.formHeader}>
         {title ? (
           !breakpoints.md ? (
