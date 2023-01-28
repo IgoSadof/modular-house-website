@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formHeader: {
     [theme.breakpoints.down('md')]: {
-      marginTop: '60px',
+      marginTop: (param) => (param.title ? '60px' : null),
       '& $titleBoxMain': {
         right: '-12%',
         position: 'relative',
@@ -242,7 +242,7 @@ const Form = ({
   const [nameText, setNameText] = useState('');
   const [messageText, setMessageText] = useState('');
   const [formProcessing, setFormProcessing] = useState(true);
-  const param = { button, buttonAbs, text, arenda };
+  const param = { button, buttonAbs, text, arenda,title };
   const classes = useStyles(param);
   const formRef = useRef(null);
   const handleClose = () => {

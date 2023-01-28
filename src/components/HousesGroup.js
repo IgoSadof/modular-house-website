@@ -100,11 +100,6 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     width: '100%',
-    [theme.breakpoints.down('md')]: {
-      '& div[class*="formHeader"]': {
-        marginTop: '0px',
-      },
-    },
     '& div[class*="MuiFormControl"]': {
       height: '50px',
       '@media (min-width:1921px)': {
@@ -305,7 +300,7 @@ export default function HousesGroup({
                 <Box>
                   {house.house_options
                     ? house.house_options
-                        .filter((item) => item.published)
+                        .filter((item) => false)
                         .map((item, index) =>
                           item.active ? (
                             <FormControlLabel
