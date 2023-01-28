@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     marginTop: 'max(12px,0.6vw)',
     marginBottom: 'min(-12px,-0.6vw)',
-    '@media (max-width:400px)': {
+    '@media (max-width:450px)': {
       marginTop: '0 !important',
     },
   },
