@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (max-width:1279px)': {
       height: 'auto',
-      padding: '0 10%',
+      // padding: '0 10%',
     },
     '&:first-child': {
       borderLeft: '1px solid #4F4F4F!important',
