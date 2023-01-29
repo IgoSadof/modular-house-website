@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: '7px',
       },
     },
-    '@media (max-width:420px)': {
+    '@media (max-width:4px)': {
       transform: 'scale(0.6)',
       width: '100%',
     },
@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
     },
     '&:first-child': {
       borderLeft: '1px solid #4F4F4F!important',
+    },
+    '@media (max-width:450px)': {
+      padding: '10px 0',
     },
   },
   activeTab: {
