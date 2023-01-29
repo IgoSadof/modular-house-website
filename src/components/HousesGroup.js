@@ -44,11 +44,10 @@ const useStyles = makeStyles((theme) => ({
   },
   tab: {
     width: `${100 / 6}%`,
-    minWidth: `${100 / 6}% !important`,
+    minWidth: 'auto',
     aspectRatio: '1 / 1',
     height: '6vw',
     padding: '10px',
-    /*border: '1px solid #4F4F4F',*/
     color: '#d1d1d1',
     backgroundColor: '#4F4F4F',
     opacity: '1',
@@ -58,10 +57,13 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (max-width:1279px)': {
       height: 'auto',
-      // padding: '0 10%',
     },
     '&:first-child': {
       borderLeft: '1px solid #4F4F4F!important',
+    },
+    '@media (max-width:450px)': {
+      width: `${80 / 6}%`,
+      padding: '10px 0',
     },
   },
   activeTab: {
