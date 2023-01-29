@@ -442,6 +442,9 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.down('md')]: {
         padding:'0 10%',
       },
+      '@media (max-width:450px)': {
+        padding:'0 5%',
+      },
     },
     '&>div>div>h2+img': {
       '@media (max-width:960px)': {

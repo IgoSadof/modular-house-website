@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
       borderLeft: '1px solid #4F4F4F!important',
     },
     '@media (max-width:450px)': {
-      width: `${80 / 6}%`,
+      width: `${100 / 6}%`,
       padding: '10px 0',
     },
   },
