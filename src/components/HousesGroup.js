@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tab: {
     width: `${100 / 6}%`,
-    minWidth: 'auto',
+    minWidth: `${100 / 6}% !important`,
     aspectRatio: '1 / 1',
     height: '6vw',
     padding: '10px',
