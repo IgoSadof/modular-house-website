@@ -894,6 +894,9 @@ div[class*="MuiFormControl"] {
 .MuiPaper-root {
   background-color: #d1d1d1 !important;
 }
+.MuiTab-root{
+  min-width: auto !important;
+}
 
 @media (min-width: 600px) {
   .MuiTab-root {
