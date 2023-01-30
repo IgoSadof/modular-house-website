@@ -35,10 +35,10 @@ const useStyles = makeStyles((theme) => ({
       '@media (max-width:1537px)': {
         fontWeight: '600',
         fontSize: '18px!important',
-        paddingBottom: '7px',
+        marginBottom: '0',
       },
     },
-    '@media (max-width:4px)': {
+    '@media (max-width:450px)': {
       transform: 'scale(0.6)',
       width: '100%',
     },
@@ -63,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
       borderLeft: '1px solid #4F4F4F!important',
     },
     '@media (max-width:450px)': {
-      padding: '10px 0',
+      padding: '0',
+      boxSizing: 'border-box',
     },
   },
   activeTab: {
@@ -94,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
     fontWeight: '500',
     textTransform: 'uppercase',
-    marginTop: 'max(12px,0.6vw)',
+    marginTop: '1vh',
     marginBottom: 'min(-12px,-0.6vw)',
     '@media (max-width:450px)': {
       marginTop: '0 !important',
@@ -372,7 +373,7 @@ export default function HousesGroup({
               </Box>
               <Typography
                 variant='body2'
-                style={{ marginTop: 'max(40px,0.2vw)' }}
+                style={{ marginTop: '5vh' }}
               >
                 {lang === 'EN'
                   ? `When settling in several houses, book each one separately`
