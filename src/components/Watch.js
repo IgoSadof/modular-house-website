@@ -442,11 +442,11 @@ const useStyles = makeStyles((theme) => ({
       //gridTemplateColumns: '1fr',
       //rowGap: 'max(50px,0.2vw)',
       flexDirection: 'column',
-      marginLeft: '-2vw',
-      marginRight: '-2vw',
+      marginLeft: '-3vw',
+      marginRight: '-3vw',
       '&>div': {
-        paddingLeft: '2vw',
-        paddingRight: '2vw',
+        paddingLeft: '3vw',
+        paddingRight: '3vw',
       },
     },
     '&>div': {
