@@ -434,24 +434,24 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    marginLeft: '-25px',
-    marginRight: '-25px',
+    marginLeft: '-3vw',
+    marginRight: '-3vw',
     //gridTemplateColumns: '1fr 1fr',
     //columnGap: 'max(50px,0.2vw)',
     [theme.breakpoints.down('md')]: {
       //gridTemplateColumns: '1fr',
       //rowGap: 'max(50px,0.2vw)',
       flexDirection: 'column',
-      marginLeft: '-3vw',
-      marginRight: '-3vw',
+      marginLeft: '-25px',
+      marginRight: '-25px',
       '&>div': {
-        paddingLeft: '3vw',
-        paddingRight: '3vw',
+        paddingLeft: '25px',
+        paddingRight: '25px',
       },
     },
     '&>div': {
-      paddingLeft: '25px',
-      paddingRight: '25px',
+      paddingLeft: '3vw',
+      paddingRight: '3vw',
     },
     '&>div>div': {
       [theme.breakpoints.down('md')]: {
