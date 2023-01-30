@@ -458,11 +458,11 @@ const useStyles = makeStyles((theme) => ({
   contactConteiner: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: 'max(40px,0.2vw)',
+    marginTop: '6vh',
   },
   contactText: {
     fontWeight: '600',
-    marginLeft: 'max(10px,0.1vw)',
+    marginLeft: '1.5vh',
     color: '#4f4f4f',
   },
 }));
