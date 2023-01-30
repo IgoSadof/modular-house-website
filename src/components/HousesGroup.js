@@ -145,9 +145,9 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (max-width:1280px)': {
       height: '360px',
-      maxWidth: '440px',
+      maxWidth: '380px',
     },
-    '@media (max-width:960px)': {
+    '@media (max-width:451px)': {
       height: '360px',
       maxWidth: '100%',
     },
