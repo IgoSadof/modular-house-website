@@ -63,8 +63,9 @@ const useStyles = makeStyles((theme) => ({
       borderLeft: '1px solid #4F4F4F!important',
     },
     '@media (max-width:450px)': {
-      padding: '0',
+      padding: '9px 0',
       boxSizing: 'border-box',
+      aspectRatio: 'auto',
     },
   },
   activeTab: {
@@ -96,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '500',
     textTransform: 'uppercase',
     marginTop: '1vh',
-    marginBottom: 'min(-12px,-0.6vw)',
+    marginBottom: '-2vh',
     '@media (max-width:450px)': {
       marginTop: '0 !important',
     },
@@ -110,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '& button': {
-      marginTop: 'max(40px,0.2vw)',
+      marginTop: '6vh',
       '@media (min-width:1921px)': {
         marginTop: '1.1vw',
       },
@@ -137,18 +138,21 @@ const useStyles = makeStyles((theme) => ({
   },
   calendarConteiner: {
     height: '440px',
-    maxWidth: 'max(400px,21vw)',
-    margin: 'max(20px,1vw) auto',
+    maxWidth: '21vw',
+    margin: '2.5vh auto',
+    '@media (min-width:1900px)': {
+      height: '21vw',
+    },
     '@media (max-width:960px)': {
       height: '360px',
-    },
-    '@media (min-width:1900px)': {
-      height: 'max(400px,21vw)',
     },
   },
   priceBox: {
     '@media (min-width:1537px)': {
-      fontSize: 'max(28px,2vw) !important',
+      fontSize: '28px !important',
+    },
+    '@media (min-width:1937px)': {
+      fontSize: '2vw !important',
     },
   },
 }));
@@ -211,8 +215,8 @@ export default function HousesGroup({
       <img
         style={{
           maxWidth: '100%',
-          marginTop: 'max(20px,1.5vw)',
-          marginBottom: 'max(40px,2vw)',
+          marginTop: '2.8vh',
+          marginBottom: '5.6vh',
           marginLeft: 'auto',
           marginLight: 'auto',
         }}
