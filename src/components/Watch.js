@@ -430,13 +430,28 @@ const useStyles = makeStyles((theme) => ({
     '& > section > div': {},
   },
   houeseGroupsConteiner: {
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    columnGap: 'max(50px,0.2vw)',
+    //width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    marginLeft: '-25px',
+    marginRight: '-25px',
+    //gridTemplateColumns: '1fr 1fr',
+    //columnGap: 'max(50px,0.2vw)',
     [theme.breakpoints.down('md')]: {
-      gridTemplateColumns: '1fr',
-      rowGap: 'max(50px,0.2vw)',
+      //gridTemplateColumns: '1fr',
+      //rowGap: 'max(50px,0.2vw)',
+      flexDirection: 'column',
+      marginLeft: '-2vw',
+      marginRight: '-2vw',
+      '&>div': {
+        paddingLeft: '2vw',
+        paddingRight: '2vw',
+      },
+    },
+    '&>div': {
+      paddingLeft: '25px',
+      paddingRight: '25px',
     },
     '&>div>div': {
       [theme.breakpoints.down('md')]: {
