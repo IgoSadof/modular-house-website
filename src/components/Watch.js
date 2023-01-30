@@ -434,8 +434,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    marginLeft: '-3vw',
-    marginRight: '-3vw',
+    marginLeft: '-1.5vw',
+    marginRight: '-1.5vw',
     //gridTemplateColumns: '1fr 1fr',
     //columnGap: 'max(50px,0.2vw)',
     [theme.breakpoints.down('md')]: {
@@ -449,8 +449,8 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '&>div': {
-      paddingLeft: '3vw',
-      paddingRight: '3vw',
+      paddingLeft: '1.5vw',
+      paddingRight: '1.5vw',
     },
     '&>div>div': {
       [theme.breakpoints.down('md')]: {
