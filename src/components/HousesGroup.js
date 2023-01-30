@@ -143,8 +143,13 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width:1900px)': {
       height: '21vw',
     },
+    '@media (max-width:1280px)': {
+      height: '360px',
+      maxWidth: '440px',
+    },
     '@media (max-width:960px)': {
       height: '360px',
+      maxWidth: '100%',
     },
   },
   priceBox: {
