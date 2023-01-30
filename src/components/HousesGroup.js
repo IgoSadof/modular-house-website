@@ -144,8 +144,10 @@ const useStyles = makeStyles((theme) => ({
       height: '21vw',
     },
     '@media (max-width:1600px)': {
-      height: '360px',
       maxWidth: '380px',
+    },
+    '@media (max-width:960px)': {
+      height: '360px',
     },
     '@media (max-width:451px)': {
       height: '360px',
