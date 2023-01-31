@@ -11,7 +11,7 @@ export const customFontsSize = {
   h5: { regular: 19, adaptiv: '0.94vw' },
   h6: { regular: 17, adaptiv: '0.86vw' },
   body1: { regular: 16, adaptiv: '0.83vw' },
-  body2: { regular: 12, adaptiv: '0.63vw' },
+  body2: { regular: 14, adaptiv: '0.69vw' },
   subtitle1: { regular: 14, adaptiv: '0.73vw' },
   subtitle2: { regular: 14, adaptiv: '0.73vw' },
   button: { regular: 14, adaptiv: '0.73vw' },
