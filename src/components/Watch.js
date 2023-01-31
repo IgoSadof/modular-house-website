@@ -455,6 +455,10 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: '1.5vw',
       width: '50%',
       flexBasis: '50%',
+      [theme.breakpoints.down('md')]: {
+        width: '100%',
+      flexBasis: '100%',
+      },
     },
     '&>div>div': {
       [theme.breakpoints.down('md')]: {
