@@ -387,8 +387,8 @@ export default function HousesGroup({
                 style={{ marginTop: '5vh' }}
               >
                 {lang === 'EN'
-                  ? `When settling in several houses, book each one separately`
-                  : `*При заселении в несколько домиков - бронировать каждый отдельно`}
+                  ? `*When settling in several houses, book each one separately<br>**From May to September the cost of rent will increase by 60 BYN`
+                  : `*При заселении в несколько домиков - бронировать каждый отдельно<br>**с мая по сентябрь стоимость аренды увеличится на 60 рублей`}
               </Typography>
             </TabPanel>
           ) : null;
