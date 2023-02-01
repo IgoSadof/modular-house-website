@@ -432,7 +432,7 @@ const HousesList = ({ data, lang }) => {
                 ? `${classes.houseListNumber} ${classes.houseListActiveNumber}`
                 : classes.houseListNumber
             }
-          >{`${item.code[6]}`}</Typography>
+          >{`${item.letter}`}</Typography>
           {!breakpoints.md ? (
             !(activeSlide === index) ? (
               <>
