@@ -388,13 +388,19 @@ export default function HousesGroup({
                 variant='body2'
                 style={{ marginTop: '5vh' }}
               >
-                {lang === 'EN'
-                  ? `* The price for certain dates may vary, check with the manager
-                  ** When settling in several houses, book each one separately                                                                                             
-                  *** From May to September the cost of rent will increase by 60 BYN`
-                  : `* Цена на определенные даты может отличаться, уточняйте у менеджера                                                                                            
-                  ** При заселении в несколько домиков - бронировать каждый отдельно                                                                                                  
-                  *** С мая по сентябрь стоимость аренды увеличится на 60 рублей`}
+                {lang === 'EN' ? (
+                  <span>
+                    * The price for certain dates may vary, check with the manager<br />
+                    ** When settling in several houses, book each one separately<br />
+                    *** From May to September the cost of rent will increase by 60 BYN
+                  </span>
+                ) : (
+                  <span>
+                    * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
+                    ** При заселении в несколько домиков - бронировать каждый отдельно<br />
+                    *** С мая по сентябрь стоимость аренды увеличится на 60 рублей
+                  </span>
+                )}
               </Typography>
             </TabPanel>
           ) : null;
