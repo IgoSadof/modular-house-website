@@ -141,6 +141,7 @@ const useStyles = makeStyles((theme) => ({
   calendarConteiner: {
     height: '440px',
     maxWidth: '21vw',
+    maxWidth: '360px',
     margin: '2.5vh auto',
     '@media (min-width:1900px)': {
       height: '21vw',
