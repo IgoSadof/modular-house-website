@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
       '@media (max-width:1537px)': {
         fontWeight: '600',
         fontSize: '18px!important',
-        marginBottom: '0',
+        marginTop: '6px',
+        marginBottom: '-6px',
       },
     },
     '@media (max-width:720px)': {
@@ -50,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
     height: '6vw',
     padding: '10px',
     color: '#d1d1d1',
+    boxSizing: 'border-box',
     backgroundColor: '#4F4F4F',
     opacity: '1',
     [theme.breakpoints.down('md')]: {
@@ -387,10 +389,12 @@ export default function HousesGroup({
                 style={{ marginTop: '5vh' }}
               >
                 {lang === 'EN'
-                  ? `*When settling in several houses, book each one separately<br>
-                  **From May to September the cost of rent will increase by 60 BYN`
-                  : `*При заселении в несколько домиков - бронировать каждый отдельно<br>
-                  **с мая по сентябрь стоимость аренды увеличится на 60 рублей`}
+                  ? `* The price for certain dates may vary, check with the manager
+                  ** When settling in several houses, book each one separately                                                                                             
+                  *** From May to September the cost of rent will increase by 60 BYN`
+                  : `* Цена на определенные даты может отличаться, уточняйте у менеджера                                                                                            
+                  ** При заселении в несколько домиков - бронировать каждый отдельно                                                                                                  
+                  *** С мая по сентябрь стоимость аренды увеличится на 60 рублей`}
               </Typography>
             </TabPanel>
           ) : null;
