@@ -312,7 +312,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                 {pageTitle} | {data.site.siteMetadata.title}
               </title>
               <meta charSet='utf-8' />
-              <meta name='description' content='Moduls houses for living' />
+              <meta name='description' content='Modular houses for living' />
               <link rel='preconnect' href='https://fonts.googleapis.com' />
               <link
                 rel='preconnect'
@@ -356,7 +356,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                                 : 'relative'
                             }
                             color={
-                              page === 'watch' || page === 'house'
+                              page === 'watch' || page === 'house' || page === 'nomadhouses'
                                 ? 'white'
                                 : null
                             }
@@ -459,7 +459,7 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                         </div>
 
                         <Box className={classes.button}>
-                          {breakpoints.md || page === 'contacts' || page === 'watch' ? null : (
+                          {breakpoints.md || page === 'contacts' || page === 'watch' || page === 'nomadhouses' ? null : (
                             <RegularButton
                               variant='outlined'
                               click={handleClickConnect}

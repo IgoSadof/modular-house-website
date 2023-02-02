@@ -48,3 +48,12 @@ fs.copySync(path.join(__dirname, "public"), path.join(__dirname, "../"),{ overwr
       ],
     })
   }
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createRedirect } = actions;
+    
+  createRedirect({
+    fromPath: `/watch`,
+    toPath: `/nomadhouses`,
+  });
+}
