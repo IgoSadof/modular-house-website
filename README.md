@@ -1,3 +1,26 @@
+To run locally:
+1 Clone repo. Use development branch for development, production for publishing live version.
+2 Use login 'root' and password 'uN1sMBsSHwHS' to get into hosting at 45.135.234.94:1500/ispmgr.
+3 Download 'images' directory from https://45.135.234.94:1500/ispmgr#/list/file/2?elid=modular-house.by&elname=modular-house.by&plid=%2F%2Fvar%2Fwww%2Fwww-root%2Fdata%2Fwww&p_num=1 and put it in the same directory repository is (at the same level).
+4 Download 'modularh_db' from https://45.135.234.94:1500/ispmgr#/list/db/3?clickstat=yes&p_num=1 and put it in the same directory, near 'images' and the repository directory.
+5 Install MySQL from https://dev.mysql.com/downloads/installer/ with Workbench and Server, connecting to localhost (without port), creating default user 'root' with password 'modularhouse'. It is the most complex stuff - just follow all the installation guidlines and install server.
+6 Import 'modularh_db'.
+7 In MySQL Workbench open localhost connection, go File->New Query:
+CREATE USER 'modularh-user'@'localhost' IDENTIFIED BY 'modularhouse';
+GRANT ALL PRIVILEGES ON * . * TO 'modularh-user'@'localhost';
+ALTER USER 'modularh-user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'modularhouse';
+FLUSH PRIVILEGES;
+DROP DATABASE modularh_db;
+CREATE DATABASE modularh_db;
+USE modularh_db;
+File->Open SQL script->modularh-db.sql - execute
+
+8 Install dependencies with 'npm install'.
+9 Build 'npm run start'.
+ 
+
+
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
