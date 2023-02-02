@@ -119,6 +119,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  centerBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   optionsBox: {
     display: 'grid',
     display: 'none!important',
@@ -296,113 +302,129 @@ export default function HousesGroup({
               key={index}
               value={`${index}`}
             >
-              <Typography variant='body1'>
-                {lang === 'EN'
-                  ? `Choose a house number, suitable free dates for living, send an application and wait for the manager's response`
-                  : `Выберите номер домика, подходящие свободные даты для проживания,
-                    отправьте заявку и ожидайте ответа менеджера`}
-              </Typography>
+              {house.published?(<> 
+                <Typography variant='body1'>
+                  {lang === 'EN'
+                    ? `Choose a house number, suitable free dates for living, send an application and wait for the manager's response`
+                    : `Выберите номер домика, подходящие свободные даты для проживания,
+                      отправьте заявку и ожидайте ответа менеджера`}
+                </Typography>
 
-              <Box className={classes.calendarConteiner}>
-                <MyCalendar
-                  unavailableDates={unavailableDates}
-                  setSelectDate={(date) => {
-                    setSelectDate(date);
-                  }}
-                />
-              </Box>
-
-              <Box className={classes.formBox}>
-                {/* <Box className={classes.optionsBox}> */}
-                <Box>
-                  {house.house_options
-                    ? house.house_options
-                        .filter((item) => false)
-                        .map((item, index) =>
-                          item.active ? (
-                            <FormControlLabel
-                              key={index}
-                              onChange={handleChangeCheckbox}
-                              name={item.name}
-                              value={1}
-                              control={<Checkbox color='primary' />}
-                              labelPlacement='end'
-                              label={
-                                <Typography
-                                  className={classes.optionsName}
-                                  component='p'
-                                  variant='subtitle1'
-                                >
-                                  + {item.name}
-                                </Typography>
-                              }
-                            />
-                          ) : (
-                            <FormControlLabel
-                              key={index}
-                              onChange={handleChangeCheckbox}
-                              disabled
-                              name={item.name}
-                              value={1}
-                              control={<Checkbox color='primary' />}
-                              labelPlacement='end'
-                              label={
-                                <Typography
-                                  className={classes.optionsName}
-                                  component='p'
-                                  variant='subtitle1'
-                                >
-                                  + {item.name}
-                                </Typography>
-                              }
-                            />
-                          )
-                        )
-                    : null}
+                <Box className={classes.calendarConteiner}>
+                  <MyCalendar
+                    unavailableDates={unavailableDates}
+                    setSelectDate={(date) => {
+                      setSelectDate(date);
+                    }}
+                  />
                 </Box>
-                <Form
-                  data={data}
-                  minWidthOff={true}
-                  endpoint={'https://formspree.io/f/mzbokwwy'}
-                  extraFormFields={{
-                    date: selectDate,
-                    currentOption,
-                    house: house.house_name,
-                  }}
-                  arenda={true}
-                  sendDate={selectDate}
-                  buttonText={lang === 'EN' ? 'book' : 'бронировать'}
-                  lang={lang}
-                  priceBlock={
-                    <Typography variant='h3' className={classes.priceBox}>
-                      <strong>{house.house_price} BYN</strong> /
-                      {lang === 'EN' ? (
-                        <span style={{ textTransform: 'none' }}> 1 night</span>
-                      ) : (
-                        <span style={{ textTransform: 'none' }}> 1 ночь</span>
-                      )}
-                    </Typography>
-                  }
-                />
-              </Box>
-              <Typography
-                variant='body2'
-                style={{ marginTop: '5vh' }}
-              >
-                {lang === 'EN' ? (
-                  <span>
-                    * The price for certain dates may vary, check with the manager<br />
-                    ** When settling in several houses, book each one separately<br />
-                    *** From May to September the cost of rent will increase by 60 BYN
-                  </span>
-                ) : (
-                  <span>
-                    * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
-                    ** При заселении в несколько домиков - бронируйте каждый отдельно<br />
-                    *** С мая по сентябрь стоимость аренды увеличится на 60 рублей
-                  </span>
-                )}
-              </Typography>
+
+                <Box className={classes.formBox}>
+                  {/* <Box className={classes.optionsBox}> */}
+                  <Box>
+                    {house.house_options
+                      ? house.house_options
+                          .filter((item) => false)
+                          .map((item, index) =>
+                            item.active ? (
+                              <FormControlLabel
+                                key={index}
+                                onChange={handleChangeCheckbox}
+                                name={item.name}
+                                value={1}
+                                control={<Checkbox color='primary' />}
+                                labelPlacement='end'
+                                label={
+                                  <Typography
+                                    className={classes.optionsName}
+                                    component='p'
+                                    variant='subtitle1'
+                                  >
+                                    + {item.name}
+                                  </Typography>
+                                }
+                              />
+                            ) : (
+                              <FormControlLabel
+                                key={index}
+                                onChange={handleChangeCheckbox}
+                                disabled
+                                name={item.name}
+                                value={1}
+                                control={<Checkbox color='primary' />}
+                                labelPlacement='end'
+                                label={
+                                  <Typography
+                                    className={classes.optionsName}
+                                    component='p'
+                                    variant='subtitle1'
+                                  >
+                                    + {item.name}
+                                  </Typography>
+                                }
+                              />
+                            )
+                          )
+                      : null}
+                  </Box>
+                  <Form
+                    data={data}
+                    minWidthOff={true}
+                    endpoint={'https://formspree.io/f/mzbokwwy'}
+                    extraFormFields={{
+                      date: selectDate,
+                      currentOption,
+                      house: house.house_name,
+                    }}
+                    arenda={true}
+                    sendDate={selectDate}
+                    buttonText={lang === 'EN' ? 'book' : 'бронировать'}
+                    lang={lang}
+                    priceBlock={
+                      <Typography variant='h3' className={classes.priceBox}>
+                        <strong>{house.house_price} BYN</strong> /
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none' }}> 1 night</span>
+                        ) : (
+                          <span style={{ textTransform: 'none' }}> 1 ночь</span>
+                        )}
+                      </Typography>
+                    }
+                  />
+                </Box>
+                <Typography
+                  variant='body2'
+                  style={{ marginTop: '5vh' }}
+                >
+                  {lang === 'EN' ? (
+                    <span>
+                      * The price for certain dates may vary, check with the manager<br />
+                      ** When settling in several houses, book each one separately<br />
+                      *** From May to September the cost of rent will increase by 60 BYN
+                    </span>
+                  ) : (
+                    <span>
+                      * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
+                      ** При заселении в несколько домиков - бронируйте каждый отдельно<br />
+                      *** С мая по сентябрь стоимость аренды увеличится на 60 рублей
+                    </span>
+                  )}
+                </Typography>
+              </>):(<>
+                <Box className={classes.centerBox}>
+                  <Typography variant='h2'>
+                  {lang === 'EN'
+                      ? `Coming soon`
+                      : `Скоро`}
+                  </Typography>
+                  <Typography variant='body1' style={{ marginTop: '1vh' }}>
+                    {lang === 'EN'
+                      ? `This cabin is now in production and will soon be available for rent`
+                      : `Этот домик сейчас в производстве и скоро будет доступен для аренды`}
+                  </Typography> 
+                </Box>
+              </>)}
+              
             </TabPanel>
           ) : null;
         })}
