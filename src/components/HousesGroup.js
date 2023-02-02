@@ -183,6 +183,7 @@ export default function HousesGroup({
   groupImage,
   houses,
   groupName,
+  groupDesc,
   calendar,
 }) {
   const classes = useStyles();
