@@ -239,8 +239,8 @@ export default function HousesGroup({
       <img
         style={{
           maxWidth: '100%',
-          marginTop: '2.8vh',
-          marginBottom: '5.6vh',
+          marginTop: '3.6vh',
+          marginBottom: '4.8vh',
           marginLeft: 'auto',
           marginLight: 'auto',
         }}
