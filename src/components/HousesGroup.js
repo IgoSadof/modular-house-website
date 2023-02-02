@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid #4F4F4F',
     borderTop: 'none',
     padding: '40px',
+    flex: '1 1 auto',
     [theme.breakpoints.down('md')]: {
       padding: '5%',
     },
@@ -106,6 +107,10 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'stretch',
+    flexDirection: 'column',
     '& div[class*="MuiFormControl"]': {
       height: '50px',
       '@media (min-width:1921px)': {
@@ -124,6 +129,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    height: '100%',
+    textAlign: 'center',
   },
   optionsBox: {
     display: 'grid',
