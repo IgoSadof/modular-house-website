@@ -6,14 +6,14 @@ To run locally:
 5 Install MySQL from https://dev.mysql.com/downloads/installer/ with Workbench and Server, connecting to localhost (without port), creating default user 'root' with password 'modularhouse'. It is the most complex stuff - just follow all the installation guidlines and install server.
 6 Import 'modularh_db'.
 7 In MySQL Workbench open localhost connection, go File->New Query:
-CREATE USER 'modularh-user'@'localhost' IDENTIFIED BY 'modularhouse';
-GRANT ALL PRIVILEGES ON * . * TO 'modularh-user'@'localhost';
-ALTER USER 'modularh-user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'modularhouse';
+CREATE USER 'modularh_user'@'localhost' IDENTIFIED BY 'modularhouse';
+GRANT ALL PRIVILEGES ON * . * TO 'modularh_user'@'localhost';
+ALTER USER 'modularh_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'modularhouse';
 FLUSH PRIVILEGES;
 DROP DATABASE modularh_db;
 CREATE DATABASE modularh_db;
 USE modularh_db;
-File->Open SQL script->modularh-db.sql - execute
+File->Open SQL script->modularh_db.sql - execute
 
 8 Install dependencies with 'npm install'.
 9 Build 'npm run start'.
