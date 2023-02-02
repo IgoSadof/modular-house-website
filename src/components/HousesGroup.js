@@ -107,10 +107,6 @@ const useStyles = makeStyles((theme) => ({
   },
   formBox: {
     width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'stretch',
-    flexDirection: 'column',
     '& div[class*="MuiFormControl"]': {
       height: '50px',
       '@media (min-width:1921px)': {

@@ -461,6 +461,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     '&>div>div': {
+      height: '100%',
+      display: 'flex',
+      alignItems: 'stretch',
+      flexDirection: 'column',
       [theme.breakpoints.down('md')]: {
         padding:'0 10%',
       },
