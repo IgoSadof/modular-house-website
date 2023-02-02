@@ -127,6 +127,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     height: '100%',
     textAlign: 'center',
+    padding: '4vh 0',
   },
   optionsBox: {
     display: 'grid',
@@ -420,7 +421,7 @@ export default function HousesGroup({
                       ? `Coming soon`
                       : `Скоро`}
                   </Typography>
-                  <Typography variant='body1' style={{ marginTop: '1vh' }}>
+                  <Typography variant='body1' style={{ marginTop: '2vh' }}>
                     {lang === 'EN'
                       ? `This cabin is now in production and will soon be available for rent`
                       : `Этот домик сейчас в производстве и скоро будет доступен для аренды`}
