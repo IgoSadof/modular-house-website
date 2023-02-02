@@ -232,6 +232,9 @@ export default function HousesGroup({
       <Typography className={classes.title} variant='h2'>
         {groupName}:
       </Typography>
+      <Typography variant='body1'>
+        {groupDesc}:
+      </Typography>
       <img
         style={{
           maxWidth: '100%',

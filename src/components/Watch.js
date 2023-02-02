@@ -605,6 +605,7 @@ const Watch = ({ data, lang }) => {
                     lang={lang}
                     data={data}
                     groupName={group?.houses_group_name}
+                    groupDesc={group?.houses_group_desc}
                     groupImage={group?.houses_group_image}
                     houses={group?.houses_group_list.filter(
                       (house) => house.published
