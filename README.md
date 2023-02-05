@@ -17,7 +17,6 @@ File->Open SQL script->modularh_db.sql - execute
 
 8 Install dependencies with 'npm install'.
 9 Build 'npm run start'.
- 
 
 
 
