@@ -1,11 +1,11 @@
 {
-  "name": "my-gatsby-site",
+  "name": "modular-house-website",
   "version": "1.0.0",
   "homepage": "http://modularh.vh108.hosterby.com",
   "private": true,
-  "description": "My Gatsby Site",
+  "description": "Modular House",
   "keywords": [
-    "gatsby"
+    "mh"
   ],
   "browserslist": [
     ">0.25%",

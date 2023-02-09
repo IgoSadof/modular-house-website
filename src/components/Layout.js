@@ -144,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Layout = ({ pageTitle, children, page, component, house }) => {
+const Layout = ({ pageTitle, pageDescription, children, page, component, house }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -260,8 +260,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
   `);
 
   const breakpoints = useBreakpoint();
-  // const [lang, setLang] = useState('RU');
-
   const param = { page, breakpoints };
   const classes = useStyles(param);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -297,10 +295,6 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
         modularHouseTheme.palette.primary.fonYandex;
     }
   }
-  // console.log(modularHouseTheme.palette.primary.fon);
-  // const handleLangClick = (e, lang) => {
-  //   // setLang(lang);
-  // };
   return (
     <ThemeProvider theme={modularHouseTheme}>
       <LangContext.Consumer>
@@ -312,7 +306,8 @@ const Layout = ({ pageTitle, children, page, component, house }) => {
                 {pageTitle} | {data.site.siteMetadata.title}
               </title>
               <meta charSet='utf-8' />
-              <meta name='description' content='Modular houses for living' />
+              <meta name='description' content={pageDescription} />
+              {/* Add more meta tags which are common for all pages here. */}
               <link rel='preconnect' href='https://fonts.googleapis.com' />
               <link
                 rel='preconnect'

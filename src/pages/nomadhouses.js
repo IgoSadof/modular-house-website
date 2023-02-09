@@ -1,12 +1,26 @@
 import React from "react";
 import Watch from "../components/Watch";
 import Layout from "../components/Layout";
+import { Helmet } from "react-helmet";
 
-
-const WatchPage = () => {
+const WatchPage = ({lang}) => {
   return (
-    <Layout pageTitle="Where to see" page="nomadhouses" component = {Watch}>
-    </Layout>
+    <>
+      <Helmet>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://modular-house.by//nomadhouses" />
+      </Helmet>
+
+      <Layout
+        pageTitle={lang === "EN" ? "Where to see" : "Где увидеть"}
+        pageDescription={lang === "EN"
+          ? "Book a house to rent and live"
+          : "Бронируй дом чтобы жить в нём"}
+        page="nomadhouses"
+        component = {Watch}>
+      </Layout>
+    </>
   );
 };
+
 export default WatchPage;
