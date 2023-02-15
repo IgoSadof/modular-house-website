@@ -635,16 +635,16 @@ const Watch = ({ data, lang }) => {
         title={pageData.arenda_icon_title}
         leftColumnContent={
           <>
-            {/*pageData.arenda_icon_text ? (
+            {pageData.arenda_icon_text ? (
               <Box className={classes.textBlock}>
                 {pageData.arenda_icon_text
                   ? splitText(pageData.arenda_icon_text)
                   : null}
               </Box>
-                ) : null*/}
+                ) : null}
 
             <Box className={classes.contactConteiner}>
-              <Phone />
+              {/*<Phone />*/}
               <Typography
                 className={classes.contactTtile}
                 variant='body1'
