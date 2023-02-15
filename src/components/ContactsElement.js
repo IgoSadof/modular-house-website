@@ -361,7 +361,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Minsk. Pavel' : 'Минск. Павел'}
+                  {lang === 'EN' ? 'Minsk' : 'Минск'}
                 </Typography>
               {/* ) : null} */}
             </Box>
