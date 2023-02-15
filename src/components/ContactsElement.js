@@ -64,11 +64,11 @@ const useStyles = makeStyles((theme) => ({
   ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > * + * ':{
+    '& > div:nth-child(2) ':{
       marginTop:'40px'
     },
     '@media (min-width:1450px)': {
-      '& > * + * ':{
+      '& > div:nth-child(2) ':{
         marginTop:'60px'
       },
     },
@@ -129,9 +129,10 @@ const useStyles = makeStyles((theme) => ({
   infoBox: {
     display: 'flex',
     alignItems: 'baseline',
+    flexWrap: 'wrap',
   
     '& > * + * ': {
-      marginLeft: '32px',
+      marginLeft: '0',
     },
     '@media (min-width:1921px)': {
       '& > * + * ': {
@@ -170,13 +171,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 'auto',
-    '& > * + * ': {
-      marginTop: '24px',
+    '& > p:nth-child(2) ': {
+      marginTop: '1.5em',
     },
     '& p': {
       fontSize: '16px',
       '@media (min-width:1921px)': {
-        fontSize: '0.83vw',
+        fontSize: '0.92vw',
       },
     },
     '@media (max-width:600px)': {
@@ -210,12 +211,18 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     whiteSpace: 'nowrap',
     fontWeight: '400',
+    width: '100%',
   },
   ContactsPhone: {
     fontWeight: '600',
     whiteSpace: 'nowrap',
+    fontSize: '18px',
+    lineHeight: '1.9',
     [theme.breakpoints.down('md')]: {
       fontSize: '16px',
+    },
+    '@media (min-width:1921px)': {
+      fontSize: '0.94vw',
     },
   },
 }));
@@ -333,7 +340,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
-                  className={classes.ContactsSails}
+                  className={classes.ContactsSails2}
                   variant='body1'
                   component='p'
                 >
@@ -360,7 +367,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
-                  className={classes.ContactsSails}
+                  className={classes.ContactsSails2}
                   variant='body1'
                   component='p'
                 >
@@ -368,6 +375,8 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   {lang === 'EN' ? 'Vologda' : 'Вологда'}
                 </Typography>
               {/* ) : null} */}
+            </Box>
+            <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
               <Typography
                 className={classes.ContactsPhone}
                 variant='body1'
@@ -378,7 +387,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
-                  className={classes.ContactsSails}
+                  className={classes.ContactsSails2}
                   variant='body1'
                   component='p'
                 >
@@ -413,7 +422,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   <Typography variant='body1'>{dataContacts.adres}</Typography>*/}
 
                   <Typography className={classes.personalBoxLink} variant='body1'>
-                      {lang === 'EN' ? 'Head office' : 'Головной офис'}
+                      {lang === 'EN' ? 'Head office:' : 'Головной офис:'}
                   </Typography>
                   <Typography variant='body1'>
                     {lang === 'EN' ? 'Minsk' : 'Минск'}

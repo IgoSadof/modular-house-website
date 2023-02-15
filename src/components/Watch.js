@@ -494,7 +494,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contactConteiner: {
-    display: 'flex',
+    display: 'block',
     alignItems: 'center',
     marginTop: '6vh',
   },
@@ -502,6 +502,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '600',
     /*marginLeft: '1.5vh',*/
     color: '#4f4f4f',
+    marginTop: '0.2em',
   },
 }));
 
