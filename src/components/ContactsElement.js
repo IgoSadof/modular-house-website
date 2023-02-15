@@ -81,8 +81,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     [theme.breakpoints.down('md')]: {
-      '& > * + * ': {
-        marginTop: '30px',
+      '& > div:nth-child(2) ':{
+        marginTop:'60px'
+      },
+      '& > div:nth-child(3) ':{
+        marginTop:'20px'
+      },
+      '& > div:nth-child(5) ':{
+        marginTop:'60px'
       },
     },
   },
@@ -407,7 +413,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
               {/* ) : null} */}
               
             </Box>
-            {!breakpoints.md ? (
+            
               <Box className={classes.infoBox}>
                 {!header ? (
                   <Box className={classes.logoBox}>
@@ -442,10 +448,10 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   </Typography>
                 </Box>
               </Box>
-            ) : null}
+            
           </Box>
 
-          {breakpoints.md ? (
+          {/*breakpoints.md ? (
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>
@@ -467,7 +473,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 <Typography variant='body1'>{dataContacts.adres}</Typography>
               </Box>
             </Box>
-          ) : null}
+              ) : null*/}
         </Box>
       </Box>
     </Box>
