@@ -318,17 +318,18 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
             <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
               <Typography
                 className={classes.ContactsSails}
-                variant='body1'
+                variant='h4'
                 component='p'
               >
-                {lang === 'EN' ? 'Sales department:' : 'Отдел продаж:'}
+                {lang === 'EN' ? 'Production of modular houses in Belarus:' : 'Производство модульных домов в Беларуси:'}
               </Typography>
               <Typography
                 className={classes.ContactsPhone}
                 variant='body1'
                 component='p'
               >
-                {dataContacts.phone}
+                {/*dataContacts.phone*/}
+                +375 33 914 79 48
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
@@ -337,9 +338,55 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Pavel' : 'Павел'}
+                  {lang === 'EN' ? 'Minsk. Pavel' : 'Минск. Павел'}
                 </Typography>
               {/* ) : null} */}
+            </Box>
+            <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
+              <Typography
+                className={classes.ContactsSails}
+                variant='h4'
+                component='p'
+              >
+                {lang === 'EN' ? 'Production of modular houses in Russia:' : 'Производство модульных домов в Росии:'}
+              </Typography>
+              <Typography
+                className={classes.ContactsPhone}
+                variant='body1'
+                component='p'
+              >
+                {/*dataContacts.phone*/}
+                +375 33 914 79 48
+              </Typography>
+              {/* {dataContacts.name ? ( */}
+                <Typography
+                  className={classes.ContactsSails}
+                  variant='body1'
+                  component='p'
+                >
+                  {/* {dataContacts.name} */}
+                  {lang === 'EN' ? 'Vologda' : 'Вологда'}
+                </Typography>
+              {/* ) : null} */}
+              <Typography
+                className={classes.ContactsPhone}
+                variant='body1'
+                component='p'
+              >
+                {/*dataContacts.phone*/}
+                +375 33 914 79 48
+              </Typography>
+              {/* {dataContacts.name ? ( */}
+                <Typography
+                  className={classes.ContactsSails}
+                  variant='body1'
+                  component='p'
+                >
+                  {/* {dataContacts.name} */}
+                  {lang === 'EN' ? 'Yaroslavl' : 'Ярославль'}
+                </Typography>
+              {/* ) : null} */}
+              
             </Box>
             {!breakpoints.md ? (
               <Box className={classes.infoBox}>
@@ -355,7 +402,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 ) : null}
 
                 <Box className={classes.infoBoxText}>
-                  <a
+                  {/* <a
                     className={classes.personalBoxLink}
                     href={`mailto:${dataContacts.email}`}
                   >
@@ -363,7 +410,17 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                       {dataContacts.email}
                     </Typography>
                   </a>
-                  <Typography variant='body1'>{dataContacts.adres}</Typography>
+                  <Typography variant='body1'>{dataContacts.adres}</Typography>*/}
+
+                  <Typography className={classes.personalBoxLink} variant='body1'>
+                      {lang === 'EN' ? 'Head office' : 'Головной офис'}
+                  </Typography>
+                  <Typography variant='body1'>
+                    {lang === 'EN' ? 'Minsk' : 'Минск'}
+                  </Typography>
+                  <Typography variant='body1'>
+                    {lang === 'EN' ? '11 M. Bogdanovicha str, 2-3 floors' : 'ул. Богдановича 11, 2-3 этаж'}
+                  </Typography>
                 </Box>
               </Box>
             ) : null}

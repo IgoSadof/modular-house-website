@@ -500,7 +500,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contactText: {
     fontWeight: '600',
-    marginLeft: '1.5vh',
+    /*marginLeft: '1.5vh',*/
     color: '#4f4f4f',
   },
 }));
@@ -635,16 +635,23 @@ const Watch = ({ data, lang }) => {
         title={pageData.arenda_icon_title}
         leftColumnContent={
           <>
-            {pageData.arenda_icon_text ? (
+            {/*pageData.arenda_icon_text ? (
               <Box className={classes.textBlock}>
                 {pageData.arenda_icon_text
                   ? splitText(pageData.arenda_icon_text)
                   : null}
               </Box>
-            ) : null}
+                ) : null*/}
 
             <Box className={classes.contactConteiner}>
               <Phone />
+              <Typography
+                className={classes.contactTtile}
+                variant='body1'
+                component='p'
+              >
+                {lang === 'EN' ? 'For any questions call:' : 'По любым вопросам набирайте:'}
+              </Typography>
               <Typography
                 className={classes.contactText}
                 variant='h4'
