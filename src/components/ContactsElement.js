@@ -131,11 +131,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'baseline',
     flexWrap: 'wrap',
   
-    '& > * + * ': {
+    '& > p': {
       marginLeft: '0',
     },
+    '& > p:last-child': {
+      marginLeft: '28px',
+    },
     '@media (min-width:1921px)': {
-      '& > * + * ': {
+      '& > p:last-child': {
         marginLeft: '1.8vw',
       },
     },
