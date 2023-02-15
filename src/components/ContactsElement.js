@@ -64,8 +64,11 @@ const useStyles = makeStyles((theme) => ({
   ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > div:nth-child(2) ':{
-      marginTop:'40px'
+    '& > div:nth-child(3) ':{
+      marginTop:'20px'
+    },
+    '& > div:nth-child(4) ':{
+      marginTop:'60px'
     },
     '@media (min-width:1450px)': {
       '& > div:nth-child(2) ':{
@@ -174,6 +177,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 'auto',
+    marginLeft: '28px',
+    '@media (min-width:1921px)': {
+      marginLeft: '1.6vw',
+    },
     '& > p:nth-child(2) ': {
       marginTop: '1.5em',
     },
