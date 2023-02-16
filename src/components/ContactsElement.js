@@ -228,12 +228,12 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     fontWeight: '400',
     width: '100%',
+    marginBottom: '0.25em',
   },
   ContactsPhone: {
     fontWeight: '600',
     whiteSpace: 'nowrap',
     fontSize: '18px',
-    lineHeight: '1.9',
     [theme.breakpoints.down('md')]: {
       fontSize: '16px',
     },
