@@ -379,7 +379,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 component='p'
               >
                 {/*dataContacts.phone*/}
-                +7 921 252 8108
+                +7 921 252 81 08
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
@@ -399,7 +399,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 component='p'
               >
                 {/*dataContacts.phone*/}
-                +7 921 252 8108
+                +7 921 252 81 08
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
