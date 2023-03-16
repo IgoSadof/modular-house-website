@@ -352,7 +352,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 component='p'
               >
                 {/*dataContacts.phone*/}
-                +375 33 914 79 48
+                +375 44 710 67 35
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
