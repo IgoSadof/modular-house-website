@@ -371,7 +371,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 variant='h4'
                 component='p'
               >
-                {lang === 'EN' ? 'Production of modular houses in Russia:' : 'Производство модульных домов в Росии:'}
+                {lang === 'EN' ? 'Production of modular houses in Russia:' : 'Производство модульных домов в России:'}
               </Typography>
               <Typography
                 className={classes.ContactsPhone}
