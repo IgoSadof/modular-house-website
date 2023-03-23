@@ -494,14 +494,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contactConteiner: {
-    display: 'flex',
+    display: 'block',
     alignItems: 'center',
     marginTop: '6vh',
   },
   contactText: {
     fontWeight: '600',
-    marginLeft: '1.5vh',
+    /*marginLeft: '1.5vh',*/
     color: '#4f4f4f',
+    marginTop: '0.2em',
   },
 }));
 
@@ -641,10 +642,17 @@ const Watch = ({ data, lang }) => {
                   ? splitText(pageData.arenda_icon_text)
                   : null}
               </Box>
-            ) : null}
+                ) : null}
 
             <Box className={classes.contactConteiner}>
-              <Phone />
+              {/*<Phone />*/}
+              <Typography
+                className={classes.contactTtile}
+                variant='body1'
+                component='p'
+              >
+                {lang === 'EN' ? 'For any questions call:' : 'По любым вопросам набирайте:'}
+              </Typography>
               <Typography
                 className={classes.contactText}
                 variant='h4'

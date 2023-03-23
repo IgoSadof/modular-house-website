@@ -64,11 +64,14 @@ const useStyles = makeStyles((theme) => ({
   ContactsBox: {
     display: 'flex',
     flexDirection: 'column',
-    '& > * + * ':{
-      marginTop:'40px'
+    '& > div:nth-child(3) ':{
+      marginTop:'20px'
+    },
+    '& > div:nth-child(5) ':{
+      marginTop:'60px'
     },
     '@media (min-width:1450px)': {
-      '& > * + * ':{
+      '& > div:nth-child(2) ':{
         marginTop:'60px'
       },
     },
@@ -78,8 +81,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     [theme.breakpoints.down('md')]: {
-      '& > * + * ': {
-        marginTop: '30px',
+      '& > div:nth-child(2) ':{
+        marginTop:'60px'
+      },
+      '& > div:nth-child(3) ':{
+        marginTop:'20px'
+      },
+      '& > div:nth-child(5) ':{
+        marginTop:'60px'
       },
     },
   },
@@ -129,12 +138,16 @@ const useStyles = makeStyles((theme) => ({
   infoBox: {
     display: 'flex',
     alignItems: 'baseline',
+    flexWrap: 'wrap',
   
-    '& > * + * ': {
-      marginLeft: '32px',
+    '& > p': {
+      marginLeft: '0',
+    },
+    '& > p:last-child': {
+      marginLeft: '28px',
     },
     '@media (min-width:1921px)': {
-      '& > * + * ': {
+      '& > p:last-child': {
         marginLeft: '1.8vw',
       },
     },
@@ -170,13 +183,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 'auto',
-    '& > * + * ': {
-      marginTop: '24px',
+    marginLeft: '28px',
+    '@media (min-width:1921px)': {
+      marginLeft: '1.6vw',
+    },
+    '& > p:nth-child(2) ': {
+      marginTop: '1.5em',
     },
     '& p': {
       fontSize: '16px',
       '@media (min-width:1921px)': {
-        fontSize: '0.83vw',
+        fontSize: '0.92vw',
       },
     },
     '@media (max-width:600px)': {
@@ -210,12 +227,18 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     whiteSpace: 'nowrap',
     fontWeight: '400',
+    width: '100%',
+    marginBottom: '0.25em',
   },
   ContactsPhone: {
     fontWeight: '600',
     whiteSpace: 'nowrap',
+    fontSize: '18px',
     [theme.breakpoints.down('md')]: {
       fontSize: '16px',
+    },
+    '@media (min-width:1921px)': {
+      fontSize: '0.94vw',
     },
   },
 }));
@@ -318,30 +341,79 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
             <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
               <Typography
                 className={classes.ContactsSails}
-                variant='body1'
+                variant='h4'
                 component='p'
               >
-                {lang === 'EN' ? 'Sales department:' : 'Отдел продаж:'}
+                {lang === 'EN' ? 'Production of modular houses in Belarus:' : 'Производство модульных домов в Беларуси:'}
               </Typography>
               <Typography
                 className={classes.ContactsPhone}
                 variant='body1'
                 component='p'
               >
-                {dataContacts.phone}
+                {/*dataContacts.phone*/}
+                +375 44 710 67 35
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
-                  className={classes.ContactsSails}
+                  className={classes.ContactsSails2}
                   variant='body1'
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Pavel' : 'Павел'}
+                  {lang === 'EN' ? 'Minsk' : 'Минск'}
                 </Typography>
               {/* ) : null} */}
             </Box>
-            {!breakpoints.md ? (
+            <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
+              <Typography
+                className={classes.ContactsSails}
+                variant='h4'
+                component='p'
+              >
+                {lang === 'EN' ? 'Production of modular houses in Russia:' : 'Производство модульных домов в России:'}
+              </Typography>
+              <Typography
+                className={classes.ContactsPhone}
+                variant='body1'
+                component='p'
+              >
+                {/*dataContacts.phone*/}
+                +7 921 252 81 08
+              </Typography>
+              {/* {dataContacts.name ? ( */}
+                <Typography
+                  className={classes.ContactsSails2}
+                  variant='body1'
+                  component='p'
+                >
+                  {/* {dataContacts.name} */}
+                  {lang === 'EN' ? 'Vologda' : 'Вологда'}
+                </Typography>
+              {/* ) : null} */}
+            </Box>
+            <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
+              <Typography
+                className={classes.ContactsPhone}
+                variant='body1'
+                component='p'
+              >
+                {/*dataContacts.phone*/}
+                +7 921 252 81 08
+              </Typography>
+              {/* {dataContacts.name ? ( */}
+                <Typography
+                  className={classes.ContactsSails2}
+                  variant='body1'
+                  component='p'
+                >
+                  {/* {dataContacts.name} */}
+                  {lang === 'EN' ? 'Yaroslavl' : 'Ярославль'}
+                </Typography>
+              {/* ) : null} */}
+              
+            </Box>
+            
               <Box className={classes.infoBox}>
                 {!header ? (
                   <Box className={classes.logoBox}>
@@ -355,7 +427,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 ) : null}
 
                 <Box className={classes.infoBoxText}>
-                  <a
+                  {/* <a
                     className={classes.personalBoxLink}
                     href={`mailto:${dataContacts.email}`}
                   >
@@ -363,13 +435,23 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                       {dataContacts.email}
                     </Typography>
                   </a>
-                  <Typography variant='body1'>{dataContacts.adres}</Typography>
+                  <Typography variant='body1'>{dataContacts.adres}</Typography>*/}
+
+                  <Typography className={classes.personalBoxLink} variant='body1'>
+                      {lang === 'EN' ? 'Head office:' : 'Головной офис:'}
+                  </Typography>
+                  <Typography variant='body1'>
+                    {lang === 'EN' ? 'Minsk' : 'Минск'}
+                  </Typography>
+                  <Typography variant='body1'>
+                    {lang === 'EN' ? '11 M. Bogdanovicha str, 2-3 floors' : 'ул. Богдановича 11, 2-3 этаж'}
+                  </Typography>
                 </Box>
               </Box>
-            ) : null}
+            
           </Box>
 
-          {breakpoints.md ? (
+          {/*breakpoints.md ? (
             <Box className={classes.infoBox}>
               {!header ? (
                 <Box className={classes.logoBox}>
@@ -391,7 +473,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 <Typography variant='body1'>{dataContacts.adres}</Typography>
               </Box>
             </Box>
-          ) : null}
+              ) : null*/}
         </Box>
       </Box>
     </Box>

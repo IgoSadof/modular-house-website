@@ -154,7 +154,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '360px',
     margin: '2.5vh auto',
     '@media (min-width:1900px)': {
-      height: '21vw',
+      height: '20vw',
+      maxWidth: '20vw',
     },
     '@media (max-width:1600px)': {
       maxWidth: '380px',
