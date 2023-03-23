@@ -7,8 +7,8 @@ const WatchPage = ({lang}) => {
   return (
     <>
       <Helmet>
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://modular-house.by//nomadhouses" />
+        <meta property="keywords" content="аренда дома, nomad houses, глэмпинг" />
+        <meta property="og:url" content="https://modular-house.by/nomadhouses" />
       </Helmet>
 
       <Layout

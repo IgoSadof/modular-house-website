@@ -2,10 +2,22 @@ import "../components/css/global.css";
 import React from "react";
 import AboutUs from "../components/AboutUs";
 import Layout from "../components/Layout";
+import { Helmet } from "react-helmet";
 
-export default function AboutUsPage() {
+const AboutUsPage = ({lang}) => {
   return (
-    <Layout pageTitle="What we do" page='aboutUs' component = {AboutUs}>
-    </Layout>
+    <>
+      <Helmet>
+        <meta property="keywords" content="о нас, by home" />
+        <meta property="og:url" content="https://modular-house.by/who-we-are" />
+      </Helmet>
+
+      <Layout
+        pageTitle={lang === 'EN' ? 'Who we are' : 'О нас'}
+        page='aboutUs'
+        component = {AboutUs} />
+    </>
   );
 }
+
+export default AboutUsPage;
