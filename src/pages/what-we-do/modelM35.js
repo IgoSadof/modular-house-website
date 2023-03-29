@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 import { Helmet } from "react-helmet";
 
 
-const HousesPage = () => {
+const HousesPage = ({lang}) => {
   return (
     <>
       <Helmet>
