@@ -303,7 +303,7 @@ const Layout = ({ pageTitle, pageDescription, children, page, component, house }
             <Helmet>
               <html lang={lang.lang === 'EN' ? 'en' : 'ru'} />
               <title>
-                {pageTitle} | {data.site.siteMetadata.title}
+                {pageTitle}
               </title>
               <meta charSet='utf-8' />
               <meta name='description' content={pageDescription} />
