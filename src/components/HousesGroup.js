@@ -311,7 +311,7 @@ export default function HousesGroup({
               key={index}
               value={`${index}`}
             >
-              {(house.house_name !== '№4' && house.house_name !== '№5' && house.house_name !== '№6')?(<> 
+              {(house.house_name !== '№4')?(<> 
                 <Typography variant='body1'>
                   {lang === 'EN'
                     ? `Choose a house number, suitable free dates for living, send an application and wait for the manager's response`
