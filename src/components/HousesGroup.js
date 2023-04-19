@@ -420,13 +420,13 @@ export default function HousesGroup({
                     <span>
                       * The price for certain dates may vary, check with the manager<br />
                       ** When settling in several houses, book each one separately<br />
-                      *** Until 04/30/2023, the rental price for houses No. 5 and 6 is reduced by 20%
+                      *** Test period for houses No. 5 and No. 6 until 04/30/2023 - the rental price is reduced by 20%
                     </span>
                   ) : (
                     <span>
                       * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
                       ** При заселении в несколько домиков - бронируйте каждый отдельно<br />
-                      *** До 30.04.2023 стоимость аренды на домики №№ 5 и 6 снижена на 20%
+                      *** Тестовый период домиков №5 и №6 до 30.04.2023 - стоимость аренды снижена на 20%
                     </span>
                   )}
                 </Typography>
