@@ -400,7 +400,7 @@ export default function HousesGroup({
                         )}
                       </Typography>
                       </>):(<>
-                        <strong><span style={{ textDecoration: 'line-through' }}>{house.house_price}</span> 296 BYN*</strong> /
+                        <strong style={{ textDecoration: 'line-through' }}>{house.house_price}</strong> <strong>296 BYN*</strong> /
                         {lang === 'EN' ? (
                           <span style={{ textTransform: 'none' }}> 1 night</span>
                         ) : (
