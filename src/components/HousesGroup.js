@@ -409,13 +409,13 @@ export default function HousesGroup({
                     <span>
                       * The price for certain dates may vary, check with the manager<br />
                       ** When settling in several houses, book each one separately<br />
-                      *** From May to September the cost of rent will increase by 60 BYN
+                      *** There is a test period of houses 5 and 6 until the end of April with a 20 discount%
                     </span>
                   ) : (
                     <span>
                       * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
                       ** При заселении в несколько домиков - бронируйте каждый отдельно<br />
-                      *** С мая по сентябрь стоимость аренды увеличится на 60 рублей
+                      *** Действует тестовый период домиков 5 и 6 до конца Апреля со скидкой 20%
                     </span>
                   )}
                 </Typography>
