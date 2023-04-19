@@ -390,6 +390,7 @@ export default function HousesGroup({
                     buttonText={lang === 'EN' ? 'book' : 'бронировать'}
                     lang={lang}
                     priceBlock={
+                      (house.house_name !== '№6')?(<> 
                       <Typography variant='h3' className={classes.priceBox}>
                         <strong>{house.house_price} BYN</strong> /
                         {lang === 'EN' ? (
@@ -398,6 +399,14 @@ export default function HousesGroup({
                           <span style={{ textTransform: 'none' }}> 1 ночь</span>
                         )}
                       </Typography>
+                      </>):(<>
+                        <strong><span style={{ textDecoration: 'line-through' }}>{house.house_price}</span> 296 BYN*</strong> /
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none' }}> 1 night</span>
+                        ) : (
+                          <span style={{ textTransform: 'none' }}> 1 ночь</span>
+                        )}
+                      </>)
                     }
                   />
                 </Box>
