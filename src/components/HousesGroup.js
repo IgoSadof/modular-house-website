@@ -400,12 +400,14 @@ export default function HousesGroup({
                         )}
                       </Typography>
                       </>):(<>
+                        <Typography variant='h3' className={classes.priceBox}>
                         <strong style={{ textDecoration: 'line-through' }}>{house.house_price}</strong> <strong>296 BYN*</strong> /
                         {lang === 'EN' ? (
                           <span style={{ textTransform: 'none' }}> 1 night</span>
                         ) : (
                           <span style={{ textTransform: 'none' }}> 1 ночь</span>
                         )}
+                      </Typography>
                       </>)
                     }
                   />
