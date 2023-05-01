@@ -390,7 +390,7 @@ export default function HousesGroup({
                     buttonText={lang === 'EN' ? 'book' : 'бронировать'}
                     lang={lang}
                     priceBlock={
-                      (house.house_name !== '№5' && house.house_name !== '№6')?(<> 
+                      (house.house_name !== '№7' && house.house_name !== '№8')?(<> 
                       <Typography variant='h3' className={classes.priceBox}>
                         <strong>{house.house_price} BYN</strong> /
                         {lang === 'EN' ? (
@@ -419,14 +419,12 @@ export default function HousesGroup({
                   {lang === 'EN' ? (
                     <span>
                       * The price for certain dates may vary, check with the manager<br />
-                      ** When settling in several houses, book each one separately<br />
-                      *** Test period for houses No. 5 and No. 6 until 04/30/2023 - the rental price is reduced by 20%
+                      ** When settling in several houses, book each one separately
                     </span>
                   ) : (
                     <span>
                       * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
-                      ** При заселении в несколько домиков - бронируйте каждый отдельно<br />
-                      *** Тестовый период домиков №5 и №6 до 30.04.2023 - стоимость аренды снижена на 20%
+                      ** При заселении в несколько домиков - бронируйте каждый отдельно
                     </span>
                   )}
                 </Typography>
