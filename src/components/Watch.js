@@ -235,6 +235,9 @@ const useStyles = makeStyles((theme) => ({
       pointerEvents: 'visible',
     },
   },
+  topzero: {
+    marginTop: '0',
+  },
   mapBox: {
     width: '100%',
     height: '560px',
@@ -504,9 +507,6 @@ const useStyles = makeStyles((theme) => ({
     /*marginLeft: '1.5vh',*/
     color: '#4f4f4f',
     marginTop: '0.2em',
-  },
-  topzero: {
-    marginTop: '0',
   },
 }));
 
