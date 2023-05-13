@@ -235,9 +235,6 @@ const useStyles = makeStyles((theme) => ({
       pointerEvents: 'visible',
     },
   },
-  topzero: {
-    marginTop: '0',
-  },
   mapBox: {
     width: '100%',
     height: '560px',
@@ -637,7 +634,6 @@ const Watch = ({ data, lang }) => {
       ></ContentBlock>
 
       <ContentBlock
-        className={classes.topzero}
         title={pageData.arenda_icon_title}
         leftColumnContent={
           <>
