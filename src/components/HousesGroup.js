@@ -311,7 +311,7 @@ export default function HousesGroup({
               key={index}
               value={`${index}`}
             >
-              {(house.house_name !== '№8')?(<> 
+              {(house.house_name !== '№9')?(<> 
                 <Typography variant='body1'>
                   {lang === 'EN'
                     ? `Choose a house number, suitable free dates for living, send an application and wait for the manager's response`
@@ -390,7 +390,7 @@ export default function HousesGroup({
                     buttonText={lang === 'EN' ? 'book' : 'бронировать'}
                     lang={lang}
                     priceBlock={
-                      (house.house_name !== '№7' && house.house_name !== '№8')?(<> 
+                      (house.house_name !== '№9' && house.house_name !== '№10')?(<> 
                       <Typography variant='h3' className={classes.priceBox}>
                         <strong>{house.house_price} BYN</strong> /
                         {lang === 'EN' ? (

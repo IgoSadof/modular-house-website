@@ -445,7 +445,7 @@ const useStyles = makeStyles((theme) => ({
     //width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'nowrap',
+    flexWrap: 'wrap',
     marginLeft: '-1.5vw',
     marginRight: '-1.5vw',
     //gridTemplateColumns: '1fr 1fr',
@@ -467,6 +467,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: '1.5vw',
       width: '50%',
       flexBasis: '50%',
+      marginBottom: '100px',
       [theme.breakpoints.down('md')]: {
         width: '100%',
       flexBasis: '100%',
@@ -503,6 +504,9 @@ const useStyles = makeStyles((theme) => ({
     /*marginLeft: '1.5vh',*/
     color: '#4f4f4f',
     marginTop: '0.2em',
+  },
+  topzero: {
+    marginTop: '0',
   },
 }));
 
@@ -633,6 +637,7 @@ const Watch = ({ data, lang }) => {
       ></ContentBlock>
 
       <ContentBlock
+        className={classes.topzero}
         title={pageData.arenda_icon_title}
         leftColumnContent={
           <>
