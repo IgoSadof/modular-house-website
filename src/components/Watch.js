@@ -456,10 +456,14 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       margin: '-25px 0',
       width: '100%',
+      flexWrap: 'nowrap',
       '&>div': {
         padding: '25px 0',
         width: '100%',
         flexBasis: '100%',
+        [theme.breakpoints.down('md')]: {
+          marginBottom: '50px!important',
+        },
       },
     },
     '&>div': {
