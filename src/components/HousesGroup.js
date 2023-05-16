@@ -6,6 +6,7 @@ import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import validateText from '../utils/validateText';
 import getPublicPath from '../utils/getPublicPath';
 import MyCalendar from './MyCalendar';
 import Form from './Form';
@@ -234,8 +235,8 @@ export default function HousesGroup({
       <Typography className={classes.title} variant='h2'>
         {groupName}:
       </Typography>
-      <Typography className={classes.title} style={{ marginTop: '2vh' }} variant='body1'>
-        {groupDesc}
+      <Typography className={classes.title} style={{ marginTop: '2vh' }} variant='body1' dangerouslySetInnerHTML={{__html: `${validateText(groupDesc)}`}}>
+        {/*groupDesc*/}
       </Typography>
       <img
         style={{
