@@ -234,7 +234,7 @@ export default function HousesGroup({
       <Typography className={classes.title} variant='h2'>
         {groupName}:
       </Typography>
-      <Typography className={classes.title} style={{ marginTop: '2vh' }} variant='body1'>
+      <Typography className={classes.title} style={{ marginTop: '2vh' }} variant='body1' dangerouslySetInnerHTML={{__html: `${validateText(groupDesc)}`}}>
         {groupDesc}
       </Typography>
       <img
