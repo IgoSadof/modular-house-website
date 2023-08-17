@@ -271,7 +271,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '48px',
     lineHeight: '1.2',
     '@media (min-width:1920px)': {
-      fontSize: '3.3vw',
+      fontSize: '3.2vw',
     },
     [theme.breakpoints.down('md')]: {
       fontSize: '44px',
