@@ -379,7 +379,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 component='p'
               >
                 {/*dataContacts.phone*/}
-                +7 921 252 81 08
+                +7 911 449 46 25
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
@@ -388,30 +388,9 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Vologda' : 'Вологда'}
+                  {lang === 'EN' ? '' : ''}
                 </Typography>
               {/* ) : null} */}
-            </Box>
-            <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
-              <Typography
-                className={classes.ContactsPhone}
-                variant='body1'
-                component='p'
-              >
-                {/*dataContacts.phone*/}
-                +7 921 252 81 08
-              </Typography>
-              {/* {dataContacts.name ? ( */}
-                <Typography
-                  className={classes.ContactsSails2}
-                  variant='body1'
-                  component='p'
-                >
-                  {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Yaroslavl' : 'Ярославль'}
-                </Typography>
-              {/* ) : null} */}
-              
             </Box>
             
               <Box className={classes.infoBox}>
