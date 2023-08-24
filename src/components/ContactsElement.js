@@ -130,6 +130,11 @@ const useStyles = makeStyles((theme) => ({
     },
     '& img':{
       width:'100%',
+      '@media (min-width:1280px)': {
+        height: '34vh',
+        objectFit: 'cover',
+        objectPosition: '50% 10%',
+      },
     },
     '@media (min-width:1921px)': {
       width: '11.7vw',
@@ -137,11 +142,6 @@ const useStyles = makeStyles((theme) => ({
   },
   ContactsFoto: {
     width: '100%',
-    '@media (min-width:1280px)': {
-      height: '34vh',
-      objectFit: 'cover',
-      objectPosition: '50% 10%',
-    },
   },
   infoBox: {
     display: 'flex',
