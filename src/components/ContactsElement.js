@@ -70,9 +70,12 @@ const useStyles = makeStyles((theme) => ({
     '& > div:nth-child(4) ':{
       marginTop:'60px'
     },
-    '@media (min-width:1450px)': {
+    '@media (min-width:1280px)': {
       '& > div:nth-child(2) ':{
-        marginTop:'60px'
+        marginTop:'4vh'
+      },
+      '& > div:nth-child(4) ':{
+        marginTop:'4vh'
       },
     },
     '@media (min-width:1921px)': {
@@ -134,6 +137,11 @@ const useStyles = makeStyles((theme) => ({
   },
   ContactsFoto: {
     width: '100%',
+    '@media (min-width:1280px)': {
+      height: '34vh',
+      objectFit: 'cover',
+      objectPosition: '50% 10%',
+    },
   },
   infoBox: {
     display: 'flex',
