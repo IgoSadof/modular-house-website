@@ -141,8 +141,8 @@ const useStyles = makeStyles((theme) => ({
     height: (param) =>
       param.breakpoints.xxl
         ? `${param.heightModuleList / param.modulesCounts}vh`
-        : '100px',
-    minHeight: '70px',
+        : 'auto',
+    minHeight: '100px',
     margin: '10px 0',
     '& h1': {
       fontSize: '48px',
