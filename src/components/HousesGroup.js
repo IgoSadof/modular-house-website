@@ -313,12 +313,21 @@ export default function HousesGroup({
               value={`${index}`}
             >
               {(house.house_name !== '№9')?(<> 
+
+                {(house.house_name !== 'A' && house.house_name !== 'B')?(<> 
                 <Typography variant='body1'>
                   {lang === 'EN'
                     ? `Choose a house number, suitable free dates for living, send an application and wait for the manager's response`
                     : `Выберите номер домика, подходящие свободные даты для проживания,
                       отправьте заявку и ожидайте ответа менеджера`}
                 </Typography>
+                </>):(<>
+                <Typography variant='body1'>
+                  {lang === 'EN'
+                    ? `Book a free date for rental - the manager will contact you to confirm the time`
+                    : `Забронируйте свободную дату для аренды - менеджер свяжется с вами для уточнения времени`}
+                </Typography>
+                </>)}
 
                 <Box className={classes.calendarConteiner}>
                   <MyCalendar
@@ -391,7 +400,7 @@ export default function HousesGroup({
                     buttonText={lang === 'EN' ? 'book' : 'бронировать'}
                     lang={lang}
                     priceBlock={
-                      (house.house_name !== '№9' && house.house_name !== '№10')?(<> 
+                      (house.house_name !== 'A' && house.house_name !== 'B')?(<> 
                       <Typography variant='h3' className={classes.priceBox}>
                         <strong>{house.house_price} BYN</strong> /
                         {lang === 'EN' ? (
@@ -402,17 +411,36 @@ export default function HousesGroup({
                       </Typography>
                       </>):(<>
                         <Typography variant='h3' className={classes.priceBox}>
-                        <strong style={{ textDecoration: 'line-through' }}>{house.house_price}</strong> <strong>296 BYN*</strong> /
                         {lang === 'EN' ? (
-                          <span style={{ textTransform: 'none' }}> 1 night</span>
+                          <span style={{ textTransform: 'none', display: 'block' }}> Bath:</span>
                         ) : (
-                          <span style={{ textTransform: 'none' }}> 1 ночь</span>
+                          <span style={{ textTransform: 'none', display: 'block' }}> Баня:</span>
+                        )}
+                        <strong>100 BYN*</strong> /
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none' }}> 2 hours</span>
+                        ) : (
+                          <span style={{ textTransform: 'none' }}> 2 часа</span>
+                        )}
+                      </Typography>
+                      <Typography variant='h3' className={classes.priceBox}>
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none', display: 'block' }}> Font:</span>
+                        ) : (
+                          <span style={{ textTransform: 'none', display: 'block' }}> Купель:</span>
+                        )}
+                        <strong>50 BYN*</strong> /
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none' }}> 2 hours</span>
+                        ) : (
+                          <span style={{ textTransform: 'none' }}> 2 часа</span>
                         )}
                       </Typography>
                       </>)
                     }
                   />
                 </Box>
+                {(house.house_name !== 'A' && house.house_name !== 'B')?(<>
                 <Typography
                   variant='body2'
                   style={{ marginTop: '5vh' }}
@@ -429,6 +457,26 @@ export default function HousesGroup({
                     </span>
                   )}
                 </Typography>
+                </>):(<>
+                  <Typography
+                  variant='body2'
+                  style={{ marginTop: '5vh' }}
+                  >
+                  {lang === 'EN' ? (
+                    <span>
+                      * each additional hour of bath - <strong>30 BYN</strong><br />
+                      ** each additional hour of the font - <strong>25 BYN</strong><br />
+                      *** Check with the manager for available rental hours
+                    </span>
+                  ) : (
+                    <span>
+                      *  каждый дополнительный час бани - <strong>30 BYN</strong><br />
+                      ** каждый дополнительный час купели - <strong>25 BYN</strong><br />
+                      *** свободные часы аренды уточняйте у менеджера
+                    </span>
+                  )}
+                </Typography>
+                </>)}
               </>):(<>
                 <Box className={classes.centerBox}>
                   <Typography variant='h2'>
