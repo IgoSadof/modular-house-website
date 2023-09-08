@@ -411,10 +411,11 @@ export default function HousesGroup({
                       </Typography>
                       </>):(<>
                         <Typography variant='h3' className={classes.priceBox}>
+                        <span style={{ display: 'block' }}>
                         {lang === 'EN' ? (
-                          <span style={{ textTransform: 'none', display: 'block' }}> Bath:</span>
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Bath:</span>
                         ) : (
-                          <span style={{ textTransform: 'none', display: 'block' }}> Баня:</span>
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Баня:</span>
                         )}
                         <strong>100 BYN*</strong> /
                         {lang === 'EN' ? (
@@ -422,19 +423,20 @@ export default function HousesGroup({
                         ) : (
                           <span style={{ textTransform: 'none' }}> 2 часа</span>
                         )}
-                      </Typography>
-                      <Typography variant='h3' className={classes.priceBox}>
+                        </span>
+                        <span style={{ display: 'block' }}>
                         {lang === 'EN' ? (
-                          <span style={{ textTransform: 'none', display: 'block' }}> Font:</span>
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Font:</span>
                         ) : (
-                          <span style={{ textTransform: 'none', display: 'block' }}> Купель:</span>
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Купель:</span>
                         )}
-                        <strong>50 BYN*</strong> /
+                        <strong>50 BYN**</strong> /
                         {lang === 'EN' ? (
                           <span style={{ textTransform: 'none' }}> 2 hours</span>
                         ) : (
                           <span style={{ textTransform: 'none' }}> 2 часа</span>
                         )}
+                        </span>
                       </Typography>
                       </>)
                     }
