@@ -445,7 +445,7 @@ const Form = ({
 
         <Box className={classes.button}>
           {arenda ? (
-            <Box style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+            <Box style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'flex-end',flexWrap:'wrap'}}>
               {priceBlock}
               <RegularButton submit={true} variant='outlined' lowerCase={true}>
                 {buttonText ? buttonText : lang === 'EN' ? 'Send' : 'Отправить'}
