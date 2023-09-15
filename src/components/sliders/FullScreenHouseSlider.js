@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
         height: '65vh',
       },
     },
+    '@media (max-width:960px)': {
+      height: 'auto !important',
+    },
   },
 
   descWraper: {
