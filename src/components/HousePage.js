@@ -389,18 +389,20 @@ const useStyles = makeStyles((theme) => ({
   },
   galbox: {
     '@media (max-width:960px)': {
-      height: 'auto !important',
-      '& .slick-track': {
-        width: '100% !important',
-        transform: 'none !important',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        '& .slick-slide':{
-          display: 'block',
+      '& .sliderWrapper': {
+        height: 'auto !important',
+        '& .slick-track': {
           width: '100% !important',
-          marginBottom: '10px',
-          '&.slick-cloned':{
-            display: 'none',
+          transform: 'none !important',
+          flexDirection: 'column',
+          flexWrap: 'nowrap',
+          '& .slick-slide':{
+            display: 'block',
+            width: '100% !important',
+            marginBottom: '10px',
+            '&.slick-cloned':{
+              display: 'none',
+            },
           },
         },
       },
