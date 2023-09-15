@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  '& div > div + div + div > div.sliderWrapper':{
+  '& div > div + div + div .sliderWrapper':{
     '@media (max-width:960px)': {
       height: 'auto !important',
       '& .slick-track': {
