@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
           },
         },
       },
-      '& button':{
+      sidesButtons:{
         display: 'none !important',
       },
     },
