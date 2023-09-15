@@ -52,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
     },
     '@media (max-width:960px)': {
       height: 'auto !important',
+      '& .slick-track': {
+        width: '100% !important',
+        transform: 'none !important',
+      },
     },
   },
 
