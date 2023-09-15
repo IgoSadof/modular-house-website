@@ -648,7 +648,7 @@ const HousePage = ({ house, data, lang }) => {
         </Box>
       </Box>
 
-      <Box className={classes.galery_slides}>
+      <Box className={classes.galbox}>
         <FullScreenHouseSlider
           arr={dataHouses[houseNumber]?.int_gallery?.filter(
             (item) => item.published
