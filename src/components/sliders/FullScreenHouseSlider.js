@@ -218,6 +218,9 @@ const useStyles = makeStyles((theme) => ({
       bottom: '50%',
       transform: 'translate(0, 50%)',
     },
+    '@media (max-width:960px)': {
+      display: 'none !important',
+    },
   },
   butligt:{
     '& > button': {
