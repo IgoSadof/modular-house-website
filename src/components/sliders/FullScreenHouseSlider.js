@@ -65,12 +65,6 @@ const useStyles = makeStyles((theme) => ({
             display: 'none',
           },
         },
-        '& button':{
-          display: 'none !important',
-        },
-      },
-      sidesButtons:{
-        display: 'none !important',
       },
     },
   },
