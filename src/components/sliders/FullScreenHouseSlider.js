@@ -55,6 +55,16 @@ const useStyles = makeStyles((theme) => ({
       '& .slick-track': {
         width: '100% !important',
         transform: 'none !important',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        '& .slick-slide':{
+          display: 'block',
+          width: '100% !important',
+          marginBottom: '10px',
+        },
+      },
+      '& button':{
+        display: 'none !important',
       },
     },
   },
