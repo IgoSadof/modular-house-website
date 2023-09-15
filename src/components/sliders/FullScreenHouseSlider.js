@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
           display: 'block',
           width: '100% !important',
           marginBottom: '10px',
+          '&.slick-cloned':{
+            display: 'none',
+          },
         },
       },
       '& button':{
