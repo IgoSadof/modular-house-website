@@ -22,27 +22,7 @@ const useStyles = makeStyles((theme) => ({
       height: (param) => '100%',
     },
   },
-
-  'div > div + div + div .sliderWrapper':{
-    '@media (max-width:960px)': {
-      height: 'auto !important',
-      '& .slick-track': {
-        width: '100% !important',
-        transform: 'none !important',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        '& .slick-slide':{
-          display: 'block',
-          width: '100% !important',
-          marginBottom: '10px',
-          '&.slick-cloned':{
-            display: 'none',
-          },
-        },
-      },
-    },
-  },
-
+  
   sliderContent: {
     height: '100%',
     zIndex: '1',
@@ -215,9 +195,6 @@ const useStyles = makeStyles((theme) => ({
       left: '0%',
       bottom: '50%',
       transform: 'translate(0, 50%)',
-    },
-    '@media (max-width:960px)': {
-      display: 'none !important',
     },
   },
   butligt:{

@@ -387,6 +387,25 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '20px',
     },
   },
+  galbox: {
+    '@media (max-width:960px)': {
+      height: 'auto !important',
+      '& .slick-track': {
+        width: '100% !important',
+        transform: 'none !important',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        '& .slick-slide':{
+          display: 'block',
+          width: '100% !important',
+          marginBottom: '10px',
+          '&.slick-cloned':{
+            display: 'none',
+          },
+        },
+      },
+    },
+  },
 }));
 
 const HousePage = ({ house, data, lang }) => {
@@ -648,15 +667,17 @@ const HousePage = ({ house, data, lang }) => {
         </Box>
       </Box>
 
-      <FullScreenHouseSlider
-        arr={dataHouses[houseNumber]?.int_gallery?.filter(
-          (item) => item.published
-        )}
-        data={data}
-        mobileButtons={true}
-        autoSlidesPerView={true}
-        lang={lang}
-      ></FullScreenHouseSlider>
+      <Box className={classes.galbox}>
+        <FullScreenHouseSlider
+          arr={dataHouses[houseNumber]?.int_gallery?.filter(
+            (item) => item.published
+          )}
+          data={data}
+          mobileButtons={false}
+          autoSlidesPerView={true}
+          lang={lang}
+        ></FullScreenHouseSlider>
+      </Box>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <CalculationBlock
