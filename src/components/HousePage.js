@@ -648,17 +648,15 @@ const HousePage = ({ house, data, lang }) => {
         </Box>
       </Box>
 
-      <Box className={classes.galbox}>
-        <FullScreenHouseSlider
-          arr={dataHouses[houseNumber]?.int_gallery?.filter(
-            (item) => item.published
-          )}
-          data={data}
-          mobileButtons={true}
-          autoSlidesPerView={true}
-          lang={lang}
-        ></FullScreenHouseSlider>
-      </Box>
+      <FullScreenHouseSlider
+        arr={dataHouses[houseNumber]?.int_gallery?.filter(
+          (item) => item.published
+        )}
+        data={data}
+        mobileButtons={true}
+        autoSlidesPerView={true}
+        lang={lang}
+      ></FullScreenHouseSlider>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <CalculationBlock
