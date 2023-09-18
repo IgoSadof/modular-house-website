@@ -131,8 +131,8 @@ const useStyles = makeStyles((theme) => ({
     padding: '4vh 0',
   },
   optionsBox: {
-    display: 'grid',
-    display: 'none!important',
+    display: 'grid!important',
+    display: 'none',
     gridTemplateColumns: 'repeat(2, 50%)',
     width: '100%',
     gridColumnGap: '40px',
