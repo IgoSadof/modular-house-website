@@ -338,8 +338,8 @@ export default function HousesGroup({
                   />
                 </Box>
 
-                
-                <Box className={classes.optionsBox}>
+                <Box className={classes.formBox}> 
+                  {/* <Box className={classes.optionsBox}> */}
                   <Box>
                     {house.house_options
                       ? house.house_options
