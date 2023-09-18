@@ -449,13 +449,17 @@ export default function HousesGroup({
                 >
                   {lang === 'EN' ? (
                     <span>
-                      * The price for certain dates may vary, check with the manager<br />
-                      ** When settling in several houses, book each one separately
+                      * Prices may vary for certain dates and holidays. Check the cost with the manager<br />
+                      ** If you are staying in several houses, book each one separately<br />
+                      *** If it is impossible to visit the complex you have booked, payment will not be refunded<br />
+                      **** If you are checking in with a pet, an additional fee will be charged (30 BYN/day)
                     </span>
                   ) : (
                     <span>
-                      * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
-                      ** При заселении в несколько домиков - бронируйте каждый отдельно
+                      * Цена на определенные даты и праздничные дни может отличаться. Стоимость уточняйте у менеджера<br />
+                      ** При заселении в несколько домиков - бронируйте каждый отдельно<br />
+                      *** В случае невозможности посещения забронированного вами комплекса, оплата не возвращается<br />
+                      **** В случае заселения с питомцем взимается дополнительная плата (30 BYN/сутки)
                     </span>
                   )}
                 </Typography>
