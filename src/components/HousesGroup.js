@@ -131,8 +131,8 @@ const useStyles = makeStyles((theme) => ({
     padding: '4vh 0',
   },
   optionsBox: {
-    display: 'grid!important',
-    display: 'none',
+    display: 'grid',
+    display: 'none!important',
     gridTemplateColumns: 'repeat(2, 50%)',
     width: '100%',
     gridColumnGap: '40px',
@@ -338,7 +338,7 @@ export default function HousesGroup({
                   />
                 </Box>
 
-                <Box className={classes.formBox}> 
+                <Box className={classes.formBox}>
                   {/* <Box className={classes.optionsBox}> */}
                   <Box>
                     {house.house_options
