@@ -417,7 +417,7 @@ export default function HousesGroup({
                         ) : (
                           <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Баня:</span>
                         )}
-                        <strong>100 BYN*</strong> /
+                        <strong>140 BYN*</strong> /
                         {lang === 'EN' ? (
                           <span style={{ textTransform: 'none' }}> 2 hours</span>
                         ) : (
@@ -466,13 +466,13 @@ export default function HousesGroup({
                   >
                   {lang === 'EN' ? (
                     <span>
-                      * each additional hour of bath - <strong>30 BYN</strong><br />
+                      * each additional hour of bath - <strong>50 BYN</strong><br />
                       ** each additional hour of the font - <strong>25 BYN</strong><br />
                       *** Check with the manager for available rental hours
                     </span>
                   ) : (
                     <span>
-                      *  каждый дополнительный час бани - <strong>30 BYN</strong><br />
+                      *  каждый дополнительный час бани - <strong>50 BYN</strong><br />
                       ** каждый дополнительный час купели - <strong>25 BYN</strong><br />
                       *** свободные часы аренды уточняйте у менеджера
                     </span>
