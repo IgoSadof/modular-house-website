@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        width:(param) => '100%',
+        width:(param) => 'auto',
       },
     },
     [theme.breakpoints.down('md')]: {
