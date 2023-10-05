@@ -40,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        width:(param) => '100%',
-        width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),
+        
       },
     },
     [theme.breakpoints.down('md')]: {
