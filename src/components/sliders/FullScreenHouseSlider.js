@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     '& div':{
       height:'100%',
-      width:'auto!important',
     },
     '& img': {
       width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        width:(param) => 'auto',
+        width:(param) => '100%',
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -104,9 +103,9 @@ const useStyles = makeStyles((theme) => ({
   mainImgItem: {
     height: '100%',
     position: 'relative',
-    paddingRight:(param) => (param.autoSlidesPerView ? '14px' : '10px'),
+    paddingRight:(param) => (param.autoSlidesPerView ? '14px' : '0'),
     '@media (min-width:1921px)': {
-      paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '10px'),
+      paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '0'),
     },
     [theme.breakpoints.down('md')]: {
       paddingRight:(param) => '0',
