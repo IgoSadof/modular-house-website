@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     '& div':{
       height:'100%',
+      width:'auto!important',
     },
     '& img': {
       width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        width:(param) => 'auto!important',
+        width:(param) => 'auto',
       },
     },
     [theme.breakpoints.down('md')]: {
