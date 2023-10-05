@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '10px'),
     },
     [theme.breakpoints.down('md')]: {
-      paddingRight:(param) => '10px',
+      paddingRight:(param) => '10px', 
     },
   },
 
