@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     '& div':{
       height:'100%',
+      width:(param) => (param.autoSlidesPerView ? 'auto!important' : '100px'),
     },
     '& img': {
       width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),
