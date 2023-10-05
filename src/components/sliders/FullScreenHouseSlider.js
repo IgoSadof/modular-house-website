@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     paddingRight:(param) => (param.autoSlidesPerView ? '14px' : '10px'),
     '@media (min-width:1921px)': {
-      paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '0'),
+      paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '10px'),
     },
     [theme.breakpoints.down('md')]: {
       paddingRight:(param) => '0',
