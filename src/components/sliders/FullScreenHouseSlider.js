@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
         width:(param) => '100%',
+        width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),
       },
     },
     [theme.breakpoints.down('md')]: {
@@ -109,7 +110,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       paddingRight:(param) => (param.autoSlidesPerView ? '10px' : '0'),
-      width: (param) => (param.autoSlidesPerView ? 'auto' : '100%'),
     },
   },
 
