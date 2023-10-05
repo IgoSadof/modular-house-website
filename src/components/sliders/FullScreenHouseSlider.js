@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
   mainImgItem: {
     height: '100%',
     position: 'relative',
-    paddingRight:(param) => (param.autoSlidesPerView ? '14px' : '10px'),
+    paddingRight:(param) => (param.autoSlidesPerView ? '16px' : '10px'),
     '@media (min-width:1921px)': {
       paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '10px'),
     },
