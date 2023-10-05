@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
       height: (param) => '100%',
     },
   },
-
   sliderContent: {
     height: '100%',
     zIndex: '1',
@@ -46,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       width:(param) => '100%',
-      height: (param) => (param.fullHeight ? 'auto' : '100%'),
+      height: (param) => (param.fullHeight ? '100vw' : '100%'),
       '@media (orientation: landscape)': {
         height: '65vh',
       },
