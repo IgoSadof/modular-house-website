@@ -31,7 +31,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
     infinite: true,
     // slidesToShow: 1,
     slidesToScroll: 1,
-    variableWidth: autoSlidesPerView? breakpoints.md?true:true: false,
+    variableWidth: autoSlidesPerView? breakpoints.md?false:true: false,
     swipeToSlide: true,
     infinite: true,
     arrows: false,
