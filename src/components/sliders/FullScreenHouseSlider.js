@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        
+        height: "520px",
       },
     },
     [theme.breakpoints.down('md')]: {
