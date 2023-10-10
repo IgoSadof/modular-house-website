@@ -25,7 +25,7 @@ const HouseFotosSlider = ({ listItem, houseRef, pagination, autoSlidesPerView, e
   };
 
   const settings = {
-    className: "slider variable-width",
+    className: "slider variable-width slider_top",
     speed: 300,
     dots: !!pagination && breakpoints.md,
     infinite: true,
