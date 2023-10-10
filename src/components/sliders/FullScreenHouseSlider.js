@@ -41,12 +41,12 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        height: "520px",
+        //height: "520px",
       },
     },
     [theme.breakpoints.down('md')]: {
       width:(param) => '100%',
-      height: (param) => (param.fullHeight ? '100%' : '100%'),
+      height: (param) => (param.fullHeight ? '100%' : '520px'),
       '@media (orientation: landscape)': {
         height: '100vh',
       },
