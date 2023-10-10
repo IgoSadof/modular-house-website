@@ -64,7 +64,7 @@ const OneImageAutoSlider = ({ mobile, slides }) => {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      variableWidth: autoSlidesPerView? breakpoints.md?false:true: false,
+      // variableWidth: autoSlidesPerView? breakpoints.md?false:true: false,
       swipeToSlide: true,
       infinite: true,
       arrows: false,
