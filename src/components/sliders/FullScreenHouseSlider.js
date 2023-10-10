@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        height: (param) => (param.fullHeight ? '520px' : '100%'),
+        height: (param) => (param.autoSlidesPerView ? '520px' : '100%'),
       },
     },
     [theme.breakpoints.down('md')]: {
