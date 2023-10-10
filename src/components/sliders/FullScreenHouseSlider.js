@@ -46,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       width:(param) => '100%',
-      height: (param) => (param.fullHeight ? '100vw' : '100%'),
+      height: (param) => (param.fullHeight ? '100%' : '100%'),
       '@media (orientation: landscape)': {
-        height: '65vh',
+        height: '100vh',
       },
     },
   },
