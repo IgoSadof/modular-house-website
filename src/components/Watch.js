@@ -445,7 +445,7 @@ const useStyles = makeStyles((theme) => ({
     //width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'nowrap',
+    flexWrap: 'wrap',
     marginLeft: '-1.5vw',
     marginRight: '-1.5vw',
     //gridTemplateColumns: '1fr 1fr',
@@ -456,10 +456,14 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       margin: '-25px 0',
       width: '100%',
+      flexWrap: 'nowrap',
       '&>div': {
         padding: '25px 0',
         width: '100%',
         flexBasis: '100%',
+        [theme.breakpoints.down('md')]: {
+          marginBottom: '50px!important',
+        },
       },
     },
     '&>div': {
@@ -467,6 +471,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: '1.5vw',
       width: '50%',
       flexBasis: '50%',
+      marginBottom: '100px',
       [theme.breakpoints.down('md')]: {
         width: '100%',
       flexBasis: '100%',

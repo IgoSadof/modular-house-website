@@ -67,12 +67,15 @@ const useStyles = makeStyles((theme) => ({
     '& > div:nth-child(3) ':{
       marginTop:'20px'
     },
-    '& > div:nth-child(5) ':{
+    '& > div:nth-child(4) ':{
       marginTop:'60px'
     },
-    '@media (min-width:1450px)': {
+    '@media (min-width:1280px)': {
       '& > div:nth-child(2) ':{
-        marginTop:'60px'
+        marginTop:'4vh'
+      },
+      '& > div:nth-child(4) ':{
+        marginTop:'4vh'
       },
     },
     '@media (min-width:1921px)': {
@@ -87,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
       '& > div:nth-child(3) ':{
         marginTop:'20px'
       },
-      '& > div:nth-child(5) ':{
+      '& > div:nth-child(4) ':{
         marginTop:'60px'
       },
     },
@@ -127,6 +130,11 @@ const useStyles = makeStyles((theme) => ({
     },
     '& img':{
       width:'100%',
+      '@media (min-width:1280px)': {
+        height: '34vh',
+        objectFit: 'cover',
+        objectPosition: '50% 10%',
+      },
     },
     '@media (min-width:1921px)': {
       width: '11.7vw',
@@ -361,7 +369,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Minsk' : 'Минск'}
+                  {lang === 'EN' ? '' : ''}
                 </Typography>
               {/* ) : null} */}
             </Box>
@@ -379,7 +387,7 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                 component='p'
               >
                 {/*dataContacts.phone*/}
-                +7 921 252 81 08
+                +7 911 449 46 25
               </Typography>
               {/* {dataContacts.name ? ( */}
                 <Typography
@@ -388,30 +396,9 @@ const ContactsElement = ({ header, data, dataContacts, lang }) => {
                   component='p'
                 >
                   {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Vologda' : 'Вологда'}
+                  {lang === 'EN' ? '' : ''}
                 </Typography>
               {/* ) : null} */}
-            </Box>
-            <Box className={`${classes.infoBox} ${classes.infoBoxTel}`}>
-              <Typography
-                className={classes.ContactsPhone}
-                variant='body1'
-                component='p'
-              >
-                {/*dataContacts.phone*/}
-                +7 921 252 81 08
-              </Typography>
-              {/* {dataContacts.name ? ( */}
-                <Typography
-                  className={classes.ContactsSails2}
-                  variant='body1'
-                  component='p'
-                >
-                  {/* {dataContacts.name} */}
-                  {lang === 'EN' ? 'Yaroslavl' : 'Ярославль'}
-                </Typography>
-              {/* ) : null} */}
-              
             </Box>
             
               <Box className={classes.infoBox}>

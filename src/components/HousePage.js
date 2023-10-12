@@ -10,6 +10,7 @@ import Model3d from './Model3d';
 import getHouses from '../utils/getHouses';
 import getPublicPath from '../utils/getPublicPath';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
+import FancyBoxHouseSlider from './sliders/FancyBoxHouseSlider';
 import CalculationBlock from './CalculationBlock';
 import HouseModelPlayer from './HouseModelPlayer';
 import VRviwe from './svg/VRviwe';
@@ -141,8 +142,8 @@ const useStyles = makeStyles((theme) => ({
     height: (param) =>
       param.breakpoints.xxl
         ? `${param.heightModuleList / param.modulesCounts}vh`
-        : '100px',
-    minHeight: '70px',
+        : 'auto',
+    minHeight: '100px',
     margin: '10px 0',
     '& h1': {
       fontSize: '48px',
@@ -648,7 +649,7 @@ const HousePage = ({ house, data, lang }) => {
         </Box>
       </Box>
 
-      <FullScreenHouseSlider
+      <FancyBoxHouseSlider
         arr={dataHouses[houseNumber]?.int_gallery?.filter(
           (item) => item.published
         )}
@@ -656,7 +657,7 @@ const HousePage = ({ house, data, lang }) => {
         mobileButtons={true}
         autoSlidesPerView={true}
         lang={lang}
-      ></FullScreenHouseSlider>
+      ></FancyBoxHouseSlider>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <CalculationBlock

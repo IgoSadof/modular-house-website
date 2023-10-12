@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     '& div':{
       height:'100%',
+      width:(param) => (param.autoSlidesPerView ? 'auto!important' : '100%'),
     },
     '& img': {
       width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),
@@ -40,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-user-select': 'none',
       '-ms-user-select': 'none',
       [theme.breakpoints.down('md')]: {
-        width:(param) => '100%',
+        height: (param) => (param.autoSlidesPerView ? '520px' : '100%'),
       },
     },
     [theme.breakpoints.down('md')]: {
       width:(param) => '100%',
-      height: (param) => (param.fullHeight ? '70vw' : '100%'),
+      height: (param) => (param.fullHeight ? '100%' : '100%'),
       '@media (orientation: landscape)': {
-        height: '65vh',
+        height: '100vh',
       },
     },
   },
@@ -108,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight:(param) => (param.autoSlidesPerView ? '0.72vw' : '0'),
     },
     [theme.breakpoints.down('md')]: {
-      paddingRight:(param) => '0',
+      paddingRight:(param) => (param.autoSlidesPerView ? '10px' : '0'),
     },
   },
 

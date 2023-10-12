@@ -6,6 +6,7 @@ import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import validateText from '../utils/validateText';
 import getPublicPath from '../utils/getPublicPath';
 import MyCalendar from './MyCalendar';
 import Form from './Form';
@@ -234,8 +235,8 @@ export default function HousesGroup({
       <Typography className={classes.title} variant='h2'>
         {groupName}:
       </Typography>
-      <Typography className={classes.title} style={{ marginTop: '2vh' }} variant='body1'>
-        {groupDesc}
+      <Typography className={classes.title} style={{ marginTop: '2vh' }} variant='body1' dangerouslySetInnerHTML={{__html: `${validateText(groupDesc)}`}}>
+        {/*groupDesc*/}
       </Typography>
       <img
         style={{
@@ -311,13 +312,22 @@ export default function HousesGroup({
               key={index}
               value={`${index}`}
             >
-              {(house.house_name !== '№4' && house.house_name !== '№5' && house.house_name !== '№6')?(<> 
+              {(house.house_name !== '№11')?(<> 
+
+                {(house.house_name !== '№9' && house.house_name !== '№10')?(<> 
                 <Typography variant='body1'>
                   {lang === 'EN'
                     ? `Choose a house number, suitable free dates for living, send an application and wait for the manager's response`
                     : `Выберите номер домика, подходящие свободные даты для проживания,
                       отправьте заявку и ожидайте ответа менеджера`}
                 </Typography>
+                </>):(<>
+                <Typography variant='body1'>
+                  {lang === 'EN'
+                    ? `Book a free date for rental - the manager will contact you to confirm the time`
+                    : `Забронируйте свободную дату для аренды - менеджер свяжется с вами для уточнения времени`}
+                </Typography>
+                </>)}
 
                 <Box className={classes.calendarConteiner}>
                   <MyCalendar
@@ -390,6 +400,7 @@ export default function HousesGroup({
                     buttonText={lang === 'EN' ? 'book' : 'бронировать'}
                     lang={lang}
                     priceBlock={
+                      (house.house_name !== '№9' && house.house_name !== '№10')?(<> 
                       <Typography variant='h3' className={classes.priceBox}>
                         <strong>{house.house_price} BYN</strong> /
                         {lang === 'EN' ? (
@@ -398,27 +409,80 @@ export default function HousesGroup({
                           <span style={{ textTransform: 'none' }}> 1 ночь</span>
                         )}
                       </Typography>
+                      </>):(<>
+                        <Typography variant='h3' className={classes.priceBox}>
+                        <span style={{ display: 'block' }}>
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Bath:</span>
+                        ) : (
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Баня:</span>
+                        )}
+                        <strong>140 BYN*</strong> /
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none' }}> 2 hours</span>
+                        ) : (
+                          <span style={{ textTransform: 'none' }}> 2 часа</span>
+                        )}
+                        </span>
+                        <span style={{ display: 'block' }}>
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Font:</span>
+                        ) : (
+                          <span style={{ textTransform: 'none', display: 'block', fontSize: '68%' }}> Купель:</span>
+                        )}
+                        <strong>50 BYN**</strong> /
+                        {lang === 'EN' ? (
+                          <span style={{ textTransform: 'none' }}> 2 hours</span>
+                        ) : (
+                          <span style={{ textTransform: 'none' }}> 2 часа</span>
+                        )}
+                        </span>
+                      </Typography>
+                      </>)
                     }
                   />
                 </Box>
+                {(house.house_name !== '№9' && house.house_name !== '№10')?(<>
                 <Typography
                   variant='body2'
                   style={{ marginTop: '5vh' }}
                 >
                   {lang === 'EN' ? (
                     <span>
-                      * The price for certain dates may vary, check with the manager<br />
-                      ** When settling in several houses, book each one separately<br />
-                      *** From May to September the cost of rent will increase by 60 BYN
+                      * Prices may vary for certain dates and holidays. Check the cost with the manager<br />
+                      ** If you are staying in several houses, book each one separately<br />
+                      *** If it is impossible to visit the complex you have booked, payment will not be refunded<br />
+                      **** If you are checking in with a pet, an additional fee will be charged (30 BYN/day)
                     </span>
                   ) : (
                     <span>
-                      * Цена на определенные даты может отличаться, уточняйте у менеджера<br />
+                      * Цена на определенные даты и праздничные дни может отличаться. Стоимость уточняйте у менеджера<br />
                       ** При заселении в несколько домиков - бронируйте каждый отдельно<br />
-                      *** С мая по сентябрь стоимость аренды увеличится на 60 рублей
+                      *** В случае невозможности посещения забронированного вами комплекса, оплата не возвращается<br />
+                      **** В случае заселения с питомцем взимается дополнительная плата (30 BYN/сутки)
                     </span>
                   )}
                 </Typography>
+                </>):(<>
+                  <Typography
+                  variant='body2'
+                  style={{ marginTop: '5vh' }}
+                  >
+                  {lang === 'EN' ? (
+                    <span>
+                      * each additional hour of bath - <strong>50 BYN</strong><br />
+                      ** each additional hour of the font - <strong>25 BYN</strong><br />
+                      *** Check with the manager for available rental hours
+                    </span>
+                  ) : (
+                    <span>
+                      *  каждый дополнительный час бани - <strong>50 BYN</strong><br />
+                      ** каждый дополнительный час купели - <strong>25 BYN</strong><br />
+                      *** свободные часы аренды уточняйте у менеджера
+                    </span>
+                  )}
+                </Typography>
+                </>)}
               </>):(<>
                 <Box className={classes.centerBox}>
                   <Typography variant='h2'>

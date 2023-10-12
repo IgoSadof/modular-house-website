@@ -58,7 +58,7 @@ const OneImageAutoSlider = ({ mobile, slides }) => {
       })
     : null;
     const settings = {
-      className: "slider variable-width",
+      className: "slider variable-width slider_one",
       speed:500,
       // dots: true,
       infinite: true,

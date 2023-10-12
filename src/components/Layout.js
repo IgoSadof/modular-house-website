@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
       height: (param) =>
         param.page === 'houseList' && param.breakpoints.md ? '100%' : '100%',
     },
-    minHeight: '100vh',
+    minHeight: '100%',
     '@media (max-height:600px)': {
       height: '100% !important',
     },
