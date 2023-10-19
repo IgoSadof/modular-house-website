@@ -10,6 +10,7 @@ import Model3d from './Model3d';
 import getHouses from '../utils/getHouses';
 import getPublicPath from '../utils/getPublicPath';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
+import FancyBoxHouseSlider from './sliders/FancyBoxHouseSlider';
 import CalculationBlock from './CalculationBlock';
 import HouseModelPlayer from './HouseModelPlayer';
 import VRviwe from './svg/VRviwe';
