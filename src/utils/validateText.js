@@ -1,5 +1,5 @@
 const validateText = (text) => {
-  if(!text.match(/script|<form>/gi)){
+  if(!text?.match(/script|<form>/gi)){
     return text;
   }else{
     return '';
