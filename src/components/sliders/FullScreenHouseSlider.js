@@ -250,7 +250,6 @@ const FullScreenHouseSlider = ({
     sliderRef.current.slickPrev();
   };
   const handleClickRight = () => {
-    
     sliderRef.current.slickNext();
   };
   
