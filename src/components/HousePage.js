@@ -10,7 +10,6 @@ import Model3d from './Model3d';
 import getHouses from '../utils/getHouses';
 import getPublicPath from '../utils/getPublicPath';
 import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
-import FancyBoxHouseSlider from './sliders/FancyBoxHouseSlider';
 import CalculationBlock from './CalculationBlock';
 import HouseModelPlayer from './HouseModelPlayer';
 import VRviwe from './svg/VRviwe';
@@ -695,7 +694,7 @@ const HousePage = ({ house, data, lang }) => {
             )}
             data={data}
             fullHeight={false}
-            mobileButtons={false}
+            mobileButtons={true}
             autoSlidesPerView={false}
             sidesDesctopButtons={true}
             initialSlide={activeImg}
