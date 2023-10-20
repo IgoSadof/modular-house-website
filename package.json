@@ -22,6 +22,7 @@
     "@formspree/react": "^2.2.4",
     "@google/model-viewer": "^1.11.1",
     "@loadable/component": "^5.15.0",
+    "@fancyapps/ui": "5.0.24",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",

@@ -13,8 +13,28 @@ import FullScreenHouseSlider from './sliders/FullScreenHouseSlider';
 import CalculationBlock from './CalculationBlock';
 import HouseModelPlayer from './HouseModelPlayer';
 import VRviwe from './svg/VRviwe';
+import ModalScreen from '../components/ModalScreen';
 
 const useStyles = makeStyles((theme) => ({
+  
+  slickSlide: {
+    '& img': {
+      width: 'fit-content',
+    },
+  },
+  sliderBox: {
+    height: '100%',
+    width: '100%',
+    '@media (min-width:1921px)': {
+      height: '24vw',
+    },
+    '& .swiper-slide': {
+      cursor: 'pointer',
+    },
+    '& img': {
+      pointerEvents: 'visible',
+    },
+  },
   Block: {
     display: 'flex',
     '& > * + * ': {
@@ -390,15 +410,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HousePage = ({ house, data, lang }) => {
-  const dataHouses = useMemo(() => getHouses(data,lang), [data, lang]);
+  const dataHouses = useMemo(() => getHouses(data, lang), [data, lang]);
   const houseNumber = dataHouses.findIndex((item) => item.alias === house);
   const breakpoints = useBreakpoint();
+  const [openModal, setOpenModal] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false);
+  const [activeImg, setActiveImg] = useState(0);
+
   const baseModule = dataHouses[houseNumber].modules?.[0].name
     ? dataHouses[houseNumber].modules[0].name
     : 'no-modules';
   const baseModuleOptions = dataHouses[houseNumber].modules?.[0].module_options
-  ? dataHouses[houseNumber].modules?.[0].module_options
-  : [];
+    ? dataHouses[houseNumber].modules?.[0].module_options
+    : [];
   const [userModuleList, setUserModuleList] = useState([baseModule]);
   const modules = dataHouses[houseNumber].modules.filter(
     (item) => item.published
@@ -500,10 +524,19 @@ const HousePage = ({ house, data, lang }) => {
   const vrButtonClick = () => {
     modelViwerRef.current.activateAR();
   };
-  
+
   useEffect(() => {
     setModulesOptions(baseModuleOptions)
   }, [baseModuleOptions, lang]);
+
+  const handleSliderClick = (e) => {
+    if (e.target.dataset.number) {
+      setActiveImg(e.target.key);
+      setOpenModal(true);
+      setOpenPopup(true);
+      setActiveImg(+e.target.dataset.number);
+    }
+  };
 
   return (
     <Box components='main'>
@@ -648,15 +681,39 @@ const HousePage = ({ house, data, lang }) => {
         </Box>
       </Box>
 
-      <FullScreenHouseSlider
-        arr={dataHouses[houseNumber]?.int_gallery?.filter(
-          (item) => item.published
-        )}
-        data={data}
-        mobileButtons={true}
-        autoSlidesPerView={true}
-        lang={lang}
-      ></FullScreenHouseSlider>
+      <Box className={classes.sliderBox} onClick={handleSliderClick}>
+        <ModalScreen
+          openModal={openModal}
+          openPopup={openPopup}
+          setOpenPopup={setOpenPopup}
+          setOpenModal={setOpenModal}
+        >
+          <FullScreenHouseSlider
+            arr={dataHouses[houseNumber]?.int_gallery?.filter(
+              (item) => item.published
+            )}
+            data={data}
+            fullHeight={false}
+            mobileButtons={true}
+            autoSlidesPerView={false}
+            sidesDesctopButtons={true}
+            initialSlide={activeImg}
+            lang={lang}
+          ></FullScreenHouseSlider>
+        </ModalScreen>
+        <FullScreenHouseSlider
+          arr={dataHouses[houseNumber]?.int_gallery?.filter(
+            (item) => item.published
+          )}
+          data={data}
+          fullHeight={true}
+          mobileButtons={true}
+          autoSlidesPerView={true}
+          // sidesDesctopButtons={true}
+          // outSideButtons={true}
+          lang={lang}
+        ></FullScreenHouseSlider>
+      </Box>
 
       <Box className={`${classes.Block} ${classes.BlockCalculation}`}>
         <CalculationBlock
@@ -694,9 +751,9 @@ const HousePage = ({ house, data, lang }) => {
           img={
             !breakpoints.md
               ? getPublicPath(
-                  data,
-                  `${dataHouses[houseNumber]['form-block'][0].img}`
-                )
+                data,
+                `${dataHouses[houseNumber]['form-block'][0].img}`
+              )
               : null
           }
           formPosition='center'
