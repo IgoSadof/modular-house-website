@@ -15,7 +15,6 @@ import CalculationBlock from './CalculationBlock';
 import HouseModelPlayer from './HouseModelPlayer';
 import VRviwe from './svg/VRviwe';
 import ModalScreen from '../components/ModalScreen';
-import ContentBlock from './ContentBlock';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -695,9 +694,9 @@ const HousePage = ({ house, data, lang }) => {
               (item) => item.published
             )}
             data={data}
-            fullHeight={true}
-            mobileButtons={true}
-            autoSlidesPerView={true}
+            fullHeight={false}
+            mobileButtons={false}
+            autoSlidesPerView={false}
             sidesDesctopButtons={true}
             initialSlide={activeImg}
             lang={lang}
