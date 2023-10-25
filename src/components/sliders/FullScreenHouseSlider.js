@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     '& div':{
       height:'100%',
       width:(param) => (param.autoSlidesPerView ? 'auto!important' : '100%'),
+      aspectRatio:(param) => (param.autoSlidesPerView ? 'auto' : '3/2'),
     },
     '& img': {
       width:(param) => (param.autoSlidesPerView ? 'auto' : '100%'),

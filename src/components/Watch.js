@@ -528,7 +528,7 @@ const Watch = ({ data, lang }) => {
   );
   const pageData = lang === 'EN' ? pageDataObj['EN'] : pageDataObj['RU'];
   const handleSliderClick = (e) => {
-    if (e.target.dataset.number && !breakpoints.s) {
+    if (e.target.dataset.number) {
       setActiveImg(e.target.key);
       setOpenModal(true);
       setOpenPopup(true);
